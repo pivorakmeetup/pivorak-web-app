@@ -1,0 +1,11 @@
+doctype html
+html
+  head
+    title = 'PivorakWebApp'
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', 'data-turbolinks-track': 'reload', media: 'all'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  body
+    header == render 'layouts/header'
+    main    = yield
+    footer == render 'layouts/footer'
