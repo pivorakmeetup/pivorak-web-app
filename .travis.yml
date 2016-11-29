@@ -1,0 +1,6 @@
+language:
+  - ruby
+rvm:
+  - 2.3.1
+before_script: "cp config/database.yml.example config/database.yml && bundle exec rake db:setup RAILS_ENV=test"
+script: "bundle exec rspec spec"

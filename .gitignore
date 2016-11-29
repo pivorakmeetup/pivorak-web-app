@@ -15,3 +15,5 @@
 
 .env
 coverage
+
+config/database.yml
