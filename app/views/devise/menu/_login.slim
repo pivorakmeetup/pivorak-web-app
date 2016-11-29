@@ -1,0 +1,5 @@
+li
+  - if user_signed_in?
+    = link_to t('devise.base.logout'), destroy_user_session_path, method: :delete
+  - else
+    = link_to t('devise.base.login'), new_user_session_path

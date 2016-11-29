@@ -11,8 +11,12 @@ gem 'puma',                              '~> 3.0'
 gem 'sass-rails',                        '~> 5.0'
 gem 'turbolinks',                        '~> 5.0'
 gem 'slim-rails',                        '~> 3.1'
+gem 'jquery-rails'
 
 #=== FEATUES ====================================
+gem 'devise'
+gem 'omniauth-facebook'
+gem 'omniauth-github'
 gem 'simple_form',                       '~> 3.3'
 gem 'access-granted',                    '~> 1.1'
 gem 'friendly_id',                       '~> 5.1'
@@ -39,6 +43,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'faker'
   gem 'rspec-collection_matchers'
   gem 'rspec-its'
   gem 'rspec-activemodel-mocks'
