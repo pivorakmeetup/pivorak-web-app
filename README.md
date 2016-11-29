@@ -10,6 +10,11 @@ class Pivorak
 end
 ```
 
+## Branches
+
+* `master` - stable code, production deployment.
+* `development` - dev branch, staging deployment. Please checkout yur new branch from it.
+
 ## Contribution
 
 1. Detect which [issue](https://github.com/pivorakmeetup/pivorak-web-app/issues) you want to resolve. Write comment about this and how you supposed to do this.
