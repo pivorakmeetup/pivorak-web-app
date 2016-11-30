@@ -15,6 +15,18 @@ ActiveRecord::Schema.define(version: 20161129102622) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "events", force: :cascade do |t|
+    t.string   "title"
+    t.string   "slug"
+    t.text     "description"
+    t.text     "agenda"
+    t.datetime "started_at"
+    t.datetime "finished_at"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["slug"], name: "index_events_on_slug", using: :btree
+  end
+
   create_table "identities", force: :cascade do |t|
     t.string  "uid"
     t.string  "provider"

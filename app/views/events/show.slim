@@ -1,0 +1,9 @@
+p = event.title
+p = event.description
+p = event.agenda
+p = event.started_at
+p = event.finished_at
+
+= link_to t('words.edit'), edit_event_path(event)
+'|
+= link_to t('words.back'), events_path

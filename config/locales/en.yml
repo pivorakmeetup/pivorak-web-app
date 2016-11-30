@@ -1,2 +1,13 @@
 en:
-  hello: Hello, Pivorak!
+  words:
+    new: New
+    edit: Edit
+    destroy: Destroy
+    back: Back
+  phrases:
+    new_resource: 'New %{resource}'
+    edit_resource: 'Edit %{resource}'
+    confirm: 'Are you sure ?'
+  events:
+    plural: Events
+    singular: Event
