@@ -3,10 +3,14 @@
 **master**
 
 [![Build Status](https://travis-ci.org/pivorakmeetup/pivorak-web-app.svg?branch=master)](https://travis-ci.org/pivorakmeetup/pivorak-web-app)
+[![codecov](https://codecov.io/gh/pivorakmeetup/pivorak-web-app/branch/master/graph/badge.svg)](https://codecov.io/gh/pivorakmeetup/pivorak-web-app)
+
 
 **development**
 
 [![Build Status](https://travis-ci.org/pivorakmeetup/pivorak-web-app.svg?branch=development)](https://travis-ci.org/pivorakmeetup/pivorak-web-app)
+[![codecov](https://codecov.io/gh/pivorakmeetup/pivorak-web-app/branch/development/graph/badge.svg)](https://codecov.io/gh/pivorakmeetup/pivorak-web-app)
+
 
 
 ## About
