@@ -16,7 +16,7 @@ require 'simplecov'
 SimpleCov.start 'rails'
 SimpleCov.merge_timeout 1200 # 20 minutes
 
-Dir[Rails.root.join('spec/helpers/*.rb')].each { |f| require f }
+Dir[Rails.root.join('spec/support/*.rb')].each { |f| require f }
 
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
