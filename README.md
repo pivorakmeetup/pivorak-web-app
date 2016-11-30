@@ -10,10 +10,10 @@ class Pivorak
 end
 ```
 
-## Branches
+## Git Branches
 
 * `master` - stable code, production deployment.
-* `development` - dev branch, staging deployment. Please checkout yur new branch from it.
+* `development` - dev branch, staging deployment. Please checkout your new branch from it.
 
 ## Contribution
 
