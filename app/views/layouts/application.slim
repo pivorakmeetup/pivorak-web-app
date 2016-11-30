@@ -7,5 +7,8 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
     header == render 'layouts/header'
+    ul
+      = render 'devise/menu/login'
+      = render 'devise/menu/manage'
     main    = yield
     footer == render 'layouts/footer'
