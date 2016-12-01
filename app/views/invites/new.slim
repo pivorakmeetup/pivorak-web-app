@@ -1,0 +1,14 @@
+.invite
+  .logos
+    .logo.org
+    .logo.slack
+  p
+    ' #{t('invites.join')}
+    b
+      ' #{t('pivorak')}
+    = t('invites.on_slack')
+  = form_tag invites_path do
+    input.form-item[type="email" name="email" placeholder="you@yourdomain.com" autofocus="true" required="true"]
+    br
+    button
+      = t('invites.submit_btn')
