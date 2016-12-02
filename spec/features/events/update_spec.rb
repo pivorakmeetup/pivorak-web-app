@@ -2,7 +2,7 @@ RSpec.describe 'Events features -> Update' do
   let!(:event)          { create(:event, title: 'Test Event') }
   let(:test_edit_path) { '/events/test-event/edit' }
 
-  describe 'ACCSESS' do
+  describe 'ACCESS' do
     context 'unregistered user' do
       before { visit test_edit_path }
 

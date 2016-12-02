@@ -1,5 +1,5 @@
 RSpec.describe 'Events features -> Create' do
-  describe 'ACCSESS' do
+  describe 'ACCESS' do
     context 'unregistered user' do
       before { visit '/events/new' }
 
