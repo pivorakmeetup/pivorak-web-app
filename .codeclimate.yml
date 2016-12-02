@@ -1,0 +1,40 @@
+---
+engines:
+  brakeman:
+    enabled: false
+  bundler-audit:
+    enabled: false
+  csslint:
+    enabled: false
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - ruby
+      - javascript
+  eslint:
+    enabled: true
+    exclude_paths:
+    - app/assets/javascripts/cable.js
+  fixme:
+    enabled: false
+  rubocop:
+    enabled: true
+ratings:
+  paths:
+  - Gemfile.lock
+  - "**.erb"
+  - "**.haml"
+  - "**.rb"
+  - "**.rhtml"
+  - "**.slim"
+  - "**.css"
+  - "**.inc"
+  - "**.js"
+  - "**.jsx"
+  - "**.module"
+exclude_paths:
+- config/
+- db/
+- test/
+- vendor/
