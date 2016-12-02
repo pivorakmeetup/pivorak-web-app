@@ -1,0 +1,22 @@
+h2 = t 'events.plural'
+
+= admin_new_event_link
+
+table.table
+  thead
+    tr
+      th = '#id'
+      th = 'Title'
+      th = 'Staretd At'
+      th = 'Finished At'
+      th
+      th
+
+  tbody
+    - events.each do |event|
+      tr
+        th = event.id
+        td = admin_event_link(event)
+        td = format_timestamp(event.started_at)
+        td = format_timestamp(event.finished_at)
+        td = admin_edit_event_link(event)

@@ -10,7 +10,7 @@
 def expect_an_error(hash_pair = {})
   field     = hash_pair.keys.first
   value     = hash_pair.values.first
-  error_div = "div.#{field}.field_with_errors"
+  error_div = "div.#{field}.has-error"
 
   msg = if value == :blank
     "can't be blank"
@@ -21,7 +21,7 @@ def expect_an_error(hash_pair = {})
   end
 
   expect(page).to have_css(error_div)
-  expect(find("#{error_div} span.error")).to have_content(msg)
+  expect(find("#{error_div}")).to have_content(msg)
 end
 
 # Assume regular user (member) is logged in

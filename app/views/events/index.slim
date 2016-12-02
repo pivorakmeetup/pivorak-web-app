@@ -1,14 +1,1 @@
-h1 = t 'events.plural'
-
-- if admin?
-  .admin-panel
-    = link_to t('phrases.new_resource', resource: t('events.singular')), new_event_path
-
-ul
-  - events.each do |event|
-    li
-      = link_to event.title, event
-      = event.description
-      = event.agenda
-      = event.started_at
-      = event.finished_at
+h2 = t 'events.plural'
