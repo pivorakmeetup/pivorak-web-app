@@ -18,7 +18,6 @@ gem 'devise'
 gem 'omniauth-facebook'
 gem 'omniauth-github'
 gem 'simple_form',                       '~> 3.3'
-gem 'access-granted',                    '~> 1.1'
 gem 'friendly_id',                       '~> 5.1'
 gem 'kaminari',                         '~> 0.17'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
@@ -40,6 +39,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'pry-rails'
   gem 'dotenv-rails'
+  gem 'zeus'
 end
 
 group :test do

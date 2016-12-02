@@ -23,3 +23,23 @@ def expect_an_error(hash_pair = {})
   expect(page).to have_css(error_div)
   expect(find("#{error_div} span.error")).to have_content(msg)
 end
+
+# Assume regular user (member) is logged in
+#
+# assume_logged_in
+#
+# or
+#
+# let(:my_user) { create :user, name: 'My User' }
+# assume_logged_in(my_user)
+#
+def assume_logged_in(user = nil)
+  user = user || create(:user)
+  login_as(user)
+end
+
+# Assume admin user is logged in
+def assume_admin_logged_in
+  admin = create(:user, :admin)
+  assume_logged_in(admin)
+end

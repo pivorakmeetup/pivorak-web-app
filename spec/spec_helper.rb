@@ -33,6 +33,11 @@ RSpec.configure do |config|
   # Add factory girl
   config.include FactoryGirl::Syntax::Methods
 
+  config.include Warden::Test::Helpers
+  config.before :suite do
+    Warden.test_mode!
+  end
+
   config.use_transactional_fixtures = true
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
