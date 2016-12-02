@@ -11,7 +11,10 @@
 [![Build Status](https://travis-ci.org/pivorakmeetup/pivorak-web-app.svg?branch=development)](https://travis-ci.org/pivorakmeetup/pivorak-web-app)
 [![codecov](https://codecov.io/gh/pivorakmeetup/pivorak-web-app/branch/development/graph/badge.svg)](https://codecov.io/gh/pivorakmeetup/pivorak-web-app)
 
+## Chat
 
+Join our [slack](pivorak-slack.herokuapp.com) chat!
+We have special `#pivorak-web-app channel` for contributors.
 
 ## About
 
