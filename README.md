@@ -13,7 +13,7 @@
 
 ## Chat
 
-Join our [slack](pivorak-slack.herokuapp.com) chat!
+Join our [slack](http://pivorak-slack.herokuapp.com) chat!
 We have special `#pivorak-web-app channel` for contributors.
 
 ## About
