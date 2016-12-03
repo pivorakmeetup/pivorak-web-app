@@ -8,6 +8,10 @@ module Admin
       link_to t('events.plural'), admin_events_path, class: 'nav-link'
     end
 
+    def admin_venues_link
+      link_to t('venues.plural'), admin_venues_path, class: 'nav-link'
+    end
+
     def admin_app_link
       link_to t('words.app'), root_path, class: 'nav-link'
     end

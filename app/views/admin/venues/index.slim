@@ -1,0 +1,19 @@
+h2 = t 'venues.plural'
+
+= admin_new_venue_link
+
+table.table
+  thead
+    tr
+      th = t 'words.id'
+      th = t 'words.name'
+      th = t 'venues.address'
+      th
+
+  tbody
+    - venues.each do |venue|
+      tr
+        th = venue.id
+        th = admin_venue_link(venue)
+        th = venue.address
+        td = admin_edit_venue_link(venue)

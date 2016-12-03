@@ -5,12 +5,14 @@ Rails.application.routes.draw do
 
   #=== MAIN APP =================================
   resources :events, only: %i[index show]
+  resources :venues, only: %i[index show]
 
   #=== ADMIN AREA ===============================
   authenticate :user, ->(u) { u.admin? } do
     namespace :admin do
       get '/', to: 'home#index'
       resources :events, except: %i[show destroy]
+      resources :venues, except: %i[show destroy]
     end
   end
 end
