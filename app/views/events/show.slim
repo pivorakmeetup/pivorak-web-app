@@ -1,11 +1,1 @@
-- if admin?
-  .admin-panel
-    = link_to t('phrases.edit_resource', resource: t('events.singular')), edit_event_path(event)
-
-p = event.title
-p = event.description
-p = event.agenda
-p = event.started_at
-p = event.finished_at
-
-= link_to t('words.back'), events_path
+h2 = t 'events.singular'

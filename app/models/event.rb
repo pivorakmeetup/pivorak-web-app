@@ -3,5 +3,4 @@ class Event < ApplicationRecord
   friendly_id :title, use: :slugged
 
   validates :title,  presence: true
-  validates :agenda, presence: true
 end

@@ -1,0 +1,12 @@
+doctype html
+html
+  head
+    title = 'Admin PivorakWebApp'
+    = csrf_meta_tags
+    = stylesheet_link_tag    'admin/application', 'data-turbolinks-track': 'reload', media: 'all'
+    = javascript_include_tag 'admin/application', 'data-turbolinks-track': 'reload'
+    meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  body
+    .container
+      header == render 'layouts/admin/header'
+      main    = yield

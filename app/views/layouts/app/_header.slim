@@ -1,0 +1,10 @@
+nav
+  ul
+    li = events_link
+
+    - if user_signed_in?
+      li = logout_link
+
+    - else
+      li = login_link
+      li = register_link

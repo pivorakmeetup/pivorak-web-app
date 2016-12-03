@@ -3,12 +3,9 @@ html
   head
     title = 'PivorakWebApp'
     = csrf_meta_tags
-    = stylesheet_link_tag    'application', 'data-turbolinks-track': 'reload', media: 'all'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag    'app/application', 'data-turbolinks-track': 'reload', media: 'all'
+    = javascript_include_tag 'app/application', 'data-turbolinks-track': 'reload'
   body
-    header == render 'layouts/header'
-    ul
-      = render 'devise/menu/login'
-      = render 'devise/menu/manage'
+    header == render 'layouts/app/header'
     main    = yield
-    footer == render 'layouts/footer'
+    footer == render 'layouts/app/footer'

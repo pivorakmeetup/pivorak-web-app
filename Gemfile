@@ -12,6 +12,7 @@ gem 'sass-rails',                        '~> 5.0'
 gem 'turbolinks',                        '~> 5.0'
 gem 'slim-rails',                        '~> 3.1'
 gem 'jquery-rails'
+gem 'bootstrap',                '~> 4.0.0.alpha5'
 
 #=== FEATUES ====================================
 gem 'devise'
@@ -39,7 +40,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'pry-rails'
   gem 'dotenv-rails'
-  gem 'zeus'
 end
 
 group :test do

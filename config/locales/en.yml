@@ -1,13 +1,22 @@
 en:
   words:
+    id: '#id'
     new: New
     edit: Edit
     destroy: Destroy
     back: Back
+    title: Title
+
   phrases:
     new_resource: 'New %{resource}'
     edit_resource: 'Edit %{resource}'
     confirm: 'Are you sure ?'
+
   events:
     plural: Events
     singular: Event
+    started_at: Started At
+    finished_at: Finished At
+
+  admin:
+    admin: Admin
