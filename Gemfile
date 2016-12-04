@@ -22,12 +22,15 @@ gem 'simple_form',                       '~> 3.3'
 gem 'friendly_id',                       '~> 5.1'
 gem 'kaminari',                         '~> 0.17'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'httpclient'
+gem 'oj' # faster json parser
 
 #=== DEV & TEST =================================
 group :development do
   gem 'web-console'
   gem 'listen',                          '~> 3.0'
   gem 'spring'
+  gem 'spring-commands-rspec'
   gem 'spring-watcher-listen',           '~> 2.0'
   gem 'better_errors'
   gem 'binding_of_caller'
@@ -53,4 +56,6 @@ group :test do
   gem 'database_cleaner'
   gem 'simplecov',                 require: false
   gem 'launchy'
+  gem 'vcr'
+  gem 'webmock'
 end
