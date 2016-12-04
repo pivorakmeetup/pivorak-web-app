@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20161203210855) do
   create_table "venues", force: :cascade do |t|
     t.string   "name"
     t.string   "address"
-    t.string   "maps_url"
+    t.string   "map_url"
     t.string   "description"
     t.string   "slug"
     t.datetime "created_at",  null: false

@@ -3,10 +3,6 @@ module NavigationHelper
     link_to t('events.plural'), events_path
   end
 
-  def venues_link
-    link_to t('venues.plural'), venues_path
-  end
-
   def logout_link
     link_to t('devise.base.logout'), destroy_user_session_path, method: :delete
   end

@@ -3,7 +3,7 @@ class CreateVenues < ActiveRecord::Migration[5.0]
     create_table :venues do |t|
       t.string :name
       t.string :address
-      t.string :maps_url
+      t.string :map_url
       t.string :description
       t.string :slug, index: true
 

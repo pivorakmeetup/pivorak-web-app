@@ -4,7 +4,7 @@ class Venue < ApplicationRecord
 
   has_many :events
 
-  validates :name, presence: true
+  validates :name,    presence: true
   validates :address, presence: true
-  validates :maps_url, presence: true
+  validates :map_url, presence: true
 end

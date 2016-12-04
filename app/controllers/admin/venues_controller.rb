@@ -27,7 +27,7 @@ module Admin
     end
 
     def venue_params
-      params.require(:venue).permit(:name, :description, :address, :maps_url)
+      params.require(:venue).permit(:name, :description, :address, :map_url)
     end
   end
 end

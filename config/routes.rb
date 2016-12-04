@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   #=== MAIN APP =================================
   resources :events, only: %i[index show]
-  resources :venues, only: %i[index show]
+  resources :venues, only: %i[show]
 
   #=== ADMIN AREA ===============================
   authenticate :user, ->(u) { u.admin? } do

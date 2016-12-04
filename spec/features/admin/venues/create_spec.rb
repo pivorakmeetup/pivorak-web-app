@@ -17,7 +17,7 @@ RSpec.describe 'Events CREATE' do
     it 'create new venue' do
       fill_in 'Name',  with: 'Secret New Venue'
       fill_in 'Address',  with: 'Some Place'
-      fill_in 'Maps url',  with: 'https://goo.gl/maps/LkLW5YkNzNL2'
+      fill_in 'Map url',  with: 'https://goo.gl/maps/LkLW5YkNzNL2'
       click_button 'Create Venue'
 
       expect(page).to have_current_path '/venues/secret-new-venue'
