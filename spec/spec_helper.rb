@@ -12,6 +12,15 @@ require 'rspec/collection_matchers'
 require 'rspec/its'
 require 'rspec/active_model/mocks'
 
+require 'vcr'
+
+VCR.configure do |c|
+  c.cassette_library_dir = 'spec/cassettes'
+  c.hook_into :webmock
+  c.configure_rspec_metadata!
+end
+
+
 require 'simplecov'
 SimpleCov.start 'rails'
 SimpleCov.merge_timeout 1200 # 20 minutes

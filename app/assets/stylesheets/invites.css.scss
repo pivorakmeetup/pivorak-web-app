@@ -1,0 +1,80 @@
+.invite {
+    font-size: 1.5rem;
+    width: 30rem;
+    margin: 10rem auto;
+    text-align: center;
+    font-family: "Helvetica Neue", Helvetica, Arial;
+}
+
+.invite .logos {
+    position: relative;
+    margin-bottom: 4rem;
+}
+
+.logo {
+    width: 5rem;
+    height: 5rem;
+    display: inline-block;
+    background-size: cover;
+}
+
+.logo.slack {
+    background-image: asset-url(slack);
+}
+
+.logo.org::after {
+    position: absolute;
+    display: block;
+    content: "+";
+    top: 1.5rem;
+    left: 0;
+    width: 30rem;
+    text-align: center;
+    color: #D6D6D6;
+    font-size: 1.5rem;
+}
+
+.logo.org {
+    background-image: asset-url(pivorak-logo);
+    margin-right: 7rem;
+}
+
+p {
+
+    margin: .5rem 0;
+}
+
+.invite button, .invite .form-item {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    vertical-align: middle;
+    display: block;
+    text-align: center;
+    box-sizing: border-box;
+    width: 100%;
+    padding: .9rem
+}
+
+.invite button {
+    color: #fff;
+    font-weight: bold;
+    border-width: 0;
+    background: #E01563;
+    text-transform: uppercase;
+    cursor: pointer;
+    appearence: none;
+    -webkit-appearence: none;
+    outline: 0;
+    transition: background-color 150ms ease-in, color 150ms ease-in;
+}
+
+.invite input {
+  color: #9B9B9B;
+  border: .1rem solid #D6D6D6;
+}
+
+.invite input:focus {
+  color: #666;
+  border-color: #999;
+  outline: 0;
+}

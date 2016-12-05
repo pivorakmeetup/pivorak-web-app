@@ -26,3 +26,12 @@ en:
 
   admin:
     admin: Admin
+
+  invites:
+    nav_link: Get Invite
+    submit_btn: Get my Invite
+    join: Join
+    on_slack: on Slack
+    success: Invite is sent to %{email}. Check your email.
+    already_in_team: Already in team
+  pivorak: pivorak

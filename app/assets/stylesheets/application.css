@@ -12,4 +12,9 @@
  *
  *= require_tree .
  *= require_self
+ *= require 'invites'
  */
+
+html {
+    font-size: 14px;
+}
