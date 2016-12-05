@@ -6,6 +6,7 @@ en:
     destroy: Destroy
     back: Back
     title: Title
+    name: Name
 
   phrases:
     new_resource: 'New %{resource}'
@@ -17,6 +18,11 @@ en:
     singular: Event
     started_at: Started At
     finished_at: Finished At
+
+  venues:
+    plural: Venues
+    singular: Venue
+    address: Address
 
   admin:
     admin: Admin

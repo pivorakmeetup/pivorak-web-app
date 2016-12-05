@@ -1,0 +1,11 @@
+= simple_form_for [:admin, venue] do |f|
+  .form-inputs
+  .row
+    .col-md-6
+      = f.input :name
+      = f.input :description, as: :text, input_html: { rows: 10 }
+      = f.input :address
+      = f.input :map_url
+
+  .form-actions
+    = f.button :submit, class: 'btn btn-success'
