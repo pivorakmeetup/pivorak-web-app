@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   #=== MAIN APP =================================
   resources :events, only: %i[index show]
   resources :venues, only: %i[show]
+  resources :talks,  only: %i[index show]
   resource :invites, only: %i[new create]
 
   #=== ADMIN AREA ===============================
@@ -14,6 +15,7 @@ Rails.application.routes.draw do
       get '/', to: 'home#index'
       resources :events, except: %i[show destroy]
       resources :venues, except: %i[show destroy]
+      resources :talks,  except: %i[show destroy]
     end
   end
 end

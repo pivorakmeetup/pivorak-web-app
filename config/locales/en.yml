@@ -1,4 +1,5 @@
 en:
+  pivorak: pivorak
   words:
     id: '#id'
     new: New
@@ -7,11 +8,13 @@ en:
     back: Back
     title: Title
     name: Name
+    empty: empty
 
   phrases:
     new_resource: 'New %{resource}'
     edit_resource: 'Edit %{resource}'
     confirm: 'Are you sure ?'
+    not_assigned: not assigned
 
   events:
     plural: Events
@@ -24,6 +27,10 @@ en:
     singular: Venue
     address: Address
 
+  talks:
+    plural: Talks
+    singular: Talk
+
   admin:
     admin: Admin
 
@@ -34,4 +41,3 @@ en:
     on_slack: on Slack
     success: Invite is sent to %{email}. Check your email.
     already_in_team: Already in team
-  pivorak: pivorak

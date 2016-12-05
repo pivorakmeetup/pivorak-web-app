@@ -1,0 +1,55 @@
+RSpec.describe 'Talks READ' do
+  context 'without any assignes' do
+    let!(:talk_a)    { create(:talk, title: 'Test Talk A') }
+    let!(:talk_b)    { create(:talk, title: 'Test Talk B') }
+
+    before do
+      assume_admin_logged_in
+      visit '/admin/talks'
+    end
+
+    it { expect(page).to have_link 'Test Talk A' }
+    it { expect(page).to have_link 'Test Talk B' }
+    it { expect(page).to have_link 'New Talk' }
+    it { expect(page).to have_link('Edit', count: 2) }
+    it { expect(page).to have_content('not assigned', count: 4) }
+    it 'New Talk click redirect to #new' do
+      click_link 'New Talk'
+      expect(page).to have_current_path('/admin/talks/new')
+    end
+  end
+
+  context 'with event assign' do
+    let(:event) { create(:event, title: 'Super Event') }
+    let!(:talk_with_event) { create(:talk, title: 'Test Talk with Event', event_id: event.id) }
+
+    before do
+      assume_admin_logged_in
+      visit '/admin/talks'
+    end
+
+    it { expect(page).to have_link 'Test Talk with Event' }
+    it { expect(page).to have_link 'Super Event' }
+    it 'Event click redirect to event#show' do
+      click_link 'Super Event'
+      expect(page).to have_current_path('/events/super-event')
+    end
+  end
+
+  context 'with user assign' do
+    let(:user)       { create(:user, name: 'Super User') }
+    let(:empty_user) { create(:user, name: '') }
+    let!(:talk_with_empty_user) { create(:talk, title: 'Test Talk with Empty User', speaker_id: empty_user.id) }
+    let!(:talk_with_user)       { create(:talk, title: 'Test Talk with User', speaker_id: user.id) }
+
+    before do
+      assume_admin_logged_in
+      visit '/admin/talks'
+    end
+
+    it { expect(page).to have_link 'Test Talk with Empty User' }
+    it { expect(page).to have_content 'empty' }
+    it { expect(page).to have_link 'Test Talk with User' }
+    it { expect(page).to have_content 'Super User' }
+  end
+end

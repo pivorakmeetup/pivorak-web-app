@@ -12,6 +12,10 @@ module Admin
       link_to t('venues.plural'), admin_venues_path, class: 'nav-link'
     end
 
+    def admin_talks_link
+      link_to t('talks.plural'), admin_talks_path, class: 'nav-link'
+    end
+
     def admin_app_link
       link_to t('words.app'), root_path, class: 'nav-link'
     end

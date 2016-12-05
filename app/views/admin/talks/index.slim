@@ -1,0 +1,21 @@
+h2 = t 'talks.plural'
+
+= admin_new_talk_link
+
+table.table
+  thead
+    tr
+      th = t 'words.id'
+      th = t 'words.title'
+      th = t 'events.singular'
+      th = t 'talks.speaker'
+      th
+
+  tbody
+    - talks.each do |talk|
+      tr
+        th = talk.id
+        td = admin_talk_link(talk)
+        td = admin_talk_event_link(talk)
+        td = admin_talk_speaker_info(talk)
+        td = admin_edit_talk_link(talk)
