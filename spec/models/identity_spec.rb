@@ -1,4 +1,4 @@
-RSpec.describe Identity, type: :model do
+RSpec.describe Identity do
   describe 'validations' do
     it { is_expected.to validate_presence_of(:provider) }
     it { is_expected.to validate_presence_of(:uid) }

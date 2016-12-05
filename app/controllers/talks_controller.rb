@@ -1,0 +1,2 @@
+class TalksController < ApplicationController
+end

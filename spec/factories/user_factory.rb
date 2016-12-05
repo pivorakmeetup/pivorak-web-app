@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :user do
     name     Faker::Name.name
-    email    Faker::Internet.email
+    email    { |n| "person#{n}@example.com" }
     password Faker::Internet.password(20)
 
     trait :admin do
