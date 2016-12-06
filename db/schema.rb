@@ -15,6 +15,16 @@ ActiveRecord::Schema.define(version: 20161207062743) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "donations", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "goal_id"
+    t.decimal  "amount",     precision: 10, scale: 2
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.index ["goal_id"], name: "index_donations_on_goal_id", using: :btree
+    t.index ["user_id"], name: "index_donations_on_user_id", using: :btree
+  end
+
   create_table "events", force: :cascade do |t|
     t.string   "title"
     t.string   "slug"
@@ -25,6 +35,16 @@ ActiveRecord::Schema.define(version: 20161207062743) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["slug"], name: "index_events_on_slug", using: :btree
+  end
+
+  create_table "goals", force: :cascade do |t|
+    t.string   "title"
+    t.string   "slug"
+    t.text     "description"
+    t.decimal  "amount",      precision: 10, scale: 2
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.index ["slug"], name: "index_goals_on_slug", using: :btree
   end
 
   create_table "identities", force: :cascade do |t|

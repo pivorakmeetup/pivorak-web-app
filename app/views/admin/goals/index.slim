@@ -1,0 +1,19 @@
+h2 = t 'goals.plural'
+
+= admin_new_goal_link
+
+table.table
+  thead
+    tr
+      th = t 'words.id'
+      th = t 'words.title'
+      th = t 'goals.amount'
+      th
+      th
+  tbody
+    - goals.each do |goal|
+      tr
+        td = goal.id
+        td = admin_goal_link(goal)
+        td = goal.amount
+        td = admin_edit_goal_link(goal)

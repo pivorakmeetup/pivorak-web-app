@@ -3,7 +3,5 @@ class ApplicationController < ActionController::Base
 
   helper_method :admin?
 
-  def admin?
-    current_user&.admin?
-  end
+  delegate :admin?, to: :current_user, allow_nil: true
 end

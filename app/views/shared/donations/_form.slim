@@ -1,0 +1,16 @@
+= simple_form_for :credit_card, url: path do |f|
+  .form-inputs
+    .row
+      .col-md-6
+        = f.input :number,    as: :string
+        = f.input :cvc,       as: :string
+        = f.input :exp_month, as: :string
+        = f.input :exp_year,  as: :string
+        = f.input :amount,    as: :decimal
+
+        - if current_user
+          = f.input :anonymous, as: :boolean do
+            = f.check_box :anonymous, {}, true, false
+
+  .form-actions
+    = f.button :submit, t('words.donate'), class: 'btn btn-success'

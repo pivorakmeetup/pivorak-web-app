@@ -1,0 +1,5 @@
+h2 = t 'goals.plural'
+
+- goals.each do |goal|
+  .col-md-12
+    = link_to goal.title, goal_path(goal)

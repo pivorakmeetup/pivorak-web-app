@@ -7,6 +7,10 @@ module NavigationHelper
     link_to t('talks.plural'), talks_path
   end
 
+  def goals_link
+    link_to t('goals.plural'), goals_path
+  end
+
   def logout_link
     link_to t('devise.base.logout'), destroy_user_session_path, method: :delete
   end

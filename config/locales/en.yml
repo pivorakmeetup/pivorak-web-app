@@ -9,12 +9,24 @@ en:
     title: Title
     name: Name
     empty: empty
+    donate: Donate
 
+  resources:
+    errors:
+      not_found: '%{resource} not found'
   phrases:
     new_resource: 'New %{resource}'
     edit_resource: 'Edit %{resource}'
     confirm: 'Are you sure ?'
     not_assigned: not assigned
+
+  donations:
+    success: Thank you, your donation has been accepted!
+
+  goals:
+    plural: Goals
+    singular: Goal
+    amount: Amount
 
   events:
     plural: Events

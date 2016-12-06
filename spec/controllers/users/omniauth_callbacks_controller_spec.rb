@@ -6,7 +6,7 @@ RSpec.describe ::Users::OmniauthCallbacksController do
   Devise.omniauth_providers.each do |provider|
     describe "##{provider}" do
       context 'with valid params' do
-        before { request.env['omniauth.auth']  = build(:omniauth_params) }
+        before { request.env['omniauth.auth'] = build(:omniauth_params) }
 
         it 'creates a user' do
           post provider

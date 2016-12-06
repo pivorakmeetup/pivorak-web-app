@@ -6,6 +6,7 @@ FactoryGirl.define do
       email: Faker::Internet.email,
       name:  Faker::Name.name
     }}
+
     initialize_with { attributes }
   end
 end
