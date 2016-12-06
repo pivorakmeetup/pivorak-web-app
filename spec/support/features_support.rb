@@ -39,7 +39,7 @@ def assume_logged_in(user = nil)
 end
 
 # Assume admin user is logged in
-def assume_admin_logged_in
-  admin = create(:user, :admin)
+def assume_admin_logged_in(admin = nil)
+  admin = admin || create(:user, :admin)
   assume_logged_in(admin)
 end

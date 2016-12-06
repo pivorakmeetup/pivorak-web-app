@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :venues, only: %i[show]
   resources :talks,  only: %i[index show]
   resource :invites, only: %i[new create]
+  resource :profile, controller: :profile, only: %i[edit update]
 
   #=== ADMIN AREA ===============================
   authenticate :user, ->(u) { u.admin? } do

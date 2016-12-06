@@ -1,0 +1,68 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://slack.com/api/users.admin.invite?email=fake@mail.com&resend=true&token=xoxp-44605439956-44567237715-46971387168-841927fece
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.2.4, ruby 2.3.1 (2016-04-26))
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 06 Dec 2016 20:34:19 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '11'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - private, no-cache, no-store, must-revalidate
+      Content-Security-Policy:
+      - referrer no-referrer;
+      Date:
+      - Tue, 06 Dec 2016 20:34:19 GMT
+      Expires:
+      - Mon, 26 Jul 1997 05:00:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Vary:
+      - Accept-Encoding
+      X-Accepted-Oauth-Scopes:
+      - client
+      X-Content-Type-Options:
+      - nosniff
+      X-Oauth-Scopes:
+      - identify,read,post,client,apps,admin
+      X-Slack-Backend:
+      - h
+      X-Slack-Req-Id:
+      - 91713cbe-53af-4b18-9b25-e012337e9fe3
+      X-Xss-Protection:
+      - '0'
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 028b99aa24684800a2763651fc3fcbbb.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - YqLde3XgAHuRg5Aphm748guJAIkwBfIq3P0VkuhNNV04kkArkMWC-w==
+    body:
+      encoding: UTF-8
+      string: '{"ok":true}'
+    http_version: 
+  recorded_at: Tue, 06 Dec 2016 20:34:19 GMT
+recorded_with: VCR 3.0.3

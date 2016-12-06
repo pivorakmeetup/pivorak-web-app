@@ -5,5 +5,7 @@ class User < ApplicationRecord
 
   has_many :identities, dependent: :destroy
 
-  validates :email, presence: true
+  def to_s
+    first_name + ' ' + last_name
+  end
 end
