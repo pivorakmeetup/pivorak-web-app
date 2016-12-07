@@ -41,3 +41,14 @@ en:
     on_slack: on Slack
     success: Invite is sent to %{email}. Check your email.
     already_in_team: Already in team
+
+  shared:
+    back: Back
+    update: Update
+    notifications:
+      success: Success
+      failure: Failure
+  profile:
+    link: Profile
+    change_gravatar: Change gravatar
+

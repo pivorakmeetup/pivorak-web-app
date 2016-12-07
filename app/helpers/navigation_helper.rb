@@ -18,4 +18,8 @@ module NavigationHelper
   def register_link
     link_to t('devise.base.register'), new_user_registration_path
   end
+
+  def profile_link
+    link_to t('profile.link'), edit_profile_path
+  end
 end

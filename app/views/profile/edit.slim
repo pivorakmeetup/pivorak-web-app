@@ -1,0 +1,15 @@
+= simple_form_for [current_user], url: profile_path do |f|
+  .form-inputs
+    .row
+      .col-md-6
+        = f.input :first_name
+        = f.input :last_name
+        = f.input :email, required: true
+        = f.input :password
+        = f.input :password_confirmation
+        = image_tag gravatar_url(current_user)
+        = link_to t('profile.change_gravatar'), 'http://gravatar.com'
+
+  .form-actions
+    = f.button :submit, t('shared.update'), class: 'btn btn-success', id: 'submit'
+    = link_to t('shared.back'), root_path
