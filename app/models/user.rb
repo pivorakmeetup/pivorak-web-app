@@ -5,7 +5,7 @@ class User < ApplicationRecord
 
   has_many :identities, dependent: :destroy
 
-  def to_s
+  def full_name
     first_name + ' ' + last_name
   end
 end

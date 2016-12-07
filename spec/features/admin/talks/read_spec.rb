@@ -37,8 +37,8 @@ RSpec.describe 'Talks READ' do
   end
 
   context 'with user assign' do
-    let(:user)       { create(:user, name: 'Super User') }
-    let(:empty_user) { create(:user, name: '') }
+    let(:user)       { create(:user, first_name: 'Super', last_name: 'User') }
+    let(:empty_user) { create(:user, :empty) }
     let!(:talk_with_empty_user) { create(:talk, title: 'Test Talk with Empty User', speaker_id: empty_user.id) }
     let!(:talk_with_user)       { create(:talk, title: 'Test Talk with User', speaker_id: user.id) }
 

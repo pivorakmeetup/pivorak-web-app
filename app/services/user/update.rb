@@ -25,11 +25,7 @@ class User
     attr_reader :user
 
     def user_params
-      params = {}
-      PERMITTED_KEYS.each do |key|
-        params[key] = send(key)
-      end
-      params
+      PERMITTED_KEYS.inject({}) { |mem, key| mem.merge!(key => send(key)) }
     end
   end
 end

@@ -1,8 +1,12 @@
 class ProfileController < ApplicationController
   before_action :authenticate_user!
 
+  def show
+    render_profile
+  end
+
   def edit
-    render :edit, locals: { user: current_user }
+    render_profile
   end
 
   def update
@@ -11,6 +15,12 @@ class ProfileController < ApplicationController
     else
       flash[:error] = t('shared.notifications.failure')
     end
-    render :edit, locals: { user: current_user }
+    render_profile
+  end
+
+  private
+
+  def render_profile
+    render :edit
   end
 end

@@ -27,9 +27,9 @@ module Admin
       speaker = talk.speaker
 
       return NOT_ASSIGNED if speaker.blank?
-      return EMPTY if speaker.name.blank?
+      return EMPTY if speaker.full_name.blank?
 
-      talk.speaker.name
+      talk.speaker.full_name
     end
   end
 end

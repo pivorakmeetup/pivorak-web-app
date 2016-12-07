@@ -1,4 +1,4 @@
-= simple_form_for [user], url: profile_path do |f|
+= simple_form_for [current_user], url: profile_path do |f|
   .form-inputs
     .row
       .col-md-6
@@ -7,7 +7,7 @@
         = f.input :email, required: true
         = f.input :password
         = f.input :password_confirmation
-        = image_tag gravatar_url(user)
+        = image_tag gravatar_url(current_user)
         = link_to t('profile.change_gravatar'), 'http://gravatar.com'
 
   .form-actions
