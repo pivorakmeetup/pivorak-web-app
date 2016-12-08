@@ -16,6 +16,8 @@ gem 'bootstrap',                '~> 4.0.0.alpha5'
 
 #=== FEATUES ====================================
 gem 'devise'
+gem 'stripe'
+gem 'interactor-rails',                  '~> 2.0'
 gem 'omniauth-facebook'
 gem 'omniauth-github'
 gem 'simple_form',                       '~> 3.3'
@@ -46,6 +48,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'stripe-ruby-mock', '~> 2.3.1', :require => 'stripe_mock'
   gem 'faker'
   gem 'rspec-collection_matchers'
   gem 'rspec-its'
