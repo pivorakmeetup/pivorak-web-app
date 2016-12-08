@@ -207,6 +207,8 @@ GEM
       railties (>= 4.2.0, < 5.1)
     rest-client (1.6.7)
       mime-types (>= 1.16)
+    rollbar (2.10.0)
+      multi_json
     rspec (3.5.0)
       rspec-core (~> 3.5.0)
       rspec-expectations (~> 3.5.0)
@@ -341,6 +343,7 @@ DEPENDENCIES
   pry-rails
   puma (~> 3.0)
   rails (~> 5.0.0, >= 5.0.0.1)
+  rollbar
   rspec
   rspec-activemodel-mocks
   rspec-collection_matchers
