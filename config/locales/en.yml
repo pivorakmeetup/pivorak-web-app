@@ -64,3 +64,6 @@ en:
     link: Profile
     change_gravatar: Change gravatar
 
+  errors:
+    only_latin_letters: 'Only latin letters are allowed'
+
