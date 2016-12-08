@@ -12,16 +12,6 @@
 Join our [slack](http://pivorak-slack.herokuapp.com) chat!
 We have special `#pivorak-web-app` channel for contributors.
 
-## About
-
-```ruby
-class Pivorak
-  def initialize
-    #TODO -> Add README.md content
-  end
-end
-```
-
 ## Git Branches
 
 * `master` - stable code, production deployment.
@@ -34,3 +24,9 @@ end
 3. Checkout new branch with name `"#{issue_id}-#{add or fix or improve}-#{job-done-description}"` (`77-add-feature`), **write tests**, write code, compose nice commit message `"##{issue-id} commit message text"`(`#77 Add feature :tada:` -> you may use emoji) and push your branch to origin.
 4. Create merge request into **development** branch, add reviewers.
 5. Thank you!
+
+## Services
+
+1. [Travis CI](https://github.com/pivorakmeetup/pivorak-web-app/wiki/Services#travis-ci)
+2. [Code Climate CLI](https://github.com/pivorakmeetup/pivorak-web-app/wiki/Services#codeclimate)
+
