@@ -15,7 +15,7 @@ RSpec.describe ::Omniauth::AuthenticationService do
       it 'assigns email, first_name, last_name and password to the instance' do
         expect(result.email).to eq params[:info][:email]
         expect(result.first_name).to eq params[:info][:first_name]
-        expect(result.last_name).to eq params[:info][:ast_name]
+        expect(result.last_name).to eq params[:info][:last_name]
         expect(result.encrypted_password).to be_present
       end
 

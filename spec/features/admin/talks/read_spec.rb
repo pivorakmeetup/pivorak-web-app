@@ -38,8 +38,6 @@ RSpec.describe 'Talks READ' do
 
   context 'with user assign' do
     let(:user)       { create(:user, first_name: 'Super', last_name: 'User') }
-    let(:empty_user) { create(:user, :empty) }
-    let!(:talk_with_empty_user) { create(:talk, title: 'Test Talk with Empty User', speaker_id: empty_user.id) }
     let!(:talk_with_user)       { create(:talk, title: 'Test Talk with User', speaker_id: user.id) }
 
     before do
@@ -47,8 +45,6 @@ RSpec.describe 'Talks READ' do
       visit '/admin/talks'
     end
 
-    it { expect(page).to have_link 'Test Talk with Empty User' }
-    it { expect(page).to have_content 'empty' }
     it { expect(page).to have_link 'Test Talk with User' }
     it { expect(page).to have_content 'Super User' }
   end

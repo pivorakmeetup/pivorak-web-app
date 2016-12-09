@@ -9,9 +9,5 @@ FactoryGirl.define do
       admin true
     end
 
-    trait :empty do
-      first_name ''
-      last_name ''
-    end
   end
 end

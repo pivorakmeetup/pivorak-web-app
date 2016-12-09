@@ -4,7 +4,8 @@ FactoryGirl.define do
     uid      Faker::Number.number(16)
     info {{
       email: Faker::Internet.email,
-      name:  Faker::Name.name
+      first_name:  Faker::Name.first_name,
+      last_name:  Faker::Name.last_name
     }}
 
     initialize_with { attributes }
