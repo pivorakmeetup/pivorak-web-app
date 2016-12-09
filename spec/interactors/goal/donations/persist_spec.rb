@@ -14,7 +14,7 @@ RSpec.describe Goal::Donations::Persist do
       it 'creates a donation that references user & goal' do
         expect(context.donation).to be_present
         expect(context.donation.user).to eq user
-        expect(context.donation.amount).to eq amount.to_f
+        expect(context.donation.amount.to_f).to eq amount.to_f
         expect(context.donation.goal).to eq goal
       end
     end
