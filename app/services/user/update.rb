@@ -1,18 +1,7 @@
 class User
-  class Update
-    PERMITTED_KEYS = %i[first_name last_name email password password_confirmation]
-
-    def initialize(params)
-      @user = params[:user]
-      @password = params[:password]
-      @password_confirmation = params[:password_confirmation]
-      @email = params[:email]
-      @first_name = params[:first_name]
-      @last_name = params[:last_name]
-    end
-
+  class Update < Base
     def call
-      if password.blank? && password_confirmation.blank?
+      if missed_password?
         user.update_without_password(user_params)
       else
         user.update(user_params)
@@ -21,11 +10,8 @@ class User
 
     private
 
-    attr_reader *PERMITTED_KEYS
-    attr_reader :user
-
-    def user_params
-      PERMITTED_KEYS.inject({}) { |mem, key| mem.merge!(key => send(key)) }
+    def missed_password?
+      password.blank? && password_confirmation.blank?
     end
   end
 end

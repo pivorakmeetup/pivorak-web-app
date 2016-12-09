@@ -1,19 +1,25 @@
 en:
   pivorak: pivorak
+
   words:
     id: '#id'
     new: New
     edit: Edit
+    update: Update
+    create: Create
     destroy: Destroy
     back: Back
     title: Title
     name: Name
     empty: empty
     donate: Donate
+    email: Email
+    back: Back
 
   resources:
     errors:
       not_found: '%{resource} not found'
+
   phrases:
     new_resource: 'New %{resource}'
     edit_resource: 'Edit %{resource}'
@@ -46,24 +52,30 @@ en:
   admin:
     admin: Admin
 
-  invites:
-    nav_link: Get Invite
-    submit_btn: Get my Invite
-    join: Join
-    on_slack: on Slack
+  chat:
+    singular: Chat
+    description: Pivorak Slack Chat
+    join: Join Pivorak Chat
+    get_my_invite: Get My Invite
     success: Invite is sent to %{email}. Check your email.
-    already_in_team: Already in team
+    email_required: Email required
+    errors:
+      already_in_team: You are already in the team
+      sent_recently: Invitation was sent recently
 
-  shared:
-    back: Back
-    update: Update
-    notifications:
-      success: Success
-      failure: Failure
-  profile:
-    link: Profile
-    change_gravatar: Change gravatar
+  notifications:
+    success: Success
+    failure: Failure
 
   errors:
     only_latin_letters: 'Only latin letters are allowed'
 
+  members:
+    singular: Member
+    plural: Members
+    profile: Profile
+    edit_profile: Edit Profile
+    first_name: First Name
+    last_name: Last Name
+    synthetic: Synthetic
+    change_gravatar: Change gravatar

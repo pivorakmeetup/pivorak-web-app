@@ -10,7 +10,7 @@ RSpec.describe 'Profile UPDATE' do
   end
 
   context 'when user is logged in' do
-    let(:user) { create(:user, :admin) }
+    let(:user) { create(:user, :tester) }
 
     before do
       assume_logged_in(user)
@@ -23,7 +23,7 @@ RSpec.describe 'Profile UPDATE' do
           fill_in 'Email', with: ''
           click_button 'Update'
 
-          expect(page).to have_content I18n.t('shared.notifications.failure')
+          expect(page).to have_content I18n.t('notifications.failure')
         end
       end
       context 'when updating password' do
@@ -33,7 +33,7 @@ RSpec.describe 'Profile UPDATE' do
 
           click_button 'Update'
 
-          expect(page).to have_content I18n.t('shared.notifications.failure')
+          expect(page).to have_content I18n.t('notifications.failure')
         end
       end
     end
@@ -51,7 +51,7 @@ RSpec.describe 'Profile UPDATE' do
 
           click_button 'Update'
 
-          expect(page).to have_content I18n.t('shared.notifications.success')
+          expect(page).to have_content I18n.t('notifications.success')
 
           expect(user.reload.email).to eq(email)
           expect(user.reload.first_name).to eq(first_name)
@@ -68,7 +68,7 @@ RSpec.describe 'Profile UPDATE' do
 
           click_button 'Update'
 
-          expect(page).to have_content I18n.t('shared.notifications.success')
+          expect(page).to have_content I18n.t('notifications.success')
         end
       end
     end
