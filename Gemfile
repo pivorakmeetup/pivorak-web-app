@@ -27,6 +27,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'httpclient'
 gem 'oj' # faster json parser
 gem 'rollbar'
+# sidekiq
+gem 'sidekiq'
+gem 'sinatra', '>= 2.0.0.beta2', require: false
 
 #=== DEV & TEST =================================
 group :development do
