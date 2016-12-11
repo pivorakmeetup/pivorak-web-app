@@ -18,3 +18,4 @@ coverage
 
 config/database.yml
 .ruby-gemset
+spec/cassettes

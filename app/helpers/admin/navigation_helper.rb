@@ -20,6 +20,10 @@ module Admin
       link_to t('goals.plural'), admin_goals_path, class: 'nav-link'
     end
 
+    def admin_members_link
+      link_to t('members.plural'), admin_members_path, class: 'nav-link'
+    end
+
     def admin_app_link
       link_to t('words.app'), root_path, class: 'nav-link'
     end

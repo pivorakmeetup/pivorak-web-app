@@ -6,10 +6,13 @@ nav
     li = events_link
     li = talks_link
     li = goals_link
+    li = chat_link
 
     - if user_signed_in?
-      li = logout_link
       li = profile_link
+      li = logout_link
+      - if admin?
+        li = admin_link
 
     - else
       li = login_link

@@ -12,6 +12,6 @@ class User < ApplicationRecord
   validates :first_name, :last_name, format: { with: LATIN_LETTERS_REGEX,  message: I18n.t('errors.only_latin_letters') }
 
   def full_name
-    first_name + ' ' + last_name
+    "#{first_name} #{last_name}"
   end
 end

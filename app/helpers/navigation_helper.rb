@@ -11,6 +11,14 @@ module NavigationHelper
     link_to t('goals.plural'), goals_path
   end
 
+  def chat_link
+    link_to t('chat.singular'), chat_path
+  end
+
+  def members_link
+    link_tu t('members.plural'), members_path
+  end
+
   def logout_link
     link_to t('devise.base.logout'), destroy_user_session_path, method: :delete
   end
@@ -24,6 +32,10 @@ module NavigationHelper
   end
 
   def profile_link
-    link_to t('profile.link'), edit_profile_path
+    link_to t('members.profile'), profile_path
+  end
+
+  def admin_link
+    link_to t('admin.admin'), admin_path
   end
 end

@@ -1,0 +1,7 @@
+= form_tag chat_path do
+  = email_field_tag :email, nil,
+                            placeholder: 'you@yourdomain.com'
+                            autofocus:   true,
+                            required:    true
+
+  = submit_tag t('chat.get_my_invite')
