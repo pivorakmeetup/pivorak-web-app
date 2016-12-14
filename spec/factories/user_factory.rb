@@ -4,6 +4,7 @@ FactoryGirl.define do
     last_name        Faker::Name.last_name
     sequence(:email) { |n| "pivorak.member#{n}@example.com" }
     password         Faker::Internet.password(20)
+    confirmed_at Time.zone.now
 
     trait :admin do
       admin true
