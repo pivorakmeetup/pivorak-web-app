@@ -65,6 +65,10 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    codecov (0.1.9)
+      json
+      simplecov
+      url
     coderay (1.1.1)
     concurrent-ruby (1.0.2)
     connection_pool (2.2.0)
@@ -314,6 +318,7 @@ GEM
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uniform_notifier (1.10.0)
+    url (0.3.2)
     vcr (3.0.3)
     warden (1.2.6)
       rack (>= 1.0)
@@ -341,6 +346,7 @@ DEPENDENCIES
   bootstrap (~> 4.0.0.alpha5)
   bullet
   capybara
+  codecov
   database_cleaner
   devise
   dotenv-rails

@@ -66,4 +66,5 @@ group :test do
   gem 'launchy'
   gem 'vcr'
   gem 'webmock'
+  gem 'codecov', :require => false
 end

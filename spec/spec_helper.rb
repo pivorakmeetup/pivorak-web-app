@@ -1,6 +1,9 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'simplecov'
 SimpleCov.start 'rails'
+
+require 'codecov'
+SimpleCov.formatter = SimpleCov::Formatter::Codecov
 SimpleCov.merge_timeout 1200 # 20 minutes
 
 ENV['RAILS_ENV'] ||= 'test'
