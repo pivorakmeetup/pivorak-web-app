@@ -27,7 +27,7 @@ module Admin
     private
 
     def member
-      @member ||= User.find(params[:id])
+      @member ||= User.friendly.find(params[:id])
     end
 
     def members
