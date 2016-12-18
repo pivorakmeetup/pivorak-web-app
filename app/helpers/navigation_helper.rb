@@ -16,7 +16,7 @@ module NavigationHelper
   end
 
   def members_link
-    link_tu t('members.plural'), members_path
+    link_to t('members.plural'), members_path
   end
 
   def logout_link

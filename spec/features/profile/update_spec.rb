@@ -44,6 +44,7 @@ RSpec.describe 'Profile UPDATE' do
           email = Faker::Internet.email
           first_name = Faker::Name.name
           last_name = Faker::Name.name
+          old_slug = user.slug
 
           fill_in 'Email', with: email
           fill_in 'First name', with: first_name
@@ -56,6 +57,7 @@ RSpec.describe 'Profile UPDATE' do
           expect(user.reload.email).to eq(email)
           expect(user.reload.first_name).to eq(first_name)
           expect(user.reload.last_name).to eq(last_name)
+          expect(user.reload.slug).to_not eq(old_slug)
         end
       end
 

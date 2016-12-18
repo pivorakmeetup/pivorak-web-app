@@ -2,9 +2,11 @@
 require 'simplecov'
 SimpleCov.start 'rails'
 
-require 'codecov'
-SimpleCov.formatter = SimpleCov::Formatter::Codecov
-SimpleCov.merge_timeout 1200 # 20 minutes
+if ENV['CI']
+  require 'codecov'
+  SimpleCov.formatter = SimpleCov::Formatter::Codecov
+  SimpleCov.merge_timeout 1200 # 20 minutes
+end
 
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
