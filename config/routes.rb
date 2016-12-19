@@ -8,7 +8,11 @@ Rails.application.routes.draw do
   }
 
   #=== MAIN APP =================================
-  resources :events,  only: %i[index show]
+  resources :events,  only: %i[index show] do
+    resources :visit_requests, controller: 'visit_request/visit_requests', only: %i[create] do
+      patch :cancel, controller: 'visit_request/cancel', action: :update
+    end
+  end
   resources :venues,  only: %i[show]
   resources :talks,   only: %i[index show]
   resource  :chat,    only: %i[show create],      controller: :chat
@@ -22,7 +26,12 @@ Rails.application.routes.draw do
   authenticate :user, ->(u) { u.admin? } do
     namespace :admin do
       get '/', to: 'home#index'
-      resources :events,  except: %i[show destroy]
+      resources :events,  except: %i[show destroy] do
+        resources :visit_requests, controller: 'visit_request/visit_requests', only: %i[index] do
+          patch :approve, controller: 'visit_request/approve', action: :update
+          patch :cancel, controller: 'visit_request/cancel', action: :update
+        end
+      end
       resources :venues,  except: %i[show destroy]
       resources :talks,   except: %i[show destroy]
       resources :goals,   except: %i[show destroy]

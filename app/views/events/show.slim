@@ -1,1 +1,13 @@
 h2 = t 'events.singular'
+h3 = event.title
+
+- if visit_request
+  = link_to t('visit_requests.cancel_attendace'), event_visit_request_cancel_path(event, visit_request), method: :patch
+
+- if current_user && !visit_request
+  = link_to t('visit_requests.create'), event_visit_requests_path(event), method: :post
+
+- unless current_user
+  = t('visit_requests.unauthorized')
+
+

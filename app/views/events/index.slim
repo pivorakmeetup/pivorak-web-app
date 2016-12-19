@@ -1,1 +1,19 @@
 h2 = t 'events.plural'
+
+table.table
+  thead
+    tr
+      th = t 'words.id'
+      th = t 'words.title'
+      th = t 'events.started_at'
+      th = t 'events.finished_at'
+      th
+      th
+
+  tbody
+    - events.each do |event|
+      tr
+        th = event.id
+        td = admin_event_link(event)
+        td = format_timestamp(event.started_at)
+        td = format_timestamp(event.finished_at)

@@ -1,0 +1,15 @@
+h2 = t 'visit_requests.plural'
+
+table.table
+  thead
+    tr
+      th = t 'words.name'
+      th
+      th
+
+  tbody
+    - visit_requests.each do |visit_request|
+      tr
+        th = visit_request.user.full_name
+        th = link_to t('visit_requests.approve'), admin_event_visit_request_approve_path(event, visit_request), method: :patch
+        th = link_to t('visit_requests.cancel'), admin_event_visit_request_cancel_path(event, visit_request), method: :patch
