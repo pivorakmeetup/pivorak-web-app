@@ -79,3 +79,8 @@ en:
     last_name: Last Name
     synthetic: Synthetic
     change_gravatar: Change gravatar
+    synthetic:
+      singular: Synthetic
+      greeting: 'Hello %{name}, we know You!'
+      message: We already created account for you, because you are the member of Pivorak community. With great please, we give you control for existing account. Please confirm reset password via email
+      get_account: Get account control

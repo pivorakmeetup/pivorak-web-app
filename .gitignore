@@ -18,3 +18,5 @@ coverage
 
 config/database.yml
 .ruby-gemset
+
+.DS_store
