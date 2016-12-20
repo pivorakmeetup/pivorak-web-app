@@ -1,6 +1,6 @@
 h2 = t 'venues.plural'
 
-= admin_new_venue_link
+= admin_new_resource_link :venue
 
 table.table
   thead
@@ -14,6 +14,6 @@ table.table
     - venues.each do |venue|
       tr
         th = venue.id
-        th = admin_venue_link(venue)
+        th = resource_link(venue, text: :name, target: '_blank')
         th = venue.address
-        td = admin_edit_venue_link(venue)
+        td = admin_edit_resource_link(venue)

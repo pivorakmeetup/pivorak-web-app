@@ -1,6 +1,6 @@
 h2 = t 'goals.plural'
 
-= admin_new_goal_link
+= admin_new_resource_link :goal
 
 table.table
   thead
@@ -14,6 +14,6 @@ table.table
     - goals.each do |goal|
       tr
         td = goal.id
-        td = admin_goal_link(goal)
+        td = resource_link(goal, target: '_blank')
         td = goal.amount
-        td = admin_edit_goal_link(goal)
+        td = admin_edit_resource_link(goal)
