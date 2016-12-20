@@ -1,6 +1,6 @@
 h2 = t 'events.plural'
 
-= admin_new_event_link
+= admin_new_resource_link :event
 
 table.table
   thead
@@ -16,7 +16,7 @@ table.table
     - events.each do |event|
       tr
         th = event.id
-        td = admin_event_link(event)
+        td = resource_link(event, target: '_blank')
         td = format_timestamp(event.started_at)
         td = format_timestamp(event.finished_at)
-        td = admin_edit_event_link(event)
+        td = admin_edit_resource_link(event)

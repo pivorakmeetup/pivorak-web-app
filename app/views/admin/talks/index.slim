@@ -1,6 +1,6 @@
 h2 = t 'talks.plural'
 
-= admin_new_talk_link
+= admin_new_resource_link :talk
 
 table.table
   thead
@@ -15,7 +15,7 @@ table.table
     - talks.each do |talk|
       tr
         th = talk.id
-        td = admin_talk_link(talk)
+        td = resource_link(talk, target: '_blank')
         td = admin_talk_event_link(talk)
         td = admin_talk_speaker_info(talk)
-        td = admin_edit_talk_link(talk)
+        td = admin_edit_resource_link(talk)
