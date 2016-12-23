@@ -10,6 +10,6 @@ RSpec.describe 'Visit Requests CANCEL' do
   end
 
   it { expect(page).to have_current_path("/admin/events/#{event.slug}/visit_requests") }
-  it { expect(visit_request.reload.status).to eq(VisitRequest::CANCELED) }
+  it { expect(visit_request.reload.status).to eq(VisitRequest::CANCELED.to_s) }
 
 end

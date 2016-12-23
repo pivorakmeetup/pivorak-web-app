@@ -5,7 +5,7 @@ class VisitRequest
     end
 
     def call
-      visit_request.update(status: CANCELED)
+      visit_request.canceled!
     end
 
     private

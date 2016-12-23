@@ -10,6 +10,6 @@ RSpec.describe 'Visit Requests APPROVE' do
   end
 
   it { expect(page).to have_current_path("/admin/events/#{event.slug}/visit_requests") }
-  it { expect(visit_request.reload.status).to eq(VisitRequest::APPROVED) }
+  it { expect(visit_request.reload.status).to eq(VisitRequest::APPROVED.to_s) }
 
 end

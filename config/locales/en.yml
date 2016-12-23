@@ -86,8 +86,7 @@ en:
       get_account: Get account control
 
   visit_requests:
-    create: 'Attend'
-    create: 'Attend'
+    attend: Attend
     unauthorized: Please login to attend event
     already_created: Already attending
     approve: Approve

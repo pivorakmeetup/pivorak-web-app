@@ -7,7 +7,8 @@ class VisitRequest
     end
 
     def call
-      VisitRequest.create!(user: user, event: event, status: PENDING)
+      visit_request = VisitRequest.new(user: user, event: event)
+      visit_request.pending!
     end
 
     private

@@ -12,7 +12,7 @@ RSpec.describe 'Visit Requests CANCEL' do
     click_link I18n.t('visit_requests.cancel_attendace')
   end
 
-  it { expect(page).to_not have_link I18n.t('visit_requests.create') }
-  it { expect(visit_request.reload.status).to eq(VisitRequest::CANCELED) }
+  it { expect(page).to have_link I18n.t('visit_requests.attend') }
+  it { expect(visit_request.reload.status).to eq(VisitRequest::CANCELED.to_s) }
 
 end

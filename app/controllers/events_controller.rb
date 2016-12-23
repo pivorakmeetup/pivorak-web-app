@@ -11,7 +11,7 @@ class EventsController < ApplicationController
 
   def visit_request
     return false unless current_user
-    @visit_request ||= VisitRequest.find_by(user_id: current_user.id, event_id: event.id)
+    @visit_request ||= VisitRequest.pending.find_by(user_id: current_user.id, event_id: event.id)
   end
 
   def event

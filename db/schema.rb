@@ -122,7 +122,7 @@ ActiveRecord::Schema.define(version: 20161218092124) do
   create_table "visit_requests", force: :cascade do |t|
     t.integer  "event_id"
     t.integer  "user_id"
-    t.string   "status"
+    t.integer  "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
