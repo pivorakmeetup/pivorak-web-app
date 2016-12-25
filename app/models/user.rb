@@ -14,6 +14,8 @@ class User < ApplicationRecord
   validates :first_name, :last_name, :slug, presence: true
   validates :first_name, :last_name, format: { with: LATIN_LETTERS_REGEX,  message: I18n.t('errors.only_latin_letters') }
 
+  scope :synthetic, -> { where(synthetic: true) }
+
   def full_name
     "#{first_name} #{last_name}"
   end

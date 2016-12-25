@@ -1,5 +1,11 @@
 module Users
   class RegistrationsController < Devise::RegistrationsController
+    def create
+      user = User::CheckSynthetic.call(params[:user][:email])
+
+      user ? redirect_to(new_user_password_path(synthetic: user.email)) : super
+    end
+
     protected
 
     def sign_up_params
