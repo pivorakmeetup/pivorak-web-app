@@ -1,7 +1,5 @@
 class VisitRequest
   class CancelController < BaseController
-    include ::VisitRequest::Concerns::VisitRequestFinder
-
     before_action :authenticate_user!
 
     def update

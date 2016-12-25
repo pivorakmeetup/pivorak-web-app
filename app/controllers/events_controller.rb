@@ -10,8 +10,7 @@ class EventsController < ApplicationController
   private
 
   def visit_request
-    return false unless current_user
-    @visit_request ||= VisitRequest.pending.find_by(user_id: current_user.id, event_id: event.id)
+    @visit_request ||= VisitRequest::FindNotCanceled.call(current_user, event)
   end
 
   def event
