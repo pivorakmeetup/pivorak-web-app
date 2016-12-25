@@ -9,8 +9,9 @@ Rails.application.routes.draw do
 
   #=== MAIN APP =================================
   resources :events,  only: %i[index show] do
-    resources :visit_requests, controller: 'visit_request/visit_requests', only: %i[create] do
+    resources :visit_requests, only: [] do
       patch :cancel, to: 'visit_request/cancel#update'
+      put :attend, to: 'visit_request/attend#update', on: :collection
     end
   end
   resources :venues,  only: %i[show]

@@ -1,4 +1,4 @@
-RSpec.describe 'Visit Requests CREATE' do
+RSpec.describe 'Visit Requests ATTEND' do
   let(:event) { create(:event) }
 
   context 'when user is logged in' do
@@ -9,7 +9,7 @@ RSpec.describe 'Visit Requests CREATE' do
 
     it { expect(page).to have_link I18n.t('visit_requests.attend') }
 
-    it 'click on Visit redirects to #show' do
+    it 'click on Visit redirects to event' do
       click_link I18n.t('visit_requests.attend')
       expect(page).to have_current_path("/events/#{event.slug}")
     end

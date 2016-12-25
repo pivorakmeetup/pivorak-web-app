@@ -14,6 +14,6 @@ table.table
     - events.each do |event|
       tr
         th = event.id
-        td = admin_event_link(event)
+        td = resource_link(event)
         td = format_timestamp(event.started_at)
         td = format_timestamp(event.finished_at)

@@ -1,5 +1,5 @@
 class VisitRequest
-  class Create < ApplicationService
+  class Attend < ApplicationService
 
     def initialize(user, event)
       @user = user
@@ -7,7 +7,7 @@ class VisitRequest
     end
 
     def call
-      visit_request = VisitRequest.new(user: user, event: event)
+      visit_request = VisitRequest.find_or_initialize_by(user: user, event: event)
       visit_request.pending!
     end
 

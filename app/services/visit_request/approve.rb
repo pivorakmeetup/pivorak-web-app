@@ -5,7 +5,7 @@ class VisitRequest
     end
 
     def call
-      visit_request.update(status: APPROVED)
+      visit_request.approved!
     end
 
     private

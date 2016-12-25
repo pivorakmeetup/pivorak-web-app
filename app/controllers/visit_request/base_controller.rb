@@ -5,6 +5,5 @@ class VisitRequest
     def event
       @event ||= Event.friendly.find(params[:event_id])
     end
-
   end
 end
