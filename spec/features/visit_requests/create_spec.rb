@@ -25,5 +25,4 @@ RSpec.describe 'Visit Requests CREATE' do
     it { expect(page).to_not have_link I18n.t('visit_requests.attend') }
     it { expect(page).to have_content I18n.t('visit_requests.unauthorized') }
   end
-
 end

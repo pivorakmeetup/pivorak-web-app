@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   #=== MAIN APP =================================
   resources :events,  only: %i[index show] do
     resources :visit_requests, controller: 'visit_request/visit_requests', only: %i[create] do
-      patch :cancel, controller: 'visit_request/cancel', action: :update
+      patch :cancel, to: 'visit_request/cancel#update'
     end
   end
   resources :venues,  only: %i[show]
@@ -28,8 +28,8 @@ Rails.application.routes.draw do
       get '/', to: 'home#index'
       resources :events,  except: %i[show destroy] do
         resources :visit_requests, controller: 'visit_request/visit_requests', only: %i[index] do
-          patch :approve, controller: 'visit_request/approve', action: :update
-          patch :cancel, controller: 'visit_request/cancel', action: :update
+          patch :approve, to: 'visit_request/approve#update'
+          patch :cancel, to: 'visit_request/cancel#update'
         end
       end
       resources :venues,  except: %i[show destroy]

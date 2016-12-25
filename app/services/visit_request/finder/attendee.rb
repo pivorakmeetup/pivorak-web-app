@@ -14,10 +14,6 @@ class VisitRequest
 
         VisitRequest.find_by(user_id: user.id, event_id: event.id)
       end
-
-      def self.call(*args)
-        new(*args).call
-      end
     end
   end
 end
