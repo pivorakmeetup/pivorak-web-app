@@ -1,5 +1,5 @@
 class VisitRequest
-  class CancelController < ApplicationController
+  class CancelController < BaseController
     before_action :authenticate_user!
 
     def update
@@ -8,10 +8,6 @@ class VisitRequest
     end
 
     private
-
-    def event
-      @event ||= Event.friendly.find(params[:event_id])
-    end
 
     def visit_request
       @visit_request ||= ::VisitRequest.find(params[:visit_request_id])
