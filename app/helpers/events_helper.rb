@@ -4,6 +4,6 @@ module EventsHelper
   end
 
   def cancel_event_attendace_link(event, visit_request)
-    link_to t('visit_requests.cancel_attendace'), event_visit_request_cancel_path(event, visit_request), method: :patch
+    link_to t('visit_requests.cancel_attendace'), event_visit_request_cancel_path(event, visit_request), method: :put
   end
 end

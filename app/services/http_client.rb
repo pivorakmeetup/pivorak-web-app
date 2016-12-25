@@ -2,7 +2,7 @@ class HttpClient
   attr_reader :client
   extend Forwardable
 
-  delegate [:get, :put, :patch, :post, :delete] => :client
+  delegate [:get, :put, :post, :delete] => :client
 
   def initialize(args = {})
     @client = HTTPClient.new
