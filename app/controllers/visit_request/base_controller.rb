@@ -7,7 +7,7 @@ class VisitRequest
     end
 
     def visit_request
-      @visit_request ||= ::VisitRequest.find(params[:visit_request_id])
+      @visit_request ||= Find.call(params)
     end
   end
 end
