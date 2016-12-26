@@ -1,5 +1,5 @@
 class VisitRequest
- class FindNotCanceled < ApplicationService
+ class FindNotCanceled < ApplicationFinder
     attr_reader :event, :user
 
     def initialize(user, event)
@@ -8,8 +8,7 @@ class VisitRequest
     end
 
     def call
-      return unless user
-      return unless event
+      return unless user && event
 
       VisitRequest.where.not(status: VisitRequest::CANCELED).find_by(user_id: user.id, event_id: event.id)
     end

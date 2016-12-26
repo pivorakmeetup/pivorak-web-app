@@ -1,5 +1,5 @@
 class VisitRequest
-  class Find < ApplicationService
+  class Find < ApplicationFinder
     attr_reader :params
 
     def initialize(params)
