@@ -84,3 +84,13 @@ en:
       greeting: 'Hello %{name}, we know You!'
       message: We already created account for you, because you are the member of Pivorak community. With great please, we give you control for existing account. Please confirm reset password via email
       get_account: Get account control
+
+  visit_requests:
+    attend: Attend
+    unauthorized: Please login to attend event
+    already_created: Already attending
+    approve: Approve
+    cancel: Cancel
+    cancel_attendace: Cancel attendance
+    plural: Visit Requests
+

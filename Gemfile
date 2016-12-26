@@ -42,7 +42,6 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request'
-  gem 'bullet'
 end
 
 group :development, :test do
@@ -50,11 +49,12 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'pry-rails'
   gem 'dotenv-rails'
+  gem 'faker'
+  gem 'bullet'
 end
 
 group :test do
   gem 'stripe-ruby-mock', '~> 2.3.1', :require => 'stripe_mock'
-  gem 'faker'
   gem 'rspec-collection_matchers'
   gem 'rspec-its'
   gem 'rspec-activemodel-mocks'

@@ -11,6 +11,7 @@ table.table
       th = t 'events.finished_at'
       th
       th
+      th
 
   tbody
     - events.each do |event|
@@ -20,3 +21,4 @@ table.table
         td = format_timestamp(event.started_at)
         td = format_timestamp(event.finished_at)
         td = admin_edit_resource_link(event)
+        td = admin_visit_requests_link(event)

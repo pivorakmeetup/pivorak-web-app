@@ -1,1 +1,13 @@
 h2 = t 'events.singular'
+h3 = event.title
+
+- if visit_request
+  = cancel_event_attendace_link(event, visit_request)
+
+- if current_user && !visit_request
+  = attend_event_link(event)
+
+- unless current_user
+  = t('visit_requests.unauthorized')
+
+
