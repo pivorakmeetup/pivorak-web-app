@@ -4,8 +4,10 @@
       .col-md-6
         = f.input :title
         = f.input :description, input_html: { rows: 10 }
+        = f.input :limitation
         = f.input :started_at
         = f.input :finished_at
+
       .col-md-6
         = f.input :agenda,      input_html: { rows: 20 }
 

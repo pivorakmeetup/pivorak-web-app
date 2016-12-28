@@ -15,6 +15,7 @@ en:
     donate: Donate
     email: Email
     back: Back
+    date: Date
 
   resources:
     errors:
@@ -39,6 +40,7 @@ en:
     singular: Event
     started_at: Started At
     finished_at: Finished At
+    limitation: Limitation
 
   venues:
     plural: Venues
@@ -93,4 +95,3 @@ en:
     cancel: Cancel
     cancel_attendace: Cancel attendance
     plural: Visit Requests
-
