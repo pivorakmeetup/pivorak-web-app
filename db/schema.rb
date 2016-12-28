@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20162812090709) do
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.integer  "limitation",  default: 50
+    t.string   "cover"
     t.index ["slug"], name: "index_events_on_slug", using: :btree
   end
 
@@ -106,10 +107,10 @@ ActiveRecord::Schema.define(version: 20162812090709) do
     t.boolean  "admin",                  default: false
     t.string   "first_name"
     t.string   "last_name"
-    t.boolean  "synthetic",              default: false
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+    t.boolean  "synthetic",              default: false
     t.string   "slug"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree

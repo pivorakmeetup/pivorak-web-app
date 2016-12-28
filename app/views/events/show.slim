@@ -1,6 +1,9 @@
 h2 = t 'events.singular'
 h3 = event.title
 
+- if event.cover.present?
+  = image_tag event.cover_url
+
 - if visit_request
   = cancel_event_attendace_link(event, visit_request)
 

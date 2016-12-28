@@ -65,6 +65,10 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    carrierwave (1.0.0)
+      activemodel (>= 4.0.0)
+      activesupport (>= 4.0.0)
+      mime-types (>= 1.16)
     codecov (0.1.9)
       json
       simplecov
@@ -357,6 +361,7 @@ DEPENDENCIES
   bootstrap (~> 4.0.0.alpha5)
   bullet
   capybara
+  carrierwave (~> 1.0)
   codecov
   database_cleaner
   devise
