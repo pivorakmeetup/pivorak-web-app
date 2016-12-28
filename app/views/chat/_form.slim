@@ -1,5 +1,5 @@
 = form_tag chat_path do
-  = email_field_tag :email, nil,
+  = email_field_tag :email, current_user&.email,
                             placeholder: 'you@yourdomain.com'
                             autofocus:   true,
                             required:    true
