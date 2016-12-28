@@ -2,23 +2,22 @@ h2 = t 'events.plural'
 
 = admin_new_resource_link :event
 
-table.table
-  thead
-    tr
-      th = t 'words.id'
-      th = t 'words.title'
-      th = t 'events.started_at'
-      th = t 'events.finished_at'
-      th
-      th
-      th
-
-  tbody
-    - events.each do |event|
+.table-responsive
+  table.table
+    thead
       tr
-        th = event.id
-        td = resource_link(event, target: '_blank')
-        td = format_timestamp(event.started_at)
-        td = format_timestamp(event.finished_at)
-        td = admin_edit_resource_link(event)
-        td = admin_visit_requests_link(event)
+        th = t 'words.id'
+        th = t 'words.title'
+        th = t 'events.limitation'
+        th = t 'words.date'
+        th.actions colspan="2"
+
+    tbody
+      - events.each do |event|
+        tr
+          th = event.id
+          td = resource_link(event, target: '_blank')
+          td = event.limitation
+          td = format_timestamp(event.started_at, time: false)
+          td = admin_edit_resource_link(event)
+          td = admin_visit_requests_link(event)

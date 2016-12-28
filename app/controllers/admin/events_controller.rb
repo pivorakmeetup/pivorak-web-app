@@ -23,11 +23,11 @@ module Admin
     end
 
     def events
-      @events ||= Event.all
+      @events ||= Event.order(started_at: :desc)
     end
 
     def event_params
-      params.require(:event).permit(:title, :description, :agenda, :started_at, :finished_at)
+      params.require(:event).permit(:title, :description, :agenda, :started_at, :finished_at, :limitation)
     end
   end
 end

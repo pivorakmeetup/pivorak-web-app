@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161218092124) do
+ActiveRecord::Schema.define(version: 20162812090707) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,8 +32,9 @@ ActiveRecord::Schema.define(version: 20161218092124) do
     t.text     "agenda"
     t.datetime "started_at"
     t.datetime "finished_at"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "limitation",  default: 50
     t.index ["slug"], name: "index_events_on_slug", using: :btree
   end
 
