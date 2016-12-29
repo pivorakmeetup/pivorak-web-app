@@ -1,17 +1,19 @@
 h2 = t 'visit_requests.plural'
 
-table.table
-  thead
-    tr
-      th = t 'words.name'
-      th
-      th
-      th = t 'words.status'
 
-  tbody
-    - visit_requests.each do |visit_request|
+.table-responsive
+  table.table
+    thead
       tr
-        td = admin_member_link(visit_request.user)
-        td = admin_approve_visit_request_link(event, visit_request)
-        td = admin_cancel_visit_request_link(event, visit_request)
-        = status_cell(visit_request.status)
+        th = t 'words.name'
+        th
+        th
+        th = t 'words.status'
+
+    tbody
+      - visit_requests.each do |visit_request|
+        tr
+          td = admin_member_link(visit_request.user)
+          td = admin_approve_visit_request_link(event, visit_request)
+          td = admin_cancel_visit_request_link(event, visit_request)
+          = status_cell(visit_request.status)

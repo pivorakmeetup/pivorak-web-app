@@ -2,20 +2,21 @@ h2 = t 'members.plural'
 
 = admin_new_member_link
 
-table.table
-  thead
-    tr
-      th = t 'words.id'
-      th = t 'members.full_name'
-      th = t 'words.email'
-      th = t 'members.synthetic.singular'
-      th
-
-  tbody
-    - members.each do |member|
+.table-responsive
+  table.table
+    thead
       tr
-        th = member.id
-        td = admin_member_link(member)
-        td = member.email
-        td = member.synthetic
-        td = admin_edit_member_link(member)
+        th = t 'words.id'
+        th = t 'members.full_name'
+        th = t 'words.email'
+        th = t 'members.synthetic.singular'
+        th
+
+    tbody
+      - members.each do |member|
+        tr
+          th = member.id
+          td = admin_member_link(member)
+          td = member.email
+          td = member.synthetic
+          td = admin_edit_member_link(member)

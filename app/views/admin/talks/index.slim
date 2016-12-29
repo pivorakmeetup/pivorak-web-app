@@ -2,20 +2,23 @@ h2 = t 'talks.plural'
 
 = admin_new_resource_link :talk
 
-table.table
-  thead
-    tr
-      th = t 'words.id'
-      th = t 'words.title'
-      th = t 'events.singular'
-      th = t 'talks.speaker'
-      th
-
-  tbody
-    - talks.each do |talk|
+.table-responsive
+  table.table
+    thead
       tr
-        th = talk.id
-        td = resource_link(talk, target: '_blank')
-        td = admin_talk_event_link(talk)
-        td = admin_talk_speaker_info(talk)
-        td = admin_edit_resource_link(talk)
+        th = t 'words.id'
+        th = t 'words.title'
+        th = t 'events.singular'
+        th = t 'talks.speaker'
+        th = t 'groups.singular'
+        th
+
+    tbody
+      - talks.each do |talk|
+        tr
+          td = talk.id
+          td = resource_link(talk, target: '_blank')
+          td = admin_talk_event_link(talk)
+          td = admin_talk_speaker_info(talk)
+          td = talk.group&.name
+          td = admin_edit_resource_link(talk)
