@@ -59,6 +59,11 @@ en:
     plural: Talks
     singular: Talk
     speaker: Speaker
+  emails:
+     plural: Emails
+     singular: Email
+     subject: Subject
+     body: Body
 
   admin:
     admin: Admin
