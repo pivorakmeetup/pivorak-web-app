@@ -28,6 +28,7 @@ gem 'httpclient'
 gem 'oj' # faster json parser
 gem 'mailgun_rails'
 gem 'rollbar'
+gem 'uglifier'
 # sidekiq
 gem 'sidekiq'
 gem 'sinatra', '>= 2.0.0.beta2', require: false

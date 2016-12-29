@@ -349,6 +349,8 @@ GEM
     turbolinks-source (5.0.0)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
+    uglifier (3.0.0)
+      execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.2)
@@ -425,6 +427,7 @@ DEPENDENCIES
   stripe-ruby-mock (~> 2.3.1)
   turbolinks (~> 5.0)
   tzinfo-data
+  uglifier
   vcr
   web-console
   webmock
