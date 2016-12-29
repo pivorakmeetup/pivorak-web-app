@@ -31,6 +31,8 @@ gem 'rollbar'
 # sidekiq
 gem 'sidekiq'
 gem 'sinatra', '>= 2.0.0.beta2', require: false
+# images
+gem 'carrierwave', '~> 1.0'
 
 #=== DEV & TEST =================================
 group :development do

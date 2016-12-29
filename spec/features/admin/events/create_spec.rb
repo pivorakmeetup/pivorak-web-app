@@ -20,5 +20,14 @@ RSpec.describe 'Events CREATE' do
 
       expect(page).to have_current_path '/events/super-new-event'
     end
+
+    it 'creates event with image' do
+      fill_in 'Title',  with: 'Super New Event'
+      attach_file('event[cover]', Rails.root + 'spec/fixtures/images/pivorak.png')
+
+      click_button 'Create Event'
+
+      expect(Event.last.cover).to be_present
+    end
   end
 end
