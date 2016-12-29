@@ -7,7 +7,8 @@ module Admin
     end
 
     def admin_edit_resource_link(resource)
-      link_to t('words.edit'), edit_polymorphic_path([:admin, resource])
+      link_to t('words.edit'), edit_polymorphic_path([:admin, resource]),
+        class: 'btn btn-warning'
     end
   end
 end
