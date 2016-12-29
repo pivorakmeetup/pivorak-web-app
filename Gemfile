@@ -45,6 +45,7 @@ group :development do
   gem 'capistrano', '~> 3.6'
   gem 'capistrano-rails', '~> 1.2'
   gem 'capistrano-sidekiq'
+  gem 'capistrano-rvm'
 end
 
 group :development, :test do
