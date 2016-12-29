@@ -17,6 +17,22 @@ h2 {
   margin: 15px 0;
 }
 
+a {
+  .icon {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+
+    svg {
+      width: 40px;
+      height: 40px;
+    }
+    &:hover {
+      border: none;
+    }
+  }
+}
+
 
 //-----------------------------------------------
 //      TABLE
@@ -26,11 +42,10 @@ table {
   margin-top: 15px;
 
   .actions {
-    width: 25%;
+    width: 15%;
     text-align: right;
 
     a {
-      display: inlibne-block;
       margin-right: 5px;
     }
   }

@@ -19,4 +19,5 @@ h2 = t 'members.plural'
           td = admin_member_link(member)
           td = member.email
           td = member.synthetic
-          td = admin_edit_member_link(member)
+          td.actions
+            = admin_edit_member_link(member)

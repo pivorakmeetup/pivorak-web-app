@@ -17,4 +17,5 @@ h2 = t 'venues.plural'
           td = venue.id
           td = resource_link(venue, text: :name, target: '_blank')
           td = venue.address
-          td = admin_edit_resource_link(venue)
+          td.actions
+            = admin_edit_resource_link(venue)

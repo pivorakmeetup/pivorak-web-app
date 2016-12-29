@@ -21,4 +21,5 @@ h2 = t 'talks.plural'
           td = admin_talk_event_link(talk)
           td = admin_talk_speaker_info(talk)
           td = talk.group&.name
-          td = admin_edit_resource_link(talk)
+          td.actions
+            = admin_edit_resource_link(talk)
