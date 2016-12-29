@@ -17,6 +17,22 @@ h2 {
   margin: 15px 0;
 }
 
+a {
+  .icon {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+
+    svg {
+      width: 40px;
+      height: 40px;
+    }
+    &:hover {
+      border: none;
+    }
+  }
+}
+
 
 //-----------------------------------------------
 //      TABLE
@@ -25,8 +41,13 @@ h2 {
 table {
   margin-top: 15px;
 
-  th.actions {
-    width: 10%;
+  .actions {
+    width: 15%;
+    text-align: right;
+
+    a {
+      margin-right: 5px;
+    }
   }
 }
 
@@ -38,4 +59,12 @@ form {
   .form-actions {
     margin-top: 15px;
   }
+}
+
+//-----------------------------------------------
+//      HELPERS
+//-----------------------------------------------
+.translation_missing {
+  color: white !important;
+  background: red !important;
 }

@@ -23,11 +23,14 @@ module Admin
     end
 
     def talks
-      @talks ||= Talk.includes(:event, :speaker)
+      @talks ||= Talk.includes(:event, :speaker, :group)
     end
 
     def talks_params
-      params.require(:talk).permit(:title, :description, :event_id, :speaker_id, :video_url, :slides_url)
+      params.require(:talk).permit(
+        :title, :description, :event_id, :speaker_id,
+        :video_url, :slides_url, :group_id
+      )
     end
   end
 end

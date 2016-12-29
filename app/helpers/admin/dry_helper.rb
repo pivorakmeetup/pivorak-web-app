@@ -7,8 +7,12 @@ module Admin
     end
 
     def admin_edit_resource_link(resource)
-      link_to t('words.edit'), edit_polymorphic_path([:admin, resource]),
-        class: 'btn btn-warning'
+      link_to icon(:pencil), edit_polymorphic_path([:admin, resource])
+    end
+
+    def admin_destroy_resource_link(resource)
+      link_to icon(:trash), polymorphic_path([:admin, resource]),
+        method: :delete, data: { confirm: t('phrases.confirm') }
     end
   end
 end

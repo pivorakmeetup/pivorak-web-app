@@ -1,0 +1,10 @@
+= simple_form_for [:admin, goal] do |f|
+  .form-inputs
+    .row
+      .col-md-6
+        = f.input :title
+        = f.input :description, input_html: { rows: 10 }
+        = f.input :amount
+
+  .form-actions
+    = f.button :submit, class: 'btn btn-success'

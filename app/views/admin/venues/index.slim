@@ -2,18 +2,20 @@ h2 = t 'venues.plural'
 
 = admin_new_resource_link :venue
 
-table.table
-  thead
-    tr
-      th = t 'words.id'
-      th = t 'words.name'
-      th = t 'venues.address'
-      th
-
-  tbody
-    - venues.each do |venue|
+.table-responsive
+  table.table
+    thead
       tr
-        th = venue.id
-        th = resource_link(venue, text: :name, target: '_blank')
-        th = venue.address
-        td = admin_edit_resource_link(venue)
+        th = t 'words.id'
+        th = t 'words.name'
+        th = t 'venues.address'
+        th
+
+    tbody
+      - venues.each do |venue|
+        tr
+          td = venue.id
+          td = resource_link(venue, text: :name, target: '_blank')
+          td = venue.address
+          td.actions
+            = admin_edit_resource_link(venue)

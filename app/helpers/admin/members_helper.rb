@@ -7,7 +7,7 @@ module Admin
     end
 
     def admin_edit_member_link(member)
-      link_to t('words.edit'), edit_admin_member_path(member)
+      link_to icon(:pencil), edit_admin_member_path(member)
     end
 
     def admin_member_link(member)
