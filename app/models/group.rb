@@ -1,3 +1,8 @@
+# All apps always require possibility to group some resources.
+# Types, kinds, under_types.
+# I want to avoid creating such subresources like `TalkType` or `SomeOtherGroup`.
+# Better to keep one polymorphic model - `Group`.
+# Just add new resource to it's `RESOURCES` constant and enjoy the life.
 require 'dry_helpers/model'
 
 class Group < ApplicationRecord
