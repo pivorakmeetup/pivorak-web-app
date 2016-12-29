@@ -27,7 +27,9 @@ module Admin
     end
 
     def event_params
-      params.require(:event).permit(:title, :description, :agenda, :started_at, :finished_at, :limitation)
+      params.require(:event).permit(
+        :title, :description, :agenda, :started_at, :finished_at, :limitation
+      )
     end
   end
 end

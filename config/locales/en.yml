@@ -2,6 +2,7 @@ en:
   pivorak: pivorak
 
   words:
+    app: App
     id: '#id'
     new: New
     edit: Edit
@@ -16,6 +17,7 @@ en:
     email: Email
     back: Back
     date: Date
+    resource: Resource
 
   resources:
     errors:
@@ -50,6 +52,7 @@ en:
   talks:
     plural: Talks
     singular: Talk
+    speaker: Speaker
 
   admin:
     admin: Admin
@@ -75,6 +78,7 @@ en:
   members:
     singular: Member
     plural: Members
+    full_name: Full Name
     profile: Profile
     edit_profile: Edit Profile
     first_name: First Name
@@ -86,6 +90,10 @@ en:
       greeting: 'Hello %{name}, we know You!'
       message: We already created account for you, because you are the member of Pivorak community. With great please, we give you control for existing account. Please confirm reset password via email
       get_account: Get account control
+
+  groups:
+    singular: Group
+    plural: Groups
 
   visit_requests:
     attend: Attend

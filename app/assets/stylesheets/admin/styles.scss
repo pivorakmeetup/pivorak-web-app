@@ -25,8 +25,14 @@ h2 {
 table {
   margin-top: 15px;
 
-  th.actions {
-    width: 10%;
+  .actions {
+    width: 25%;
+    text-align: right;
+
+    a {
+      display: inlibne-block;
+      margin-right: 5px;
+    }
   }
 }
 
@@ -38,4 +44,12 @@ form {
   .form-actions {
     margin-top: 15px;
   }
+}
+
+//-----------------------------------------------
+//      HELPERS
+//-----------------------------------------------
+.translation_missing {
+  color: white !important;
+  background: red !important;
 }

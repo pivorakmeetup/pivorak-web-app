@@ -37,6 +37,7 @@ Rails.application.routes.draw do
       resources :talks,   except: %i[show destroy]
       resources :goals,   except: %i[show destroy]
       resources :members, except: %i[show destroy]
+      resources :groups,  except: %i[show]
     end
     require 'sidekiq/web'
     mount Sidekiq::Web => '/sidekiq'
