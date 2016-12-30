@@ -9,14 +9,16 @@ h2 = t 'members.plural'
         th = t 'words.id'
         th = t 'members.full_name'
         th = t 'words.email'
-        th = t 'members.synthetic.singular'
+        th.status = t 'members.synthetic.singular'
+        th.status = t 'members.verified'
         th
 
     tbody
       - members.each do |member|
         tr
-          th = member.id
+          td = member.id
           td = admin_member_link(member)
           td = member.email
-          td = member.synthetic
+          td = member_synthetic_label(member.synthetic?)
+          td = member_verified_label(member.verified?)
           td = admin_edit_member_link(member)

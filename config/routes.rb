@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     namespace :admin do
       get '/', to: 'home#index'
       resources :events,  except: %i[show destroy] do
-        resources :visit_requests, controller: 'visit_request/visit_requests', only: %i[index] do
+        resources :visit_requests, only: %i[index] do
           put :approve, to: 'visit_request/approve#update'
           put :cancel, to: 'visit_request/cancel#update'
         end

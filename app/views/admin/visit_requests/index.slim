@@ -1,0 +1,21 @@
+h2 = t 'visit_requests.plural'
+
+
+.table-responsive
+  table.table
+    thead
+      tr
+        th = t 'words.name'
+        th.status = t 'words.status'
+        th.actions colspan='2'
+
+    tbody
+      - visit_requests.each do |visit_request|
+        tr
+          td = admin_member_link(visit_request.user)
+          td = visit_request_status_label(visit_request.status)
+          td.actions
+            - if visit_request.canceled?
+              = admin_approve_visit_request_link(event, visit_request)
+            - else
+              = admin_cancel_visit_request_link(event, visit_request)

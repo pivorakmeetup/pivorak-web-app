@@ -18,6 +18,9 @@ en:
     back: Back
     date: Date
     resource: Resource
+    status: Status
+    true: yes
+    false: no
 
   resources:
     errors:
@@ -85,6 +88,7 @@ en:
     last_name: Last Name
     synthetic: Synthetic
     change_gravatar: Change gravatar
+    verified: Verified
     synthetic:
       singular: Synthetic
       greeting: 'Hello %{name}, we know You!'
