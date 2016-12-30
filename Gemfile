@@ -28,6 +28,7 @@ gem 'httpclient'
 gem 'oj' # faster json parser
 gem 'mailgun_rails'
 gem 'rollbar'
+gem 'uglifier'
 # sidekiq
 gem 'sidekiq'
 gem 'sinatra', '>= 2.0.0.beta2', require: false
@@ -44,6 +45,10 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request'
+  gem 'capistrano', '~> 3.6'
+  gem 'capistrano-rails', '~> 1.2'
+  gem 'capistrano-sidekiq'
+  gem 'capistrano-rvm'
 end
 
 group :development, :test do
@@ -52,7 +57,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'dotenv-rails'
   gem 'faker'
-  gem 'bullet'
+ gem 'bullet'
 end
 
 group :test do
