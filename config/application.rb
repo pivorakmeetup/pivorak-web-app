@@ -6,6 +6,11 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+# Rectify loading conflict
+require_relative '../app/models/application_record'
+require_relative '../app/models/goal'
+require_relative '../app/models/donation'
+
 module PivorakWebApp
   class Application < Rails::Application
     config.version = 'alpha'
