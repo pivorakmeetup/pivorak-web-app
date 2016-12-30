@@ -12,5 +12,4 @@ RSpec.describe 'Visit Requests APPROVE' do
   end
 
   it { expect{ subject }.to_not raise_error }
-
 end
