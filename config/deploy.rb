@@ -33,19 +33,6 @@ namespace :foreman do
   end
 end
 
-namespace :webpack do
-  desc 'Webpack: build assets'
-  task :build do
-    on roles(:app) do
-      within release_path do
-        with rails_env: fetch(:rails_env) do
-          execute :rake, 'webpack:compile'
-        end
-      end
-    end
-  end
-end
-
 namespace :deploy do
   desc 'Restart application'
   task :restart_application do
@@ -57,7 +44,6 @@ namespace :deploy do
   end
 
 #  before 'deploy:updated'
-#  before 'deploy:compile_assets', 'webpack:build'
 #  before 'deploy:compile_assets', 'webpack:build'
 
   after :publishing, 'foreman:export'
