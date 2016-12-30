@@ -90,4 +90,6 @@ Rails.application.configure do
       domain: ENV['MAILGUN_DOMAIN']
   }
 
+  config.action_mailer.default_url_options = { :host => 'pivorak.cmd.as' }
+
 end
