@@ -15,6 +15,10 @@ set :user, 'dev'
 
 set :rvm_map_bins, fetch(:rvm_map_bins, []).push('rvmsudo')
 
+set :rollbar_token, 'ff8ef8cd8df54381a1861c7031bebbc8'
+set :rollbar_env, Proc.new { fetch :stage }
+set :rollbar_role, Proc.new { :app }
+
 namespace :foreman do
   desc "Export the Procfile to Ubuntu's upstart scripts"
   task :export do
@@ -50,4 +54,6 @@ namespace :deploy do
   after :publishing, 'restart_application'
 
 end
+
+
 
