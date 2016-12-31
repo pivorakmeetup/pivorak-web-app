@@ -10,6 +10,7 @@
         = f.input :event_id, collection: Event.all,   label_method: :title
         = f.input :group_id, collection: Group.talks, label_method: :name
         = f.input :speaker_id
+        = f.input :tag_list, input_html: { value: talk.tag_list.join(', ') }
 
   .form-actions
     = f.button :submit, class: 'btn btn-success'

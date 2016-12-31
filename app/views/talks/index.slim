@@ -1,1 +1,21 @@
 h2 = t 'talks.plural'
+
+.tags
+  ul
+    li = link_to 'all', talks_path
+    - tags.each do |tag|
+      li = link_to tag.name, talks_path(tag: tag.name)
+
+table.table
+  thead
+    tr
+      th = t 'words.id'
+      th = t 'words.title'
+      th
+      th
+
+  tbody
+    - talks.each do |talks|
+      tr
+        th = talks.id
+        td = resource_link(talks)

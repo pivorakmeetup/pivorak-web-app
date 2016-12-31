@@ -21,6 +21,7 @@ en:
     status: Status
     true: yes
     false: no
+    tags: Tags
 
   resources:
     errors:
