@@ -6,7 +6,7 @@ describe 'Talks tags' do
   before { visit '/talks' }
 
   it 'shows tags links' do
-    expect(page).to have_link 'all',        count: 1
+    expect(page).to have_link 'All',        count: 1
     expect(page).to have_link 'ruby',       count: 1
     expect(page).to have_link 'rails',      count: 1
     expect(page).to have_link 'javascript', count: 1
