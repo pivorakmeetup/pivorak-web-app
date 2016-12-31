@@ -2,9 +2,9 @@ h2 = t 'talks.plural'
 
 .tags
   ul
-    li = link_to 'all', talks_path
+    li = talks_link title: t('words.all')
     - tags.each do |tag|
-      li = link_to tag.name, talks_path(tag: tag.name)
+      li = talks_tag_link(tag)
 
 table.table
   thead
@@ -15,7 +15,7 @@ table.table
       th
 
   tbody
-    - talks.each do |talks|
+    - talks.each do |talk|
       tr
-        th = talks.id
-        td = resource_link(talks)
+        th = talk.id
+        td = resource_link(talk)

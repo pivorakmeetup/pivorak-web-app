@@ -3,6 +3,7 @@ en:
 
   words:
     app: App
+    all: All
     id: '#id'
     new: New
     edit: Edit
