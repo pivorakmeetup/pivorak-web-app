@@ -3,8 +3,8 @@ module NavigationHelper
     link_to t('events.plural'), events_path
   end
 
-  def talks_link
-    link_to t('talks.plural'), talks_path
+  def talks_link(title: I18n.t('talks.plural'))
+    link_to title, talks_path
   end
 
   def goals_link

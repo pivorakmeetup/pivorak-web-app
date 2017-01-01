@@ -11,6 +11,7 @@ h2 = t 'talks.plural'
         th = t 'events.singular'
         th = t 'talks.speaker'
         th = t 'groups.singular'
+        th = t 'words.tags'
         th
 
     tbody
@@ -21,4 +22,5 @@ h2 = t 'talks.plural'
           td = admin_talk_event_link(talk)
           td = admin_talk_speaker_info(talk)
           td = talk.group&.name
+          td = talk.tag_list
           td = admin_edit_resource_link(talk)

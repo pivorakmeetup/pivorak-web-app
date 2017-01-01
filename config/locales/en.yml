@@ -3,6 +3,7 @@ en:
 
   words:
     app: App
+    all: All
     id: '#id'
     new: New
     edit: Edit
@@ -21,6 +22,7 @@ en:
     status: Status
     true: yes
     false: no
+    tags: Tags
 
   resources:
     errors:

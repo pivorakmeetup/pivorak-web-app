@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '2.3.1'
 
 #=== CORE =======================================
-gem 'rails',             '~> 5.0.0', '>= 5.0.0.1'
+gem 'rails',                           '~> 5.0.1'
 gem 'pg',                               '~> 0.18'
 gem 'puma',                              '~> 3.0'
 
@@ -32,8 +32,8 @@ gem 'uglifier'
 # sidekiq
 gem 'sidekiq'
 gem 'sinatra', '>= 2.0.0.beta2', require: false
-# images
 gem 'carrierwave', '~> 1.0'
+gem 'acts-as-taggable-on',               '~> 4.0'
 
 #=== DEV & TEST =================================
 group :development do
