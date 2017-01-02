@@ -1,9 +1,12 @@
 class Event < ApplicationRecord
   extend FriendlyId
-  mount_uploader :cover, EventCoverUploader
-  friendly_id :title, use: :slugged
+  include Publishable
 
   DEFAULT_LIMIT = 50
+
+  mount_uploader :cover, EventCoverUploader
+
+  friendly_id :title, use: :slugged
 
   has_many :talks
   has_many :visit_requests

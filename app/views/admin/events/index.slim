@@ -10,6 +10,7 @@ h2 = t 'events.plural'
         th = t 'words.title'
         th = t 'events.limitation'
         th = t 'words.date'
+        th.status = t 'words.published'
         th.actions colspan="2"
 
     tbody
@@ -19,6 +20,7 @@ h2 = t 'events.plural'
           td = resource_link(event, target: '_blank')
           td = event.limitation
           td = format_timestamp(event.started_at, time: false)
+          td.status = bool_label(event.published?)
           td.actions
             = admin_edit_resource_link(event)
             = admin_visit_requests_link(event)

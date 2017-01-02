@@ -26,7 +26,7 @@ RSpec.describe 'Members CREATE' do
       expect(page).to have_content 'tester@example.com'
       expect(page).to have_content 'UserFirstName'
       expect(page).to have_content 'UserLastName'
-      expect(page).to have_content 'true'
+      expect(page).to have_content 'yes'
     end
   end
 end

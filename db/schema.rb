@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20163012090709) do
+ActiveRecord::Schema.define(version: 20163012090710) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,10 +32,11 @@ ActiveRecord::Schema.define(version: 20163012090709) do
     t.text     "agenda"
     t.datetime "started_at"
     t.datetime "finished_at"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.integer  "limitation",  default: 50
     t.string   "cover"
+    t.boolean  "published",   default: false
     t.index ["slug"], name: "index_events_on_slug", using: :btree
   end
 
@@ -108,9 +109,10 @@ ActiveRecord::Schema.define(version: 20163012090709) do
     t.string   "slides_url"
     t.integer  "event_id"
     t.integer  "speaker_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.integer  "group_id"
+    t.boolean  "published",   default: false
     t.index ["event_id"], name: "index_talks_on_event_id", using: :btree
     t.index ["slug"], name: "index_talks_on_slug", using: :btree
     t.index ["speaker_id"], name: "index_talks_on_speaker_id", using: :btree

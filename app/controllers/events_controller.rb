@@ -1,12 +1,6 @@
 class EventsController < ApplicationController
   helper_method :visit_request, :event, :events
 
-  def show
-  end
-
-  def index
-  end
-
   private
 
   def visit_request
@@ -18,7 +12,6 @@ class EventsController < ApplicationController
   end
 
   def events
-    @events ||= Event.all
+    @events ||= Event.published
   end
-
 end

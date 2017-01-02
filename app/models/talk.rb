@@ -1,5 +1,7 @@
 class Talk < ApplicationRecord
   extend FriendlyId
+  include Publishable
+
   friendly_id :title, use: :slugged
 
   acts_as_taggable
