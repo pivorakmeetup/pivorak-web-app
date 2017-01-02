@@ -12,6 +12,7 @@ h2 = t 'talks.plural'
         th = t 'talks.speaker'
         th = t 'groups.singular'
         th = t 'words.tags'
+        th.status = t 'words.published'
         th
 
     tbody
@@ -24,3 +25,6 @@ h2 = t 'talks.plural'
           td = talk.group&.name
           td = talk.tag_list
           td = admin_edit_resource_link(talk)
+          td.status = bool_label(talk.published?)
+          td.actions
+            = admin_edit_resource_link(talk)

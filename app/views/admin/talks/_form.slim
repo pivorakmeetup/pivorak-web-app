@@ -11,6 +11,7 @@
         = f.input :group_id, collection: Group.talks, label_method: :name
         = f.input :speaker_id
         = f.input :tag_list, input_html: { value: talk.tag_list.join(', ') }
+        = f.input :published, as: :boolean
 
   .form-actions
     = f.button :submit, class: 'btn btn-success'

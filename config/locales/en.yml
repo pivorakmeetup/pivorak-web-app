@@ -20,9 +20,10 @@ en:
     date: Date
     resource: Resource
     status: Status
-    true: yes
-    false: no
     tags: Tags
+    is_true: 'yes'
+    is_false: 'no'
+    published: Published
 
   resources:
     errors:

@@ -10,7 +10,8 @@
         = f.input :finished_at
 
       .col-md-6
-        = f.input :agenda,      input_html: { rows: 20 }
+        = f.input :agenda,    input_html: { rows: 20 }
+        = f.input :published, as: :boolean
 
   .form-actions
     = f.button :submit, class: 'btn btn-success'
