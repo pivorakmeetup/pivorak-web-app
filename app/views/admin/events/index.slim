@@ -8,6 +8,7 @@ h2 = t 'events.plural'
       tr
         th = t 'words.id'
         th = t 'words.title'
+        th = t 'words.status'
         th = t 'events.limitation'
         th = t 'words.date'
         th.status = t 'words.published'
@@ -18,6 +19,7 @@ h2 = t 'events.plural'
         tr
           td = event.id
           td = resource_link(event, target: '_blank')
+          td = event_status_label(event)
           td = event.limitation
           td = format_timestamp(event.started_at, time: false)
           td.status = bool_label(event.published?)
