@@ -33,5 +33,9 @@ module Admin
     def admin_app_link
       link_to t('words.app'), root_path, class: NAV_LINK_CLASS
     end
+
+    def admin_emails_link
+      link_to t('emails.plural'), admin_emails_path, class: 'nav-link'
+    end
   end
 end
