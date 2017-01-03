@@ -25,6 +25,13 @@ ActiveRecord::Schema.define(version: 20163012090711) do
     t.index ["user_id"], name: "index_donations_on_user_id", using: :btree
   end
 
+  create_table "emails", force: :cascade do |t|
+    t.string   "subject"
+    t.string   "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "events", force: :cascade do |t|
     t.string   "title"
     t.string   "slug"
