@@ -1,6 +1,6 @@
 module Admin
   class EventsController < BaseController
-    helper_method :event, :events
+    helper_method :event, :events, :venues
 
     def new
       @event = Event.new
@@ -23,13 +23,17 @@ module Admin
     end
 
     def events
-      @events ||= Event.order(started_at: :desc)
+      @events ||= Event.order(started_at: :desc).includes(:venue)
+    end
+
+    def venues
+      @venues ||= Venue.all
     end
 
     def event_params
       params.require(:event).permit(
         :title, :description, :agenda, :started_at, :finished_at,
-        :limitation, :cover, :published, :status
+        :limitation, :cover, :published, :status, :venue_id
       )
     end
   end

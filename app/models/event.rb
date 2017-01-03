@@ -15,6 +15,7 @@ class Event < ApplicationRecord
 
   has_many :talks
   has_many :visit_requests
+  belongs_to :venue
 
   scope :display, -> { where(status: [REGISTRATION, PASSED]) }
 
