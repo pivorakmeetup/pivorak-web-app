@@ -9,6 +9,7 @@
         = f.input :limitation
         = f.input :started_at
         = f.input :finished_at
+        = f.input :venue_id, collection: venues
 
       .col-md-6
         = f.input :agenda,    input_html: { rows: 20 }
