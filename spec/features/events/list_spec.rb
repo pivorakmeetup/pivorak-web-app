@@ -1,5 +1,5 @@
 RSpec.describe 'Events LIST' do
-  let!(:event) { create(:event, published: true) }
+  let!(:event) { create(:event) }
 
   before do
     visit "/events"

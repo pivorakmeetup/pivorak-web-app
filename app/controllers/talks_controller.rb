@@ -8,11 +8,9 @@ class TalksController < ApplicationController
   end
 
   def talks
-    @talks ||= if params[:tag]
-                 Talk.tagged_with(params[:tag])
-               else
-                 Talk.all
-               end
+    scope = Talk.published
+
+    @talks ||= params[:tag] ? scope.tagged_with(params[:tag]) : scope
   end
 
   def tags

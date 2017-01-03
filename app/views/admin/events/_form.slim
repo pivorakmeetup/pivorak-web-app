@@ -2,6 +2,7 @@
   .form-inputs
     .row
       .col-md-6
+        = f.input :status, collection: Event.statuses.keys, include_blank: false
         = f.input :title
         = f.input :description, input_html: { rows: 10 }
         = f.input :cover, as: :file

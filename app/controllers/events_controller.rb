@@ -12,6 +12,6 @@ class EventsController < ApplicationController
   end
 
   def events
-    @events ||= Event.published
+    @events ||= Event.display.published
   end
 end
