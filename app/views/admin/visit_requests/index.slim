@@ -15,7 +15,5 @@ h2 = t 'visit_requests.plural'
           td = admin_member_link(visit_request.user)
           td = visit_request_status_label(visit_request.status)
           td.actions
-            - if visit_request.canceled?
               = admin_approve_visit_request_link(event, visit_request)
-            - else
               = admin_cancel_visit_request_link(event, visit_request)

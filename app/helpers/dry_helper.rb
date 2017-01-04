@@ -1,8 +1,8 @@
 module DryHelper
   def resource_link(resource, options = {})
-    link_text = options.delete(:text) || :title
+    text_attr = options.delete(:text) || :title
+    link_text = resource[text_attr] || text_attr
 
-    link_to resource.send(link_text),
-      polymorphic_path(resource), options
+    link_to link_text, polymorphic_path(resource), options
   end
 end

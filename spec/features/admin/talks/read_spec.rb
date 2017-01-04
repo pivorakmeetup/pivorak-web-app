@@ -20,7 +20,7 @@ RSpec.describe 'Talks READ' do
   end
 
   context 'with event assign' do
-    let(:event) { create(:event, title: 'Super Event') }
+    let(:event) { create(:event) }
     let!(:talk_with_event) { create(:talk, title: 'Test Talk with Event', event_id: event.id) }
 
     before do
@@ -28,11 +28,11 @@ RSpec.describe 'Talks READ' do
       visit '/admin/talks'
     end
 
-    it { expect(page).to have_link 'Test Talk with Event' }
-    it { expect(page).to have_link 'Super Event' }
+    it { expect(page).to have_link talk_with_event.title }
+    it { expect(page).to have_link event.title }
     it 'Event click redirect to event#show' do
-      click_link 'Super Event'
-      expect(page).to have_current_path('/events/super-event')
+      click_link event.title
+      expect(page).to have_current_path("/events/#{event.slug}")
     end
   end
 

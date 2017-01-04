@@ -66,10 +66,20 @@ form {
   width: 60px;
 }
 
+.checkboxes.checkbox label {
+  display: block;
+}
+
 //-----------------------------------------------
 //      HELPERS
 //-----------------------------------------------
 .translation_missing {
   color: white !important;
   background: red !important;
+}
+
+.actions {
+  .btn {
+    margin-right: 5px;
+  }
 }

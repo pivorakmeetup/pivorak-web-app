@@ -6,4 +6,8 @@ FactoryGirl.define do
     slides_url  Faker::Internet.url('slideshare.net')
     published   true
   end
+
+  trait :assigned do
+    event
+  end
 end

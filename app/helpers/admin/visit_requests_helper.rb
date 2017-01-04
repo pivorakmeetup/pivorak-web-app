@@ -13,12 +13,16 @@ module Admin
     end
 
     def admin_approve_visit_request_link(event, visit_request)
+      return if visit_request.approved?
+
       link_to t('visit_requests.approve'),
         admin_event_visit_request_approve_path(event, visit_request),
         method: :put, class: 'btn btn-success'
     end
 
     def admin_cancel_visit_request_link(event, visit_request)
+      return if visit_request.canceled?
+
       link_to t('visit_requests.cancel'),
         admin_event_visit_request_cancel_path(event, visit_request),
         method: :put, class: 'btn btn-danger'
