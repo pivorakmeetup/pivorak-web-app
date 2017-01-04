@@ -115,3 +115,11 @@ en:
     cancel: Cancel
     cancel_attendace: Cancel attendance
     plural: Visit Requests
+
+  become_a_speaker:
+    singular: Become a speaker
+    send: Send
+
+  send_mail:
+    sended: Letter was sended
+    error: Error sending letter
