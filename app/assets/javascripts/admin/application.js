@@ -14,4 +14,12 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require jquery_ujs
+//= require simplemde.min
 //= require_tree .
+
+document.addEventListener("turbolinks:load", function() {
+    var SIMPLEMDE_CONTAINER_CLASS = "simplemde-container"; // add this class to text area
+    Array.prototype.forEach.call(document.getElementsByClassName(SIMPLEMDE_CONTAINER_CLASS), function(element) {
+        new SimpleMDE({ element: element });
+    });
+})
