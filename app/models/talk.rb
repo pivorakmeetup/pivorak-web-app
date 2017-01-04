@@ -10,5 +10,7 @@ class Talk < ApplicationRecord
   belongs_to :speaker, class_name: 'User'
   belongs_to :group
 
+  scope :sorted, -> { order(:title) }
+
   validates :title, presence: true
 end

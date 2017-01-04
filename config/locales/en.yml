@@ -24,6 +24,7 @@ en:
     is_true: 'yes'
     is_false: 'no'
     published: Published
+    description: Description
 
   resources:
     errors:
