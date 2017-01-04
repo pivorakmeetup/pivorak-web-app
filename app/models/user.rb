@@ -12,9 +12,13 @@ class User < ApplicationRecord
   has_many :donations,  dependent: :destroy
 
   validates :first_name, :last_name, :slug, presence: true
-  validates :first_name, :last_name, format: { with: LATIN_LETTERS_REGEX,  message: I18n.t('errors.only_latin_letters') }
+  validates :first_name, :last_name, format: {
+    with: LATIN_LETTERS_REGEX,  message: I18n.t('errors.only_latin_letters')
+  }
 
   scope :synthetic, -> { where(synthetic: true) }
+  scope :verified,  -> { where(verified:  true) }
+  scope :newbies,   -> { where(verified:  false) }
 
   def full_name
     "#{first_name} #{last_name}"
@@ -26,11 +30,7 @@ class User < ApplicationRecord
 
   def normalize_friendly_id(string)
     count = User.where(first_name: first_name, last_name: last_name).count
-    if count > 0
-      super + "-" + (count + 1).to_s
-    else
-      super
-    end
-  end
 
+    count > 0 ? super + '-' + (count + 1).to_s : super
+  end
 end

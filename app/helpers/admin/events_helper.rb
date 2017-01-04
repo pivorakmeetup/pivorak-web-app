@@ -16,5 +16,13 @@ module Admin
       content_tag :span, event.status,
         class: ['label', BG_STATUS_CLASS[event.status.to_sym]]
     end
+
+    def event_limitation_data(event)
+      total    = event.limit_total
+      verified = event.limit_verified
+      newbies  = event.limit_newbies
+
+      "#{total} / #{verified} / #{newbies}"
+    end
   end
 end

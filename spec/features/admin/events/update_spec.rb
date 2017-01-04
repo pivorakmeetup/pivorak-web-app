@@ -21,7 +21,7 @@ RSpec.describe 'Events UPDATE' do
       fill_in 'Title',  with: 'Super New Event'
       click_button 'Update Event'
 
-      expect(page).to have_current_path '/events/test-event'
+      expect(page).to have_current_path '/admin/events/test-event/edit'
     end
   end
 end

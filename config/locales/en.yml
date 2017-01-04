@@ -83,9 +83,6 @@ en:
     success: Success
     failure: Failure
 
-  errors:
-    only_latin_letters: 'Only latin letters are allowed'
-
   members:
     singular: Member
     plural: Members
