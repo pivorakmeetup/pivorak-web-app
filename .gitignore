@@ -21,3 +21,4 @@ config/database.yml
 
 .DS_store
 public/uploads
+config/environments/development.rb
