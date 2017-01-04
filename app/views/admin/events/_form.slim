@@ -22,5 +22,6 @@
           .col-md-6 = f.input :limit_verified
 
       .col-md-6
-        = f.input :agenda,    input_html: { rows: 20 }
+        = f.input :agenda,      input_html: { rows: 20 }
         = f.input :published, as: :boolean
+        = f.association :talks, as: :check_boxes, collection: Talk::AvailableForEvent.call(event_id: event.id), item_wrapper_class: 'checkboxes'

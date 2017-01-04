@@ -1,6 +1,22 @@
 h2 = t 'events.singular'
 h3 = event.title
 
+h2 = t 'talks.plural'
+
+table.table
+  thead
+    tr
+      th = t 'words.title'
+      th = t 'words.description'
+      th = t 'talks.speaker'
+
+  tbody
+    - event.talks.includes(:speaker).each do |talk|
+      tr
+        td = talk.title
+        td = talk.description
+        td = talk.speaker&.full_name
+
 - if event.cover.present?
   = image_tag event.cover_url
 

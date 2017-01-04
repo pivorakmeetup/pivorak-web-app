@@ -37,7 +37,7 @@ module Admin
     def event_params
       params.require(:event).permit(
         :title, :description, :agenda, :started_at, :finished_at, :venue_id,
-        :limit_total, :limit_verified, :cover, :published, :status
+        :limit_total, :limit_verified, :cover, :published, :status, talk_ids: []
       )
     end
   end
