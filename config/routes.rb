@@ -18,7 +18,9 @@ Rails.application.routes.draw do
   resources :talks,   only: %i[index show]
   resource  :chat,    only: %i[show create],      controller: :chat
   resource  :profile, only: %i[show edit update], controller: :profile
-  resources :members, only: %i[index show]
+  resources :members, only: %i[index show] do
+    post :become_speaker, to: 'become_speaker#create', on: :collection
+  end
   resources :goals,   only: %i[index show] do
     post :donate, on: :member
   end
