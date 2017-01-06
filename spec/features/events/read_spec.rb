@@ -6,5 +6,4 @@ RSpec.describe 'Events READ' do
   end
 
   it { expect(page).to have_content event.title }
-
 end

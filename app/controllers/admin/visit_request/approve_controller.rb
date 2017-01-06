@@ -1,10 +1,10 @@
 module Admin
   class VisitRequest
-    class ApproveController < ::VisitRequest::BaseController
+    class ApproveController < VisitRequest::BaseController
       def update
         ::VisitRequest::Approve.call(visit_request)
 
-        redirect_to admin_event_visit_requests_path(event)
+        default_redirect
       end
     end
   end

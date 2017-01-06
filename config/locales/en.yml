@@ -25,6 +25,7 @@ en:
     is_false: 'no'
     published: Published
     description: Description
+    list: List
 
   resources:
     errors:
@@ -35,6 +36,7 @@ en:
     edit_resource: 'Edit %{resource}'
     confirm: 'Are you sure ?'
     not_assigned: not assigned
+    unauthorized: 'Please <a href=%{login_url}>login</a> or <a href=%{register_url}>register</a> %{action_message}'
 
   donations:
     success: Thank you, your donation has been accepted!
@@ -50,6 +52,7 @@ en:
     started_at: Started At
     finished_at: Finished At
     limitation: Limitation
+    visitors: Visitors
 
   venues:
     plural: Venues
@@ -107,12 +110,20 @@ en:
 
   visit_requests:
     attend: Attend
-    unauthorized: Please login to attend event
     already_created: Already attending
     approve: Approve
     cancel: Cancel
     cancel_attendace: Cancel attendance
     plural: Visit Requests
+    action: to attend this event
+    main_list: Main
+    waiting_list: Waiting
+    messages:
+      # TODO VS -> Better messages, please
+      pending:  'Your visit request: pending'
+      approved: 'Yahooo.. your visit request: approved'
+      canceled: 'Sorry, but your visit request: canceled'
+      waiting_list: Seems like all seats have been taken, but you always can attend to waiting list
 
   become_a_speaker:
     singular: Become a speaker

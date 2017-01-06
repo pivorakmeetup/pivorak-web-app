@@ -7,8 +7,12 @@ User.where(email: 'pivorak.me@gmail.com').first_or_create!(
   verified:   true
 ).confirm
 
-User.where(email: 'user@mail.com').first_or_create!(
-    first_name: 'User', last_name: 'Mail', password: '123456'
+User.where(email: 'first@example.com').first_or_create!(
+    first_name: 'First', last_name: 'User', password: 'password'
+).confirm
+
+User.where(email: 'second@example.com').first_or_create!(
+    first_name: 'Second', last_name: 'User', password: 'password'
 ).confirm
 
 #=== Groups ====================================================================
