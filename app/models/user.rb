@@ -17,6 +17,7 @@ class User < ApplicationRecord
   }
 
   scope :synthetic, -> { where(synthetic: true) }
+  scope :real,      -> { where(synthetic: false) }
   scope :verified,  -> { where(verified:  true) }
   scope :newbies,   -> { where(verified:  false) }
 
