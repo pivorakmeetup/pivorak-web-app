@@ -19,10 +19,10 @@ module Admin
 
     def event_limitation_data(event)
       total    = event.limit_total
-      verified = event.limit_verified
-      newbies  = event.limit_newbies
+      verified = event.visit_requests.approved.count
+      pending  = event.visit_requests.pending.count
 
-      "#{total} / #{verified} / #{newbies}"
+      "#{total} / #{verified} / #{pending}"
     end
   end
 end
