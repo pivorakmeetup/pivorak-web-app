@@ -10,6 +10,10 @@ FactoryGirl.define do
       admin true
     end
 
+    trait :verified do
+      verified true
+    end
+
     trait :tester do
       email      'tester@example.com'
       first_name 'Tester'

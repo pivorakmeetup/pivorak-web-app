@@ -9,7 +9,7 @@ module Admin
     end
 
     def visit_requests
-      @visit_requests ||= event.visit_requests.includes(:user)
+      @visit_requests ||= event.visit_requests.includes(:user).order(:id)
     end
   end
 end

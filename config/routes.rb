@@ -9,11 +9,9 @@ Rails.application.routes.draw do
 
   #=== MAIN APP =================================
   resources :events,  only: %i[index show] do
-    resources :visit_requests, only: [] do
-      put :cancel, to: 'visit_request/cancel#update'
-      put :attend, to: 'visit_request/attend#update', on: :collection
-    end
+    resources :visit_requests, only: %i[create destroy]
   end
+
   resources :venues,  only: %i[show]
   resources :talks,   only: %i[index show]
   resource  :chat,    only: %i[show create],      controller: :chat
@@ -31,8 +29,9 @@ Rails.application.routes.draw do
       get '/', to: 'home#index'
       resources :events,  except: %i[show destroy] do
         resources :visit_requests, only: %i[index] do
-          put :approve, to: 'visit_request/approve#update'
-          put :cancel, to: 'visit_request/cancel#update'
+          put :approve,     to: 'visit_request/approve#update'
+          put :cancel,      to: 'visit_request/cancel#update'
+          put :toggle_list, to: 'visit_request/toggle_list#update'
         end
       end
       resources :venues,  except: %i[show destroy]

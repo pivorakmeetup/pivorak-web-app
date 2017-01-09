@@ -1,16 +1,15 @@
 class VisitRequest
-  class Attend < ApplicationService
+  class Create < ApplicationService
     def initialize(user, event)
       @user  = user
       @event = event
     end
 
     def call
-      if user.verified? && event.has_free_verified_slots?
-        visit_request.approved!
-      else
-        visit_request.pending!
-      end
+      return visit_request.approved! if user.verified? && event.has_free_slot_for?(user)
+
+      visit_request.pending! unless user.verified? && event.has_free_slot_for?(user)
+      visit_request.waiting_list! unless event.has_free_slot_for?(user)
     end
 
     private

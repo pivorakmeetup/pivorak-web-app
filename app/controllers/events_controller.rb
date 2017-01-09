@@ -3,15 +3,19 @@ class EventsController < ApplicationController
 
   private
 
-  def visit_request
-    @visit_request ||= VisitRequest::FindNotCanceled.call(current_user, event)
-  end
-
   def event
     @event ||= Event.friendly.find(params[:id])
   end
 
   def events
     @events ||= Event.display.published
+  end
+
+  def visit_request
+    return unless current_user
+
+    @visit_request ||= VisitRequest.find_by(
+      user_id: current_user.id, event_id: event.id
+    )
   end
 end
