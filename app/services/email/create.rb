@@ -20,7 +20,7 @@ class Email
     private
 
     def recipient_ids
-      User.all.ids
+      User.real.ids
     end
 
     attr_reader :params
