@@ -37,9 +37,6 @@ RSpec.describe 'Become a speaker features' do
   context 'when params are valid' do
     before do
       visit '/members'
-      mailer = double("mailer")
-      expect(NotifyMailer).to receive(:become_speaker).with(ActionController::Parameters.new(email: email, name: name, text: text).permit!) { mailer }
-      expect(mailer).to receive(:deliver_later) { true }
     end
 
     it 'sends email' do
@@ -47,6 +44,11 @@ RSpec.describe 'Become a speaker features' do
       fill_in 'email',  with: email
       fill_in 'text',  with: text
       click_button 'Send'
+
+      active_job = ActiveJob::Base.queue_adapter.enqueued_jobs[0]
+      expect(active_job[:job]).to eq ActionMailer::DeliveryJob
+      expect(active_job[:args][0]).to eq 'NotifyMailer'
+      expect(active_job[:args][1]).to eq 'become_speaker'
 
       expect(page).to have_content "Letter was sended"
     end

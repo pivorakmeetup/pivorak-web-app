@@ -1,5 +1,6 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'simplecov'
+require 'sidekiq/testing'
 
 if ENV['CI']
   require 'codecov'
@@ -63,6 +64,12 @@ RSpec.configure do |config|
     DatabaseCleaner.cleaning do
       example.run
     end
+  end
+
+  include ActiveJob::TestHelper
+  config.before(:each) do
+    # Clears out the jobs for tests using the fake testing
+    clear_enqueued_jobs
   end
 
   config.expect_with :rspec do |expectations|

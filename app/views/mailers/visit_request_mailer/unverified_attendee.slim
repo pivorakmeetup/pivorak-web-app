@@ -1,0 +1,8 @@
+p
+  | Newbie
+  = link_to @user.full_name, member_url(@user)
+  | wants to attend event
+  = link_to @event.title, event_url(@event)
+p
+  | You can view all requests
+  = link_to 'here', admin_event_visit_requests_url(@event)

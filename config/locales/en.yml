@@ -132,3 +132,11 @@ en:
   send_mail:
     sended: Letter was sended
     error: Error sending letter
+
+  mailers:
+    notify_mailer:
+      become_speaker:
+        subject: I want to be a speaker
+    visit_request_mailer:
+      unverified_attendee:
+        subject: New newbie signed up to event
