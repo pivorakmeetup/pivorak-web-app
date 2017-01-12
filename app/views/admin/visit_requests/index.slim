@@ -6,16 +6,21 @@ h2 = t 'visit_requests.plural'
     thead
       tr
         th = t 'words.name'
-        th.status = t 'words.status'
-        th.status = t 'words.list'
-        th.actions colspan='2'
+        - if event.live?
+          th.status = t 'visit_requests.visited'
+        - else
+          th.status = t 'words.list'
+          th.status colspan='2' = t 'words.status'
 
     tbody
       - visit_requests.each do |visit_request|
         tr
           td = admin_member_link(visit_request.user)
-          td.status = visit_request_status_label(visit_request.status)
-          td.status = visit_request_list_link(event, visit_request)
-          td.actions
-            = admin_approve_visit_request_link(event, visit_request)
-            = admin_cancel_visit_request_link(event, visit_request)
+          - if event.live?
+            td.status = visit_request_visited_link(visit_request)
+          - else
+            td.status = visit_request_list_link(visit_request)
+            td.status = visit_request_status_label(visit_request.status)
+            td.status
+              = admin_approve_visit_request_link(visit_request)
+              = admin_cancel_visit_request_link(visit_request)
