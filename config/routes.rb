@@ -41,6 +41,7 @@ Rails.application.routes.draw do
       resources :members, except: %i[show destroy]
       resources :groups,  except: %i[show]
       resources :emails, only: %i[new show index create]
+      resources :friends,  except: %i[show destroy]
     end
     require 'sidekiq/web'
     mount Sidekiq::Web => '/sidekiq'

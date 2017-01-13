@@ -17,7 +17,7 @@ RSpec.describe 'Events UPDATE' do
   end
 
   context 'valid input' do
-    it 'create new event' do
+    it 'updates event' do
       fill_in 'Title',  with: 'Super New Event'
       click_button 'Update Event'
 

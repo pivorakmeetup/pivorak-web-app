@@ -135,3 +135,7 @@ en:
   send_mail:
     sended: Letter was sended
     error: Error sending letter
+
+  friends:
+    plural: Friends
+    singular: Friend
