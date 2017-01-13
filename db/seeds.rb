@@ -19,3 +19,7 @@ User.where(email: 'second@example.com').first_or_create!(
 [:regular, :lighting, :workshop].each do |talk_type|
   Group.where(resource: Talk, name: talk_type).first_or_create!
 end
+
+[:sponsors, :meetups, :books, :resources].each do |friend_type|
+  Group.where(resource: Friend, name: friend_type).first_or_create!
+end
