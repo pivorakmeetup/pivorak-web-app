@@ -118,6 +118,9 @@ en:
     action: to attend this event
     main_list: Main
     waiting_list: Waiting
+    visited: Visited
+    hello: Hello!
+    waiting: Waiting
     messages:
       # TODO VS -> Better messages, please
       pending:  'Your visit request: pending'

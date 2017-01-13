@@ -184,6 +184,7 @@ ActiveRecord::Schema.define(version: 20170112212400) do
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
     t.boolean  "waiting_list", default: false
+    t.boolean  "visited",      default: false
   end
 
 end
