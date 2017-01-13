@@ -17,6 +17,7 @@ gem 'bootstrap',                '~> 4.0.0.alpha5'
 #=== FEATUES ====================================
 gem 'devise'
 gem 'stripe'
+gem 'pg_search'
 gem 'interactor-rails',                  '~> 2.0'
 gem 'omniauth-facebook'
 gem 'omniauth-github'
