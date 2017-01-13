@@ -37,5 +37,9 @@ module Admin
     def admin_emails_link
       link_to t('emails.plural'), admin_emails_path, class: 'nav-link'
     end
+
+    def admin_friends_link
+      link_to t('friends.plural'), admin_friends_path, class: 'nav-link'
+    end
   end
 end

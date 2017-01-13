@@ -6,7 +6,7 @@
 require 'dry_helpers/model'
 
 class Group < ApplicationRecord
-  RESOURCES = [ Talk ] # add groupable model here please...
+  RESOURCES = [ Talk, Friend ] # add groupable model here please...
 
   # define socopes for each resource
   RESOURCES.each do |resource|

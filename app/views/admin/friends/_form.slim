@@ -1,0 +1,12 @@
+= simple_form_for [:admin, friend] do |f|
+  .actions.clearfix
+    = f.button :submit, class: 'btn btn-success float-xs-right'
+
+  .form-inputs
+    .row
+      .col-md-12
+        = f.input :name
+        = f.input :description, input_html: { rows: 10 }
+        = f.input :logo, as: :file
+        = f.input :link, as: :url
+        = f.input :group_id, collection: Group.friends, label_method: :name
