@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  include ::Searchable
+
   extend FriendlyId
   friendly_id :full_name, use: :slugged
 

@@ -31,7 +31,7 @@ module Admin
     end
 
     def members
-      @members ||= User.order(:id)
+      @members ||= params[:query] ? User.by_email(params[:query]) : User.order(:id)
     end
 
     def users_params
