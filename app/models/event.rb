@@ -1,4 +1,6 @@
 class Event < ApplicationRecord
+  include ::Searchable
+
   extend FriendlyId
   include Publishable
 
