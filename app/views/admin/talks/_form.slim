@@ -9,7 +9,7 @@
       .col-md-6
         = f.input :event_id, collection: Event.all,   label_method: :title
         = f.input :group_id, collection: Group.talks, label_method: :name
-        = f.input :speaker_id
+        = f.input :speaker_id, collection: User.sorted, label_method: :reverse_full_name
         = f.input :tag_list, input_html: { value: talk.tag_list.join(', ') }
         = f.input :published, as: :boolean
 
