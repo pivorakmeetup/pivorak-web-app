@@ -364,6 +364,8 @@ GEM
       unf_ext
     unf_ext (0.0.7.2)
     uniform_notifier (1.10.0)
+    unobtrusive_flash (3.3.1)
+      railties
     url (0.3.2)
     vcr (3.0.3)
     warden (1.2.6)
@@ -441,6 +443,7 @@ DEPENDENCIES
   turbolinks (~> 5.0)
   tzinfo-data
   uglifier
+  unobtrusive_flash (>= 3)
   vcr
   web-console
   webmock
