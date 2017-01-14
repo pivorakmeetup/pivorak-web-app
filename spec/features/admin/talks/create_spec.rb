@@ -1,6 +1,7 @@
 RSpec.describe 'Talks CREATE' do
+  let(:admin) { create(:user, :admin) }
   before do
-    assume_admin_logged_in
+    assume_admin_logged_in(admin)
     visit '/admin/talks/new'
   end
 
@@ -32,4 +33,17 @@ RSpec.describe 'Talks CREATE' do
       expect(page).to have_content 'ruby rails tags'
     end
   end
+
+  context 'with speaker' do
+    it 'create talk with speaker' do
+      fill_in 'Title',    with: 'Talk with Tags'
+
+      select admin.reverse_full_name, :from => 'talk[speaker_id]'
+
+      click_button 'Create Talk'
+
+      expect(Talk.last.speaker).to eq admin
+    end
+  end
+
 end

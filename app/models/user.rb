@@ -12,6 +12,7 @@ class User < ApplicationRecord
 
   has_many :identities, dependent: :destroy
   has_many :donations,  dependent: :destroy
+  has_many :talks, foreign_key: :speaker_id
 
   validates :first_name, :last_name, :slug, presence: true
   validates :first_name, :last_name, format: {
@@ -22,10 +23,17 @@ class User < ApplicationRecord
   scope :real,      -> { where(synthetic: false) }
   scope :verified,  -> { where(verified:  true) }
   scope :newbies,   -> { where(verified:  false) }
+  scope :sorted,   -> { order(:last_name).order(:first_name) }
 
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  def reverse_full_name
+    "#{last_name} #{first_name}"
+  end
+
+
 
   def should_generate_new_friendly_id?
     slug.blank? || first_name_changed? || last_name_changed?
