@@ -39,6 +39,11 @@ describe VisitRequest::Create do
       context 'event has free slots for newbies' do
         before do
           allow(event).to receive(:has_free_slot_for?).with(user) { true }
+
+          mailer = double('mailer')
+          expect(VisitRequestMailer).to receive(:unverified_attendee) { mailer }
+          expect(mailer).to receive(:deliver_later)
+
           subject.call
         end
 

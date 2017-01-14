@@ -8,7 +8,10 @@ class VisitRequest
     def call
       return visit_request.approved! if user.verified? && event.has_free_slot_for?(user)
 
-      visit_request.pending! unless user.verified? && event.has_free_slot_for?(user)
+      unless user.verified? && event.has_free_slot_for?(user)
+        visit_request.pending!
+        VisitRequestMailer.unverified_attendee(visit_request.id).deliver_later
+      end
       visit_request.waiting_list! unless event.has_free_slot_for?(user)
     end
 
