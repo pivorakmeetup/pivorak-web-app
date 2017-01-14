@@ -20,6 +20,13 @@ RSpec.describe 'Visit Requests ATTEND' do
         it { expect(page).to_not have_link 'Attend' }
         it { expect(page).to have_content I18n.t('visit_requests.messages.pending') }
         it { expect(page).to have_link 'Cancel attendance' }
+
+        it 'enques job' do
+          active_job = ActiveJob::Base.queue_adapter.enqueued_jobs[0]
+          expect(active_job[:job]).to eq ActionMailer::DeliveryJob
+          expect(active_job[:args][0]).to eq 'VisitRequestMailer'
+          expect(active_job[:args][1]).to eq 'unverified_attendee'
+        end
       end
 
       context 'as verified member' do

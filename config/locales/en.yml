@@ -146,3 +146,11 @@ en:
   friends:
     plural: Friends
     singular: Friend
+
+  mailers:
+    notify_mailer:
+      become_speaker:
+        subject: I want to be a speaker
+    visit_request_mailer:
+      unverified_attendee:
+        subject: New newbie signed up to event

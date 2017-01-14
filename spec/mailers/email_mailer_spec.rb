@@ -13,7 +13,7 @@ describe EmailMailer do
     it "renders the headers" do
       expect(mail.subject).to eq(email.subject)
       expect(mail.to).to eq([user.email])
-      expect(mail.from).to eq(["from@example.com"])
+      expect(mail.from).to eq([ApplicationMailer::PIVORAK_EMAIL])
     end
 
     it "renders the body" do
