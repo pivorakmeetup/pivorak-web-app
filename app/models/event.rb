@@ -1,9 +1,12 @@
 class Event < ApplicationRecord
+  include ::Searchable
+
   extend FriendlyId
   include Publishable
 
   PLANNED       = :planned
   REGISTRATION  = :registration
+  LIVE          = :live
   PASSED        = :passed
   DEFAULT_LIMIT = 50
 
@@ -11,7 +14,7 @@ class Event < ApplicationRecord
 
   friendly_id :title, use: :slugged
 
-  enum status: [PLANNED, REGISTRATION, PASSED]
+  enum status: [PLANNED, REGISTRATION, LIVE, PASSED]
 
   belongs_to :venue
 
@@ -28,6 +31,7 @@ class Event < ApplicationRecord
     limit_total - limit_verified
   end
 
+  # TODO VS -> Extract all predicates to EventPolicy
   def approved_visitors(type)
     return unless %i[verified newbies].include?(type)
 

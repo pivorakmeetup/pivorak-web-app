@@ -53,6 +53,13 @@ en:
     finished_at: Finished At
     limitation: Limitation
     visitors: Visitors
+    notifications:
+      create:
+        success: Event was successfully created
+      update:
+        success: Event was successfully updated
+
+
 
   venues:
     plural: Venues
@@ -118,6 +125,9 @@ en:
     action: to attend this event
     main_list: Main
     waiting_list: Waiting
+    visited: Visited
+    hello: Hello!
+    waiting: Waiting
     messages:
       # TODO VS -> Better messages, please
       pending:  'Your visit request: pending'
@@ -132,6 +142,10 @@ en:
   send_mail:
     sended: Letter was sended
     error: Error sending letter
+
+  friends:
+    plural: Friends
+    singular: Friend
 
   mailers:
     notify_mailer:

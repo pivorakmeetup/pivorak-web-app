@@ -29,9 +29,10 @@ Rails.application.routes.draw do
       get '/', to: 'home#index'
       resources :events,  except: %i[show destroy] do
         resources :visit_requests, only: %i[index] do
-          put :approve,     to: 'visit_request/approve#update'
-          put :cancel,      to: 'visit_request/cancel#update'
-          put :toggle_list, to: 'visit_request/toggle_list#update'
+          put :approve,      to: 'visit_request/approve#update'
+          put :cancel,       to: 'visit_request/cancel#update'
+          put :toggle_list,  to: 'visit_request/toggle_list#update'
+          put :toggle_visit, to: 'visit_request/toggle_visit#update'
         end
       end
       resources :venues,  except: %i[show destroy]
@@ -40,6 +41,7 @@ Rails.application.routes.draw do
       resources :members, except: %i[show destroy]
       resources :groups,  except: %i[show]
       resources :emails, only: %i[new show index create]
+      resources :friends,  except: %i[show destroy]
     end
     require 'sidekiq/web'
     mount Sidekiq::Web => '/sidekiq'

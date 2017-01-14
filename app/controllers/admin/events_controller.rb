@@ -9,11 +9,21 @@ module Admin
     def create
       @event = Event.new(event_params)
 
-      event.save ? default_redirect : render(:new)
+      if event.save
+        flash_success(:events)
+        default_redirect
+      else
+        render(:new)
+      end
     end
 
     def update
-      event.update(event_params) ? default_redirect : render(:edit)
+      if event.update(event_params)
+        flash_success(:events)
+        default_redirect
+      else
+        render(:edit)
+      end
     end
 
     private
