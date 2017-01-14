@@ -13,6 +13,7 @@ gem 'turbolinks',                        '~> 5.0'
 gem 'slim-rails',                        '~> 3.1'
 gem 'jquery-rails'
 gem 'bootstrap',                '~> 4.0.0.alpha5'
+gem 'unobtrusive_flash', '>=3'
 
 #=== FEATUES ====================================
 gem 'devise'

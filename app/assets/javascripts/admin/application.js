@@ -12,9 +12,13 @@
 //
 //= require turbolinks
 //= require jquery
+// for bootstrap tooltips
+//= require tether.min
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require simplemde.min
+//= require unobtrusive_flash
+//= require unobtrusive_flash_bootstrap
 //= require_tree .
 
 document.addEventListener("turbolinks:load", function() {
@@ -23,3 +27,10 @@ document.addEventListener("turbolinks:load", function() {
         new SimpleMDE({ element: element });
     });
 })
+
+document.addEventListener('DOMContentLoaded', function() {
+    UnobtrusiveFlash.flashOptions['timeout'] = 3000;
+})
+
+
+
