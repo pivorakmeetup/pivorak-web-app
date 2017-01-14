@@ -19,8 +19,7 @@ module Admin
                    Email.find(params[:id])
                  else
                    Email.new
-      end
-
+                 end
     end
 
     def emails

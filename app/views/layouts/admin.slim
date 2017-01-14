@@ -9,4 +9,6 @@ html
   body
     .container
       header == render 'layouts/admin/header'
-      main    = yield
+      main
+        .unobtrusive-flash-container
+        = yield
