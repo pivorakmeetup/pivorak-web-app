@@ -27,7 +27,7 @@ module EventsHelper
   def waiting_list_message
     return unless current_user
 
-    return if event.has_free_slot_for?(current_user)
+    return if Event::SlotsPolicy.new(event).has_free_slot_for?(current_user)
     return if event.visitors.include?(current_user)
 
     t('visit_requests.messages.waiting_list')

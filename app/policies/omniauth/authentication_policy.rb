@@ -18,7 +18,7 @@ module Omniauth
     end
 
     def persisted?
-      user && user.persisted? && identity && identity.persisted?
+      user&.persisted? && identity&.persisted?
     end
   end
 end
