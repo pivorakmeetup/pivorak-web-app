@@ -1,9 +1,12 @@
 module Users
   class RegistrationsController < Devise::RegistrationsController
     def create
-      user = User::CheckSynthetic.call(params[:user][:email])
+      synthetic_user = User::CheckSynthetic.call(params[:user][:email])
+      return redirect_to(new_user_password_path(synthetic: synthetic_user.email)) if synthetic_user
 
-      user ? redirect_to(new_user_password_path(synthetic: user.email)) : super
+      super
+
+      NotifyMailer.new_user_registered(resource.id).deliver_later if resource.persisted?
     end
 
     protected
