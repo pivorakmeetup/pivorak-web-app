@@ -12,7 +12,7 @@ describe VisitRequestMailer do
     it "renders the headers" do
       expect(mail.subject).to eq('New newbie signed up to event')
       expect(mail.to).to eq([ApplicationMailer::PIVORAK_EMAIL])
-      expect(mail.from).to eq([user.email])
+      expect(mail.from).to eq([ApplicationMailer::NO_REPLY_EMAIL])
     end
 
     it "renders the body" do
