@@ -1,3 +1,6 @@
 == render 'profile'
 - if member_talks.any?
   == render 'talks'
+
+- if visited_events.any?
+  == render 'events'
