@@ -45,7 +45,7 @@ RSpec.describe 'Become a speaker features' do
       fill_in 'text',  with: text
       click_button 'Send'
 
-      active_job = ActiveJob::Base.queue_adapter.enqueued_jobs[0]
+      active_job = active_jobs[0]
       expect(active_job[:job]).to eq ActionMailer::DeliveryJob
       expect(active_job[:args][0]).to eq 'NotifyMailer'
       expect(active_job[:args][1]).to eq 'become_speaker'
