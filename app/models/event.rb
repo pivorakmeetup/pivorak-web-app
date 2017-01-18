@@ -6,6 +6,7 @@ class Event < ApplicationRecord
 
   PLANNED       = :planned
   REGISTRATION  = :registration
+  CONFIRMATION  = :confirmation
   LIVE          = :live
   PASSED        = :passed
   DEFAULT_LIMIT = 50
@@ -14,7 +15,7 @@ class Event < ApplicationRecord
 
   friendly_id :title, use: :slugged
 
-  enum status: [PLANNED, REGISTRATION, LIVE, PASSED]
+  enum status: [PLANNED, REGISTRATION, CONFIRMATION, LIVE, PASSED]
 
   belongs_to :venue
 
@@ -22,7 +23,7 @@ class Event < ApplicationRecord
   has_many :visit_requests
   has_many :visitors, through: :visit_requests, source: :user
 
-  scope :display, -> { where(status: [REGISTRATION, PASSED]) }
+  scope :display, -> { where.not(status: PLANNED) }
 
   validates :title, :limit_total, :limit_verified, presence: true
   validates_with LimitsValidator

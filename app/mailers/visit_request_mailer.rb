@@ -4,8 +4,18 @@ class VisitRequestMailer < ApplicationMailer
     @user = visit_request.user
     @event = visit_request.event
 
-    mail(from: NO_REPLY_EMAIL,
-         subject: I18n.t('mailers.visit_request_mailer.unverified_attendee.subject'),
-         to: PIVORAK_EMAIL)
+    mail to:      PIVORAK_EMAIL,
+         from:    NO_REPLY_EMAIL,
+         subject: I18n.t('mailers.visit_request_mailer.unverified_attendee.subject')
+
+  end
+
+  def confirmation(visit_request)
+    @visit_request = visit_request
+    @event         = @visit_request.event
+    @user          = @visit_request.user
+
+    mail to:      @user.email,
+         subject: "#{@event.title} Final Confirmation"
   end
 end

@@ -2,8 +2,10 @@ class VisitRequest < ApplicationRecord
   PENDING   = :pending
   APPROVED  = :approved
   CANCELED  = :canceled
+  CONFIRMED = :confirmed
+  REFUSED   = :refused
 
-  enum status: [PENDING, APPROVED, CANCELED]
+  enum status:  [PENDING, APPROVED, CANCELED, CONFIRMED, REFUSED]
 
   validates :event_id, :user_id, presence: true
 
@@ -20,5 +22,9 @@ class VisitRequest < ApplicationRecord
 
   def waiting_list!
     update(waiting_list: true)
+  end
+
+  def final_decision?
+    confirmed? || refused?
   end
 end

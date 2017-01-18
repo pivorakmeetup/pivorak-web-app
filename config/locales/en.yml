@@ -53,6 +53,7 @@ en:
     finished_at: Finished At
     limitation: Limitation
     visitors: Visitors
+    send_confirmations: Send Confirmations
     notifications:
       create:
         success: Event was successfully created
@@ -128,12 +129,17 @@ en:
     visited: Visited
     hello: Hello!
     waiting: Waiting
+    confirm: Confirm
+    refuse: Refuse
     messages:
       # TODO VS -> Better messages, please
       pending:  'Your visit request: pending'
       approved: 'Yahooo.. your visit request: approved'
       canceled: 'Sorry, but your visit request: canceled'
       waiting_list: Seems like all seats have been taken, but you always can attend to waiting list
+      please_confirm: Please, confirm your final attendance
+      see_you: See you at the event!
+      so_pity: So pity that you change your mind. See you at the next event.
 
   become_a_speaker:
     singular: Become a speaker
