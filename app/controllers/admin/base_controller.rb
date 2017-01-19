@@ -12,6 +12,5 @@ module Admin
     def flash_error(resource_name)
       flash[:error] = t("#{resource_name.to_s}.notifications.#{params[:action]}.error")
     end
-
   end
 end

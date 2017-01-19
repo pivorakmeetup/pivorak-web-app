@@ -1,6 +1,7 @@
 = simple_form_for [:admin, event] do |f|
   .actions.clearfix
     = resource_link(event, text: 'Preview', target: '_blank', class: 'btn btn-primary float-xs-right')
+    = send_confirmation_emails_link(event)
     = f.button :submit, class: 'btn btn-success float-xs-right'
 
   .form-inputs
@@ -24,4 +25,6 @@
       .col-md-6
         = f.input :agenda,    input_html: { rows: 20, class: Simplemde::CONTAINER_CLASS }
         = f.input :published, as: :boolean
-        = f.association :talks, as: :check_boxes, collection: Talk::AvailableForEvent.call(event_id: event.id), item_wrapper_class: 'checkboxes'
+        = f.association :talks, as: :check_boxes,
+          collection: Talk::AvailableForEvent.call(event_id: event.id),
+          item_wrapper_class: 'checkboxes'
