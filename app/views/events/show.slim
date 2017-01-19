@@ -20,11 +20,7 @@ table.table
 - if event.cover.present?
   = image_tag event.cover_url
 
-div = visit_request_status_message
-div = waiting_list_message
-
-div
-  = cancel_event_attendace_link(event)
-  = attend_event_link(event)
+== render 'attendance'
+== render 'confirmation'
 
 div = unauthorized_message(t 'visit_requests.action')

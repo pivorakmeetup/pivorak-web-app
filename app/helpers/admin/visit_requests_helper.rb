@@ -3,8 +3,10 @@ module Admin
 
     STATUS_CLASS = {
         ::VisitRequest::PENDING => 'bg-info',
-        ::VisitRequest::APPROVED => 'bg-success',
-        ::VisitRequest::CANCELED => 'bg-danger'
+        ::VisitRequest::APPROVED => 'bg-primary',
+        ::VisitRequest::CANCELED => 'bg-danger',
+        ::VisitRequest::CONFIRMED => 'bg-success',
+        ::VisitRequest::REFUSED => 'bg-inverse'
     }
 
     def visit_request_status_label(status)

@@ -1,5 +1,11 @@
 class VisitRequestsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: %i[create destroy]
+
+  def show
+    VisitRequest::FinalConfirmation.call(visit_request, params)
+
+    default_redirect
+  end
 
   def create
     VisitRequest::Create.call(current_user, event)
