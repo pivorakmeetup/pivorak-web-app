@@ -43,4 +43,9 @@ class User < ApplicationRecord
 
     count > 0 ? super + '-' + (count + 1).to_s : super
   end
+
+  # for sending emails in background
+  def send_devise_notification(notification, *args)
+    devise_mailer.send(notification, self, *args).deliver_later
+  end
 end
