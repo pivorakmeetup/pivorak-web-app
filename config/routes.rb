@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     resources :visit_requests, only: %i[create destroy]
   end
 
+  resources :speakers,  only: %i[index]
+
   resources :venues,  only: %i[show]
   resources :talks,   only: %i[index show]
   resource  :chat,    only: %i[show create],      controller: :chat

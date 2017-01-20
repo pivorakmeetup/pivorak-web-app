@@ -154,3 +154,7 @@ en:
     visit_request_mailer:
       unverified_attendee:
         subject: New newbie signed up to event
+
+  speakers:
+    plural: Speakers
+    singular: Speaker

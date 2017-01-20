@@ -19,6 +19,10 @@ module NavigationHelper
     link_to t('members.plural'), members_path
   end
 
+  def speakers_link
+    link_to t('speakers.plural'), speakers_path
+  end
+
   def logout_link
     link_to t('devise.base.logout'), destroy_user_session_path, method: :delete
   end
