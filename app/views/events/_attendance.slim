@@ -1,0 +1,6 @@
+- if event.registration? && current_user
+  div = visit_request_status_message(visit_request)
+  div = waiting_list_message
+  div
+    = cancel_event_attendace_link(visit_request)
+    = attend_event_link(event, visit_request)

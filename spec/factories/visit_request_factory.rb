@@ -3,5 +3,9 @@ FactoryGirl.define do
     event
     user
     status VisitRequest::PENDING
+
+    trait :visited do
+      visited true
+    end
   end
 end

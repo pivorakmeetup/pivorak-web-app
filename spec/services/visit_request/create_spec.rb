@@ -12,7 +12,7 @@ describe VisitRequest::Create do
 
       context 'event has free slots for verified users' do
         before do
-          allow(event).to receive(:has_free_slot_for?).with(user) { true }
+          allow_any_instance_of(Event::SlotsPolicy).to receive(:has_free_slot_for?).with(user) { true }
           subject.call
         end
 
@@ -23,7 +23,7 @@ describe VisitRequest::Create do
 
       context 'event not has free slots for verified users' do
         before do
-          allow(event).to receive(:has_free_slot_for?).with(user) { false }
+          allow_any_instance_of(Event::SlotsPolicy).to receive(:has_free_slot_for?).with(user) { false }
           subject.call
         end
 
@@ -38,7 +38,7 @@ describe VisitRequest::Create do
 
       context 'event has free slots for newbies' do
         before do
-          allow(event).to receive(:has_free_slot_for?).with(user) { true }
+          allow_any_instance_of(Event::SlotsPolicy).to receive(:has_free_slot_for?).with(user) { true }
 
           mailer = double('mailer')
           expect(VisitRequestMailer).to receive(:unverified_attendee) { mailer }
@@ -54,7 +54,7 @@ describe VisitRequest::Create do
 
       context 'event not has free slots for newbies' do
         before do
-          allow(event).to receive(:has_free_slot_for?).with(user) { false }
+          allow_any_instance_of(Event::SlotsPolicy).to receive(:has_free_slot_for?).with(user) { false }
           subject.call
         end
 

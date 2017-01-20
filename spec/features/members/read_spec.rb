@@ -45,4 +45,21 @@ RSpec.describe 'Member READ' do
       end
     end
   end
+
+  describe 'member events' do
+    it 'shows member visited events' do
+      user = create(:user)
+      visited_event = create(:event)
+      not_visited_event = create(:event, title: 'not visited')
+      not_visited_event_2 = create(:event, title: 'not visited-2')
+      create(:visit_request, event: not_visited_event, user: user)
+      create(:visit_request, :visited, event: visited_event, user: user)
+      create(:visit_request, :visited, event: not_visited_event_2)
+
+      visit "/members/#{user.id}"
+
+      expect(page).to have_link(visited_event.title, "events/#{visited_event.slug}")
+      expect(page).to_not have_link(not_visited_event.title, "events/#{not_visited_event.slug}")
+    end
+  end
 end
