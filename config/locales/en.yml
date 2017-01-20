@@ -163,3 +163,7 @@ en:
     visit_request_mailer:
       unverified_attendee:
         subject: New newbie signed up to event
+
+  synthetic_user:
+    reset_password: We have already created account for you. Please check email for resetting your email
+
