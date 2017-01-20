@@ -1,5 +1,5 @@
 module Admin
-  module VisitRequest
+  class VisitRequest
     class VisitRequestsController < ::Admin::BaseController
       helper_method :visit_requests, :talk
 
