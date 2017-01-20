@@ -36,7 +36,7 @@ RSpec.describe 'Users Sign Up' do
 
       click_button 'Sign up'
 
-      active_job = active_jobs[0]
+      active_job = active_jobs.last
       expect(active_job[:job]).to eq ActionMailer::DeliveryJob
       expect(active_job[:args][0]).to eq 'NotifyMailer'
       expect(active_job[:args][1]).to eq 'new_user_registered'
