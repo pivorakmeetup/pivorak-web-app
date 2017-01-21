@@ -1,4 +1,4 @@
-#=== Users =====================================================================
+#=== Users ====================================================================
 User.where(email: 'pivorak.me@gmail.com').first_or_create!(
   first_name: 'Pivorak',
   last_name:  'Admin',
@@ -15,7 +15,7 @@ User.where(email: 'second@example.com').first_or_create!(
     first_name: 'Second', last_name: 'User', password: 'password'
 ).confirm
 
-#=== Groups ====================================================================
+#=== Groups ===================================================================
 [:regular, :lighting, :workshop].each do |talk_type|
   Group.where(resource: Talk, name: talk_type).first_or_create!
 end
@@ -23,3 +23,7 @@ end
 [:sponsors, :meetups, :books, :resources].each do |friend_type|
   Group.where(resource: Friend, name: friend_type).first_or_create!
 end
+
+#=== Pages ====================================================================
+Page.where(title: 'About Us', body: '...', url: 'about-us').first_or_create!
+Page.where(title: 'Contacts', body: '...', url: 'contacts').first_or_create!

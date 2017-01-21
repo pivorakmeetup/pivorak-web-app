@@ -7,7 +7,7 @@
 #   expect_an_error resource_title: :blank
 # end
 #
-def expect_an_error(hash_pair = {})
+def expect_an_error(hash_pair = {}, no = false)
   field     = hash_pair.keys.first
   value     = hash_pair.values.first
   error_div = "div.#{field}.has-error"
@@ -20,8 +20,17 @@ def expect_an_error(hash_pair = {})
     value
   end
 
-  expect(page).to have_css(error_div)
-  expect(find("#{error_div}")).to have_content(msg)
+  to_or_not = no ? :not_to : :to
+
+  expect(page).send(to_or_not, have_css(error_div))
+
+  return if no
+
+  expect(find("#{error_div}")).send(to_or_not, have_content(msg))
+end
+
+def expect_not_an_error(hash_pair = {})
+  expect_an_error(hash_pair, true)
 end
 
 # Assume regular user (member) is logged in

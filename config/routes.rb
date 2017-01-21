@@ -35,10 +35,10 @@ Rails.application.routes.draw do
             post :send_confirmations, to: 'visit_request/send_confirmations#create'
           end
 
-          put  :approve,       to: 'visit_request/approve#update'
-          put  :cancel,        to: 'visit_request/cancel#update'
-          put  :toggle_list,   to: 'visit_request/toggle_list#update'
-          put  :toggle_visit,  to: 'visit_request/toggle_visit#update'
+          put  :approve,      to: 'visit_request/approve#update'
+          put  :cancel,       to: 'visit_request/cancel#update'
+          put  :toggle_list,  to: 'visit_request/toggle_list#update'
+          put  :toggle_visit, to: 'visit_request/toggle_visit#update'
         end
       end
       resources :venues,  except: %i[show destroy]
@@ -46,10 +46,14 @@ Rails.application.routes.draw do
       resources :goals,   except: %i[show destroy]
       resources :members, except: %i[show destroy]
       resources :groups,  except: %i[show]
-      resources :emails, only: %i[new show index create]
-      resources :friends,  except: %i[show destroy]
+      resources :emails,  only:   %i[new show index create]
+      resources :friends, except: %i[show destroy]
+      resources :pages,   except: %i[show]
     end
     require 'sidekiq/web'
     mount Sidekiq::Web => '/sidekiq'
   end
+
+  # This route must (!) be always (!) at the bottom of this file (!)
+  get '/:page_url', to: 'pages#show'
 end
