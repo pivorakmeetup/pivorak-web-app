@@ -3,9 +3,24 @@ FactoryGirl.define do
     provider Devise.omniauth_providers.sample
     uid      Faker::Number.number(16)
     info {{
-      email: Faker::Internet.email,
-      first_name:  Faker::Name.first_name,
+      email:      Faker::Internet.email,
+      first_name: Faker::Name.first_name,
       last_name:  Faker::Name.last_name
+    }}
+
+    initialize_with { attributes }
+
+    after(:build) do |instance, _|
+      instance[:info][:name] = "#{instance[:info].values_at(:first_name, :last_name).join(" ")}"
+    end
+  end
+
+  factory :twitter_params, class: Hash do
+    provider 'twitter'
+    uid      Faker::Number.number(16)
+    info {{
+      email: Faker::Internet.email,
+      name:  Faker::Name.name
     }}
 
     initialize_with { attributes }

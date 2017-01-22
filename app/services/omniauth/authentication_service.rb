@@ -1,11 +1,10 @@
 module Omniauth
   class AuthenticationService
     delegate :authenticated?, to: :policy
+    delegate :uid, :provider, :first_name, :last_name, :email, to: :resolver
 
     def initialize(params)
-      @uid          = params[:uid]
-      @provider     = params[:provider]
-      @first_name, @last_name, @email = params.fetch(:info, {}).values_at(:first_name, :last_name, :email)
+      @params = params
     end
 
     def authenticate
@@ -14,7 +13,11 @@ module Omniauth
 
     private
 
-    attr_reader :uid, :provider, :email, :first_name, :last_name
+    attr_reader :params
+
+    def resolver
+      @resolver ||= ::Omniauth::Resolver.call(params)
+    end
 
     def policy
       @policy ||= AuthenticationPolicy.new(
