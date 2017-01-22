@@ -53,6 +53,7 @@ en:
     finished_at: Finished At
     limitation: Limitation
     visitors: Visitors
+    attendees: Attendees
     send_confirmations: Send Confirmations
     notifications:
       create:

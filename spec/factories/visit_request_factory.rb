@@ -4,6 +4,11 @@ FactoryGirl.define do
     user
     status VisitRequest::PENDING
 
+    trait :final do
+      status VisitRequest::APPROVED
+      visited { true }
+    end
+
     trait :visited do
       visited true
     end
