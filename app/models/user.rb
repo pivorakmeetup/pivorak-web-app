@@ -34,8 +34,6 @@ class User < ApplicationRecord
     "#{last_name} #{first_name}"
   end
 
-
-
   def should_generate_new_friendly_id?
     slug.blank? || first_name_changed? || last_name_changed?
   end
@@ -44,5 +42,10 @@ class User < ApplicationRecord
     count = User.where(first_name: first_name, last_name: last_name).count
 
     count > 0 ? super + '-' + (count + 1).to_s : super
+  end
+
+  # for sending emails in background
+  def send_devise_notification(notification, *args)
+    devise_mailer.send(notification, self, *args).deliver_later
   end
 end

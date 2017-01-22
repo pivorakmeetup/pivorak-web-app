@@ -3,6 +3,8 @@ module Admin
     BG_STATUS_CLASS = {
       Event::PLANNED => 'bg-primary',
       Event::REGISTRATION => 'bg-success',
+      Event::CONFIRMATION => 'bg-warning',
+      Event::LIVE => 'bg-danger',
       Event::PASSED => 'bg-inverse'
     }
 
@@ -23,6 +25,14 @@ module Admin
       pending  = event.visit_requests.pending.count
 
       "#{total} / #{verified} / #{pending}"
+    end
+
+    def send_confirmation_emails_link(event)
+      return unless event.confirmation?
+
+      link_to t('events.send_confirmations'),
+        send_confirmations_admin_event_visit_requests_path(event),
+        method: :post, class: 'btn btn-danger float-xs-right'
     end
   end
 end

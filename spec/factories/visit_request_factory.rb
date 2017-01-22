@@ -9,5 +9,8 @@ FactoryGirl.define do
       visited { true }
     end
 
+    trait :visited do
+      visited true
+    end
   end
 end

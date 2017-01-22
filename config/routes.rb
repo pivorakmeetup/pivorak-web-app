@@ -9,8 +9,10 @@ Rails.application.routes.draw do
 
   #=== MAIN APP =================================
   resources :events,  only: %i[index show] do
-    resources :visit_requests, only: %i[create destroy]
+    resources :visit_requests, only: %i[show create destroy]
   end
+
+  resources :speakers,  only: %i[index]
 
   resources :venues,  only: %i[show]
   resources :talks,   only: %i[index show]
@@ -29,10 +31,14 @@ Rails.application.routes.draw do
       get '/', to: 'home#index'
       resources :events,  except: %i[show destroy] do
         resources :visit_requests, only: %i[index] do
-          put :approve,      to: 'visit_request/approve#update'
-          put :cancel,       to: 'visit_request/cancel#update'
-          put :toggle_list,  to: 'visit_request/toggle_list#update'
-          put :toggle_visit, to: 'visit_request/toggle_visit#update'
+          collection do
+            post :send_confirmations, to: 'visit_request/send_confirmations#create'
+          end
+
+          put  :approve,       to: 'visit_request/approve#update'
+          put  :cancel,        to: 'visit_request/cancel#update'
+          put  :toggle_list,   to: 'visit_request/toggle_list#update'
+          put  :toggle_visit,  to: 'visit_request/toggle_visit#update'
         end
       end
       resources :venues,  except: %i[show destroy]
