@@ -28,3 +28,17 @@ div
   = attend_event_link(event)
 
 div = unauthorized_message(t 'visit_requests.action')
+
+h2 = t 'events.attendees'
+
+table.table
+  thead
+    tr
+      th = t 'words.name'
+
+  tbody
+    - attendees.each do |attendee|
+      tr
+        td = attendee&.full_name
+
+

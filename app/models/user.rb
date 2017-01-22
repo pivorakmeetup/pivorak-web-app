@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :identities, dependent: :destroy
   has_many :donations,  dependent: :destroy
   has_many :talks, foreign_key: :speaker_id
+  has_many :visit_requests
 
   validates :first_name, :last_name, :slug, presence: true
   validates :first_name, :last_name, format: {
