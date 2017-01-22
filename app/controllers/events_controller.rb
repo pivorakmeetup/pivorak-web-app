@@ -1,7 +1,11 @@
 class EventsController < ApplicationController
-  helper_method :visit_request, :event, :events
+  helper_method :visit_request, :event, :events, :attendees
 
   private
+
+  def attendees
+    @attendees ||= User::EventAttendees.call(event_id: event.id)
+  end
 
   def event
     @event ||= Event.friendly.find(params[:id])
