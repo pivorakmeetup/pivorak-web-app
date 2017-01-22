@@ -1,0 +1,11 @@
+h2 = t 'speakers.plural'
+
+table.table
+  thead
+    tr
+      th = t 'words.title'
+
+  tbody
+    - speakers.each do |speaker|
+      tr
+        td = link_to speaker.full_name, member_path(speaker)
