@@ -12,6 +12,8 @@ set :linked_dirs, fetch(:linked_dirs, []).push(
   'node_modules'
 )
 set :user, 'dev'
+set :ssh_options, keys: ["config/deploy_id_rsa"] if File.exist?("config/deploy_id_rsa")
+
 
 set :rvm_map_bins, fetch(:rvm_map_bins, []).push('rvmsudo')
 
