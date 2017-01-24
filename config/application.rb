@@ -16,5 +16,6 @@ require_relative '../app/models/talk'
 module PivorakWebApp
   class Application < Rails::Application
     config.version = 'alpha'
+    config.time_zone = 'Kyiv'
   end
 end
