@@ -26,6 +26,8 @@ en:
     published: Published
     description: Description
     list: List
+    url: Url
+    preview: Preview
 
   resources:
     errors:
@@ -171,3 +173,7 @@ en:
 
   synthetic_user:
     reset_password: We have already created account for you. Please check email for resetting your email
+
+  pages:
+    singular: Page
+    plural: Pages
