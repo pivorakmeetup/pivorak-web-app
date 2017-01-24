@@ -1,0 +1,22 @@
+h2 = t 'pages.plural'
+
+= admin_new_resource_link :page
+
+.table-responsive
+  table.table
+    thead
+      tr
+        th = t 'words.id'
+        th = t 'words.title'
+        th = t 'words.url'
+        th colspan='2'
+
+    tbody
+      - pages.each do |page|
+        tr
+          td = page.id
+          td = page_link(page)
+          td = page.url
+          td.actions
+            = admin_edit_resource_link(page)
+            = admin_destroy_resource_link(page)
