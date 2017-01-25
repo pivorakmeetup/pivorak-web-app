@@ -57,13 +57,10 @@ en:
     visitors: Visitors
     attendees: Attendees
     send_confirmations: Send Confirmations
-    notifications:
-      create:
-        success: Event was successfully created
-      update:
-        success: Event was successfully updated
 
-
+  notifications:
+    success: "%{resource} has been successfully %{action}"
+    error: "%{resource} cannot be %{action}. Please check the errors below"
 
   venues:
     plural: Venues
@@ -93,10 +90,6 @@ en:
     errors:
       already_in_team: You are already in the team
       sent_recently: Invitation was sent recently
-
-  notifications:
-    success: Success
-    failure: Failure
 
   members:
     singular: Member

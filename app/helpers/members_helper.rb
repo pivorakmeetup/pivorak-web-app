@@ -19,18 +19,4 @@ module MembersHelper
   def gravatar_image(user)
     image_tag gravatar_url(user)
   end
-
-  def synthetic_user?
-    params[:synthetic].present? && synthetic_user
-  end
-
-  def synthetic_user
-    @synthetic_user ||= User::CheckSynthetic.call(params[:synthetic])
-  end
-
-  def get_account_control_link
-    link_to t('members.synthetic.get_account'),
-      password_path(resource_name, user: { email: synthetic_user.email }),
-      method: :post
-    end
 end

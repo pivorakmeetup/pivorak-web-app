@@ -1,5 +1,7 @@
 module ApplicationHelper
   def format_timestamp(timestamp, time: true, delimiter: '-')
+    return unless timestamp
+
     formatted_date = timestamp.strftime('%Y %b %d')
     formatted_time = timestamp.strftime('%H:%M')
 

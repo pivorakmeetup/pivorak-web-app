@@ -1,27 +1,34 @@
 module Admin
   class GroupsController < BaseController
     helper_method :group, :groups
+    add_breadcrumb 'groups.plural', :admin_groups_path
+    before_action :add_new_breadcump,  only: %i[new create]
+    before_action :add_edit_breadcump, only: %i[edit update]
 
     def new
       @group = Group.new
+      render_form
     end
 
     def create
       @group = Group.new(groups_params)
 
-      group.save ? redirect_to(admin_groups_path) : render(:new)
+      respond_for group.save
     end
 
     def update
-      group.update(groups_params) ? redirect_to(admin_groups_path) : render(:edit)
+      respond_for group.update(groups_params)
     end
 
     def destroy
-      group.destroy
-      redirect_to admin_groups_path
+      respond_for group.destroy
     end
 
     private
+
+    def default_redirect
+      redirect_to admin_groups_path
+    end
 
     def group
       @group ||= Group.find(params[:id])

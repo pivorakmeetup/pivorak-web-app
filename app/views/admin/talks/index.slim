@@ -1,29 +1,24 @@
-h2 = t 'talks.plural'
-
 = admin_new_resource_link :talk
 
-.table-responsive
-  table.table
-    thead
-      tr
-        th = t 'words.id'
-        th = t 'words.title'
-        th = t 'events.singular'
-        th = t 'talks.speaker'
-        th = t 'groups.singular'
-        th = t 'words.tags'
-        th.status = t 'words.published'
-        th
+table.ui.very.basic.table
+  thead
+    tr
+      th
+      th = t 'words.title'
+      th = t 'events.singular'
+      th = t 'talks.speaker'
+      th = t 'groups.singular'
+      th = t 'words.tags'
+      th
 
-    tbody
-      - talks.each do |talk|
-        tr
-          td = talk.id
-          td = resource_link(talk, target: '_blank')
-          td = admin_talk_event_link(talk)
-          td = admin_talk_speaker_info(talk)
-          td = talk.group&.name
-          td = talk.tag_list
-          td.status = bool_label(talk.published?)
-          td.actions
-            = admin_edit_resource_link(talk)
+  tbody
+    - talks.each do |talk|
+      tr
+        td.center.aligned = bool_icon(talk.published?)
+        td = resource_link(talk, target: '_blank')
+        td = admin_talk_event_link(talk)
+        td = admin_talk_speaker_info(talk)
+        td = talk.group&.name
+        td = talk.tag_list
+        td.right.aligned = controls do
+          = admin_edit_resource_link(talk)

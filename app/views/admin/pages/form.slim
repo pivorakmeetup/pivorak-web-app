@@ -1,0 +1,13 @@
+= resource_form_header(page)
+
+= simple_form_for [:admin, page] do |f|
+  .sixteen.wide.field.right-align
+    = admin_back_link(:pages)
+    = preview_page_link(page)
+    = f.button :submit
+
+  .two.fields
+    = f.input :title
+    = f.input :url
+
+  = f.input :body, input_html: { rows: 20, class: Simplemde::CONTAINER_CLASS }

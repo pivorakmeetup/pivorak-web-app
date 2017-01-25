@@ -1,19 +1,14 @@
-h2 = t 'friends.plural'
-
 = admin_new_resource_link :friend
 
-.table-responsive
-  table.table
-    thead
-      tr
-        th = t 'words.id'
-        th = t 'words.name'
-        th.actions colspan="2"
+table.ui.very.basic.table
+  thead
+    tr
+      th = t 'words.name'
+      th.actions colspan="2"
 
-    tbody
-      - friends.each do |friend|
-        tr
-          td = friend.id
-          td = friend.name
-          td.actions
-            = admin_edit_resource_link(friend)
+  tbody
+    - friends.each do |friend|
+      tr
+        td = friend.name
+        td.right.aligned = controls do
+          = admin_edit_resource_link(friend)

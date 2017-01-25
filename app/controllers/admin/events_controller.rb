@@ -1,29 +1,23 @@
 module Admin
   class EventsController < BaseController
     helper_method :event, :events, :venues
+    add_breadcrumb 'events.plural', :admin_events_path
+    before_action :add_new_breadcump,  only: %i[new create]
+    before_action :add_edit_breadcump, only: %i[edit update]
 
     def new
       @event = Event.new
+      render_form
     end
 
     def create
       @event = Event.new(event_params)
 
-      if event.save
-        flash_success(:events)
-        default_redirect
-      else
-        render(:new)
-      end
+      respond_for event.save
     end
 
     def update
-      if event.update(event_params)
-        flash_success(:events)
-        default_redirect
-      else
-        render(:edit)
-      end
+      respond_for event.update(event_params)
     end
 
     private
@@ -37,7 +31,7 @@ module Admin
     end
 
     def events
-      @events ||= Event.order(started_at: :desc).includes(:venue)
+      @events ||= Event.order(started_at: :desc)
     end
 
     def venues

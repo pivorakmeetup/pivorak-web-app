@@ -1,30 +1,24 @@
-h2 = t 'events.plural'
-
 = admin_new_resource_link :event
 
-.table-responsive
-  table.table
-    thead
-      tr
-        th = t 'words.id'
-        th = t 'words.title'
-        th = t 'words.status'
-        th = t 'events.visitors'
-        th = t 'words.date'
-        th.status = t 'words.published'
-        th = t 'venues.singular'
-        th.actions colspan="2"
+table.ui.very.basic.table
+  thead
+    tr
+      th
+      th = t 'words.title'
+      th.center.aligned = t 'words.status'
+      th = t 'events.visitors'
+      th = t 'words.date'
+      th.actions colspan="2"
 
-    tbody
-      - events.each do |event|
-        tr
-          td = event.id
-          td = resource_link(event, target: '_blank')
-          td = event_status_label(event)
-          td = event_limitation_data(event)
-          td = format_timestamp(event.started_at, time: false)
-          td.status = bool_label(event.published?)
-          td = event.venue&.name
-          td.actions
+  tbody
+    - events.each do |event|
+      tr
+        td.center.aligned = bool_icon(event.published?)
+        td = resource_link(event, target: '_blank')
+        td.center.aligned = event_status_label(event)
+        td = event_limitation_data(event)
+        td = format_timestamp(event.started_at, time: false)
+        td.right.aligned
+          = controls do
             = admin_edit_resource_link(event)
             = admin_visit_requests_link(event)

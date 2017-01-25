@@ -1,0 +1,10 @@
+= resource_form_header(group, label: :name)
+
+= simple_form_for [:admin, group] do |f|
+  .sixteen.wide.field.right-align
+    = admin_back_link(:groups)
+    = f.button :submit
+
+  .two.fields
+    = f.input :name
+    = f.input :resource, collection: Group::RESOURCES

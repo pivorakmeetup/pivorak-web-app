@@ -1,9 +1,0 @@
-= simple_form_for [:admin, email] do |f|
-  .form-inputs
-    .row
-      .col-md-12
-        = f.input :subject
-        = f.input :body, as: :text, input_html: { rows: 20 }
-
-  .form-actions
-    = f.button :submit, class: 'btn btn-success'

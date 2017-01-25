@@ -1,19 +1,23 @@
 module Admin
   class PagesController < BaseController
     helper_method :page, :pages
+    add_breadcrumb 'pages.plural', :admin_pages_path
+    before_action :add_new_breadcump,  only: %i[new create]
+    before_action :add_edit_breadcump, only: %i[edit update]
 
     def new
       @page = Page.new
+      render_form
     end
 
     def create
       @page = Page.new(page_params)
 
-      page.save ? default_redirect : render(:new)
+      respond_for page.save
     end
 
     def update
-      page.update(page_params) ?  default_redirect : render(:edit)
+      respond_for page.update(page_params)
     end
 
     def destroy
