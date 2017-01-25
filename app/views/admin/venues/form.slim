@@ -1,0 +1,14 @@
+= resource_form_header(venue, label: :name)
+
+= simple_form_for [:admin, venue] do |f|
+  .one.field.right-align
+    = admin_back_link(:venues)
+    = preview_link(venue)
+    = f.button :submit
+
+  .two.fields
+    = f.input :name
+    = f.input :address
+
+  = f.input :description, as: :text, input_html: { rows: 10 }
+  = f.input :map_url

@@ -1,22 +1,18 @@
-h2 = t 'groups.plural'
-
 = admin_new_resource_link :group
 
-.table-responsive
-  table.table
-    thead
-      tr
-        th = t 'words.id'
-        th = t 'words.resource'
-        th = t 'words.name'
-        th.actions colspan='2'
 
-    tbody
-      - groups.each do |group|
-        tr
-          td = group.id
-          td = group.resource
-          td = group.name
-          td.actions
-            = admin_edit_resource_link(group)
-            = admin_destroy_resource_link(group)
+table.ui.very.basic.table
+  thead
+    tr
+      th = t 'words.resource'
+      th = t 'words.name'
+      th.actions colspan='2'
+
+  tbody
+    - groups.each do |group|
+      tr
+        td = group.resource
+        td = group.name
+        td.right.aligned = controls do
+          = admin_edit_resource_link(group)
+          = admin_destroy_resource_link(group)

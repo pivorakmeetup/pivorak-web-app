@@ -2,16 +2,16 @@ module Admin
   module VisitRequestsHelper
 
     STATUS_CLASS = {
-        ::VisitRequest::PENDING => 'bg-info',
-        ::VisitRequest::APPROVED => 'bg-primary',
-        ::VisitRequest::CANCELED => 'bg-danger',
-        ::VisitRequest::CONFIRMED => 'bg-success',
-        ::VisitRequest::REFUSED => 'bg-inverse'
+        ::VisitRequest::PENDING   => 'grey',
+        ::VisitRequest::APPROVED  => 'success',
+        ::VisitRequest::CANCELED  => 'red',
+        ::VisitRequest::CONFIRMED => 'violet',
+        ::VisitRequest::REFUSED   => 'black'
     }
 
     def visit_request_status_label(status)
       content_tag :div, status,
-        class: ['label', STATUS_CLASS[status.to_sym]]
+        class: ['ui label', STATUS_CLASS[status.to_sym]]
     end
 
     def admin_approve_visit_request_link(visit_request)
@@ -19,7 +19,7 @@ module Admin
 
       link_to t('visit_requests.approve'),
         admin_event_visit_request_approve_path(visit_request.event, visit_request),
-        method: :put, class: 'btn btn-success',
+        method: :put, class: 'ui button green',
         data: { confirm: t('phrases.confirm') }
     end
 
@@ -28,29 +28,29 @@ module Admin
 
       link_to t('visit_requests.cancel'),
         admin_event_visit_request_cancel_path(visit_request.event, visit_request),
-        method: :put, class: 'btn btn-danger',
+        method: :put, class: 'ui button red',
         data: { confirm: t('phrases.confirm') }
     end
 
     def visit_request_list_link(visit_request)
-      label = visit_request.waiting_list? ? 'waiting_list' : 'main_list'
-      btn_class = visit_request.waiting_list? ? 'btn-secondary' : 'btn-primary'
+      label      = visit_request.waiting_list? ? 'waiting_list' : 'main_list'
+      btn_class  = visit_request.waiting_list? ? 'grey' : 'green'
       i18n_label = t(label, scope: 'visit_requests')
 
       link_to i18n_label,
         admin_event_visit_request_toggle_list_path(visit_request.event, visit_request),
-        method: :put, class: ['btn', btn_class],
+        method: :put, class: ['ui', 'button', btn_class],
         data: { confirm: t('phrases.confirm') }
     end
 
     def visit_request_visited_link(visit_request)
-      label = visit_request.visited? ? 'waiting' : 'hello'
-      btn_class = visit_request.visited? ? 'btn-secondary' : 'btn-success'
+      label      = visit_request.visited? ? 'waiting' : 'hello'
+      btn_class  = visit_request.visited? ? 'grey' : 'green'
       i18n_label = t(label, scope: 'visit_requests')
 
       link_to i18n_label,
         admin_event_visit_request_toggle_visit_path(visit_request.event, visit_request),
-        method: :put, class: ['btn', btn_class],
+        method: :put, class: ['ui button', btn_class],
         data: { confirm: t('phrases.confirm') }
     end
   end

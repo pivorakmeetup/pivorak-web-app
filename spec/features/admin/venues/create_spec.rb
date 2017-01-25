@@ -10,6 +10,7 @@ RSpec.describe 'Events CREATE' do
       click_button 'Create Venue'
 
       expect_an_error venue_name:  :blank
+      expect_error_flash_message 'Venue', 'created'
     end
   end
 
@@ -20,7 +21,8 @@ RSpec.describe 'Events CREATE' do
       fill_in 'Map url',  with: 'https://goo.gl/maps/LkLW5YkNzNL2'
       click_button 'Create Venue'
 
-      expect(page).to have_current_path '/venues/secret-new-venue'
+      expect_success_flash_message 'Venue', 'created'
+      expect(page).to have_current_path '/admin/venues/secret-new-venue/edit'
     end
   end
 end

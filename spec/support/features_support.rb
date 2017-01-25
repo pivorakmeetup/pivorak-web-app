@@ -10,7 +10,7 @@
 def expect_an_error(hash_pair = {}, no = false)
   field     = hash_pair.keys.first
   value     = hash_pair.values.first
-  error_div = "div.#{field}.has-error"
+  error_div = "div.#{field}.error"
 
   msg = if value == :blank
     "can't be blank"
@@ -51,4 +51,16 @@ end
 def assume_admin_logged_in(admin = nil)
   admin = admin || create(:user, :admin)
   assume_logged_in(admin)
+end
+
+# Contoller should auto generate flash message for reource
+#
+# Succes:
+def expect_success_flash_message(resource, action)
+  expect(page).to have_content "#{resource} has been successfully #{action}"
+end
+
+# Error
+def expect_error_flash_message(resource, action)
+  expect(page).to have_content "#{resource} cannot be #{action}. Please check the errors below"
 end

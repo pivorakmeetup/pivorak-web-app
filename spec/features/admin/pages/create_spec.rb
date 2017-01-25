@@ -29,14 +29,6 @@ RSpec.describe 'Pages CREATE' do
       expect_not_an_error page_title: :blank
       expect_not_an_error page_url:   :blank
       expect_not_an_error page_body:  :blank
-
-      expect(page).to have_link 'Preview'
-
-      click_link 'Preview'
-
-      expect(page).to have_current_path '/about-us'
-      expect(page).to have_content 'About Us'
-      expect(page).to have_content 'Something about us'
     end
   end
 end

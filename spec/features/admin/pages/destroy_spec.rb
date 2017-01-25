@@ -9,7 +9,5 @@ RSpec.describe 'Page DESTROY' do
     end
 
     it { expect(Page).to have(0).items }
-    it { expect(page).to_not have_content(test_page.title) }
-    it { expect(page).to_not have_content(test_page.url) }
   end
 end

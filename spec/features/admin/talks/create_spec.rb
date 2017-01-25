@@ -11,6 +11,7 @@ RSpec.describe 'Talks CREATE' do
       click_button 'Create Talk'
 
       expect_an_error talk_title:  :blank
+      expect_error_flash_message 'Talk', 'created'
     end
   end
 
@@ -19,7 +20,8 @@ RSpec.describe 'Talks CREATE' do
       fill_in 'Title', with: 'Super New Talk'
       click_button 'Create Talk'
 
-      expect(page).to have_current_path '/talks/super-new-talk'
+      expect_success_flash_message 'Talk', 'created'
+      expect(page).to have_current_path '/admin/talks/super-new-talk/edit'
     end
   end
 

@@ -13,6 +13,7 @@ RSpec.describe 'Events UPDATE' do
       click_button 'Update Event'
 
       expect_an_error event_title:  :blank
+      expect_error_flash_message 'Event', 'updated'
     end
   end
 
@@ -21,6 +22,7 @@ RSpec.describe 'Events UPDATE' do
       fill_in 'Title',  with: 'Super New Event'
       click_button 'Update Event'
 
+      expect_success_flash_message 'Event', 'updated'
       expect(page).to have_current_path '/admin/events/test-event/edit'
     end
   end

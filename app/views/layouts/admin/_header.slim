@@ -1,13 +1,6 @@
-nav.navbar.navbar-dark.bg-inverse
-  ul.nav.navbar-nav
-    li.nav-item class="#{ active? :home    }" = admin_home_link
-    li.nav-item class="#{ active? :events, :visit_requests }" = admin_events_link
-    li.nav-item class="#{ active? :talks   }" = admin_talks_link
-    li.nav-item class="#{ active? :venues  }" = admin_venues_link
-    li.nav-item class="#{ active? :goals   }" = admin_goals_link
-    li.nav-item class="#{ active? :members }" = admin_members_link
-    li.nav-item class="#{ active? :groups  }" = admin_groups_link
-    li.nav-item class="#{ active? :emails  }"  = admin_emails_link
-    li.nav-item class="#{ active? :friends }" = admin_friends_link
-    li.nav-item class="#{ active? :pages   }" = admin_pages_link
-    li.nav-item.float-md-right                = admin_app_link
+h1
+  = sidebar_toogle_link
+  = header_title
+
+p = semantic_flash
+p = semantic_breadcrumbs

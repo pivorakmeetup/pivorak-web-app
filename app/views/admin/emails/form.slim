@@ -1,0 +1,8 @@
+h2 = t 'phrases.new_resource', resource: t('emails.singular')
+
+= simple_form_for [:admin, email] do |f|
+  = f.input :subject
+  = f.input :body, as: :text, input_html: { rows: 20 }
+
+  = admin_back_link(:emails)
+  = f.button :submit

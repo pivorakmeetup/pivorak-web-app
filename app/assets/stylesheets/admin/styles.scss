@@ -1,76 +1,4 @@
 //-----------------------------------------------
-//      BODY
-//-----------------------------------------------
-header {
-  margin-top: 15px;
-}
-
-main {
-  margin-bottom: 30px;
-}
-
-//-----------------------------------------------
-//      TYPOGRAPHY
-//-----------------------------------------------
-
-h2 {
-  margin: 15px 0;
-}
-
-
-//-----------------------------------------------
-//      TABLE
-//-----------------------------------------------
-
-table {
-  margin-top: 15px;
-
-  .status {
-    text-align: center;
-    vertical-align: middle;
-    width: 5%;
-    border-right: 1px solid #fff;
-  }
-
-  .actions {
-    width: 25%;
-    text-align: right;
-
-    a {
-      display: inlibne-block;
-      margin-right: 5px;
-    }
-  }
-}
-
-
-//-----------------------------------------------
-//      FORM
-//-----------------------------------------------
-form {
-  .form-actions {
-    margin-top: 15px;
-  }
-}
-//-----------------------------------------------
-//      LABELS
-//-----------------------------------------------
-.label {
-  text-align: center;
-  color: #fff;
-  padding: 5px 10px;
-  border-radius: 3px;
-}
-
-.label-bool {
-  width: 60px;
-}
-
-.checkboxes.checkbox label {
-  display: block;
-}
-
-//-----------------------------------------------
 //      HELPERS
 //-----------------------------------------------
 .translation_missing {
@@ -78,16 +6,7 @@ form {
   background: red !important;
 }
 
-.actions {
-  .btn {
-    margin-right: 5px;
-  }
-}
-
-//-----------------------------------------------
-//      FLASH MESSAGES
-//-----------------------------------------------
-
-.unobtrusive-flash-container {
-  margin-top: 1rem;
+// How simply align elemetns in semantic-ui ?
+.right-align {
+  text-align: right;
 }

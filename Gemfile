@@ -11,9 +11,8 @@ gem 'puma',                              '~> 3.0'
 gem 'sass-rails',                        '~> 5.0'
 gem 'turbolinks',                        '~> 5.0'
 gem 'slim-rails',                        '~> 3.1'
-gem 'jquery-rails'
-gem 'bootstrap',                '~> 4.0.0.alpha5'
-gem 'unobtrusive_flash', '>=3'
+gem 'jquery-rails',                    '~> 4.2.2'
+gem 'semantic-ui-sass',              '~> 2.2.7.1'
 
 #=== FEATUES ====================================
 gem 'devise'

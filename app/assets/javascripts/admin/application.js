@@ -12,25 +12,18 @@
 //
 //= require turbolinks
 //= require jquery
-// for bootstrap tooltips
 //= require tether.min
-//= require bootstrap-sprockets
 //= require jquery_ujs
+//= require semantic-ui
+//= require admin/semantic
 //= require simplemde.min
-//= require unobtrusive_flash
-//= require unobtrusive_flash_bootstrap
 //= require_tree .
 
 document.addEventListener("turbolinks:load", function() {
-    var SIMPLEMDE_CONTAINER_CLASS = "simplemde-container"; // add this class to text area
-    Array.prototype.forEach.call(document.getElementsByClassName(SIMPLEMDE_CONTAINER_CLASS), function(element) {
-        new SimpleMDE({ element: element });
-    });
+  var SIMPLEMDE_CONTAINER_CLASS = "simplemde-container"; // add this class to text area
+  Array.prototype.forEach.call(document.getElementsByClassName(SIMPLEMDE_CONTAINER_CLASS), function(element) {
+    new SimpleMDE({ element: element });
+  });
 })
-
-document.addEventListener('DOMContentLoaded', function() {
-    UnobtrusiveFlash.flashOptions['timeout'] = 3000;
-})
-
 
 

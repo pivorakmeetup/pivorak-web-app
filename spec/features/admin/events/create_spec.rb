@@ -9,7 +9,8 @@ RSpec.describe 'Events CREATE' do
       fill_in 'Title',  with: ''
       click_button 'Create Event'
 
-      expect_an_error event_title:  :blank
+      expect_an_error event_title: :blank
+      expect_error_flash_message 'Event', 'created'
     end
   end
 
@@ -20,6 +21,7 @@ RSpec.describe 'Events CREATE' do
       fill_in 'Title', with: 'Super New Event'
       click_button 'Create Event'
 
+      expect_success_flash_message 'Event', 'created'
       expect(page).to have_current_path '/admin/events/super-new-event/edit'
     end
 
@@ -34,7 +36,7 @@ RSpec.describe 'Events CREATE' do
 
     it 'creates event with venue' do
       visit '/admin/events/new'
-      
+
       fill_in 'Title',  with: 'Super New Event'
       select(venue.name, from: 'Venue')
 

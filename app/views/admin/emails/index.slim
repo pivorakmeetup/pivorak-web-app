@@ -1,19 +1,17 @@
-h2 = t 'emails.plural'
-
 = admin_new_resource_link :email
 
-.table-responsive
-  table.table
-    thead
-      tr
-        th = t 'emails.subject'
-        th = t 'emails.body'
-        th = t 'words.date'
-        th.actions colspan="2"
 
-    tbody
-      - emails.each do |email|
-        tr
-          td = link_to email.subject, admin_email_path(email), target: '_blank'
-          td = truncate(email.body, length: 20)
-          td = format_timestamp(email.created_at, time: true)
+table.ui.very.basic.table
+  thead
+    tr
+      th = t 'emails.subject'
+      th = t 'emails.body'
+      th = t 'words.date'
+      th.actions colspan="2"
+
+  tbody
+    - emails.each do |email|
+      tr
+        td = link_to email.subject, admin_email_path(email)
+        td = truncate(email.body, length: 20)
+        td = format_timestamp(email.created_at, time: true)
