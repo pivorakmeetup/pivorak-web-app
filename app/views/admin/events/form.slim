@@ -1,0 +1,34 @@
+= resource_form_header(event)
+
+= simple_form_for [:admin, event] do |f|
+  .fields
+    .four.wide.field.ui.slider.checkbox
+      = f.input :published, as: :boolean
+    .twelve.wide.field.right-align
+      = admin_back_link(:events)
+      = preview_link(event)
+      = send_confirmation_emails_link(event)
+      = admin_visit_requests_link(event, class: 'ui teal button')
+      = f.button :submit
+
+  .two.fields
+    = f.input :title
+    .two.fields
+      = f.input :status,   collection: Event.statuses.keys, include_blank: false
+      = f.input :venue_id, collection: venues
+
+  .fields
+    .eight.wide.field
+      = f.input :description, input_html: { rows: 10 }
+      .two.fields
+        = f.input :limit_total
+        = f.input :limit_verified
+      = f.input :started_at,  as: :string
+      = f.input :finished_at, as: :string
+      = f.input :cover, as: :file
+
+    .eight.wide.field
+      = f.input :agenda, input_html: { rows: 20, class: Simplemde::CONTAINER_CLASS }
+
+  = f.association :talks, as: :check_boxes, item_wrapper_class: 'checkboxes',
+    collection: Talk::AvailableForEvent.call(event_id: event.id)

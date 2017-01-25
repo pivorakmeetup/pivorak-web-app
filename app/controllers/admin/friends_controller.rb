@@ -1,29 +1,23 @@
 module Admin
   class FriendsController < BaseController
     helper_method :friend, :friends
+    add_breadcrumb 'friends.plural', :admin_friends_path
+    before_action :add_new_breadcump,  only: %i[new create]
+    before_action :add_edit_breadcump, only: %i[edit update]
 
     def new
       @friend = Friend.new
+      render_form
     end
 
     def create
       @friend = Friend.new(friend_params)
 
-      if friend.save
-        flash[:success] = t('notifications.success')
-        default_redirect
-      else
-        render(:new)
-      end
+      respond_for friend.save
     end
 
     def update
-      if friend.update(friend_params)
-        flash[:success] = t('notifications.success')
-        default_redirect
-      else
-        render(:edit)
-      end
+      respond_for friend.update(friend_params)
     end
 
     private
@@ -44,6 +38,6 @@ module Admin
       params.require(:friend).permit(
         :name, :group_id, :logo, :link, :description
       )
-    end    
+    end
   end
-end  
+end

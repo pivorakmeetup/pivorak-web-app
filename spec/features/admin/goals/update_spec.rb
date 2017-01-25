@@ -36,7 +36,7 @@ RSpec.describe 'Goals UPDATE' do
       fill_in 'Amount', with: 100
       click_button 'Update Goal'
 
-      expect(page).to have_current_path '/goals/test-goal'
+      expect(page).to have_current_path '/admin/goals/test-goal/edit'
     end
   end
 end

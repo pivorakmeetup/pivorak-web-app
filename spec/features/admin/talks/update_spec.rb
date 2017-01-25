@@ -13,6 +13,7 @@ RSpec.describe 'Talks UPDATE' do
       click_button 'Update Talk'
 
       expect_an_error talk_title:  :blank
+      expect_error_flash_message 'Talk', 'updated'
     end
   end
 
@@ -21,7 +22,8 @@ RSpec.describe 'Talks UPDATE' do
       fill_in 'Title',  with: 'Super New Talk'
       click_button 'Update Talk'
 
-      expect(page).to have_current_path '/talks/test-talk'
+      expect_success_flash_message 'Talk', 'updated'
+      expect(page).to have_current_path '/admin/talks/test-talk/edit'
     end
   end
 

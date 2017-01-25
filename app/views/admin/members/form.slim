@@ -1,0 +1,12 @@
+= simple_form_for [:admin, member], url: url, as: :member do |f|
+  .one.field.right-align
+    = admin_back_link(:members)
+    = f.button :submit
+
+  .three.fields
+    = f.input :email
+    = f.input :first_name
+    = f.input :last_name
+
+  .four.wide.field.ui.slider.checkbox
+    = f.input :verified, as: :boolean

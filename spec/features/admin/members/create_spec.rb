@@ -12,6 +12,7 @@ RSpec.describe 'Members CREATE' do
       expect_an_error member_email:      :blank
       expect_an_error member_first_name: :blank
       expect_an_error member_last_name:  :blank
+      expect_error_flash_message 'Member', 'created'
     end
   end
 
@@ -22,11 +23,9 @@ RSpec.describe 'Members CREATE' do
       fill_in 'Last name',  with: 'UserLastName'
       click_button 'Create User'
 
-      expect(page).to have_current_path '/admin/members'
-      expect(page).to have_content 'tester@example.com'
-      expect(page).to have_content 'UserFirstName'
-      expect(page).to have_content 'UserLastName'
-      expect(page).to have_content 'yes'
+      expect(page).to have_current_path "/admin/members/#{User.last.slug}/edit"
+      expect_success_flash_message 'Member', 'created'
+      expect(User.last).to be_synthetic
     end
   end
 end

@@ -1,0 +1,32 @@
+= resource_form_header(talk)
+
+= simple_form_for [:admin, talk] do |f|
+  .fields
+    .four.wide.field.ui.slider.checkbox
+      = f.input :published, as: :boolean
+    .twelve.wide.field.right-align
+      = admin_back_link(:talks)
+      = preview_link(talk)
+      = f.button :submit
+
+  .fields
+    .ten.wide.field
+      = f.input :title
+    .six.wide.field
+      = f.input :event_id,   collection: Event.all,   label_method: :title
+  .fields
+    .ten.wide.field
+      = f.input :tag_list,   input_html: { value: talk.tag_list.join(', ') }
+    .six.wide.field
+      = f.input :speaker_id, collection: User.sorted, label_method: :reverse_full_name
+
+  .fields
+    .five.wide.field
+      = f.input :video_url
+    .five.wide.field
+      = f.input :slides_url
+    .six.wide.field
+      = f.input :group_id,   collection: Group.talks, label_method: :name
+
+  .one.field
+    = f.input :description, input_html: { rows: 10 }

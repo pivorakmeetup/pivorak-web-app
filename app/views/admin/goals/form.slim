@@ -1,0 +1,11 @@
+= resource_form_header(goal)
+
+= simple_form_for [:admin, goal] do |f|
+  .one.field.right-align
+    = f.button :submit
+
+  .two.fields
+    = f.input :title
+    = f.input :amount
+
+  = f.input :description, input_html: { rows: 10 }

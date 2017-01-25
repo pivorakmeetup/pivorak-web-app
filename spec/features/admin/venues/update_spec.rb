@@ -13,6 +13,7 @@ RSpec.describe 'Venues UPDATE' do
       click_button 'Update Venue'
 
       expect_an_error venue_name:  :blank
+      expect_error_flash_message 'Venue', 'updated'
     end
   end
 
@@ -21,7 +22,8 @@ RSpec.describe 'Venues UPDATE' do
       fill_in 'Name',  with: 'Secret New Venue'
       click_button 'Update Venue'
 
-      expect(page).to have_current_path '/venues/test-venue'
+      expect_success_flash_message 'Venue', 'updated'
+      expect(page).to have_current_path '/admin/venues/test-venue/edit'
     end
   end
 end

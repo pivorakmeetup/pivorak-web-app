@@ -33,7 +33,7 @@ RSpec.describe 'Goals CREATE' do
       fill_in 'Amount', with: 1000
       click_button 'Create Goal'
 
-      expect(page).to have_current_path '/goals/super-new-goal'
+      expect(page).to have_current_path '/admin/goals/super-new-goal/edit'
     end
   end
 end
