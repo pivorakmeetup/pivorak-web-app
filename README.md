@@ -56,3 +56,11 @@ Domain predicates store. Knows answers for all questions.
 1. [Travis CI](https://github.com/pivorakmeetup/pivorak-web-app/wiki/Services#travis-ci)
 2. [Code Climate CLI](https://github.com/pivorakmeetup/pivorak-web-app/wiki/Services#codeclimate)
 
+# How to report a bug
+
+1. Go to [issue tracker](https://github.com/pivorakmeetup/pivorak-web-app/issues/new)
+2. Add descriptive **title**
+3. Add **steps** to reproduce with screenshots
+4. Add label **bug**
+5. What **happens** and what you **expected to happen**
+6. Browser if it is UI related issue
