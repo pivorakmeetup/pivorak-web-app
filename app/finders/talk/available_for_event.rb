@@ -1,4 +1,4 @@
-class Talk
+class Talk < ApplicationRecord
   class AvailableForEvent < ApplicationFinder
     def initialize(params = {})
       @event_id = params[:event_id]

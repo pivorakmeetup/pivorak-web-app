@@ -1,4 +1,6 @@
 class Goal < ApplicationRecord
+  include ::Searchable
+
   extend FriendlyId
   friendly_id :title, use: :slugged
 

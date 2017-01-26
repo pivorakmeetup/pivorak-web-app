@@ -1,25 +1,30 @@
-= render 'admin/shared/search_bar', url: admin_members_path
+.ui.sixteen.column.grid
+  .row
+    .sixteen.wide.column
+      = search_bar(path: admin_members_path)
 
-= admin_new_member_link
+  .row
+    .sixteen.wide.column
+      = admin_new_member_link
 
-table.ui.very.basic.table
-  thead
-    tr
-      th = t 'members.full_name'
-      th = t 'words.email'
-      th.center.aligned = t 'members.synthetic.singular'
-      th.center.aligned = t 'members.verified'
-      th
+      table.ui.very.basic.table
+        thead
+          tr
+            th = t 'members.full_name'
+            th = t 'words.email'
+            th.center.aligned = t 'members.synthetic.singular'
+            th.center.aligned = t 'members.verified'
+            th
 
-  tbody
-    - members.each do |member|
-      tr
-        td = admin_member_link(member)
-        td = member.email
-        td.center.aligned = bool_icon(member.synthetic?)
-        td.center.aligned = bool_icon(member.verified?)
-        td.right.aligned
-          = controls do
-            = admin_edit_member_link(member)
+        tbody
+          - members.each do |member|
+            tr
+              td = admin_member_link(member)
+              td = member.email
+              td.center.aligned = bool_icon(member.synthetic?)
+              td.center.aligned = bool_icon(member.verified?)
+              td.right.aligned
+                = controls do
+                  = admin_edit_member_link(member)
 
-= paginate members
+      = paginate members

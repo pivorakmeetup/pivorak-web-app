@@ -15,7 +15,7 @@ class User
     attr_reader :email
 
     def user
-      @user ||= User.synthetic.where(email: email).first
+      @user ||= User.synthetic.find_by(email: email)
     end
   end
 end

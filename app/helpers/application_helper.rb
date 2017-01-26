@@ -17,6 +17,6 @@ module ApplicationHelper
       action_message: action_message,
       login_url:      new_user_session_path,
       register_url:   new_user_registration_path
-    ).html_safe
+     ).html_safe
   end
 end

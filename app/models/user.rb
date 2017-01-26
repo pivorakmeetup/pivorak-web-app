@@ -14,7 +14,6 @@ class User < ApplicationRecord
   has_many :donations,  dependent: :destroy
   has_many :talks, foreign_key: :speaker_id
   has_many :visit_requests
-
   validates :first_name, :last_name, :slug, presence: true
   validates :first_name, :last_name, format: {
     with: LATIN_LETTERS_REGEX,  message: I18n.t('errors.only_latin_letters')

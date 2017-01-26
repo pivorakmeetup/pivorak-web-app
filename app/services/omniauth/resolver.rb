@@ -1,9 +1,5 @@
 module Omniauth
-  class Resolver
-    def self.call(params)
-      new(params).call
-    end
-
+  class Resolver < ::ApplicationService
     def initialize(params)
       @params = params
     end

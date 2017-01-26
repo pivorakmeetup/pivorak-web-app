@@ -1,21 +1,28 @@
-= admin_new_resource_link :page
+.ui.sixteen.column.grid
+  .row
+    .sixteen.wide.column
+      = search_bar(path: admin_pages_path)
 
-table.ui.very.basic.table
-  thead
-    tr
-      th = t 'words.id'
-      th = t 'words.title'
-      th = t 'words.url'
-      th colspan='2'
+  .row
+    .sixteen.wide.column
+      = admin_new_resource_link :page
 
-  tbody
-    - pages.each do |page|
-      tr
-        td = page.id
-        td = page_link(page)
-        td = page.url
-        td.right.aligned = controls do
-          = admin_edit_resource_link(page)
-          = admin_destroy_resource_link(page)
+      table.ui.very.basic.table
+        thead
+          tr
+            th = t 'words.id'
+            th = t 'words.title'
+            th = t 'words.url'
+            th colspan='2'
 
-= paginate pages
+        tbody
+          - pages.each do |page|
+            tr
+              td = page.id
+              td = page_link(page)
+              td = page.url
+              td.right.aligned = controls do
+                = admin_edit_resource_link(page)
+                = admin_destroy_resource_link(page)
+
+      = paginate pages
