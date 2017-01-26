@@ -1,4 +1,4 @@
-class Donation
+class Donation < ApplicationRecord
   module Token
     class Generate
       include Interactor

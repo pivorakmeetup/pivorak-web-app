@@ -2,11 +2,13 @@ module Searchable
   module Configuration
     module Event
       include Configurable
+      include SearchOptions
+
+      FIELDS = %i(title description agenda)
 
       define_searchable do
-        %i(title agenda description).each do |attribute|
-          pg_search_scope "by_#{attribute}", against: attribute
-        end
+        multisearchable          against: FIELDS
+        pg_search_scope :search, against: :title, using: TSEARCHABLE_WITH_PREFIX
       end
     end
   end

@@ -1,8 +1,8 @@
 class Event < ApplicationRecord
   include ::Searchable
+  include Publishable
 
   extend FriendlyId
-  include Publishable
 
   PLANNED       = :planned
   REGISTRATION  = :registration

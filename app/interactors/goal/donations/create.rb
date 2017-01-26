@@ -1,4 +1,4 @@
-class Goal
+class Goal < ApplicationRecord
   module Donations
     class Create
       include Interactor::Organizer

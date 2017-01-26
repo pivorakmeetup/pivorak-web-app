@@ -1,16 +1,12 @@
 module Searchable
-  class Resolver
+  class Resolver < ::ApplicationService
     include Mapping
-
-    def self.call(params)
-      new(params).perform
-    end
 
     def initialize(params)
       @target = params[:target]
     end
 
-    def perform
+    def call
       Array(definitions).each { |definition| apply!(definition) }
     end
 

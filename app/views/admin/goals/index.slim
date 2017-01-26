@@ -1,18 +1,25 @@
-= admin_new_resource_link :goal
+.ui.sixteen.column.grid
+  .row
+    .sixteen.wide.column
+      = search_bar(path: admin_goals_path)
 
-table.ui.very.basic.table
-  thead
-    tr
-      th = t 'words.title'
-      th = t 'goals.amount'
-      th
+  .row
+    .sixteen.wide.column
+      = admin_new_resource_link :goal
 
-  tbody
-    - goals.each do |goal|
-      tr
-        td = resource_link(goal, target: '_blank')
-        td = goal.amount
-        td.right.aligned = controls do
-          = admin_edit_resource_link(goal)
-          
-= paginate goals
+      table.ui.very.basic.table
+        thead
+          tr
+            th = t 'words.title'
+            th = t 'goals.amount'
+            th
+
+        tbody
+          - goals.each do |goal|
+            tr
+              td = resource_link(goal, target: '_blank')
+              td = goal.amount
+              td.right.aligned = controls do
+                = admin_edit_resource_link(goal)
+
+      = paginate goals

@@ -12,7 +12,7 @@ RSpec.describe Searchable::Resolver do
 
   describe '#perform' do
     it 'applies search definitions to the target' do
-      subject.perform
+      subject.call
       expect(target).to respond_to :by_name
     end
   end

@@ -31,7 +31,7 @@ module Admin
     end
 
     def pages
-      @pages ||= Page.page(params[:page])
+      @pages ||= search_against(Page).page(params[:page])
     end
 
     def page_params

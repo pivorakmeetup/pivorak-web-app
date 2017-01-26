@@ -1,4 +1,4 @@
-class Donation
+class Donation < ApplicationRecord
   module Charge
     class Create
       include Interactor
