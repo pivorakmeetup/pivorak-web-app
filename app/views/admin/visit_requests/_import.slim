@@ -1,0 +1,12 @@
+h3 = t 'words.import'
+
+.ui.form
+  = form_tag import_admin_event_visit_requests_path(event) do
+    .field
+      = label_tag :separator
+      = text_field_tag :separator, ', '
+    .field
+      = label_tag :emails_list
+      = text_area_tag :emails_list, nil, rows: 20
+    .field
+      = submit_tag t('words.import'), class: 'ui button primary'

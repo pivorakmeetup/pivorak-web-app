@@ -28,6 +28,7 @@ en:
     list: List
     url: Url
     preview: Preview
+    import: Import
 
   resources:
     errors:
