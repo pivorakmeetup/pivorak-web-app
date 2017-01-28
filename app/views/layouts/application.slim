@@ -5,8 +5,10 @@ html
     = csrf_meta_tags
     = stylesheet_link_tag    'app/application', 'data-turbolinks-track': 'reload', media: 'all'
     = javascript_include_tag 'app/application', 'data-turbolinks-track': 'reload'
+    == render 'layouts/ga/head' if Rails.env.production?
 
   body
+    = render 'layouts/ga/body' if Rails.env.production?
     header == render 'layouts/app/header'
     main    = yield
     footer == render 'layouts/app/footer'
