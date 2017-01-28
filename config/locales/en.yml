@@ -42,16 +42,20 @@ en:
     not_assigned: not assigned
     unauthorized: 'Please <a href=%{login_url}>login</a> or <a href=%{register_url}>register</a> %{action_message}'
 
-  donations:
-    success: Thank you, your donation has been accepted!
-
   search_result:
     singular: Search Result
     plural: Search Results
+
   goals:
     plural: Goals
     singular: Goal
     amount: Amount
+
+  donations:
+    singular: Donation
+    plural: Donations
+    donate: Donate
+    success: Thank you, your donation has been accepted!
 
   events:
     plural: Events

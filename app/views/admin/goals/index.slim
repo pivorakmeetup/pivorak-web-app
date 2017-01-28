@@ -10,7 +10,7 @@ table.ui.very.basic.table
   tbody
     - goals.each do |goal|
       tr
-        td = resource_link(goal, target: '_blank')
+        td = goal.title
         td = goal.amount
         td.right.aligned = controls do
           = admin_edit_resource_link(goal)

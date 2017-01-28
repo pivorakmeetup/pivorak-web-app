@@ -15,6 +15,9 @@ User.where(email: 'second@example.com').first_or_create!(
     first_name: 'Second', last_name: 'User', password: 'password'
 ).confirm
 
+#=== Goal =====================================================================
+Goal.where(title: 'General', amount: 99999999).first_or_create!
+
 #=== Groups ===================================================================
 [:regular, :lighting, :workshop].each do |talk_type|
   Group.where(resource: Talk, name: talk_type).first_or_create!

@@ -5,6 +5,6 @@ RSpec.describe 'Home READ' do
   end
 
   it { expect(page).to have_link 'Events' }
-  it { expect(page).to have_link 'Talks' }
-  it { expect(page).to have_link 'Goals' }
+  it { expect(page).to have_link 'Donate' }
+  # TODO VS -> Fill with other links
 end
