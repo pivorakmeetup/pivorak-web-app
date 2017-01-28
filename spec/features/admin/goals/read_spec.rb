@@ -7,8 +7,8 @@ RSpec.describe 'Goals READ' do
     visit '/admin/goals'
   end
 
-  it { expect(page).to have_link 'Test Goal A' }
-  it { expect(page).to have_link 'Test Goal B' }
+  it { expect(page).to have_content 'Test Goal A' }
+  it { expect(page).to have_content 'Test Goal B' }
   it { expect(page).to have_link 'New Goal' }
   it { expect(page).to have_link('Edit', count: 2) }
   it 'New Goal click redirect to #new' do

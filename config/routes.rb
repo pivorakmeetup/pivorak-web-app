@@ -24,9 +24,11 @@ Rails.application.routes.draw do
   resources :members,   only: %i[index show] do
     post :become_speaker, to: 'become_speaker#create', on: :collection
   end
-  resources :goals,   only: %i[index show] do
-    post :donate, on: :member
-  end
+  resource :donate, only: %i[show create]
+  # Skip until 1.1 version
+  # resources :goals,   only: %i[index show] do
+  #   post :donate, on: :member
+  # end
 
   #=== ADMIN AREA ===============================
   authenticate :user, ->(u) { u.admin? } do
