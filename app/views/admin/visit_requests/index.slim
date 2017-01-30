@@ -10,7 +10,7 @@ table.ui.very.basic.table
       - else
         th.center.aligned = t 'words.list'
         th.center.aligned = t 'words.status'
-        - unless event.confirmation?
+        - unless event.confirmation? || event.passed?
           th.status
 
   tbody
@@ -22,7 +22,9 @@ table.ui.very.basic.table
         - else
           td.center.aligned = visit_request_list_link(visit_request)
           td.center.aligned = visit_request_status_label(visit_request.status)
-          - unless event.confirmation?
+          - unless event.confirmation? || event.passed?
             td.center.aligned
               = admin_approve_visit_request_link(visit_request)
               = admin_cancel_visit_request_link(visit_request)
+
+== render 'admin/visit_requests/import' if event.passed?

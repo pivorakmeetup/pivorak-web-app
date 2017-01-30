@@ -13,5 +13,4 @@ RSpec.describe 'Visit Requests APPROVE' do
   it { expect(page).to_not have_link 'Approve' }
   it { expect(page).to have_link 'Cancel' }
   it { expect(visit_request.reload.status).to eq(VisitRequest::APPROVED.to_s) }
-
 end

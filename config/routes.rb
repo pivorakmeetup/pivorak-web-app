@@ -33,6 +33,7 @@ Rails.application.routes.draw do
         resources :visit_requests, only: %i[index] do
           collection do
             post :send_confirmations, to: 'visit_request/send_confirmations#create'
+            post :import,             to: 'visit_request/import#create'
           end
 
           put  :approve,      to: 'visit_request/approve#update'
