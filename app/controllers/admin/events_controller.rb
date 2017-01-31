@@ -6,7 +6,7 @@ module Admin
     before_action :add_edit_breadcump, only: %i[edit update]
 
     def new
-      @event = Event.new
+      @event = Event::New.call
       render_form
     end
 

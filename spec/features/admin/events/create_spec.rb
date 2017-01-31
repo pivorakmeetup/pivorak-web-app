@@ -4,6 +4,25 @@ RSpec.describe 'Events CREATE' do
     visit '/admin/events/new'
   end
 
+  context 'dateTime inputs' do
+    let(:default_started_at_hour) { Event::DEFAULT_STARTED_AT_HOURS }
+    let(:default_finished_at_hour) { Event::DEFAULT_FINISHED_AT_HOURS }
+
+    it 'should have default values' do
+      expect(
+        Time.zone.parse(
+          find("#event_started_at").value
+        ).hour
+      ).to eq(default_started_at_hour)
+
+      expect(
+        Time.zone.parse(
+          find("#event_finished_at").value
+        ).hour
+      ).to eq(default_finished_at_hour)
+    end
+  end
+
   context 'invalid input' do
     it 'validates errors' do
       fill_in 'Title',  with: ''

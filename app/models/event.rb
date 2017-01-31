@@ -13,6 +13,9 @@ class Event < ApplicationRecord
 
   mount_uploader :cover, EventCoverUploader
 
+  DEFAULT_STARTED_AT_HOURS = 18
+  DEFAULT_FINISHED_AT_HOURS = 22
+
   friendly_id :title, use: :slugged
 
   enum status: [PLANNED, REGISTRATION, CONFIRMATION, LIVE, PASSED]
