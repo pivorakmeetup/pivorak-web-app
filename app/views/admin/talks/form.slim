@@ -13,12 +13,19 @@
     .ten.wide.field
       = f.input :title
     .six.wide.field
-      = f.input :event_id,   collection: Event.all,   label_method: :title
+      = f.input :event_id,
+        collection: Event.all,
+        label_method: :title,
+        input_html: { class: 'ui search dropdown' }
+
   .fields
     .ten.wide.field
       = f.input :tag_list,   input_html: { value: talk.tag_list.join(', ') }
     .six.wide.field
-      = f.input :speaker_id, collection: User.sorted, label_method: :reverse_full_name
+      = f.input :speaker_id,
+        collection: User.sorted,
+        label_method: :reverse_full_name,
+        input_html: { class: 'ui search dropdown' }
 
   .fields
     .five.wide.field
