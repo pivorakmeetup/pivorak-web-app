@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   }
 
   #=== MAIN APP =================================
+  # TODO VS -> Remove after release
+  get '/coming-soon', to: 'home#coming_soon'
+
   resources :events,  only: %i[index show] do
     resources :visit_requests, only: %i[show create destroy]
   end
