@@ -14,7 +14,7 @@ class VisitRequest < ApplicationRecord
 
   scope :main_list,    -> { where(waiting_list: false) }
   scope :waiting_list, -> { where(waiting_list: true)  }
-  scope :final,        -> { approved.main_list }
+  scope :final,        -> { where(status: [APPROVED, CONFIRMED]).main_list }
 
   def main_list!
     update(waiting_list: false)
