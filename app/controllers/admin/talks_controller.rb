@@ -31,7 +31,7 @@ module Admin
     end
 
     def talks
-      @talks ||= Talk.includes(:event, :speaker, :group, :taggings)
+      @talks ||= Talk.includes(:event, :speaker, :group, :taggings).page(params[:page])
     end
 
     def talks_params

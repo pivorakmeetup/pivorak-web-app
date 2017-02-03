@@ -13,12 +13,12 @@ def expect_an_error(hash_pair = {}, no = false)
   error_div = "div.#{field}.error"
 
   msg = if value == :blank
-    "can't be blank"
-  elsif value == :has_been_taken
-    'has already been taken'
-  else
-    value
-  end
+          "can't be blank"
+        elsif value == :has_been_taken
+          'has already been taken'
+        else
+          value
+        end
 
   to_or_not = no ? :not_to : :to
 

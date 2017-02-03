@@ -15,6 +15,6 @@ RSpec.describe 'Synthetic user try to sign up' do
   end
 
   it 'redirects to root' do
-    expect(page).to have_current_path ('/')
+    expect(page).to have_current_path('/')
   end
 end

@@ -31,7 +31,7 @@ module Admin
     end
 
     def pages
-      @pages ||= Page.all
+      @pages ||= Page.page(params[:page])
     end
 
     def page_params
