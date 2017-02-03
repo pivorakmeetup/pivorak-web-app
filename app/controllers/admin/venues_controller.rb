@@ -31,7 +31,7 @@ module Admin
     end
 
     def venues
-      @venues ||= Venue.all
+      @venues ||= Venue.page(params[:page])
     end
 
     def venue_params

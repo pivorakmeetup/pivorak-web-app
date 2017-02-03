@@ -35,7 +35,7 @@ module Admin
     end
 
     def groups
-      @groups ||= Group.all
+      @groups ||= Group.page(params[:page])
     end
 
     def groups_params

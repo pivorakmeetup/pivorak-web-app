@@ -15,3 +15,5 @@ table.ui.very.basic.table
         td = link_to email.subject, admin_email_path(email)
         td = truncate(email.body, length: 20)
         td = format_timestamp(email.created_at, time: true)
+
+= paginate emails
