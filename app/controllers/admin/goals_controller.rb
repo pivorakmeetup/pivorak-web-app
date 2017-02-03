@@ -31,7 +31,7 @@ module Admin
     end
 
     def goals
-      @goals ||= Goal.all
+      @goals ||= Goal.page(params[:page])
     end
 
     def goal_params
