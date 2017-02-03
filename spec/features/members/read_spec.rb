@@ -1,5 +1,5 @@
 RSpec.describe 'Member READ' do
-  let (:member) { create(:user, :tester) }
+  let(:member) { create(:user, :tester) }
 
   describe 'single' do
     context 'any visitor'

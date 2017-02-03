@@ -31,7 +31,7 @@ module Admin
     end
 
     def events
-      @events ||= Event.order(started_at: :desc)
+      @events ||= Event.order(started_at: :desc).page(params[:page])
     end
 
     def venues

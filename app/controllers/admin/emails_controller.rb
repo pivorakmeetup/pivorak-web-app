@@ -41,7 +41,7 @@ module Admin
     end
 
     def emails
-      @emails ||= Email.all
+      @emails ||= Email.page(params[:page])
     end
   end
 end
