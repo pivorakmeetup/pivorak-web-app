@@ -354,6 +354,8 @@ GEM
       rack (~> 2.0)
       rack-protection (= 2.0.0.beta2)
       tilt (~> 2.0)
+    sitemap_generator (5.1.0)
+      builder
     slim (3.0.7)
       temple (~> 0.7.6)
       tilt (>= 1.3.3, < 2.1)
@@ -471,6 +473,7 @@ DEPENDENCIES
   simple_form (~> 3.3)
   simplecov
   sinatra (>= 2.0.0.beta2)
+  sitemap_generator
   slim-rails (~> 3.1)
   spring
   spring-commands-rspec
