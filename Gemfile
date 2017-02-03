@@ -23,6 +23,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-github'
 gem 'omniauth-twitter'
 gem 'simple_form',                       '~> 3.3'
+gem 'sitemap_generator'
 gem 'friendly_id',                       '~> 5.1'
 gem 'kaminari',                         '~> 0.17'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
