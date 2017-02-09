@@ -13,7 +13,7 @@ module NavigationHelper
   # end
 
   def donate_link
-    link_to t('donations.donate'), donate_path
+    link_to t('donations.donate'), donation_path
   end
 
   def chat_link
