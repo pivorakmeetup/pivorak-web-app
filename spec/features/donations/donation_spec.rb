@@ -5,7 +5,7 @@ RSpec.describe 'Donate Process' do
 
   before do
     StripeMock.start
-    visit '/donate'
+    visit '/donation'
   end
 
   after { StripeMock.stop }

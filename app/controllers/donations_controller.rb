@@ -1,4 +1,4 @@
-class DonatesController < ApplicationController
+class DonationsController < ApplicationController
   helper_method :goal
 
   def create
@@ -10,7 +10,7 @@ class DonatesController < ApplicationController
       flash[:error] = result.message
     end
 
-    redirect_to donate_path
+    redirect_to donation_path
   end
 
   private
