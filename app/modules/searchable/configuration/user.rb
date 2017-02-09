@@ -2,11 +2,13 @@ module Searchable
   module Configuration
     module User
       include Configurable
+      include SearchOptions
+
+      FIELDS = %i(first_name last_name email)
 
       define_searchable do
-        pg_search_scope :by_email, against: :email, using: { tsearch: { prefix: true } }
-
-        multisearchable            against: %i(first_name last_name email)
+        multisearchable          against: FIELDS
+        pg_search_scope :search, against: FIELDS, using: TSEARCHABLE_WITH_PREFIX
       end
     end
   end

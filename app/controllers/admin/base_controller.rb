@@ -10,6 +10,10 @@ module Admin
 
     private
 
+    def search_against(model)
+      Search::Resource.call params.merge(model: model)
+    end
+
     def self.add_breadcrumb(i18n_label, path = nil)
       semantic_breadcrumb I18n.t(i18n_label), path
     end

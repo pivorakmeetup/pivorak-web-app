@@ -1,7 +1,5 @@
-.ui.form
-  = form_tag url, method: :get do
-    .fields
-      .six.wide.field
-        = text_field_tag :query, params[:query], class: 'form-control mt-1'
-      .one.wide.field
-        = submit_tag 'Search', name: nil, class: 'ui button'
+= form_tag path, method: :get do
+  .ui.right.action.fluid.input.left.icon
+    = text_field_tag :query, params[:query]
+    i.search.icon
+    = button_tag t('words.search'), as: :submit, name: nil, class: 'ui button'

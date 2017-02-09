@@ -1,0 +1,5 @@
+h2 = t 'search_result.plural'
+
+- results.each do |klass, resources|
+  h3 = pluralize(resources.size, klass.name)
+  = render partial: resource_template(klass), collection: resources, as: :resource

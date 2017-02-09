@@ -15,7 +15,7 @@ class User
     attr_reader :token
 
     def user
-      @user ||= User.synthetic.where(confirmation_token: token).first
+      @user ||= User.synthetic.find_by(confirmation_token: token)
     end
   end
 end
