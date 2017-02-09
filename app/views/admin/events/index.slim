@@ -1,32 +1,26 @@
-.ui.sixteen.column.grid
-  .row
-    .sixteen.wide.column
-      = search_bar(path: admin_events_path)
+= resource_header :event, path: admin_events_path
 
-  .row
-    .sixteen.wide.column
-      = admin_new_resource_link :event
-      table.ui.very.basic.table
-        thead
-          tr
-            th
-              th = t 'words.title'
-            th.center.aligned = t 'words.status'
-            th = t 'events.visitors'
-            th = t 'words.date'
-            th.actions colspan="2"
+table.ui.very.basic.table
+  thead
+    tr
+      th
+        th = t 'words.title'
+      th.center.aligned = t 'words.status'
+      th = t 'events.visitors'
+      th = t 'words.date'
+      th.actions colspan="2"
 
-        tbody
-          - events.each do |event|
-            tr
-              td.center.aligned = bool_icon(event.published?)
-              td = resource_link(event, target: '_blank')
-              td.center.aligned = event_status_label(event)
-              td = event_limitation_data(event)
-              td = format_timestamp(event.started_at, time: false)
-              td.right.aligned
-                = controls do
-                  = admin_edit_resource_link(event)
-                  = admin_visit_requests_link(event)
+  tbody
+    - events.each do |event|
+      tr
+        td.center.aligned = bool_icon(event.published?)
+        td = resource_link(event, target: '_blank')
+        td.center.aligned = event_status_label(event)
+        td = event_limitation_data(event)
+        td = format_timestamp(event.started_at, time: false)
+        td.right.aligned
+          = controls do
+            = admin_edit_resource_link(event)
+            = admin_visit_requests_link(event)
 
-      = paginate events
+= paginate events
