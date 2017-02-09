@@ -57,5 +57,9 @@ module Admin
     def bool_icon(bool)
       content_tag :i, nil, class: ['circle icon', BOOL_BG_COLOR_CLASS[bool]]
     end
+
+    def resource_header(resource = nil, params = {})
+      render 'admin/shared/resource_header', locals: params.merge(resource: resource)
+    end
   end
 end

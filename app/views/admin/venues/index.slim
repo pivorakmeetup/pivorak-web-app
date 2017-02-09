@@ -1,26 +1,18 @@
-.ui.sixteen.column.grid
-  .row
-    .sixteen.wide.column
-      = search_bar(path: admin_venues_path)
+= resource_header :venue, path: admin_venues_path
 
-  .row
-    .sixteen.wide.column
-      = admin_new_resource_link :venue
+table.ui.very.basic.table
+  thead
+    tr
+      th = t 'words.name'
+      th = t 'venues.address'
+      th
 
+  tbody
+    - venues.each do |venue|
+      tr
+        td = resource_link(venue, text: :name, target: '_blank')
+        td = venue.address
+        td.right.aligned = controls do
+          = admin_edit_resource_link(venue)
 
-      table.ui.very.basic.table
-        thead
-          tr
-            th = t 'words.name'
-            th = t 'venues.address'
-            th
-
-        tbody
-          - venues.each do |venue|
-            tr
-              td = resource_link(venue, text: :name, target: '_blank')
-              td = venue.address
-              td.right.aligned = controls do
-                = admin_edit_resource_link(venue)
-
-      = paginate venues
+= paginate venues

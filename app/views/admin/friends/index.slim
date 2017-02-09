@@ -1,23 +1,16 @@
-.ui.sixteen.column.grid
-  .row
-    .sixteen.wide.column
-      = search_bar(path: admin_friends_path)
+= resource_header :friend, path: admin_friends_path
 
-  .row
-    .sixteen.wide.column
-      = admin_new_resource_link :friend
+table.ui.very.basic.table
+  thead
+    tr
+      th = t 'words.name'
+      th.actions colspan="2"
 
-      table.ui.very.basic.table
-        thead
-          tr
-            th = t 'words.name'
-            th.actions colspan="2"
+  tbody
+    - friends.each do |friend|
+      tr
+        td = friend.name
+        td.right.aligned = controls do
+          = admin_edit_resource_link(friend)
 
-        tbody
-          - friends.each do |friend|
-            tr
-              td = friend.name
-              td.right.aligned = controls do
-                = admin_edit_resource_link(friend)
-
-      = paginate friends
+= paginate friends
