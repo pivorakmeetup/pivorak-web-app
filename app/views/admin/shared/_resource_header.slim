@@ -1,0 +1,10 @@
+.ui.stackable.grid
+  .ten.wide.column
+    - if locals[:new_link]
+      = locals[:new_link]
+    - else
+      = admin_new_resource_link locals[:resource]
+
+  - if locals[:path]
+    .six.wide.column
+      = search_bar(path: locals[:path])
