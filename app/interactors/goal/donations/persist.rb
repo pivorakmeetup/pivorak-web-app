@@ -1,4 +1,4 @@
-class Goal
+class Goal < ApplicationRecord
   module Donations
     class Persist
       include Interactor

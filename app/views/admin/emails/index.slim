@@ -1,19 +1,25 @@
-= admin_new_resource_link :email
+.ui.sixteen.column.grid
+  .row
+    .sixteen.wide.column
+      = search_bar(path: admin_emails_path)
 
+  .row
+    .sixteen.wide.column
+      = admin_new_resource_link :email
 
-table.ui.very.basic.table
-  thead
-    tr
-      th = t 'emails.subject'
-      th = t 'emails.body'
-      th = t 'words.date'
-      th.actions colspan="2"
+      table.ui.very.basic.table
+        thead
+          tr
+            th = t 'emails.subject'
+            th = t 'emails.body'
+            th = t 'words.date'
+            th.actions colspan="2"
 
-  tbody
-    - emails.each do |email|
-      tr
-        td = link_to email.subject, admin_email_path(email)
-        td = truncate(email.body, length: 20)
-        td = format_timestamp(email.created_at, time: true)
+        tbody
+          - emails.each do |email|
+            tr
+              td = link_to email.subject, admin_email_path(email)
+              td = truncate(email.body, length: 20)
+              td = format_timestamp(email.created_at, time: true)
 
-= paginate emails
+      = paginate emails

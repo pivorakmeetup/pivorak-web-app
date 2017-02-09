@@ -33,15 +33,11 @@ module Admin
     end
 
     def email
-      @email ||= if params[:id]
-                   Email.find(params[:id])
-                 else
-                   Email.new
-                 end
+      @email ||= params[:id] ? Email.find(params[:id]) : Email.new
     end
 
     def emails
-      @emails ||= Email.page(params[:page])
+      @emails ||= search_against(Email).page(params[:page])
     end
   end
 end
