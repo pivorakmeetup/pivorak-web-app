@@ -1,33 +1,26 @@
-.sixteen.column.grid
-  .row
-    .sixteen.wide.column
-      = search_bar(path: admin_talks_path)
+= resource_header :talk, path: admin_talks_path
 
-  .row
-    .sixteen.wide.column
-      = admin_new_resource_link :talk
+table.ui.very.basic.table
+  thead
+    tr
+      th
+      th = t 'words.title'
+      th = t 'events.singular'
+      th = t 'talks.speaker'
+      th = t 'groups.singular'
+      th = t 'words.tags'
+      th
 
-      table.ui.very.basic.table
-        thead
-          tr
-            th
-            th = t 'words.title'
-            th = t 'events.singular'
-            th = t 'talks.speaker'
-            th = t 'groups.singular'
-            th = t 'words.tags'
-            th
+  tbody
+    - talks.each do |talk|
+      tr
+        td.center.aligned = bool_icon(talk.published?)
+        td = resource_link(talk, target: '_blank')
+        td = admin_talk_event_link(talk)
+        td = admin_talk_speaker_info(talk)
+        td = talk.group&.name
+        td = talk.tag_list
+        td.right.aligned = controls do
+          = admin_edit_resource_link(talk)
 
-        tbody
-          - talks.each do |talk|
-            tr
-              td.center.aligned = bool_icon(talk.published?)
-              td = resource_link(talk, target: '_blank')
-              td = admin_talk_event_link(talk)
-              td = admin_talk_speaker_info(talk)
-              td = talk.group&.name
-              td = talk.tag_list
-              td.right.aligned = controls do
-                = admin_edit_resource_link(talk)
-
-      = paginate talks
+= paginate talks
