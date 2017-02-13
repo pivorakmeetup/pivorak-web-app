@@ -17,6 +17,8 @@
 .env
 coverage
 
+.DS_Store
+
 config/database.yml
 .ruby-gemset
 
