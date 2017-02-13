@@ -1,0 +1,12 @@
+.pk-flash-container#main-flash
+  - flash.each do |key, value|
+    .pk-flash
+      .pk-flash__logo
+        =image_tag "logo-strawberry.svg"
+      .pk-flash__title
+        = key
+      .pk-flash__content
+        = value
+      .pk-flash__btn-area
+        a.js-close-flash href="#"
+          | close

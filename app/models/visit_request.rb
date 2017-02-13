@@ -12,6 +12,8 @@ class VisitRequest < ApplicationRecord
   belongs_to :event
   belongs_to :user
 
+  delegate :full_name, to: :user
+
   scope :main_list,    -> { where(waiting_list: false) }
   scope :waiting_list, -> { where(waiting_list: true)  }
   scope :final,        -> { where(status: [APPROVED, CONFIRMED]).main_list }
