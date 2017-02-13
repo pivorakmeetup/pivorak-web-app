@@ -20,7 +20,7 @@
 
   .fields
     .ten.wide.field
-      = f.input :tag_list,   input_html: { value: talk.tag_list.join(', ') }
+      = f.input :tag_list,   input_html: { value: talk.tag_list.to_s }
     .six.wide.field
       = f.input :speaker_id,
         collection: User.sorted,
