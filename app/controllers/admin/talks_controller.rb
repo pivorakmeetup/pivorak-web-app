@@ -31,7 +31,9 @@ module Admin
     end
 
     def talks
-      @talks ||= search_against(Talk).includes(:event, :speaker, :group, :taggings).page(params[:page])
+      @talks ||= search_against(Talk)
+        .includes(:tags, :event, :speaker, :group)
+        .page(params[:page])
     end
 
     def talks_params
