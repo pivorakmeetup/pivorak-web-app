@@ -87,6 +87,7 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
+    chartkick (2.2.2)
     codecov (0.1.9)
       json
       simplecov
@@ -156,6 +157,8 @@ GEM
       activerecord (>= 4.0.0)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    groupdate (3.2.0)
+      activesupport (>= 3)
     hashdiff (0.3.2)
     hashie (3.4.6)
     http-cookie (1.0.3)
@@ -435,6 +438,7 @@ DEPENDENCIES
   capistrano-sidekiq
   capybara
   carrierwave (~> 1.0)
+  chartkick
   codecov
   database_cleaner
   devise
@@ -443,6 +447,7 @@ DEPENDENCIES
   factory_girl_rails
   faker
   friendly_id (~> 5.1)
+  groupdate
   httpclient
   interactor-rails (~> 2.0)
   jquery-rails (~> 4.2.2)

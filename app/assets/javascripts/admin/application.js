@@ -17,6 +17,8 @@
 //= require semantic-ui
 //= require admin/semantic
 //= require simplemde.min
+//= require Chart.bundle
+//= require chartkick
 //= require_tree .
 
 document.addEventListener("turbolinks:load", function() {
@@ -25,5 +27,3 @@ document.addEventListener("turbolinks:load", function() {
     new SimpleMDE({ element: element });
   });
 })
-
-
