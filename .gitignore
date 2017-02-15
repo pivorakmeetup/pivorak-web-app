@@ -23,3 +23,4 @@ config/database.yml
 .DS_store
 public/uploads
 config/environments/development.rb
+lib/tasks/import_users/pivorakers_list.csv
