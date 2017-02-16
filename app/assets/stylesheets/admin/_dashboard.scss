@@ -1,0 +1,23 @@
+/* DASHBOARD STYLES */
+.ui.dashboard.segment {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 171px;
+}
+
+.ui.dashboard.statistic .value {
+  color: #FFFFFF;
+}
+
+.ui.dashboard.statistic .label {
+  color: #F5F5F5;
+}
+
+.top-table.column .ui.segment:last-child, .doughnut-chart.column .ui.segment:last-child {
+  height: 330px;
+}
+
+.doughnut-chart.column {
+  width: 100% !important;
+}

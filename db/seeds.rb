@@ -46,31 +46,40 @@ if Rails.env.development?
     )
   end
 
-  #=== Events ===================================================================
-  100.times do
-    Event.create(title: Faker::Lorem.word, agenda: Faker::Lorem.paragraph,
-     status: Event::REGISTRATION, published: true,
-     started_at: Time.now, finished_at: Time.now
-    )
+  #=== Events =================================================================
+  [Event::REGISTRATION, Event::PLANNED, Event::CONFIRMATION, Event::LIVE, Event::PASSED].each do |status|
+    rand(60..100).times do
+      Event.create(title: Faker::Lorem.word, agenda: Faker::Lorem.paragraph,
+       status:status, published: true,
+       started_at: Faker::Date.between(5.months.ago, Date.today), finished_at: Time.now
+      )
+    end
   end
 
-  #=== Talks ====================================================================
+  #=== Talks ==================================================================
   100.times do
-    Talk.create(title: Faker::StarWars.planet, description: Faker::StarWars.quote)
+    Talk.create(title: Faker::StarWars.planet, description: Faker::StarWars.quote,
+                created_at: Faker::Date.between(5.months.ago, Date.today) )
   end
 
-  #=== Goals ====================================================================
+  #=== Goals ==================================================================
   100.times do
     Goal.create(title: Faker::StarWars.droid, amount: Faker::Commerce.price)
   end
 
-  #=== Emails ===================================================================
+  #=== Emails =================================================================
   100.times do
     Email.create(subject: Faker::Hipster.sentence, body: Faker::Hipster.paragraph(10))
   end
 
-  #=== Friends ==================================================================
+  #=== Friends ================================================================
   100.times do
     Friend.create(name: Faker::StarWars.character, description: Faker::Hipster.paragraph(10))
+  end
+
+  #=== Friends ================================================================
+  100.times do
+    User.create(first_name: Faker::Name.name, last_name: 'User', password: 'password',
+                email: Faker::Internet.unique.email, created_at: Faker::Date.between(5.months.ago, Date.today))
   end
 end

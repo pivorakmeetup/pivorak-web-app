@@ -15,7 +15,9 @@ gem 'jquery-rails',                    '~> 4.2.2'
 gem 'semantic-ui-sass',              '~> 2.2.7.1'
 
 #=== FEATUES ====================================
+gem 'chartkick'
 gem 'devise'
+gem 'groupdate'
 gem 'stripe'
 gem 'pg_search'
 gem 'interactor-rails',                  '~> 2.0'
