@@ -13,6 +13,7 @@ gem 'turbolinks',                        '~> 5.0'
 gem 'slim-rails',                        '~> 3.1'
 gem 'jquery-rails',                    '~> 4.2.2'
 gem 'semantic-ui-sass',              '~> 2.2.7.1'
+gem 'rails-assets-svgxuse', source: 'https://rails-assets.org'
 
 #=== FEATUES ====================================
 gem 'chartkick'

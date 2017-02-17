@@ -1,25 +1,65 @@
 - flash.each do |key, value|
   div class="#{key}"
     = value
+header.pk-header
+  .pk-grid
+    .pk-grid__unit.text-left
+      .pk-inline-block.mrs
+        = link_to root_path do
+          = image_tag "logo.svg", class: "pk-header__logo"
+      .pk-header__soc-icon.pk-inline-block
+        = link_to "#" do
+          svg.pk-icon
+            use xlink:href="assets/icons.svg#icon-twitter"
+      .pk-header__soc-icon.pk-inline-block
+        = link_to "#" do
+          svg.pk-icon
+            use xlink:href="assets/icons.svg#icon-github"
+      .pk-header__soc-icon.pk-inline-block
+        = link_to "#" do
+          svg.pk-icon
+            use xlink:href="assets/icons.svg#icon-facebook"
+      .pk-header__soc-icon.pk-inline-block
+        = link_to "#" do
+          svg.pk-icon
+            use xlink:href="assets/icons.svg#icon-instagram"
+      .pk-header__soc-icon.pk-inline-block
+        = link_to "#" do
+          svg.pk-icon
+            use xlink:href="assets/icons.svg#icon-slack"
+      .pk-header__soc-icon.pk-inline-block
+        = link_to "#" do
+          svg.pk-icon
+            use xlink:href="assets/icons.svg#icon-youtube"
+    .pk-grid__unit.text-right
+      nav.pk-list
+        .pk-list__unit
+          = events_link
+        .pk-list__unit
+          = talks_link
+        / .pk-list__unit # Skip until 1.1 version
+          = goals_link
+        .pk-list__unit
+          = chat_link
+        .pk-list__unit
+          = members_link
+        .pk-list__unit
+          = speakers_link
 
-nav
-  ul
-    li = events_link
-    li = talks_link
-    li = donate_link
-    / li = goals_link # Skip until 1.1 version
-    li = chat_link
-    li = members_link
-    li = speakers_link
 
-    - if user_signed_in?
-      li = profile_link
-      li = logout_link
-      - if admin?
-        li = admin_link
+        - if user_signed_in?
+          .pk-list__unit
+            = profile_link
+          .pk-list__unit
+            = logout_link
+          - if admin?
+            .pk-list__unit
+                = admin_link
 
-    - else
-      li = login_link
-      li = register_link
+        - else
+          .pk-list__unit
+            = login_link
+          .pk-list__unit
+            = register_link
 
-= render 'shared/search_bar', path: search_index_path
+/ = render 'shared/search_bar', path: search_index_path

@@ -1,0 +1,21 @@
+.pk-event-bg {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  &:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(211,80,48,0.80);
+    background-image: linear-gradient(0deg, #D96A4D 0%, rgba(211,80,48,0.55) 21%);
+  }
+}
