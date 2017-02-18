@@ -3,31 +3,38 @@ header.pk-header
     .pk-grid__unit.text-left
       .pk-inline-block.mrs
         = link_to root_path do
-          = image_tag "logo.svg", class: "pk-header__logo"
+          = image_tag 'logo.svg', class: 'pk-header__logo'
+
       .pk-header__soc-icon.pk-inline-block
-        = link_to "#" do
+        = link_to 'https://twitter.com/pivorakmeetup', target: '_blank' do
           svg.pk-icon
-            use xlink:href="assets/icons.svg#icon-twitter"
+            use xlink:href='assets/icons.svg#icon-twitter'
+
       .pk-header__soc-icon.pk-inline-block
-        = link_to "#" do
+        = link_to 'https://github.com/pivorakmeetup', target: '_blank' do
           svg.pk-icon
-            use xlink:href="assets/icons.svg#icon-github"
+            use xlink:href='assets/icons.svg#icon-github'
+
       .pk-header__soc-icon.pk-inline-block
-        = link_to "#" do
+        = link_to 'https://www.facebook.com/pivorak', target: '_blank' do
           svg.pk-icon
-            use xlink:href="assets/icons.svg#icon-facebook"
+            use xlink:href='assets/icons.svg#icon-facebook'
+
       .pk-header__soc-icon.pk-inline-block
-        = link_to "#" do
+        = link_to 'https://www.instagram.com/pivorakmeetup/', target: '_blank' do
           svg.pk-icon
-            use xlink:href="assets/icons.svg#icon-instagram"
+            use xlink:href='assets/icons.svg#icon-instagram'
+
       .pk-header__soc-icon.pk-inline-block
-        = link_to "#" do
+        = link_to 'http://pivorak-slack.herokuapp.com/', target: '_blank' do
           svg.pk-icon
-            use xlink:href="assets/icons.svg#icon-slack"
+            use xlink:href='assets/icons.svg#icon-slack'
+
       .pk-header__soc-icon.pk-inline-block
-        = link_to "#" do
+        = link_to 'https://www.youtube.com/channel/UCPsfLdQH_0CaDIe4imm7bMA', target: '_blank' do
           svg.pk-icon
-            use xlink:href="assets/icons.svg#icon-youtube"
+            use xlink:href='assets/icons.svg#icon-youtube'
+
     .pk-grid__unit.text-right
       nav.pk-list
         / .pk-list__unit
