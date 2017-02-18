@@ -1,5 +1,5 @@
 = content_for :before_header do
-  .pk-event-bg style="background-image: url('#{image_url(@event.cover)}')"
+  .pk-event-bg style="background-image: url('#{image_url(event.cover)}')"
 
 .text-center
   .pk-event-date
@@ -7,11 +7,8 @@
       = image_tag "pivorak-logo.png"
       figcaption
         | #pivorak
-    .pk-event-date__day
-      = get_day(@event.started_at)
-    .pk-event-date__month
-      = get_month(@event.started_at)
-    .pk-event-date__date
-      = get_day_of_the_month(@event.started_at)
-    .pk-event-date__hour
-      = get_hour(@event.started_at)
+
+    .pk-event-date__day   = get_day(event.started_at)
+    .pk-event-date__month = get_month(event.started_at)
+    .pk-event-date__date  = get_day_of_the_month(event.started_at)
+    .pk-event-date__hour  = get_hour(event.started_at)

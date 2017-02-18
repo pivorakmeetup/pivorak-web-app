@@ -1,9 +1,13 @@
 class HomeController < ApplicationController
+  helper_method :event
+
   def coming_soon
     render layout: 'coming_soon'
   end
 
-  def index
-    @event = Event.potential_next
+  private
+
+  def event
+    @event ||= Event.potential_next
   end
 end

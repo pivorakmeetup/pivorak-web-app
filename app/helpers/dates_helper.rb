@@ -1,4 +1,4 @@
-module HomeHelper
+module DatesHelper
   def get_day(date)
     date.strftime("%a")
   end
