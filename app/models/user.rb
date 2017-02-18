@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   LATIN_LETTERS_REGEX = /[a-zA-Z]+/
 
+  mount_uploader :cover, SpeakerCoverUploader
+
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable,
          :validatable, :omniauthable, omniauth_providers: Devise.omniauth_providers

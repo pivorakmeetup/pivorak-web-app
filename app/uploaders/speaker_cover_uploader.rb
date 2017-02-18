@@ -1,0 +1,2 @@
+class SpeakerCoverUploader < DefaultImageUploader
+end

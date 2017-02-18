@@ -12,3 +12,9 @@
     = f.input :verified, as: :boolean
   .four.wide.field.ui.slider.checkbox
     = f.input :admin, as: :boolean
+
+  .one.field
+    = f.input :cover, as: :file
+
+- if member.cover.present?
+  = image_tag member.cover_url
