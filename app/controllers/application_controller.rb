@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  helper_method :admin?
+  helper_method :admin?, :about_page
 
   delegate :admin?, to: :current_user, allow_nil: true
 
@@ -13,6 +13,10 @@ class ApplicationController < ActionController::Base
 
   def coming_soon?
     redirect_to(coming_soon_path) unless skip_coming_soon
+  end
+
+  def about_page
+    @about_page ||= Page.find_by(url: 'about')
   end
 
   private

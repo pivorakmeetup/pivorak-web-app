@@ -22,7 +22,7 @@ class VisitRequestsController < ApplicationController
   private
 
   def default_redirect
-    redirect_to event_path(event)
+    redirect_to root_path # redirect_to event_path(event) TODO [1.1]
   end
 
   def event

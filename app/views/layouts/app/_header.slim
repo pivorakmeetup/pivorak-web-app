@@ -33,19 +33,25 @@ header.pk-header
             use xlink:href="assets/icons.svg#icon-youtube"
     .pk-grid__unit.text-right
       nav.pk-list
-        .pk-list__unit
-          = events_link
-        .pk-list__unit
-          = talks_link
+        / .pk-list__unit
+        /   = events_link
+
+        / .pk-list__unit
+        /   = talks_link
+
         / .pk-list__unit # Skip until 1.1 version
           = goals_link
-        .pk-list__unit
-          = chat_link
-        .pk-list__unit
-          = members_link
-        .pk-list__unit
-          = speakers_link
+        / .pk-list__unit
+        /   = chat_link
 
+        / .pk-list__unit
+        /   = members_link
+
+        / .pk-list__unit
+        /   = speakers_link
+
+        .pk-list__unit
+          = page_link about_page
 
         - if user_signed_in?
           .pk-list__unit
