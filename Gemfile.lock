@@ -273,6 +273,7 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 5.0.1)
       sprockets-rails (>= 2.0.0)
+    rails-assets-lory (2.2.1)
     rails-assets-svgxuse (1.2.1)
     rails-dom-testing (2.0.2)
       activesupport (>= 4.2.0, < 6.0)
@@ -467,6 +468,7 @@ DEPENDENCIES
   pry-rails
   puma (~> 3.0)
   rails (~> 5.0.1)
+  rails-assets-lory!
   rails-assets-svgxuse!
   rollbar
   rspec

@@ -1,3 +1,7 @@
+html {
+  box-sizing: border-box; // 1
+}
+
 html, body {
   font-size: $main-font-size;
   font-family: $main-font-family;
@@ -20,6 +24,16 @@ body {
     top: 0;
     bottom: 0;
   }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit; // 1
+}
+
+@at-root {
+  @-ms-viewport { width: device-width; }
 }
 
 a {

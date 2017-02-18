@@ -1,23 +1,45 @@
+
 - if event
-  h3 = event.title
+  = content_for :before_header do
+    .pk-event-bg style="background-image: url('#{image_url(event.cover)}')"
 
-  h2 = t 'talks.plural'
+  .text-center
+    .pk-event-date
+      figure.pk-event-date__img
+        = image_tag "pivorak-logo.png"
+        figcaption
+          | #pivorak
 
-  ul
-    - talks.each do |talk|
-      li
-        p = talk.title
-        p = talk.description
-        p = talk.speaker&.full_name
+      .pk-event-date__day   = get_day(event.started_at)
+      .pk-event-date__month = get_month(event.started_at)
+      .pk-event-date__date  = get_day_of_the_month(event.started_at)
+      .pk-event-date__hour  = get_hour(event.started_at)
 
-  == render 'events/attendance'
-  == render 'events/confirmation'
+  .pk-slider
+    .pk-slider__unit
+      | ffff
 
-  div = unauthorized_message(t 'visit_requests.action')
+/
+  - if event
+    h3 = event.title
 
-  - if attendees.any?
-    h2 = t 'events.attendees'
+    h2 = t 'talks.plural'
 
     ul
-      - attendees.each do |attendee|
-        li = attendee.full_name
+      - talks.each do |talk|
+        li
+          p = talk.title
+          p = talk.description
+          p = talk.speaker&.full_name
+
+    == render 'events/attendance'
+    == render 'events/confirmation'
+
+    div = unauthorized_message(t 'visit_requests.action')
+
+    - if attendees.any?
+      h2 = t 'events.attendees'
+
+      ul
+        - attendees.each do |attendee|
+          li = attendee.full_name

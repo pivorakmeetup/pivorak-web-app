@@ -1,0 +1,49 @@
+$namespace: ".pk-slider";
+
+#{$namespace} {
+
+}
+
+#{$namespace}__unit {
+  width: 636px;
+  height: 1078px;
+  position: relative;
+  padding: 24px (188px + 72px) 24px (10px + 72px);
+  &:before {
+    z-index: -1;
+    pointer-events: none;
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    border-style: solid;
+    border-width: 0 188px 1078px 10px;
+    border-color: transparent transparent #57C8D1 transparent;
+  }
+  // margin: 0 200px;
+  // &:before {
+  //   content: "";
+  //   position: absolute;
+  //   right: 100%;
+  //   width: 70px;
+  //   top: 0;
+  //   bottom: 0;
+  //   transform: skew(-1deg, 0);
+  //   background-color: inherit;
+  //   margin-right: -12px;
+  // }
+  // &:after {
+  //   content: "";
+  //   position: absolute;
+  //   left: 100%;
+  //   width: 46px;
+  //   top: 0;
+  //   bottom: 0;
+  //   transform: skew(10deg, 0);
+  //   background-color: inherit;
+  //   margin-left: -22px;
+  // }
+}
+
