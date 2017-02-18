@@ -14,4 +14,19 @@
 //= require jquery
 //= require jquery_ujs
 //= require svgxuse
+//= require lory
 //= require_tree .
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    var sliderContainer = document.querySelector('.pk-js-slider');
+    
+    if (sliderContainer) {
+      var slider = lory(sliderContainer, {
+        infinite: false,
+        rewind: true,
+        rewindOnResize: false
+        });
+    }
+});
+
