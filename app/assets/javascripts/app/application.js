@@ -19,14 +19,14 @@
 
 
 document.addEventListener('DOMContentLoaded', function () {
-    var sliderContainer = document.querySelector('.pk-js-slider');
-    
+    var sliderContainer = document.querySelector('.js-slider');
+
     if (sliderContainer) {
       var slider = lory(sliderContainer, {
         infinite: false,
-        rewind: true,
+        rewind: false,
         rewindOnResize: false
-        });
+      });
     }
 });
 

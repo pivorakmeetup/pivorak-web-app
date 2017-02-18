@@ -5,7 +5,7 @@ module EventsHelper
     return if visit_request&.pending?
     return if visit_request&.approved?
 
-    link_to t('visit_requests.attend'), event_visit_requests_path(event), method: :post
+    link_to t('visit_requests.attend'), event_visit_requests_path(event), method: :post, class: "pk-btn pk-btn--biggest"
   end
 
   def cancel_event_attendace_link(visit_request)

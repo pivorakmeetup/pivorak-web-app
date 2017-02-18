@@ -10,12 +10,10 @@ html
   body
     = render 'layouts/ga/body' if Rails.env.production?
     = yield(:before_header)
-    header
-      == render 'layouts/app/flash'
-      == render 'layouts/app/header'
+    == render 'layouts/app/flash'
+    == render 'layouts/app/header'
 
     main
       = yield
 
-    footer
-      == render 'layouts/app/footer'
+    / == render 'layouts/app/footer'

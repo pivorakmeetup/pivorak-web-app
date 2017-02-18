@@ -1,13 +1,21 @@
 $namespace: ".pk-slider";
 
 #{$namespace} {
+  margin-bottom: -180px;
+}
 
+#{$namespace}__container {
+  display: inline-block;
 }
 
 #{$namespace}__unit-container {
   width: 320px;
   display: inline-block;
-  vertical-align: middle;
+  vertical-align: top;
+  position: relative;
+  #{$namespace}__unit {
+    padding-bottom: 180px;
+  }
   &:nth-child(4n+1) {
     #{$namespace}__unit {
       width: 636px;
@@ -34,7 +42,7 @@ $namespace: ".pk-slider";
     #{$namespace}__unit {
       z-index: 2;
       width: 434px;
-      height: 1078px;
+      height: (1078px - 30px);
       position: relative;
       padding: 24px 72px;
       margin: 15px 79px 0 99px;
@@ -48,7 +56,7 @@ $namespace: ".pk-slider";
         top: 0;
         bottom: 0;
         border-style: solid;
-        border-width: 1078px 0 0 99px;
+        border-width: (1078px - 30px) 0 0 99px;
         border-color: #F7B332 transparent transparent transparent;
       }
       &:after {
@@ -91,7 +99,7 @@ $namespace: ".pk-slider";
   &:nth-child(4n+4) {
     #{$namespace}__unit {
       width: 441px;
-      height: 1078px;
+      height: (1078px - 30px);
       position: relative;
       padding: 24px 72px;
       margin: 15px 34px 0 99px;
@@ -105,7 +113,7 @@ $namespace: ".pk-slider";
         top: 0;
         bottom: 0;
         border-style: solid;
-        border-width: 1078px 0 0 99px;
+        border-width: (1078px - 30px) 0 0 99px;
         border-color: #F7B332 transparent transparent transparent;
       }
       &:after {

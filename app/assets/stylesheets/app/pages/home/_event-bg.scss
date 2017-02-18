@@ -1,7 +1,5 @@
 .pk-event-bg {
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-color: transparent;
+  background: transparent image-url("main-bg-image.jpg") center center no-repeat;
   background-size: cover;
   position: absolute;
   left: 0;
@@ -9,6 +7,7 @@
   right: 0;
   height: 100vh;
   z-index: -1;
+  min-height: 900px;
   &:after {
     content: "";
     position: absolute;

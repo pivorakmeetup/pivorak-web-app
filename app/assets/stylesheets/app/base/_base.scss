@@ -16,6 +16,7 @@ body {
   line-height: $main-line-height;
   color: $main-color;
   position: relative;
+  min-height: 900px;
   &:after {
     content: "";
     background: transparent image-url("paper-imit-bg.png") center center no-repeat;

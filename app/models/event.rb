@@ -32,7 +32,7 @@ class Event < ApplicationRecord
   validates_with LimitsValidator
 
   def self.upcoming
-    where(published: true).order('started_at DESC').last
+    where(published: true).order('started_at').last
   end
 
   def limit_newbies

@@ -4,7 +4,7 @@
   */
 .slider {}
 
-.frame {
+.lory-frame {
     /**
       * (optional) wrapper width, specifies width of the slider frame.
       */
@@ -15,23 +15,6 @@
     line-height: 0;
     overflow: hidden;
     white-space: nowrap;
-}
-
-.slides {
-    display: inline-block;
-}
-
-li {
-    position: relative;
-    display: inline-block;
-
-    /**
-      * (optional) if the content inside the slide element has a defined size.
-      */
-    // width: 880px;
-    width: 300px;
-    height: 800px;
-    overflow: hidden;
 }
 
 .prev, .next {
@@ -53,4 +36,4 @@ li {
 .next svg, .prev svg {
     width: 25px;
 }
-            
+
