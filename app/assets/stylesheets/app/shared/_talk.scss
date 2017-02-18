@@ -1,0 +1,42 @@
+.pk-talk {
+  font-family: 'Arvo';
+  list-style: none;
+}
+
+.pk-talk__image {
+  height: 280px;
+  width: auto;
+  filter: grayscale(100%);
+}
+
+.pk-talk__name {
+  position: relative;
+  font-size: 18px;
+  color: #FFF4DA;
+  letter-spacing: 1px;
+
+  &:after {
+    content: '';
+    width: 138px;
+    height: 2px;
+    background-color: #FFF4DA;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+  }
+}
+
+.pk-talk__title {
+  font-family: 'Fjalla One';
+  font-size: 46px;
+  line-height: 46px;
+  color: #FCF7EF;
+  letter-spacing: 3.45px;
+  margin-bottom: 24px;
+}
+
+.pk-talk__content {
+  font-size: 14px;
+  color:#FCF7EF;
+  line-height: 21px;
+}
