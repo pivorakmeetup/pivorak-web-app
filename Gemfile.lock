@@ -167,6 +167,10 @@ GEM
     httpclient (2.8.3)
     i18n (0.8.0)
     inflecto (0.0.2)
+    inline_svg (0.11.0)
+      activesupport (>= 4.0)
+      loofah (>= 2.0)
+      nokogiri (~> 1.6)
     interactor (3.1.0)
     interactor-rails (2.0.2)
       interactor (~> 3.0)
@@ -452,6 +456,7 @@ DEPENDENCIES
   friendly_id (~> 5.1)
   groupdate
   httpclient
+  inline_svg
   interactor-rails (~> 2.0)
   jquery-rails (~> 4.2.2)
   kaminari (~> 0.17)
