@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20170221155402) do
     t.decimal  "amount",     precision: 10, scale: 2
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.integer  "payment_id"
     t.index ["goal_id"], name: "index_donations_on_goal_id", using: :btree
     t.index ["user_id"], name: "index_donations_on_user_id", using: :btree
   end

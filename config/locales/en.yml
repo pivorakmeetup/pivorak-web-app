@@ -46,6 +46,12 @@ en:
     singular: Search Result
     plural: Search Results
 
+  liqpay:
+    status:
+      success: Donation successful.
+      failure: Donation failed.
+      error:   Donation failed. Full field values is not correct.
+
   goals:
     plural: Goals
     singular: Goal

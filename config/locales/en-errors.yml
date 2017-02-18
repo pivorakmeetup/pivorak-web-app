@@ -2,3 +2,4 @@ en:
   errors:
     only_latin_letters: only latin letters are allowed
     total_less_verified: total limit is less than verified
+    donation_not_decoded: Donation is not successful. Data is not decoded.
