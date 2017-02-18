@@ -13,7 +13,7 @@ class HomeController < ApplicationController
   private
 
   def event
-    @event ||= Event.potential_next
+    @event ||= Event.upcoming
   end
 
   def talks

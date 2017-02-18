@@ -28,10 +28,12 @@ class Event < ApplicationRecord
 
   scope :display, -> { where.not(status: PLANNED) }
 
-  scope :potential_next, -> { where(published: true).order('started_at DESC').limit(1).last }
-
   validates :title, :limit_total, :limit_verified, presence: true
   validates_with LimitsValidator
+
+  def self.upcoming
+    where(published: true).order('started_at DESC').last
+  end
 
   def limit_newbies
     limit_total - limit_verified
