@@ -1,5 +1,5 @@
 # config valid only for current version of Capistrano
-lock "3.7.1"
+lock "3.7.2"
 
 set :application, proc { "pivorak-web-app_#{fetch :stage}" }
 set :repo_url, 'git@github.com:pivorakmeetup/pivorak-web-app.git'
