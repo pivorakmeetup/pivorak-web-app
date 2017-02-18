@@ -1,16 +1,19 @@
 .ui.main.grid
-  == render 'title'
+  .ui.row
+    .column
+      == render 'title'
+
   .ui.three.column.row
-    == render partial: 'stat', locals: { klass: 'green', stat_name: 'Events', 
+    == render partial: 'stat', locals: { klass: 'green', stat_name: 'Events',
                                          quantity: stat[:events_count] }
-    == render partial: 'stat', locals: { klass: 'teal', stat_name: 'Memebers', 
+    == render partial: 'stat', locals: { klass: 'teal', stat_name: 'Memebers',
                                          quantity: stat[:users_count] }
-    == render partial: 'stat', locals: { klass: 'blue', stat_name: 'Talks', 
+    == render partial: 'stat', locals: { klass: 'blue', stat_name: 'Talks',
                                          quantity: stat[:talks_count] }
-  
+
   == render partial: 'chart', locals: { chart: pie_chart(stat[:events_by_status]),
                                         chart_name: 'Events by status' }
-  == render partial: 'chart', locals: { chart: line_chart(stat[:users_by_months]), 
+  == render partial: 'chart', locals: { chart: line_chart(stat[:users_by_months]),
                                         chart_name: 'Members' }
   == render partial: 'chart', locals: { chart: line_chart(stat[:talks_by_months]),
                                         chart_name: 'Talks' }
