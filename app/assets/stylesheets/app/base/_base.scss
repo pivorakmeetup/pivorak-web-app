@@ -5,6 +5,9 @@ html {
 html, body {
   font-size: $main-font-size;
   font-family: $main-font-family;
+
+  -webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 body {
