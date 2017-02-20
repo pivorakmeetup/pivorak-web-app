@@ -31,7 +31,10 @@ module Admin
     end
 
     def events
-      @events ||= search_against(Event).order(started_at: :desc).page(params[:page])
+      @events ||= search_against(Event)
+        .includes(:approved_visit_requests, :pending_visit_requests)
+        .order(started_at: :desc)
+        .page(params[:page])
     end
 
     def venues
