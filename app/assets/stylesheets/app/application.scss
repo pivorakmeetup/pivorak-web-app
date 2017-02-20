@@ -10,11 +10,31 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
  */
 
-.translation_missing {
-  background-color: red   !important;
-  color:            white !important;
-}
+@import "https://fonts.googleapis.com/css?family=Arvo:400,400i,700";
+@import "https://fonts.googleapis.com/css?family=Fjalla+One";
+
+@import "normalize";
+
+@import "helpers/helpers";
+@import "helpers/spaces";
+
+@import "variables";
+@import "base/base";
+@import "base/grid";
+@import "base/icons";
+@import "base/header";
+@import "base/footer";
+
+@import "pages/home/event-bg";
+@import "pages/home/event-date";
+@import "pages/home/slider";
+@import "pages/home/status";
+
+@import "shared/list";
+@import "shared/search";
+@import "shared/talk";
+@import "shared/btn";
+
+@import "external/lory";

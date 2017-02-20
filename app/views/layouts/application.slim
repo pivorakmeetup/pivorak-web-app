@@ -9,6 +9,11 @@ html
 
   body
     = render 'layouts/ga/body' if Rails.env.production?
-    header == render 'layouts/app/header'
-    main    = yield
-    footer == render 'layouts/app/footer'
+    = yield(:before_header)
+    == render 'layouts/app/flash'
+    == render 'layouts/app/header'
+
+    main
+      = yield
+
+    / == render 'layouts/app/footer'

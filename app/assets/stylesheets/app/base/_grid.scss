@@ -1,0 +1,11 @@
+$namespace: ".pk-grid";
+
+#{$namespace} {
+  display: flex;
+  height: 100%;
+}
+
+#{$namespace}__unit {
+  flex: 1 1 auto;
+  overflow: hidden;
+}
