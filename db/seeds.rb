@@ -20,11 +20,11 @@ Goal.where(title: 'General', amount: 99999999).first_or_create!
 
 #=== Groups ===================================================================
 [:regular, :lighting, :workshop].each do |talk_type|
-  Group.where(resource: Talk, name: talk_type).first_or_create!
+  Group.where(resource: 'Talk', name: talk_type).first_or_create!
 end
 
 [:sponsors, :meetups, :books, :resources].each do |friend_type|
-  Group.where(resource: Friend, name: friend_type).first_or_create!
+  Group.where(resource: 'Friend', name: friend_type).first_or_create!
 end
 
 #=== Venues ===================================================================
