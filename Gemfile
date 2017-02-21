@@ -39,7 +39,8 @@ gem 'sinatra', '>= 2.0.0.beta2', require: false
 gem 'carrierwave', '~> 1.0'
 gem 'acts-as-taggable-on',               '~> 4.0'
 gem 'dry-validation'
-
+#=== CONFIG =================================
+gem 'dotenv-rails'
 #=== DEV & TEST =================================
 group :development do
   gem 'web-console'
@@ -60,9 +61,8 @@ group :development, :test do
   gem 'rspec'
   gem 'rspec-rails'
   gem 'pry-rails'
-  gem 'dotenv-rails'
   gem 'faker'
- gem 'bullet'
+  gem 'bullet'
 end
 
 group :test do
