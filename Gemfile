@@ -31,7 +31,6 @@ gem 'kaminari',                         '~> 0.17'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'httpclient'
 gem 'oj' # faster json parser
-gem 'mailgun_rails'
 gem 'rollbar'
 gem 'uglifier'
 # sidekiq
