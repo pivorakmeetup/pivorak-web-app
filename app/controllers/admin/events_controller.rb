@@ -44,6 +44,7 @@ module Admin
     def event_params
       params.require(:event).permit(
         :title, :description, :agenda, :started_at, :finished_at, :venue_id,
+        :facebook_embeded_post,
         :limit_total, :limit_verified, :cover, :published, :status, talk_ids: []
       )
     end
