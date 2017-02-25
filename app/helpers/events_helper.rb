@@ -58,7 +58,7 @@ module EventsHelper
   def visit_request_status_message(visit_request)
     return unless visit_request
 
-    t(visit_request.status, scope: 'visit_requests.messages')
+    render html: "#{t(visit_request.status, scope: 'visit_requests.messages')} <br/>".html_safe
   end
 
   private

@@ -1,4 +1,3 @@
-
 - if event
   = content_for :before_header do
     .pk-event-bg
@@ -33,7 +32,9 @@
   .pk-status-container.text-center
     == render 'events/attendance'
     == render 'events/confirmation'
-    = unauthorized_message(t 'visit_requests.action')
+    - if event.registration? && current_user.nil?
+      .pk-status
+        = unauthorized_message(t 'visit_requests.action')
 
     / - if attendees.any?
     /     ul
