@@ -3,6 +3,8 @@ $namespace: ".pk-btn";
 #{$namespace} {
   display: inline-block;
   margin-bottom: 0;
+
+  font-family: $main-font-family;
   font-weight: normal;
   text-align: center;
   vertical-align: middle;
@@ -18,8 +20,56 @@ $namespace: ".pk-btn";
   user-select: none;
   background-color: #D35130;
   text-decoration: none;
+  transition: .3s ease;
+
   &:hover, &:active, &:focus {
     text-decoration: none;
+  }
+  
+}
+
+#{$namespace}__wrapper {
+  position: relative;
+  
+  [class*="pk-btn"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+  }
+
+  // &:hover {
+  //   background-color: ;
+  // }
+}
+
+#{$namespace}__wrapper--medium {
+  width: 304px;
+  height: 40px;
+}
+
+#{$namespace}__wrapper--biggest {
+  width: 580px;
+  height: 80px;
+}
+
+#{$namespace}--medium {
+  width: 304px;
+  height: 40px;
+  padding: 8px 16px;
+
+  border: 1px solid transparent;
+  border-radius: 12px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .2);
+  
+  font-size: 15px;
+  line-height: $main-line-height;
+  letter-spacing: 2.14px;
+  color: $text-color;
+  font-weight: 600;
+
+  &:hover, &:active, &:focus {
+    outline: none;
   }
 }
 
@@ -29,3 +79,43 @@ $namespace: ".pk-btn";
   padding: 17px 144px 23px 144px;
   box-shadow: 0 2px 14px 0 rgba(0,0,0,0.33);
 }
+
+#{$namespace}--tag {
+  position: relative;
+  width: 90px;
+  height: 82px;
+  border: 1px solid rgba($icon-light-color, .54);
+  border-radius: 10px;
+  background-color: transparent;
+  color: $icon-light-color;
+  z-index: 2;
+
+  .pk-icon {
+    position: absolute;
+    top: calc((100% - 40px) / 2 );
+    left: calc((100% - 40px) / 2 );
+    font-size: 40px;
+  }
+
+  &:hover, &:active {
+    // version
+    background-color: rgba($icon-light-color, .05);
+    border-color: rgba($icon-light-color, .24);
+
+    // version
+    // border-color: rgba($icon-light-color, .74);
+
+    // version
+    // background-color: inherit;
+    // background-color: #57C8D1;
+    // border-color: rgba($icon-light-color, .14);
+    
+    // version
+    // transform: translateY(2px);
+  }
+
+  & + & {
+    margin-left: 16px;
+  }
+}
+
