@@ -1,19 +1,32 @@
 .pk-talk {
   font-family: 'Arvo';
   list-style: none;
+  white-space: normal;
+  max-height: 844px;
+  overflow: hidden;
 }
 
 .pk-talk__image {
   height: 280px;
-  width: auto;
-  filter: grayscale(100%);
+  overflow: hidden;
+  line-height: 280px;
+  background-position: 50% 100%;
+  background-repeat: no-repeat;
+  img {
+    display: inline-block;
+    vertical-align: bottom;
+    max-width: 100%;
+  }
 }
 
 .pk-talk__name {
   position: relative;
+  margin-top: 24px;
   font-size: 18px;
   color: #FFF4DA;
-  letter-spacing: 1px;
+  letter-spacing: 0.05555556em;
+  line-height: 1.16667;
+  padding-bottom: 4px;
 
   &:after {
     content: '';
@@ -21,22 +34,28 @@
     height: 2px;
     background-color: #FFF4DA;
     position: absolute;
-    bottom: 0px;
+    top: 100%;
     left: 0px;
   }
 }
 
 .pk-talk__title {
-  font-family: 'Fjalla One';
+  font-family: $headings-font-family;
+  text-transform: uppercase;
   font-size: 46px;
-  line-height: 46px;
+  line-height: (65 / 46);
   color: #FCF7EF;
-  letter-spacing: 3.45px;
-  margin-bottom: 24px;
+  letter-spacing: 0.075em;
+  margin-top: 45px;
+  word-break: break-all;
 }
 
 .pk-talk__content {
   font-size: 14px;
   color:#FCF7EF;
-  line-height: 21px;
+  line-height: (21 / 14);
+  margin-top: 20px;
+  p {
+    margin-bottom: 16px;
+  }
 }

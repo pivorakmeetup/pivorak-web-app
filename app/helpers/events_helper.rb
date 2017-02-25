@@ -5,6 +5,9 @@ module EventsHelper
     return if visit_request&.pending?
     return if visit_request&.approved?
 
+    return if !(Event::SlotsPolicy.new(event).has_free_slot_for?(current_user))
+    return if event.visitors.include?(current_user)
+
     link_to t('visit_requests.attend'), event_visit_requests_path(event), method: :post, class: "pk-btn pk-btn--biggest"
   end
 
@@ -23,7 +26,7 @@ module EventsHelper
     return if Event::SlotsPolicy.new(event).has_free_slot_for?(current_user)
     return if event.visitors.include?(current_user)
 
-    t('visit_requests.messages.waiting_list')
+    render html: "#{t('visit_requests.messages.waiting_list')} #{link_to t('visit_requests.attend'), event_visit_requests_path(event), method: :post}".html_safe
   end
 
   def visit_request_confirm_message(visit_request)
@@ -55,7 +58,7 @@ module EventsHelper
   def visit_request_status_message(visit_request)
     return unless visit_request
 
-    t(visit_request.status, scope: 'visit_requests.messages')
+    render html: "#{t(visit_request.status, scope: 'visit_requests.messages')} <br/>".html_safe
   end
 
   private

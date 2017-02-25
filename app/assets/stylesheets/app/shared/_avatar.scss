@@ -1,0 +1,14 @@
+$namespace: ".pk-avatar";
+
+#{$namespace} {
+  border: 2px solid rgba(252,247,239,0.54);
+  width: 46px;
+  height: 46px;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 50%;
+  img {
+    width: 100%;
+  }
+}
