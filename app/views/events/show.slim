@@ -23,26 +23,17 @@
             .pk-slider__unit-container.js_slide
               .pk-slider__unit
                 .pk-talk
-                  = image_tag talk.speaker&.cover_url, class: 'pk-talk__image'
-                  p.pk-talk__name = talk.speaker&.full_name
-                  p.pk-talk__title = talk.title
-                  p.pk-talk__content = talk.description
-      span.js_prev.prev
-        svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 501.5 501.5"
-          g
-            path fill="#2E435A" d="M302.67 90.877l55.77 55.508L254.575 250.75 358.44 355.116l-55.77 55.506L143.56 250.75z"
-      span.js_next.next
-        svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 501.5 501.5"
-          g
-            path fill="#2E435A" d="M199.33 410.622l-55.77-55.508L247.425 250.75 143.56 146.384l55.77-55.507L358.44 250.75z"
+                  .pk-talk__image.pk-slider__blend-image(style="background-image: url(#{talk.speaker&.cover_url || ""})")
+                  .pk-talk__name = talk.speaker&.full_name
+                  .pk-talk__title = talk.title
+                  .pk-talk__content = talk.description
+      .js_prev.pk-slider__prev
+      .js_next.pk-slider__next
 
   .pk-status-container.text-center
     == render 'events/attendance'
     == render 'events/confirmation'
     = unauthorized_message(t 'visit_requests.action')
-
-    - if event.registration? && current_user
-      = attend_event_link(event, visit_request)
 
     / - if attendees.any?
     /     ul

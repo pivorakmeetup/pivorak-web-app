@@ -4,11 +4,12 @@ html
     title = 'PivorakWebApp'
     = csrf_meta_tags
     = stylesheet_link_tag    'app/application', 'data-turbolinks-track': 'reload', media: 'all'
-    = javascript_include_tag 'app/application', 'data-turbolinks-track': 'reload'
+    meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
     == render 'layouts/ga/head' if Rails.env.production?
 
   body
     = render 'layouts/ga/body' if Rails.env.production?
+    / canvas#main-bg-canvas.pk-main-bg
     = yield(:before_header)
     == render 'layouts/app/flash'
     == render 'layouts/app/header'
@@ -17,3 +18,6 @@ html
       = yield
 
     / == render 'layouts/app/footer'
+
+    = javascript_include_tag 'app/application', 'data-turbolinks-track': 'reload'
+

@@ -19,8 +19,8 @@ body {
   min-height: 900px;
   &:after {
     content: "";
-    background: transparent image-url("paper-imit-bg.png") center center no-repeat;
-    background-size: cover;
+    background: transparent image-url("paper-imit-bg.png") center center repeat;
+    background-size: 300px 300px;
     pointer-events: none;
     position: absolute;
     left: 0;
@@ -29,6 +29,18 @@ body {
     bottom: 0;
   }
 }
+
+// .pk-main-bg {
+//   // background: transparent image-url("paper-imit-bg-blanding.png") center center repeat;
+//   // background-size: 300px 300px;
+//   pointer-events: none;
+//   position: absolute;
+//   left: 0;
+//   right: 0;
+//   top: 0;
+//   bottom: 0;
+//   z-index: 10;
+// }
 
 *,
 *::before,
