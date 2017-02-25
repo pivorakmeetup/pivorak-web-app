@@ -1,4 +1,6 @@
 class DonationsController < ApplicationController
+  disabled_feature_until '1.3'
+
   helper_method :goal
 
   def create

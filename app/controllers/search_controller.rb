@@ -1,4 +1,6 @@
 class SearchController < ApplicationController
+  disabled_feature_until '1.2'
+
   helper_method :results
 
   private

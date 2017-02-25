@@ -1,36 +1,35 @@
-#
-# Skip until 1.1 version
-#
-# class GoalsController < ApplicationController
-#   helper_method :goal, :goals
+class GoalsController < ApplicationController
+  disabled_feature_until '1.3'
 
-#   def donate
-#     result = Goal::Donations::Create.call(donation_params)
+  helper_method :goal, :goals
 
-#     if result.success?
-#       flash[:notice] = I18n.t('donations.success')
-#     else
-#       flash[:error] = result.message
-#     end
+  def donate
+    result = Goal::Donations::Create.call(donation_params)
 
-#     redirect_to goal_path(goal)
-#   end
+    if result.success?
+      flash[:notice] = I18n.t('donations.success')
+    else
+      flash[:error] = result.message
+    end
 
-#   private
+    redirect_to goal_path(goal)
+  end
 
-#   def donation_params
-#     credit_card_params.merge(user: current_user, goal: goal)
-#   end
+  private
 
-#   def credit_card_params
-#     params.require(:credit_card).permit(:number, :cvc, :exp_month, :exp_year, :amount, :anonymous)
-#   end
+  def donation_params
+    credit_card_params.merge(user: current_user, goal: goal)
+  end
 
-#   def goal
-#     @goal ||= Goal.friendly.find(params[:id])
-#   end
+  def credit_card_params
+    params.require(:credit_card).permit(:number, :cvc, :exp_month, :exp_year, :amount, :anonymous)
+  end
 
-#   def goals
-#     @goals ||= Goal.all
-#   end
-# end
+  def goal
+    @goal ||= Goal.friendly.find(params[:id])
+  end
+
+  def goals
+    @goals ||= Goal.all
+  end
+end
