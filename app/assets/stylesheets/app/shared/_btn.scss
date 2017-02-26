@@ -1,6 +1,8 @@
 $namespace: ".pk-btn";
 
 #{$namespace} {
+  position: relative;
+  z-index: 1;
   display: inline-block;
   margin-bottom: 0;
 
@@ -29,32 +31,6 @@ $namespace: ".pk-btn";
   
 }
 
-#{$namespace}__wrapper {
-  position: relative;
-  display: inline-block;
-  
-  [class*="pk-btn"] {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-  }
-}
-
-#{$namespace}__wrapper--medium {
-  width: 304px;
-  height: 40px;
-
-  @include breakpoint-max(336) {
-    width: 272px;
-  }
-}
-
-#{$namespace}__wrapper--biggest {
-  width: 580px;
-  height: 80px;
-}
-
 #{$namespace}--medium {
   width: 304px;
   height: 40px;
@@ -69,10 +45,6 @@ $namespace: ".pk-btn";
   letter-spacing: 2.14px;
   color: $text-color;
   font-weight: 600;
-
-  // &:hover, &:active, &:focus {
-  //   outline: none;
-  // }
   
   &:hover {
     opacity: .95;
@@ -99,7 +71,7 @@ $namespace: ".pk-btn";
   border-radius: 10px;
   background-color: transparent;
   color: $link-color;
-  z-index: 2;
+  z-index: 1;
 
   .pk-icon {
     position: absolute;
@@ -146,6 +118,7 @@ $namespace: ".pk-btn";
   letter-spacing: $letter-spacing-p;
   border-bottom: 2px solid $link-color;
 
+  // variant
   // &:hover {
   //   opacity: .8;
   // }

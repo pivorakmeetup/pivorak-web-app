@@ -59,6 +59,12 @@ a {
   color: $main-color;
 }
 
+p, h1, h2, h3, h4,
+.h1, .h2, .h3, .h4 {
+  position: relative;
+  z-index: 1;
+}
+
 h1, h2, h3, h4,
 .h1, .h2, .h3, .h4 {
   margin-bottom: $headings-margin-bottom;

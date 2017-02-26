@@ -4,36 +4,14 @@ $namespace: ".pk-auth";
 
 #{$namespace} {
   position: relative;
-  z-index: 1;
-  text-align: center;
-}
-
-#{$namespace}__wrapper {
-  position: relative;
   max-width: 468px;
+  min-height: 100vh;
   margin: auto;
+  padding: 54px 0;
   background-color: #57C8D1;
   text-align: center;
-  padding: 54px 0;
-  min-height: 100vh;
-
-  // logo as a background-image
-  // &:after {
-  //   content: '';
-  //   background-image: url('../pivorak-logo.png');
-  //   background-size: 66px;
-  //   background-position: center;
-  //   background-repeat: no-repeat;
-  //   position: absolute;
-  //   top: 54px;
-  //   left: 0;
-  //   right: 0;
-  //   height: 74px;
-  //   opacity: .87;
-  // }
 }
 
-// use if there are no #{$namespace}__wrapper:after
 #{$namespace}__logo {
   width: 66px;
   height: auto;
