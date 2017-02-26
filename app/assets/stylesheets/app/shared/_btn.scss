@@ -75,7 +75,7 @@ $namespace: ".pk-btn";
   // }
   
   &:hover {
-    opacity: .9;
+    opacity: .95;
   }
 
   @include breakpoint-max(336) {
@@ -145,12 +145,12 @@ $namespace: ".pk-btn";
   letter-spacing: $letter-spacing-p;
   border-bottom: 2px solid $link-color;
 
-  &:hover {
-    opacity: .8;
-  }
-  &:active {
-    opacity: .9;
-  }
+  // &:hover {
+  //   opacity: .8;
+  // }
+  // &:active {
+  //   opacity: .9;
+  // }
 }
 
 #{$namespace}--link-small {

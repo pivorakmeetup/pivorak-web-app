@@ -8,7 +8,6 @@ $namespace: ".pk-input";
     box-sizing: border-box;
 
     width: 304px; // good for login forms, maybe should be changed for other forms
-    height: 40px;
     border-radius: 12px;
     
     z-index: 1;
@@ -16,13 +15,24 @@ $namespace: ".pk-input";
     @include breakpoint-max(336) {
       width: 272px;
     }
+
+    .hint {
+      font-size: 12px;
+      text-align: left;
+      padding: 4px 0 0 16px;
+    }
+
+    // change color of error message
+    .error {
+      // color: $body-bg-color;
+    }
   }
 }
 
 #{$namespace} { 
     box-sizing: border-box;
     width: 100%;
-    height: 100%;
+    height: 40px;
 
     border-radius: 12px;
     border: 0;   
@@ -61,6 +71,7 @@ $namespace: ".pk-input";
       box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, .12), 0 1px 3px 0 rgba(0, 0, 0, .5) inset, 0 0 0 500px $main-color inset !important;
       -webkit-text-fill-color: $input-color;
     }
+
 }
 
 #{$namespace}__label {
