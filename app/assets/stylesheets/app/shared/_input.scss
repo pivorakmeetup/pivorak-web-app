@@ -16,15 +16,23 @@ $namespace: ".pk-input";
       width: 272px;
     }
 
+    .alert-error {
+      padding-top: 8px;
+    }
+
     .hint {
       font-size: 12px;
       text-align: left;
-      padding: 4px 0 0 16px;
+      padding: 4px 16px 0;
     }
 
-    // change color of error message
     .error {
-      // color: $body-bg-color;
+      text-align: left;
+      padding: 4px 16px 0;
+      &:before {
+        content: '*';
+        padding-right: 2px;
+      }
     }
   }
 }

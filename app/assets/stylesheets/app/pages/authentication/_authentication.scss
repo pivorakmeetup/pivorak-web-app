@@ -10,21 +10,18 @@ $namespace: ".pk-auth";
   z-index: 1;
   margin-top: 136px;
   text-align: center;
-
-  @include breakpoint-max(767) {}
 }
 
 #{$namespace}__wrapper {
   position: relative;
   max-width: 468px;
-  height: 1000px;
+  height: 1020px;
   margin: auto;
   background-color: #57C8D1;
   text-align: center;
   padding-top: 54px;
 
   // logo as a background-image
-
   // &:after {
   //   content: '';
   //   background-image: url('../pivorak-logo.png');
@@ -41,7 +38,6 @@ $namespace: ".pk-auth";
 }
 
 // use if there are no #{$namespace}__wrapper:after
-
 #{$namespace}__logo {
   width: 66px;
   height: auto;

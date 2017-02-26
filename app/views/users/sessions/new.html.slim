@@ -8,7 +8,7 @@
       | Sign in with e-mail here
     = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       .form-inputs.pk-inline-block
-        .pk-input__container.mtm = f.input :email, placeholder: 'Email', required: false, autofocus: true,
+        .pk-input__container.mtx = f.input :email, placeholder: 'Email', required: false, autofocus: true,
           label_html: {class: 'pk-input__label'},
           input_html: {class: 'pk-input'}
         .pk-input__container.mtm.mbs = f.input :password, placeholder: 'Password', required: false,
