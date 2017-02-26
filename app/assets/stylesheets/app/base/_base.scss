@@ -28,6 +28,9 @@ body {
     top: 0;
     bottom: 0;
   }
+  &.pk-body-auth {
+    min-height: auto;
+  }
 }
 
 // .pk-main-bg {

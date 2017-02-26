@@ -18,4 +18,4 @@
   - resource_class.omniauth_providers.each do |provider|
     = link_to omniauth_authorize_path(resource_name, provider), class: 'pk-btn pk-btn--tag' do
       svg.pk-icon
-        use xlink:href='../../../assets/icons.svg#icon-#{provider}'
+        use xlink:href='/assets/icons.svg#icon-#{provider}'

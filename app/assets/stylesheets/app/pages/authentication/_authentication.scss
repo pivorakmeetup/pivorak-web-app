@@ -3,23 +3,19 @@
 $namespace: ".pk-auth";
 
 #{$namespace} {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
+  position: relative;
   z-index: 1;
-  margin-top: 136px;
   text-align: center;
 }
 
 #{$namespace}__wrapper {
   position: relative;
   max-width: 468px;
-  height: 1020px;
   margin: auto;
   background-color: #57C8D1;
   text-align: center;
-  padding-top: 54px;
+  padding: 54px 0;
+  min-height: 100vh;
 
   // logo as a background-image
   // &:after {
@@ -47,7 +43,7 @@ $namespace: ".pk-auth";
 #{$namespace}__divider {
   position: relative;
   margin: 48px 0;
-  
+
   &:before, &:after {
     content: '';
     position: absolute;
