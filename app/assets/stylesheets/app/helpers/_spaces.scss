@@ -7,6 +7,7 @@ $xs: 8px;
 $s: 16px;
 $m: 24px;
 $l: 32px;
+$xl: 40px;
 
 .ptn, .pvn, .pan {
   padding-top: 0 !important;
@@ -108,6 +109,10 @@ $l: 32px;
   margin-top: $l !important;
 }
 
+.mtxl, .mvl, .mal {
+  margin-top: $xl !important;
+}
+
 .mrn, .mhn, .man {
   margin-right: 0px !important;
 }
@@ -146,6 +151,10 @@ $l: 32px;
 
 .mbl, .mvl, .mal {
   margin-bottom: $l !important;
+}
+
+.mbxl, .mvxl, .maxl {
+  margin-bottom: $xl !important;
 }
 
 .mln, .mhn, .man {

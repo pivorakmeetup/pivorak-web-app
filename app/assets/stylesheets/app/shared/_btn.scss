@@ -24,12 +24,14 @@ $namespace: ".pk-btn";
 
   &:hover, &:active, &:focus {
     text-decoration: none;
+    outline: none;
   }
   
 }
 
 #{$namespace}__wrapper {
   position: relative;
+  display: inline-block;
   
   [class*="pk-btn"] {
     position: absolute;
@@ -37,15 +39,15 @@ $namespace: ".pk-btn";
     left: 0;
     z-index: 2;
   }
-
-  // &:hover {
-  //   background-color: ;
-  // }
 }
 
 #{$namespace}__wrapper--medium {
   width: 304px;
   height: 40px;
+
+  @include breakpoint-max(336) {
+    width: 272px;
+  }
 }
 
 #{$namespace}__wrapper--biggest {
@@ -68,8 +70,16 @@ $namespace: ".pk-btn";
   color: $text-color;
   font-weight: 600;
 
-  &:hover, &:active, &:focus {
-    outline: none;
+  // &:hover, &:active, &:focus {
+  //   outline: none;
+  // }
+  
+  &:hover {
+    opacity: .9;
+  }
+
+  @include breakpoint-max(336) {
+    width: 272px;
   }
 }
 
@@ -84,10 +94,10 @@ $namespace: ".pk-btn";
   position: relative;
   width: 90px;
   height: 82px;
-  border: 1px solid rgba($icon-light-color, .54);
+  border: 1px solid rgba($link-color, .54);
   border-radius: 10px;
   background-color: transparent;
-  color: $icon-light-color;
+  color: $link-color;
   z-index: 2;
 
   .pk-icon {
@@ -99,16 +109,16 @@ $namespace: ".pk-btn";
 
   &:hover, &:active {
     // version
-    background-color: rgba($icon-light-color, .05);
-    border-color: rgba($icon-light-color, .24);
+    border-color: rgba($link-color, .84);
 
     // version
-    // border-color: rgba($icon-light-color, .74);
+    // background-color: rgba($link-color, .05);
+    // border-color: rgba($link-color, .24);
 
     // version
     // background-color: inherit;
     // background-color: #57C8D1;
-    // border-color: rgba($icon-light-color, .14);
+    // border-color: rgba($link-color, .14);
     
     // version
     // transform: translateY(2px);
@@ -117,5 +127,37 @@ $namespace: ".pk-btn";
   & + & {
     margin-left: 16px;
   }
+
+  @include breakpoint-max(336) {
+    & + & {
+      margin-left: 8px;
+    }
+  }
 }
 
+#{$namespace}--link {
+  padding: 0;
+  background-color: transparent;
+  color: $link-color;
+  border-radius: 0;
+
+  line-height: 1.4;
+  letter-spacing: $letter-spacing-p;
+  border-bottom: 2px solid $link-color;
+
+  &:hover {
+    opacity: .8;
+  }
+  &:active {
+    opacity: .9;
+  }
+}
+
+#{$namespace}--link-small {
+  @extend #{$namespace}--link;
+
+  font-size: 12px;
+  line-height: 1.3;
+  letter-spacing: 0.08333em;
+  border-bottom: 1px solid $link-color;
+}

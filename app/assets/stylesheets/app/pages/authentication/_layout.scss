@@ -1,0 +1,72 @@
+@import "../../shared/breakpoint";
+
+$namespace: ".pk-auth";
+
+#{$namespace} {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  margin-top: 136px;
+  text-align: center;
+
+  @include breakpoint-max(767) {}
+}
+
+#{$namespace}__wrapper {
+  position: relative;
+  max-width: 468px;
+  height: 900px;
+  margin: auto;
+  background-color: #57C8D1;
+  text-align: center;
+  padding-top: 54px;
+
+  // logo as a background-image
+
+  // &:after {
+  //   content: '';
+  //   background-image: url('../pivorak-logo.png');
+  //   background-size: 66px;
+  //   background-position: center;
+  //   background-repeat: no-repeat;
+  //   position: absolute;
+  //   top: 54px;
+  //   left: 0;
+  //   right: 0;
+  //   height: 74px;
+  //   opacity: .87;
+  // }
+}
+
+// use if there are no #{$namespace}__wrapper:after
+
+#{$namespace}__logo {
+  width: 66px;
+  height: auto;
+  opacity: .87;
+}
+
+#{$namespace}__divider {
+  position: relative;
+  margin: 48px 0;
+  
+  &:before, &:after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    background-color: rgba(#fff, .38);
+    height: 1px;
+    width: calc((100% - 130px ) / 2);
+  }
+
+  &:before {
+    left: 0px;
+  }
+
+  &:after {
+    right: 0px;
+  }
+
+}

@@ -1,3 +1,5 @@
+@import "breakpoint";
+
 $namespace: ".pk-input";
 
 #{$namespace}__container {
@@ -9,8 +11,11 @@ $namespace: ".pk-input";
     height: 40px;
     border-radius: 12px;
     
-    // overflow: hidden;
     z-index: 1;
+
+    @include breakpoint-max(336) {
+      width: 272px;
+    }
   }
 }
 
@@ -20,8 +25,7 @@ $namespace: ".pk-input";
     height: 100%;
 
     border-radius: 12px;
-    border: 0;
-    
+    border: 0;   
     -webkit-box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, .12), 0px 1px 3px 0px rgba(0, 0, 0, .5) inset;
     -moz-box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, .12), 0px 1px 3px 0px rgba(0, 0, 0, .5) inset;
     box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, .12), 0px 1px 3px 0px rgba(0, 0, 0, .5) inset;
@@ -29,7 +33,6 @@ $namespace: ".pk-input";
     &:focus {
       outline: none;
       border: 0;
-
       -webkit-box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, .12), 0px 1px 3px 0px rgba(0, 0, 0, .5) inset, 0px 0px 0px 1px rgba(0, 0, 0, .38);
       -moz-box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, .12), 0px 1px 3px 0px rgba(0, 0, 0, .5) inset, 0px 0px 0px 1px rgba(0, 0, 0, .38);
       box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, .12), 0px 1px 3px 0px rgba(0, 0, 0, .5) inset, 0px 0px 0px 1px rgba(0, 0, 0, .38);
@@ -40,7 +43,7 @@ $namespace: ".pk-input";
     color: $input-color;
 
     font-family: $main-font-family;
-    font-size: $main-font-size;
+    font-size: 14px;
     letter-spacing: $letter-spacing-p;
 
     -webkit-appearance: none;

@@ -32,7 +32,7 @@
 @import "pages/home/slider";
 @import "pages/home/status";
 
-@import "pages/session/layout";
+@import "pages/authentication/layout";
 
 @import "shared/list";
 @import "shared/search";
@@ -42,5 +42,6 @@
 @import "shared/text";
 @import "shared/flash";
 @import "shared/avatar";
+@import "shared/breakpoint";
 
 @import "external/lory";
