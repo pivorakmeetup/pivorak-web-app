@@ -28,6 +28,9 @@ body {
     top: 0;
     bottom: 0;
   }
+  &.pk-body-auth {
+    min-height: auto;
+  }
 }
 
 // .pk-main-bg {
@@ -54,6 +57,12 @@ body {
 
 a {
   color: $main-color;
+}
+
+p, h1, h2, h3, h4,
+.h1, .h2, .h3, .h4 {
+  position: relative;
+  z-index: 1;
 }
 
 h1, h2, h3, h4,

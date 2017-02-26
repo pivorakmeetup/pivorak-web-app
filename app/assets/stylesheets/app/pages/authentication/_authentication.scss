@@ -1,0 +1,42 @@
+@import "../../shared/breakpoint";
+
+$namespace: ".pk-auth";
+
+#{$namespace} {
+  position: relative;
+  max-width: 468px;
+  min-height: 100vh;
+  margin: auto;
+  padding: 54px 0;
+  background-color: #57C8D1;
+  text-align: center;
+}
+
+#{$namespace}__logo {
+  width: 66px;
+  height: auto;
+  opacity: .87;
+}
+
+#{$namespace}__divider {
+  position: relative;
+  margin: 48px 0;
+
+  &:before, &:after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    background-color: rgba(#fff, .38);
+    height: 1px;
+    width: calc((100% - 130px ) / 2);
+  }
+
+  &:before {
+    left: 0px;
+  }
+
+  &:after {
+    right: 0px;
+  }
+
+}

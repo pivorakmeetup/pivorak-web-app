@@ -1,0 +1,11 @@
+@mixin breakpoint-min($media-min, $property: width){
+    @media only screen and (min-#{$property}: $media-min + 'px'){
+        @content
+    }
+}
+
+@mixin breakpoint-max($media-max, $property: width){
+    @media only screen and (max-#{$property}: $media-max + 'px'){
+        @content
+    }
+}
