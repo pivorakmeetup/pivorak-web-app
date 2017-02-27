@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  disabled_feature_until '1.2'
+
   helper_method :visit_request, :event, :events, :attendees
 
   private

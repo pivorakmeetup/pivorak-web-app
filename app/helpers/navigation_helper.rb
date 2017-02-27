@@ -7,10 +7,9 @@ module NavigationHelper
     link_to title, talks_path
   end
 
-  # Skip until 1.1 version
-  # def goals_link
-  #   link_to t('goals.plural'), goals_path
-  # end
+  def goals_link
+    link_to t('goals.plural'), goals_path
+  end
 
   def donate_link
     link_to t('donations.donate'), donation_path

@@ -1,4 +1,6 @@
 class MembersController < ApplicationController
+  disabled_feature_until '1.3'
+
   helper_method :member, :members, :member_talks, :visited_events
 
   private

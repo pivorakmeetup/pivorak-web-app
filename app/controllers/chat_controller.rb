@@ -1,4 +1,6 @@
 class ChatController < ApplicationController
+  disabled_feature_until '1.3'
+
   def create
     if Chat::Invite.call(params[:email])
       flash[:notice] = I18n.t('chat.success', email: params[:email])

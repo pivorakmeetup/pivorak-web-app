@@ -39,6 +39,8 @@ gem 'sinatra', '>= 2.0.0.beta2', require: false
 gem 'carrierwave', '~> 1.0'
 gem 'acts-as-taggable-on',               '~> 4.0'
 gem 'dry-validation'
+gem 'versionomy'
+
 #=== CONFIG =================================
 gem 'dotenv-rails'
 #=== DEV & TEST =================================
