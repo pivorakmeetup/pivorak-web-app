@@ -10,6 +10,9 @@ $namespace: ".pk-flash";
   transform: translateY(-50%);
   overflow: auto;
   max-height: 100%;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-name: tada;
 }
 
 #{$namespace} {
@@ -52,5 +55,31 @@ $namespace: ".pk-flash";
     color: #FCF7EF;
     font-size: 12px;
     line-height: (15 / 12);
+  }
+}
+
+#{$namespace}--alert {
+  background: #ff0000;
+}
+
+@keyframes tada {
+  from {
+    transform: translateY(-50%) scale3d(1, 1, 1);
+  }
+
+  10%, 20% {
+    transform: translateY(-50%) scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+  }
+
+  30%, 50%, 70%, 90% {
+    transform: translateY(-50%) scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+  }
+
+  40%, 60%, 80% {
+    transform: translateY(-50%) scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+  }
+
+  to {
+    transform: translateY(-50%) scale3d(1, 1, 1);
   }
 }

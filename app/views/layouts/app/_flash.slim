@@ -1,8 +1,11 @@
 .pk-flash-container#main-flash
   - flash.each do |key, value|
-    .pk-flash
+    .pk-flash class="pk-flash--#{key}"
       .pk-flash__logo
-        =image_tag "logo-strawberry.svg"
+        -if key == "alert"
+          =image_tag "logo-crap.svg"
+        -else
+          =image_tag "logo-strawberry.svg"
       .pk-flash__title
         = key
       .pk-flash__content
