@@ -1,0 +1,137 @@
+$namespace: ".pk-btn";
+
+#{$namespace} {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  margin-bottom: 0;
+
+  font-family: $main-font-family;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  border-radius: 4px;
+  user-select: none;
+  background-color: #D35130;
+  text-decoration: none;
+  transition: .3s ease;
+
+  &:hover, &:active, &:focus {
+    text-decoration: none;
+    outline: none;
+  }
+  
+}
+
+#{$namespace}--medium {
+  width: 304px;
+  height: 40px;
+  padding: 8px 16px;
+
+  border: 1px solid transparent;
+  border-radius: 12px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .2);
+  
+  font-size: 15px;
+  line-height: $main-line-height;
+  letter-spacing: 2.14px;
+  color: $text-color;
+  font-weight: 600;
+  
+  &:hover {
+    opacity: .95;
+  }
+
+  @include breakpoint-max(336) {
+    width: 272px;
+  }
+}
+
+#{$namespace}--biggest {
+  font-size: 28px;
+  border-radius: 32px;
+  padding: 17px 144px 23px 144px;
+  box-shadow: 0 2px 14px 0 rgba(0,0,0,0.33);
+}
+
+#{$namespace}--tag {
+  position: relative;
+  width: 90px;
+  height: 82px;
+  margin-bottom: 16px;
+  border: 1px solid rgba($link-color, .54);
+  border-radius: 10px;
+  background-color: transparent;
+  color: $link-color;
+  z-index: 1;
+
+  .pk-icon {
+    position: absolute;
+    top: calc((100% - 40px) / 2 );
+    left: calc((100% - 40px) / 2 );
+    font-size: 40px;
+  }
+
+  &:hover, &:active {
+    // version
+    border-color: rgba($link-color, .84);
+
+    // version
+    // background-color: rgba($link-color, .05);
+    // border-color: rgba($link-color, .24);
+
+    // version
+    // background-color: inherit;
+    // background-color: #57C8D1;
+    // border-color: rgba($link-color, .14);
+    
+    // version
+    // transform: translateY(2px);
+  }
+
+  & + & {
+    margin-left: 16px;
+  }
+
+  @include breakpoint-max(336) {
+    & + & {
+      margin-left: 8px;
+    }
+  }
+}
+
+#{$namespace}--link {
+  padding: 0;
+  background-color: transparent;
+  color: $link-color;
+  border-radius: 0;
+
+  line-height: 1.4;
+  letter-spacing: $letter-spacing-p;
+  border-bottom: 2px solid $link-color;
+
+  // variant
+  // &:hover {
+  //   opacity: .8;
+  // }
+  // &:active {
+  //   opacity: .9;
+  // }
+}
+
+#{$namespace}--link-small {
+  @extend #{$namespace}--link;
+
+  font-size: 12px;
+  line-height: 1.3;
+  letter-spacing: 0.08333em;
+  border-bottom: 1px solid $link-color;
+}

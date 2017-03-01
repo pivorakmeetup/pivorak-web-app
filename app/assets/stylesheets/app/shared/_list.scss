@@ -1,0 +1,19 @@
+$namespace: ".pk-list";
+
+#{$namespace} {
+  display: inline-flex;
+  font-size: #{(14 / 16)}rem;
+}
+
+#{$namespace}__unit {
+  a {
+    font-weight: 600;
+    display: block;
+    padding: 14px 24px;
+    text-decoration: none;
+    font-size: 1em;
+    &:hover, &:active, &:focus {
+      text-decoration: none;
+    }
+  }
+}

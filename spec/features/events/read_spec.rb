@@ -1,15 +1,6 @@
 RSpec.describe 'Events READ' do
   let(:event) { create(:event) }
-  let(:user) { create(:user, first_name: 'Attendee') }
-
-  describe 'event details' do
-    before do
-      event
-      visit "/events/#{event.slug}"
-    end
-
-    it { expect(page).to have_content event.title }
-  end
+  let(:user)  { create(:user, first_name: 'Attendee') }
 
   describe 'attendees' do
     let(:not_attendee) { create(:user, first_name: 'Not Attendee') }
@@ -23,7 +14,6 @@ RSpec.describe 'Events READ' do
       visit "/events/#{event.slug}"
     end
 
-    it { expect(page).to have_content user.full_name }
     it { expect(page).to_not have_content not_attendee.full_name }
     it { expect(page).to_not have_content other_event_attendee.full_name }
   end

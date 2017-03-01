@@ -2,12 +2,18 @@ h2
   | Sign up
 = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
   = f.error_notification
-  .form-inputs
-    = f.input :first_name, required: true, autofocus: true
-    = f.input :last_name, required: true, autofocus: true
-    = f.input :email, required: true, autofocus: true
-    = f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length)
-    = f.input :password_confirmation, required: true
+  .form-inputs.pk-inline-block
+    .pk-input__container.mts = f.input :first_name, required: true, autofocus: true, placeholder: 'First name', label_html: {class: 'pk-input__label'},
+      input_html: {class: 'pk-input'}
+    .pk-input__container.mtm = f.input :last_name, required: true, autofocus: true, placeholder: 'Last name', label_html: {class: 'pk-input__label'},
+      input_html: {class: 'pk-input'}
+    .pk-input__container.mtm = f.input :email, required: true, autofocus: true, placeholder: 'E-mail', label_html: {class: 'pk-input__label'},
+      input_html: {class: 'pk-input'}
+    .pk-input__container.mtm = f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), placeholder: 'Password', label_html: {class: 'pk-input__label'},
+      input_html: {class: 'pk-input'}
+    .pk-input__container.mts.mbx = f.input :password_confirmation, required: true, placeholder: 'Password confirmation', label_html: {class: 'pk-input__label'},
+      input_html: {class: 'pk-input'}
   .form-actions
-    = f.button :submit, "Sign up"
+    .mtl.mbl
+      = f.button :submit, "Sign up", class: 'pk-btn pk-btn--medium'
 = render "users/shared/links"

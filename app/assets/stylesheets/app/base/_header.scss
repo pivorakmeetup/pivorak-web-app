@@ -1,0 +1,24 @@
+$namespace: ".pk-header";
+
+#{$namespace} {
+  padding: 20px 32px;
+}
+
+#{$namespace}__logo {
+  width: 46px;
+}
+
+#{$namespace}__soc-icon {
+  opacity: .54;
+  transition: .2s opacity ease-out;
+  margin: 0 8px;
+  a {
+    display: block;
+  }
+  svg {
+    display: block;
+  }
+  &:hover, &:focus, &:active {
+    opacity: 1;
+  }
+}

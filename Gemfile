@@ -13,6 +13,8 @@ gem 'turbolinks',                        '~> 5.0'
 gem 'slim-rails',                        '~> 3.1'
 gem 'jquery-rails',                    '~> 4.2.2'
 gem 'semantic-ui-sass',              '~> 2.2.7.1'
+gem 'rails-assets-svgxuse', source: 'https://rails-assets.org'
+gem 'rails-assets-lory', source: 'https://rails-assets.org'
 
 #=== FEATUES ====================================
 gem 'chartkick'
@@ -40,6 +42,7 @@ gem 'carrierwave', '~> 1.0'
 gem 'acts-as-taggable-on',               '~> 4.0'
 gem 'dry-validation'
 gem 'versionomy'
+gem 'inline_svg'
 
 #=== CONFIG =================================
 gem 'dotenv-rails'

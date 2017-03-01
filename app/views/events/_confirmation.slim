@@ -1,6 +1,5 @@
 - if event.confirmation? && current_user
-  div = visit_request_confirm_message(visit_request)
-  div
-    div = visit_request_confirm_link(visit_request)
-    div = visit_request_refuse_link(visit_request)
-
+  .pk-status
+    = visit_request_confirm_message(visit_request)
+    = visit_request_confirm_link(visit_request)
+    = visit_request_refuse_link(visit_request)

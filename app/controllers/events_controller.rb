@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   disabled_feature_until '1.2'
 
-  helper_method :visit_request, :event, :events, :attendees
+  helper_method :visit_request, :event, :events, :attendees, :talks
 
   private
 
@@ -15,6 +15,10 @@ class EventsController < ApplicationController
 
   def events
     @events ||= Event.display.published
+  end
+
+  def talks
+    @talk ||= event.talks.includes(:speaker)
   end
 
   def visit_request

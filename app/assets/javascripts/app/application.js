@@ -13,4 +13,14 @@
 //= require turbolinks
 //= require jquery
 //= require jquery_ujs
+//= require svgxuse
+//= require lory
 //= require_tree .
+
+(function() {
+  document.addEventListener('DOMContentLoaded', function () {
+    initSlider();
+    loadFlash();
+    blendedImg();
+  });
+})()

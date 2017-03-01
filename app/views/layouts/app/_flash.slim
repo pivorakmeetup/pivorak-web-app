@@ -1,0 +1,15 @@
+.pk-flash-container#main-flash
+  - flash.each do |key, value|
+    .pk-flash class="pk-flash--#{key}"
+      .pk-flash__logo
+        -if key == "alert"
+          =image_tag "logo-crap.svg"
+        -else
+          =image_tag "logo-strawberry.svg"
+      .pk-flash__title
+        = key
+      .pk-flash__content
+        = value
+      .pk-flash__btn-area
+        a.js-close-flash href="#"
+          | close

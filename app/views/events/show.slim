@@ -1,41 +1,42 @@
-h2 = t 'events.singular'
-h3 = event.title
+- if event
+  = content_for :before_header do
+    .pk-event-bg
 
-h2 = t 'talks.plural'
+  .text-center
+    .pk-event-date
+      figure.pk-event-date__img
+        = image_tag "pivorak-logo.png"
+        figcaption
+          | #pivorak
 
-table.table
-  thead
-    tr
-      th = t 'words.title'
-      th = t 'words.description'
-      th = t 'talks.speaker'
+      .pk-event-date__day   = get_day(event.started_at)
+      .pk-event-date__month = get_month(event.started_at)
+      .pk-event-date__date  = get_day_of_the_month(event.started_at)
+      .pk-event-date__hour  = get_hour(event.started_at)
 
-  tbody
-    - event.talks.includes(:speaker).each do |talk|
-      tr
-        td = talk.title
-        td = talk.description
-        td = talk.speaker&.full_name
+  - if talks.present?
+    .pk-slider.js-slider.js_slider
+      .lory-frame.js_frame
+        .pk-slider__container.js_slides
+          - talks.each do |talk|
+            .pk-slider__unit-container.js_slide
+              .pk-slider__unit
+                .pk-talk
+                  .pk-talk__image.pk-slider__blend-image(style="background-image: url(#{talk.speaker&.cover_url || ""})")
+                  .pk-talk__name = talk.speaker&.full_name
+                  .pk-talk__title = talk.title
+                  .pk-talk__content = talk.description
+      .js_prev.pk-slider__prev
+      .js_next.pk-slider__next
 
-- if event.cover.present?
-  = image_tag event.cover_url
+  .pk-status-container.text-center
+    == render 'events/attendance'
+    == render 'events/confirmation'
+    - if event.registration? && current_user.nil?
+      .pk-status
+        = unauthorized_message(t 'visit_requests.action')
 
-== render 'attendance'
-== render 'confirmation'
-
-div = unauthorized_message(t 'visit_requests.action')
-
-h2 = t 'events.attendees'
-
-table.table
-  thead
-    tr
-      th = t 'words.name'
-
-  tbody
-    - attendees.each do |attendee|
-      tr
-        td = attendee&.full_name
-
-== render 'facebook_embeded_post', locals: { event: event }
-
+    / - if attendees.any?
+    /     ul
+    /       - attendees.each do |attendee|
+    /         li = attendee.full_name

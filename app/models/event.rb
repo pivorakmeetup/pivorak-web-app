@@ -33,6 +33,10 @@ class Event < ApplicationRecord
   validates :title, :limit_total, :limit_verified, presence: true
   validates_with LimitsValidator
 
+  def self.upcoming
+    where(published: true).order('started_at').last
+  end
+
   def limit_newbies
     limit_total - limit_verified
   end
