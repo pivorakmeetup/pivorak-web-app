@@ -48,14 +48,6 @@ module Admin
       end
     end
 
-    def flash_success
-      add_flash(:success)
-    end
-
-    def flash_error
-      add_flash(:error)
-    end
-
     def add_flash(type)
       resource = params[:controller].split('/').last.singularize.capitalize
       suffix   = params[:action] == 'destroy' ? 'ed' : 'd'

@@ -145,6 +145,8 @@ en:
       please_confirm: Please, confirm your final attendance
       see_you: See you at the event!
       so_pity: So pity that you change your mind. See you at the next event.
+      confirmed: Your attendance confirmed!
+      refused: So pity that we cannot see you
 
   become_a_speaker:
     singular: Become a speaker

@@ -4,19 +4,19 @@ class VisitRequestsController < ApplicationController
   def show
     VisitRequest::FinalConfirmation.call(visit_request, params)
 
-    default_redirect
+    flash_success and default_redirect
   end
 
   def create
     VisitRequest::Create.call(current_user, event)
 
-    default_redirect
+    flash_success and default_redirect
   end
 
   def destroy
     visit_request.destroy
 
-    default_redirect
+    flash_success and default_redirect
   end
 
   private

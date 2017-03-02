@@ -13,7 +13,7 @@ $(function() {
       for(var i = 0; i < flashNodes.length; i++) {
         removeFlash(flashNodes[i]);
       }
-    }, 4000);
+    }, 40000);
 
     for(var i = 0; i < flashNodes.length; i++) {
       flashNodes[i].addEventListener("click", function(e){

@@ -35,6 +35,21 @@ class ApplicationController < ActionController::Base
     @about_page ||= Page.find_by(url: 'about')
   end
 
+  def flash_success
+    add_flash(:success)
+  end
+
+  def flash_error
+    add_flash(:error)
+  end
+
+  def add_flash(type)
+    resource = params[:controller].gsub('/', '.')
+    action   = params[:action]
+
+    flash[type] = t(type, scope: [:flash, resource, action])
+  end
+
   private
 
   # TODO VS -> Remove after 1.0 release

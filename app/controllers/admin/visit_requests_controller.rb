@@ -17,7 +17,7 @@ module Admin
     def visit_requests
       scoped = event.live? ? event.visit_requests.final : event.visit_requests
 
-      @visit_requests ||= scoped.includes(:user, :event).order(:id)
+      @visit_requests ||= scoped.includes(:user).order(:id)
     end
   end
 end
