@@ -4,9 +4,11 @@ h2
   = f.error_notification
   = f.input :reset_password_token, as: :hidden
   = f.full_error :reset_password_token
-  .form-inputs
-    = f.input :password, label: "New password", required: true, autofocus: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length)
-    = f.input :password_confirmation, label: "Confirm your new password", required: true
+  .form-inputs.pk-inline-block
+    .pk-input__container.mts
+      = f.input :password, label: "New password", required: true, autofocus: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), label_html: { class: 'pk-input__label' }, input_html: { class: 'pk-input' }
+    .pk-input__container.mts
+      = f.input :password_confirmation, label: "Confirm your new password", required: true, label_html: { class: 'pk-input__label' }, input_html: { class: 'pk-input' }
   .form-actions
-    = f.button :submit, "Change my password"
-= render "users/shared/links"
+    .mtl.mbl
+      = f.button :submit, "Change my password", class: 'pk-btn pk-btn--medium'

@@ -21,6 +21,8 @@
 @import "helpers/spaces";
 
 @import "variables";
+@import "mixins/breakpoint";
+
 @import "base/base";
 @import "base/grid";
 @import "base/icons";
@@ -42,6 +44,5 @@
 @import "shared/flash";
 @import "shared/avatar";
 @import "shared/input";
-@import "shared/breakpoint";
 
 @import "external/lory";

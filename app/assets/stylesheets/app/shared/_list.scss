@@ -2,18 +2,40 @@ $namespace: ".pk-list";
 
 #{$namespace} {
   display: inline-flex;
+  align-items: center;
   font-size: #{(14 / 16)}rem;
+}
+
+%btn-styles {
+  font-weight: 600;
+  display: block;
+  text-decoration: none;
+  font-size: 1em;
+  letter-spacing: 0.14285714em;
+  text-transform: lowercase;
+  &:hover, &:active, &:focus {
+    text-decoration: none;
+  }
 }
 
 #{$namespace}__unit {
   a {
-    font-weight: 600;
-    display: block;
     padding: 14px 24px;
-    text-decoration: none;
-    font-size: 1em;
+    @extend %btn-styles;
+  }
+  input[type=submit] {
+    background: transparent;
+    border: 2px solid rgba(#FCF7EF, .54);
+    border-radius: 20px;
+    color: inherit;
+    line-height: 1.6;
+    font-family: $main-font-family;
+    padding: 10px 38px;
+    @extend %btn-styles;
+    cursor: pointer;
     &:hover, &:active, &:focus {
-      text-decoration: none;
+      outline: none;
+      box-shadow: none;
     }
   }
 }
