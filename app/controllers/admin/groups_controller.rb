@@ -13,15 +13,15 @@ module Admin
     def create
       @group = Group.new(groups_params)
 
-      respond_for group.save
+      react_on group.save
     end
 
     def update
-      respond_for group.update(groups_params)
+      react_on group.update(groups_params)
     end
 
     def destroy
-      respond_for group.destroy
+      react_on group.destroy
     end
 
     private

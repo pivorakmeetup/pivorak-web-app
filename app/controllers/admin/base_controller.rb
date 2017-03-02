@@ -40,7 +40,7 @@ module Admin
       render :form
     end
 
-    def respond_for(action)
+    def react_on(action)
       if action
         flash_success and default_redirect
       else

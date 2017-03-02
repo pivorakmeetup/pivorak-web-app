@@ -10,6 +10,7 @@ class User
 
     def synthetic_user!
       user.synthetic = true
+      user.skip_confirmation!
       user.password  = SecureRandom.hex(16)
     end
 

@@ -13,11 +13,11 @@ module Admin
     def create
       @event = Event.new(event_params)
 
-      respond_for event.save
+      react_on event.save
     end
 
     def update
-      respond_for event.update(event_params)
+      react_on event.update(event_params)
     end
 
     private

@@ -13,11 +13,11 @@ module Admin
     def create
       @venue = Venue.new(venue_params)
 
-      respond_for venue.save
+      react_on venue.save
     end
 
     def update
-      respond_for venue.update(venue_params)
+      react_on venue.update(venue_params)
     end
 
     private
