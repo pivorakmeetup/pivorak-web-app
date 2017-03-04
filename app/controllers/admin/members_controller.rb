@@ -13,11 +13,11 @@ module Admin
     def create
       @member = User.new(users_params)
 
-      react_on User::Create.call(member, users_params, synthetic: true)
+      react_to User::Create.call(member, users_params, synthetic: true)
     end
 
     def update
-      react_on member.update_without_password(users_params)
+      react_to member.update_without_password(users_params)
     end
 
     private

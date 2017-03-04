@@ -13,11 +13,11 @@ module Admin
     def create
       @goal = Goal.new(goal_params)
 
-      react_on goal.save
+      react_to goal.save
     end
 
     def update
-      react_on goal.update(goal_params)
+      react_to goal.update(goal_params)
     end
 
     private

@@ -15,7 +15,7 @@ module Admin
     def create
       @email = service.email
 
-      react_on service.call
+      react_to service.call
     end
 
     private
