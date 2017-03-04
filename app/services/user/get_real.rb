@@ -1,21 +1,17 @@
 class User
   class GetReal < ApplicationService
-    def initialize(token)
-      @token = token
+    def initialize(user)
+      @user = user
     end
 
     def call
-      return unless token || user
+      return unless user.synthetic?
 
       user.update(synthetic: false)
     end
 
     private
 
-    attr_reader :token
-
-    def user
-      @user ||= User.synthetic.find_by(confirmation_token: token)
-    end
+    attr_reader :user
   end
 end

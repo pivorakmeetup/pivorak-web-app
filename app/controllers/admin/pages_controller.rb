@@ -13,11 +13,11 @@ module Admin
     def create
       @page = Page.new(page_params)
 
-      respond_for page.save
+      react_to page.save
     end
 
     def update
-      respond_for page.update(page_params)
+      react_to page.update(page_params)
     end
 
     def destroy

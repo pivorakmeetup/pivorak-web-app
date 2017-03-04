@@ -2,9 +2,9 @@ p
   | Dear,
   = @user.full_name
 p
-  | please cofirm your visit by clicking the link
-  = link_to 'YES', event_visit_request_url(@event, @visit_request, answer: :yes, token: @visit_request.token)
+  | please confirm visit @event.title by clicking the link
+p = link_to 'YES', event_visit_request_url(@event, @visit_request, answer: :yes, token: @visit_request.token)
 
 p
   | or inform us that you change your mind and we should not wait for you
-  = link_to 'NO', event_visit_request_url(@event, @visit_request, answer: :no, token: @visit_request.token)
+p = link_to 'NO', event_visit_request_url(@event, @visit_request, answer: :no, token: @visit_request.token)

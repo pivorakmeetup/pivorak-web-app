@@ -40,20 +40,12 @@ module Admin
       render :form
     end
 
-    def respond_for(action)
+    def react_to(action)
       if action
         flash_success and default_redirect
       else
         flash_error and render_form
       end
-    end
-
-    def flash_success
-      add_flash(:success)
-    end
-
-    def flash_error
-      add_flash(:error)
     end
 
     def add_flash(type)

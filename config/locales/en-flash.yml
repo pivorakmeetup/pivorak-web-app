@@ -1,0 +1,9 @@
+en:
+  flash:
+    visit_requests:
+      create:
+        success: Thank you attend the event
+      destroy:
+        success: Pity.. See you next time!
+      show:
+        success: Thank you for your final decision

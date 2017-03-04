@@ -13,11 +13,11 @@ module Admin
     def create
       @friend = Friend.new(friend_params)
 
-      respond_for friend.save
+      react_to friend.save
     end
 
     def update
-      respond_for friend.update(friend_params)
+      react_to friend.update(friend_params)
     end
 
     private

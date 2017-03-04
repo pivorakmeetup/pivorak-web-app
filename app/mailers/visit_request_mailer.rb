@@ -18,4 +18,13 @@ class VisitRequestMailer < ApplicationMailer
     mail to:      @user.email,
          subject: "#{@event.title} Final Confirmation"
   end
+
+  def approved(visit_request)
+    @visit_request = visit_request
+    @event         = @visit_request.event
+    @user          = @visit_request.user
+
+    mail to:      @user.email,
+         subject: "#{@event.title} visit approved. See you!"
+  end
 end

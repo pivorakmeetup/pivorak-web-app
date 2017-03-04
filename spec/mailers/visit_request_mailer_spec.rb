@@ -34,4 +34,19 @@ describe VisitRequestMailer do
       expect(mail.body.encoded).to include user.full_name
     end
   end
+
+  describe '#approved' do
+    let(:mail) { described_class.approved(visit_request) }
+
+    it 'renders the headers' do
+      expect(mail.subject).to eq("#{event.title} visit approved. See you!")
+      expect(mail.to).to eq([visit_request.user.email])
+      expect(mail.from).to eq([ApplicationMailer::PIVORAK_EMAIL])
+    end
+
+    it 'renders the body' do
+      expect(mail.body.encoded).to include event.title
+      expect(mail.body.encoded).to include user.full_name
+    end
+  end
 end

@@ -21,7 +21,6 @@ module EventsHelper
       method: :delete, data: { confirm: t('phrases.confirm') }
   end
 
-
   def waiting_list_message
     return if Event::SlotsPolicy.new(event).has_free_slot_for?(current_user)
     return if event.visitors.include?(current_user)
@@ -30,6 +29,8 @@ module EventsHelper
   end
 
   def visit_request_confirm_message(visit_request)
+    return unless visit_request
+
     if visit_request.confirmed?
       t('visit_requests.messages.see_you')
     elsif visit_request.refused?
@@ -40,6 +41,7 @@ module EventsHelper
   end
 
   def visit_request_confirm_link(visit_request)
+    return unless visit_request
     return if visit_request.final_decision?
 
     link_to t('visit_requests.confirm'),
@@ -48,6 +50,7 @@ module EventsHelper
   end
 
   def visit_request_refuse_link(visit_request)
+    return unless visit_request
     return if visit_request.final_decision?
 
     link_to t('visit_requests.refuse'),
