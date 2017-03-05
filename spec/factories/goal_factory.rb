@@ -7,7 +7,7 @@ FactoryGirl.define do
 
   trait :with_donations do
     after :create do |goal|
-      FactoryGirl.create_list :donation, 3, goal: goal
+      create :donation, goal: goal
     end
   end
 end

@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/liqpay/sdk-ruby
+  revision: 2970cc6a376835e84bfb812e3d9f5c7a108f5f71
+  specs:
+    liqpay (0.0.1)
+
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -460,6 +466,7 @@ DEPENDENCIES
   jquery-rails (~> 4.2.2)
   kaminari (~> 0.17)
   launchy
+  liqpay!
   listen (~> 3.0)
   meta_request
   oj
@@ -505,4 +512,4 @@ RUBY VERSION
    ruby 2.3.1p112
 
 BUNDLED WITH
-   1.13.7
+   1.14.4
