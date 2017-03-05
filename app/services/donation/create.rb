@@ -1,15 +1,11 @@
-module DonationService
-  class Create
-    def self.call(params)
-      new(params).perform
-    end
-
+class Donation
+  class Create < ApplicationService
     def initialize(params)
       @data    = decoded_data(params[:data])
       @user_id = params[:user_id]
     end
 
-    def perform
+    def call
       return successful_donation if status_success?
 
       Rails.logger.error error_msg

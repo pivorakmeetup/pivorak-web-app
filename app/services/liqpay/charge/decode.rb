@@ -1,15 +1,11 @@
 module Liqpay
   module Charge
-    class Decode
-      def self.call(data)
-        new(data).perform
-      end
-
+    class Decode < ApplicationService
       def initialize(data)
         @data = data
       end
 
-      def perform
+      def call
         parsed_data
       end
 

@@ -1,16 +1,12 @@
 module Liqpay
   module Charge
-    class Handler
-      def self.call(data)
-        new(data).perform
-      end
-
+    class Handler < ApplicationService
       def initialize(params)
         @data    = decoded_data(params[:data])
         @user_id = params[:user_id]
       end
 
-      def perform
+      def call
         return data_not_decoded if data.blank?
 
         ActiveRecord::Base.transaction do

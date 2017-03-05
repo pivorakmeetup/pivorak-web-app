@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20170221155402) do
     t.datetime "updated_at",                          null: false
     t.integer  "payment_id"
     t.index ["goal_id"], name: "index_donations_on_goal_id", using: :btree
+    t.index ["payment_id"], name: "index_donations_on_payment_id", using: :btree
     t.index ["user_id"], name: "index_donations_on_user_id", using: :btree
   end
 
