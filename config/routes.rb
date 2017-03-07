@@ -59,6 +59,7 @@ Rails.application.routes.draw do
       resources :emails,  only:   %i[new show index create]
       resources :friends, except: %i[show destroy]
       resources :pages,   except: %i[show]
+      resources :email_templates,   only: %i[index edit update]
     end
     require 'sidekiq/web'
     mount Sidekiq::Web => '/sidekiq'

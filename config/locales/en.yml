@@ -91,6 +91,11 @@ en:
      singular: Email
      subject: Subject
      body: Body
+  email_templates:
+     plural: Email Templates
+     singular: Email Template
+     subject: Subject
+     body: Body
 
   admin:
     admin: Admin

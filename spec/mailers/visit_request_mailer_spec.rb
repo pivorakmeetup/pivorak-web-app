@@ -21,10 +21,11 @@ describe VisitRequestMailer do
   end
 
   describe '#confirmation' do
+    let!(:email_template) { create(:email_template, name: "#{described_class}#confirmation", body: File.read('app/views/mailers/visit_request_mailer/confirmation.slim')) }
     let(:mail) { described_class.confirmation(visit_request) }
 
     it 'renders the headers' do
-      expect(mail.subject).to eq("#{event.title} Final Confirmation")
+      expect(mail.subject).to eq(email_template.subject)
       expect(mail.to).to eq([visit_request.user.email])
       expect(mail.from).to eq([ApplicationMailer::PIVORAK_EMAIL])
     end
@@ -36,10 +37,11 @@ describe VisitRequestMailer do
   end
 
   describe '#approved' do
+    let!(:email_template) { create(:email_template, name: "#{described_class}#approved", body: File.read('app/views/mailers/visit_request_mailer/approved.slim')) }
     let(:mail) { described_class.approved(visit_request) }
 
     it 'renders the headers' do
-      expect(mail.subject).to eq("#{event.title} visit approved. See you!")
+      expect(mail.subject).to eq(email_template.subject)
       expect(mail.to).to eq([visit_request.user.email])
       expect(mail.from).to eq([ApplicationMailer::PIVORAK_EMAIL])
     end

@@ -11,20 +11,26 @@ class VisitRequestMailer < ApplicationMailer
   end
 
   def confirmation(visit_request)
+    email_template = EmailTemplate.find_by!(name: "#{self.class}##{__method__.to_s}")
+
     @visit_request = visit_request
     @event         = @visit_request.event
     @user          = @visit_request.user
 
-    mail to:      @user.email,
-         subject: "#{@event.title} Final Confirmation"
+    mail(subject: email_template.subject, to: @user.email) do |format|
+      format.html { email_template.render(visit_request: @visit_request, user: @user, event: @event) }
+    end
   end
 
   def approved(visit_request)
+    email_template = EmailTemplate.find_by!(name: "#{self.class}##{__method__.to_s}")
+
     @visit_request = visit_request
     @event         = @visit_request.event
     @user          = @visit_request.user
 
-    mail to:      @user.email,
-         subject: "#{@event.title} visit approved. See you!"
+    mail(subject: email_template.subject, to: @user.email) do |format|
+      format.html { email_template.render(event: @event, user: @user, visit_request: @visit_request) }
+    end
   end
 end
