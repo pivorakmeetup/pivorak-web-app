@@ -1,5 +1,14 @@
 $namespace: ".pk-flash";
 
+#{$namespace}-backdrop {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
 #{$namespace}-container {
   position: fixed;
   left: 50%;
@@ -7,12 +16,9 @@ $namespace: ".pk-flash";
   width: 360px;
   margin-left: -(360px/2);
   top: 50%;
+  z-index: 2;
   transform: translateY(-50%);
-  overflow: auto;
   max-height: 100%;
-  animation-duration: 1s;
-  animation-fill-mode: both;
-  animation-name: tada;
 }
 
 #{$namespace} {
@@ -21,6 +27,9 @@ $namespace: ".pk-flash";
   border-radius: 100px;
   padding: 48px;
   text-align: center;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-name: pulse;
 }
 
 #{$namespace} + #{$namespace} {
@@ -62,24 +71,56 @@ $namespace: ".pk-flash";
   background: #ff0000;
 }
 
-@keyframes tada {
+#{$namespace}--hide {
+  animation-duration: 1.3s;
+  animation-fill-mode: both;
+  animation-name: pulse-out;
+}
+
+@keyframes pulse {
   from {
-    transform: translateY(-50%) scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
   }
 
-  10%, 20% {
-    transform: translateY(-50%) scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
-  }
-
-  30%, 50%, 70%, 90% {
-    transform: translateY(-50%) scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
-  }
-
-  40%, 60%, 80% {
-    transform: translateY(-50%) scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+  50% {
+    transform: scale3d(1.05, 1.05, 1.05);
   }
 
   to {
-    transform: translateY(-50%) scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes pulse-out {
+  from {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale3d(.95, .95, .95);
+  }
+}
+
+@keyframes tada {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+
+  10%, 20% {
+    transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+  }
+
+  30%, 50%, 70%, 90% {
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+  }
+
+  40%, 60%, 80% {
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
   }
 }

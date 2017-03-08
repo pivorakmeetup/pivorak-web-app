@@ -20,7 +20,7 @@ body {
   &:after {
     content: "";
     background: transparent image-url("paper-imit-bg.png") center center repeat;
-    background-size: 300px 300px;
+    background-size: 640px 640px;
     pointer-events: none;
     position: absolute;
     left: 0;
@@ -106,4 +106,13 @@ q {
 .translation_missing {
   background-color: red   !important;
   color:            white !important;
+}
+
+.pk-container {
+  width: (960px + (30px * 2));
+  padding: 0 30px;
+  margin: 0 auto;
+  @include breakpoint-max((960 + (30 * 2))) {
+    width: 100%;
+  }
 }
