@@ -10,5 +10,6 @@ module PivorakWebApp
   class Application < Rails::Application
     config.version   = '0.9'
     config.time_zone = 'Kyiv'
+    config.active_job.queue_adapter = :sidekiq
   end
 end
