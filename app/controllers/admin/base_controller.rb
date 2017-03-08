@@ -2,8 +2,8 @@ module Admin
   class BaseController < ApplicationController
     layout 'admin'
 
-    before_action :authenticate_user!
     protect_from_forgery with: :exception, prepend: true
+    before_action :authenticate_user!
 
     def edit
       render_form
