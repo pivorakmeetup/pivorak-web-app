@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
+  protect_from_forgery with: :exception, prepend: true
 
   helper_method :admin?, :about_page
 
