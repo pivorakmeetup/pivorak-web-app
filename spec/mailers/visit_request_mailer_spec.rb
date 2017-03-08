@@ -5,11 +5,12 @@ describe VisitRequestMailer do
   let(:event) { create(:event) }
   let(:visit_request) { create(:visit_request, user: user, event: event) }
 
-  describe '#new_newbie_attendee' do
+  describe '#unverified_attendee' do
+    let!(:email_template) { create(:email_template, name: "#{described_class}#unverified_attendee", body: File.read('app/views/mailers/visit_request_mailer/unverified_attendee.slim')) }
     let(:mail) { described_class.unverified_attendee(visit_request.id) }
 
     it 'renders the headers' do
-      expect(mail.subject).to eq('New newbie signed up to event')
+      expect(mail.subject).to eq(email_template.subject)
       expect(mail.to).to eq([ApplicationMailer::PIVORAK_EMAIL])
       expect(mail.from).to eq([ApplicationMailer::NO_REPLY_EMAIL])
     end
