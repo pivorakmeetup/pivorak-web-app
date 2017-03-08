@@ -2,8 +2,6 @@ module Admin
   class BaseController < ApplicationController
     layout 'admin'
 
-    skip_before_action :verify_authenticity_token # Marasmus...
-    protect_from_forgery with: :exception, prepend: true
     before_action :authenticate_user!
 
     def edit
