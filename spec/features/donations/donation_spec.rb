@@ -1,9 +1,7 @@
 RSpec.describe 'Donate Process' do
-  let(:donation_button) { "input[src='//static.liqpay.com/buttons/d1en.radius.png']" }
+  subject { page }
 
-  before do
-    visit root_path
-  end
+  before { visit root_path }
 
-  it { page.should have_selector(donation_button) }
+  it { is_expected.to have_button 'donate' }
 end
