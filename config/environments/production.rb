@@ -94,4 +94,6 @@ Rails.application.configure do
     :password => ENV['MAILGUN_PASSWORD']
   }
 
+  config.action_mailer.default_url_options = { :host => 'pivorak.com' }
+
 end
