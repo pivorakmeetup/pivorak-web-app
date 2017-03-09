@@ -5,7 +5,7 @@ class User
     end
 
     def call
-      return unless user.synthetic?
+      return unless user&.synthetic?
 
       user.update(synthetic: false)
     end

@@ -1,6 +1,6 @@
 module Admin
   class MembersController < BaseController
-    helper_method :member, :members, :url
+    helper_method :member, :members, :url, :admin_members_list
     add_breadcrumb 'members.plural', :admin_members_path
     before_action :add_new_breadcump,  only: %i[new create]
     before_action :add_edit_breadcump, only: %i[edit update]
@@ -40,6 +40,10 @@ module Admin
 
     def url
       member.persisted? ? admin_member_path(member) : admin_members_path
+    end
+
+    def admin_members_list
+      @admin_members_list ||= User.admin.map(&:full_name).join(', ')
     end
   end
 end
