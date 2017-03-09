@@ -3,7 +3,12 @@ module Users
     def handle_callback
       user = handler.authenticate
       user.confirm if user
-      user ? sign_in_and_redirect(user) : redirect_to(new_user_session_path)
+      if user
+        sign_in_and_redirect(user)
+      else
+        flash[:alert] = 'User has invalid details. Please try other OAuth'
+        redirect_to(new_user_session_path)
+      end
     end
     Devise.omniauth_providers.each { |provider| alias_method provider, :handle_callback }
 
