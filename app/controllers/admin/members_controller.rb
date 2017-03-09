@@ -43,7 +43,7 @@ module Admin
     end
 
     def admin_members_list
-      @admin_members_list ||= User.admin.map(&:full_name).join(', ')
+      @admin_members_list ||= User.admin
     end
   end
 end

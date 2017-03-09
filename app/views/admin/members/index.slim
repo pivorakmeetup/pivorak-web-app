@@ -1,9 +1,12 @@
 = resource_header :member, new_link: admin_new_member_link, path: admin_members_path
 
 .ui.icon.warning.message
-  i.warning.icon
-  .header
-    = "Members with admin privileges: #{admin_members_list}"
+  i.warning.circle.icon
+  .content
+    .header = "Members with admin privileges"
+    ul
+      - admin_members_list.each do |admin|
+        li = admin.full_name
 
 table.ui.very.basic.table
   thead
