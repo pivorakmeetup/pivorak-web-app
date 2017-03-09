@@ -25,4 +25,15 @@ FactoryGirl.define do
 
     initialize_with { attributes }
   end
+
+  factory :facebook_params, class: Hash do
+    provider 'facebook'
+    uid      Faker::Number.number(16)
+    info {{
+      email: Faker::Internet.email,
+      name:  Faker::Name.name
+    }}
+
+    initialize_with { attributes }
+  end
 end
