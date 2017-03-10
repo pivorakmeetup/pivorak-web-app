@@ -11,15 +11,25 @@ module Omniauth
         end
       end
 
-      %i(first_name last_name email).each do |method_name|
-        define_method method_name do
-          info[method_name]
-        end
+      def email
+        info[:email]
+      end
+
+      def first_name
+        name&.first
+      end
+
+      def last_name
+        name&.last
       end
 
       protected
 
       attr_reader :params
+
+      def name
+        @name ||= info[:name]&.split(' ')
+      end
 
       def info
         @info ||= params.fetch(:info, {})
