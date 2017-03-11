@@ -37,6 +37,7 @@ gem 'httpclient'
 gem 'oj' # faster json parser
 gem 'rollbar'
 gem 'uglifier'
+gem 'redcarpet' # markdown processor
 # sidekiq
 gem 'sidekiq'
 gem 'sinatra', '>= 2.0.0.beta2', require: false
