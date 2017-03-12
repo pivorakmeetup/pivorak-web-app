@@ -38,6 +38,8 @@ gem 'oj' # faster json parser
 gem 'rollbar'
 gem 'uglifier'
 gem 'redcarpet' # markdown processor
+gem 'coffee-rails'
+gem 'rails_email_preview', '~> 2.0.1'
 # sidekiq
 gem 'sidekiq'
 gem 'sinatra', '>= 2.0.0.beta2', require: false

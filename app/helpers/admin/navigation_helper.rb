@@ -42,6 +42,10 @@ module Admin
       link_to t('emails.plural'), admin_emails_path, class: class_for(:emails)
     end
 
+    def admin_email_templates_link
+      link_to t('email_templates.plural'), admin_email_templates_path, class: class_for(:email_templates)
+    end
+
     def admin_friends_link
       link_to t('friends.plural'), admin_friends_path, class: class_for(:friends)
     end

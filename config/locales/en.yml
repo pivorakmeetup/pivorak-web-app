@@ -39,7 +39,7 @@ en:
     new_resource: 'New %{resource}'
     edit_resource: 'Edit %{resource}'
     confirm: 'Are you sure ?'
-    not_assigned: not assigned
+    not_assigned: 'not assigned'
     unauthorized: 'Please <a href=%{login_url}>login</a> or <a href=%{register_url}>register</a> %{action_message}'
 
   search_result:
@@ -89,6 +89,11 @@ en:
   emails:
      plural: Emails
      singular: Email
+     subject: Subject
+     body: Body
+  email_templates:
+     plural: Email Templates
+     singular: Email Template
      subject: Subject
      body: Body
 

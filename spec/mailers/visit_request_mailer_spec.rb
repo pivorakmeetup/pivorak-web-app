@@ -1,15 +1,22 @@
 require 'rails_helper'
 
 describe VisitRequestMailer do
-  let(:user) { create(:user) }
+  before do
+    require 'rake'
+    Rails.application.load_tasks
+    Rake::Task['email_templates:seed'].execute
+  end
+
+  let(:user) { create(:user, first_name: 'Denys', last_name: 'Cool') }
   let(:event) { create(:event) }
   let(:visit_request) { create(:visit_request, user: user, event: event) }
 
-  describe '#new_newbie_attendee' do
+  describe '#unverified_attendee' do
     let(:mail) { described_class.unverified_attendee(visit_request.id) }
+    let(:email_template) { EmailTemplate.find_by!(title: 'VisitRequestMailer#unverified_attendee') }
 
     it 'renders the headers' do
-      expect(mail.subject).to eq('New newbie signed up to event')
+      expect(mail.subject).to eq(email_template.subject)
       expect(mail.to).to eq([ApplicationMailer::PIVORAK_EMAIL])
       expect(mail.from).to eq([ApplicationMailer::NO_REPLY_EMAIL])
     end
@@ -22,9 +29,10 @@ describe VisitRequestMailer do
 
   describe '#confirmation' do
     let(:mail) { described_class.confirmation(visit_request) }
+    let(:email_template) { EmailTemplate.find_by!(title: 'VisitRequestMailer#confirmation') }
 
     it 'renders the headers' do
-      expect(mail.subject).to eq("#{event.title} Final Confirmation")
+      expect(mail.subject).to eq(email_template.subject)
       expect(mail.to).to eq([visit_request.user.email])
       expect(mail.from).to eq([ApplicationMailer::PIVORAK_EMAIL])
     end
@@ -37,9 +45,10 @@ describe VisitRequestMailer do
 
   describe '#approved' do
     let(:mail) { described_class.approved(visit_request) }
+    let(:email_template) { EmailTemplate.find_by!(title: 'VisitRequestMailer#approved') }
 
     it 'renders the headers' do
-      expect(mail.subject).to eq("#{event.title} visit approved. See you!")
+      expect(mail.subject).to eq(email_template.subject)
       expect(mail.to).to eq([visit_request.user.email])
       expect(mail.from).to eq([ApplicationMailer::PIVORAK_EMAIL])
     end

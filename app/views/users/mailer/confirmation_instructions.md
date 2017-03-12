@@ -1,0 +1,5 @@
+Welcome #{@user.email}!
+
+You can confirm your account email through the link below:
+
+#{link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token)}

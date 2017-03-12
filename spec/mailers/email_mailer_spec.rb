@@ -17,7 +17,7 @@ describe EmailMailer do
     end
 
     it "renders the body" do
-      expect(mail.body.encoded).to eq email.body
+      expect(mail.body.encoded).to eq "<p>#{email.body}</p>\r\n"
     end
   end
 end
