@@ -1,4 +1,4 @@
 .pk-container
   h2 = page.title
 
-  p = markdown.render(page.body).html_safe
+  p = MarkdownRenderer.call(page.body)
