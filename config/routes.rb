@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root 'home#index'
+  mount RailsEmailPreview::Engine, at: 'emails'
+
 
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks',

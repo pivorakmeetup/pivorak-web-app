@@ -5,7 +5,7 @@ module Admin
     end
 
     def email_template_preview_path(email_template)
-      "/rails/mailers/#{email_template.title.split('#')[0].underscore}/#{email_template.title.split('#')[1].underscore}"
+      "/emails/en/#{email_template.title.split('#')[0].underscore}_preview-#{email_template.title.split('#')[1].underscore}"
     end
   end
 end

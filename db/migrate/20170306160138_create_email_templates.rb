@@ -3,7 +3,6 @@ class CreateEmailTemplates < ActiveRecord::Migration[5.0]
     create_table :email_templates do |t|
       t.string "title"
       t.string "subject"
-      t.string "from"
       t.text   "body"
 
       t.timestamps

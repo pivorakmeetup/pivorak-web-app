@@ -103,6 +103,13 @@ GEM
       simplecov
       url
     coderay (1.1.1)
+    coffee-rails (4.2.1)
+      coffee-script (>= 2.2.0)
+      railties (>= 4.0.0, < 5.2.x)
+    coffee-script (2.4.1)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
     connection_pool (2.2.1)
     crack (0.4.3)
@@ -289,6 +296,11 @@ GEM
       nokogiri (~> 1.6)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
+    rails_email_preview (2.0.1)
+      rails (>= 4.2)
+      request_store
+      sass-rails
+      turbolinks
     railties (5.0.2)
       actionpack (= 5.0.2)
       activesupport (= 5.0.2)
@@ -301,6 +313,7 @@ GEM
       ffi (>= 0.5.0)
     redcarpet (3.4.0)
     redis (3.3.3)
+    request_store (1.3.2)
     responders (2.3.0)
       railties (>= 4.2.0, < 5.1)
     rest-client (2.0.1)
@@ -456,6 +469,7 @@ DEPENDENCIES
   carrierwave (~> 1.0)
   chartkick
   codecov
+  coffee-rails
   database_cleaner
   devise
   dotenv-rails
@@ -484,6 +498,7 @@ DEPENDENCIES
   rails (~> 5.0.2)
   rails-assets-lory!
   rails-assets-svgxuse!
+  rails_email_preview (~> 2.0.1)
   redcarpet
   rollbar
   rspec

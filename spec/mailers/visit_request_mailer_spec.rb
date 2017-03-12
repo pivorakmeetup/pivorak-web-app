@@ -7,7 +7,7 @@ describe VisitRequestMailer do
     Rake::Task['email_templates:seed'].execute
   end
 
-  let(:user) { create(:user) }
+  let(:user) { create(:user, first_name: 'Denys', last_name: 'Cool') }
   let(:event) { create(:event) }
   let(:visit_request) { create(:visit_request, user: user, event: event) }
 

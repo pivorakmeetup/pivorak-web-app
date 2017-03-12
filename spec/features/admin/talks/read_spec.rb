@@ -12,7 +12,6 @@ RSpec.describe 'Talks READ' do
     it { expect(page).to have_link 'Test Talk B' }
     it { expect(page).to have_link 'New Talk' }
     it { expect(page).to have_link('Edit', count: 2) }
-    it { expect(page).to have_content('not assigned', count: 4) }
     it 'New Talk click redirect to #new' do
       click_link 'New Talk'
       expect(page).to have_current_path('/admin/talks/new')
