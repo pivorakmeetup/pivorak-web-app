@@ -3,8 +3,8 @@ p
   = @user.full_name
 p
   | please confirm visit @event.title by clicking the link
-p = link_to 'YES', event_visit_request_url(@event, @visit_request, answer: :yes, token: @visit_request.token)
+p = link_to 'YES', confirm_visit_url
 
 p
   | or inform us that you change your mind and we should not wait for you
-p = link_to 'NO', event_visit_request_url(@event, @visit_request, answer: :no, token: @visit_request.token)
+p = link_to 'NO', cancel_visit_url

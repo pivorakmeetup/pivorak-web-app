@@ -10,7 +10,6 @@ RSpec.describe 'Synthetic user try to sign up' do
   it 'sends reset password' do
     active_job = active_jobs[0]
     expect(active_job[:job]).to eq ActionMailer::DeliveryJob
-    expect(active_job[:args][0]).to eq 'Devise::Mailer'
     expect(active_job[:args][1]).to eq 'reset_password_instructions'
   end
 

@@ -1,9 +1,12 @@
-h2 = t 'phrases.edit_resource', resource: t('email_templates.singular')
+= resource_form_header(email_template)
+h3 !!! Use preview after update !!!
+h3 = email_preview_link(email_template)
+
 
 = simple_form_for [:admin, email_template] do |f|
-  = f.input :name, disabled: true
+  = f.input :title, disabled: true
   = f.input :subject
-  = f.input :body, as: :text, input_html: { rows: 20 }
+  = f.input :body, as: :text, input_html: { rows: 20, class: Simplemde::CONTAINER_CLASS }
 
-  = admin_back_link(:emails)
+  = admin_back_link(:email_templates)
   = f.button :submit

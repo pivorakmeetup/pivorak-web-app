@@ -2,10 +2,7 @@ module Admin
   class EmailTemplatesController < BaseController
     helper_method :email_template, :email_templates
     add_breadcrumb 'email_templates.plural', :admin_email_templates_path
-
-    def index
-
-    end
+    before_action :add_edit_breadcump, only: %i[edit update]
 
     def edit
       render_form
@@ -13,7 +10,7 @@ module Admin
 
     def update
       email_template.update(email_template_params)
-      redirect_to admin_email_templates_path
+      render_form
     end
 
     private
@@ -27,7 +24,7 @@ module Admin
     end
 
     def email_templates
-      @email_templates ||= EmailTemplate.all
+      @email_templates ||= EmailTemplate.order(:title)
     end
   end
 end

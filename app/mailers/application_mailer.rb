@@ -6,6 +6,6 @@ class ApplicationMailer < ActionMailer::Base
   default template_path: -> (mailer) { "mailers/#{mailer.class.name.underscore}" }
 
   def email_template
-    @email_template ||= EmailTemplate.find_by!(name: "#{self.class}##{self.action_name}")
+    @email_template ||= EmailTemplate.find_by!(title: "#{self.class}##{self.action_name}")
   end
 end

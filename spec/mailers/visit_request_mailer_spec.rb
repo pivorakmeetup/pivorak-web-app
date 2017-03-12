@@ -1,13 +1,19 @@
 require 'rails_helper'
 
 describe VisitRequestMailer do
+  before do
+    require 'rake'
+    Rails.application.load_tasks
+    Rake::Task['email_templates:seed'].execute
+  end
+
   let(:user) { create(:user) }
   let(:event) { create(:event) }
   let(:visit_request) { create(:visit_request, user: user, event: event) }
 
   describe '#unverified_attendee' do
-    let!(:email_template) { create(:email_template, name: "#{described_class}#unverified_attendee", body: File.read('app/views/mailers/visit_request_mailer/unverified_attendee.slim')) }
     let(:mail) { described_class.unverified_attendee(visit_request.id) }
+    let(:email_template) { EmailTemplate.find_by!(title: 'VisitRequestMailer#unverified_attendee') }
 
     it 'renders the headers' do
       expect(mail.subject).to eq(email_template.subject)
@@ -22,8 +28,8 @@ describe VisitRequestMailer do
   end
 
   describe '#confirmation' do
-    let!(:email_template) { create(:email_template, name: "#{described_class}#confirmation", body: File.read('app/views/mailers/visit_request_mailer/confirmation.slim')) }
     let(:mail) { described_class.confirmation(visit_request) }
+    let(:email_template) { EmailTemplate.find_by!(title: 'VisitRequestMailer#confirmation') }
 
     it 'renders the headers' do
       expect(mail.subject).to eq(email_template.subject)
@@ -38,8 +44,8 @@ describe VisitRequestMailer do
   end
 
   describe '#approved' do
-    let!(:email_template) { create(:email_template, name: "#{described_class}#approved", body: File.read('app/views/mailers/visit_request_mailer/approved.slim')) }
     let(:mail) { described_class.approved(visit_request) }
+    let(:email_template) { EmailTemplate.find_by!(title: 'VisitRequestMailer#approved') }
 
     it 'renders the headers' do
       expect(mail.subject).to eq(email_template.subject)

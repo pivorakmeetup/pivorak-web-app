@@ -8,5 +8,5 @@ table.ui.very.basic.table
   tbody
     - email_templates.each do |email_template|
       tr
-        td = link_to email_template.name, edit_admin_email_template_path(email_template)
+        td = link_to email_template.title, edit_admin_email_template_path(email_template)
         td = truncate(email_template.body, length: 20)

@@ -1,11 +1,17 @@
 require 'rails_helper'
 
 describe UserMailer do
+  before do
+    require 'rake'
+    Rails.application.load_tasks
+    Rake::Task['email_templates:seed'].execute
+  end
+
   let(:user) { create(:user) }
 
   describe '#confirmation_instructions' do
-    let!(:email_template) { create(:email_template, name: "#{described_class}#confirmation_instructions", body: File.read('app/views/users/mailer/confirmation_instructions.html.slim')) }
     let(:mail) { described_class.confirmation_instructions(user, 'abcde') }
+    let(:email_template) { EmailTemplate.find_by!(title: 'UserMailer#confirmation_instructions') }
 
     it 'renders the headers' do
       expect(mail.subject).to eq(email_template.subject)
@@ -20,8 +26,8 @@ describe UserMailer do
   end
 
   describe '#reset_password_instructions' do
-    let!(:email_template) { create(:email_template, name: "#{described_class}#reset_password_instructions", body: File.read('app/views/users/mailer/reset_password_instructions.html.slim')) }
     let(:mail) { described_class.reset_password_instructions(user, 'abcde') }
+    let(:email_template) { EmailTemplate.find_by!(title: 'UserMailer#reset_password_instructions') }
 
     it 'renders the headers' do
       expect(mail.subject).to eq(email_template.subject)
