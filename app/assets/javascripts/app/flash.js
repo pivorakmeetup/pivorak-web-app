@@ -61,7 +61,7 @@ $(function() {
     var timeout = setTimeout(function(){
       clearTimeout(timeout);
       removeAllFlashes(flashNodes, flashNodesLength);
-    }, 5000);
+    }, 7000);
 
     for(var i = 0; i < flashNodesLength; i++) {
       var ii = i;
