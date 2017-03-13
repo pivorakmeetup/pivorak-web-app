@@ -27,3 +27,4 @@ config/secrets.yml
 public/uploads
 config/environments/development.rb
 lib/tasks/import_users/pivorakers_list.csv
+/db/*.sql

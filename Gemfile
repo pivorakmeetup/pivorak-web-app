@@ -65,6 +65,7 @@ group :development do
   gem 'capistrano-rails', '~> 1.2'
   gem 'capistrano-sidekiq'
   gem 'capistrano-rvm'
+  gem 'capistrano-db-tasks', require: false
 end
 
 group :development, :test do
