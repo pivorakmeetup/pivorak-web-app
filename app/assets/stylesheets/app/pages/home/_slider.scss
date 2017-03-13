@@ -1,7 +1,7 @@
 $namespace: ".pk-slider";
 
 #{$namespace} {
-  margin-bottom: -180px;
+  margin-bottom: -220px;
   position: relative;
   overflow: hidden;
   &:before, &:after {
@@ -31,6 +31,8 @@ $namespace: ".pk-slider";
   background-blend-mode: luminosity;
 }
 
+$slider-height: (1078px + 60);
+
 #{$namespace}__unit-container {
   width: 320px;
   display: inline-block;
@@ -43,7 +45,7 @@ $namespace: ".pk-slider";
     width: 440px;
     #{$namespace}__unit {
       width: 636px;
-      height: 1078px;
+      height: $slider-height;
       position: relative;
       padding: 24px (188px + 56px) 24px (10px + 72px);
       #{$namespace}__blend-image {
@@ -59,7 +61,7 @@ $namespace: ".pk-slider";
         bottom: 0;
         right: 0;
         border-style: solid;
-        border-width: 0 188px 1078px 10px;
+        border-width: 0 188px $slider-height 10px;
         border-color: transparent transparent #57C8D1 transparent;
       }
     }
@@ -70,7 +72,7 @@ $namespace: ".pk-slider";
     #{$namespace}__unit {
       z-index: 2;
       width: 434px;
-      height: (1078px - 30px);
+      height: ($slider-height - 30px);
       position: relative;
       padding: 24px 72px 24px 18px;
       margin: 15px 79px 0 99px;
@@ -87,7 +89,7 @@ $namespace: ".pk-slider";
         top: 0;
         bottom: 0;
         border-style: solid;
-        border-width: (1078px - 30px) 0 0 99px;
+        border-width: ($slider-height - 30px) 0 0 99px;
         border-color: #F7B332 transparent transparent transparent;
       }
       &:after {
@@ -99,7 +101,7 @@ $namespace: ".pk-slider";
         top: 0;
         bottom: 0;
         border-style: solid;
-        border-width: 0 79px 1078px 0;
+        border-width: 0 79px $slider-height 0;
         border-color: transparent transparent #F7B332 transparent;
       }
     }
@@ -109,7 +111,7 @@ $namespace: ".pk-slider";
     #{$namespace}__unit {
       z-index: 3;
       width: 478px;
-      height: 1078px;
+      height: $slider-height;
       position: relative;
       padding: 24px 72px;
       margin: 0 6px 0 0;
@@ -126,7 +128,7 @@ $namespace: ".pk-slider";
         top: 0;
         bottom: 0;
         border-style: solid;
-        border-width: 1078px 6px 0 0;
+        border-width: $slider-height 6px 0 0;
         border-color: #50B27E transparent transparent transparent;
       }
     }
@@ -135,7 +137,7 @@ $namespace: ".pk-slider";
     width: 480px;
     #{$namespace}__unit {
       width: 441px;
-      height: (1078px - 30px);
+      height: ($slider-height - 30px);
       position: relative;
       padding: 24px 72px;
       margin: 15px 34px 0 99px;
@@ -152,7 +154,7 @@ $namespace: ".pk-slider";
         top: 0;
         bottom: 0;
         border-style: solid;
-        border-width: (1078px - 30px) 0 0 99px;
+        border-width: ($slider-height - 30px) 0 0 99px;
         border-color: #F7B332 transparent transparent transparent;
       }
       &:after {
@@ -164,7 +166,7 @@ $namespace: ".pk-slider";
         top: 0;
         bottom: 0;
         border-style: solid;
-        border-width: 1078px 34px 0 0;
+        border-width: $slider-height 34px 0 0;
         border-color: #F7B332 transparent transparent transparent;
       }
     }

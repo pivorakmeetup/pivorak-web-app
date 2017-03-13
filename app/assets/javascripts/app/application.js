@@ -18,9 +18,11 @@
 //= require_tree .
 
 (function() {
-  document.addEventListener('DOMContentLoaded', function () {
+  var initApplication = function() {
     initSlider();
     loadFlash();
     blendedImg();
-  });
+  }
+  document.addEventListener('DOMContentLoaded', initApplication);
+  document.addEventListener('turbolinks:load', initApplication);
 })()
