@@ -10,13 +10,13 @@ module Admin
 
     def update
       email_template.update(email_template_params)
-      render_form
+      redirect_to edit_admin_email_template_path(email_template)
     end
 
     private
 
     def email_template_params
-      params.require(:email_template).permit(:subject, :body)
+      params.require(:email_template).permit(:subject, :body, :note)
     end
 
     def email_template
