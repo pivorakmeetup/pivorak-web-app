@@ -151,7 +151,7 @@ en:
     messages:
       # TODO VS -> Better messages, please
       pending:  'Your visit request: pending'
-      approved: 'Yahooo.. your visit request: approved'
+      approved: You are confirmed for this event!
       canceled: 'Sorry, but your visit request: canceled'
       waiting_list: Seems like all seats have been taken, but you can add yourself to waiting list
       please_confirm: Please, confirm your final attendance
