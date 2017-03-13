@@ -2,11 +2,11 @@ table.ui.very.basic.table
   thead
     tr
       th = t 'words.name'
-      th = t 'email_templates.body'
+      th = t 'email_templates.note'
       th.actions colspan="2"
 
   tbody
     - email_templates.each do |email_template|
       tr
         td = link_to email_template.title, edit_admin_email_template_path(email_template)
-        td = truncate(email_template.body, length: 20)
+        td = email_template.note

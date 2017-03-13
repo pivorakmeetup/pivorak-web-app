@@ -96,6 +96,7 @@ en:
      singular: Email Template
      subject: Subject
      body: Body
+     note: Note
 
   admin:
     admin: Admin

@@ -9,8 +9,11 @@ module Admin
     end
 
     def update
-      email_template.update(email_template_params)
-      redirect_to edit_admin_email_template_path(email_template)
+      if email_template.update(email_template_params)
+        redirect_to edit_admin_email_template_path(email_template)
+      else
+        render_form
+      end
     end
 
     private
