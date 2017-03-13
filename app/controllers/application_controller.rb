@@ -54,6 +54,7 @@ class ApplicationController < ActionController::Base
 
   # TODO VS -> Remove after 1.0 release
   def skip_coming_soon
+    return true
     !Rails.env.production? ||
       admin?               ||
         devise_controller? ||
