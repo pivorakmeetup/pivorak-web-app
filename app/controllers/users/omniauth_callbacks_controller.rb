@@ -4,6 +4,7 @@ module Users
       user = handler.authenticate
       user.confirm if user
       if user
+        flash[:success] = 'You have successfully logged in'
         sign_in_and_redirect(user)
       else
         flash[:alert] = 'User has invalid details. Please try other OAuth'
