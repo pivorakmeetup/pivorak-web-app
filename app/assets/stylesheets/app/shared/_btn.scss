@@ -23,12 +23,13 @@ $namespace: ".pk-btn";
   background-color: #D35130;
   text-decoration: none;
   transition: .3s ease;
+  border: 2px solid rgba(#FCF7EF, .54);
 
   &:hover, &:active, &:focus {
     text-decoration: none;
     outline: none;
   }
-  
+
 }
 
 #{$namespace}--medium {
@@ -39,13 +40,13 @@ $namespace: ".pk-btn";
   border: 1px solid transparent;
   border-radius: 12px;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .2);
-  
+
   font-size: 15px;
   line-height: $main-line-height;
   letter-spacing: 2.14px;
   color: $text-color;
   font-weight: 600;
-  
+
   &:hover {
     opacity: .95;
   }
@@ -92,7 +93,7 @@ $namespace: ".pk-btn";
     // background-color: inherit;
     // background-color: #57C8D1;
     // border-color: rgba($link-color, .14);
-    
+
     // version
     // transform: translateY(2px);
   }
