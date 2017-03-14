@@ -1,0 +1,13 @@
+.pusher {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+#container {
+  flex: 1;
+}
+
+.ui.footer.segment {
+  margin: 5em 0em 0em;
+}
