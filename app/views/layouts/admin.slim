@@ -10,6 +10,7 @@ html
         .ui.sidebar.inverted.vertical.menu
           == render 'layouts/admin/navigation'
         .pusher
-          .ui.container
+          .ui.container#container
             == render 'layouts/admin/header'
             = yield
+          == render 'layouts/admin/footer'
