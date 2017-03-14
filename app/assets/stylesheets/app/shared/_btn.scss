@@ -117,6 +117,7 @@ $namespace: ".pk-btn";
 
   line-height: 1.4;
   letter-spacing: $letter-spacing-p;
+  border-width: 0 0 2px 0;
   border-bottom: 2px solid $link-color;
 
   // variant
@@ -134,5 +135,6 @@ $namespace: ".pk-btn";
   font-size: 12px;
   line-height: 1.3;
   letter-spacing: 0.08333em;
+  border-width: 0 0 2px 0;
   border-bottom: 1px solid $link-color;
 }
