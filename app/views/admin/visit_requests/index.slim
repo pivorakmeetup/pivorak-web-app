@@ -16,7 +16,8 @@ table.ui.very.basic.table
   tbody
     - visit_requests.each do |visit_request|
       tr
-        td = admin_member_link(visit_request.user)
+        td = link_to visit_request.user.full_name, edit_admin_member_path(visit_request.user), target: '_blank'
+
         - if event.live?
           td.center.aligned = visit_request_visited_link(visit_request)
         - else
