@@ -4,6 +4,7 @@ h2 = event.title
 table.ui.very.basic.table
   thead
     tr
+      th = 'Verified?'
       th = t 'words.name'
       - if event.live?
         th.center.aligned = t 'visit_requests.visited'
@@ -16,6 +17,7 @@ table.ui.very.basic.table
   tbody
     - visit_requests.each do |visit_request|
       tr
+        td = bool_icon(visit_request.user.verified?)
         td = link_to visit_request.user.full_name, edit_admin_member_path(visit_request.user), target: '_blank'
 
         - if event.live?

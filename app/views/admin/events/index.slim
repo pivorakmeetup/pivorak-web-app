@@ -6,7 +6,8 @@ table.ui.very.basic.table
       th
         th = t 'words.title'
       th.center.aligned = t 'words.status'
-      th = t 'events.visitors'
+      th.center.aligned = t 'events.visitors'
+      th.center.aligned = 'Verified / Newbies'
       th = t 'words.date'
       th.actions colspan="2"
 
@@ -16,7 +17,8 @@ table.ui.very.basic.table
         td.center.aligned = bool_icon(event.published?)
         td = resource_link(event, target: '_blank')
         td.center.aligned = event_status_label(event)
-        td = event_limitation_data(event)
+        td.center.aligned = event_limitation_data(event)
+        td.center.aligned = event_verified_user_data(event)
         td = format_timestamp(event.started_at, time: false)
         td.right.aligned
           = controls do

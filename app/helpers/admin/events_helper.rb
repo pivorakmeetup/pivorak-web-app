@@ -28,6 +28,13 @@ module Admin
       "#{total} / #{verified} / #{pending}"
     end
 
+    def event_verified_user_data(event)
+      verified = event.visitors.verified.count
+      newbies  = event.visitors.newbies.count
+
+      "#{verified} / #{newbies}"
+    end
+
     def send_confirmation_emails_link(event)
       return unless event.confirmation?
 
