@@ -107,7 +107,8 @@ $slider-height: (1078px + 60);
     }
   }
   &:nth-child(4n+3) {
-    width: 366px;
+    width: (366px + 70);
+    margin-right: -70px;
     #{$namespace}__unit {
       z-index: 3;
       width: 478px;
