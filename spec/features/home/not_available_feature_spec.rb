@@ -3,7 +3,6 @@ RSpec.describe 'Not available feature' do
 
   before do
     allow(Rails).to receive_message_chain(:env, :production?) { true }
-    allow_any_instance_of(ApplicationController).to receive(:coming_soon?) { true }
   end
 
   context 'regular visitor' do
