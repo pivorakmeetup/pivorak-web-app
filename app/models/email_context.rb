@@ -5,9 +5,9 @@ class EmailContext < ActionView::Base
     Rails.application.config.action_mailer[:default_url_options][:host]
   end
 
-  def confirmation_url
-    user_confirmation_url(confirmation_url: @token, host: host)
-  end
+  # def confirmation_url
+  #   user_confirmation_url(confirmation_url: @token, host: host)
+  # end
 
   def change_password_url
     edit_user_password_url(reset_password_token: @token, host: host)
