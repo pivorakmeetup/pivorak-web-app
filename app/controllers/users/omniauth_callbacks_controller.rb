@@ -5,7 +5,6 @@ module Users
       user.confirm if user
       if user
         flash[:success] = 'You have successfully logged in'
-        NotifyMailer.new_user_registered(user.id).deliver_later if user.persisted?
         sign_in_and_redirect(user)
       else
         flash[:alert] = 'User has invalid details. Please try other OAuth'
