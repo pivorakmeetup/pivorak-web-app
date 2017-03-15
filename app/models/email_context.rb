@@ -6,11 +6,11 @@ class EmailContext < ActionView::Base
   end
 
   def confirmation_url
-    "#{host}/users/confirmation?confirmation_token=#{@token}"
+    user_confirmation_url(confirmation_url: @token, host: host)
   end
 
   def change_password_url
-    "#{host}/users/password/edit?reset_password_token=#{@token}"
+    edit_user_password_url(reset_password_token: @token, host: host)
   end
 
   def _event_url
