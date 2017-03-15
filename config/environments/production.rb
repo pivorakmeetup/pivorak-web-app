@@ -115,6 +115,6 @@ Rails.application.configure do
     end
   end
 
-  config.action_mailer.default_url_options = { :host => 'pivorak.com' }
+  config.action_mailer.default_url_options = { :host => 'pivorak.com', :protocol => "https" }
 
 end
