@@ -8,7 +8,7 @@ Bundler.require(*Rails.groups)
 
 module PivorakWebApp
   class Application < Rails::Application
-    config.version   = '0.9'
+    config.version   = '1.0'
     config.time_zone = 'Kyiv'
   end
 end
