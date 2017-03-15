@@ -228,6 +228,7 @@ GEM
       net-ssh (>= 2.6.5)
     net-ssh (4.1.0)
     netrc (0.11.0)
+    newrelic_rpm (3.18.1.330)
     nio4r (2.0.0)
     nokogiri (1.7.0.1)
       mini_portile2 (~> 2.1.0)
@@ -487,6 +488,7 @@ DEPENDENCIES
   liqpay!
   listen (~> 3.0)
   meta_request
+  newrelic_rpm
   oj
   omniauth-facebook
   omniauth-github

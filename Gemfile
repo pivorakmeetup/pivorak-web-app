@@ -48,6 +48,7 @@ gem 'acts-as-taggable-on',               '~> 4.0'
 gem 'dry-validation'
 gem 'versionomy'
 gem 'inline_svg'
+gem 'newrelic_rpm'
 
 #=== CONFIG =================================
 gem 'dotenv-rails'
