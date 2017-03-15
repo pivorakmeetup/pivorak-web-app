@@ -31,4 +31,10 @@ RSpec.describe 'Visit Requests CONFIRMATION' do
     it { expect(page).to_not have_link 'Confirm' }
     it { expect(page).to_not have_link 'Refuse' }
   end
+
+  context 'Get application closed message' do
+    before { logout and visit("/events/#{event.slug}") }
+
+    it { expect(page).to have_content I18n.t('visit_requests.messages.registration_closed') }
+  end
 end

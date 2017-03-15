@@ -39,7 +39,7 @@ describe NotifyMailer do
     end
 
     it "renders the body" do
-      expect(mail.body.encoded).to eq I18n.t('mailers.notify_mailer.new_user_registered.body', user: user.full_name)
+      expect(mail.body.encoded).to eq I18n.t('mailers.notify_mailer.new_user_registered.body', user: user.full_name, email: user.email)
     end
   end
 end

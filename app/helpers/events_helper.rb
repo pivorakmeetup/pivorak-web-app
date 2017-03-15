@@ -29,7 +29,7 @@ module EventsHelper
   end
 
   def visit_request_confirm_message(visit_request)
-    return unless visit_request
+    return unless visit_request && current_user
 
     if visit_request.confirmed?
       t('visit_requests.messages.see_you')
@@ -41,7 +41,7 @@ module EventsHelper
   end
 
   def visit_request_confirm_link(visit_request)
-    return unless visit_request
+    return unless visit_request && current_user
     return if visit_request.final_decision?
 
     link_to t('visit_requests.confirm'),
@@ -50,7 +50,7 @@ module EventsHelper
   end
 
   def visit_request_refuse_link(visit_request)
-    return unless visit_request
+    return unless visit_request && current_user
     return if visit_request.final_decision?
 
     link_to t('visit_requests.refuse'),
@@ -62,6 +62,12 @@ module EventsHelper
     return unless visit_request
 
     render html: "#{t(visit_request.status, scope: 'visit_requests.messages')} <br/>".html_safe
+  end
+
+  def visit_request_please_text(visit_request)
+    return if visit_request
+
+    t('visit_requests.messages.registration_closed').html_safe
   end
 
   private

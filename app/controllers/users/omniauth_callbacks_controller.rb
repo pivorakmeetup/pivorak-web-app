@@ -5,12 +5,14 @@ module Users
       user.confirm if user
       if user
         flash[:success] = 'You have successfully logged in'
+        NotifyMailer.new_user_registered(user.id).deliver_later if user.persisted?
         sign_in_and_redirect(user)
       else
         flash[:alert] = 'User has invalid details. Please try other OAuth'
         redirect_to(new_user_session_path)
       end
     end
+
     Devise.omniauth_providers.each { |provider| alias_method provider, :handle_callback }
 
     private
