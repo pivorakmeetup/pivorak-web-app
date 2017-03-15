@@ -6,10 +6,6 @@ class HomeController < ApplicationController
     render 'events/show'
   end
 
-  def coming_soon
-    render layout: 'coming_soon'
-  end
-
   private
 
   def event

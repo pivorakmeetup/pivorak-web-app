@@ -5,8 +5,6 @@ class ApplicationController < ActionController::Base
 
   delegate :admin?, to: :current_user, allow_nil: true
 
-  before_action :coming_soon? # TODO VS -> Remove after 1.0 release
-
   def self.disabled_feature_until(release)
     until_version = Versionomy.parse(release.to_s)
 
@@ -24,11 +22,6 @@ class ApplicationController < ActionController::Base
 
   def not_found
     render file: "#{Rails.root}/public/404", layout: false, status: :not_found
-  end
-
-  # TODO VS -> Remove after 1.0 release
-  def coming_soon?
-    redirect_to(coming_soon_path) unless skip_coming_soon
   end
 
   def about_page
@@ -52,17 +45,5 @@ class ApplicationController < ActionController::Base
     action   = params[:action]
 
     flash[type] = t(type, scope: [:flash, resource, action])
-  end
-
-  private
-
-  # TODO VS -> Remove after 1.0 release
-  def skip_coming_soon
-    return true
-
-    !Rails.env.production? ||
-      admin?               ||
-        devise_controller? ||
-          action_name == 'coming_soon'
   end
 end
