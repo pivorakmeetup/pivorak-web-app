@@ -23,6 +23,5 @@
     loadFlash();
     blendedImg();
   }
-  document.addEventListener('DOMContentLoaded', initApplication);
   document.addEventListener('turbolinks:load', initApplication);
 })()

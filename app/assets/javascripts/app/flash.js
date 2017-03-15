@@ -48,7 +48,7 @@ $(function() {
     var flashNodes = mainFlashNode.querySelectorAll(".pk-flash");
     var flashNodesLength = flashNodes.length;
 
-    if (flashNodes.length > 0) {
+    if (flashNodesLength > 0) {
       mainFlashNode.after(flashBackDrop);
     }
 
