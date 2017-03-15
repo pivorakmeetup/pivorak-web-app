@@ -9,7 +9,7 @@ set :rvm_ruby_version, 'ruby-2.3.1@pivorak'
 set :linked_files, %w(config/database.yml config/secrets.yml .env)
 set :linked_dirs, fetch(:linked_dirs, []).push(
   'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system',
-  'node_modules'
+  'node_modules', 'public/uploads'
 )
 set :user, 'dev'
 set :ssh_options, keys: ["config/deploy_id_rsa"] if File.exist?("config/deploy_id_rsa")

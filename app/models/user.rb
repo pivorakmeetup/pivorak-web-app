@@ -12,10 +12,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable,
          :validatable, :omniauthable, omniauth_providers: Devise.omniauth_providers
 
-  has_many :identities, dependent: :destroy
-  has_many :donations,  dependent: :destroy
-  has_many :talks, foreign_key: :speaker_id
-  has_many :visit_requests
+  has_many :identities,                      dependent: :destroy
+  has_many :donations,                       dependent: :destroy
+  has_many :talks, foreign_key: :speaker_id, dependent: :nullify
+  has_many :visit_requests,                  dependent: :destroy
+
   validates :first_name, :last_name, :slug, presence: true
   validates :first_name, :last_name, format: {
     with: LATIN_LETTERS_REGEX,  message: I18n.t('errors.only_latin_letters')
