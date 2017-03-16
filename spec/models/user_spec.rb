@@ -16,12 +16,13 @@ RSpec.describe User, type: :model do
     it { is_expected.to_not allow_value('Я').for(:last_name) }
 
     describe 'error message' do
-      let(:user) { build(:user, first_name: 'Я',  last_name: 'Я') }
+      let(:user) { build(:user, first_name: 'Я',  last_name: 'Я', email: 'denys+1@lol.com') }
 
       before { user.valid? }
 
       it { expect(user.errors[:first_name].first).to eq I18n.t 'errors.only_latin_letters' }
       it { expect(user.errors[:last_name].first).to eq I18n.t 'errors.only_latin_letters' }
+      it { expect(user.errors[:email].first).to eq 'is invalid' }
     end
   end
 end
