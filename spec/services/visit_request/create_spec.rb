@@ -21,9 +21,12 @@ describe VisitRequest::Create do
         it { expect(event.visit_requests.last).to_not be_waiting_list }
       end
 
-      context 'event not has free slots for verified users' do
+      context 'event has no free slots for verified users' do
         before do
           allow_any_instance_of(Event::SlotsPolicy).to receive(:has_free_slot_for?).with(user) { false }
+
+          expect(VisitRequestMailer).not_to receive(:unverified_attendee)
+
           subject.call
         end
 
@@ -52,7 +55,7 @@ describe VisitRequest::Create do
         it { expect(event.visit_requests.last).to_not be_waiting_list }
       end
 
-      context 'event not has free slots for newbies' do
+      context 'event has no free slots for newbies' do
         before do
           allow_any_instance_of(Event::SlotsPolicy).to receive(:has_free_slot_for?).with(user) { false }
           subject.call

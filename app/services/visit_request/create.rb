@@ -7,18 +7,14 @@ class VisitRequest
 
     def call
       return visit_request.approved! if user.verified? && policy.has_free_slot_for?(user)
-
-      unless user.verified? && policy.has_free_slot_for?(user)
-        visit_request.pending!
-        VisitRequestMailer.unverified_attendee(visit_request.id).deliver_later
-      end
-
+      VisitRequestMailer.unverified_attendee(visit_request.id).deliver_later unless user.verified?
+      visit_request.pending!
       visit_request.waiting_list! unless policy.has_free_slot_for?(user)
     end
 
     private
 
-    attr_reader :user, :event, :policy
+    attr_reader :user, :event
 
     def visit_request
       @visit_request ||= VisitRequest.find_or_initialize_by(
