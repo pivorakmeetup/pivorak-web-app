@@ -49,6 +49,7 @@ gem 'dry-validation'
 gem 'versionomy'
 gem 'inline_svg'
 gem 'newrelic_rpm'
+gem 'icalendar'
 
 #=== CONFIG =================================
 gem 'dotenv-rails'
