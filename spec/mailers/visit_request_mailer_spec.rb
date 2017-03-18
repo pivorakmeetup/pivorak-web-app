@@ -41,6 +41,11 @@ describe VisitRequestMailer do
       expect(mail.body.encoded).to include event.title
       expect(mail.body.encoded).to include user.full_name
     end
+
+    it 'renders the event attachment' do
+      expect(mail.attachments['event.ics']).to be_present
+      expect(mail.attachments['event.ics'].body.encoded).to include('BEGIN:VCALENDAR')
+    end
   end
 
   describe '#approved' do
