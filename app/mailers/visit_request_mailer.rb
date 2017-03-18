@@ -14,6 +14,7 @@ class VisitRequestMailer < ApplicationMailer
     @event         = @visit_request.event
     @user          = @visit_request.user
 
+    attachments['event.ics'] = Event::ExportToIcal.call(@event)
     mail(subject: email_template.subject, to: @user.email) do |format|
       format.html { email_template.render(visit_request: @visit_request, user: @user, event: @event) }
     end
