@@ -30,6 +30,7 @@ en:
     search: Search
     preview: Preview
     import: Import
+    squash: Squash
 
   resources:
     errors:
