@@ -2,16 +2,18 @@ class User
   class Squash < ApplicationService
     def initialize(params = {})
       @params       = params
-      @squshed_user = params.fetch(:squshed_user, nil)
+      @squashed_user = params.fetch(:squashed_user, nil)
       @into_user    = params.fetch(:into_user, nil)
     end
 
     def call
       return unless schema.call(params).success?
-      return if squshed_user.id == into_user.id
+      return if squashed_user.id == into_user.id
 
-      fix_has_many_dependencies!
+      ApplicationRecord.transaction do
+        fix_has_many_dependencies!
       destroy_squashed_user!
+      end
 
       true
     end
@@ -29,21 +31,21 @@ class User
 
     private
 
-    attr_reader :params, :squshed_user, :into_user, :result
+    attr_reader :params, :squashed_user, :into_user, :result
 
     def fix_has_many_dependencies!
       dependencies[:has_many].each_pair do |resource, key|
-        resource.where(key => squshed_user.id).update_all(key => into_user.id)
+        resource.where(key => squashed_user.id).update_all(key => into_user.id)
       end
     end
 
     def destroy_squashed_user!
-      squshed_user.destroy
+      squashed_user.destroy!
     end
 
     def schema
       @schema ||= Dry::Validation.Schema do
-        required(:squshed_user).value(type?: User)
+        required(:squashed_user).value(type?: User)
         required(:into_user).value(type?: User)
       end
     end

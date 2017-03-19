@@ -11,7 +11,7 @@ module Admin
 
       def create
         User::Squash.call(
-          squshed_user: member,
+          squashed_user: member,
           into_user: ::User.find(params[:into_user])
         )
 

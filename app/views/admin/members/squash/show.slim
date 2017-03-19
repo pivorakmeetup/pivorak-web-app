@@ -1,10 +1,12 @@
 = simple_form_for [:admin, member], url: admin_member_squash_url(member), as: :member, method: :post do |f|
   .two.fields
     .field
-      = select_tag 'into_user',
-        options_from_collection_for_select(squash_into_users, :id, :email),
-        class: 'ui search dropdown'
+      .inline.fields
+        .field = label_tag t('words.into')
+        .field = select_tag 'into_user',
+                  options_from_collection_for_select(squash_into_users, :id, :email),
+                  class: 'ui search dropdown'
 
-    .field
-      = f.button :submit, 'Squash members'
-      = admin_back_link(:members)
+      .field
+        = f.button :submit, t('words.squash')
+        = admin_back_link(:members)

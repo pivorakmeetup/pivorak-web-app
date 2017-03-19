@@ -1,7 +1,7 @@
 RSpec.describe User::Squash do
   let(:user_a) { create(:user) }
   let(:user_b) { create(:user) }
-  let(:valid_params) { { squshed_user: user_a, into_user: user_b } }
+  let(:valid_params) { { squashed_user: user_a, into_user: user_b } }
 
   describe '.call' do
     let!(:identity)      { create :identity,      user: user_a }
@@ -29,8 +29,8 @@ RSpec.describe User::Squash do
 
   describe '#schema' do
     let(:wrong_params)   { { user_a: User.new, user_b: Class.new } }
-    let(:invalid_params) { { squshed_user: Class.new, into_user: Class.new } }
-    let(:stupid_params)  { { squshed_user: user_a, into_user: user_a } }
+    let(:invalid_params) { { squashed_user: Class.new, into_user: Class.new } }
+    let(:stupid_params)  { { squashed_user: user_a, into_user: user_a } }
 
     it { expect(described_class.call(valid_params)).to_not be_nil }
     it { expect(described_class.call(wrong_params)).to be_nil }
