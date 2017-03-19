@@ -10,9 +10,9 @@ class User
       return unless schema.call(params).success?
       return if squashed_user.id == into_user.id
 
-      ApplicationRecord.transaction do
+      transaction do
         fix_has_many_dependencies!
-      destroy_squashed_user!
+        destroy_squashed_user!
       end
 
       true
