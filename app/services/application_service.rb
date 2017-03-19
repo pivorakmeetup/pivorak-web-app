@@ -1,5 +1,5 @@
 class ApplicationService
-  delegate :transaction, to: :'ApplicationRecord'
+  delegate :transaction, to: ApplicationRecord
 
   def self.call(*args)
     new(*args).call
