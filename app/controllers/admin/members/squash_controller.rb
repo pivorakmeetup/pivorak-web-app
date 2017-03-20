@@ -10,15 +10,17 @@ module Admin
       end
 
       def create
-        User::Squash.call(
+        react_to User::Squash.call(
           squashed_user: member,
           into_user: ::User.find(params[:into_user])
         )
-
-        flash_success and redirect_to(admin_members_path)
       end
 
       private
+
+      def default_redirect
+        redirect_to admin_members_path
+      end
 
       def member
         @member ||= ::User.friendly.find(params[:member_id])

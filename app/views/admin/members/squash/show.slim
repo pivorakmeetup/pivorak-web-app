@@ -1,3 +1,10 @@
+.ui.icon.red.message
+  i.warning.circle.icon
+  .content
+    .header = t 'words.danger'
+    div = t 'members.squash_danger', full_name: member.full_name
+
+
 = simple_form_for [:admin, member], url: admin_member_squash_url(member), as: :member, method: :post do |f|
   .two.fields
     .field
