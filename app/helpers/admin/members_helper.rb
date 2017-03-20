@@ -14,5 +14,10 @@ module Admin
     def admin_member_link(member)
       link_to member.full_name, member_path(member), target: '_blank'
     end
+
+    def admin_squash_member_link(member)
+      link_to icon(:compress, t('words.squash')),
+        admin_member_squash_path(member), class: 'item'
+    end
   end
 end

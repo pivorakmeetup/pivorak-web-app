@@ -30,6 +30,9 @@ en:
     search: Search
     preview: Preview
     import: Import
+    squash: Squash
+    into: Into
+    danger: Danger
 
   resources:
     errors:
@@ -123,6 +126,7 @@ en:
     synthetic: Synthetic
     change_gravatar: Change gravatar
     verified: Verified
+    squash_danger: 'Member %{full_name} will be deleted from database'
     synthetic:
       singular: Synthetic
       greeting: 'Hello %{name}, we know You!'

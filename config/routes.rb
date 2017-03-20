@@ -53,7 +53,9 @@ Rails.application.routes.draw do
       resources :venues,  except: %i[show destroy]
       resources :talks,   except: %i[show destroy]
       resources :goals,   except: %i[show destroy]
-      resources :members, except: %i[show destroy]
+      resources :members, except: %i[show destroy] do
+        resource :squash, only: %i[show create], controller: 'members/squash'
+      end
       resources :groups,  except: %i[show]
       resources :emails,  only:   %i[new show index create]
       resources :friends, except: %i[show destroy]
