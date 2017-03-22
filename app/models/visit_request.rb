@@ -1,4 +1,6 @@
 class VisitRequest < ApplicationRecord
+  include ::Searchable
+
   PENDING   = :pending
   APPROVED  = :approved
   CANCELED  = :canceled

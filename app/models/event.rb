@@ -25,8 +25,10 @@ class Event < ApplicationRecord
   has_many :talks
 
   has_many :visit_requests
-  has_many :approved_visit_requests, -> { approved }, class_name: :VisitRequest
-  has_many :pending_visit_requests,  -> { pending },  class_name: :VisitRequest
+
+  %i(approved pending final).each do |scope_name|
+    has_many :"#{scope_name}_visit_requests", -> { send(scope_name) }, class_name: :VisitRequest
+  end
 
   has_many :visitors,                                       through: :visit_requests, source: :user
   has_many :verified_visitors, -> { merge(User.verified) }, through: :visit_requests, source: :user

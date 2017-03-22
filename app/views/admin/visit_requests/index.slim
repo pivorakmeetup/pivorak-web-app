@@ -1,33 +1,37 @@
-h2 = event.title
-= event_status_label(event)
+.ui.stackable.grid
+  .ten.wide.column
+    h2 = event.title
+    = event_status_label(event)
+  .six.wide.column.bottom.aligned
+    = render 'admin/shared/search_bar', path: admin_event_visit_requests_path
 
-table.ui.very.basic.table
-  thead
-    tr
-      th = 'Verified?'
-      th = t 'words.name'
-      - if event.live?
-        th.center.aligned = t 'visit_requests.visited'
-      - else
-        th.center.aligned = t 'words.list'
-        th.center.aligned = t 'words.status'
-        - unless event.confirmation? || event.passed?
-          th.status
-
-  tbody
-    - visit_requests.each do |visit_request|
+  table.ui.very.basic.table
+    thead
       tr
-        td = bool_icon(visit_request.user.verified?)
-        td = link_to visit_request.user.full_name, edit_admin_member_path(visit_request.user), target: '_blank'
-
+        th = 'Verified?'
+        th = t 'words.name'
         - if event.live?
-          td.center.aligned = visit_request_visited_link(visit_request)
+          th.center.aligned = t 'visit_requests.visited'
         - else
-          td.center.aligned = visit_request_list_link(visit_request)
-          td.center.aligned = visit_request_status_label(visit_request.status)
+          th.center.aligned = t 'words.list'
+          th.center.aligned = t 'words.status'
           - unless event.confirmation? || event.passed?
-            td.center.aligned
-              = admin_approve_visit_request_link(visit_request)
-              = admin_cancel_visit_request_link(visit_request)
+            th.status
 
-== render 'admin/visit_requests/import' if event.passed?
+    tbody
+      - visit_requests.each do |visit_request|
+        tr
+          td = bool_icon(visit_request.user.verified?)
+          td = link_to visit_request.user.full_name, edit_admin_member_path(visit_request.user), target: '_blank'
+
+          - if event.live?
+            td.center.aligned = visit_request_visited_link(visit_request)
+          - else
+            td.center.aligned = visit_request_list_link(visit_request)
+            td.center.aligned = visit_request_status_label(visit_request.status)
+            - unless event.confirmation? || event.passed?
+              td.center.aligned
+                = admin_approve_visit_request_link(visit_request)
+                = admin_cancel_visit_request_link(visit_request)
+
+  == render 'admin/visit_requests/import' if event.passed?
