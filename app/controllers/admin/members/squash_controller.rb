@@ -1,9 +1,9 @@
 module Admin
   module Members
-    class SquashController < Admin::BaseController
+    class SquashController < Members::BaseController
       add_breadcrumb 'members.plural', :admin_members_path
 
-      helper_method :member, :header_title, :squash_into_users
+      helper_method :header_title, :squash_into_users
 
       def show
         add_breadcrumb 'words.squash'
@@ -12,7 +12,7 @@ module Admin
       def create
         react_to User::Squash.call(
           squashed_user: member,
-          into_user: ::User.find(params[:into_user])
+          into_user:     into_user
         )
       end
 
@@ -22,8 +22,8 @@ module Admin
         redirect_to admin_members_path
       end
 
-      def member
-        @member ||= ::User.friendly.find(params[:member_id])
+      def into_user
+        @into_user ||= ::User.find(params[:into_user])
       end
 
       def header_title
