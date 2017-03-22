@@ -23,10 +23,14 @@ class Event < ApplicationRecord
   belongs_to :venue
 
   has_many :talks
+
   has_many :visit_requests
   has_many :approved_visit_requests, -> { approved }, class_name: :VisitRequest
   has_many :pending_visit_requests,  -> { pending },  class_name: :VisitRequest
-  has_many :visitors, through: :visit_requests, source: :user
+
+  has_many :visitors,                                       through: :visit_requests, source: :user
+  has_many :verified_visitors, -> { merge(User.verified) }, through: :visit_requests, source: :user
+  has_many :newbie_visitors,   -> { merge(User.newbies) },  through: :visit_requests, source: :user
 
   scope :display, -> { where.not(status: PLANNED) }
 

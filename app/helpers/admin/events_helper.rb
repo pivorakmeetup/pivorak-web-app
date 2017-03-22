@@ -29,8 +29,8 @@ module Admin
     end
 
     def event_verified_user_data(event)
-      verified = event.visitors.verified.count
-      newbies  = event.visitors.newbies.count
+      verified = event.verified_visitors.length
+      newbies  = event.newbie_visitors.length
 
       "#{verified} / #{newbies}"
     end
