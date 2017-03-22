@@ -15,9 +15,11 @@ module Admin
     end
 
     def visit_requests
-      scoped = event.live? ? event.visit_requests.final : event.visit_requests
+      @visit_requests ||= search_against(base_scope).includes(:user).order(:id)
+    end
 
-      @visit_requests ||= scoped.includes(:user).order(:id)
+    def base_scope
+      event.send(event.live? ? :final_visit_requests : :visit_requests)
     end
   end
 end
