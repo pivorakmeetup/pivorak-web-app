@@ -1,4 +1,4 @@
-- if event.confirmation?
+- if event.confirmation? && !visit_request&.waiting_list?
   .pk-status
     p = visit_request_confirm_message(visit_request)
     p = visit_request_confirm_link(visit_request)
