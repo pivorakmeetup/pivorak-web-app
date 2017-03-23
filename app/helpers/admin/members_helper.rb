@@ -19,5 +19,10 @@ module Admin
       link_to icon(:compress, t('words.squash')),
         admin_member_squash_path(member), class: 'item'
     end
+
+    def admin_sign_in_as_link(member)
+      link_to icon('sign in', t('members.sign_in_as')),
+        admin_member_sign_in_as_path(member), method: :post, class: 'item'
+    end
   end
 end

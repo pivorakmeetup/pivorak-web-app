@@ -55,6 +55,7 @@ Rails.application.routes.draw do
       resources :goals,   except: %i[show destroy]
       resources :members, except: %i[show destroy] do
         resource :squash, only: %i[show create], controller: 'members/squash'
+        post     :sign_in_as,                    to: 'members/sign_in_as#create'
       end
       resources :groups,  except: %i[show]
       resources :emails,  only:   %i[new show index create]
