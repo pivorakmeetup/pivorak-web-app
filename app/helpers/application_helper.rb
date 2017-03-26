@@ -19,4 +19,8 @@ module ApplicationHelper
       register_url:   new_user_registration_path
      ).html_safe
   end
+
+  def title(page_title)
+    content_for(:title) { page_title }
+  end
 end
