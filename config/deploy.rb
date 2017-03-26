@@ -1,3 +1,4 @@
+require 'dotenv/load'
 # config valid only for current version of Capistrano
 lock "3.7.2"
 
@@ -17,9 +18,14 @@ set :ssh_options, keys: ["config/deploy_id_rsa"] if File.exist?("config/deploy_i
 
 set :rvm_map_bins, fetch(:rvm_map_bins, []).push('rvmsudo')
 
-set :rollbar_token, 'ff8ef8cd8df54381a1861c7031bebbc8'
+set :rollbar_token, ENV['rollbar_TOKEN']
 set :rollbar_env, Proc.new { fetch :stage }
 set :rollbar_role, Proc.new { :app }
+
+set :slackistrano, {
+  channel: ENV['slackistrano_SLACK_CHANNEL'],
+  webhook: ENV['slackistrano_SLACK_WEBHOOK']
+}
 
 namespace :foreman do
   desc "Export the Procfile to Ubuntu's upstart scripts"

@@ -50,6 +50,7 @@ gem 'versionomy'
 gem 'inline_svg'
 gem 'newrelic_rpm'
 gem 'icalendar'
+gem 'slackistrano'
 
 #=== CONFIG =================================
 gem 'dotenv-rails'
