@@ -7,25 +7,25 @@ module Admin
     def stat_locals
       @stat_locals ||= {
         events: {
-          name: 'Events',
+          name: t('events.plural'),
           klass: 'green',
           quantity: stat[:events_count]
         },
 
         members: {
-          name: 'Memebers',
+          name: t('members.plural'),
           klass: 'teal',
           quantity: stat[:users_count]
         },
 
         speakers: {
-          name: 'Speakers',
+          name: t('speakers.plural'),
           klass: 'orange',
           quantity: stat[:speakers_count]
         },
 
         talks: {
-          name: 'Talks',
+          name: t('talks.plural'),
           klass: 'blue',
           quantity: stat[:talks_count]
         }
@@ -35,8 +35,8 @@ module Admin
     def stat
       @stat ||= {
         events_by_status:   Event.group(:status).count,
-        users_by_months:    User.group_by_month(:created_at).count,
-        talks_by_months:    Talk.group_by_month(:created_at).count,
+        users_by_months:    User::IncreasingPerMonth.call,
+        talks_by_months:    Talk::IncreasingPerMonth.call,
         events_count:       Event.count,
         users_count:        User.count,
         talks_count:        Talk.count,

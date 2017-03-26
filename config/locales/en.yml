@@ -199,3 +199,8 @@ en:
   pages:
     singular: Page
     plural: Pages
+
+  charts:
+    by_status: '%{resource} by status'
+    per_month: '%{resource} per month'
+    per_event: '%{resource} per event'
