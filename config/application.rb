@@ -10,5 +10,6 @@ module PivorakWebApp
   class Application < Rails::Application
     config.version   = '1.0 beta'
     config.time_zone = 'Kyiv'
+    config.autoload_paths << Rails.root.join('lib')
   end
 end
