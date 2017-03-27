@@ -30,7 +30,7 @@ module Admin
         data: { confirm: t('phrases.confirm') }
     end
 
-    def resource_form_header(resource, label: :title)
+    def resource_form_text(resource, label: :title)
       if resource.persisted?
         prefix = 'edit'
         label  = resource.send(label)
@@ -39,8 +39,12 @@ module Admin
         label  = resource.class
       end
 
+      t("phrases.#{prefix}_resource", resource: label)
+    end
+
+    def resource_form_header(resource, label: :title)
       content_tag :h2 do
-        t "phrases.#{prefix}_resource", resource: label
+        resource_form_text(resource, label: label)
       end
     end
 
