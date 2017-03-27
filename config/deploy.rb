@@ -23,6 +23,7 @@ set :rollbar_env, Proc.new { fetch :stage }
 set :rollbar_role, Proc.new { :app }
 
 set :slackistrano, {
+  klass: Slackistrano::CustomMessaging,
   channel: ENV['slackistrano_SLACK_CHANNEL'],
   webhook: ENV['slackistrano_SLACK_WEBHOOK']
 }
