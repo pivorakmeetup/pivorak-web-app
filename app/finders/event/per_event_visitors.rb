@@ -3,7 +3,8 @@ class Event
     def call
       Event.joins(:visit_requests)
         .where(visit_requests: { visited: true } )
-        .group('events.title')
+        .group('events.finished_at, events.title')
+        .order('events.finished_at')
     end
   end
 end
