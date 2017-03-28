@@ -9,3 +9,15 @@ $namespace: ".pk-grid";
   flex: 1 1 auto;
   overflow: hidden;
 }
+
+#{$namespace}--center-v {
+  align-items: center;
+}
+
+#{$namespace}-inline {
+  display: inline-flex;
+}
+
+#{$namespace}--wrap {
+  flex-wrap: wrap;
+}

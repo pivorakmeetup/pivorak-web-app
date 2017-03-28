@@ -22,6 +22,14 @@
     initSlider();
     loadFlash();
     blendedImg();
+    document.removeEventListener('turbolinks:load', initApplication);
   }
+
+  var contentLoaded = function() {
+    initDropdowns();
+  }
+
   document.addEventListener('turbolinks:load', initApplication);
+  document.addEventListener('DOMContentLoaded', contentLoaded);
+
 })()
