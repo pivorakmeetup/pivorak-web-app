@@ -20,12 +20,13 @@ module Admin
         class: ['ui label', BG_STATUS_CLASS[event.status.to_sym]]
     end
 
-    def event_limitation_data(event)
-      total    = event.limit_total
-      verified = event.approved_visit_requests.length
-      pending  = event.pending_visit_requests.length
-
-      "#{total} / #{verified} / #{pending}"
+    def event_visitors(event)
+      {
+        t('events.index.visitors.requested') => event.pending_visit_requests.length,
+        t('events.index.visitors.approved')  => event.approved_visit_requests.length,
+        t('events.index.visitors.confirmed') => event.confirmed_visit_requests.length,
+        t('events.index.visitors.visited')   => event.used_visit_requests.length,
+      }
     end
 
     def event_verified_user_data(event)

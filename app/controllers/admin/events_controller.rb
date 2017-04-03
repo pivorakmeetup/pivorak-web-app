@@ -31,18 +31,11 @@ module Admin
     end
 
     def events
-      @events ||= search_against(Event)
-        .includes(associations_to_include)
-        .order(started_at: :desc)
-        .page(params[:page])
+      @events ||= ::Event::List.(events: search_against(Event), page: params[:page])
     end
 
     def venues
       @venues ||= Venue.all
-    end
-
-    def associations_to_include
-      %i(approved_visit_requests pending_visit_requests verified_visitors newbie_visitors)
     end
 
     def event_params

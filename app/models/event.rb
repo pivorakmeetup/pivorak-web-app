@@ -26,8 +26,8 @@ class Event < ApplicationRecord
 
   has_many :visit_requests
 
-  %i(approved pending final).each do |scope_name|
-    has_many :"#{scope_name}_visit_requests", -> { send(scope_name) }, class_name: :VisitRequest
+  %i(approved pending final confirmed used).each do |scope_name|
+    has_many :"#{scope_name}_visit_requests", -> { send(scope_name) }, class_name: 'VisitRequest'
   end
 
   has_many :visitors,                                       through: :visit_requests, source: :user
