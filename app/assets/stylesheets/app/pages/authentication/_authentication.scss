@@ -6,8 +6,18 @@ $namespace: ".pk-auth";
   min-height: 100vh;
   margin: auto;
   padding: 54px 0;
-  background-color: #57C8D1;
+  background-color: $tile-bg-color;
   text-align: center;
+
+  .pk-btn--tag:hover, .pk-btn--tag:active,
+  .pk-btn--link:hover, .pk-btn--link:active {
+    color: $tile-bg-color;
+  }
+
+  .pk-btn--link {
+    @include breakpoint-max(420) { max-width: 304px;}
+    @include breakpoint-max(336) { max-width: 272px;}
+  }
 }
 
 #{$namespace}__logo {

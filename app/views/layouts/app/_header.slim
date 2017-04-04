@@ -1,66 +1,79 @@
 header.pk-header
   .pk-grid
-    .pk-grid__unit.text-left
-      .pk-inline-block.mrs
+    .pk-grid__unit.pk-grid.text-left
+      .pk-inline-block
         = link_to root_path do
           = image_tag 'logo.svg', class: 'pk-header__logo'
 
-      .pk-header__soc-icon.pk-inline-block
-        = link_to 'https://twitter.com/pivorakmeetup', target: '_blank' do
-          svg.pk-icon
-            use xlink:href="#{asset_path('icons.svg')}#icon-twitter"
+      .pk-grid-inline.pk-grid--wrap.pk-grid--center-v
+        .pk-header__soc-icon.pk-inline-block
+          = link_to 'https://twitter.com/pivorakmeetup', target: '_blank' do
+            svg.pk-icon
+              use xlink:href="#{asset_path('icons.svg')}#icon-twitter"
 
-      .pk-header__soc-icon.pk-inline-block
-        = link_to 'https://github.com/pivorakmeetup', target: '_blank' do
-          svg.pk-icon
-            use xlink:href="#{asset_path('icons.svg')}#icon-github"
+        .pk-header__soc-icon.pk-inline-block
+          = link_to 'https://github.com/pivorakmeetup', target: '_blank' do
+            svg.pk-icon
+              use xlink:href="#{asset_path('icons.svg')}#icon-github"
 
-      .pk-header__soc-icon.pk-inline-block
-        = link_to 'https://www.facebook.com/pivorak', target: '_blank' do
-          svg.pk-icon
-            use xlink:href="#{asset_path('icons.svg')}#icon-facebook"
+        .pk-header__soc-icon.pk-inline-block
+          = link_to 'https://www.facebook.com/pivorak', target: '_blank' do
+            svg.pk-icon
+              use xlink:href="#{asset_path('icons.svg')}#icon-facebook"
+        
+        .pk-header__soc-icon.pk-inline-block
+          = link_to 'https://www.instagram.com/pivorakmeetup/', target: '_blank' do
+            svg.pk-icon
+              use xlink:href="#{asset_path('icons.svg')}#icon-instagram"
 
-      .pk-header__soc-icon.pk-inline-block
-        = link_to 'https://www.instagram.com/pivorakmeetup/', target: '_blank' do
-          svg.pk-icon
-            use xlink:href="#{asset_path('icons.svg')}#icon-instagram"
+        .pk-header__soc-icon.pk-inline-block
+          = link_to 'http://pivorak-slack.herokuapp.com/', target: '_blank' do
+            svg.pk-icon
+              use xlink:href="#{asset_path('icons.svg')}#icon-slack"
 
-      .pk-header__soc-icon.pk-inline-block
-        = link_to 'http://pivorak-slack.herokuapp.com/', target: '_blank' do
-          svg.pk-icon
-            use xlink:href="#{asset_path('icons.svg')}#icon-slack"
+        .pk-header__soc-icon.pk-inline-block
+          = link_to 'https://www.youtube.com/channel/UCPsfLdQH_0CaDIe4imm7bMA', target: '_blank' do
+            svg.pk-icon
+              use xlink:href="#{asset_path('icons.svg')}#icon-youtube"
+    
+    .pk-grid__unit.text-right.pk-header__dropdown.js-dropdown
+      button.pk-header__dropdown-icon.pk-inline-block.js-toggle-dropdown
+        .pk-header__hamb-el
+        .pk-header__hamb-el
+        .pk-header__hamb-el
+        
+      .pk-header__dropdown-list-wr
+        nav.pk-list.pk-header__dropdown-list.js-dropdown-list
+            / .pk-list__unit = events_link
+            / .pk-list__unit = talks_link
+            / .pk-list__unit = goals_link
+            / .pk-list__unit = chat_link
+            / .pk-list__unit = members_link
+            .pk-list__unit = speakers_link
+            .pk-list__unit = page_link about_page
+            .pk-list__unit = page_link contacts_page
 
-      .pk-header__soc-icon.pk-inline-block
-        = link_to 'https://www.youtube.com/channel/UCPsfLdQH_0CaDIe4imm7bMA', target: '_blank' do
-          svg.pk-icon
-            use xlink:href="#{asset_path('icons.svg')}#icon-youtube"
+            - if user_signed_in?
+              / .pk-avatar     = image_tag gravatar_url(current_user)
+              .pk-list__unit = logout_link
 
-    .pk-grid__unit.text-right
-      nav.pk-list
-        / .pk-list__unit = events_link
-        / .pk-list__unit = talks_link
-        / .pk-list__unit = goals_link
-        / .pk-list__unit = chat_link
-        / .pk-list__unit = members_link
-        / .pk-list__unit = speakers_link
-        .pk-list__unit = page_link about_page
-        .pk-list__unit = page_link contacts_page
+              - if admin?
+                .pk-list__unit = admin_link
 
-        - if user_signed_in?
-          / .pk-avatar     = image_tag gravatar_url(current_user)
-          .pk-list__unit = logout_link
+            - else
+              .pk-list__unit = register_link
+              .pk-list__unit = login_link
 
-          - if admin?
-            .pk-list__unit = admin_link
+            .pk-list__unit
+              form accept-charset="utf-8" action="https://www.liqpay.com/api/3/checkout" method="POST" target="_blank"
+                input name="data" type="hidden" value="eyJ2ZXJzaW9uIjozLCJhY3Rpb24iOiJwYXlkb25hdGUiLCJwdWJsaWNfa2V5IjoiaTQ0NjQ2NDM4OTM5IiwiYW1vdW50IjoiMzAiLCJjdXJyZW5jeSI6IlVBSCIsImRlc2NyaXB0aW9uIjoicGl2b3JhayIsInR5cGUiOiJkb25hdGUiLCJzZXJ2ZXJfdXJsIjoiaHR0cDovL3Bpdm9yYWsuY29tL3BheW1lbnRfaGFuZGxlciIsImxhbmd1YWdlIjoiZW4ifQ==" /
+                input name="signature" type="hidden" value="ruJKrOhfPzkgQSEa/9ShX/Eq49w=" /
+                input name="btn_text" src="//static.liqpay.com/buttons/d1en.radius.png" type="submit" value="donate"/
 
-        - else
-          .pk-list__unit = register_link
-          .pk-list__unit = login_link
+          
+          
+        
 
-        .pk-list__unit
-          form accept-charset="utf-8" action="https://www.liqpay.com/api/3/checkout" method="POST" target="_blank"
-            input name="data" type="hidden" value="eyJ2ZXJzaW9uIjozLCJhY3Rpb24iOiJwYXlkb25hdGUiLCJwdWJsaWNfa2V5IjoiaTQ0NjQ2NDM4OTM5IiwiYW1vdW50IjoiMzAiLCJjdXJyZW5jeSI6IlVBSCIsImRlc2NyaXB0aW9uIjoicGl2b3JhayIsInR5cGUiOiJkb25hdGUiLCJzZXJ2ZXJfdXJsIjoiaHR0cDovL3Bpdm9yYWsuY29tL3BheW1lbnRfaGFuZGxlciIsImxhbmd1YWdlIjoiZW4ifQ==" /
-            input name="signature" type="hidden" value="ruJKrOhfPzkgQSEa/9ShX/Eq49w=" /
-            input name="btn_text" src="//static.liqpay.com/buttons/d1en.radius.png" type="submit" value="donate"/
+
 
 / = render 'shared/search_bar', path: search_index_path
