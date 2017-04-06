@@ -1,11 +1,20 @@
 $namespace: ".pk-header";
 
+// ! may need to be changed if there are more elements in menu
+$header-menu-breakpoint: "980";
+$header-mobile-breakpoint: "420";
+
 #{$namespace} {
   padding: 20px 32px;
+
+  @include breakpoint-max($header-mobile-breakpoint) {
+    padding: 20px 16px;
+  }
 }
 
 #{$namespace}__logo {
   width: 46px;
+  margin-right: 16px;
 }
 
 #{$namespace}__soc-icon {
@@ -20,5 +29,89 @@ $namespace: ".pk-header";
   }
   &:hover, &:focus, &:active {
     opacity: 1;
+  }
+}
+
+#{$namespace}__dropdown-icon {
+  @include breakpoint-min(980) {
+    display: none !important;
+  }
+
+  background-color: transparent;
+  border: 0;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+
+  margin: 8px 0 0 16px;
+  padding: 0;
+  opacity: .87;
+
+  &:hover, &:active, .open & {
+    opacity: 1;
+  }
+  &:link, &:visited, &:hover, &:active, &:focus {
+    outline: none;
+  }
+
+  #{$namespace}__hamb-el {
+    width: 31px;
+    height: 4px;
+    background-color: $text-color;
+    margin: 8px 0;
+    z-index: -1;
+  }
+
+}
+
+#{$namespace}__dropdown {
+  position: relative;
+  overflow: visible !important;
+}
+
+#{$namespace}__dropdown-list-wr {
+  @include breakpoint-max($header-menu-breakpoint) {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    overflow: hidden;
+  }
+}
+
+#{$namespace}__dropdown-list {
+  @include breakpoint-max($header-menu-breakpoint) {
+    position: relative;
+    transform: translateY(-150%);
+    width: calc(100vw - 64px);
+    margin-top: 8px;
+
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    padding: 8px 32px 8px 0;
+    background-color: #D35130;
+    z-index: 2;
+
+    .pk-list__unit a {
+      padding: 8px 16px 8px;
+    }
+    input[type=submit] {
+      margin: 8px 0;
+    }
+  }
+
+  @include breakpoint-max($header-mobile-breakpoint) {
+    width: calc(100vw - 32px);
+  }
+
+  @include breakpoint-max($header-mobile-breakpoint) {
+    margin-top: 16px;
+  }
+
+  .open & {
+    transform: translateY(0px);
+  }
+
+  .opening & {
+    transition: transform .3s ease;
   }
 }

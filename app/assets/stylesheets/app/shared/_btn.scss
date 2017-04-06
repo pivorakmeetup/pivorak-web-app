@@ -22,7 +22,9 @@ $namespace: ".pk-btn";
   user-select: none;
   background-color: #D35130;
   text-decoration: none;
-  transition: .3s ease;
+  transition-property: color, background-color, opacity;
+  transition-duration: .2s;
+  transition-timing-function: ease;
   border: 2px solid rgba(#FCF7EF, .54);
 
   &:hover, &:active, &:focus {
@@ -60,7 +62,7 @@ $namespace: ".pk-btn";
   font-size: 28px;
   border-radius: 32px;
   padding: 17px 144px 23px 144px;
-  box-shadow: 0 2px 14px 0 rgba(0,0,0,0.33);
+  box-shadow: 0 2px 14px 0 rgba(0,0,0, .33);
 }
 
 #{$namespace}--tag {
@@ -81,21 +83,11 @@ $namespace: ".pk-btn";
     font-size: 40px;
   }
 
+  // ! color of text should be modified according to background of parent element
   &:hover, &:active {
-    // version
-    border-color: rgba($link-color, .84);
-
-    // version
-    // background-color: rgba($link-color, .05);
-    // border-color: rgba($link-color, .24);
-
-    // version
-    // background-color: inherit;
-    // background-color: #57C8D1;
-    // border-color: rgba($link-color, .14);
-
-    // version
-    // transform: translateY(2px);
+    background-color: $link-color;
+    color: $body-text-hover;
+    z-index: 0;
   }
 
   & + & {
@@ -110,31 +102,41 @@ $namespace: ".pk-btn";
 }
 
 #{$namespace}--link {
-  padding: 0;
+  padding: 0 4px;
+  margin: 0;
+  border: none;
+  border-radius: 0;
   background-color: transparent;
   color: $link-color;
-  border-radius: 0;
 
-  line-height: 1.4;
   letter-spacing: $letter-spacing-p;
-  border-width: 0 0 2px 0;
-  border-bottom: 2px solid $link-color;
 
-  // variant
-  // &:hover {
-  //   opacity: .8;
-  // }
-  // &:active {
-  //   opacity: .9;
-  // }
+  span {
+    line-height: 1.7142857143em;
+    padding-bottom: 3px;
+    border-bottom: 2px solid $link-color;
+    white-space: normal;
+  }
+
+  // ! color of text should be modified according to background of parent element
+  &:hover, &:active {
+    background-color: $link-color;
+    color: $body-text-hover;
+    span {
+      border-bottom-color: transparent;
+    }
+  }
 }
 
 #{$namespace}--link-small {
   @extend #{$namespace}--link;
 
   font-size: 12px;
-  line-height: 1.3;
   letter-spacing: 0.08333em;
-  border-width: 0 0 2px 0;
-  border-bottom: 1px solid $link-color;
+
+  span {
+    line-height: 1.3;
+    padding-bottom: 1px;
+    border-bottom: 1px solid $link-color;
+  }
 }

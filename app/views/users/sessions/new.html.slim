@@ -12,7 +12,8 @@ p
       input_html: {class: 'pk-input'}
     // = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
     - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
-      = link_to "Forgot your password?", new_password_path(resource_name), class: 'pk-btn pk-btn--link-small'
+      = link_to new_password_path(resource_name), class: 'pk-btn pk-btn--link-small'
+        span Forgot your password?
   .form-actions
     .mtl.mbl
       = f.button :submit, "Sign in", class: 'pk-btn pk-btn--medium'
