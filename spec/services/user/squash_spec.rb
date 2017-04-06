@@ -4,25 +4,9 @@ RSpec.describe User::Squash do
   let(:valid_params) { { squashed_user: user_a, into_user: user_b } }
 
   describe '.call' do
-    let!(:identity)      { create :identity,      user: user_a }
-    let!(:donation)      { create :donation,      user: user_a }
-    let!(:talk)          { create :talk,       speaker: user_a }
-    let!(:visit_request) { create :visit_request, user: user_a }
-
-    context 'user_a has dependencies' do
-      it { expect(user_a.identities.first).to     eq identity }
-      it { expect(user_a.donations.first).to      eq donation }
-      it { expect(user_a.talks.first).to          eq talk }
-      it { expect(user_a.visit_requests.first).to eq visit_request }
-    end
-
-    context 'user_b got dependencies of user_a and user_a was destroyed' do
+    context 'user_a was destroyed' do
       before { described_class.call(valid_params) }
 
-      it { expect(user_b.identities.first).to     eq identity }
-      it { expect(user_b.donations.first).to      eq donation }
-      it { expect(user_b.talks.first).to          eq talk }
-      it { expect(user_b.visit_requests.first).to eq visit_request }
       it { expect(user_a).to_not be_persisted }
     end
   end
@@ -42,10 +26,10 @@ RSpec.describe User::Squash do
     let(:expected_dependencies) {
       {
         has_many: {
-          Identity     => :user_id,
-          Donation     => :user_id,
-          Talk         => :speaker_id,
-          VisitRequest => :user_id
+          Identity     => { foreign_key: :user_id },
+          Donation     => { foreign_key: :user_id },
+          Talk         => { foreign_key: :speaker_id },
+          VisitRequest => { foreign_key: :user_id, squash: true, conditions: %i[event_id] }
         }
       }
     }
