@@ -79,6 +79,12 @@ en:
     visitors: Visitors
     attendees: Attendees
     send_confirmations: Send Confirmations
+    index:
+      visitors:
+        requested: Requested
+        approved:  Approved
+        confirmed: Confirmed
+        visited:   Visited
 
   notifications:
     success: "%{resource} has been successfully %{action}"

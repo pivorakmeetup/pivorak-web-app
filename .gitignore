@@ -18,6 +18,7 @@
 coverage
 
 .DS_Store
+.idea
 
 config/database.yml
 config/secrets.yml

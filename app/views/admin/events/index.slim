@@ -19,7 +19,9 @@ table.ui.very.basic.table
         td.center.aligned = bool_icon(event.published?)
         td = resource_link(event, target: '_blank')
         td.center.aligned = event_status_label(event)
-        td.center.aligned = event_limitation_data(event)
+        td.center.aligned
+          .row-chart
+            = column_chart(event_visitors(event), height: '100px', width: '400px')
         td.center.aligned = event_verified_user_data(event)
         td = format_timestamp(event.started_at, time: false)
         td.right.aligned
