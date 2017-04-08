@@ -1,18 +1,17 @@
 require 'rails_helper'
 
 describe VisitRequest::Create do
-  let(:user)  { create(:user, :tester) }
   let(:event) { create(:event) }
 
-  subject { described_class.new(user, event) }
+  subject { described_class.new(user.id, event) }
 
   describe '#call' do
     context 'user is verified' do
-      before { allow(user).to receive(:verified?) { true } }
+      let(:user)  { create(:user, :tester, :verified) }
 
       context 'event has free slots for verified users' do
         before do
-          allow_any_instance_of(Event::SlotsPolicy).to receive(:has_free_slot_for?).with(user) { true }
+          allow_any_instance_of(Event::SlotsPolicy).to receive(:has_free_slot_for?).with(user.id) { true }
           subject.call
         end
 
@@ -23,7 +22,7 @@ describe VisitRequest::Create do
 
       context 'event has no free slots for verified users' do
         before do
-          allow_any_instance_of(Event::SlotsPolicy).to receive(:has_free_slot_for?).with(user) { false }
+          allow_any_instance_of(Event::SlotsPolicy).to receive(:has_free_slot_for?).with(user.id) { false }
 
           expect(VisitRequestMailer).not_to receive(:unverified_attendee)
 
@@ -37,11 +36,11 @@ describe VisitRequest::Create do
     end
 
     context 'user is not verified' do
-      before { allow(user).to receive(:verified?) { false } }
+      let(:user)  { create(:user, :tester, verified: false) }
 
       context 'event has free slots for newbies' do
         before do
-          allow_any_instance_of(Event::SlotsPolicy).to receive(:has_free_slot_for?).with(user) { true }
+          allow_any_instance_of(Event::SlotsPolicy).to receive(:has_free_slot_for?).with(user.id) { true }
 
           mailer = double('mailer')
           expect(VisitRequestMailer).to receive(:unverified_attendee) { mailer }
@@ -57,7 +56,7 @@ describe VisitRequest::Create do
 
       context 'event has no free slots for newbies' do
         before do
-          allow_any_instance_of(Event::SlotsPolicy).to receive(:has_free_slot_for?).with(user) { false }
+          allow_any_instance_of(Event::SlotsPolicy).to receive(:has_free_slot_for?).with(user.id) { false }
           subject.call
         end
 

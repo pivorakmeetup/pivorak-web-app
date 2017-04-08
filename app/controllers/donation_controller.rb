@@ -16,7 +16,7 @@ class DonationController < ApplicationController
   def donation_params
     {
       data:    params[:data],
-      user_id: current_user ? current_user.id : nil
+      user_id: current_user_id
     }
   end
 

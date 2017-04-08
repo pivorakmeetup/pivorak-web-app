@@ -6,8 +6,8 @@ class User
       synthetic
     ]
 
-    def initialize(user, params = {}, options = {})
-      @user                  = user
+    def initialize(user_id, params = {}, options = {})
+      @user_id               = user_id
       @password              = params[:password]
       @password_confirmation = params[:password_confirmation]
       @email                 = params[:email]
@@ -19,7 +19,11 @@ class User
     private
 
     attr_reader *PERMITTED_KEYS
-    attr_reader :user, :options
+    attr_reader :user_id, :options
+
+    def user
+      @user ||= User.find(user_id)
+    end
 
     def user_params
       PERMITTED_KEYS.inject({}) { |mem, key| mem.merge!(key => send(key)) }

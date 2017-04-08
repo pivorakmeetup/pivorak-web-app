@@ -54,7 +54,7 @@ header.pk-header
             .pk-list__unit = page_link contacts_page
 
             - if user_signed_in?
-              / .pk-avatar     = image_tag gravatar_url(current_user)
+              / .pk-avatar     = gravatar_image(current_user)
               .pk-list__unit = logout_link
 
               - if admin?

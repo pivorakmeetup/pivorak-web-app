@@ -11,7 +11,7 @@ module ApplicationHelper
   end
 
   def unauthorized_message(action_message)
-    return if current_user
+    return if current_user_id
 
     t('phrases.unauthorized',
       action_message: action_message,
