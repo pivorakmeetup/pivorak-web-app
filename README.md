@@ -7,6 +7,18 @@
 [![Code Climate](https://codeclimate.com/github/pivorakmeetup/pivorak-web-app/badges/gpa.svg)](https://codeclimate.com/github/pivorakmeetup/pivorak-web-app)
 [![Issue Count](https://codeclimate.com/github/pivorakmeetup/pivorak-web-app/badges/issue_count.svg)](https://codeclimate.com/github/pivorakmeetup/pivorak-web-app)
 
+# Setup
+```sh
+$ git clone git@github.com:pivorakmeetup/pivorak-web-app.git
+$ cd pivorak-web-app
+$ rvm use ruby-2.3.1@pivorak --create
+$ bundle
+$ cp config/database.yml.example config/database.yml
+$ rails db:setup
+$ cp config/environments/development.rb.example config/environments/development.rb
+$ rails s
+```
+
 # Chat
 
 Join our [slack](http://pivorak-slack.herokuapp.com) chat!
