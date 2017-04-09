@@ -1,9 +1,9 @@
 class User
   class Squash < ApplicationService
     def initialize(params = {})
-      @params       = params
+      @params        = params
       @squashed_user = params.fetch(:squashed_user, nil)
-      @into_user    = params.fetch(:into_user, nil)
+      @into_user     = params.fetch(:into_user, nil)
     end
 
     def call
@@ -21,21 +21,29 @@ class User
     def dependencies
       {
         has_many: {
-          Identity     => :user_id,
-          Donation     => :user_id,
-          Talk         => :speaker_id,
-          VisitRequest => :user_id
+          Identity     => { foreign_key: :user_id },
+          Donation     => { foreign_key: :user_id },
+          Talk         => { foreign_key: :speaker_id },
+          VisitRequest => { foreign_key: :user_id, squash: true, conditions: %i[event_id] }
         }
       }
     end
 
     private
 
-    attr_reader :params, :squashed_user, :into_user, :result
+    attr_reader :params, :squashed_user, :into_user
 
     def fix_has_many_dependencies!
-      dependencies[:has_many].each_pair do |resource, key|
-        resource.where(key => squashed_user.id).update_all(key => into_user.id)
+      dependencies[:has_many].each_pair do |resource, options|
+        ::User::SquashResolver.(
+          resource:         resource,
+          association_type: :has_many,
+          foreign_key:      options[:foreign_key],
+          source_id:        squashed_user.id,
+          destination_id:   into_user.id,
+          squash:           options[:squash],
+          conditions:       options[:conditions]
+        )
       end
     end
 
