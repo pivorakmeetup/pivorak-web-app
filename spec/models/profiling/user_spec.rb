@@ -1,9 +1,4 @@
-RSpec.describe User, type: :model do
-  describe 'relations' do
-    it { is_expected.to have_many(:identities).dependent(:destroy) }
-    it { is_expected.to have_many(:donations).dependent(:destroy) }
-  end
-
+RSpec.describe Profiling::User, type: :model do
   describe 'validations' do
     it { is_expected.to validate_presence_of(:email) }
     it { is_expected.to validate_presence_of(:first_name) }
@@ -16,13 +11,12 @@ RSpec.describe User, type: :model do
     it { is_expected.to_not allow_value('Я').for(:last_name) }
 
     describe 'error message' do
-      let(:user) { build(:user, first_name: 'Я',  last_name: 'Я', email: 'denys+1@lol.com') }
+      let(:user) { build(:profiling_user, first_name: 'Я',  last_name: 'Я') }
 
       before { user.valid? }
 
       it { expect(user.errors[:first_name].first).to eq I18n.t 'errors.only_latin_letters' }
       it { expect(user.errors[:last_name].first).to eq I18n.t 'errors.only_latin_letters' }
-      it { expect(user.errors[:email].first).to eq 'is invalid' }
     end
   end
 end
