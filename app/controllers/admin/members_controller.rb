@@ -1,6 +1,6 @@
 module Admin
   class MembersController < BaseController
-    helper_method :admin_members_list, :filter, :member, :members, :url
+    helper_method :member, :members, :url, :admin_members_list
     add_breadcrumb 'members.plural', :admin_members_path
     before_action :add_new_breadcump,  only: %i[new create]
     before_action :add_edit_breadcump, only: %i[edit update]
@@ -22,18 +22,6 @@ module Admin
 
     private
 
-    def filter
-      @filter ||= Filter::Member.new(filter_params)
-    end
-
-    def filtered_users
-      User::Filtered.call(filter_params)
-    end
-
-    def filter_params
-      params.fetch(:filter_member, {}).permit(Filter::Member::ATTRIBUTES)
-    end
-
     def default_redirect
       redirect_to edit_admin_member_path(member)
     end
@@ -43,7 +31,7 @@ module Admin
     end
 
     def members
-      @members ||= search_against(filtered_users).order(:first_name, :last_name).page(params[:page])
+      @members ||= search_against(User).order(:id).page(params[:page])
     end
 
     def users_params

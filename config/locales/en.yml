@@ -217,6 +217,3 @@ en:
     by_status: '%{resource} by status'
     per_month: '%{resource} per month'
     per_event: '%{resource} per event'
-
-  filters:
-    reset: 'Reset filters'
