@@ -1,4 +1,4 @@
-module Users
+module Authentication
   class RegistrationsController < Devise::RegistrationsController
     def create
       synthetic_user = User::CheckSynthetic.call(params[:user][:email])

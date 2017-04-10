@@ -1,4 +1,4 @@
-module Users
+module Authentication
   class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     def handle_callback
       user = handler.authenticate

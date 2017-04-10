@@ -1,4 +1,4 @@
-class User < ApplicationRecord
+class Authentication::User
   class IncreasingPerMonth < ApplicationFinder
     include ::ChartsData
 

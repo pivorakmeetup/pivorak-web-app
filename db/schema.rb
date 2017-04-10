@@ -10,11 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170313055500) do
+ActiveRecord::Schema.define(version: 20170410190943) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
+
+  create_table "authentication_users", force: :cascade do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet     "current_sign_in_ip"
+    t.inet     "last_sign_in_ip"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.index ["confirmation_token"], name: "index_authentication_users_on_confirmation_token", unique: true, using: :btree
+    t.index ["email"], name: "index_authentication_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_authentication_users_on_reset_password_token", unique: true, using: :btree
+  end
+
+  create_table "authorization_users", force: :cascade do |t|
+    t.integer  "user_id",                    null: false
+    t.boolean  "admin",      default: false, null: false
+    t.boolean  "verified",   default: false, null: false
+    t.boolean  "synthetic",  default: false, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
 
   create_table "donations", force: :cascade do |t|
     t.integer  "user_id"
@@ -126,6 +156,17 @@ ActiveRecord::Schema.define(version: 20170313055500) do
     t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id", using: :btree
   end
 
+  create_table "profiling_users", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.string   "email",      null: false
+    t.string   "first_name", null: false
+    t.string   "last_name",  null: false
+    t.string   "slug"
+    t.string   "cover"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
     t.string   "taggable_type"
@@ -166,35 +207,6 @@ ActiveRecord::Schema.define(version: 20170313055500) do
     t.index ["event_id"], name: "index_talks_on_event_id", using: :btree
     t.index ["slug"], name: "index_talks_on_slug", using: :btree
     t.index ["speaker_id"], name: "index_talks_on_speaker_id", using: :btree
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "",    null: false
-    t.string   "encrypted_password",     default: "",    null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,     null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.inet     "current_sign_in_ip"
-    t.inet     "last_sign_in_ip"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
-    t.boolean  "admin",                  default: false
-    t.string   "first_name"
-    t.string   "last_name"
-    t.boolean  "synthetic",              default: false
-    t.string   "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string   "slug"
-    t.boolean  "verified",               default: false
-    t.string   "cover"
-    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
-    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-    t.index ["slug"], name: "index_users_on_slug", using: :btree
   end
 
   create_table "venues", force: :cascade do |t|
