@@ -26,4 +26,18 @@ document.addEventListener("turbolinks:load", function() {
   Array.prototype.forEach.call(document.getElementsByClassName(SIMPLEMDE_CONTAINER_CLASS), function(element) {
     new SimpleMDE({ element: element });
   });
+
+    // when checkboxes are checked - submit form
+    var submitOnClickForm = document.getElementsByClassName('js-submit-on-click-form')[0];
+    if(submitOnClickForm) {
+        var inputs = submitOnClickForm.getElementsByTagName("input");
+        [].forEach.call(inputs, function(input){
+            input.addEventListener('click', submitForm);
+        });
+    }
+
+    function submitForm(event) {
+        event.target.form.submit();
+    }
 })
+
