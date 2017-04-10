@@ -9,6 +9,8 @@ class ProfilingCreateUsersTable < ActiveRecord::Migration[5.0]
       t.string  :cover
 
       t.timestamps
+
+      t.index :user_id
     end
   end
 end

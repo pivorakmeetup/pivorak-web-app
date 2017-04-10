@@ -11,7 +11,6 @@ module Authentication
     has_many :identities,                      dependent: :destroy
     has_many :donations,                       dependent: :destroy
     has_many :talks, foreign_key: :speaker_id, dependent: :nullify
-    has_many :visit_requests,                  dependent: :destroy
 
     # for sending emails in background
     def send_devise_notification(notification, *args)

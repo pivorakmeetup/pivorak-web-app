@@ -7,6 +7,8 @@ class AuthorizationCreateUsersTable < ActiveRecord::Migration[5.0]
       t.boolean :synthetic, null: false, default: false
 
       t.timestamps
+
+      t.index :user_id
     end
   end
 end

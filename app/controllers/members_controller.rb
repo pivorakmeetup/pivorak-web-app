@@ -10,7 +10,7 @@ class MembersController < ApplicationController
   end
 
   def visited_events
-    @visited_events ||= User::VisitedEvents.call(user_id: member.id)
+    @visited_events ||= Event::VisitedByUser.call(user_id: member.id)
   end
 
   def member

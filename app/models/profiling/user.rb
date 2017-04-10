@@ -9,6 +9,8 @@ module Profiling
 
     mount_uploader :cover, SpeakerCoverUploader
 
+    has_many :visit_requests, foreign_key: :user_id, primary_key: :user_id, dependent: :destroy
+
     scope :sorted,    -> { order(:last_name).order(:first_name) }
 
     validates :first_name, :last_name, :email, :slug, presence: true

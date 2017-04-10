@@ -35,12 +35,12 @@ module Admin
     def stat
       @stat ||= {
         events_by_status:   Event.group(:status).count,
-        users_by_months:    User::IncreasingPerMonth.call,
+        users_by_months:    Authentication::User::IncreasingPerMonth.call,
         talks_by_months:    Talk::IncreasingPerMonth.call,
         events_count:       Event.count,
         users_count:        User.count,
         talks_count:        Talk.count,
-        speakers_count:     User::Speakers.call.count,
+        speakers_count:     Profiling::User::Speakers.call.count,
         visitors_per_event: Event::PerEventVisitors.call.count
       }
     end

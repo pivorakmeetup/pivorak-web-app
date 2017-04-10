@@ -1,5 +1,5 @@
-class User
-  class VisitedEvents < ApplicationFinder
+class Event
+  class VisitedByUser < ApplicationFinder
     def initialize(params = {})
       @user_id = params[:user_id]
     end
@@ -10,6 +10,6 @@ class User
 
     private
 
-    attr_reader :user_id    
+    attr_reader :user_id
   end
 end

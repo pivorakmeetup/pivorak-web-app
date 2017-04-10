@@ -6,7 +6,7 @@ class EventsController < ApplicationController
   private
 
   def attendees
-    @attendees ||= User::EventAttendees.call(event_id: event.id)
+    @attendees ||= Profiling::User::EventAttendees.call(event_id: event.id)
   end
 
   def event
