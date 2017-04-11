@@ -1,4 +1,4 @@
-RSpec.describe ::Users::OmniauthCallbacksController do
+RSpec.describe Authentication::OmniauthCallbacksController do
   include Devise::Test::ControllerHelpers
 
   before { request.env['devise.mapping'] = Devise.mappings[:user] }
@@ -10,7 +10,7 @@ RSpec.describe ::Users::OmniauthCallbacksController do
 
         it 'creates a user' do
           post provider
-          expect(::User.count).to eq 1
+          expect(::Authentication::User.count).to eq 1
         end
 
         it 'signs in a user' do

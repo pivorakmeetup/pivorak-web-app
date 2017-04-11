@@ -18,10 +18,10 @@ class HomeController < ApplicationController
 
   # TODO [1.1] Remove
   def visit_request
-    return unless current_user
+    return unless current_user_id
 
     @visit_request ||= VisitRequest.find_by(
-      user_id: current_user.id, event_id: event.id
+      user_id: current_user_id, event_id: event.id
     )
   end
 

@@ -8,7 +8,7 @@ class VisitRequestsController < ApplicationController
   end
 
   def create
-    VisitRequest::Create.call(current_user, event)
+    VisitRequest::Create.call(current_user_id, event)
 
     flash_success and default_redirect
   end

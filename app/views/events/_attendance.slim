@@ -1,4 +1,4 @@
-- if event.registration? && current_user
+- if event.registration? && current_user_id
   .pk-status
     = visit_request_status_message(visit_request)
     = waiting_list_message

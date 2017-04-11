@@ -39,7 +39,7 @@ Rails.application.config.to_prepare do
 
     private
     def authorize!
-      unless current_user && current_user.admin?
+      unless current_user_id && current_user.admin?
         redirect_to root_path
       end
     end

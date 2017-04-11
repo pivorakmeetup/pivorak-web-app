@@ -6,7 +6,7 @@ class EventsController < ApplicationController
   private
 
   def attendees
-    @attendees ||= User::EventAttendees.call(event_id: event.id)
+    @attendees ||= Profiling::User::EventAttendees.call(event_id: event.id)
   end
 
   def event
@@ -22,10 +22,10 @@ class EventsController < ApplicationController
   end
 
   def visit_request
-    return unless current_user
+    return unless current_user_id
 
     @visit_request ||= VisitRequest.find_by(
-      user_id: current_user.id, event_id: event.id
+      user_id: current_user_id, event_id: event.id
     )
   end
 end

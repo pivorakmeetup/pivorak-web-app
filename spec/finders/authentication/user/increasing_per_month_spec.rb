@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe User::IncreasingPerMonth do
+RSpec.describe Authentication::User::IncreasingPerMonth do
   let!(:user)  { create(:user, created_at: Time.zone.now - 1.month) }
   let!(:user2) { create(:user, created_at: Time.zone.now) }
   let!(:user3) { create(:user, created_at: Time.zone.now + 1.month) }

@@ -1,7 +1,7 @@
 class User
   class GetReal < ApplicationService
-    def initialize(user)
-      @user = user
+    def initialize(user_id)
+      @user_id = user_id
     end
 
     def call
@@ -12,6 +12,10 @@ class User
 
     private
 
-    attr_reader :user
+    attr_reader :user_id
+
+    def user
+      @user ||= User.find(user_id)
+    end
   end
 end

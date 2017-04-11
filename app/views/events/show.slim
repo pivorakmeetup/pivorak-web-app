@@ -34,7 +34,7 @@
   .pk-status-container.text-center
     == render 'events/attendance'
     == render 'events/confirmation'
-    - if event.registration? && current_user.nil?
+    - if event.registration? && current_user_id.nil?
       .pk-status
         = unauthorized_message(t 'visit_requests.action')
 

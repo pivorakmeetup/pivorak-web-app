@@ -1,4 +1,4 @@
-class User < ApplicationRecord
+class Authentication::User
   class IncreasingPerMonth < ApplicationFinder
     include ::ChartsData
 
@@ -11,7 +11,7 @@ class User < ApplicationRecord
     attr_reader :users
 
     def users
-      @users ||= User.group_by_month(:created_at).count
+      @users ||= Authentication::User.group_by_month(:created_at).count
     end
   end
 end

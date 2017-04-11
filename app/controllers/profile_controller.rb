@@ -6,7 +6,7 @@ class ProfileController < ApplicationController
   helper_method :profile
 
   def update
-    if User::Update.call current_user, params[:user]
+    if User::Update.call current_user_id, params[:user]
       flash[:notice] = t('notifications.success')
       redirect_to root_path
     else

@@ -1,12 +1,12 @@
 module EventsHelper
   def attend_event_link(event, visit_request)
-    return unless current_user
+    return unless current_user_id
 
     return if visit_request&.pending?
     return if visit_request&.approved?
 
-    return if !(Event::SlotsPolicy.new(event).has_free_slot_for?(current_user))
-    return if event.visitors.include?(current_user)
+    return if !(Event::SlotsPolicy.new(event).has_free_slot_for?(current_user_id))
+    return if event.visitor_ids.include?(current_user_id)
 
     link_to t('visit_requests.attend'), event_visit_requests_path(event), method: :post, class: "pk-btn pk-btn--biggest"
   end
@@ -22,14 +22,14 @@ module EventsHelper
   end
 
   def waiting_list_message
-    return if Event::SlotsPolicy.new(event).has_free_slot_for?(current_user)
-    return if event.visitors.include?(current_user)
+    return if Event::SlotsPolicy.new(event).has_free_slot_for?(current_user_id)
+    return if event.visitor_ids.include?(current_user_id)
 
     render html: "#{t('visit_requests.messages.waiting_list')} #{link_to t('visit_requests.attend'), event_visit_requests_path(event), method: :post}".html_safe
   end
 
   def visit_request_confirm_message(visit_request)
-    return unless visit_request && current_user
+    return unless visit_request && current_user_id
 
     if visit_request.confirmed?
       t('visit_requests.messages.see_you')
@@ -41,7 +41,7 @@ module EventsHelper
   end
 
   def visit_request_confirm_link(visit_request)
-    return unless visit_request && current_user
+    return unless visit_request && current_user_id
     return if visit_request.final_decision?
 
     link_to t('visit_requests.confirm'),
@@ -50,7 +50,7 @@ module EventsHelper
   end
 
   def visit_request_refuse_link(visit_request)
-    return unless visit_request && current_user
+    return unless visit_request && current_user_id
     return if visit_request.final_decision?
 
     link_to t('visit_requests.refuse'),
