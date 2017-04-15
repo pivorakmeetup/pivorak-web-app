@@ -996,7 +996,7 @@ Style/SpaceInsideBlockBraces:
                  Checks that block braces have or don't have surrounding space.
                  For blocks taking parameters, checks that the left brace has
                  or doesn't have trailing space.
-  Enabled: false
+  Enabled: true
 
 Style/SpaceAroundBlockParameters:
   Description: 'Checks the spacing inside and after block parameters pipes.'

@@ -10,6 +10,14 @@
       - admin_members_list.each do |admin|
         li = admin.full_name
 
+= simple_form_for filter, url: [:admin, :members], method: :get, html: { class: 'ui five column  grid container js-submit-on-click-form' } do |f|
+  - Filter::Member::ATTRIBUTES.each do |attribute|
+    .column
+      .wide.field.ui.slider.checkbox
+        = f.input attribute, as: :boolean, unchecked_value: false
+  .column
+    = link_to I18n.t('filters.reset'), [:admin, :members]
+
 table.ui.very.basic.table
   thead
     tr
