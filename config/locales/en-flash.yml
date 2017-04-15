@@ -9,4 +9,5 @@ en:
       destroy:
         success: Pity.. Hope to see you next time!
       show:
-        success: See you on Friday!
+        confirmed: See you on Friday!
+        refused: Pity.. Hope to see you next time!
