@@ -23,6 +23,12 @@ RSpec.describe User, type: :model do
       it { expect(user.errors[:first_name].first).to eq I18n.t 'errors.only_latin_letters' }
       it { expect(user.errors[:last_name].first).to eq I18n.t 'errors.only_latin_letters' }
       it { expect(user.errors[:email].first).to eq 'is invalid' }
+
+      context 'when email has no `.com` or other domain' do
+        let(:user) { build(:user, email: 'abc@gmail.') }
+        before { user.valid? }
+        it { expect(user.errors[:email].first).to eq 'is invalid' }
+      end
     end
   end
 end
