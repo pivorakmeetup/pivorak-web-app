@@ -40,7 +40,7 @@ module Admin
         events_count:       Event.count,
         users_count:        User.count,
         talks_count:        Talk.count,
-        speakers_count:     User::Speakers.call.count,
+        speakers_count:     User::Speakers.call.length,
         visitors_per_event: Event::PerEventVisitors.call.count
       }
     end
