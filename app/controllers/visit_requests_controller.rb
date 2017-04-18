@@ -4,7 +4,7 @@ class VisitRequestsController < ApplicationController
   def show
     VisitRequest::FinalConfirmation.call(visit_request, params)
 
-    flash_success and default_redirect
+    flash_success(visit_request.status) and default_redirect
   end
 
   def create

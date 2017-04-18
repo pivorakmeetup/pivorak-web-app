@@ -48,12 +48,12 @@ module Admin
       end
     end
 
-    def add_flash(type)
+    def add_flash(type, key = nil)
       resource = params[:controller].split('/').last.singularize.capitalize
       suffix   = params[:action] == 'destroy' ? 'ed' : 'd'
       action   = "#{params[:action]}#{suffix}"
 
-      flash[type] = t(type, scope: :notifications, resource: resource, action: action)
+      flash[type] = t(key || type, scope: :notifications, resource: resource, action: action)
     end
   end
 end

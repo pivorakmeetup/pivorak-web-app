@@ -32,18 +32,18 @@ class ApplicationController < ActionController::Base
     @contacts_page ||= Page.find_by(url: 'contacts')
   end
 
-  def flash_success
-    add_flash(:success)
+  def flash_success(key = nil)
+    add_flash(:success, key)
   end
 
-  def flash_error
-    add_flash(:error)
+  def flash_error(key = nil)
+    add_flash(:error, key)
   end
 
-  def add_flash(type)
+  def add_flash(type, key = nil)
     resource = params[:controller].gsub('/', '.')
     action   = params[:action]
 
-    flash[type] = t(type, scope: [:flash, resource, action])
+    flash[type] = t(key || type, scope: [:flash, resource, action])
   end
 end

@@ -18,6 +18,8 @@ RSpec.describe 'Visit Requests CONFIRMATION' do
     before { click_link 'Confirm' }
 
     it { expect(page).to have_content I18n.t('visit_requests.messages.see_you') }
+    it { expect(page).to have_content I18n.t('visit_requests.messages.see_you') }
+    it { expect(page).to have_content I18n.t('flash.visit_requests.show.confirmed') }
     it { expect(page).to_not have_content I18n.t('visit_requests.messages.so_pity') }
     it { expect(page).to_not have_link 'Confirm' }
     it { expect(page).to_not have_link 'Refuse' }
@@ -28,6 +30,7 @@ RSpec.describe 'Visit Requests CONFIRMATION' do
 
     it { expect(page).to have_content I18n.t('visit_requests.messages.so_pity') }
     it { expect(page).to_not have_content I18n.t('visit_requests.messages.see_you') }
+    it { expect(page).to have_content I18n.t('flash.visit_requests.show.refused') }
     it { expect(page).to_not have_link 'Confirm' }
     it { expect(page).to_not have_link 'Refuse' }
   end
