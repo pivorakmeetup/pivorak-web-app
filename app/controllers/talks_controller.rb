@@ -1,6 +1,4 @@
 class TalksController < ApplicationController
-  disabled_feature_until '1.1'
-
   helper_method :talks, :talk, :tags
 
   private
