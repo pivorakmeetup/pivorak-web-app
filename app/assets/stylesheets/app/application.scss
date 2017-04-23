@@ -24,6 +24,8 @@
 @import "mixins/breakpoint";
 
 @import "base/base";
+@import "base/link";
+@import "base/floating-menu";
 @import "base/grid";
 @import "base/icons";
 @import "base/header";
@@ -34,6 +36,9 @@
 @import "pages/home/slider";
 @import "pages/home/status";
 @import "pages/static/base";
+@import "pages/talk/header";
+@import "pages/talk/content";
+@import "pages/talk/video-play-btn";
 
 @import "pages/authentication/authentication";
 
@@ -45,5 +50,6 @@
 @import "shared/flash";
 @import "shared/avatar";
 @import "shared/input";
+@import "shared/bubble";
 
 @import "external/lory";

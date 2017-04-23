@@ -10,6 +10,10 @@ $namespace: ".pk-grid";
   overflow: hidden;
 }
 
+#{$namespace}__unit-static {
+  flex: 0 1 auto;
+}
+
 #{$namespace}--center-v {
   align-items: center;
 }

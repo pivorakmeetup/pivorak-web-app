@@ -4,7 +4,7 @@ html {
 }
 
 html, body {
-  font-size: $main-font-size;
+  font-size: 1rem;
   font-family: $main-font-family;
 
   -webkit-font-smoothing: antialiased;
@@ -17,7 +17,6 @@ body {
   line-height: $main-line-height;
   color: $main-color;
   position: relative;
-  min-height: 900px;
   &:after {
     content: "";
     background: transparent image-url("paper-imit-bg.png") center center repeat;
@@ -28,10 +27,15 @@ body {
     right: 0;
     top: 0;
     bottom: 0;
+    opacity: .6;
   }
-  &.pk-body-auth {
-    min-height: auto;
+  &.pk-body--main-page {
+    min-height: 900px;
   }
+}
+
+main {
+  font-size: $main-font-size;
 }
 
 // .pk-main-bg {

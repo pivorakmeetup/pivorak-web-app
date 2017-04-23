@@ -1,0 +1,20 @@
+$namespace: ".pk-bubble";
+
+#{$namespace} {
+  border: 1px solid rgba(#FFF4DA, 0.54);
+  border-radius: 10px;
+  font-family: $main-font-family;
+  font-size: 15px;
+  line-height: 1.2em;
+  color: #FFF4DA;
+  padding: 7px 12px;
+  margin: 0 24px 24px 0;
+  display: inline-block;
+  vertical-align: middle;
+  text-decoration: none;
+  word-break: break-all;
+  &:hover, &:active, &:focus {
+    text-decoration: none;
+    background-color: #FFF4DA;
+  }
+}

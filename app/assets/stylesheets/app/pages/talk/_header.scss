@@ -1,0 +1,63 @@
+$namespace: ".pk-talk-header";
+
+#{$namespace} {
+  min-height: 540px;
+  position: relative;
+  padding-top: $floating-menu-height;
+  display: flex;
+  align-items: center;
+}
+
+#{$namespace}__title {
+  font-family: $headings-font-family;
+  font-size: 42px;
+  color: #FCF7EF;
+  line-height: 1.23809524em;
+  letter-spacing: 0.14285714em;
+  margin: 0;
+}
+
+#{$namespace}__name {
+  font-family: $main-font-family;
+  font-size: 18px;
+  color: #FFF4DA;
+  letter-spacing: 0.05555556em;
+  line-height: 1.16666667em;
+  margin: 0;
+  padding-top: 32px;
+}
+
+#{$namespace}__bg {
+  background: transparent image-url("main-bg-image.jpg") center center no-repeat;
+  background-size: cover;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  &:after {
+    content: "";
+    background-image: linear-gradient(-270deg, #D35130 7%, rgba(211,81,48,0.30) 50%, #D35130 94%);
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+  }
+}
+
+#{$namespace}__grid {
+  @include breakpoint-max(960) {
+    flex-direction: column;
+  }
+}
+
+#{$namespace}__grid-unit {
+  width: 50%;
+  @include breakpoint-max(960) {
+    width: auto;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+}

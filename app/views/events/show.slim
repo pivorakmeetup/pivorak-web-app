@@ -1,4 +1,5 @@
 - title t('phrases.show_resource', resource: t('events.singular'), title: event&.title)
+= content_for :main_body_class, "pk-body--main-page"
 
 - if event
   = content_for :before_header do

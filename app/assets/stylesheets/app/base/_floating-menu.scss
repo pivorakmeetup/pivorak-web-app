@@ -1,0 +1,17 @@
+$namespace: ".pk-floating-menu";
+
+#{$namespace} {
+
+}
+
+#{$namespace}__menu {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: $floating-menu-height;
+  z-index: 100;
+}
+
+#{$namespace}__content {
+}
