@@ -15,6 +15,8 @@ class Talk < ApplicationRecord
 
   validates :title, presence: true
 
+  mount_uploader :cover, TalkCoverUploader
+
   # Issue: https://github.com/mbleigh/acts-as-taggable-on/issues/91#issuecomment-168273770
   def tag_list
     @tag_list ||= ActsAsTaggableOn::TagList.new tags.collect(&:name)

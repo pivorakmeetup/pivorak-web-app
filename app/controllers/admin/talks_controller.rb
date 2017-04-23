@@ -38,8 +38,8 @@ module Admin
 
     def talks_params
       params.require(:talk).permit(
-        :title, :description, :event_id, :speaker_id,
-        :video_url, :slides_url, :group_id, :tag_list, :published
+        :cover, :description, :event_id, :group_id,
+        :title, :speaker_id, :video_url, :slides_url, :tag_list, :published
       )
     end
   end
