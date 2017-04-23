@@ -1,6 +1,7 @@
 RSpec.describe 'Talk publishable' do
-  let!(:published_talk)   { create :talk, title: 'Published Talk' }
-  let!(:unpublished_talk) { create :talk, title: 'Unpublished Talk', published: false }
+  let(:event){ create :event }
+  let!(:published_talk)   { create :talk, title: 'Published Talk', event: event }
+  let!(:unpublished_talk) { create :talk, title: 'Unpublished Talk', published: false, event: event }
 
   before { visit '/talks' }
 
