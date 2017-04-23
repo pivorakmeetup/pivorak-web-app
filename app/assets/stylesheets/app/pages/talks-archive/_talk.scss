@@ -16,7 +16,6 @@
   position: relative;
   z-index: 1;
 
-
   flex: 0 0 31%;
 
   min-height: 190px;
@@ -110,9 +109,6 @@
     right: 0;
   }
 
-  &:nth-child(3n+3) {
-    margin-right: 0;
-  }
 
   &:hover {
     .pk-archived-talk--event,
