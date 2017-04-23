@@ -16,7 +16,4 @@
     = f.input :admin, as: :boolean
 
   .one.field
-    = f.input :cover, as: :file
-
-- if member.cover.present?
-  = image_tag member.cover_url
+    = f.input :cover, as: :image_preview
