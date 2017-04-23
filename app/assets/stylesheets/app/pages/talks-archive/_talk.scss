@@ -32,6 +32,8 @@
 
   &--wrapper {
     height: 100%;
+    min-height: 190px;
+
     padding: 20px 25px;
 
     background-color: rgba(211,81,48, .7);
@@ -144,6 +146,7 @@
 
   @include breakpoint-max(320) {
     margin-right: 0;
+    margin-bottom: 16px;
     flex: 0 0 100%;
   }
 }
