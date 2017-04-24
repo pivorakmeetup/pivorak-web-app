@@ -140,8 +140,17 @@
     }
   }
 
-  @include breakpoint-max(320) {
-    margin-right: 0;
+  @include breakpoint-max(915) {
+    margin-bottom: 16px;
+    flex: 0 0 48%;
+  }
+
+  @include breakpoint-max(915) {
+    margin-bottom: 16px;
+    flex: 0 0 48%;
+  }
+
+  @include breakpoint-max(450) {
     margin-bottom: 16px;
     flex: 0 0 100%;
   }
