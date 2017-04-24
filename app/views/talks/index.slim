@@ -2,7 +2,7 @@
 
 .pk-container
   h2 = t 'talks.plural'
-  .pk-grid.pk-archived-talks
+  .pk-grid.pk-grid--wrap.pk-archived-talks
     - talks.each do |talk|
       / TODO: replace the dummy image with a real talk thumblail
       .pk-archived-talk.pk-grid--center-v style="background-image: url(https://www.gimp.org/tutorials/Color2BW/after-384x288.jpg)" href="#"
