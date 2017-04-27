@@ -109,6 +109,9 @@
     right: 0;
   }
 
+  &--link {
+    color: inherit;
+  }
 
   &:hover {
     .pk-archived-talk--event,
@@ -129,14 +132,11 @@
       cursor: pointer;
     }
 
-    .pk-archived-talk--title span {
-      border-color: #d35130;
-    }
-
-    .pk-archived-talk--title:hover span{
-      color: #fcf7ef;
-      background-color: #d35130;
-      border-color: transparent;
+    .pk-archived-talk--link {
+      &:hover, &:focus, &:active {
+        color: #fcf7ef;
+        background-color: #d35130;
+      }
     }
   }
 
