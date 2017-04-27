@@ -1,7 +1,7 @@
 $namespace: ".pk-header";
 
 // ! may need to be changed if there are more elements in menu
-$header-menu-breakpoint: "980";
+$header-menu-breakpoint: "1100";
 $header-mobile-breakpoint: "420";
 
 #{$namespace} {
@@ -20,7 +20,7 @@ $header-mobile-breakpoint: "420";
 #{$namespace}__soc-icon {
   opacity: .54;
   transition: .2s opacity ease-out;
-  margin: 0 8px;
+  margin: 4px 8px;
   a {
     display: block;
   }
@@ -33,10 +33,8 @@ $header-mobile-breakpoint: "420";
 }
 
 #{$namespace}__dropdown-icon {
-  @include breakpoint-min(980) {
-    display: none !important;
-  }
-
+  
+  display: none;
   background-color: transparent;
   border: 0;
   -ms-touch-action: manipulation;
@@ -62,6 +60,10 @@ $header-mobile-breakpoint: "420";
     z-index: -1;
   }
 
+  @include breakpoint-max($header-menu-breakpoint) {
+    display: inline-block;
+  }
+
 }
 
 #{$namespace}__dropdown {
@@ -73,45 +75,140 @@ $header-mobile-breakpoint: "420";
   @include breakpoint-max($header-menu-breakpoint) {
     position: absolute;
     top: 100%;
-    right: 0;
+    right: -32px;
     overflow: hidden;
+  }
+  @include breakpoint-max($header-mobile-breakpoint){
+    right: -16px; 
   }
 }
 
-#{$namespace}__dropdown-list {
+#{$namespace}__dropdown-list.pk-list {
+
   @include breakpoint-max($header-menu-breakpoint) {
     position: relative;
-    transform: translateY(-150%);
-    width: calc(100vw - 64px);
-    margin-top: 8px;
+    transform: translateX(100%);
 
-    justify-content: flex-end;
-    flex-wrap: wrap;
-    padding: 8px 32px 8px 0;
+    min-height: calc(900px - 87px);
+    min-width: 240px;
     background-color: #D35130;
     z-index: 2;
 
+    margin-top: 8px;
+    padding: 16px 0;
+
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+
+    .pk-list__unit {
+      width: 100%;
+    }
+
     .pk-list__unit a {
-      padding: 8px 16px 8px;
+      width: 100%;
+      padding: 4px 8px 9px 24px;
+      margin: 0 0 8px;
+      color: rgba($link-color, .87);
     }
+
     input[type=submit] {
-      margin: 8px 0;
+      margin: 8px 0 0 16px;
     }
+
+    #{$namespace}__li-list-wr  {
+       > a {
+         display: none;
+       } 
+    }
+
+    #{$namespace}__li-list {
+      position: relative;
+      top: 0;
+      left: 0;
+      padding: 0;
+      display: flex;
+
+      #{$namespace}__li-list-item {
+        > a {
+          color: rgba($link-color, .87);
+          background-color: transparent;
+          margin: 0 0 8px;
+          &:hover, &:active {
+            color: $link-color;
+            background-color: $tile-text-hover;
+            z-index: 1;
+          }
+        }
+      }
+
+    }
+
+    .open & {
+      transform: translateX(0);
+    }
+
   }
 
   @include breakpoint-max($header-mobile-breakpoint) {
-    width: calc(100vw - 32px);
+    width: 100vw;
   }
 
   @include breakpoint-max($header-mobile-breakpoint) {
     margin-top: 16px;
   }
 
-  .open & {
-    transform: translateY(0px);
-  }
-
   .opening & {
     transition: transform .3s ease;
+  }
+}
+
+#{$namespace}__li-list-wr {
+  position: relative;
+  z-index: 10;
+  
+  &:hover, &:active {
+    #{$namespace}__li-list {
+      display: flex;
+    }
+
+    > a {
+      color: rgba($link-color, .87);
+    }
+  }
+
+  > a:hover, a:active {
+    color: rgba($link-color, .87) !important;
+    background-color: transparent !important;    
+  }
+}
+
+#{$namespace}__li-list {
+  position: absolute;
+  top: 0;
+  left: 0;
+  flex-direction: column;
+  text-align: left;
+  padding: 38px 0 0 24px;
+  list-style: none;
+  display: none;
+}
+
+#{$namespace}__li-list-item {
+  > a {
+    @extend %btn-styles;
+    position: relative;
+    min-width: 154px;
+    line-height: 1.3571428571em;
+    color: rgba($body-bg-color, .87);
+    background-color: $link-color;
+    padding: 4px 8px 9px;
+    margin: 8px 0 0;
+
+    &:hover, &:active {
+      color: $link-color;
+      background-color: $tile-text-hover;
+      z-index: 1;
+    }
   }
 }
