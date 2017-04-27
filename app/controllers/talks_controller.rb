@@ -8,7 +8,7 @@ class TalksController < ApplicationController
   end
 
   def talks
-    scope = Talk.published
+    scope = Talk.published.includes(:event).includes(:speaker)
 
     @talks ||= params[:tag] ? scope.tagged_with(params[:tag]) : scope
   end

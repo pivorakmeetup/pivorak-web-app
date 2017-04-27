@@ -26,4 +26,8 @@ module TalksHelper
       ""
     end
   end
+
+  def talk_link(talk, text = "", options = {})
+    link_to text, polymorphic_path(talk), options
+  end
 end
