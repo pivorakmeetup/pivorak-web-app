@@ -1,0 +1,56 @@
+$namespace: ".pk-talk-content";
+
+#{$namespace} {
+  border-top: 2px solid rgba(255,255,255,.38);
+  background-color: #50B27E;
+}
+
+#{$namespace}__container {
+  display: flex;
+  @include breakpoint-max(500) {
+    flex-direction: column;
+  }
+}
+
+$pk-talk-content-space: 32px;
+
+#{$namespace}__left {
+  border-right: 2px solid rgba(255,255,255,.38);
+  width: 70%;
+  flex: 0 1 auto;
+  padding: $pk-talk-content-space $pk-talk-content-space $pk-talk-content-space 0;
+  @include breakpoint-max(500) {
+    width: auto;
+    border-right: none;
+    padding: $pk-talk-content-space 0 0 0;
+  }
+}
+
+#{$namespace}__right {
+  width: 30%;
+  flex: 0 1 auto;
+  padding: $pk-talk-content-space 0 $pk-talk-content-space $pk-talk-content-space;
+  @include breakpoint-max(500) {
+    width: auto;
+    padding: $pk-talk-content-space 0 0 0;
+  }
+}
+
+#{$namespace}__bubble {
+  &:hover, &:active, &:focus {
+    color: #50B27E;
+  }
+}
+
+#{$namespace}__link {
+  &:hover, &:active, &:focus {
+    color: #50B27E;
+  }
+}
+
+#{$namespace}__link-area {
+  padding-bottom: 24px;
+  &:empty {
+    display: none;
+  }
+}

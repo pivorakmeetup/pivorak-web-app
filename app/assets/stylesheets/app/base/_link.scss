@@ -1,0 +1,28 @@
+$namespace: ".pk-link";
+
+#{$namespace} {
+  display: inline-block;
+  text-decoration: none;
+  color: #FFF4DA;
+  padding: 0 4px;
+  margin: 0 -4px;
+  &:after {
+    content: "";
+    border-top: 2px solid #fff;
+    border-color: inherit;
+    width: 100%;
+    display: block;
+  }
+  &:hover, &:active, &:focus {
+    background-color: #FFF4DA;
+    text-decoration: none;
+    color: #D35130;
+    &:after {
+      border-color: #FFF4DA;
+    }
+  }
+}
+
+#{$namespace}--btn {
+  letter-spacing: 0.10714286em;
+}

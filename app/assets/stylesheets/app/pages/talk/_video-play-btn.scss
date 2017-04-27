@@ -1,0 +1,25 @@
+$namespace: ".pk-video-play-btn";
+
+#{$namespace} {
+  position: relative;
+  display: inline-block;
+  &:hover, &:active, &:focus {
+    svg {
+      path {
+        fill: #ff0000;
+      }
+    }
+  }
+  &:after {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: -15px 0 0 -12px;
+    content: "";
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 14px 0 14px 27px;
+    border-color: transparent transparent transparent #ffffff;
+  }
+}
