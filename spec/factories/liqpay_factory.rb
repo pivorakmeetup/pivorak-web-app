@@ -22,4 +22,8 @@ FactoryGirl.define do
 
     initialize_with { attributes }
   end
+
+  trait :customer do
+    customer '1'
+  end
 end

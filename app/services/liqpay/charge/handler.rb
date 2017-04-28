@@ -35,10 +35,15 @@ module Liqpay
 
       def donation_params
         {
-          user_id:    data['customer'].to_i,
+          user_id:    customer_id,
           amount:     data['amount'],
           payment_id: data['payment_id']
         }
+      end
+
+      def customer_id
+        customer_id = data['customer'].to_i
+        customer_id > 0 ? customer_id : nil
       end
 
       def success
