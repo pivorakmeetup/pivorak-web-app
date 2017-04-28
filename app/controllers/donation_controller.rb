@@ -1,34 +1,27 @@
 class DonationController < ApplicationController
   skip_before_action :verify_authenticity_token, only: :create
 
-  # TODO uncomment when page is created
-  # def show
-  # end
-
   def create
-    result = Liqpay::Charge::Handler.(donation_params)
+    notification
 
-    router(result[:status])
+    redirect_to root_path
   end
 
   private
 
-  def donation_params
-    {
-      data:    params[:data],
-      user_id: current_user ? current_user.id : nil
-    }
+  def handler_result
+    @handler_result ||= params[:data] ? Liqpay::Charge::Handler.(params[:data]) : {}
   end
 
-  def router(status)
-    if status == 'success'
+  def status
+    @status ||= handler_result[:status]
+  end
+
+  def notification
+    if status.present? && status == 'success'
       flash[:notice] = t 'donations.success'
-      redirect_to root_path
-    else
+    elsif status.present?
       flash[:error] = t 'liqpay.status.failure'
-      redirect_to root_path
-      # TODO uncomment when page is created
-      # redirect_to donation_path
     end
   end
 end

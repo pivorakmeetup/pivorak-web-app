@@ -8,7 +8,15 @@ FactoryGirl.define do
   end
 
   factory :liqpay_error_response_data, class: Hash do
-    status     :error
+    status     :failure
+    amount     Faker::Number.number(3)
+    payment_id Faker::Number.number(6)
+
+    initialize_with { attributes }
+  end
+
+  factory :liqpay_notification_response_data, class: Hash do
+    status     :notification
     amount     Faker::Number.number(3)
     payment_id Faker::Number.number(6)
 

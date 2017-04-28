@@ -4,7 +4,7 @@ class PaymentHandlerController < ApplicationController
   def create
     Liqpay::Charge::Handler.(donation_params)
 
-    head :no_content
+    head :ok
   end
 
   private

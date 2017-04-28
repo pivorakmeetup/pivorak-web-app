@@ -1,9 +1,8 @@
 module Liqpay
   module Charge
     class Handler < ApplicationService
-      def initialize(params)
-        @data    = decoded_data(params[:data])
-        @user_id = params[:user_id]
+      def initialize(data)
+        @data = decoded_data(data)
       end
 
       def call
@@ -22,7 +21,7 @@ module Liqpay
 
       private
 
-      attr_reader :data, :user_id
+      attr_reader :data
 
       def status
         @status ||= data.present? ? data['status'] : nil
@@ -36,7 +35,7 @@ module Liqpay
 
       def donation_params
         {
-          user_id:    user_id,
+          user_id:    data['customer'].to_i,
           amount:     data['amount'],
           payment_id: data['payment_id']
         }
@@ -49,6 +48,10 @@ module Liqpay
       end
 
       def creating_available?
+        donation_with_payment_id_absent?
+      end
+
+      def donation_with_payment_id_absent?
         Donation.find_by_payment_id(data['payment_id']).blank?
       end
 
