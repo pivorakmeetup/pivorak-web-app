@@ -1,0 +1,39 @@
+$namespace: '.pk-video-container';
+
+#{$namespace} {
+  position: fixed;
+  background-color: rgba(12, 12, 12, .8);
+  top: 0rem;
+  left: 0;
+  right: 0;
+  bottom: 0rem;
+  z-index: 9999;
+  height: 100%;
+  text-align: center;
+  padding: 2rem;
+  padding-bottom: 56.25%;
+  padding-top: 25px;
+
+  iframe {
+    position: absolute;
+    top: 3rem;
+    left: 2rem;
+    width: calc(100% - 4rem);
+    height: calc(100% - 8rem);
+
+    @include breakpoint-max(650) {
+      width: 100%;
+      left: 0;
+    }
+  }
+}
+
+#{$namespace}__close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 1rem;
+  color: #fff4da;
+  font-family: Helvetica;
+  cursor: pointer;
+}

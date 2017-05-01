@@ -58,6 +58,11 @@ $namespace: ".pk-archived-talk";
     border-color: #d35130;
   }
 
+  #{$namespace}__wrapper {
+    background-color: #fff4da;
+  }
+
+
   #{$namespace}__title,
   #{$namespace}__media__slides,
   #{$namespace}__media__video__link {
@@ -76,6 +81,11 @@ $namespace: ".pk-archived-talk";
       background-color: #d35130;
       text-decoration: none;
     }
+  }
+
+  #{$namespace}__media__video__link {
+    padding-left: 5px;
+    padding-right: 5px;
   }
 }
 
@@ -134,6 +144,7 @@ $namespace: ".pk-archived-talk";
 #{$namespace}__media {
   position: absolute;
   bottom: 23px;
+  z-index: 10;
 
   a {
     text-decoration: none;
@@ -171,4 +182,8 @@ $namespace: ".pk-archived-talk";
   color: inherit;
   text-transform: uppercase;
   text-decoration: none;
+}
+
+#{$namespace}__media__video__link {
+  border-bottom: none;
 }
