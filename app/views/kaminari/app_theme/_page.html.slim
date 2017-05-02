@@ -1,0 +1,6 @@
+- if page.current?
+  .pk-pagination__unit.pk-pagination--active
+    = page
+- else
+  a.pk-pagination__unit href=url title=("#{page}")
+    = page

@@ -1,0 +1,27 @@
+$namespace: ".pk-pagination";
+
+#{$namespace} {
+  margin: 16px 0;
+  text-align: center;
+}
+
+#{$namespace}__unit + #{$namespace}__unit {
+  margin-left: 8px;
+}
+
+#{$namespace}__unit {
+  @extend .pk-link;
+  @extend .pk-link--btn;
+  font-size: 15px;
+  line-height: 1.2em;
+}
+
+#{$namespace}--active {
+  &:hover, &:active, &:focus {
+    background-color: transparent;
+    color: inherit;
+  }
+  &:after {
+    border-color: transparent;
+  }
+}
