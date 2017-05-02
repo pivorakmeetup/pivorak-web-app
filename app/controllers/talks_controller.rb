@@ -8,7 +8,7 @@ class TalksController < ApplicationController
   end
 
   def talks
-    scope = Talk.published.includes(:event)
+    scope = Talk.published.includes(:event).order('events.finished_at desc')
 
     @talks ||= params[:tag] ? scope.tagged_with(params[:tag]) : scope
     @talks.page(params[:page]).per(12)
