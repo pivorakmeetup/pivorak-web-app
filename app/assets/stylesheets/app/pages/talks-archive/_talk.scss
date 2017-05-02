@@ -1,0 +1,160 @@
+$namespace: ".pk-archived-talk";
+
+@mixin archived-talks-item-border($thickness, $radius, $opacity) {
+  border: $thickness+px solid rgba(255, 244, 218, $opacity);
+  border-radius: $radius + px;
+}
+
+#{$namespace}s {
+  justify-content: space-between;
+
+  @include breakpoint-max(320) {
+    flex-direction: column;
+  }
+}
+
+#{$namespace} {
+  position: relative;
+  z-index: 1;
+
+  flex: 0 0 31%;
+
+  min-height: 190px;
+  margin-bottom: 16px;
+
+  background-clip: content-box;
+
+  overflow: hidden;
+
+  font-size: .75rem;
+  color: #fcf7ef;
+
+  @include archived-talks-item-border(2, 30, .38);
+
+  @include breakpoint-max(915) {
+    margin-bottom: 16px;
+    flex: 0 0 48%;
+  }
+
+  @include breakpoint-max(915) {
+    margin-bottom: 16px;
+    flex: 0 0 48%;
+  }
+
+  @include breakpoint-max(450) {
+    margin-bottom: 16px;
+    flex: 0 0 100%;
+  }
+}
+
+#{$namespace}:hover {
+  #{$namespace}__event,
+  #{$namespace}__data,
+  #{$namespace}__title,
+  #{$namespace}__media__slides,
+  #{$namespace}__media__video__link,
+  #{$namespace}__media__video__duration {
+    color: #d35130;
+    border-color: #d35130;
+  }
+
+  #{$namespace}__title,
+  #{$namespace}__media__slides,
+  #{$namespace}__media__video__link {
+    padding-bottom: 2px;
+    z-index: 3;
+    cursor: pointer;
+  }
+
+  #{$namespace}__link {
+    &:hover, &:focus, &:active {
+      color: #fcf7ef;
+      background-color: #d35130;
+    }
+  }
+}
+
+#{$namespace}__wrapper {
+  height: 100%;
+  min-height: 190px;
+
+  padding: 20px 25px;
+
+  background-color: rgba(211,81,48, .7);
+
+  transition: all .5s;
+}
+
+#{$namespace}__wrapper:hover {
+  background-color: #fff4da;
+}
+
+#{$namespace}__event {
+  @include archived-talks-item-border(1, 6, .54);
+
+  display: inline-block;
+  min-width: 30px;
+  margin-right: 10px;
+  padding: 5px;
+
+  text-align: center;
+}
+
+#{$namespace}__event:before {
+  content: '#';
+  display: inline-block;
+}
+
+#{$namespace}__title {
+  margin-top: 11px;
+  margin-bottom: 33px;
+
+  font-family: "Fjalla One", Helvetica;
+  font-size: 1.25rem;
+
+  span {
+    transition: all .6s;
+    line-height: 1.4;
+    border-bottom: 1px solid transparent;
+  }
+}
+
+#{$namespace}__media {
+  position: absolute;
+  bottom: 23px;
+
+  a {
+    text-decoration: none;
+  }
+
+}
+
+#{$namespace}__media__slides, #{$namespace}__media__video {
+  display: inline-block;
+  font-size: .8125rem;
+}
+
+#{$namespace}__media__slides {
+  margin-right: 16px;
+}
+
+#{$namespace}__media__video__duration {
+  margin-left: 5px;
+
+  opacity: .54;
+
+  font-size: .625rem;
+}
+
+#{$namespace}__show {
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+#{$namespace}__link {
+  color: inherit;
+}
