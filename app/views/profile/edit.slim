@@ -1,23 +1,23 @@
 .pk-profile-edit
   - title t('members.edit_profile')
 
-  h2
-    | Edit Profile
-  = simple_form_for [current_user], url: profile_path, html: { class: 'pk-form' } do |f|
-    /<div style="
-    /  width: 200px;
-    /  height: 198px;
-    /  border-radius: 50%;
-    /  margin: auto;
-    /  overflow: hidden;
-    /  position: relative;
-    /"><img src="/uploads/pivorak/development/user/cover/3/ava.jpg" alt="Ava"></div>
-    /= f.input :cover, as: :image_preview
-    = f.input :first_name, placeholder: 'First Name'
-    = f.input :last_name, placeholder: 'Last Name'
-    = f.input :email, required: true, placeholder: 'E-mail'
-    = f.input :password, input_html: { value: nil }, placeholder: 'Password'
-    = f.input :password_confirmation, value: f.object.password, placeholder: 'Password confirmation'
+  .pk-container
+    h2.mbm
+      | Edit Profile
+    = simple_form_for [current_user], url: profile_path, html: { class: 'pk-form' } do |f|
+      /<div style="
+      /  width: 200px;
+      /  height: 198px;
+      /  border-radius: 50%;
+      /  margin: auto;
+      /  overflow: hidden;
+      /  position: relative;
+      /"><img src="/uploads/pivorak/development/user/cover/3/ava.jpg" alt="Ava"></div>
+      /= f.input :cover, as: :image_preview
+      = f.input :first_name, placeholder: 'First Name', input_html: { class: "pk-input" }
+      = f.input :last_name, placeholder: 'Last Name', input_html: { class: "pk-input" }
+      = f.input :email, required: true, placeholder: 'E-mail', input_html: { class: "pk-input" }
+      = f.input :password, input_html: { value: nil, class: "pk-input" }, placeholder: 'Password'
+      = f.input :password_confirmation, value: f.object.password, placeholder: 'Password confirmation', input_html: { class: "pk-input" }
 
-    .form-actions
-      = f.button :submit, t('words.update')
+      = f.button :submit, t('words.update'), class: "pk-btn mtm pk-btn--medium"
