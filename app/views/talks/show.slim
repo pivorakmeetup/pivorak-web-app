@@ -11,7 +11,7 @@
           h1.pk-talk-header__title = talk.title
           h2.pk-talk-header__name = talk.speaker&.full_name
         .pk-grid__unit-static
-          = talk_video_url(talk, inline_svg("play-btn.svg"), { class: "pk-video-play-btn" })
+          = talk_video_url(talk, inline_svg("play-btn.svg"), { class: "pk-video-play-btn js-video-link" })
         .pk-grid__unit.pk-talk-header__grid-unit
   .pk-talk-container__unit.pk-talk-content
     .pk-container
