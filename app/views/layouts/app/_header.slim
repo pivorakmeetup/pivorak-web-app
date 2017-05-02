@@ -50,23 +50,24 @@ header.pk-header class="#{yield(:main_header_class)}"
               li.pk-list__unit.pk-header__li-list-wr
                 a = "activity"
                 ul.pk-header__li-list
-                  li.pk-header__li-list-item = events_link
+                  /li.pk-header__li-list-item = events_link
                   li.pk-header__li-list-item = talks_link
-              
-              li.pk-list__unit.pk-header__li-list-wr
-                a = "community"
-                ul.pk-header__li-list
-                  li.pk-header__li-list-item = members_link
-                  li.pk-header__li-list-item = speakers_link
-              
-              li.pk-list__unit = goals_link
-              li.pk-list__unit = page_link about_page
+                  li.pk-header__li-list-item = page_link courses_page
+
+              /li.pk-list__unit.pk-header__li-list-wr
+              /  a = "community"
+              /  ul.pk-header__li-list
+              /    li.pk-header__li-list-item = members_link
+              /    li.pk-header__li-list-item = speakers_link
+
+              /li.pk-list__unit = goals_link
 
               li.pk-list__unit.pk-header__li-list-wr
                 a = "contacts"
                 ul.pk-header__li-list
                   li.pk-header__li-list-item = page_link contacts_page
-                  li.pk-header__li-list-item = chat_link
+                  li.pk-header__li-list-item = page_link about_page
+                  /li.pk-header__li-list-item = chat_link
 
               - if user_signed_in?
                 / .pk-avatar     = image_tag gravatar_url(current_user)
@@ -76,7 +77,7 @@ header.pk-header class="#{yield(:main_header_class)}"
                   li.pk-list__unit = admin_link
 
               - else
-                
+
                 li.pk-list__unit = register_link
                 li.pk-list__unit = login_link
 
