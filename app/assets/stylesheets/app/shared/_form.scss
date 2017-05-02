@@ -1,0 +1,254 @@
+$namespace: ".pk-form";
+
+#{$namespace} input[type="submit"] {
+  @extend #{$namespace}--btn-medium;
+}
+
+#{$namespace} a {
+  @extend #{$namespace}--link-small;
+  &:hover, &:active {
+    color: #57C8D1;
+  }
+}
+
+#{$namespace} {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#{$namespace} {
+  > div {
+    position: relative;
+    box-sizing: border-box;
+
+    width: 304px; // good for login forms, maybe should be changed for other forms
+    border-radius: 12px;
+
+    z-index: 1;
+
+    @include breakpoint-max(336) {
+      width: 272px;
+    }
+
+    .alert-error {
+      padding-top: 8px;
+    }
+
+    .hint {
+      font-size: 12px;
+      text-align: left;
+      padding: 4px 16px 0;
+    }
+
+    .error {
+      text-align: left;
+      padding: 4px 16px 0;
+      color: #c52d2d;
+    }
+  }
+
+  .field.error {
+    #{$namespace} {
+      -webkit-box-shadow: 0px 0px 0px 1px rgba(236, 0, 0, 1), 0px 1px 3px 0px rgba(0, 0, 0, .5) inset;
+      -moz-box-shadow: 0px 0px 0px 1px rgba(236, 0, 0, 1), 0px 1px 3px 0px rgba(0, 0, 0, .5) inset;
+      box-shadow: 0px 0px 0px 1px rgba(236, 0, 0, 1), 0px 1px 3px 0px rgba(0, 0, 0, .5) inset;
+    }
+
+    .hint {
+      display: none;
+    }
+  }
+}
+
+#{$namespace} input{
+  box-sizing: border-box;
+  width: 100%;
+  height: 40px;
+
+  border-radius: 12px;
+  border: 0;
+  -webkit-box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, .12), 0px 1px 3px 0px rgba(0, 0, 0, .5) inset;
+  -moz-box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, .12), 0px 1px 3px 0px rgba(0, 0, 0, .5) inset;
+  box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, .12), 0px 1px 3px 0px rgba(0, 0, 0, .5) inset;
+
+  &:focus {
+    outline: none;
+    border: 0;
+    -webkit-box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, .12), 0px 1px 3px 0px rgba(0, 0, 0, .5) inset, 0px 0px 0px 1px rgba(0, 0, 0, .38);
+    -moz-box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, .12), 0px 1px 3px 0px rgba(0, 0, 0, .5) inset, 0px 0px 0px 1px rgba(0, 0, 0, .38);
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, .12), 0px 1px 3px 0px rgba(0, 0, 0, .5) inset, 0px 0px 0px 1px rgba(0, 0, 0, .38);
+  }
+
+  background-color: $main-color;
+  padding: 13px 15px 11px;
+  margin-top: 24px;
+  color: $input-color;
+
+  font-family: $main-font-family;
+  font-size: 14px;
+  letter-spacing: $letter-spacing-p;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  &::-webkit-input-placeholder {color:rgba($placeholder-color, .54);}
+  &::-moz-placeholder          {color:rgba($placeholder-color, .54);}
+  &:-moz-placeholder           {color:rgba($placeholder-color, .54);}
+  &:-ms-input-placeholder      {color:rgba($placeholder-color, .54);}
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus {
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, .12), 0 1px 3px 0 rgba(0, 0, 0, .5) inset, 0 0 0 500px $main-color inset !important;
+    -webkit-text-fill-color: $input-color;
+  }
+
+}
+
+#{$namespace} label {
+  display: none;
+}
+
+#{$namespace}--btn{
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  margin-bottom: 0;
+
+  font-family: $main-font-family;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  border-radius: 4px;
+  user-select: none;
+  background-color: #D35130;
+  text-decoration: none;
+  transition-property: color, background-color, opacity;
+  transition-duration: .2s;
+  transition-timing-function: ease;
+  border: 2px solid rgba(#FCF7EF, .54);
+
+  &:hover, &:active, &:focus {
+    text-decoration: none;
+    outline: none;
+  }
+
+}
+
+#{$namespace}--btn-medium {
+  @extend #{$namespace}--btn;
+  width: 304px;
+  height: 40px;
+  padding: 8px 16px;
+
+  border: 1px solid transparent;
+  border-radius: 12px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .2);
+
+  font-size: 15px;
+  line-height: $main-line-height;
+  letter-spacing: 2.14px;
+  color: $text-color;
+  font-weight: 600;
+
+  &:hover {
+    opacity: .95;
+  }
+
+  @include breakpoint-max(336) {
+    width: 272px;
+  }
+}
+
+#{$namespace}--biggest {
+  font-size: 28px;
+  border-radius: 32px;
+  padding: 17px 144px 23px 144px;
+  box-shadow: 0 2px 14px 0 rgba(0,0,0, .33);
+}
+
+#{$namespace}--tag {
+  position: relative;
+  width: 90px;
+  height: 82px;
+  margin-bottom: 16px;
+  border: 1px solid rgba($link-color, .54);
+  border-radius: 10px;
+  background-color: transparent;
+  color: $link-color;
+  z-index: 1;
+
+  .pk-icon {
+    position: absolute;
+    top: calc((100% - 40px) / 2 );
+    left: calc((100% - 40px) / 2 );
+    font-size: 40px;
+  }
+
+  // ! color of text should be modified according to background of parent element
+  &:hover, &:active {
+    background-color: $link-color;
+    color: $body-text-hover;
+    z-index: 0;
+  }
+
+  & + & {
+    margin-left: 16px;
+  }
+
+  @include breakpoint-max(336) {
+    & + & {
+      margin-left: 8px;
+    }
+  }
+}
+
+#{$namespace}--link {
+  padding: 0 4px;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  background-color: transparent;
+  color: $link-color;
+
+  letter-spacing: $letter-spacing-p;
+
+  span {
+    line-height: 1.7142857143em;
+    padding-bottom: 3px;
+    border-bottom: 2px solid $link-color;
+    white-space: normal;
+  }
+
+  // ! color of text should be modified according to background of parent element
+  &:hover, &:active {
+    background-color: $link-color;
+    span {
+      border-bottom-color: transparent;
+    }
+  }
+}
+
+#{$namespace}--link-small {
+  @extend #{$namespace}--link;
+  @extend #{$namespace}--btn;
+
+  font-size: 12px;
+  letter-spacing: 0.08333em;
+
+  span {
+    line-height: 1.3;
+    padding-bottom: 1px;
+    border-bottom: 1px solid $link-color;
+  }
+}
+
