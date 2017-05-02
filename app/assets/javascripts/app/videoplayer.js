@@ -11,7 +11,7 @@
 
             document.getElementsByTagName('body')[0].removeChild(lightbox)
 
-            document.querySelector('body').style.position = null;
+            document.querySelector('body').style.overflow = null;
         }
 
         lightboxCloseButton.appendChild(document.createTextNode('X'));
@@ -26,7 +26,7 @@
 
         document.querySelector('body').appendChild(lightbox);
 
-        document.querySelector('body').style.position = 'fixed';
+        document.querySelector('body').style.overflow = "hidden";
     }
 
     function openVideo(e) {

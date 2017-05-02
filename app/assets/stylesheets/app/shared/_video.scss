@@ -3,23 +3,22 @@ $namespace: '.pk-video-container';
 #{$namespace} {
   position: fixed;
   background-color: rgba(12, 12, 12, .8);
-  top: 0rem;
+  top: 0;
   left: 0;
   right: 0;
-  bottom: 0rem;
-  z-index: 9999;
+  bottom: 0;
   height: 100%;
+  z-index: 9999;
   text-align: center;
   padding: 2rem;
-  padding-bottom: 56.25%;
-  padding-top: 25px;
+  padding-top: 55px;
+  overflow-y: auto;
 
   iframe {
-    position: absolute;
-    top: 3rem;
-    left: 2rem;
-    width: calc(100% - 4rem);
-    height: calc(100% - 8rem);
+    width: calc(100vw - 4rem);
+    height: calc(100vh - 8rem);
+    min-height: 600px;
+    border: none;
 
     @include breakpoint-max(650) {
       width: 100%;

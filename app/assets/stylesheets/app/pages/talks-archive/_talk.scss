@@ -70,10 +70,6 @@ $namespace: ".pk-archived-talk";
     cursor: pointer;
   }
 
-  #{$namespace}__wrapper {
-    background-color: #fff4da;
-  }
-
   #{$namespace}__link {
     text-decoration: underline;
     &:hover, &:focus, &:active {

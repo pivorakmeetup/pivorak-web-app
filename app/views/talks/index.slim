@@ -10,10 +10,10 @@
           span.pk-archived-talk__data =  format_timestamp(talk.event.finished_at, time: false)
           h4.pk-archived-talk__title
             = talk_link talk, talk.title, class: "pk-link pk-archived-talk__link"
-          .pk-archived-talk__media
-            div.pk-archived-talk__media__video
-              - if talk.video_url?
-                a.pk-archived-talk__media__video__link.pk-archived-talk__link.js-video-link href="#{talk.video_url}" watch video
+          / .pk-archived-talk__media
+          /   div.pk-archived-talk__media__video
+          /     - if talk.video_url?
+          /       a.pk-archived-talk__media__video__link.pk-archived-talk__link.js-video-link href="#{talk.video_url}" watch video
 
   .pk-pagination
     =paginate talks, theme: 'app_theme'
