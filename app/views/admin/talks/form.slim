@@ -34,8 +34,10 @@
       = f.input :video_url
     .five.wide.field
       = f.input :slides_url
-    .six.wide.field
+    .five.wide.field
       = f.input :group_id,   collection: Group.talks, label_method: :name
+  .one.field
+    = f.input :cover, as: :image_preview
 
   .one.field
     = f.input :description, input_html: { rows: 10 }

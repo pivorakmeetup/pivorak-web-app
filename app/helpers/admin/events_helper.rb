@@ -21,11 +21,16 @@ module Admin
     end
 
     def event_visitors(event)
+      requested = event.pending_visit_requests.length
+      approved  = event.approved_visit_requests.length
+      confirmed = event.confirmed_visit_requests.length
+      visited   = event.used_visit_requests.length
+
       {
-        t('events.index.visitors.requested') => event.pending_visit_requests.length,
-        t('events.index.visitors.approved')  => event.approved_visit_requests.length,
-        t('events.index.visitors.confirmed') => event.confirmed_visit_requests.length,
-        t('events.index.visitors.visited')   => event.used_visit_requests.length,
+        t('events.index.visitors.requested') => (requested + approved + confirmed),
+        t('events.index.visitors.approved')  => (approved + confirmed),
+        t('events.index.visitors.confirmed') => confirmed,
+        t('events.index.visitors.visited')   => visited
       }
     end
 

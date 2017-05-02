@@ -1,22 +1,19 @@
 - title t('talks.plural')
-h2 = t 'talks.plural'
-
-.tags
-  ul
-    li = talks_link title: t('words.all')
-    - tags.each do |tag|
-      li = talks_tag_link(tag)
-
-table.table
-  thead
-    tr
-      th = t 'words.id'
-      th = t 'words.title'
-      th
-      th
-
-  tbody
+.pk-container
+  h2.mbm = t 'talks.plural'
+  .pk-grid.pk-grid--wrap.pk-archived-talks
     - talks.each do |talk|
-      tr
-        th = talk.id
-        td = resource_link(talk)
+      .pk-archived-talk.pk-grid--center-v
+        .pk-archived-talk__img style=talk_img(talk)
+        .pk-archived-talk__wrapper
+          = talk_link talk, "", class: "pk-archived-talk__show"
+          span.pk-archived-talk__data =  format_timestamp(talk.event.finished_at, time: false)
+          h4.pk-archived-talk__title
+            = talk_link talk, talk.title, class: "pk-link pk-archived-talk__link"
+          / .pk-archived-talk__media
+          /   div.pk-archived-talk__media__video
+          /     - if talk.video_url?
+          /       a.pk-archived-talk__media__video__link.pk-archived-talk__link.js-video-link href="#{talk.video_url}" watch video
+
+  .pk-pagination
+    =paginate talks, theme: 'app_theme'

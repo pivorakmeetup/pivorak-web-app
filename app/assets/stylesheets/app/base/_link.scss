@@ -1,0 +1,35 @@
+$namespace: ".pk-link";
+
+#{$namespace} {
+  display: inline;
+  color: #FFF4DA;
+  // padding: 0 4px;
+  // margin: 0 -4px;
+  &:hover, &:active, &:focus {
+    background-color: #FFF4DA;
+    text-decoration: none;
+    color: #D35130;
+    &:after {
+      border-color: transparent;
+    }
+  }
+}
+
+#{$namespace}--btn {
+  letter-spacing: 0.10714286em;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  &:after {
+    content: "";
+    border-top: 2px solid #fff;
+    border-color: inherit;
+    width: 100%;
+    display: block;
+  }
+  &:hover, &:active, &:focus {
+    &:after {
+      border-color: transparent;
+    }
+  }
+}

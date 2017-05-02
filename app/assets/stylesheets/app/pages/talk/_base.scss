@@ -1,0 +1,9 @@
+.pk-talk-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.pk-talk-container__unit {
+  flex: 1 1 auto;
+}

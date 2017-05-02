@@ -2,7 +2,7 @@ module PagesHelper
   def page_link(page, options = {})
     return unless page&.persisted?
 
-    link_to options.fetch(:text, page.title), "/#{page.url}"
+    link_to options.fetch(:text, page.title), "/#{page.url}", options
   end
 
   def preview_page_link(page)

@@ -1,6 +1,4 @@
 class TalksController < ApplicationController
-  disabled_feature_until '1.1'
-
   helper_method :talks, :talk, :tags
 
   private
@@ -10,9 +8,10 @@ class TalksController < ApplicationController
   end
 
   def talks
-    scope = Talk.published
+    scope = Talk.published.includes(:event)
 
     @talks ||= params[:tag] ? scope.tagged_with(params[:tag]) : scope
+    @talks.page(params[:page]).per(12)
   end
 
   def tags

@@ -1,7 +1,9 @@
 class User
   class Base < ApplicationService
     PERMITTED_KEYS = %i[
-      first_name last_name email
+      cover
+      email
+      first_name last_name
       password password_confirmation
       synthetic
     ]
@@ -11,6 +13,7 @@ class User
       @password              = params[:password]
       @password_confirmation = params[:password_confirmation]
       @email                 = params[:email]
+      @cover                 = params[:cover]
       @first_name            = params[:first_name]
       @last_name             = params[:last_name]
       @options               = options

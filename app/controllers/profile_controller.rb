@@ -1,5 +1,5 @@
 class ProfileController < ApplicationController
-  disabled_feature_until '1.1'
+  disabled_feature_until '1.2'
 
   before_action :authenticate_user!
 

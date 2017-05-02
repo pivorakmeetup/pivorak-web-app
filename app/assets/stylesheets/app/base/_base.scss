@@ -4,11 +4,12 @@ html {
 }
 
 html, body {
-  font-size: $main-font-size;
+  font-size: 1rem;
   font-family: $main-font-family;
 
   -webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100%;
 }
 
 body {
@@ -17,7 +18,6 @@ body {
   line-height: $main-line-height;
   color: $main-color;
   position: relative;
-  min-height: 900px;
   &:after {
     content: "";
     background: transparent image-url("paper-imit-bg.png") center center repeat;
@@ -28,23 +28,16 @@ body {
     right: 0;
     top: 0;
     bottom: 0;
+    opacity: .6;
   }
-  &.pk-body-auth {
-    min-height: auto;
+  &.pk-body--main-page {
+    min-height: 900px;
   }
 }
 
-// .pk-main-bg {
-//   // background: transparent image-url("paper-imit-bg-blanding.png") center center repeat;
-//   // background-size: 300px 300px;
-//   pointer-events: none;
-//   position: absolute;
-//   left: 0;
-//   right: 0;
-//   top: 0;
-//   bottom: 0;
-//   z-index: 10;
-// }
+main {
+  font-size: $main-font-size;
+}
 
 *,
 *::before,

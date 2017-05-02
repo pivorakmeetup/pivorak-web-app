@@ -1,6 +1,6 @@
 module Admin
   module ApplicationHelper
-    ACTIVE = 'active'
+    ACTIVE = 'active'.freeze
 
     def active?(controller)
       ACTIVE if params[:controller].split('/').include?(controller.to_s)

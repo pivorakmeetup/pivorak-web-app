@@ -2,65 +2,64 @@ source 'https://rubygems.org'
 
 ruby '2.3.1'
 
-#=== CORE =======================================
-gem 'rails',                           '~> 5.0.2'
-gem 'pg',                               '~> 0.18'
-gem 'puma',                              '~> 3.0'
+#=== CORE ======================================================================
+gem 'rails',                                                          '~> 5.0.2'
+gem 'pg',                                                              '~> 0.18'
+gem 'puma',                                                             '~> 3.0'
+gem 'pg_search',                                                        '~> 2.0'
+gem 'devise',                                                           '~> 4.2'
+gem 'omniauth-facebook',                                                '~> 4.0'
+gem 'omniauth-github',                                                '~> 1.2.3'
+gem 'omniauth-twitter',                                               '~> 1.4.0'
+gem 'simple_form',                                                      '~> 3.4'
+gem 'friendly_id',                                                      '~> 5.1'
+gem 'kaminari',                                                        '~> 0.17'
+gem 'carrierwave',                                                      '~> 1.0'
+gem 'acts-as-taggable-on',                                              '~> 4.0'
+gem 'sidekiq',                                                          '4.2.10'
 
-#=== UI =========================================
-gem 'sass-rails',                        '~> 5.0'
-gem 'turbolinks',                        '~> 5.0'
-gem 'slim-rails',                        '~> 3.1'
-gem 'jquery-rails',                    '~> 4.2.2'
-gem 'semantic-ui-sass',              '~> 2.2'
-gem 'autoprefixer-rails'
-gem 'rails-assets-svgxuse', source: 'https://rails-assets.org'
-gem 'rails-assets-lory', source: 'https://rails-assets.org'
+#=== UI ========================================================================
+gem 'sass-rails',                                                       '~> 5.0'
+gem 'turbolinks',                                                       '~> 5.0'
+gem 'slim-rails',                                                       '~> 3.1'
+gem 'jquery-rails',                                                   '~> 4.2.2'
+gem 'semantic-ui-sass',                                                 '~> 2.2'
+gem 'autoprefixer-rails',                                           '~> 6.7.7.2'
+gem 'coffee-rails',                                                   '~> 4.2.1'
+gem 'uglifier',                                                       '~> 3.2.0'
+gem 'rails-assets-svgxuse',                   source: 'https://rails-assets.org'
+gem 'rails-assets-lory',                      source: 'https://rails-assets.org'
 
-#=== FEATUES ====================================
-gem 'chartkick'
-gem 'devise'
-gem 'groupdate'
-gem 'stripe'
-gem 'liqpay', git: 'https://github.com/liqpay/sdk-ruby'
-gem 'pg_search'
-gem 'interactor-rails',                  '~> 2.0'
-gem 'omniauth-facebook'
-gem 'omniauth-github'
-gem 'omniauth-twitter'
-gem 'simple_form',                       '~> 3.3'
-gem 'sitemap_generator'
-gem 'friendly_id',                       '~> 5.1'
-gem 'kaminari',                         '~> 0.17'
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'httpclient'
-gem 'oj' # faster json parser
-gem 'rollbar'
-gem 'uglifier'
-gem 'redcarpet' # markdown processor
-gem 'coffee-rails'
-gem 'rails_email_preview', '~> 2.0.1'
-# sidekiq
-gem 'sidekiq'
-gem 'sinatra', '>= 2.0.0.beta2', require: false
-gem 'carrierwave', '~> 1.0'
-gem 'acts-as-taggable-on',               '~> 4.0'
-gem 'dry-validation'
-gem 'versionomy'
-gem 'inline_svg'
-gem 'newrelic_rpm'
-gem 'icalendar'
-gem 'slackistrano'
+#=== FEATUES ===================================================================
+gem 'chartkick',                                                      '~> 2.2.3'
+gem 'groupdate',                                                        '~> 3.2'
+gem 'stripe',                                                           '~> 1.5'
+gem 'liqpay',                          git: 'https://github.com/liqpay/sdk-ruby'
+gem 'interactor-rails',                                                 '~> 2.0'
+gem 'sitemap_generator',                                              '~> 5.3.1'
+gem 'httpclient',                                                     '~> 2.8.3'
+gem 'oj',                                                            '~> 2.18.5'
+gem 'redcarpet',                                                      '~> 3.4.0'
+gem 'rails_email_preview',                                            '~> 2.0.1'
+gem 'dry-validation',                                                '~> 0.10.5'
+gem 'inline_svg',                                                       '~> 1.2'
+gem 'icalendar',                                                      '~> 2.4.1'
 
-#=== CONFIG =================================
-gem 'dotenv-rails'
-#=== DEV & TEST =================================
+#=== CONFIG ====================================================================
+gem 'dotenv-rails',                                                     '~> 2.2'
+gem 'slackistrano',                                                   '~> 3.1.1'
+gem 'newrelic_rpm',                                                     '~> 4.1'
+gem 'versionomy',                                                     '~> 0.5.0'
+gem 'rollbar',                                                       '~> 2.14.1'
+gem 'tzinfo-data',               platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+#=== DEV & TEST ================================================================
 group :development do
   gem 'web-console'
-  gem 'listen',                          '~> 3.0'
+  gem 'listen'
   gem 'spring'
   gem 'spring-commands-rspec'
-  gem 'spring-watcher-listen',           '~> 2.0'
+  gem 'spring-watcher-listen'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request'
@@ -79,7 +78,7 @@ group :development, :test do
 end
 
 group :test do
-  gem 'stripe-ruby-mock', '~> 2.3.1', :require => 'stripe_mock'
+  gem 'stripe-ruby-mock', '~> 2.3.1', require: 'stripe_mock'
   gem 'rspec-collection_matchers'
   gem 'rspec-its'
   gem 'rspec-activemodel-mocks'
@@ -87,9 +86,9 @@ group :test do
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'database_cleaner'
-  gem 'simplecov',                 require: false
+  gem 'simplecov', require: false
   gem 'launchy'
   gem 'vcr'
   gem 'webmock'
-  gem 'codecov', :require => false
+  gem 'codecov', require: false
 end
