@@ -36,6 +36,7 @@
 @import "pages/home/slider";
 @import "pages/home/status";
 @import "pages/static/base";
+@import "pages/talk/base";
 @import "pages/talk/header";
 @import "pages/talk/content";
 @import "pages/talk/video-play-btn";
@@ -52,5 +53,7 @@
 @import "shared/avatar";
 @import "shared/input";
 @import "shared/bubble";
+@import "shared/pagination";
+@import "shared/form";
 
 @import "external/lory";

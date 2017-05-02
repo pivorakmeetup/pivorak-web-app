@@ -2,23 +2,24 @@
 = content_for :main_body_class, "pk-floating-menu"
 = content_for :main_header_class, "pk-floating-menu__menu"
 
-.pk-talk-header
-  .pk-container
-    .pk-talk-header__bg(style="background-image: url(#{talk_img(talk)})")
-    .pk-grid.pk-grid--center-v.pk-talk-header__grid
-      .pk-grid__unit.pk-talk-header__grid-unit
-        h1.pk-talk-header__title = talk.title
-        h2.pk-talk-header__name = talk.speaker&.full_name
-      .pk-grid__unit-static
-        = talk_video_url(talk, inline_svg("play-btn.svg"), { class: "pk-video-play-btn" })
-      .pk-grid__unit.pk-talk-header__grid-unit
-.pk-talk-content
-  .pk-container
-    .pk-talk-content__container
-      .pk-talk-content__left
-        = talk.description
-      .pk-talk-content__right
-        .pk-talk-content__link-area
-          = talk_slides_url(talk, class: "pk-link pk-link--btn pk-talk-content__link")
-        - tags.each do |tag|
-          = talks_tag_link(tag, class: "pk-bubble pk-talk-content__bubble")
+.pk-talk-container
+  .pk-talk-container__unit.pk-talk-header
+    .pk-container
+      .pk-talk-header__bg style=talk_img(talk)
+      .pk-grid.pk-grid--center-v.pk-talk-header__grid
+        .pk-grid__unit.pk-talk-header__grid-unit
+          h1.pk-talk-header__title = talk.title
+          h2.pk-talk-header__name = talk.speaker&.full_name
+        .pk-grid__unit-static
+          = talk_video_url(talk, inline_svg("play-btn.svg"), { class: "pk-video-play-btn" })
+        .pk-grid__unit.pk-talk-header__grid-unit
+  .pk-talk-container__unit.pk-talk-content
+    .pk-container
+      .pk-talk-content__container
+        .pk-talk-content__left
+          = talk.description
+        .pk-talk-content__right
+          .pk-talk-content__link-area
+            = talk_slides_url(talk, class: "pk-link pk-link--btn pk-talk-content__link")
+          - tags.each do |tag|
+            = talks_tag_link(tag, class: "pk-bubble pk-talk-content__bubble")

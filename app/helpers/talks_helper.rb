@@ -18,13 +18,7 @@ module TalksHelper
   end
 
   def talk_img( talk )
-    if talk.cover_url.present?
-      talk.cover_url
-    elsif talk.speaker&.cover_url.present?
-      talk.speaker&.cover_url
-    else
-      ""
-    end
+    "background-image: url(#{talk.cover_url})" if talk.cover_url.present?
   end
 
   def talk_link(talk, text = "", options = {})

@@ -61,17 +61,33 @@ $namespace: ".pk-archived-talk";
   #{$namespace}__title,
   #{$namespace}__media__slides,
   #{$namespace}__media__video__link {
-    padding-bottom: 2px;
     z-index: 3;
     cursor: pointer;
   }
 
+  #{$namespace}__wrapper {
+    background-color: #fff4da;
+  }
+
   #{$namespace}__link {
+    text-decoration: underline;
     &:hover, &:focus, &:active {
       color: #fcf7ef;
       background-color: #d35130;
+      text-decoration: none;
     }
   }
+}
+
+#{$namespace}__img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent image-url("default-img.jpg") center center no-repeat;
+  background-size: cover;
+  z-index: -1;
 }
 
 #{$namespace}__wrapper {
@@ -80,13 +96,9 @@ $namespace: ".pk-archived-talk";
 
   padding: 20px 25px;
 
-  background-color: rgba(211,81,48, .7);
+  background-color: rgba(211,81,48,0.87);
 
-  transition: all .5s;
-}
-
-#{$namespace}__wrapper:hover {
-  background-color: #fff4da;
+  transition: background .5s;
 }
 
 #{$namespace}__event {
@@ -112,10 +124,10 @@ $namespace: ".pk-archived-talk";
   font-family: "Fjalla One", Helvetica;
   font-size: 1.25rem;
 
-  span {
-    transition: all .6s;
-    line-height: 1.4;
-    border-bottom: 1px solid transparent;
+  pointer-events: none;
+
+  a {
+    pointer-events: auto;
   }
 }
 
@@ -157,4 +169,6 @@ $namespace: ".pk-archived-talk";
 
 #{$namespace}__link {
   color: inherit;
+  text-transform: uppercase;
+  text-decoration: none;
 }
