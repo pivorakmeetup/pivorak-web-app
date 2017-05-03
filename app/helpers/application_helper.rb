@@ -23,4 +23,12 @@ module ApplicationHelper
   def title(page_title)
     content_for(:title) { page_title }
   end
+
+  def admin_area(&block)
+    return unless admin?
+
+    content_tag(:div, class: 'pk-admin-area') do
+      yield
+    end
+  end
 end

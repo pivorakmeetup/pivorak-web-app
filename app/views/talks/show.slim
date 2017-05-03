@@ -21,9 +21,8 @@
         .pk-talk-content__right
           .pk-talk-content__link-area
             = talk_slides_url(talk, class: "pk-link pk-link--btn pk-talk-content__link")
-          - tags.each do |tag|
+          - talk.tags.each do |tag|
             = talks_tag_link(tag, class: "pk-bubble pk-talk-content__bubble")
 
-          - if admin?
-            .pk-admin-area
-              = admin_edit_resource_link(talk)
+          = admin_area do
+            = admin_edit_resource_link(talk)
