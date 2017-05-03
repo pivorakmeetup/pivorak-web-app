@@ -72,20 +72,26 @@ $header-mobile-breakpoint: "420";
 }
 
 #{$namespace}__dropdown-list-wr {
-  width: 0;
-
-  .open & {
-    width: auto;
-  }
-
   @include breakpoint-max($header-menu-breakpoint) {
     position: absolute;
     top: 100%;
     right: -32px;
     overflow: hidden;
+
+    width: 0;
+
+    .open & {
+      width: auto;
+    }
   }
   @include breakpoint-max($header-mobile-breakpoint){
-    right: -16px; 
+    right: -16px;
+
+    width: 0;
+
+    .open & {
+      width: auto;
+    }
   }
 }
 
