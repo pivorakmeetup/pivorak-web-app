@@ -24,6 +24,5 @@
           - talk.tags.each do |tag|
             = talks_tag_link(tag, class: "pk-bubble pk-talk-content__bubble")
 
-          - if admin?
-            .pk-admin-area
-              = admin_edit_resource_link(talk)
+          = admin_area do
+            = admin_edit_resource_link(talk)
