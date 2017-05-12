@@ -48,6 +48,7 @@ en:
     unauthorized: 'Please <a href=%{login_url}>login</a> or <a href=%{register_url}>register</a> %{action_message}'
     default_title: 'Pivorak Lviv Ruby User Group'
     default_admin_title: 'Admin PivorakWebApp'
+    not_assigned: Not assigned
 
   search_result:
     singular: Search Result
