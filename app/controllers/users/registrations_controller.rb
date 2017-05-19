@@ -9,13 +9,28 @@ module Users
       end
 
       super
-      NotifyMailer.new_user_registered(resource.id).deliver_later if resource.persisted?
+
+      if resource.persisted?
+        Mailchimp::SubscriptionJob.perform_later(resource.id)
+        NotifyMailer.new_user_registered(resource.id).deliver_later
+      end
     end
 
     protected
 
+    def account_update_params
+      params.require(:user).permit(
+        :email, :password, :password_confirmation,
+        :current_password, :subscribed
+      )
+    end
+
     def sign_up_params
-      params.require(:user).permit(:email, :first_name, :last_name, :password, :password_confirmation)
+      params.require(:user).permit(
+        :email, :first_name, :last_name,
+        :password, :password_confirmation,
+        :subscribed
+      )
     end
   end
 end

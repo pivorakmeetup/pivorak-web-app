@@ -13,6 +13,7 @@ h2
       input_html: {class: 'pk-input'}
     .pk-input__container.mts.mbx = f.input :password_confirmation, required: true, placeholder: 'Password confirmation', label_html: {class: 'pk-input__label'},
       input_html: {class: 'pk-input'}
+    .pk-input__container.mts.mbx = f.input :subscribed, as: :boolean, label: "Subscribe Me to Pivorak's Newsletter"
   .form-actions
     .mtl.mbl
       = f.button :submit, "Sign up", class: 'pk-btn pk-btn--medium'

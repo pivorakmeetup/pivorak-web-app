@@ -31,7 +31,7 @@ gem 'uglifier',                                                      '~> 3.2.0'
 gem 'rails-assets-svgxuse',                  source: 'https://rails-assets.org'
 gem 'rails-assets-lory',                     source: 'https://rails-assets.org'
 
-#=== FEATUES ==================================================================
+#=== FEATURES ==================================================================
 gem 'chartkick',                                                     '~> 2.2.3'
 gem 'groupdate',                                                       '~> 3.2'
 gem 'stripe',                                                          '~> 1.5'
@@ -46,6 +46,7 @@ gem 'dry-validation',                                               '~> 0.10.5'
 gem 'inline_svg',                                                      '~> 1.2'
 gem 'icalendar',                                                     '~> 2.4.1'
 gem 'yt',                                                           '~> 0.30.1'
+gem 'gibbon',                                                          '~> 3.0'
 
 #=== CONFIG ===================================================================
 gem 'dotenv-rails',                                                    '~> 2.2'
