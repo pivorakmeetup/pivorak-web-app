@@ -6,7 +6,7 @@ class VisitRequest
     end
 
     def call
-      return visit_request.approved! if user.verified? && policy.has_free_slot_for?(user)
+      return VisitRequest::Approve.call(visit_request) if user.verified? && policy.has_free_slot_for?(user)
       VisitRequestMailer.unverified_attendee(visit_request.id).deliver_later unless user.verified?
       visit_request.pending!
       visit_request.waiting_list! unless policy.has_free_slot_for?(user)
