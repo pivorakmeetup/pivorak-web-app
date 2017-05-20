@@ -13,6 +13,9 @@ describe VisitRequest::Create do
       context 'event has free slots for verified users' do
         before do
           allow_any_instance_of(Event::SlotsPolicy).to receive(:has_free_slot_for?).with(user) { true }
+
+          expect(VisitRequest::Approve).to receive(:call).and_call_original
+
           subject.call
         end
 
