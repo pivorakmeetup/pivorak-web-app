@@ -62,9 +62,10 @@ Rails.application.routes.draw do
       resources :friends, except: %i[show destroy]
       resources :pages,   except: %i[show]
       resources :email_templates,   only: %i[index edit update]
+
+      require 'sidekiq/web'
+      mount Sidekiq::Web => '/sidekiq'
     end
-    require 'sidekiq/web'
-    mount Sidekiq::Web => '/sidekiq'
   end
 
   # This route must (!) be always (!) at the bottom of this file (!)

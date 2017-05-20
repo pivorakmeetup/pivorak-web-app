@@ -2,6 +2,20 @@ class Talk
   class FetchExternalVideoData < ApplicationService
     VIDEO_ID_REGEX = /(?:.be\/|\/watch\?v=|\/(?=p\/))([\w\/\-]+)/.freeze
 
+    def self.fetch_all!
+      logger = Logger.new(Rails.root.join('log', 'fetch_external_video_data.log'))
+
+      logger.info "==================== #{Time.now} ===================="
+      Talk.find_each do |talk|
+        begin
+          new(talk).call
+          logger.info "Talk #{talk.id} was successfully fetched! #{talk.extra_video_data}"
+        rescue => ex
+          logger.error "Cannot fetch talk #{talk.id} data: #{ex.class}: #{ex.message}"
+        end
+      end
+    end
+
     def initialize(talk)
       @talk = talk
     end

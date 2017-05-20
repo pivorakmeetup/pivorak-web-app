@@ -17,9 +17,9 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Fri, 19 May 2017 19:32:05 GMT
+      - Sat, 20 May 2017 10:00:46 GMT
       Date:
-      - Fri, 19 May 2017 19:32:05 GMT
+      - Sat, 20 May 2017 10:00:46 GMT
       Cache-Control:
       - private, max-age=300, must-revalidate, no-transform
       Etag:
@@ -68,7 +68,7 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Fri, 19 May 2017 19:32:05 GMT
+  recorded_at: Sat, 20 May 2017 10:00:46 GMT
 - request:
     method: get
     uri: https://www.googleapis.com/youtube/v3/videos?id=4QdOwMVMs7k&key=AIzaSyANAsFd4u6mdwX5iiv_dmES_kyoy8rtdtc&maxResults=50&part=statistics
@@ -86,13 +86,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Fri, 19 May 2017 19:32:05 GMT
+      - Sat, 20 May 2017 10:00:46 GMT
       Date:
-      - Fri, 19 May 2017 19:32:05 GMT
+      - Sat, 20 May 2017 10:00:46 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"m2yskBQFythfE4irbTIeOgYYfBU/UHdr4IhT-tI4FDZwamqBWdlYVTY"'
+      - '"m2yskBQFythfE4irbTIeOgYYfBU/huUWhYYDUDtREHcN10sv624mGjU"'
       Vary:
       - Origin
       - X-Origin
@@ -115,7 +115,7 @@ http_interactions:
       string: |
         {
          "kind": "youtube#videoListResponse",
-         "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/UHdr4IhT-tI4FDZwamqBWdlYVTY\"",
+         "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/huUWhYYDUDtREHcN10sv624mGjU\"",
          "pageInfo": {
           "totalResults": 1,
           "resultsPerPage": 1
@@ -123,10 +123,10 @@ http_interactions:
          "items": [
           {
            "kind": "youtube#video",
-           "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/GgqnaT_mJeenvWNA7CBJvZeGysw\"",
+           "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/FeHszbP2gM4x1ijhEyLtKijyeDk\"",
            "id": "4QdOwMVMs7k",
            "statistics": {
-            "viewCount": "456",
+            "viewCount": "458",
             "likeCount": "20",
             "dislikeCount": "0",
             "favoriteCount": "0",
@@ -136,5 +136,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Fri, 19 May 2017 19:32:05 GMT
+  recorded_at: Sat, 20 May 2017 10:00:46 GMT
 recorded_with: VCR 3.0.3

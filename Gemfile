@@ -16,7 +16,8 @@ gem 'friendly_id',                                                     '~> 5.1'
 gem 'kaminari',                                                       '~> 0.17'
 gem 'carrierwave',                                                     '~> 1.0'
 gem 'acts-as-taggable-on',                                             '~> 4.0'
-gem 'sidekiq',                                                         '4.2.10'
+gem 'sidekiq',                                                      '~> 4.2.10'
+gem 'sidekiq-scheduler',                                             '~> 2.1.4'
 
 #=== UI =======================================================================
 gem 'sass-rails',                                                      '~> 5.0'

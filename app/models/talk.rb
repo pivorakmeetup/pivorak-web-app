@@ -21,4 +21,12 @@ class Talk < ApplicationRecord
   def tag_list
     @tag_list ||= ActsAsTaggableOn::TagList.new tags.collect(&:name)
   end
+
+  def extra_video_data
+    {
+      video_duration:    extra['video_duration'],
+      video_likes_count: extra['video_likes_count'],
+      video_views_count: extra['video_views_count'],
+    }
+  end
 end
