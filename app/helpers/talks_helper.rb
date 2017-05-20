@@ -24,4 +24,8 @@ module TalksHelper
   def talk_link(talk, text = "", options = {})
     link_to text, polymorphic_path(talk), options
   end
+
+  def talk_length(talk_duration)
+    Time.at(talk_duration).utc.strftime("%H:%M:%S")
+  end
 end
