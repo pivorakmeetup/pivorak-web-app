@@ -1,4 +1,4 @@
-RSpec.describe Talk::FetchExternalVideoData, vcr: { record: :once } do
+RSpec.describe Talk::FetchExternalVideoData, vcr: { record: :new_episodes } do
   let(:talk) do
       create :talk,
         title: '"Building Component Based Rails Applications" - practice',
