@@ -13,11 +13,11 @@ module Admin
     def create
       @talk = Talk.new(talks_params)
 
-      react_to talk.save
+      react_to Talk::Create.call(talk)
     end
 
     def update
-      react_to talk.update(talks_params)
+      react_to Talk::Update.call(talk, talks_params)
     end
 
     private
