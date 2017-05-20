@@ -11,9 +11,25 @@ describe VisitRequestMailer do
   let(:event) { create(:event) }
   let(:visit_request) { create(:visit_request, user: user, event: event) }
 
-  describe '#unverified_attendee' do
-    let(:mail) { described_class.unverified_attendee(visit_request.id) }
-    let(:email_template) { EmailTemplate.find_by!(title: 'VisitRequestMailer#unverified_attendee') }
+  describe '#needs_confirmation' do
+    let(:mail) { described_class.needs_confirmation(visit_request) }
+    let(:email_template) { EmailTemplate.find_by!(title: 'VisitRequestMailer#needs_confirmation') }
+
+    it 'renders the headers' do
+      expect(mail.subject).to eq(email_template.subject)
+      expect(mail.to).to eq([visit_request.user.email])
+      expect(mail.from).to eq([ApplicationMailer::PIVORAK_EMAIL])
+    end
+
+    it 'renders the body' do
+      expect(mail.body.encoded).to include event.title
+      expect(mail.body.encoded).to include user.full_name
+    end
+  end
+
+  describe '#notify_admin_about_unverified_attendee' do
+    let(:mail) { described_class.notify_admin_about_unverified_attendee(visit_request) }
+    let(:email_template) { EmailTemplate.find_by!(title: 'VisitRequestMailer#notify_admin_about_unverified_attendee') }
 
     it 'renders the headers' do
       expect(mail.subject).to eq(email_template.subject)

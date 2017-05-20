@@ -200,7 +200,7 @@ en:
         subject: 'New user was registered: %{user}'
         body: 'New user was registered: %{user} with email: %{email}'
     visit_request_mailer:
-      unverified_attendee:
+      notify_admin_about_unverified_attendee:
         subject: New newbie signed up to event
 
   speakers:

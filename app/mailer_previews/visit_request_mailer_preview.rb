@@ -1,25 +1,24 @@
 class VisitRequestMailerPreview
+  def approved
+    VisitRequestMailer.approved visit_request
+  end
+
   def confirmation
     VisitRequestMailer.confirmation visit_request
   end
 
-
-  def unverified_attendee
-    VisitRequestMailer.unverified_attendee visit_request_id
+  def needs_confirmation
+    VisitRequestMailer.needs_confirmation visit_request
   end
 
 
-  def approved
-    VisitRequestMailer.approved visit_request
+  def notify_admin_about_unverified_attendee
+    VisitRequestMailer.notify_admin_about_unverified_attendee visit_request
   end
 
   private
 
   def visit_request
     VisitRequest.last
-  end
-
-  def visit_request_id
-    visit_request.id
   end
 end
