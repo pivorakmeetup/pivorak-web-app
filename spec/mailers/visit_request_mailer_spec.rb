@@ -2,8 +2,6 @@ require 'rails_helper'
 
 describe VisitRequestMailer do
   before do
-    require 'rake'
-    Rails.application.load_tasks
     Rake::Task['email_templates:seed'].execute
   end
 
