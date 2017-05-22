@@ -10,6 +10,10 @@ module ApplicationHelper
     "#{formatted_date} #{delimiter} #{formatted_time}"
   end
 
+  def markdownify(content)
+    MarkdownRenderer.call(content)
+  end
+
   def unauthorized_message(action_message)
     return if current_user
 
