@@ -6,8 +6,15 @@ class VisitRequest
     end
 
     def call
-      return VisitRequest::Approve.call(visit_request) if user.verified? && policy.has_free_slot_for?(user)
-      VisitRequestMailer.unverified_attendee(visit_request.id).deliver_later unless user.verified?
+      if user.verified? && policy.has_free_slot_for?(user)
+        return VisitRequest::Approve.call(visit_request)
+      end
+
+      unless user.verified?
+        VisitRequestMailer.notify_admin_about_unverified_attendee(visit_request).deliver_later
+        VisitRequestMailer.needs_confirmation(visit_request).deliver_later
+      end
+
       visit_request.pending!
       visit_request.waiting_list! unless policy.has_free_slot_for?(user)
     end
@@ -17,7 +24,7 @@ class VisitRequest
     attr_reader :user, :event
 
     def visit_request
-      @visit_request ||= VisitRequest.find_or_initialize_by(
+      @visit_request ||= VisitRequest.find_or_create_by(
         user: user, event: event
       )
     end

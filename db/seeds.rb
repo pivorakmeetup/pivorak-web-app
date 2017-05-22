@@ -1,3 +1,4 @@
+require 'factory_girl_rails'
 #=== Users ====================================================================
 User.where(email: 'pivorak.me@gmail.com').first_or_create!(
   first_name: 'Pivorak',
@@ -7,7 +8,7 @@ User.where(email: 'pivorak.me@gmail.com').first_or_create!(
   verified:   true
 ).confirm
 
-User.where(email: 'first@example.com').first_or_create!(
+first_user = User.where(email: 'first@example.com').first_or_create!(
     first_name: 'First', last_name: 'User', password: 'password'
 ).confirm
 
@@ -36,6 +37,15 @@ Venue.where(name: 'iHUB', description: 'http://ihub.world/ua/lviv-ua/',
 #=== Pages ====================================================================
 Page.where(title: 'About Us', body: '...', url: 'about-us').first_or_create!
 Page.where(title: 'Contacts', body: '...', url: 'contacts').first_or_create!
+
+#=== Email Template ====================================================================
+Rake::Task['email_templates:seed'].execute
+
+#=== Event ====================================================================
+FactoryGirl.create(:event)
+
+#=== Visit Requests ====================================================================
+VisitRequest.create!(user: User.first, event: Event.first)
 
 # if Rails.env.development?
 #   #=== Venues ===================================================================
