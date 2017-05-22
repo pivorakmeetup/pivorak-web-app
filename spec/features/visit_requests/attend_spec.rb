@@ -59,7 +59,7 @@ RSpec.describe 'Visit Requests ATTEND' do
 
     describe 'event page' do
       it { expect(page).to_not have_link 'Attend' }
-      it { expect(page).to have_content 'Please login or register to attend this event' }
+      it { expect(page).to have_content 'Please log in or register and then enroll in this event to attend' }
     end
   end
 end
