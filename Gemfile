@@ -47,6 +47,7 @@ gem 'inline_svg',                                                      '~> 1.2'
 gem 'icalendar',                                                     '~> 2.4.1'
 gem 'yt',                                                           '~> 0.30.1'
 gem 'gibbon',                                                          '~> 3.0'
+gem 'coderay',                                                       '~> 1.1.1'
 
 #=== CONFIG ===================================================================
 gem 'dotenv-rails',                                                    '~> 2.2'

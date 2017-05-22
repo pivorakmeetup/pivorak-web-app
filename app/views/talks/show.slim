@@ -17,7 +17,7 @@
     .pk-container
       .pk-talk-content__container
         .pk-talk-content__left
-          = talk.description
+          = markdownify(talk.description)
         .pk-talk-content__right
           .pk-talk-content__link-area
             = talk_slides_url(talk, class: "pk-link pk-link--btn pk-talk-content__link")

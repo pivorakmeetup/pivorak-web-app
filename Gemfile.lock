@@ -481,6 +481,7 @@ DEPENDENCIES
   carrierwave (~> 1.0)
   chartkick (~> 2.2.3)
   codecov
+  coderay (~> 1.1.1)
   coffee-rails (~> 4.2.1)
   database_cleaner
   devise (~> 4.2)
