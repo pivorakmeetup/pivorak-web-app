@@ -1,11 +1,14 @@
-h2 = 'Friends and supporters of pivorak community:'
-- meetups_supporters.each do |meetups_supporter|
-  = meetups_supporter.name
+.pk-container
+  h2 = 'Friends and supporters of pivorak community:'
+  - meetups_supporters.each do |meetups_supporter|
+    = link_to meetups_supporter.link, class: 'pk-supporter pk-supporter--medium pk-js-changed-color-images', target: '_blank'
+      = image_tag meetups_supporter.logo
 
-h2 = 'Partners of Ruby Summer School:'
-= inlove_partner.name
+  h2 = 'Partners of Ruby Summer School:'
+  div
+    = link_to inlove_partner.link, class: 'pk-supporter pk-supporter--medium pk-js-changed-color-images', target: '_blank'
+      = image_tag inlove_partner.logo
 
-- course_supporters.each do |course_supporter|
-  = course_supporter.name
-
-
+  - course_supporters.each do |course_supporter|
+    = link_to course_supporter.link, class: 'pk-supporter pk-js-changed-color-images', target: '_blank'
+      = image_tag course_supporter.logo

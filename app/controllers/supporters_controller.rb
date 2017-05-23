@@ -8,7 +8,10 @@ class SupportersController < ApplicationController
   end
 
   def course_supporters
-    @course_supporters ||= friends_groups.find_by(name: 'Course').friends
+    @course_supporters ||= friends_groups
+      .find_by(name: 'Course')
+      .friends
+      .where.not(id: inlove_partner.id)
   end
 
   def meetups_supporters
