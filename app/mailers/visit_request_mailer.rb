@@ -38,8 +38,4 @@ class VisitRequestMailer < ApplicationMailer
       format.html { email_template.render(user: @user, event: @event) }
     end
   end
-
-  def unverified_attendee(visit_request)
-    notify_admin_about_unverified_attendee(visit_request)
-  end
 end
