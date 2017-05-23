@@ -28,6 +28,9 @@ set :slackistrano, {
   webhook: ENV['slackistrano_SLACK_WEBHOOK']
 }
 
+set :postgres_remote_cluster, '9.6/main'
+set :postgres_backup_compression_level, 6 # Will use gzip level 6 to compress the output.
+
 namespace :foreman do
   desc "Export the Procfile to Ubuntu's upstart scripts"
   task :export do

@@ -79,6 +79,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'faker'
   gem 'bullet'
+  gem 'capistrano3-postgres', require: false
 end
 
 group :test do
