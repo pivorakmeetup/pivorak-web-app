@@ -33,6 +33,8 @@ Rails.application.routes.draw do
     post :donate, on: :member
   end
 
+  resource :supporters, only: %i[show]
+
   #=== ADMIN AREA ===============================
   authenticate :user, ->(u) { u.admin? } do
     namespace :admin do

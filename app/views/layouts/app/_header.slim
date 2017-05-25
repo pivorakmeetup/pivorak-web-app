@@ -63,6 +63,9 @@ header.pk-header class="#{yield(:main_header_class)}"
               /li.pk-list__unit = goals_link
 
               li.pk-list__unit.pk-header__li-list-wr
+                = link_to "supporters", supporters_path
+
+              li.pk-list__unit.pk-header__li-list-wr
                 a = "contacts"
                 ul.pk-header__li-list
                   li.pk-header__li-list-item = page_link contacts_page

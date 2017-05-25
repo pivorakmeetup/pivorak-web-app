@@ -22,6 +22,7 @@
     initSlider();
     loadFlash();
     blendedImg();
+    initChangeImageColor();
     document.removeEventListener('turbolinks:load', initApplication);
   }
 
