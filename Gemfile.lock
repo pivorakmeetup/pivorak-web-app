@@ -85,6 +85,7 @@ GEM
     capistrano-sidekiq (0.10.0)
       capistrano
       sidekiq (>= 3.4)
+    capistrano3-postgres (0.2.3)
     capybara (2.13.0)
       addressable
       mime-types (>= 1.16)
@@ -477,6 +478,7 @@ DEPENDENCIES
   capistrano-rails (~> 1.2)
   capistrano-rvm
   capistrano-sidekiq
+  capistrano3-postgres
   capybara
   carrierwave (~> 1.0)
   chartkick (~> 2.2.3)
@@ -550,4 +552,4 @@ RUBY VERSION
    ruby 2.4.0p0
 
 BUNDLED WITH
-   1.14.6
+   1.15.0

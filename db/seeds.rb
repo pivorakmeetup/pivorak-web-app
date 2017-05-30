@@ -1,6 +1,6 @@
 require 'factory_girl_rails'
 #=== Users ====================================================================
-User.where(email: 'pivorak.me@gmail.com').first_or_create!(
+puts User.where(email: 'admin@pivorak.com').first_or_create!(
   first_name: 'Pivorak',
   last_name:  'Admin',
   password:   'password',
@@ -8,88 +8,68 @@ User.where(email: 'pivorak.me@gmail.com').first_or_create!(
   verified:   true
 ).confirm
 
-first_user = User.where(email: 'first@example.com').first_or_create!(
-    first_name: 'First', last_name: 'User', password: 'password'
+cover = File.open(Rails.root.join('db', 'pivorak_speaker.png'))
+
+puts User.where(email: 'first@example.com').first_or_create!(
+    first_name: 'First', last_name: 'User', password: 'password', cover: cover
 ).confirm
 
-User.where(email: 'second@example.com').first_or_create!(
-    first_name: 'Second', last_name: 'User', password: 'password'
+puts User.where(email: 'second@example.com').first_or_create!(
+    first_name: 'Second', last_name: 'User', password: 'password', cover: cover
+).confirm
+
+puts User.where(email: 'third@example.com').first_or_create!(
+    first_name: 'Third', last_name: 'User', password: 'password', cover: cover
 ).confirm
 
 #=== Goal =====================================================================
-Goal.where(title: 'General', amount: 99999999).first_or_create!
+puts Goal.where(title: 'General', amount: 99999999).first_or_create!
 
 #=== Groups ===================================================================
 [:regular, :lighting, :workshop].each do |talk_type|
-  Group.where(resource: 'Talk', name: talk_type).first_or_create!
+  puts Group.where(resource: 'Talk', name: talk_type).first_or_create!
 end
 
 [:sponsors, :meetups, :books, :resources].each do |friend_type|
-  Group.where(resource: 'Friend', name: friend_type).first_or_create!
+  puts Group.where(resource: 'Friend', name: friend_type).first_or_create!
 end
 
 #=== Venues ===================================================================
-Venue.where(name: 'iHUB', description: 'http://ihub.world/ua/lviv-ua/',
+puts Venue.where(name: 'iHUB', description: 'http://ihub.world/ua/lviv-ua/',
   address: 'Lviv, Zamknena Str 9',
   map_url: 'https://www.google.com/maps/place/%D0%B2%D1%83%D0%BB%D0%B8%D1%86%D1%8F+%D0%97%D0%B0%D0%BC%D0%BA%D0%BD%D0%B5%D0%BD%D0%B0,+9,+%D0%9B%D1%8C%D0%B2%D1%96%D0%B2,+%D0%9B%D1%8C%D0%B2%D1%96%D0%B2%D1%81%D1%8C%D0%BA%D0%B0+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C,+%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0/@49.8404509,24.0134988,17z/data=!3m1!4b1!4m5!3m4!1s0x473add76e1c6ee3b:0xda08ff9150b3da68!8m2!3d49.8404475!4d24.0156875'
 ).first_or_create!
 
 #=== Pages ====================================================================
-Page.where(title: 'About Us', body: '...', url: 'about-us').first_or_create!
-Page.where(title: 'Contacts', body: '...', url: 'contacts').first_or_create!
+puts Page.where(title: 'About',    body: '...', url: 'about').first_or_create!
+puts Page.where(title: 'Contacts', body: '...', url: 'contacts').first_or_create!
 
-#=== Email Template ====================================================================
-Rake::Task['email_templates:seed'].execute
+#=== Email Template ===========================================================
+puts Rake::Task['email_templates:seed'].execute
 
 #=== Event ====================================================================
-FactoryGirl.create(:event)
+puts event = Event.where(
+  title:          'The best pivorak ever',
+  status:         :registration,
+  limit_total:    5,
+  limit_verified: 3,
+  venue:          Venue.first,
+  published:      true,
+  started_at:     Time.now + 10.days,
+  finished_at:    Time.now + 10.days + 3.hours
+).first_or_create!
 
-#=== Visit Requests ====================================================================
-VisitRequest.create!(user: User.first, event: Event.first)
+#=== Talks ====================================================================
+3.times do |n|
+  Talk.where(
+    speaker_id:  n + 2,
+    event_id:    event.id,
+    title:       Faker::Hipster.sentence,
+    description: Faker::Hipster.paragraph
+  ).first_or_create!
+end
 
-# if Rails.env.development?
-#   #=== Venues ===================================================================
-#   100.times do
-#     Venue.create(name: Faker::StarWars.planet, description: Faker::StarWars.wookie_sentence,
-#       address: Faker::Address.street_address,
-#       map_url: 'https://www.google.com/maps/place/%D0%B2%D1%83%D0%BB%D0%B8%D1%86%D1%8F+%D0%97%D0%B0%D0%BC%D0%BA%D0%BD%D0%B5%D0%BD%D0%B0,+9,+%D0%9B%D1%8C%D0%B2%D1%96%D0%B2,+%D0%9B%D1%8C%D0%B2%D1%96%D0%B2%D1%81%D1%8C%D0%BA%D0%B0+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C,+%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0/@49.8404509,24.0134988,17z/data=!3m1!4b1!4m5!3m4!1s0x473add76e1c6ee3b:0xda08ff9150b3da68!8m2!3d49.8404475!4d24.0156875'
-#     )
-#   end
-
-#   #=== Events =================================================================
-#   [Event::REGISTRATION, Event::PLANNED, Event::CONFIRMATION, Event::LIVE, Event::PASSED].each do |status|
-#     rand(60..100).times do
-#       Event.create(title: Faker::Lorem.word, agenda: Faker::Lorem.paragraph,
-#        status:status, published: true,
-#        started_at: Faker::Date.between(5.months.ago, Date.today), finished_at: Time.now
-#       )
-#     end
-#   end
-
-#   #=== Talks ==================================================================
-#   100.times do
-#     Talk.create(title: Faker::StarWars.planet, description: Faker::StarWars.quote,
-#                 created_at: Faker::Date.between(5.months.ago, Date.today) )
-#   end
-
-#   #=== Goals ==================================================================
-#   100.times do
-#     Goal.create(title: Faker::StarWars.droid, amount: Faker::Commerce.price)
-#   end
-
-#   #=== Emails =================================================================
-#   100.times do
-#     Email.create(subject: Faker::Hipster.sentence, body: Faker::Hipster.paragraph(10))
-#   end
-
-#   #=== Friends ================================================================
-#   100.times do
-#     Friend.create(name: Faker::StarWars.character, description: Faker::Hipster.paragraph(10))
-#   end
-
-#   #=== Friends ================================================================
-#   100.times do
-#     User.create(first_name: Faker::Name.name, last_name: 'User', password: 'password',
-#                 email: Faker::Internet.unique.email, created_at: Faker::Date.between(5.months.ago, Date.today))
-#   end
-# end
+#=== Visit Requests ===========================================================
+puts event.visit_requests.where(user: User.first,  status: :approved).first_or_create!
+puts event.visit_requests.where(user: User.second, status: :pending).first_or_create!
+puts event.visit_requests.where(user: User.third,  status: :canceled).first_or_create!
