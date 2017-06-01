@@ -2,8 +2,6 @@
   font-family: 'Arvo';
   list-style: none;
   white-space: normal;
-  max-height: 844px;
-  overflow: hidden;
 }
 
 .pk-talk__image {
@@ -13,6 +11,7 @@
   background-position: 50% 100%;
   background-repeat: no-repeat;
   background-size: contain;
+  
   img {
     display: inline-block;
     vertical-align: bottom;
@@ -21,29 +20,23 @@
 }
 
 .pk-talk__name {
+  @include fluid-type(font-size, 320px, 1024px, 16px, 18px);
+
   position: relative;
   margin-top: 24px;
-  font-size: 18px;
   color: #FFF4DA;
   letter-spacing: 0.05555556em;
   line-height: 1.16667;
-  padding-bottom: 4px;
-
-  &:after {
-    content: '';
-    width: 138px;
-    height: 2px;
-    background-color: #FFF4DA;
-    position: absolute;
-    top: 100%;
-    left: 0px;
-  }
+  border-bottom: 2px solid currentColor;
+  display: inline-block;
+  padding-bottom: .5rem;
+  padding-right: 1.5rem;
 }
 
 .pk-talk__title {
   font-family: $headings-font-family;
   text-transform: uppercase;
-  font-size: 46px;
+  @include fluid-type(font-size, 320px, 1024px, 18px, 30px);
   line-height: (65 / 46);
   color: #FCF7EF;
   letter-spacing: 0.075em;
@@ -51,7 +44,7 @@
 }
 
 .pk-talk__content {
-  font-size: 14px;
+  @include fluid-type(font-size, 320px, 1024px, 14px, 16px);
   color:#FCF7EF;
   line-height: (21 / 14);
   margin-top: 20px;
