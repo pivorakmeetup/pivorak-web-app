@@ -17,8 +17,11 @@ $namespace: ".pk-slider";
 }
 
 #{$namespace}__container {
-  display: flex;
   padding: 4rem 0;
+
+  @media(min-width: 800px) {
+    display: flex;
+  }
 }
 
 #{$namespace}__blend-image {
@@ -27,16 +30,27 @@ $namespace: ".pk-slider";
 
 #{$namespace}__unit-container {
   flex: 1;
-  position: relative;
+  position: relative;  
+  min-height: 100%;
   padding: 4rem 0;
 
   &:after,
   &:before {
     content: '';
-    height: 100%;
+    height: calc(100vw / 3);
+    min-height: 100%;
     width: 100%;
     top: 0;
     position: absolute;
+    transform: skewX(6deg);
+  }
+
+  &:before {
+    transform-origin: left bottom;
+  }
+
+  &:after {
+    transform-origin: left top;
   }
   
   #{$namespace}__unit {
@@ -45,15 +59,15 @@ $namespace: ".pk-slider";
   }
   
   &:nth-child(4n+1) {
-    background-color: #57C8D1;
-    top: -3rem;
-    position: relative;
-    z-index: 1;
+    @media(min-width: 800px) {
+      top: -3rem;
+      z-index: 1;
+    }
 
-    &:after {
+    &:before,
+    &:after,
+    #{$namespace}__blend-image {
       background-color: #57C8D1;
-      transform: skewX(6deg);
-      transform-origin: left top;
     }
 
     #{$namespace}__unit {
@@ -62,34 +76,42 @@ $namespace: ".pk-slider";
   }
 
   &:nth-child(4n+2) {
-    background-color: #F7B332;
-    top: -1rem;
-    z-index: 3;
-
-    &:before {
-      background-color: #F7B332;
-      transform: skewX(6deg);
-      transform-origin: left bottom;
+    @media(min-width: 800px) {
+      top: -1rem;
+      margin-right: -4rem;
+      z-index: 3;
     }
 
-    &:after {
+    &:before,
+    &:after,
+    #{$namespace}__blend-image {
       background-color: #F7B332;
-      transform: skewX(6deg);
-      transform-origin: left top;
     }
 
     #{$namespace}__unit {
       z-index: 4;
+      
+      @media(min-width: 800px) {
+        margin-left: -2rem;
+        padding-right: 6rem;
+      }
     }
   }
   
   &:nth-child(4n+3) {
     background-color: #50B27E;
-    top: -2rem;
-    z-index: 5;
+
+    @media(min-width: 800px) {
+      top: -2rem;
+      z-index: 5;
+    }
 
     #{$namespace}__unit {
       z-index: 3;
+    }
+
+    &, #{$namespace}__blend-image {
+      background-color: #50B27E;
     }
   }
   
