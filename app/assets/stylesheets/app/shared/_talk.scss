@@ -36,7 +36,7 @@
 .pk-talk__title {
   font-family: $headings-font-family;
   text-transform: uppercase;
-  @include fluid-type(font-size, 320px, 1176px, 18px, 36px);
+  @include fluid-type(font-size, 320px, 1176px, 20px, 36px);
   line-height: (65 / 46);
   color: #FCF7EF;
   letter-spacing: 0.075em;
@@ -44,7 +44,7 @@
 }
 
 .pk-talk__content {
-  @include fluid-type(font-size, 320px, 1024px, 14px, 16px);
+  @include fluid-type(font-size, 320px, 1024px, 16px, 18px);
   color:#FCF7EF;
   line-height: (21 / 14);
   margin-top: 20px;
