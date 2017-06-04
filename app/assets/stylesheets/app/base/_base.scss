@@ -20,7 +20,7 @@ body {
   position: relative;
   &:after {
     content: "";
-    background: transparent image-url("paper-imit-bg.png") center center repeat;
+    background: transparent image-url("paper-imit-bg.png") repeat center;
     background-size: 640px 640px;
     pointer-events: none;
     position: absolute;
