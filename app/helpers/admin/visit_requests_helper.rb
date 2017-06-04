@@ -53,5 +53,9 @@ module Admin
         method: :put, class: ['ui button', btn_class],
         data: { confirm: t('phrases.confirm') }
     end
+
+    def visitor_ids
+      @visitor_ids ||= User::EventVisitors.call(event_id: event.id).ids
+    end
   end
 end

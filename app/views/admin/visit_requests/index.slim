@@ -4,6 +4,7 @@
   .ten.wide.column
     h2 = event.title
     = event_status_label(event)
+    = link_to t('visit_requests.send_email_to_visitors'), new_admin_email_path(recipient_ids: visitor_ids)
   .six.wide.column.bottom.aligned
     = render 'admin/shared/search_bar', path: admin_event_visit_requests_path
 

@@ -2,7 +2,7 @@ RSpec.describe 'Emails CREATE' do
 
   before do
     assume_admin_logged_in
-    visit "admin/emails/new"
+    visit "admin/emails/new?recipient_ids[]=0"
   end
 
   context 'when params are valid' do
@@ -14,7 +14,7 @@ RSpec.describe 'Emails CREATE' do
       fill_in 'Subject',  with: subject
       fill_in 'Body',  with: body
 
-      click_button 'Create Email'
+      click_button 'Send'
 
       expect(page).to have_current_path "/admin/emails/#{Email.last.id}"
       expect(page).to have_content(subject)
@@ -27,7 +27,7 @@ RSpec.describe 'Emails CREATE' do
       fill_in 'Subject',  with: ''
       fill_in 'Body',  with: ''
 
-      click_button 'Create Email'
+      click_button 'Send'
 
       expect(page).to have_current_path "/admin/emails"
       expect_an_error email_subject:  :blank
