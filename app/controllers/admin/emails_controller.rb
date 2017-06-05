@@ -33,7 +33,7 @@ module Admin
     end
 
     def service
-      @service ||= Email::Create.new(params: email_params, recipient_ids: params.fetch(:recipient_ids, []))
+      @service ||= Email::Create.new(params: email_params, recipient_ids: recipient_ids)
     end
 
     def email_params
