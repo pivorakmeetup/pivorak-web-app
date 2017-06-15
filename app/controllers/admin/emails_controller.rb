@@ -1,6 +1,6 @@
 module Admin
   class EmailsController < BaseController
-    helper_method :email, :emails
+    helper_method :email, :emails, :recipient_ids, :recipient_emails
     add_breadcrumb 'emails.plural', :admin_emails_path
     before_action :add_new_breadcump,  only: %i[new create]
 
@@ -20,12 +20,20 @@ module Admin
 
     private
 
+    def recipient_ids
+      params.fetch(:recipient_ids, [])
+    end
+
+    def recipient_emails
+      @recipient_emails ||= User.where(id: recipient_ids).pluck(:email)
+    end
+
     def default_redirect
       redirect_to([:admin, email])
     end
 
     def service
-      @service ||= Email::Create.new(email_params)
+      @service ||= Email::Create.new(params: email_params, recipient_ids: recipient_ids)
     end
 
     def email_params

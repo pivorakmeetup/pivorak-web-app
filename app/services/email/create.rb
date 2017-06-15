@@ -2,8 +2,9 @@ class Email
   class Create < ApplicationService
     attr_reader :email
 
-    def initialize(params)
+    def initialize(params:, recipient_ids:)
       @params = params
+      @recipient_ids = recipient_ids
     end
 
     def call
@@ -19,10 +20,6 @@ class Email
 
     private
 
-    def recipient_ids
-      User.real.ids
-    end
-
-    attr_reader :params
+    attr_reader :params, :recipient_ids
   end
 end
