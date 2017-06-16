@@ -27,7 +27,7 @@
                   .pk-talk__image.pk-slider__blend-image(style="background-image: url(#{talk.speaker&.cover_url || ""})")
                   .pk-talk__name = talk.speaker&.full_name
                   .pk-talk__title = talk.title
-                  .pk-talk__content = talk.description
+                  .pk-talk__content = MarkdownRenderer.call(talk.description)
       .js_prev.pk-slider__prev
       .js_next.pk-slider__next
 
