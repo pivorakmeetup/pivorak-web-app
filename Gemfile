@@ -59,6 +59,7 @@ gem 'tzinfo-data',              platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 #=== DEV & TEST ===============================================================
 group :development do
+  gem 'letter_opener'
   gem 'web-console'
   gem 'listen'
   gem 'spring'
