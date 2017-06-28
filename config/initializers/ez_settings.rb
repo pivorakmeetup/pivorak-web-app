@@ -10,10 +10,10 @@ app = Ez::Settings::Interface.define(:app) do
   end
 
   group :events do
-    key :default_limit,             default: -> { 50 }
-    key :default_limit_verified,    default: -> { 35 }
-    key :default_started_at_hours,  default: -> { 18 }
-    key :default_finished_at_hours, default: -> { 22 }
+    key :default_limit,             type: :integer, default: -> { 50 }
+    key :default_limit_verified,    type: :integer, default: -> { 35 }
+    key :default_started_at_hours,  type: :integer, default: -> { 18 }
+    key :default_finished_at_hours, type: :integer, default: -> { 22 }
   end
 
   # This is dummy settings group just to show the power of ez-settings
