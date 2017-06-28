@@ -44,10 +44,16 @@ $namespace: ".pk-supporter";
   height: 170px;
 }
 
-#{$namespace} + #{$namespace} {
-  margin-left: 40px;
+#{$namespace}-wrapper {
+  margin: 0 -20px;
+  #{$namespace} {
+    margin: 0 20px;
+  }
 }
 
-#{$namespace}--medium + #{$namespace}--medium {
-  margin-left: 56px;
+#{$namespace}-wrapper-medium {
+  margin: 0 -28px;
+  #{$namespace} {
+    margin: 0 28px;
+  }
 }
