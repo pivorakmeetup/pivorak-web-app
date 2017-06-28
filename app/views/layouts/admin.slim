@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    title = content_for?(:title) ? yield(:title) : t('phrases.default_admin_title')
+    title = content_for?(:title) ? yield(:title) : Ez::Settings[:app, :admin, :app_title]
     = csrf_meta_tags
     = stylesheet_link_tag    'admin/application', 'data-turbolinks-track': 'reload', media: 'all'
     = javascript_include_tag 'admin/application', 'data-turbolinks-track': 'reload'

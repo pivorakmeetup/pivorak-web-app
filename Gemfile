@@ -19,6 +19,8 @@ gem 'acts-as-taggable-on',                                             '~> 4.0'
 gem 'sidekiq',                                                      '~> 4.2.10'
 gem 'sidekiq-scheduler',                                             '~> 2.1.4'
 
+gem 'ez-settings'
+
 #=== UI =======================================================================
 gem 'sass-rails',                                                      '~> 5.0'
 gem 'turbolinks',                                                      '~> 5.0'
@@ -80,6 +82,7 @@ group :development, :test do
   gem 'faker'
   gem 'bullet'
   gem 'capistrano3-postgres', require: false
+  gem 'guard-rspec'
 end
 
 group :test do
