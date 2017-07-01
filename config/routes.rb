@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'home#index'
-  mount RailsEmailPreview::Engine, at: 'emails'
 
+  mount RailsEmailPreview::Engine, at: 'emails'
 
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks',
@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   authenticate :user, ->(u) { u.admin? } do
     namespace :admin do
       get '/', to: 'home#index'
+
       resources :events,  except: %i[show destroy] do
         resources :visit_requests, only: %i[index] do
           collection do
@@ -64,6 +65,8 @@ Rails.application.routes.draw do
       resources :friends, except: %i[show destroy]
       resources :pages,   except: %i[show]
       resources :email_templates,   only: %i[index edit update]
+
+      ez_settings_for :app
 
       require 'sidekiq/web'
       mount Sidekiq::Web => '/sidekiq'

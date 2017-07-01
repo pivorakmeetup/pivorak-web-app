@@ -5,8 +5,8 @@ RSpec.describe 'Events CREATE' do
   end
 
   context 'dateTime inputs' do
-    let(:default_started_at_hour) { Event::DEFAULT_STARTED_AT_HOURS }
-    let(:default_finished_at_hour) { Event::DEFAULT_FINISHED_AT_HOURS }
+    let(:default_started_at_hour)  { Ez::Settings[:app, :events, :default_started_at_hours].to_i }
+    let(:default_finished_at_hour) { Ez::Settings[:app, :events, :default_finished_at_hours].to_i }
 
     it 'should have default values' do
       expect(

@@ -2,7 +2,8 @@ RSpec.describe 'Not available feature' do
   subject { page }
 
   before do
-    allow(Rails).to receive_message_chain(:env, :production?) { true }
+    allow(Rails).to receive_message_chain(:env, :production?)  { true }
+    allow(Rails).to receive_message_chain(:env, :development?) { false }
   end
 
   context 'regular visitor' do
