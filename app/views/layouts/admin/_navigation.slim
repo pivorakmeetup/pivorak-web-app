@@ -10,3 +10,7 @@
 = admin_email_templates_link
 = admin_friends_link
 = admin_pages_link
+
+// TOOD @VS: Move all menu items to registry. Or not ?
+- Ez::Registry.data(:admin_primary_navigation).each do |menu_item|
+  = link_to t(menu_item.label), menu_item.path, class: class_for(:settings)
