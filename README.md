@@ -14,6 +14,11 @@ $ cd pivorak-web-app
 $ rvm use ruby-2.3.1@pivorak --create
 $ bundle
 $ cp config/database.yml.example config/database.yml
+```
+Before database setup you should install Redis. Look install instructions here:
+- for Ubuntu: https://goo.gl/PbG00W
+- for MacOS: https://goo.gl/W8xQMJ
+```sh
 $ rails db:setup
 $ cp config/environments/development.rb.example config/environments/development.rb
 $ rails s
