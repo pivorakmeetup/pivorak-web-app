@@ -33,7 +33,7 @@ module Admin
     def talks
       @talks ||= search_against(Talk)
         .includes(:tags, :event, :speaker, :group)
-        .page(params[:page])
+        .page(params[:page]).sorted_by_date
     end
 
     def talks_params
