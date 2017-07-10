@@ -10,11 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170520084316) do
+ActiveRecord::Schema.define(version: 20170710210007) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
+
+  create_table "courses_seasons", force: :cascade do |t|
+    t.string   "title"
+    t.string   "slug"
+    t.text     "description"
+    t.datetime "start_at"
+    t.datetime "finish_at"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["slug"], name: "index_courses_seasons_on_slug", using: :btree
+  end
 
   create_table "donations", force: :cascade do |t|
     t.integer  "user_id"
@@ -31,6 +42,7 @@ ActiveRecord::Schema.define(version: 20170520084316) do
   create_table "email_templates", force: :cascade do |t|
     t.string   "title"
     t.string   "subject"
+    t.string   "from"
     t.text     "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -61,6 +73,14 @@ ActiveRecord::Schema.define(version: 20170520084316) do
     t.integer  "limit_verified",        default: 0,     null: false
     t.text     "facebook_embeded_post"
     t.index ["slug"], name: "index_events_on_slug", using: :btree
+  end
+
+  create_table "ez_pages_pages", force: :cascade do |t|
+    t.string   "title"
+    t.string   "url"
+    t.text     "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|

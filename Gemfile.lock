@@ -8,8 +8,11 @@ PATH
   remote: components/courses
   specs:
     courses (0.1.0)
-      rails (~> 5.0.2)
-      slim-rails (~> 3.1)
+      friendly_id
+      kaminari
+      rails
+      simple_form
+      slim-rails
 
 GEM
   remote: https://rubygems.org/

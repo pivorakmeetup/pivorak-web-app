@@ -3,13 +3,11 @@ Rails.application.routes.draw do
     resources :seasons, only: :show
   end
 
-  authenticate :user, ->(u) { u.admin? } do
-    namespace :admin do
-      namespace :courses do
-        root to: redirect('/admin/courses/seasons')
+  namespace :admin do
+    namespace :courses do
+      root to: redirect('/admin/courses/seasons')
 
-        resources :seasons, except: :destroy
-      end
+      resources :seasons, except: :destroy
     end
   end
 end
