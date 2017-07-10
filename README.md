@@ -31,6 +31,10 @@ $ rails s
 - Add user to the rollbar
 - Add user to the *#web-app* Pivorak Slack channel
 
+# How to Deploy
+```sh
+cap production deploy
+```
 
 # Chat
 
