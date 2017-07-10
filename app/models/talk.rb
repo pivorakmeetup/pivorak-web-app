@@ -12,7 +12,7 @@ class Talk < ApplicationRecord
   belongs_to :group
 
   scope :sorted,         -> { order(:title) }
-  scope :sorted_by_date, -> { order(:created_at) }
+  scope :sorted_by_date, -> { order(created_at: :desc) }
 
   validates :title, presence: true
 
