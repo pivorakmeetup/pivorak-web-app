@@ -26,6 +26,12 @@ $ cp config/environments/development.rb.example config/environments/development.
 $ rails s
 ```
 
+# Onboarding Instructions
+- Add ssh key to the server
+- Add user to the rollbar
+- Add user to the *#web-app* Pivorak Slack channel
+
+
 # Chat
 
 Join our [slack](http://pivorak-slack.herokuapp.com) chat!
