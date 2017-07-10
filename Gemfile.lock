@@ -4,6 +4,13 @@ GIT
   specs:
     liqpay (0.0.1)
 
+PATH
+  remote: components/courses
+  specs:
+    courses (0.1.0)
+      rails (~> 5.0.2)
+      slim-rails (~> 3.1)
+
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -530,6 +537,7 @@ DEPENDENCIES
   codecov
   coderay (~> 1.1.1)
   coffee-rails (~> 4.2.1)
+  courses!
   database_cleaner
   devise (~> 4.2)
   dotenv-rails (~> 2.2)
