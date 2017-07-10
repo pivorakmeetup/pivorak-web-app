@@ -1,1 +1,22 @@
-h2 = 'Seasons list'
+- title t('seasons.plural')
+
+= resource_header :courses_season
+
+table.ui.very.basic.table
+  thead
+    tr
+      th                = t 'words.title'
+      th.center.aligned = t 'seasons.start_at'
+      th.center.aligned = t 'seasons.finish_at'
+      th
+
+  tbody
+    - seasons.each do |season|
+      tr
+        td                = link_to season.title, admin_courses_season_path(season)
+        td.center.aligned = format_timestamp(season.start_at)
+        td.center.aligned = format_timestamp(season.finish_at)
+        td.right.aligned  = controls do
+          = admin_edit_resource_link(season)
+
+= paginate seasons

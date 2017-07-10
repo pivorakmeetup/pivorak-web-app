@@ -1,4 +1,7 @@
 require 'slim-rails'
+require 'kaminari'
+require 'simple_form'
+require 'friendly_id'
 
 module Courses
   class Engine < ::Rails::Engine
