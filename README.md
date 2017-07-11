@@ -14,9 +14,26 @@ $ cd pivorak-web-app
 $ rvm use ruby-2.3.1@pivorak --create
 $ bundle
 $ cp config/database.yml.example config/database.yml
+```
+Before database setup you should install Redis. Look install instructions here:
+- for Ubuntu: https://goo.gl/PbG00W
+- for MacOS: https://goo.gl/W8xQMJ
+
+**Note!** You should have PostgreSQL >= 9.4
+```sh
 $ rails db:setup
 $ cp config/environments/development.rb.example config/environments/development.rb
 $ rails s
+```
+
+# Onboarding Instructions
+- Add ssh key to the server
+- Add user to the rollbar
+- Add user to the *#web-app* Pivorak Slack channel
+
+# How to Deploy
+```sh
+cap production deploy
 ```
 
 # Chat
@@ -26,8 +43,7 @@ We have special `#pivorak-web-app` channel for contributors.
 
 # Git Branches
 
-* `master` - stable code, production deployment.
-* `development` - dev branch, staging deployment. Please checkout your new branch from it.
+Please checkout your new branch from `development` branch. And use `development` branch for deployment to production.
 
 # Contribution
 
