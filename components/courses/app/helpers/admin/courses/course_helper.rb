@@ -6,6 +6,12 @@ module Admin
           yield
         end
       end
+
+      def admin_season_mentors_link(season)
+        link_to icon(:spy, t('mentors.plural')),
+          admin_courses_season_mentors_path(season),
+          class: 'item'
+      end
     end
   end
 end
