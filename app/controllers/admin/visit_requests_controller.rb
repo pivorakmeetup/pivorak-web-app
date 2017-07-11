@@ -1,6 +1,6 @@
 module Admin
   class VisitRequestsController < ::Admin::BaseController
-    helper_method :visit_requests, :event
+    helper_method :visit_requests, :event, :visitors_ids
 
     def index
       add_breadcrumb 'events.plural', path: :admin_events_path
@@ -15,11 +15,15 @@ module Admin
     end
 
     def visit_requests
-      @visit_requests ||= search_against(base_scope).includes(:user).order(:id)
+      @visit_requests ||= search_against(base_scope).includes(:user, :event).order(:id)
     end
 
     def base_scope
       event.send(event.live? ? :final_visit_requests : :visit_requests)
+    end
+
+    def visitors_ids
+      @visitors_ids ||= User::EventVisitors.call(event_id: event.id).ids
     end
   end
 end

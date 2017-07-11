@@ -4,8 +4,12 @@
   .ten.wide.column
     h2 = event.title
     = event_status_label(event)
+
   .six.wide.column.bottom.aligned
     = render 'admin/shared/search_bar', path: admin_event_visit_requests_path
+
+  .ui.grid
+    .ten.column = send_email_to_recipient_ids_link(visitors_ids)
 
   table.ui.very.basic.table
     thead
@@ -36,4 +40,4 @@
                 = admin_approve_visit_request_link(visit_request)
                 = admin_cancel_visit_request_link(visit_request)
 
-  == render 'admin/visit_requests/import' if event.passed?
+== render 'admin/visit_requests/import' if event.passed?

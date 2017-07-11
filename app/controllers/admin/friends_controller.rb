@@ -31,7 +31,7 @@ module Admin
     end
 
     def friends
-      @friends ||= search_against(Friend).order(:name).page(params[:page])
+      @friends ||= search_against(Friend).includes(:group).order(:name).page(params[:page])
     end
 
     def friend_params

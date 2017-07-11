@@ -15,3 +15,10 @@
 .row-chart {
   display: inline-block;
 }
+
+.image_preview {
+  img {
+    max-height: 500px;
+    max-width: 500px;
+  }
+}

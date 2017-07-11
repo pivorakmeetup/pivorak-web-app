@@ -22,9 +22,9 @@ coverage
 
 config/database.yml
 config/secrets.yml
+config/settings.yml
 .ruby-gemset
 
 .DS_store
 public/uploads
-config/environments/development.rb
 lib/tasks/import_users/pivorakers_list.csv

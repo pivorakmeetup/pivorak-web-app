@@ -33,6 +33,7 @@ en:
     squash: Squash
     into: Into
     danger: Danger
+    send: Send
 
   resources:
     errors:
@@ -45,9 +46,11 @@ en:
     squash: 'Squash %{resource}'
     confirm: 'Are you sure ?'
     not_assigned: 'not assigned'
-    unauthorized: 'Please <a href=%{login_url}>login</a> or <a href=%{register_url}>register</a> %{action_message}'
-    default_title: 'Pivorak Lviv Ruby User Group'
-    default_admin_title: 'Admin PivorakWebApp'
+    unauthorized: 'Please <a href=%{login_url}>log in</a> or <a href=%{register_url}>register</a> and then enroll in this event to attend'
+    not_assigned: Not assigned
+
+  settings:
+    plural: Settings
 
   search_result:
     singular: Search Result
@@ -152,6 +155,7 @@ en:
     plural: Groups
 
   visit_requests:
+    send_email_to_visitors: 'Send email to visitors'
     attend: Attend
     already_created: Already attending
     approve: Approve
@@ -184,7 +188,7 @@ en:
     send: Send
 
   send_mail:
-    sended: Letter was sended
+    sended: Letter was sent
     error: Error sending letter
 
   friends:
@@ -199,7 +203,7 @@ en:
         subject: 'New user was registered: %{user}'
         body: 'New user was registered: %{user} with email: %{email}'
     visit_request_mailer:
-      unverified_attendee:
+      notify_admin_about_unverified_attendee:
         subject: New newbie signed up to event
 
   speakers:

@@ -7,7 +7,7 @@ set :repo_url, 'git@github.com:pivorakmeetup/pivorak-web-app.git'
 set :deploy_to, proc { "/home/dev/projects/pivorak_#{fetch :stage}" }
 set :rvm_ruby_version, 'ruby-2.3.1@pivorak'
 #set :linked_files, %w(config/database.yml config/secrets.yml .env)
-set :linked_files, %w(config/database.yml config/secrets.yml .env)
+set :linked_files, %w(config/database.yml config/secrets.yml .env config/settings.yml)
 set :linked_dirs, fetch(:linked_dirs, []).push(
   'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system',
   'node_modules', 'public/uploads'
@@ -27,6 +27,9 @@ set :slackistrano, {
   channel: ENV['slackistrano_SLACK_CHANNEL'],
   webhook: ENV['slackistrano_SLACK_WEBHOOK']
 }
+
+set :postgres_remote_cluster, '9.6/main'
+set :postgres_backup_compression_level, 6 # Will use gzip level 6 to compress the output.
 
 namespace :foreman do
   desc "Export the Procfile to Ubuntu's upstart scripts"

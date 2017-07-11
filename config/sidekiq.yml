@@ -6,3 +6,8 @@ production:
 :queues:
   - default
   - mailers
+
+:schedule:
+  FetchAllTalksDataJob:
+    every: '1d' # Runs every day
+    class: FetchAllTalksDataJob

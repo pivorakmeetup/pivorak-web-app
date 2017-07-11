@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    title = content_for?(:title) ? yield(:title) : t('phrases.default_title')
+    title = content_for?(:title) ? yield(:title) : Ez::Settings[:app, :general, :app_title]
     = csrf_meta_tags
     = stylesheet_link_tag    'app/application', 'data-turbolinks-track': 'reload', media: 'all'
     meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"

@@ -22,7 +22,7 @@
     initSlider();
     loadFlash();
     blendedImg();
-    document.removeEventListener('turbolinks:load', initApplication);
+    initChangeImageColor();
   }
 
   var contentLoaded = function() {
@@ -31,5 +31,4 @@
 
   document.addEventListener('turbolinks:load', initApplication);
   document.addEventListener('DOMContentLoaded', contentLoaded);
-
 })()

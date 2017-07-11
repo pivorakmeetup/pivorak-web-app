@@ -5,6 +5,12 @@ class ApplicationController < ActionController::Base
 
   delegate :admin?, to: :current_user, allow_nil: true
 
+  # Workaound to allows PUMA work fatser for better_errors
+  before_action :better_errors_hack, if: -> { Rails.env.development? }
+  def better_errors_hack
+    request.env['puma.config'].options.user_options.delete :app
+  end
+
   def self.disabled_feature_until(release)
     until_version = Versionomy.parse(release.to_s)
 
@@ -21,7 +27,7 @@ class ApplicationController < ActionController::Base
   end
 
   def not_found
-    render file: "#{Rails.root}/public/404", layout: false, status: :not_found
+    raise ActionController::RoutingError.new('Not Found')
   end
 
   def about_page

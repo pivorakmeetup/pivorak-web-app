@@ -4,7 +4,16 @@ h2 = t 'phrases.new_resource', resource: t('emails.singular')
 
 = simple_form_for [:admin, email] do |f|
   = f.input :subject
-  = f.input :body, as: :text, input_html: { rows: 20 }
+  | For preview markdown use #{link_to 'previewer', 'http://dillinger.io/', target: '_blank'}
+
+  = f.input :body, as: :text, input_html: { rows: 20, class: Simplemde::CONTAINER_CLASS }
+
+  - recipient_ids.each do |recipient_id|
+    = hidden_field_tag 'recipient_ids[]', recipient_id
+
+  b #{recipient_emails.size} recipients
+  p
+    = recipient_emails.sort.join('<br>').html_safe
 
   = admin_back_link(:emails)
-  = f.button :submit
+  = f.button :submit, value: t('words.send')

@@ -50,7 +50,7 @@ RSpec.describe 'Become a speaker features' do
       expect(active_job[:args][0]).to eq 'NotifyMailer'
       expect(active_job[:args][1]).to eq 'become_speaker'
 
-      expect(page).to have_content "Letter was sended"
+      expect(page).to have_content 'Letter was sent'
     end
   end
 end

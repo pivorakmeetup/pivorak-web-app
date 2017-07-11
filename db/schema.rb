@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170423092503) do
+ActiveRecord::Schema.define(version: 20170520084316) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -164,6 +164,7 @@ ActiveRecord::Schema.define(version: 20170423092503) do
     t.integer  "group_id"
     t.boolean  "published",   default: false
     t.string   "cover"
+    t.jsonb    "extra",       default: {}
     t.index ["event_id"], name: "index_talks_on_event_id", using: :btree
     t.index ["slug"], name: "index_talks_on_slug", using: :btree
     t.index ["speaker_id"], name: "index_talks_on_speaker_id", using: :btree
@@ -192,6 +193,7 @@ ActiveRecord::Schema.define(version: 20170423092503) do
     t.string   "slug"
     t.boolean  "verified",               default: false
     t.string   "cover"
+    t.boolean  "subscribed",             default: true
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
