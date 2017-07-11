@@ -10,15 +10,15 @@ RSpec.describe 'Events CREATE' do
 
     it 'should have default values' do
       expect(
-          Time.zone.parse(
-              find("#event_started_at").value
-          ).hour
+        Time.zone.parse(
+          find("#event_started_at").value
+        ).hour
       ).to eq(default_started_at_hour)
 
       expect(
-          Time.zone.parse(
-              find("#event_finished_at").value
-          ).hour
+        Time.zone.parse(
+          find("#event_finished_at").value
+        ).hour
       ).to eq(default_finished_at_hour)
     end
   end
