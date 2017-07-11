@@ -43,8 +43,7 @@ We have special `#pivorak-web-app` channel for contributors.
 
 # Git Branches
 
-* `master` - stable code, production deployment.
-* `development` - dev branch, staging deployment. Please checkout your new branch from it.
+Please checkout your new branch from `development` branch. And use `development` branch for deployment to production.
 
 # Contribution
 
