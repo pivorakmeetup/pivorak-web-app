@@ -26,4 +26,17 @@ RSpec.describe 'Events UPDATE' do
       expect(page).to have_current_path '/admin/events/test-event/edit'
     end
   end
+
+  context 'default values for event' do
+    it 'shows updated values instead of default' do
+      fill_in 'Title',  with: 'Super New Event'
+      fill_in 'Limit total', with: 2
+      fill_in 'Limit verified', with: 1
+      click_button 'Update Event'
+
+      expect_success_flash_message 'Event', 'updated'
+      expect(page).to have_field('Limit total', with: '2')
+      expect(page).to have_field('Limit verified', with: '1')
+    end
+  end
 end

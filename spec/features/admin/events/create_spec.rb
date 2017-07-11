@@ -10,15 +10,15 @@ RSpec.describe 'Events CREATE' do
 
     it 'should have default values' do
       expect(
-        Time.zone.parse(
-          find("#event_started_at").value
-        ).hour
+          Time.zone.parse(
+              find("#event_started_at").value
+          ).hour
       ).to eq(default_started_at_hour)
 
       expect(
-        Time.zone.parse(
-          find("#event_finished_at").value
-        ).hour
+          Time.zone.parse(
+              find("#event_finished_at").value
+          ).hour
       ).to eq(default_finished_at_hour)
     end
   end
@@ -72,6 +72,26 @@ RSpec.describe 'Events CREATE' do
       click_button 'Create Event'
 
       expect(Event.last.facebook_embeded_post).to be_present
+    end
+  end
+
+  context 'Limit inputs' do
+    let(:default_limit_total)      { Ez::Settings[:app, :events, :default_limit] }
+    let(:default_limit_verified)   { Ez::Settings[:app, :events, :default_limit_verified] }
+
+    it 'should have default values' do
+      expect(page).to have_field('Limit total', with: default_limit_total)
+      expect(page).to have_field('Limit verified', with: default_limit_verified)
+    end
+
+    it 'should show defined values after creation' do
+      fill_in 'Title', with: 'Super New Event'
+      fill_in 'Limit total', with: 2
+      fill_in 'Limit verified', with: 1
+      click_button 'Create Event'
+
+      expect(page).to have_field('Limit total', with: 2)
+      expect(page).to have_field('Limit verified', with: 1)
     end
   end
 end
