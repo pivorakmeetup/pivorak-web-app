@@ -5,6 +5,9 @@ en:
   courses_season_mentors:
     singular: Mentor
 
+  courses_season_questions:
+    singular: Question
+
   courses:
     plural: Courses
 
@@ -16,3 +19,14 @@ en:
 
   mentors:
     plural: Mentors
+
+  questions:
+    plural: Questions
+    body: List of questions
+
+    default:
+      first: First impression
+      second: Technical skills
+      third: Confidence in completed test task
+      fourth: Soft skills
+      fifth: Would you like to take this person to your team?
