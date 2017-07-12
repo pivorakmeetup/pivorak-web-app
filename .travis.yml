@@ -17,6 +17,7 @@ before_script: cp config/database.yml.example config/database.yml && bundle exec
 script:
   - bundle exec rspec spec
   - cd components/courses
+  - bundle intsall
   - RAILS_ENV=test bundle exec rspec spec
 env:
   global:
