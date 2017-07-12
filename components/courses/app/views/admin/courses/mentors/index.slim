@@ -5,13 +5,13 @@
 table.ui.very.basic.table
   thead
     tr
-      th                = t 'words.name'
+      th = t 'words.name'
       th
 
   tbody
     - mentors.each do |mentor|
       tr
-        td              = mentor_name(mentor)
+        td               = mentor_name(mentor)
         td.right.aligned = controls do
           = remove_mentor_button(mentor.season, mentor)
 
