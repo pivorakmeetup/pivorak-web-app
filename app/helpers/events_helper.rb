@@ -35,14 +35,17 @@ module EventsHelper
       t('visit_requests.messages.see_you')
     elsif visit_request.refused?
       t('visit_requests.messages.so_pity')
+    elsif visit_request.canceled?
+      t('visit_requests.messages.canceled')
     else
-    t('visit_requests.messages.please_confirm')
+      t('visit_requests.messages.please_confirm')
     end
   end
 
   def visit_request_confirm_link(visit_request)
     return unless visit_request && current_user
     return if visit_request.final_decision?
+    return if visit_request.canceled?
 
     link_to t('visit_requests.confirm'),
       visit_request_confirm_path(visit_request, :yes),
@@ -52,6 +55,7 @@ module EventsHelper
   def visit_request_refuse_link(visit_request)
     return unless visit_request && current_user
     return if visit_request.final_decision?
+    return if visit_request.canceled?
 
     link_to t('visit_requests.refuse'),
       visit_request_confirm_path(visit_request, :no),
