@@ -13,6 +13,7 @@
 !/log/.keep
 !/tmp/.keep
 /public/uploads
+logfile
 
 .env
 coverage

@@ -2,6 +2,9 @@ en:
   courses_seasons:
     singular: Season
 
+  courses_season_mentors:
+    singular: Mentor
+
   courses:
     plural: Courses
 
@@ -10,3 +13,6 @@ en:
     start_at: Started At
     finish_at: Finished At
     mentors: Mentors
+
+  mentors:
+    plural: Mentors
