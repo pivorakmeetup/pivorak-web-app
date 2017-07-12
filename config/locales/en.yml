@@ -48,6 +48,7 @@ en:
     not_assigned: 'not assigned'
     unauthorized: 'Please <a href=%{login_url}>log in</a> or <a href=%{register_url}>register</a> and then enroll in this event to attend'
     not_assigned: Not assigned
+    default_title: '#pivorak Lviv Ruby User Group'
 
   settings:
     plural: Settings
