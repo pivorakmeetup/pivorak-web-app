@@ -10,11 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170711094415) do
+ActiveRecord::Schema.define(version: 20170711110056) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
+
+  create_table "courses_questions", force: :cascade do |t|
+    t.string   "body"
+    t.integer  "season_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "courses_seasons", force: :cascade do |t|
     t.string   "title"

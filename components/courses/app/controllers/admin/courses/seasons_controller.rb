@@ -12,7 +12,7 @@ module Admin
       end
 
       def create
-        @season = ::Courses::Season.new(seasons_params)
+        @season = Season::Create.call(seasons_params)
         react_to season.save
       end
 
@@ -36,7 +36,7 @@ module Admin
 
       def seasons_params
         params.require(:season).permit(:title, :start_at, :finish_at)
-    end
+      end
     end
   end
 end
