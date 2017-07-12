@@ -5,6 +5,8 @@ module Courses
     extend FriendlyId
     friendly_id :title, use: :slugged
 
+    has_many :mentors
+
     validates :title, presence: true
   end
 end

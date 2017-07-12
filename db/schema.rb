@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170710210007) do
+ActiveRecord::Schema.define(version: 20170711094415) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,7 +42,6 @@ ActiveRecord::Schema.define(version: 20170710210007) do
   create_table "email_templates", force: :cascade do |t|
     t.string   "title"
     t.string   "subject"
-    t.string   "from"
     t.text     "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -73,14 +72,6 @@ ActiveRecord::Schema.define(version: 20170710210007) do
     t.integer  "limit_verified",        default: 0,     null: false
     t.text     "facebook_embeded_post"
     t.index ["slug"], name: "index_events_on_slug", using: :btree
-  end
-
-  create_table "ez_pages_pages", force: :cascade do |t|
-    t.string   "title"
-    t.string   "url"
-    t.text     "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -144,6 +135,13 @@ ActiveRecord::Schema.define(version: 20170710210007) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id", using: :btree
+  end
+
+  create_table "season_mentors", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "season_id"
+    t.index ["season_id"], name: "index_season_mentors_on_season_id", using: :btree
+    t.index ["user_id"], name: "index_season_mentors_on_user_id", using: :btree
   end
 
   create_table "taggings", force: :cascade do |t|
