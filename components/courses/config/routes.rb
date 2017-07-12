@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
       resources :seasons, except: :destroy do
         resources :mentors, except: %i[show edit update]
+        resources :questions, except: :destroy
       end
     end
   end

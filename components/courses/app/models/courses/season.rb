@@ -6,6 +6,7 @@ module Courses
     friendly_id :title, use: :slugged
 
     has_many :mentors
+    has_many :questions
 
     validates :title, presence: true
   end

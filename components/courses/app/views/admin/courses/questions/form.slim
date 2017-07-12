@@ -1,0 +1,13 @@
+- title resource_form_text(question, label: :body)
+
+= resource_form_header(question, label: :body)
+
+= simple_form_for question, url: question_form_path(current_season, question), as: :question do |f|
+  .fields
+    .four.wide.field.ui.slider.checkbox
+    .twelve.wide.field.right-align
+      = admin_back_link('courses_season_questions')
+      = f.button :submit
+
+  .fields
+    .six.wide.field = f.input :body
