@@ -11,7 +11,7 @@ table.ui.very.basic.table
   tbody
     - mentors.each do |mentor|
       tr
-        td               = mentor_name(mentor)
+        td               = mentor.full_name
         td.right.aligned = controls do
           = remove_mentor_button(mentor.season, mentor)
 

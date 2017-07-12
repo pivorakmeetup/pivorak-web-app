@@ -40,7 +40,7 @@ module Admin
       end
 
       def mentors
-        current_season.mentors
+        current_season.mentors.includes(:user)
       end
 
       def mentor
