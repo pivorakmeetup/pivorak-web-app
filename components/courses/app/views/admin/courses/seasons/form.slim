@@ -14,4 +14,7 @@
     .six.wide.field = f.input :title
     .six.wide.field = f.input :start_at,  as: :string
     .six.wide.field = f.input :finish_at, as: :string
+    .six.wide.field = f.input :status, collection: Courses::Season.statuses.keys
+
+
 

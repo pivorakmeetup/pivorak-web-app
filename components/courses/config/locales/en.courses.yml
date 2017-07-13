@@ -17,6 +17,7 @@ en:
     start_at: Started At
     finish_at: Finished At
     mentors: Mentors
+    status: Status
 
   mentors:
     plural: Mentors
