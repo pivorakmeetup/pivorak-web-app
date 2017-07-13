@@ -1,7 +1,7 @@
 module Admin
   module Courses
     class MentorsController < BaseController
-      helper_method :mentors, :mentor, :current_season
+      helper_method :mentors, :mentor
       add_breadcrumb 'seasons.plural', :admin_courses_seasons_path
       before_action :add_season_breadcrumb, :add_mentor_breadcrumb
       before_action :add_new_breadcump,  only: %i[new create]
@@ -22,10 +22,6 @@ module Admin
       end
 
       private
-
-      def current_season
-        @season ||= ::Courses::Season.friendly.find(params[:season_id])
-      end
 
       def add_season_breadcrumb
         add_breadcrumb current_season, path: admin_courses_season_path(current_season)

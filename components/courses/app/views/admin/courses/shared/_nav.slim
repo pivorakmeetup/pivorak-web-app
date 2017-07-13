@@ -1,11 +1,9 @@
 .ui.grid
   .three.wide.column
     .ui.vertical.fluid.tabular.menu
-      a.item.active = 'Overview'
-      a.item        = 'Mentors'
-      a.item        = 'Students'
-      a.item        = 'Lectures'
-      a.item        = 'Journal'
+      = admin_courses_season_overview
+      = admin_courses_season_mentors_link
+      = admin_courses_season_questions_link
 
   .thirteen.wide.stretched.column
     = yield

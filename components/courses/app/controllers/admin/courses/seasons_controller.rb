@@ -29,6 +29,8 @@ module Admin
       def season
         @season ||= ::Courses::Season.friendly.find(params[:id])
       end
+      alias_method :current_season, :season
+
 
       def seasons
         @seasons ||= ::Courses::Season.page(params[:page])
