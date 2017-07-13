@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   namespace :courses do
-    resources :seasons, only: :show
+    resources :seasons, only: :show do
+      resource :attend, only: %i[show create]
+    end
   end
 
   namespace :admin do
