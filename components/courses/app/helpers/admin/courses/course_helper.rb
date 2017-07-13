@@ -25,6 +25,12 @@ module Admin
           class: admin_courses_active_item?('questions')
       end
 
+      def admin_courses_season_interviews_link
+        link_to t('interviews.plural'),
+          admin_courses_season_interviews_path(current_season),
+          class: admin_courses_active_item?('interviews')
+      end
+
       private
 
       def admin_courses_active_item?(ethalon_controller_name)

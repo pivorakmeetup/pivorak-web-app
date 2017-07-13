@@ -8,6 +8,14 @@ module Admin
       render_form
     end
 
+    def current_user
+      User.find_or_create_by(email: 'test@test.com', first_name: 'Test', last_name: 'User')
+    end
+
+    # def current_season
+    #   ::Courses::Season.find_or_create_by(title: 'Test Season')
+    # end
+
     private
 
     def render_form

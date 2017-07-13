@@ -8,6 +8,9 @@ en:
   courses_season_questions:
     singular: Question
 
+  courses_season_interviews:
+    singular: Interview
+
   courses:
     plural: Courses
     overview: Overview
@@ -21,6 +24,7 @@ en:
 
   mentors:
     plural: Mentors
+    name: Mentor Name
 
   questions:
     plural: Questions
@@ -30,4 +34,13 @@ en:
       second: Technical skills
       third: Confidence in completed test task
       fourth: Soft skills
-      fifth: Would you like to take this person to your team?
+      fifth: Would you like to take this person to your team?  
+
+  interviews:
+    plural: Interviews
+    start_at: Starts At
+    new: New Interview
+    description: Description
+
+  students:
+    name: Student Name
