@@ -1,7 +1,7 @@
 module Admin
   module Courses
     class QuestionsController < BaseController
-      helper_method :questions, :question, :current_season
+      helper_method :questions, :question
       add_breadcrumb 'seasons.plural', :admin_courses_seasons_path
       before_action :add_season_breadcrumb, :add_question_breadcrumb
       before_action :add_new_breadcump,  only: %i[new create]
@@ -33,10 +33,6 @@ module Admin
 
       def questions
         @questions ||= ::Courses::Question.where(season_id: current_season.id)
-      end
-
-      def current_season
-        @current_season ||= ::Courses::Season.friendly.find(params[:season_id])
       end
 
       def add_season_breadcrumb

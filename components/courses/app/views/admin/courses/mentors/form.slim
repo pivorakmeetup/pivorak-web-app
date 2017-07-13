@@ -1,10 +1,15 @@
-= simple_form_for @mentor, url: admin_courses_season_mentors_path, as: :mentor do |f|
-  .sixteen.wide.field.right-align
-    = admin_back_link(:courses_season_mentors)
-    = f.button :submit
+- title resource_form_text(mentor, label: :full_name)
 
-  .one.field
-    = f.input :user_id,
-        collection: User.sorted,
-        label_method: :reverse_full_name,
-        input_html: { class: 'ui search dropdown' }
+= admin_courses_seasons_nav do
+  = resource_form_header(mentor, label: :full_name)
+
+  = simple_form_for mentor, url: admin_courses_season_mentors_path, as: :mentor do |f|
+    .sixteen.wide.field.right-align
+      = admin_back_link(:courses_season_mentors)
+      = f.button :submit
+
+    .eight.wide.field
+      = f.input :user_id,
+          collection: User.sorted,
+          label_method: :reverse_full_name,
+          input_html: { class: 'ui search dropdown' }

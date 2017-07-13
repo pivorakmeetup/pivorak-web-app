@@ -10,6 +10,7 @@ en:
 
   courses:
     plural: Courses
+    overview: Overview
 
   seasons:
     plural: Courses
@@ -22,7 +23,6 @@ en:
 
   questions:
     plural: Questions
-    body: List of questions
 
     default:
       first: First impression
