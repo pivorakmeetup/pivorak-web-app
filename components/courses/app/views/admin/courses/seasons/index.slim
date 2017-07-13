@@ -6,18 +6,18 @@ table.ui.very.basic.table
   thead
     tr
       th                = t 'words.title'
+      th.center.aligned = t 'seasons.status'
       th.center.aligned = t 'seasons.start_at'
       th.center.aligned = t 'seasons.finish_at'
-      th.center.aligned = t 'seasons.status'
       th
 
   tbody
     - seasons.each do |season|
       tr
         td                = link_to season.title, admin_courses_season_path(season)
+        td.center.aligned = season.status
         td.center.aligned = format_timestamp(season.start_at)
         td.center.aligned = format_timestamp(season.finish_at)
-        td.center.aligned = season.status
         td.right.aligned  = controls do
           = admin_edit_resource_link(season)
 
