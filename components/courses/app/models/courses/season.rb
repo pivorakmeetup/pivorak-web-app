@@ -8,6 +8,14 @@ module Courses
     has_many :mentors
     has_many :questions
 
+    PLANNED       = :planned
+    REGISTRATION  = :registration
+    SELECTION     = :selection
+    LIVE          = :live
+    PASSED        = :passed
+
+    enum status: [PLANNED, REGISTRATION, SELECTION, LIVE, PASSED]
+
     validates :title, presence: true
   end
 end
