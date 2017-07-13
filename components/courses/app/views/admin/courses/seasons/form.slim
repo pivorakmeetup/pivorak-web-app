@@ -4,9 +4,7 @@
 
 = simple_form_for [:admin, season], as: :season do |f|
   .fields
-    .four.wide.field.ui.slider.checkbox
-      / = f.input :published, as: :boolean
-    .twelve.wide.field.right-align
+    .sixteen.wide.field.right-align
       = admin_back_link('courses_seasons')
       = f.button :submit
 
@@ -15,6 +13,3 @@
     .six.wide.field = f.input :start_at,  as: :string
     .six.wide.field = f.input :finish_at, as: :string
     .six.wide.field = f.input :status, collection: Courses::Season.statuses.keys
-
-
-
