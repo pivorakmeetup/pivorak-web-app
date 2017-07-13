@@ -11,7 +11,7 @@ class VisitRequestsController < ApplicationController
   def create
     VisitRequest::Create.call(current_user, event)
 
-    flash_success and default_redirect
+    flash_success(user_verification_status) and default_redirect
   end
 
   def destroy
@@ -32,5 +32,9 @@ class VisitRequestsController < ApplicationController
 
   def visit_request
     @visit_request ||= VisitRequest.find(params[:id])
+  end
+
+  def user_verification_status
+    current_user.verified? ? :success_for_verified : :success_for_newbies
   end
 end

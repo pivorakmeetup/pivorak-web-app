@@ -19,6 +19,7 @@ RSpec.describe 'Visit Requests ATTEND' do
         it { expect(page).to have_current_path("/") }
         it { expect(page).to_not have_link 'Attend' }
         it { expect(page).to have_content I18n.t('visit_requests.messages.pending') }
+        it { expect(page).to have_content I18n.t('flash.visit_requests.create.success_for_newbies') }
         it { expect(page).to have_link 'Cancel attendance' }
 
         it 'enques notify admin job' do
@@ -47,6 +48,7 @@ RSpec.describe 'Visit Requests ATTEND' do
         it { expect(page).to have_current_path("/") }
         it { expect(page).to_not have_link 'Attend' }
         it { expect(page).to have_content I18n.t('visit_requests.messages.approved') }
+        it { expect(page).to have_content I18n.t('flash.visit_requests.create.success_for_verified') }
         it { expect(page).to have_link 'Cancel attendance' }
       end
     end
@@ -59,7 +61,7 @@ RSpec.describe 'Visit Requests ATTEND' do
 
     describe 'event page' do
       it { expect(page).to_not have_link 'Attend' }
-      it { expect(page).to have_content 'Please login or register to attend this event' }
+      it { expect(page).to have_content 'Please log in or register and then enroll in this event to attend' }
     end
   end
 end

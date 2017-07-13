@@ -12,10 +12,27 @@ class MarkdownRenderer < ApplicationService
   attr_reader :text
 
   def markdown
-    @markdown ||= ::Redcarpet::Markdown.new(renderer, extensions = {})
+    @markdown ||= ::Redcarpet::Markdown.new(renderer, extensions)
   end
 
   def renderer
-    @renderer ||= ::Redcarpet::Render::HTML.new(render_options = {autolink: true})
+    @renderer ||= ::Renderers::Code.new(render_options)
+  end
+
+  def render_options
+    {
+      filter_html: true,
+      hard_wrap:   true,
+    }
+  end
+
+  def extensions
+    {
+      fenced_code_blocks: true,
+      no_intra_emphasis:  true,
+      autolink:           true,
+      lax_html_blocks:    true,
+      superscript:        true
+    }
   end
 end

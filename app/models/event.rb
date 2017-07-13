@@ -9,13 +9,8 @@ class Event < ApplicationRecord
   CONFIRMATION  = :confirmation
   LIVE          = :live
   PASSED        = :passed
-  DEFAULT_LIMIT = 50
 
   mount_uploader :cover, EventCoverUploader
-
-  DEFAULT_STARTED_AT_HOURS = 18
-  DEFAULT_FINISHED_AT_HOURS = 22
-
   friendly_id :title, use: :slugged
 
   enum status: [PLANNED, REGISTRATION, CONFIRMATION, LIVE, PASSED]
@@ -23,7 +18,6 @@ class Event < ApplicationRecord
   belongs_to :venue
 
   has_many :talks
-
   has_many :visit_requests
 
   %i(approved pending final confirmed used).each do |scope_name|

@@ -6,12 +6,14 @@ table.ui.very.basic.table
   thead
     tr
       th = t 'words.name'
+      th = t 'groups.singular'
       th.actions colspan="2"
 
   tbody
     - friends.each do |friend|
       tr
         td = friend.name
+        td = friend&.group&.name
         td.right.aligned = controls do
           = admin_edit_resource_link(friend)
 

@@ -193,6 +193,7 @@ ActiveRecord::Schema.define(version: 20170520084316) do
     t.string   "slug"
     t.boolean  "verified",               default: false
     t.string   "cover"
+    t.boolean  "subscribed",             default: true
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
