@@ -1,4 +1,4 @@
-RSpec.shared_examples 'Configurable' do |action_hook|
+RSpec.shared_examples 'Configurable' do |_action_hook|
   let(:configurable_module) { Searchable::Configurable }
 
   it 'responds to configurable methods' do

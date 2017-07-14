@@ -5,7 +5,7 @@
     var supportsBackgroundBlendMode = window.getComputedStyle(document.body).backgroundBlendMode;
     var supportsNode = document.createElement("div");
     supportsNode.style.backgroundBlendMode = "luminosity";
-    if((typeof supportsBackgroundBlendMode == 'undefined') || (supportsNode.style.backgroundBlendMode !== "luminosity")) {
+    if((typeof supportsBackgroundBlendMode === 'undefined') || (supportsNode.style.backgroundBlendMode !== "luminosity")) {
       createBlendedBackgrounds();
     }
   }
