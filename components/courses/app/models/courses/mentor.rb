@@ -4,6 +4,7 @@ module Courses
 
     belongs_to :season
     belongs_to :user
+    has_many :interviews
 
     delegate :full_name, to: :user
 

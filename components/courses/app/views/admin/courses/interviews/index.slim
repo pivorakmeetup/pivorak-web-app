@@ -1,0 +1,23 @@
+- title t('interviews.plural')
+
+= admin_courses_seasons_nav do
+  = resource_header :courses_season_interview
+
+  table.ui.very.basic.table
+    thead
+      tr
+        th = t 'students.name'
+        th = t 'mentors.name'
+        th = t 'interviews.start_at'
+        th
+
+    tbody
+      - interviews.each do |interview|
+        tr
+          td = link_to interview.student_name, admin_courses_season_interview_path(@season, interview)
+          td = interview.mentor_name
+          td = format_timestamp(interview.start_at)
+          td = controls do
+            = link_to icon(:edit, t('words.edit')), edit_admin_courses_season_interview_path(@season, interview), class: 'item'
+
+  = paginate interviews

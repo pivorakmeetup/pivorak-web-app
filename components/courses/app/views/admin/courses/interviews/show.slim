@@ -1,0 +1,12 @@
+= admin_courses_seasons_nav do
+  b = t 'students.name'
+  p = interview.student_name
+
+  b = t 'mentors.name'
+  p = interview.mentor_name
+
+  b = t 'interviews.start_at'
+  p = format_timestamp(interview.start_at)
+
+  b = t 'interviews.description'
+  p = interview.description

@@ -16,6 +16,15 @@ ActiveRecord::Schema.define(version: 20170713083503) do
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
 
+  create_table "courses_interviews", force: :cascade do |t|
+    t.integer  "mentor_id"
+    t.integer  "student_id"
+    t.datetime "start_at"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "courses_questions", force: :cascade do |t|
     t.string   "body"
     t.integer  "season_id"
