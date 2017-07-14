@@ -12,6 +12,7 @@ class TalksController < ApplicationController
       .published
       .includes(:event)
       .page(params[:page])
+      .sorted_by_date
   end
 
   def tags
