@@ -1,7 +1,7 @@
 module Admin
   module Courses
     class MentorsController < BaseController
-      helper_method :mentors, :mentor
+      helper_method :mentors, :mentor, :available_for_mentoring
       before_action :add_season_breadcrumb, :add_mentor_breadcrumb
 
       def new
@@ -35,6 +35,10 @@ module Admin
 
       def mentor
         @mentor ||= ::Courses::Mentor.find(params[:id])
+      end
+
+      def available_for_mentoring
+        @mentors ||= Mentor::AvailableForMentoring.call(current_season)
       end
 
       def policy

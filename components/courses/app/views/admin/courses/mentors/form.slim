@@ -10,6 +10,6 @@
 
     .eight.wide.field
       = f.input :user_id,
-          collection: User.sorted,
+          collection: available_for_mentoring,
           label_method: :reverse_full_name,
           input_html: { class: 'ui search dropdown' }
