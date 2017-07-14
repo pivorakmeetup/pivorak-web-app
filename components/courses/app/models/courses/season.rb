@@ -7,7 +7,7 @@ module Courses
 
     has_many :mentors
     has_many :questions
-    has_many :interviews
+    has_many :interviews, through: :mentors
 
     PLANNED       = :planned
     REGISTRATION  = :registration

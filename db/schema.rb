@@ -17,7 +17,6 @@ ActiveRecord::Schema.define(version: 20170713083503) do
   enable_extension "uuid-ossp"
 
   create_table "courses_interviews", force: :cascade do |t|
-    t.integer  "season_id"
     t.integer  "mentor_id"
     t.integer  "student_id"
     t.datetime "start_at"

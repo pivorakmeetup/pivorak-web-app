@@ -4,15 +4,16 @@ module Courses
 
     self.table_name = 'courses_interviews'
 
-    belongs_to :season
     belongs_to :mentor
     belongs_to :student, optional: true
 
     validates :start_at, uniqueness: { scope: :mentor_id }, presence: true
-    validate  :half_hour_after_previous_interview
+    validate  :has_interview_earlier_than_allowed_interval
 
-    def half_hour_after_previous_interview
-      if mentor_has_interview_earlier_than_half_hour_before?
+    ALLOWED_INTERVAL = 30
+
+    def has_interview_earlier_than_allowed_interval
+      if Courses::Interview::HasInterviewEarlierThanAllowedInterval.new(mentor, self, ALLOWED_INTERVAL).call
         errors.add(:start_at, "should be at least 30 minutes after your previous interview")
       end
     end
@@ -28,13 +29,6 @@ module Courses
 
     def title
       I18n.t 'courses_season_interviews.singular'
-    end
-
-    private
-
-    def mentor_has_interview_earlier_than_half_hour_before?
-      interviews = mentor.interviews.where(start_at: start_at-30.minutes..start_at)
-      interviews.any? && interviews.exclude?(self)
     end
   end
 end
