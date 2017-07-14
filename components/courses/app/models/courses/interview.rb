@@ -14,7 +14,7 @@ module Courses
 
     def has_interview_earlier_than_allowed_interval
       if Courses::Interview::HasInterviewEarlierThanAllowedInterval.new(mentor, self, ALLOWED_INTERVAL).call
-        errors.add(:start_at, "should be at least 30 minutes after your previous interview")
+        errors.add(:start_at, "should be at least #{ALLOWED_INTERVAL} minutes after your previous interview")
       end
     end
 
