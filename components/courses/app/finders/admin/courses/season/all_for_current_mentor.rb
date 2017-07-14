@@ -1,11 +1,7 @@
 module Admin
   module Courses
     module Season
-      class AllForCurrentMentor
-        def self.call(*args)
-          new(*args).call
-        end
-
+      class AllForCurrentMentor < ApplicationFinder
         def initialize(current_user)
           @user = current_user
         end
