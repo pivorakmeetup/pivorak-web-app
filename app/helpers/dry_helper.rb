@@ -7,4 +7,8 @@ module DryHelper
 
     link_to link_text, polymorphic_path(resource), options
   end
+
+  def resource_header(resource = nil, params = {})
+    render 'shared/resource_header', locals: params.merge(resource: resource)
+  end
 end
