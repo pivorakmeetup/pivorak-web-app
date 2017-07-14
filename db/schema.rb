@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170713083503) do
+ActiveRecord::Schema.define(version: 20170713121505) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,17 @@ ActiveRecord::Schema.define(version: 20170713083503) do
     t.datetime "updated_at",  null: false
     t.integer  "status"
     t.index ["slug"], name: "index_courses_seasons_on_slug", using: :btree
+  end
+
+  create_table "courses_students", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "season_id"
+    t.integer  "status",          default: 0
+    t.text     "personal_info"
+    t.text     "motivation_info"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.index ["user_id"], name: "index_courses_students_on_user_id", using: :btree
   end
 
   create_table "donations", force: :cascade do |t|

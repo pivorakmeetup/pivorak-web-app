@@ -2,10 +2,7 @@ module Admin
   module Courses
     class QuestionsController < BaseController
       helper_method :questions, :question
-      add_breadcrumb 'seasons.plural', :admin_courses_seasons_path
       before_action :add_season_breadcrumb, :add_question_breadcrumb
-      before_action :add_new_breadcump,  only: %i[new create]
-      before_action :add_edit_breadcump, only: %i[edit update]
 
       def new
         @question = ::Courses::Question.new

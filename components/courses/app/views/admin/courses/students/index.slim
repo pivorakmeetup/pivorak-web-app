@@ -1,0 +1,20 @@
+- title t('students.plural')
+
+= admin_courses_seasons_nav do
+  h2 = t 'students.plural'
+
+  table.ui.very.basic.table
+    thead
+      tr
+        th                = t 'students.user_id'
+        th.center.aligned = t 'students.status'
+        th.center.aligned = t 'students.personal_info'
+        th.center.aligned = t 'students.motivation_info'
+
+    tbody
+      - students.each do |student|
+        tr
+          td                = student.user_id
+          td.center.aligned = student.status
+          td.center.aligned = student.personal_info
+          td.center.aligned = student.motivation_info

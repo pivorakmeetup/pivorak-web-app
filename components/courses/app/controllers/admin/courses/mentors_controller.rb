@@ -2,10 +2,7 @@ module Admin
   module Courses
     class MentorsController < BaseController
       helper_method :mentors, :mentor
-      add_breadcrumb 'seasons.plural', :admin_courses_seasons_path
       before_action :add_season_breadcrumb, :add_mentor_breadcrumb
-      before_action :add_new_breadcump,  only: %i[new create]
-      before_action :add_edit_breadcump, only: %i[edit update]
 
       def new
         @mentor = current_season.mentors.build
