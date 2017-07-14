@@ -6,6 +6,10 @@ module Admin
           new(*args).call
         end
 
+        def self.add_season_creator(season, current_user)
+          season.mentors.create(user: current_user) if season.persisted?
+        end
+
         def initialize(seasons_params)
           @seasons_params = seasons_params
         end
@@ -21,7 +25,6 @@ module Admin
         private
 
         attr_reader :seasons_params
-
         def default_questions
           default_questions = [
                                 I18n.t('questions.default.first'),

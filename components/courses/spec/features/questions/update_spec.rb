@@ -1,9 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe 'Question UPDATE' do
-  let!(:season) { create(:season, title: 'Test Season') }
-  let!(:question) { create(:question, season_id: season.id) }
-  let(:test_questions_path) { '/admin/courses/seasons/test-season/questions' }
+  let!(:season)                 { create(:season, title: 'Test Season') }
+  let!(:user)                   { User.create(email: 'test@test.com', first_name: 'Test', last_name: 'User') }
+  let!(:season_creator)         { ::Courses::Mentor.create(user_id: 1, season_id: 1) }
+  let!(:question)               { create(:question, season_id: season.id) }
+  let(:test_questions_path)     { '/admin/courses/seasons/test-season/questions' }
   let(:test_edit_question_path) { '/admin/courses/seasons/test-season/questions/1/edit' }
 
   before { visit test_edit_question_path }

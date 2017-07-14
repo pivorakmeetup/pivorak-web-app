@@ -14,6 +14,9 @@ en:
   courses:
     plural: Courses
     overview: Overview
+    flash:
+        mentor-access-denied: Access denied. You are not mentor of this course
+        season-creator-destroy: Season creator destroy is prohibited
 
   seasons:
     plural: Courses
@@ -34,7 +37,7 @@ en:
       second: Technical skills
       third: Confidence in completed test task
       fourth: Soft skills
-      fifth: Would you like to take this person to your team?  
+      fifth: Would you like to take this person to your team?
 
   interviews:
     plural: Interviews

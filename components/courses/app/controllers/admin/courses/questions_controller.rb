@@ -35,10 +35,6 @@ module Admin
         @questions ||= ::Courses::Question.where(season_id: current_season.id)
       end
 
-      def add_season_breadcrumb
-       add_breadcrumb current_season, path: admin_courses_season_path(current_season)
-      end
-
       def add_question_breadcrumb
        add_breadcrumb 'questions.plural', path: admin_courses_season_questions_path(current_season)
       end
