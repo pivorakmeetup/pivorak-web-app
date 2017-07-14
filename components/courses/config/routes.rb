@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   namespace :courses do
-    resources :seasons, only: :show do
-      resource :attend, only: %i[show create]
+    resources :seasons, only: %i[index show] do
+      resources :students, only: %i[index new create]
     end
   end
 
@@ -13,6 +13,7 @@ Rails.application.routes.draw do
         resources :mentors, except: %i[show edit update]
         resources :questions, except: :destroy
         resources :interviews, except: :destroy
+        resources :students, only: :index
       end
     end
   end

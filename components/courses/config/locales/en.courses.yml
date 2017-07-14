@@ -19,7 +19,7 @@ en:
         season-creator-destroy: Season creator destroy is prohibited
 
   seasons:
-    plural: Courses
+    plural: Seasons
     start_at: Started At
     finish_at: Finished At
     mentors: Mentors
@@ -47,3 +47,19 @@ en:
 
   students:
     name: Student Name
+
+  students:
+    plural: Students
+    name: Name
+    user_id: User ID
+    status: Status
+    personal_info: Personal Info
+    motivation_info: Motivation Info
+
+  flash:
+    courses:
+      students:
+        create:
+          success: Successfully enrolled!
+          fail: You can't enroll again!
+          error: Some fields are blank!

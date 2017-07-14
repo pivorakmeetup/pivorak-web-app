@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170713083503) do
+ActiveRecord::Schema.define(version: 20170713121505) do
 
   create_table "courses_interviews", force: :cascade do |t|
     t.integer  "season_id"
@@ -39,6 +39,17 @@ ActiveRecord::Schema.define(version: 20170713083503) do
     t.datetime "updated_at",  null: false
     t.integer  "status"
     t.index ["slug"], name: "index_courses_seasons_on_slug"
+  end
+
+  create_table "courses_students", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "season_id"
+    t.integer  "status",          default: 0
+    t.text     "personal_info"
+    t.text     "motivation_info"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.index ["user_id"], name: "index_courses_students_on_user_id"
   end
 
   create_table "season_mentors", force: :cascade do |t|
