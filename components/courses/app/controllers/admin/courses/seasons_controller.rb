@@ -2,10 +2,7 @@ module Admin
   module Courses
     class SeasonsController < BaseController
       helper_method :seasons, :season
-      add_breadcrumb 'seasons.plural', :admin_courses_seasons_path
       before_action :add_season_breadcrumb, only: %i[show edit update]
-      before_action :add_new_breadcump,  only: %i[new create]
-      before_action :add_edit_breadcump, only: %i[edit update]
       before_action :authenticate_mentor!, only: %i[show edit update]
 
       def new
@@ -32,8 +29,6 @@ module Admin
       def season
         @season ||= ::Courses::Season.friendly.find(params[:id])
       end
-
-      alias_method :current_season, :season
 
       def seasons
         @seasons ||= Season::AllForCurrentMentor.call(current_user).page(params[:page])
