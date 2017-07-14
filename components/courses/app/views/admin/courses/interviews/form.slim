@@ -1,0 +1,15 @@
+- title resource_form_text(interview)
+
+= admin_courses_seasons_nav do
+  = resource_form_header(interview)
+
+  = simple_form_for interview, url: interview_form_url, method: interview_form_method, as: :interview do |f|
+    .fields
+      .four.wide.field.ui.slider.checkbox
+      .twelve.wide.field.right-align
+        = link_to t('words.back'), admin_courses_season_interviews_path(@season), class: 'ui button grey'
+        = f.button :submit
+
+    .fields
+      .six.wide.field = f.input :description
+      .six.wide.field = f.input :start_at, as: :string
