@@ -51,7 +51,7 @@ module EventsHelper
 
   def visit_request_refuse_link(visit_request)
     return unless visit_request && current_user
-    return if visit_request.final_decision?
+    return if visit_request.refused?
 
     link_to t('visit_requests.refuse'),
       visit_request_confirm_path(visit_request, :no),
