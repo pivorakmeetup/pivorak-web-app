@@ -83,6 +83,7 @@ en:
     visitors: Visitors
     attendees: Attendees
     send_confirmations: Send Confirmations
+    visitors_report: Visitors Report
     index:
       visitors:
         requested: Requested
