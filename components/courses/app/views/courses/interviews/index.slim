@@ -1,0 +1,16 @@
+- title t('interviews.plural')
+
+table.ui.very.basic.table
+  thead
+    tr
+      th = t 'mentors.name'
+      th = t 'interviews.start_at'
+      th
+
+  tbody
+    - interviews.each do |interview|
+      tr
+        td = interview.mentor_name
+        td = format_timestamp(interview.start_at)
+
+  = paginate interviews

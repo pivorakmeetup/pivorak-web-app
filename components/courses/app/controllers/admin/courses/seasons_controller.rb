@@ -31,7 +31,9 @@ module Admin
       end
 
       def seasons
-        @seasons ||= Season::AllForCurrentMentor.call(current_user).page(params[:page])
+        @seasons ||= Season::AllForCurrentMentor
+          .call(current_user)
+          .page(params[:page])
       end
 
       def seasons_params
