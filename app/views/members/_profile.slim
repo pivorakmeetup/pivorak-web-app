@@ -1,4 +1,5 @@
 h2 = member.full_name
 = gravatar_image(member)
-h5 Count of sign in:
-= current_user.sign_in_count
+h5
+  = t('members.count_of_sign_in')
+  = current_user.sign_in_count
