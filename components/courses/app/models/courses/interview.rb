@@ -7,7 +7,7 @@ module Courses
     belongs_to :mentor
     belongs_to :student, optional: true
 
-    validates :start_at, uniqueness: { scope: :mentor_id }, presence: true
+    validates :start_at, presence: true, uniqueness: { scope: :mentor_id }
     validate  :has_interview_earlier_than_allowed_interval
 
     ALLOWED_INTERVAL = 30

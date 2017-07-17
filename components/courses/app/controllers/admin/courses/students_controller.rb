@@ -7,7 +7,7 @@ module Admin
       private
 
       def students
-        @students ||= ::Courses::Student.where(season_id: current_season.id)
+        @students ||= current_season.students.includes(:user)
       end
 
       def add_season_breadcrumb
