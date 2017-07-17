@@ -1,0 +1,13 @@
+- title resource_form_text(homework)
+
+= resource_form_header(homework)
+
+= simple_form_for homework, url: courses_season_homeworks_path(current_season), as: :homework do |f|
+  .fields
+    .sixteen.wide.field.right-align
+      = f.button :submit
+
+  .fields
+    .six.wide.field = f.input :git_url
+    .six.wide.field = f.input :showcase_url
+    .six.wide.field = f.input :description
