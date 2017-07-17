@@ -9,13 +9,15 @@ module Courses
       end
 
       def call
+        return unless interview_start_time
+
         interviews.any? && interviews.exclude?(self)
       end
 
       private
 
       def interviews
-        @mentor.interviews.where(start_at: interview_start_time-interval_minutes..interview_start_time)
+        @mentor.interviews.where(start_at: interview_start_time - interval_minutes..interview_start_time)
       end
 
       def interview_start_time
