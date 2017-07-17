@@ -1,0 +1,14 @@
+h3 = season.title
+p = season_dates
+h5 = season.status
+p = season.description
+
+br
+
+h2 = t 'mentors.plural'
+- mentors.each do |mentor|
+  p = mentor.full_name
+
+br
+
+p = season_links
