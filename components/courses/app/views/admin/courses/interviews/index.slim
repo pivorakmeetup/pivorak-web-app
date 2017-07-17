@@ -14,7 +14,7 @@
     tbody
       - interviews.each do |interview|
         tr
-          td = link_to interview.student_name, admin_courses_season_interview_path(@season, interview)
+          td = link_to interview.full_name, admin_courses_season_interview_path(@season, interview) if interview.full_name
           td = interview.mentor_name
           td = format_timestamp(interview.start_at)
           td = controls do
