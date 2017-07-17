@@ -1,5 +1,5 @@
 = form_tag path, method: :get do
-  .ui.right.action.fluid.input.left.icon
-    = text_field_tag :query, params[:query], class: 'one field mt-1'
+  .pk-archived-talk__search_input
+    = text_field_tag :query, params[:query]
     i.search.icon
-    = button_tag t('words.search'), as: :submit, name: nil, class: 'ui button'
+    = button_tag t('words.search'), as: :submit, name: nil, class: 'pk-archived-talk__search__button'
