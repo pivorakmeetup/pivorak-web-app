@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     resources :seasons, only: %i[index show] do
       resources :students, only: %i[index new create]
       resources :interviews, only: :index
+      resources :homeworks, only: %i[index new create]
     end
   end
 

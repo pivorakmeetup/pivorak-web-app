@@ -63,3 +63,8 @@ en:
           success: Successfully enrolled!
           fail: You can't enroll again!
           error: Some fields are blank!
+
+      homeworks:
+        create:
+          success: Successfully sent!
+          error: Some fields are blank!

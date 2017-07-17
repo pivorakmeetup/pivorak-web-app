@@ -13,14 +13,14 @@ module Courses
 
       def call
         @student = ::Courses::Student.new(student_params)
-        @student.season_id = @season_id
-        @student.user_id = @user_id
+        @student.season_id = season_id
+        @student.user_id = user_id
         @student
       end
 
       private
 
-      attr_reader :student_params
+      attr_reader :student_params, :season_id, :user_id
     end
   end
 end
