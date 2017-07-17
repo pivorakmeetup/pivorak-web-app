@@ -1,4 +1,4 @@
-.ui.stackable.grid
+.pk-archived-talk__search__bar
   - if locals[:path]
-    .six.wide.column.search_bar
-      = search_bar(path: locals[:path])
+    .pk-archived-talk__search__container
+      = render 'shared/search_bar', path: locals[:path]
