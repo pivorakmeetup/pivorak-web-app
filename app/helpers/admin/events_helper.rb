@@ -15,6 +15,14 @@ module Admin
         admin_event_visit_requests_path(event), options
     end
 
+    def admin_visitors_report_link(event)
+      return unless event.confirmation?
+
+      link_to icon(:download, t('events.visitors_report')),
+        report_admin_event_visit_requests_path(event),
+        class: 'item'
+    end
+
     def default_limit_total
       return event.limit_total if Event.exists?(event)
       Ez::Settings[:app, :events, :default_limit]
