@@ -60,6 +60,10 @@ gem 'versionomy',                                                    '~> 0.5.0'
 gem 'rollbar',                                                      '~> 2.14.1'
 gem 'tzinfo-data',              platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+#=== PDF GENERATION ===========================================================
+gem 'prawn'
+gem 'prawn-table'
+
 #=== DEV & TEST ===============================================================
 group :development do
   gem 'letter_opener'
@@ -101,4 +105,5 @@ group :test do
   gem 'vcr'
   gem 'webmock'
   gem 'codecov', require: false
+  gem 'pdf-inspector', require: 'pdf/inspector'
 end
