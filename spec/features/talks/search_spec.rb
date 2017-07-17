@@ -1,5 +1,4 @@
 RSpec.describe 'Talks search' do
-
   let(:event) { create :event, title: 'Event Title' }
 
   let!(:talk_1) { create :talk, title: 'Talk 1', description: "infrastructure", event: event }
@@ -12,7 +11,7 @@ RSpec.describe 'Talks search' do
     visit "/talks"
   end
 
-  context 'should have all talks with assigned speakers on the page' do
+  context 'should have all talks on the page' do
     it { expect(page).to have_content talk_1.title }
     it { expect(page).to have_content talk_2.title }
   end
