@@ -10,6 +10,8 @@ module Courses
     validates :start_at, presence: true, uniqueness: { scope: :mentor_id }
     validate  :has_interview_earlier_than_allowed_interval
 
+    delegate :full_name, to: :student, allow_nil: true
+
     ALLOWED_INTERVAL = 30
 
     def has_interview_earlier_than_allowed_interval
@@ -20,11 +22,6 @@ module Courses
 
     def mentor_name
       mentor.full_name
-    end
-
-    # need to be changed after creating a Student model
-    def student_name
-      'Smartest student'
     end
 
     def title

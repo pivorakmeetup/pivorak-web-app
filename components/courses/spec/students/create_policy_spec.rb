@@ -3,7 +3,7 @@ require './app/policies/courses/student/create_policy.rb'
 
 describe Courses::Student::CreatePolicy do
   let(:user_id) { 1 }
-  let(:season) { create(:season, title: 'Test Season') }
+  let(:season)  { create(:season, title: 'Test Season') }
 
   describe '#allowed?' do
     context 'user has no applications' do

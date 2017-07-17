@@ -34,19 +34,25 @@ module Admin
       end
 
       def interviews
-        @interviews ||= @season.interviews.includes(:mentor).page(params[:page])
+        @interviews ||= @season.interviews
+          .includes(:mentor)
+          .includes(:student)
+          .page(params[:page])
       end
 
       def add_interview_breadcrumb
-       add_breadcrumb 'interviews.plural', path: admin_courses_season_interviews_path(current_season)
+       add_breadcrumb 'interviews.plural',
+        path: admin_courses_season_interviews_path(current_season)
       end
 
       def interviews_params
-        params.require(:interview).permit(:start_at, :description).merge(mentor_id: mentor_id)
+        params.require(:interview).permit(:start_at, :description)
+          .merge(mentor_id: mentor_id)
       end
 
       def mentor_id
-        ::Courses::Mentor.find_by(season_id: current_season.id, user_id: current_user.id).id
+        ::Courses::Mentor
+          .find_by(season_id: current_season.id, user_id: current_user.id).id
       end
     end
   end

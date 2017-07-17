@@ -11,11 +11,14 @@ module Admin
       private
 
       def add_season_breadcrumb
-        add_breadcrumb current_season, path: admin_courses_season_path(current_season)
+        add_breadcrumb current_season,
+          path: admin_courses_season_path(current_season)
       end
 
       def current_season
-        @current_season ||= ::Courses::Season.friendly.find(params[:season_id] ||= params[:id])
+        @current_season ||= ::Courses::Season
+          .friendly
+          .find(params[:season_id] ||= params[:id])
       end
 
       def authenticate_mentor!

@@ -7,15 +7,17 @@ module Admin
       private
 
       def students
-        @students ||= current_season.students.includes(:user)
+        @students ||= current_season.students.includes(:user).page(params[:page])
       end
 
       def add_season_breadcrumb
-       add_breadcrumb current_season, path: admin_courses_season_path(current_season)
+       add_breadcrumb current_season,
+        path: admin_courses_season_path(current_season)
       end
 
       def add_student_breadcrumb
-       add_breadcrumb 'students.plural', path: admin_courses_season_students_path(current_season)
+       add_breadcrumb 'students.plural',
+        path: admin_courses_season_students_path(current_season)
       end
     end
   end
