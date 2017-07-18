@@ -1,11 +1,14 @@
 RSpec.describe 'Talks search' do
   let(:event) { create :event, title: 'Event Title' }
 
-  let!(:talk_1) { create :talk, title: 'Talk 1', description: "infrastructure", event: event }
-  let!(:talk_2) { create :talk, title: 'Talk 2', description: "service objects", event: event }
-
   let(:title_of_talk_1) { 'Talk 1' }
+  let(:title_of_talk_2) { 'Talk 2' }
+
+  let(:description_of_talk_1) { 'infrastructure' }
   let(:description_of_talk_2) { 'service objects' }
+
+  let!(:talk_1) { create :talk, title: title_of_talk_1, description: description_of_talk_1, event: event }
+  let!(:talk_2) { create :talk, title: title_of_talk_2, description: description_of_talk_2, event: event }
 
   before do
     visit "/talks"
