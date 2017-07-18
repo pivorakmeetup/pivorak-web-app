@@ -19,8 +19,6 @@ class TalksController < ApplicationController
     @tags ||= ActsAsTaggableOn::Tag.most_used
   end
 
-  private
-
   def search_against(model)
     Search::Resource.call params.merge(model: model)
   end
