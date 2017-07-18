@@ -13,5 +13,9 @@ describe VisitRequest::Cancel do
 
       expect(visit_request.reload.status).to eq(VisitRequest::CANCELED.to_s)
     end
+
+    it 'sends email to admin' do
+      subject.call
+    end
   end
 end

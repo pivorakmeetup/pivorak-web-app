@@ -52,6 +52,20 @@ RSpec.describe 'Emails PREVIEW' do
         expect(page.status_code).to eq(200)
       end
     end
+
+    describe 'VisitRequestMailer#notify_admin_about_canceled_attendee' do
+      it do
+        EmailTemplate.create!(
+          title: 'VisitRequestMailer#notify_admin_about_canceled_attendee',
+          subject: 'Attendee canceled his request',
+          note: 'Will be sent when attendee cancels his request',
+          body: File.read('db/seed/email_templates/notify_admin_about_canceled_attendee.md')
+        )
+        create(:visit_request)
+        visit '/emails/en/visit_request_mailer_preview-notify_admin_about_canceled_attendee'
+        expect(page.status_code).to eq(200)
+      end
+    end
   end
 
   context 'when user is not admin' do
