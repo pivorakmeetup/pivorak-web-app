@@ -3,7 +3,7 @@ RSpec.describe 'Talks search' do
 
   let(:title_of_talk_1) { 'Talk 1' }
   let(:title_of_talk_2) { 'Talk 2' }
-  let(:unmatched_title) {'Something which is not present in db'}
+  let(:unmatched_title) { 'Something which is not present in db' }
 
   let(:description_of_talk_1) { 'infrastructure' }
   let(:description_of_talk_2) { 'service objects' }
