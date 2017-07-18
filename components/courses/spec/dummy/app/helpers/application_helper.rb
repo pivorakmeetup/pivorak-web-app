@@ -23,4 +23,7 @@ module ApplicationHelper
 
   def admin_back_link(*)
   end
+
+  def icon(*)
+  end
 end

@@ -9,32 +9,38 @@ module Admin
 
       def admin_courses_season_overview
         link_to icon(:book, t('courses.overview')),
-          admin_courses_season_path(current_season),
-          class: admin_courses_active_item?('seasons')
+                admin_courses_season_path(current_season),
+                class: admin_courses_active_item?('seasons')
       end
 
       def admin_courses_season_mentors_link
         link_to icon(:spy, t('mentors.plural')),
-          admin_courses_season_mentors_path(current_season),
-          class: admin_courses_active_item?('mentors')
+                admin_courses_season_mentors_path(current_season),
+                class: admin_courses_active_item?('mentors')
       end
 
       def admin_courses_season_questions_link
         link_to icon(:'help circle', t('questions.plural')),
-          admin_courses_season_questions_path(current_season),
-          class: admin_courses_active_item?('questions')
+                admin_courses_season_questions_path(current_season),
+                class: admin_courses_active_item?('questions')
       end
 
       def admin_courses_season_interviews_link
         link_to icon(:comments, t('interviews.plural')),
-          admin_courses_season_interviews_path(current_season),
-          class: admin_courses_active_item?('interviews')
+                admin_courses_season_interviews_path(current_season),
+                class: admin_courses_active_item?('interviews')
       end
 
       def admin_courses_season_students_link
         link_to icon(:student, t('students.plural')),
-          admin_courses_season_students_path(current_season),
-          class: admin_courses_active_item?('students')
+                admin_courses_season_students_path(current_season),
+                class: admin_courses_active_item?('students')
+      end
+
+      def admin_courses_season_lectures_link
+        link_to icon(:university, t('lectures.plural')),
+                admin_courses_season_lectures_path(current_season),
+                class: admin_courses_active_item?('lectures')
       end
 
       private

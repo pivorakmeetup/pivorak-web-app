@@ -16,6 +16,7 @@ Rails.application.routes.draw do
         resources :questions, except: :destroy
         resources :interviews, except: :destroy
         resources :students, only: :index
+        resources :lectures, except: :destroy
       end
     end
   end

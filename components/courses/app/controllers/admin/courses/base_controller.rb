@@ -5,10 +5,6 @@ module Admin
       before_action :authenticate_mentor!
 
       add_breadcrumb 'courses.plural', :admin_courses_seasons_path
-      before_action :add_new_breadcump,  only: %i[new create]
-      before_action :add_edit_breadcump, only: %i[edit update]
-
-      private
 
       def add_season_breadcrumb
         add_breadcrumb current_season,
