@@ -1,6 +1,6 @@
 RSpec.describe 'Events READ' do
-  let!(:event_a)    { create(:event, title: 'Test Event A', status: :confirmation) }
-  let!(:event_b)    { create(:event, title: 'Test Event B') }
+  let!(:event_a) { create(:event, title: 'Test Event A', status: :confirmation) }
+  let!(:event_b) { create(:event, title: 'Test Event B') }
 
   before do
     assume_admin_logged_in
