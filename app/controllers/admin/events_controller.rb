@@ -31,7 +31,7 @@ module Admin
     end
 
     def events
-      @events ||= ::Event::List.(events: search_against(Event), page: params[:page])
+      @events ||= ::Event::List.(events: search_against(Event), page: params[:page]).per(10)
     end
 
     def venues
