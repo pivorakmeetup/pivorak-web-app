@@ -2,6 +2,7 @@ module Admin
   module Courses
     class MentorsController < BaseController
       helper_method :mentors, :mentor, :available_for_mentoring
+      before_action :add_new_breadcump,  only: %i[new create]
       before_action :add_season_breadcrumb, :add_mentor_breadcrumb
 
       def new

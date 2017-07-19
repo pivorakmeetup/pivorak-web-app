@@ -3,13 +3,15 @@ module Admin
     class BaseController < ::Admin::BaseController
       helper_method :current_season
       before_action :authenticate_mentor!
-
       add_breadcrumb 'courses.plural', :admin_courses_seasons_path
+      #
 
       def add_season_breadcrumb
         add_breadcrumb current_season,
           path: admin_courses_season_path(current_season)
       end
+
+      private
 
       def current_season
         @current_season ||= ::Courses::Season
