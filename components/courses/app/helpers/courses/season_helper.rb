@@ -6,13 +6,22 @@ module Courses
       "#{format_timestamp(season.start_at, time: false)} - #{format_timestamp(season.finish_at, time: false)}"
     end
 
-    def season_links
-      case season.status.to_sym
-      when Courses::Season::REGISTRATION
-        render 'courses/seasons/registration_season_links'
-      when Courses::Season::LIVE
-        render 'courses/seasons/live_season_links'
-      end
+    def send_homework_link
+      return unless season.status.to_sym == Courses::Season::LIVE
+
+      link_to t('seasons.send_homework'), '#'
+    end
+
+    def register_link
+      return unless season.status.to_sym == Courses::Season::REGISTRATION
+
+      link_to t('seasons.register'), '#'
+    end
+
+    def send_test_task_link
+      return unless season.status.to_sym == Courses::Season::REGISTRATION
+
+      link_to t('seasons.send_test_task'), '#'
     end
   end
 end

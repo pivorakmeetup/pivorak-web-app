@@ -9,7 +9,7 @@ module Courses
     end
 
     def mentors
-      season.mentors
+      @mentors ||= season.mentors
     end
   end
 end
