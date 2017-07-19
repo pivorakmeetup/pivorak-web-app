@@ -10,6 +10,7 @@ require 'rspec/rails'
 require 'pry-rails'
 require 'capybara/rails'
 require 'factory_girl_rails'
+require 'faker'
 
 Dir[Courses::Engine.root.join('spec/support/*.rb')].each { |f| require f }
 
