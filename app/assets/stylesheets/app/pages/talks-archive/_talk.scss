@@ -237,3 +237,7 @@ $namespace: ".pk-archived-talk";
   background-image: none;
   color: rgba(0, 0, 0, 0.8);
 }
+
+#{$namespace}__centered {
+  margin: auto
+}

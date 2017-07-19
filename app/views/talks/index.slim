@@ -5,6 +5,8 @@
 .pk-container
   h2.mbm = t 'talks.plural'
   .pk-grid.pk-grid--wrap.pk-archived-talks
+    - if talks.empty?
+      .pk-flash.pk-archived-talk__centered = t 'search_result.not_found'
     - talks.each do |talk|
       .pk-archived-talk.pk-grid--center-v
         .pk-archived-talk__img style=talk_img(talk)
