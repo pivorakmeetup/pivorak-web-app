@@ -7,7 +7,7 @@
     .fields
       .four.wide.field.ui.slider.checkbox
       .twelve.wide.field.right-align
-        = link_to t('words.back'), admin_courses_season_interviews_path(@season), class: 'ui button grey'
+        = link_to t('words.back'), admin_courses_season_interviews_path(current_season), class: 'ui button grey'
         = f.button :submit
 
     .fields

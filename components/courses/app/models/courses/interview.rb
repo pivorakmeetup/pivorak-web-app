@@ -7,16 +7,17 @@ module Courses
     belongs_to :mentor
     belongs_to :student, optional: true
 
-    validates :start_at, presence: true, uniqueness: { scope: :mentor_id }
-    validate  :has_interview_earlier_than_allowed_interval
+    validates :start_at, presence: true
+    validate  :interval_policy
+    validates :student_id, uniqueness: true, allow_nil: true
 
     delegate :full_name, to: :student, allow_nil: true
 
     ALLOWED_INTERVAL = 30
 
-    def has_interview_earlier_than_allowed_interval
-      if Courses::Interview::HasInterviewEarlierThanAllowedInterval.new(mentor, self, ALLOWED_INTERVAL).call
-        errors.add(:start_at, "should be at least #{ALLOWED_INTERVAL} minutes after your previous interview")
+    def interval_policy
+      unless Courses::Interview::IntervalPolicy.new(mentor, self, ALLOWED_INTERVAL).allowed?
+        errors.add(:start_at, "should be at least #{ALLOWED_INTERVAL} minutes between interviews")
       end
     end
 

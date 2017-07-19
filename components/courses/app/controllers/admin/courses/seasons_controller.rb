@@ -3,6 +3,8 @@ module Admin
     class SeasonsController < BaseController
       helper_method :seasons, :season
       before_action :add_season_breadcrumb, only: %i[show edit update]
+      before_action :add_new_breadcump,  only: %i[new create]
+      before_action :add_edit_breadcump, only: %i[edit update]
       before_action :authenticate_mentor!, only: %i[show edit update]
 
       def new

@@ -8,16 +8,18 @@
       tr
         th = t 'students.name'
         th = t 'mentors.name'
+        th = t 'interviews.description'
         th = t 'interviews.start_at'
         th
 
     tbody
       - interviews.each do |interview|
         tr
-          td = link_to interview.full_name, admin_courses_season_interview_path(@season, interview) if interview.full_name
+          td = link_to interview.full_name, admin_courses_season_interview_path(current_season, interview) if interview.full_name
           td = interview.mentor_name
+          td = interview.description
           td = format_timestamp(interview.start_at)
           td = controls do
-            = link_to icon(:edit, t('words.edit')), edit_admin_courses_season_interview_path(@season, interview), class: 'item'
+            = link_to icon(:edit, t('words.edit')), edit_admin_courses_season_interview_path(current_season, interview), class: 'item'
 
   = paginate interviews

@@ -3,17 +3,16 @@ module Admin
     class InterviewsController < BaseController
       helper_method :interviews, :interview
       before_action :add_season_breadcrumb, :add_interview_breadcrumb
-      before_action :set_season
       before_action :add_new_breadcump,  only: %i[new create]
       before_action :add_edit_breadcump, only: %i[edit update]
 
       def new
-        @interview = @season.interviews.new
+        @interview = current_season.interviews.new
         render_form
       end
 
       def create
-        @interview = @season.interviews.new(interviews_params)
+        @interview = current_season.interviews.new(interviews_params)
         react_to interview.save
       end
 
@@ -23,12 +22,8 @@ module Admin
 
       private
 
-      def set_season
-        @season = ::Courses::Season.friendly.find(params[:season_id])
-      end
-
       def default_redirect
-        redirect_to admin_courses_season_interviews_path(@season)
+        redirect_to admin_courses_season_interviews_path(current_season)
       end
 
       def interview
@@ -36,7 +31,7 @@ module Admin
       end
 
       def interviews
-        @interviews ||= @season.interviews
+        @interviews ||= current_season.interviews
           .includes(:mentor)
           .includes(:student)
           .page(params[:page])

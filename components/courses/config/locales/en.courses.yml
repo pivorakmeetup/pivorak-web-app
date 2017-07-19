@@ -47,6 +47,7 @@ en:
     start_at: Starts At
     new: New Interview
     description: Description
+    take: Take this time slot
 
   students:
     name: Student Name
@@ -76,3 +77,8 @@ en:
         create:
           success: Successfully sent!
           error: Some fields are blank!
+
+      interviews:
+        update:
+          success: You chose your time slot!
+          error: You can't take second time slot!
