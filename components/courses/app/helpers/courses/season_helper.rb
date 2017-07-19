@@ -9,10 +9,9 @@ module Courses
     def season_links
       case season.status.to_sym
       when Courses::Season::REGISTRATION
-        ("<p>#{link_to t('seasons.register'), '#'}</p>" +
-          "<p>#{link_to t('seasons.send_test_task'), '#'}</p>").html_safe
+        render 'courses/seasons/registration_season_links'
       when Courses::Season::LIVE
-        "<p>#{link_to t('seasons.send_homework'), '#'}</p>".html_safe
+        render 'courses/seasons/live_season_links'
       end
     end
   end
