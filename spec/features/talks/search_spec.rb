@@ -37,12 +37,13 @@ RSpec.describe 'Talks search' do
       expect(page).not_to have_content talk_1.title
     end
 
-    it 'renders empty page if no matches found' do
+    it 'shows up flash message if no records have been found' do
       fill_in 'query', with: unmatched_title
       click_button('Search')
 
       expect(page).not_to have_content talk_2.title
       expect(page).not_to have_content talk_1.title
+      expect(page).to have_content(I18n.t('search_result.not_found'))
     end
   end
 end
