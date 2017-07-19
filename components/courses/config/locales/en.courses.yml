@@ -27,6 +27,9 @@ en:
     finish_at: Finished At
     mentors: Mentors
     status: Status
+    register: Register
+    send_test_task: Send test task
+    send_homework: Send homework
 
   mentors:
     plural: Mentors
