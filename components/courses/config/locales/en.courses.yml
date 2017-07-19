@@ -8,6 +8,9 @@ en:
   courses_season_questions:
     singular: Question
 
+  courses_season_lectures:
+    singular: Lecture
+
   courses_season_interviews:
     singular: Interview
 
@@ -55,6 +58,11 @@ en:
     status: Status
     personal_info: Personal Info
     motivation_info: Motivation Info
+
+  lectures:
+    plural: Lectures
+    lecturer: Lecturer
+    venue: Venue
 
   flash:
     courses:

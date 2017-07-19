@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20170717131626) do
     t.datetime "updated_at",   null: false
     t.index ["student_id"], name: "index_courses_homeworks_on_student_id"
   end
+ActiveRecord::Schema.define(version: 20170718183113) do
 
   create_table "courses_interviews", force: :cascade do |t|
     t.integer  "season_id"
@@ -30,6 +31,23 @@ ActiveRecord::Schema.define(version: 20170717131626) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "season_id"
+  end
+
+  create_table "courses_lectures", force: :cascade do |t|
+    t.string   "title"
+    t.string   "slug"
+    t.text     "description"
+    t.datetime "started_at"
+    t.datetime "finished_at"
+    t.integer  "status"
+    t.integer  "venue_id"
+    t.integer  "season_id"
+    t.integer  "mentor_id"
+    t.index ["mentor_id"], name: "index_courses_lectures_on_mentor_id"
+    t.index ["season_id"], name: "index_courses_lectures_on_season_id"
+    t.index ["slug"], name: "index_courses_lectures_on_slug"
+    t.index ["venue_id"], name: "index_courses_lectures_on_venue_id"
   end
 
   create_table "courses_questions", force: :cascade do |t|
@@ -73,6 +91,13 @@ ActiveRecord::Schema.define(version: 20170717131626) do
     t.string "email"
     t.string "first_name"
     t.string "last_name"
+  end
+
+  create_table "venues", force: :cascade do |t|
+    t.string   "name"
+    t.string   "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
