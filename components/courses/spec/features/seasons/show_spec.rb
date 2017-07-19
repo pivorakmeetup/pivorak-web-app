@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'Season SHOW' do
-
   context "season with 'registration' status" do
     let!(:season) { create(:season, title: 'Test Season', status: :registration) }
 

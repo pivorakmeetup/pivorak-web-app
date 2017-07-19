@@ -3,7 +3,9 @@ module Courses
     def season_dates
       return unless season.start_at && season.finish_at
 
-      "#{format_timestamp(season.start_at, time: false)} - #{format_timestamp(season.finish_at, time: false)}"
+      start_at = format_timestamp(season.start_at, time: false)
+      finish_at = format_timestamp(season.finish_at, time: false)
+      "#{start_at} - #{finish_at}"
     end
 
     def send_homework_link
