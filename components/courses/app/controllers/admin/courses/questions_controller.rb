@@ -2,6 +2,8 @@ module Admin
   module Courses
     class QuestionsController < BaseController
       helper_method :questions, :question
+      before_action :add_new_breadcump,  only: %i[new create]
+      before_action :add_edit_breadcump, only: %i[edit update]
       before_action :add_season_breadcrumb, :add_question_breadcrumb
       before_action :add_new_breadcump,  only: %i[new create]
       before_action :add_edit_breadcump, only: %i[edit update]
