@@ -1,0 +1,18 @@
+- title t('courses.test_tasks.plural')
+
+= admin_courses_seasons_nav do
+  table.ui.very.basic.table
+    thead
+      tr
+        th                = t 'courses.test_task.full_name'
+        th.center.aligned = t 'courses.test_task.git_url'
+        th.center.aligned = t 'courses.test_task.show_url'
+        th.center.aligned = t 'courses.test_task.comment'
+
+    tbody
+      - test_tasks.each do |test_task|
+        tr
+          td                = test_task.full_name
+          td.center.aligned = test_task.git_url
+          td.center.aligned = test_task.showcase_url
+          td.center.aligned = test_task.comment

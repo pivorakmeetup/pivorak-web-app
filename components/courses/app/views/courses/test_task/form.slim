@@ -1,0 +1,13 @@
+- title resource_form_text(courses.test_task)
+
+= resource_form_header(courses.test_task)
+
+= simple_form_for test_task, url: courses_season_test_task_index_path(current_season), as: :test_task do |f|
+  .fields
+    .sixteen.wide.field.right-align
+      = f.button :submit
+
+  .fields
+    .six.wide.field = f.input :git_url
+    .six.wide.field = f.input :showcase_url
+    .six.wide.field = f.input :comment
