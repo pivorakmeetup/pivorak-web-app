@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   mount RailsEmailPreview::Engine, at: 'emails'
+  mount ActionCable.server, at: 'cable'
 
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks',
