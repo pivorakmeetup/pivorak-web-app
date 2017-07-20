@@ -1,0 +1,12 @@
+td = bool_icon(visit_request.user.verified?)
+td = link_to visit_request.user.full_name, edit_admin_member_path(visit_request.user), target: '_blank'
+
+- if event.live?
+  td.center.aligned = visit_request_visited_link(visit_request)
+- else
+  td.center.aligned = visit_request_list_link(visit_request)
+  td.center.aligned = visit_request_status_label(visit_request.status)
+  - unless event.confirmation? || event.passed?
+    td.center.aligned
+      = admin_approve_visit_request_link(visit_request)
+      = admin_cancel_visit_request_link(visit_request)
