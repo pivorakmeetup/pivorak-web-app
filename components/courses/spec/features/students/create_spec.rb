@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Student CREATE' do
-  let!(:season)                { create(:season, title: 'Test Season') }
+  let!(:season)                { create(:season, title: 'Test Season', status: :registration) }
   let!(:user)                  { User.create(email: 'test@test.com', first_name: 'Test', last_name: 'User') }
   let(:test_new_students_path) { '/courses/seasons/test-season/students/new' }
 

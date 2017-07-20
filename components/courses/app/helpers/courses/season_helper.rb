@@ -1,6 +1,6 @@
 module Courses
   module SeasonHelper
-    def season_dates
+    def courses_season_dates(season)
       return unless season.start_at && season.finish_at
 
       start_at = format_timestamp(season.start_at, time: false)
@@ -8,22 +8,22 @@ module Courses
       "#{start_at} - #{finish_at}"
     end
 
-    def send_homework_link
+    def courses_send_homework_link(season)
       return unless season.status.to_sym == Courses::Season::LIVE
 
-      link_to t('seasons.send_homework'), '#'
+      link_to t('courses.seasons.send_homework'), '#'
     end
 
-    def register_link
+    def courses_register_link(season)
       return unless season.status.to_sym == Courses::Season::REGISTRATION
 
-      link_to t('seasons.register'), '#'
+      link_to t('courses.seasons.register'), new_courses_season_student_path(season)
     end
 
-    def send_test_task_link
+    def courses_send_test_task_link(season)
       return unless season.status.to_sym == Courses::Season::REGISTRATION
 
-      link_to t('seasons.send_test_task'), '#'
+      link_to t('courses.seasons.send_test_task'), '#'
     end
   end
 end

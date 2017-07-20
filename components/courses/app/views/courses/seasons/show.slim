@@ -1,16 +1,16 @@
 h3 = season.title
-p = season_dates
+p  = courses_season_dates(season)
 h5 = season.status
-p = season.description
+p  = season.description
 
 br
 
-h2 = t 'mentors.plural'
+h2 = t 'courses.mentors.plural'
 - mentors.each do |mentor|
   p = mentor.full_name
 
 br
 
-p = register_link
-p = send_test_task_link
-p = send_homework_link
+p = courses_register_link(season)
+p = courses_send_test_task_link(season)
+p = courses_send_homework_link(season)

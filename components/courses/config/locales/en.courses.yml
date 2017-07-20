@@ -21,67 +21,64 @@ en:
         mentor-access-denied: Access denied. You are not mentor of this course
         season-creator-destroy: Season creator destroy is prohibited
 
-  seasons:
-    plural: Seasons
-    start_at: Started At
-    finish_at: Finished At
-    mentors: Mentors
-    status: Status
-    register: Register
-    send_test_task: Send test task
-    send_homework: Send homework
+    students:
+      name: Student Name
+      plural: Students
+      user_id: User ID
+      status: Status
+      personal_info: Personal Info
+      motivation_info: Motivation Info
 
-  mentors:
-    plural: Mentors
-    name: Mentor Name
+    seasons:
+      plural: Seasons
+      start_at: Started At
+      finish_at: Finished At
+      mentors: Mentors
+      status: Status
+      register: Register
+      send_test_task: Send test task
+      send_homework: Send homework
 
-  questions:
-    plural: Questions
+    mentors:
+      plural: Mentors
+      name: Mentor Name
 
-    default:
-      first: First impression
-      second: Technical skills
-      third: Confidence in completed test task
-      fourth: Soft skills
-      fifth: Would you like to take this person to your team?
+    questions:
+      plural: Questions
 
-  interviews:
-    plural: Interviews
-    start_at: Starts At
-    new: New Interview
-    description: Description
-    take: Take this time slot
+      default:
+        first: First impression
+        second: Technical skills
+        third: Confidence in completed test task
+        fourth: Soft skills
+        fifth: Would you like to take this person to your team?
 
-  students:
-    name: Student Name
+    interviews:
+      plural: Interviews
+      start_at: Starts At
+      new: New Interview
+      description: Description
+      take: Take this time slot
 
-  students:
-    plural: Students
-    name: Name
-    user_id: User ID
-    status: Status
-    personal_info: Personal Info
-    motivation_info: Motivation Info
+    lectures:
+      plural: Lectures
+      lecturer: Lecturer
+      venue: Venue
 
-  lectures:
-    plural: Lectures
-    lecturer: Lecturer
-    venue: Venue
+    flash:
+      courses:
+        students:
+          create:
+            success: Successfully enrolled!
+            fail: You can't enroll again!
+            error: Some fields are blank!
 
-  flash:
-    courses:
-      students:
-        create:
-          success: Successfully enrolled!
-          fail: You can't enroll again!
-          error: Some fields are blank!
+        homeworks:
+          create:
+            success: Successfully sent!
+            error: Some fields are blank!
 
-      homeworks:
-        create:
-          success: Successfully sent!
-          error: Some fields are blank!
-
-      interviews:
-        update:
-          success: You chose your time slot!
-          error: You can't take second time slot!
+        interviews:
+          update:
+            success: You chose your time slot!
+            error: You can't take second time slot!

@@ -4,7 +4,9 @@ module Courses
     helper_method :current_season, :current_student
 
     def current_season
-      @current_season ||= ::Courses::Season.friendly.find(params[:season_id])
+      @current_season ||= ::Courses::Season
+        .friendly
+        .find(params[:season_id] ||= params[:id])
     end
 
     def current_student
