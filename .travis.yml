@@ -1,5 +1,5 @@
-language:
-  - ruby
+language: ruby
+dist: precise
 
 rvm:
   - 2.3.1
