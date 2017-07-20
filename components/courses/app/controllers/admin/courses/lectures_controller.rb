@@ -3,10 +3,10 @@ module Admin
     class LecturesController < BaseController
       helper_method :lectures, :lecture, :venues, :mentors
 
-      before_action :add_season_breadcrumb, :add_lectures_breadcrumb
-      before_action :add_lecture_breadcrumb, only: %i[show edit update]
-      before_action :add_new_breadcump,  only: %i[new create]
-      before_action :add_edit_breadcump, only: %i[edit update]
+      breadcrumps do
+        add :lectures_breadcrumb
+        add :lecture_breadcrumb, only: %i[show edit update]
+      end
 
       def new
         @lecture = current_season.lectures.build
@@ -48,12 +48,12 @@ module Admin
         @mentors ||= ::Courses::Lecture::MentorsForLecture.call(current_season)
       end
 
-      def add_lectures_breadcrumb
+      def lectures_breadcrumb
         add_breadcrumb 'courses.lectures.plural',
           path: admin_courses_season_lectures_path(current_season)
       end
 
-      def add_lecture_breadcrumb
+      def lecture_breadcrumb
         add_breadcrumb lecture,
           path: admin_courses_season_lecture_path(current_season, lecture)
       end
