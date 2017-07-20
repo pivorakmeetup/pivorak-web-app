@@ -2,6 +2,7 @@ module Admin
   module Courses
     class LecturesController < BaseController
       helper_method :lectures, :lecture, :venues, :mentors
+
       before_action :add_season_breadcrumb, :add_lectures_breadcrumb
       before_action :add_lecture_breadcrumb, only: %i[show edit update]
       before_action :add_new_breadcump,  only: %i[new create]
@@ -9,11 +10,13 @@ module Admin
 
       def new
         @lecture = current_season.lectures.build
+
         render_form
       end
 
       def create
         @lecture = current_season.lectures.new(lecture_params)
+
         react_to lecture.save
       end
 
@@ -32,15 +35,17 @@ module Admin
       end
 
       def lectures
-        @lectures ||= Lecture::LecturesList.call(current_season)
+        @lectures ||= current_season.lectures
+                                    .includes(:venue)
+                                    .includes(mentor: :user)
       end
 
       def venues
-        @venues ||= Venue.all
+        @venues ||= ::Venue.all
       end
 
       def mentors
-        @mentors ||= Lecture::MentorsForLecture.call(current_season)
+        @mentors ||= ::Courses::Lecture::MentorsForLecture.call(current_season)
       end
 
       def add_lectures_breadcrumb

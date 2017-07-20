@@ -9,7 +9,7 @@ module Courses
     end
 
     def create
-      @test_task = TestTask::Create.call(test_task_params, current_student.id)
+      @test_task = ::Courses::TestTask::Create.call(test_task_params, current_student.id)
       react_to test_task.save
     end
 
@@ -18,6 +18,7 @@ module Courses
     end
 
     private
+
     def default_redirect
       redirect_to root_path
     end
