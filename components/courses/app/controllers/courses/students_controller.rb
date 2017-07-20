@@ -16,7 +16,7 @@ module Courses
     private
 
     def default_redirect
-      redirect_to root_path
+      redirect_to courses_season_path(current_season)
     end
 
     def student
@@ -25,7 +25,7 @@ module Courses
 
     def execute_create_policy
       allowed =  Student::CreatePolicy.new(current_user.id, current_season).allowed?
-      redirect_to root_path, alert: t('flash.courses.students.create.fail') unless allowed
+      redirect_to courses_season_path(current_season), alert: t('flash.courses.students.create.fail') unless allowed
     end
 
     def student_params

@@ -4,7 +4,6 @@ module Admin
       helper_method :current_season
       before_action :authenticate_mentor!
       add_breadcrumb 'courses.plural', :admin_courses_seasons_path
-      #
 
       def add_season_breadcrumb
         add_breadcrumb current_season,
@@ -20,10 +19,17 @@ module Admin
       end
 
       def authenticate_mentor!
-        if ::Courses::Mentor.where(user_id: current_user.id, season_id: current_season.id).none?
-          redirect_to admin_courses_seasons_path, alert: t('courses.flash.mentor-access-denied')
-          false
-        end
+        return if current_season_has_current_user_as_a_mentor?
+
+        redirect_to admin_courses_seasons_path,
+          alert: t('courses.flash.mentor-access-denied')
+      end
+
+      def current_season_has_current_user_as_a_mentor?
+        ::Courses::Mentor.exists?(
+          user_id:   current_user.id,
+          season_id: current_season.id
+        )
       end
     end
   end

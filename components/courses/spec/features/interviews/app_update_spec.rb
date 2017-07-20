@@ -11,7 +11,7 @@ RSpec.describe 'Interviews UPDATE (app)' do
 
   context 'take first interview time slot' do
     it 'assigns student to interview' do
-      click_link 'Take this time slot'
+      click_link 'Take'
       interview.reload
       expect(interview.student_id).to eq(student.id)
     end
@@ -20,7 +20,7 @@ RSpec.describe 'Interviews UPDATE (app)' do
   context 'take second interview time slot' do
     it 'does not assign student to interview' do
       create(:interview, mentor_id: mentor.id, student_id: student.id, start_at: (Time.now + 30.minutes))
-      click_link 'Take this time slot'
+      click_link 'Take'
       interview.reload
       expect(interview.student_id).not_to eq(student.id)
     end
