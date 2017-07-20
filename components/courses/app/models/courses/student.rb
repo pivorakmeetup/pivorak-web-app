@@ -4,10 +4,11 @@ module Courses
 
     belongs_to :season
     belongs_to :user
-    has_one :interview
-    has_one :test_task
+    has_one    :interview
+    has_one    :test_task
 
     delegate :full_name, to: :user
+    delegate :email,     to: :user
 
     enum status: %i[enrolled test_task_done interviewing attending dropped graduated]
 

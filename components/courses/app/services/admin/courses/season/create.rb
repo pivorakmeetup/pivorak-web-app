@@ -27,11 +27,11 @@ module Admin
         attr_reader :seasons_params
         def default_questions
           default_questions = [
-                                I18n.t('questions.default.first'),
-                                I18n.t('questions.default.second'),
-                                I18n.t('questions.default.third'),
-                                I18n.t('questions.default.fourth'),
-                                I18n.t('questions.default.fifth')
+                                I18n.t('courses.questions.default.first'),
+                                I18n.t('courses.questions.default.second'),
+                                I18n.t('courses.questions.default.third'),
+                                I18n.t('courses.questions.default.fourth'),
+                                I18n.t('courses.questions.default.fifth')
                               ]
         end
       end

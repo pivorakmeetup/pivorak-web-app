@@ -1,13 +1,13 @@
-- title t('students.plural')
+- title t('courses.students.plural')
 
 = admin_courses_seasons_nav do
   table.ui.very.basic.table
     thead
       tr
         th                = t 'members.full_name'
-        th.center.aligned = t 'students.status'
-        th.center.aligned = t 'students.personal_info'
-        th.center.aligned = t 'students.motivation_info'
+        th.center.aligned = t 'courses.students.status'
+        th.center.aligned = t 'courses.students.personal_info'
+        th.center.aligned = t 'courses.students.motivation_info'
 
     tbody
       - students.each do |student|

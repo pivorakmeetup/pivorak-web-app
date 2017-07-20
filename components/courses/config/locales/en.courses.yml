@@ -59,6 +59,8 @@ en:
       new: New Interview
       description: Description
       take: Take this time slot
+      status: Status
+      video_url: Video url
 
     lectures:
       plural: Lectures
@@ -79,20 +81,20 @@ en:
     mentors: Mentors
     status: Status
 
-    flash:
-      courses:
-        students:
-          create:
-            success: Successfully enrolled!
-            fail: You can't enroll again!
-            error: Some fields are blank!
+  flash:
+    courses:
+      students:
+        create:
+          success: Successfully enrolled!
+          fail: You can't enroll again!
+          error: Some fields are blank!
 
-        homeworks:
-          create:
-            success: Successfully sent!
-            error: Some fields are blank!
+      homeworks:
+        create:
+          success: Successfully sent!
+          error: Some fields are blank!
 
-        interviews:
-          update:
-            success: You chose your time slot!
-            error: You can't take second time slot!
+      interviews:
+        update:
+          success: You chose your time slot!
+          error: You can't take second time slot!

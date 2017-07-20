@@ -35,11 +35,11 @@ RSpec.describe 'Interview CREATE' do
     it 'creates interview' do
       fill_in 'Description', with: 'Very hard interview'
       fill_in 'Start at', with: (Time.now + 40.minutes).to_s
-
+      select('vacant', from: 'Status')
       click_button 'Create Interview'
 
       expect(page).to have_current_path '/admin/courses/seasons/test-season/interviews'
-      expect(page).to have_content 'Very hard interview'
+      expect(page).to have_content 'vacant'
     end
   end
 end

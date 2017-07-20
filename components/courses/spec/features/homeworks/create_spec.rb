@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Homework CREATE' do
-  let!(:season)  { create(:season, title: 'Test Season') }
+  let!(:season)  { create(:season, title: 'Test Season', status: :live) }
   let!(:user)    { User.create(email: 'test@test.com', first_name: 'Test', last_name: 'User') }
   let!(:student) { create(:student, season_id: season.id, user_id: user.id) }
 

@@ -9,7 +9,9 @@ module Courses
       end
 
       def allowed?
-        has_no_interviews_30_minutes_prior? && has_no_interviews_30_minutes_after?
+        interview_start_time &&
+          has_no_interviews_30_minutes_prior? &&
+          has_no_interviews_30_minutes_after?
       end
 
       private

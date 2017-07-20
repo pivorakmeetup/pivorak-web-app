@@ -38,12 +38,12 @@ module Admin
       end
 
       def add_interview_breadcrumb
-       add_breadcrumb 'interviews.plural',
+       add_breadcrumb 'courses.interviews.plural',
         path: admin_courses_season_interviews_path(current_season)
       end
 
       def interviews_params
-        params.require(:interview).permit(:start_at, :description)
+        params.require(:interview).permit(:start_at, :description, :video_url, :status)
           .merge(mentor_id: mentor_id)
       end
 
