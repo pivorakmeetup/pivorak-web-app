@@ -15,7 +15,7 @@ class VisitRequestsController < ApplicationController
   end
 
   def destroy
-    visit_request.destroy
+    VisitRequest::Cancel.call(visit_request)
 
     flash_success and default_redirect
   end

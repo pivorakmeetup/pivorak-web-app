@@ -77,4 +77,28 @@ describe VisitRequestMailer do
       expect(mail.body.encoded).to include user.full_name
     end
   end
+
+  describe '#notify_admin_about_canceled_attendee' do
+    let(:mail) { described_class.notify_admin_about_canceled_attendee(visit_request) }
+    let!(:email_template) do
+      EmailTemplate.create!(
+        title: 'VisitRequestMailer#notify_admin_about_canceled_attendee',
+        subject: 'Attendee canceled his request',
+        note: 'Will be sent when attendee cancels his request',
+        body: File.read('db/seed/email_templates/notify_admin_about_canceled_attendee.md')
+      )
+    end
+
+    it 'renders the headers' do
+      expect(mail.subject).to eq(email_template.subject)
+      expect(mail.to).to eq([ApplicationMailer::PIVORAK_EMAIL])
+      expect(mail.from).to eq([ApplicationMailer::NO_REPLY_EMAIL])
+    end
+
+    it 'renders the body' do
+      expect(mail.body.encoded).to include event.title
+      expect(mail.body.encoded).to include user.full_name
+      expect(mail.body.encoded).to have_link('here', href: "http://localhost/admin/events/#{event.slug}/visit_requests")
+    end
+  end
 end
