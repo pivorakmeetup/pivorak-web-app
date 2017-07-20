@@ -158,7 +158,7 @@ en:
 
   visit_requests:
     send_email_to_visitors: 'Send email to visitors'
-    send_email_to_confirmed: 'Send email to confirmed attendees'
+    send_email_to_attendees: 'Send email to attendees'
     attend: Attend
     already_created: Already attending
     approve: Approve
