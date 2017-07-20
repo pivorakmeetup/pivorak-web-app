@@ -1,4 +1,4 @@
-- title t('lectures.plural')
+- title t('courses.lectures.plural')
 
 = admin_courses_seasons_nav do
   = resource_header :courses_season_lecture
@@ -7,8 +7,8 @@
     thead
       tr
         th = t('words.title')
-        th = t('lectures.lecturer')
-        th = t('lectures.venue')
+        th = t('courses.lectures.lecturer')
+        th = t('courses.lectures.venue')
         th = t('words.status')
         th
 
@@ -21,4 +21,3 @@
           td               = lecture.status
           td.right.aligned = controls do
             = edit_lecture_link(current_season, lecture)
-

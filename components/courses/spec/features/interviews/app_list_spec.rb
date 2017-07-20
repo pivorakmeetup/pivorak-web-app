@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Interviews LIST (app)' do
-  let!(:season)    { create(:season, title: 'Test Season') }
+  let!(:season)    { create(:season, title: 'Test Season', status: 1) }
   let!(:user)      { User.create(email: 'test@test.com', first_name: 'Test', last_name: 'User') }
   let!(:mentor)    { ::Courses::Mentor.create(user_id: user.id, season_id: season.id) }
   let!(:student)   { create(:student, user_id: user.id, season_id: season.id) }
@@ -12,7 +12,7 @@ RSpec.describe 'Interviews LIST (app)' do
       interview.student_id = nil
       interview.save
       visit '/courses/seasons/test-season/interviews/'
-      expect(page).to have_content(mentor.full_name)
+      expect(page).to have_content('Take this time slot')
     end
   end
 
@@ -21,7 +21,7 @@ RSpec.describe 'Interviews LIST (app)' do
       interview.student_id = student.id
       interview.save
       visit '/courses/seasons/test-season/interviews/'
-      expect(page).not_to have_content(mentor.full_name)
+      expect(page).not_to have_content('Take this time slot')
     end
   end
 end

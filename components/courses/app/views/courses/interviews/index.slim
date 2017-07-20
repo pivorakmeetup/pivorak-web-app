@@ -1,18 +1,18 @@
-- title t('interviews.plural')
+- title t('courses.interviews.plural')
 
 table.ui.very.basic.table
   thead
     tr
-      th = t 'mentors.name'
-      th = t 'interviews.start_at'
+      th = t 'courses.interviews.start_at'
+      th = t 'courses.interviews.description'
       th
 
   tbody
     - interviews.each do |interview|
       tr
-        td = interview.mentor_name
         td = format_timestamp(interview.start_at)
-        td = link_to t('interviews.take'),
+        td = interview.description
+        td = link_to t('courses.interviews.take'),
           courses_season_interview_path(current_season, interview),
             method: 'patch',
               data: { confirm: t('phrases.confirm') }

@@ -13,7 +13,7 @@ module Courses
     private
 
     def default_redirect
-      redirect_to root_path
+      redirect_to courses_season_path(current_season)
     end
 
     def interview
@@ -22,8 +22,7 @@ module Courses
 
     def interviews
       @interviews ||= current_season.interviews
-        .includes(:mentor)
-        .where(student_id: nil)
+        .attendance_available
         .page(params[:page])
     end
 

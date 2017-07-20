@@ -1,12 +1,18 @@
 = admin_courses_seasons_nav do
-  b = t 'students.name'
+  b = t 'courses.students.name'
   p = interview.full_name
 
-  b = t 'mentors.name'
+  b = t 'courses.mentors.name'
   p = interview.mentor_name
 
-  b = t 'interviews.start_at'
+  b = t 'courses.interviews.start_at'
   p = format_timestamp(interview.start_at)
 
-  b = t 'interviews.description'
+  b = t 'courses.interviews.status'
+  p = interview.status
+
+  b = t 'courses.interviews.description'
   p = interview.description
+
+  b = t 'courses.interviews.video_url'
+  p = interview.video_url
