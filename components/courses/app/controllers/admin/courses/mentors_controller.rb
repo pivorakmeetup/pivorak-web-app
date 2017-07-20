@@ -23,7 +23,7 @@ module Admin
       private
 
       def add_mentor_breadcrumb
-        add_breadcrumb 'mentors.plural', path: admin_courses_season_mentors_path(current_season)
+        add_breadcrumb 'courses.mentors.plural', path: admin_courses_season_mentors_path(current_season)
       end
 
       def default_redirect

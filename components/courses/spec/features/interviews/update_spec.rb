@@ -5,7 +5,7 @@ RSpec.describe 'Interviews UPDATE' do
   let(:edit_interview_path) { '/admin/courses/seasons/test-season/interviews/1/edit' }
   let!(:user)               { User.create(email: 'test@test.com', first_name: 'Test', last_name: 'User') }
   let!(:mentor)             { ::Courses::Mentor.create(user_id: user.id, season_id: season.id) }
-  let!(:interview)          { create(:interview, mentor_id: mentor.id) }
+  let!(:interview)          { create(:interview, mentor_id: mentor.id, status: 1) }
 
   before { visit edit_interview_path }
 
@@ -35,13 +35,12 @@ RSpec.describe 'Interviews UPDATE' do
     context 'change of time' do
       it 'updates interview' do
         allow_any_instance_of(Courses::Interview::IntervalPolicy).to receive(:allowed?).and_return(true)
-
         fill_in 'Start at',  with: '2017.06.06'.to_time
         click_button 'Update Interview'
         interview.reload
 
         expect(page).to have_current_path '/admin/courses/seasons/test-season/interviews'
-        expect(interview.start_at).to eq("2017-06-06".to_time)
+        expect(interview.start_at).to eq('2017-06-06'.to_time)
       end
     end
 
@@ -50,9 +49,34 @@ RSpec.describe 'Interviews UPDATE' do
         allow_any_instance_of(Courses::Interview::IntervalPolicy).to receive(:allowed?).and_return(true)
         fill_in 'Description',  with: 'Nice description'
         click_button 'Update Interview'
+        interview.reload
 
         expect(page).to have_current_path '/admin/courses/seasons/test-season/interviews'
-        expect(page).to have_content 'Nice description'
+        expect(interview.description).to eq('Nice description')
+      end
+    end
+
+    context 'change of video url' do
+      it 'updates interview' do
+        allow_any_instance_of(Courses::Interview::IntervalPolicy).to receive(:allowed?).and_return(true)
+        fill_in 'Video url',  with: 'url.example/'
+        click_button 'Update Interview'
+        interview.reload
+
+        expect(page).to have_current_path '/admin/courses/seasons/test-season/interviews'
+        expect(interview.video_url).to eq('url.example/')
+      end
+    end
+
+    context 'change of status' do
+      it 'updates interview' do
+        allow_any_instance_of(Courses::Interview::IntervalPolicy).to receive(:allowed?).and_return(true)
+        select('missed', from: 'Status')
+        click_button 'Update Interview'
+        interview.reload
+
+        expect(page).to have_current_path '/admin/courses/seasons/test-season/interviews'
+        expect(interview.status).to eq('missed')
       end
     end
   end

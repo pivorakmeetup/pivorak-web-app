@@ -1,4 +1,4 @@
-- title t('mentors.plural')
+- title t('courses.mentors.plural')
 
 = admin_courses_seasons_nav do
   = resource_header :courses_season_mentor
@@ -15,4 +15,3 @@
           td               = mentor.full_name
           td.right.aligned = controls do
             = remove_mentor_button(mentor.season, mentor)
-
