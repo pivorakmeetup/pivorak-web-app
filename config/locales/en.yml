@@ -151,6 +151,8 @@ en:
       greeting: 'Hello %{name}, we know You!'
       message: We already created account for you, because you are the member of Pivorak community. With great please, we give you control for existing account. Please confirm reset password via email
       get_account: Get account control
+    squash:
+      plural: Squash Members
 
   groups:
     singular: Group
