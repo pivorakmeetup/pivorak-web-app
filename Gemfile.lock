@@ -355,6 +355,7 @@ GEM
       railties (= 5.0.2)
       sprockets-rails (>= 2.0.0)
     rails-assets-lory (2.2.1)
+    rails-assets-semantic-ui-calendar (0.0.8)
     rails-assets-svgxuse (1.2.4)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
@@ -585,6 +586,7 @@ DEPENDENCIES
   puma (~> 3.0)
   rails (~> 5.0.2)
   rails-assets-lory!
+  rails-assets-semantic-ui-calendar!
   rails-assets-svgxuse!
   rails_email_preview (~> 2.0.1)
   redcarpet (~> 3.4.0)
