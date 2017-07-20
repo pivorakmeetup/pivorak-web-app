@@ -6,8 +6,8 @@ module Admin
         class: 'ui red button'
     end
 
-    def send_email_to_confirmed_link(ids)
-      link_to t('visit_requests.send_email_to_confirmed'),
+    def send_email_to_attendees_link(ids)
+      link_to t('visit_requests.send_email_to_attendees'),
               new_admin_email_path(recipient_ids: ids),
               class: 'ui green button'
     end
