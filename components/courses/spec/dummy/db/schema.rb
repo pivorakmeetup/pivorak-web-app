@@ -27,11 +27,11 @@ ActiveRecord::Schema.define(version: 20170719140651) do
     t.integer  "student_id"
     t.datetime "start_at"
     t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.integer  "season_id"
     t.string   "video_url"
-    t.integer  "status"
+    t.integer  "status",      default: 0
   end
 
   create_table "courses_lectures", force: :cascade do |t|
@@ -83,10 +83,10 @@ ActiveRecord::Schema.define(version: 20170719140651) do
   create_table "courses_test_tasks", force: :cascade do |t|
     t.integer  "student_id"
     t.string   "git_url"
-    t.string   "show_url"
+    t.string   "showcase_url"
     t.text     "comment"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "season_mentors", force: :cascade do |t|

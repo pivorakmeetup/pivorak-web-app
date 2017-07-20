@@ -44,7 +44,7 @@ module Admin
       end
 
       def admin_courses_season_test_task_index_link
-        link_to icon(:github, t('test_task.plural')),
+        link_to icon(:github, t('courses.test_tasks.plural')),
           admin_courses_season_test_task_index_path(current_season),
           class: admin_courses_active_item?('test_task')
       end
