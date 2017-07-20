@@ -15,6 +15,7 @@
 //= require tether.min
 //= require jquery_ujs
 //= require semantic-ui
+//= require semantic-ui-calendar
 //= require admin/semantic
 //= require simplemde.min
 //= require Chart.bundle
@@ -39,5 +40,12 @@ document.addEventListener("turbolinks:load", function() {
     function submitForm(event) {
         event.target.form.submit();
     }
+
+  var dateTime = document.querySelectorAll('.date-time-picker');
+  for(var i = 0; i < dateTime.length; i++) {
+    $(dateTime[i]).calendar({
+      disableMinute: true
+    });
+  }
 })
 
