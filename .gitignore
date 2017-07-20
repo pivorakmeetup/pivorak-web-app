@@ -26,6 +26,8 @@ config/secrets.yml
 config/settings.yml
 .ruby-gemset
 
+
 .DS_store
+dump.rdb
 public/uploads
 lib/tasks/import_users/pivorakers_list.csv

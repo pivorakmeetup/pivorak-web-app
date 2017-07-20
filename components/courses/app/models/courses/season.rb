@@ -10,6 +10,7 @@ module Courses
     has_many :interviews, through: :mentors
     has_many :students
     has_many :lectures
+    has_many :test_tasks, through: :students
 
     PLANNED       = :planned
     REGISTRATION  = :registration

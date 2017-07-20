@@ -64,6 +64,20 @@ en:
       plural: Lectures
       lecturer: Lecturer
       venue: Venue
+    test_task:
+      full_name: Full Name
+      git_url: Git URL
+      show_url: Show URL
+      comment: Comment
+  test_task:
+    plural: Test tasks
+
+  seasons:
+    plural: Seasons
+    start_at: Started At
+    finish_at: Finished At
+    mentors: Mentors
+    status: Status
 
     flash:
       courses:

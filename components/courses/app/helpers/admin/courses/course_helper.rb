@@ -43,6 +43,12 @@ module Admin
                 class: admin_courses_active_item?('lectures')
       end
 
+      def admin_courses_season_test_task_index_link
+        link_to icon(:github, t('test_task.plural')),
+          admin_courses_season_test_task_index_path(current_season),
+          class: admin_courses_active_item?('test_task')
+      end
+
       private
 
       def admin_courses_active_item?(ethalon_controller_name)
