@@ -2,6 +2,7 @@ module Admin
   module Courses
     class StudentsController < BaseController
       helper_method :students
+
       before_action :add_season_breadcrumb, :add_student_breadcrumb
 
       private

@@ -2,10 +2,11 @@ module Admin
   module Courses
     class SeasonsController < BaseController
       helper_method :seasons, :season
+
       before_action :add_season_breadcrumb, only: %i[show edit update]
-      before_action :add_new_breadcump,  only: %i[new create]
-      before_action :add_edit_breadcump, only: %i[edit update]
-      before_action :authenticate_mentor!, only: %i[show edit update]
+      before_action :add_new_breadcump,     only: %i[new create]
+      before_action :add_edit_breadcump,    only: %i[edit update]
+      before_action :authenticate_mentor!,  only: %i[show edit update]
 
       def new
         @season = ::Courses::Season.new
@@ -13,9 +14,9 @@ module Admin
       end
 
       def create
-        @season = Season::Create.call(seasons_params)
-        react_to @season.save
-        Season::Create.add_season_creator(@season, current_user)
+        @season = ::Courses::Season.new(seasons_params)
+
+        react_to ::Courses::Season::Create.call(season, current_user)
       end
 
       def update
@@ -33,7 +34,7 @@ module Admin
       end
 
       def seasons
-        @seasons ||= Season::AllForCurrentMentor
+        @seasons ||= ::Courses::Season::AllForCurrentMentor
           .call(current_user)
           .page(params[:page])
       end

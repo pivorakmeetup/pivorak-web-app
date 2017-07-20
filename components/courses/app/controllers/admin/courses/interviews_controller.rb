@@ -2,6 +2,7 @@ module Admin
   module Courses
     class InterviewsController < BaseController
       helper_method :interviews, :interview
+
       before_action :add_season_breadcrumb, :add_interview_breadcrumb
       before_action :add_new_breadcump,  only: %i[new create]
       before_action :add_edit_breadcump, only: %i[edit update]

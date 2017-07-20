@@ -2,6 +2,7 @@ module Admin
   module Courses
     class TestTaskController < BaseController
       helper_method :test_tasks
+
       before_action :add_test_task_breadcrumb, :add_season_breadcrumb
 
       private

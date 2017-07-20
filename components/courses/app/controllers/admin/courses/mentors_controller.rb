@@ -2,6 +2,7 @@ module Admin
   module Courses
     class MentorsController < BaseController
       helper_method :mentors, :mentor, :available_for_mentoring
+
       before_action :add_new_breadcump,  only: %i[new create]
       before_action :add_season_breadcrumb, :add_mentor_breadcrumb
 
@@ -12,18 +13,22 @@ module Admin
 
       def create
         @mentor = current_season.mentors.build(mentor_params)
+
         react_to @mentor.save
       end
 
       def destroy
-        return react_to mentor.destroy if policy.allowed_to_destroy?
-        redirect_to admin_courses_season_mentors_path, alert: t('courses.flash.season-creator-destroy')
+        return react_to mentor.destroy if policy.allowed?
+
+        redirect_to admin_courses_season_mentors_path,
+          alert: t('courses.flash.season-creator-destroy')
       end
 
       private
 
       def add_mentor_breadcrumb
-        add_breadcrumb 'courses.mentors.plural', path: admin_courses_season_mentors_path(current_season)
+        add_breadcrumb 'courses.mentors.plural',
+          path: admin_courses_season_mentors_path(current_season)
       end
 
       def default_redirect
@@ -39,11 +44,11 @@ module Admin
       end
 
       def available_for_mentoring
-        @mentors ||= Mentor::AvailableForMentoring.call(current_season)
+        @mentors ||= ::Courses::Mentor::AvailableForMentoring.call(current_season)
       end
 
       def policy
-        Mentor::MentorPolicy.new(mentor, current_season)
+        ::Courses::Mentor::DestroyPolicy.new(mentor, current_season)
       end
 
       def mentor_params

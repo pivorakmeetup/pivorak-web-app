@@ -10,6 +10,7 @@ module Admin
           path: admin_courses_season_path(current_season)
       end
 
+
       private
 
       def current_season
