@@ -15,6 +15,24 @@ module Admin
         admin_event_visit_requests_path(event), options
     end
 
+    def admin_visitors_report_link(event)
+      return unless event.confirmation?
+
+      link_to icon(:download, t('events.visitors_report')),
+        report_admin_event_visit_requests_path(event),
+        class: 'item'
+    end
+
+    def default_limit_total
+      return event.limit_total if Event.exists?(event)
+      Ez::Settings[:app, :events, :default_limit]
+    end
+
+    def default_limit_verified
+      return event.limit_verified if Event.exists?(event)
+      Ez::Settings[:app, :events, :default_limit_verified]
+    end
+
     def event_status_label(event)
       content_tag :span, event.status,
         class: ['ui label', BG_STATUS_CLASS[event.status.to_sym]]

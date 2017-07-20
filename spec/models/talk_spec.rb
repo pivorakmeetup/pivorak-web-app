@@ -8,4 +8,8 @@ RSpec.describe Talk do
   describe 'validations' do
     it { is_expected.to validate_presence_of(:title) }
   end
+
+  it 'applies a scope to talk collections by created_date' do
+    expect(Talk.all.sorted_by_date.to_sql).to eq Talk.all.order(created_at: :desc).to_sql
+  end
 end

@@ -26,11 +26,11 @@
     .eight.wide.field
       = f.input :description, input_html: { rows: 10 }
       .two.fields
-        = f.input :limit_total,    input_html: { value: Ez::Settings[:app, :events, :default_limit] }
-        = f.input :limit_verified, input_html: { value: Ez::Settings[:app, :events, :default_limit_verified] }
+        = f.input :limit_total,    input_html: { value: default_limit_total }
+        = f.input :limit_verified, input_html: { value: default_limit_verified }
       .two.fields
-        = f.input :started_at,  as: :string
-        = f.input :finished_at, as: :string
+        = f.input :started_at,  as: :datetime
+        = f.input :finished_at, as: :datetime
       = f.input :facebook_embeded_post
 
     .eight.wide.field

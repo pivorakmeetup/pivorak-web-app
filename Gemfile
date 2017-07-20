@@ -33,6 +33,7 @@ gem 'coffee-rails',                                                  '~> 4.2.1'
 gem 'uglifier',                                                      '~> 3.2.0'
 gem 'rails-assets-svgxuse',                  source: 'https://rails-assets.org'
 gem 'rails-assets-lory',                     source: 'https://rails-assets.org'
+gem 'rails-assets-semantic-ui-calendar',     source: 'https://rails-assets.org'
 
 #=== FEATURES ==================================================================
 gem 'chartkick',                                                     '~> 2.2.3'
@@ -59,6 +60,10 @@ gem 'newrelic_rpm',                                                    '~> 4.1'
 gem 'versionomy',                                                    '~> 0.5.0'
 gem 'rollbar',                                                      '~> 2.14.1'
 gem 'tzinfo-data',              platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+#=== PDF GENERATION ===========================================================
+gem 'prawn'
+gem 'prawn-table'
 
 #=== DEV & TEST ===============================================================
 group :development do
@@ -101,4 +106,5 @@ group :test do
   gem 'vcr'
   gem 'webmock'
   gem 'codecov', require: false
+  gem 'pdf-inspector', require: 'pdf/inspector'
 end
