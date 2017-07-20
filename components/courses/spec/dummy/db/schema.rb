@@ -78,6 +78,15 @@ ActiveRecord::Schema.define(version: 20170718183113) do
     t.index ["user_id"], name: "index_courses_students_on_user_id"
   end
 
+  create_table "courses_test_tasks", force: :cascade do |t|
+    t.integer  "student_id"
+    t.string   "git_url"
+    t.string   "show_url"
+    t.text     "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "season_mentors", force: :cascade do |t|
     t.integer "user_id"
     t.integer "season_id"
