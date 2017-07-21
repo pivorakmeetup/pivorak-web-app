@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Interviews UPDATE' do
+RSpec.xdescribe 'Interviews UPDATE' do
   let!(:season)             { create(:season, title: 'Test Season') }
   let(:edit_interview_path) { '/admin/courses/seasons/test-season/interviews/1/edit' }
   let!(:user)               { User.create(email: 'test@test.com', first_name: 'Test', last_name: 'User') }

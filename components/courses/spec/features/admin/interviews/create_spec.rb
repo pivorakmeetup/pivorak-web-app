@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Interview CREATE' do
+RSpec.xdescribe 'Interview CREATE' do
   let!(:season)            { create(:season, title: 'Test Season') }
   let(:new_interview_path) { '/admin/courses/seasons/test-season/interviews/new' }
   let!(:user)              { User.create(email: 'test@test.com', first_name: 'Test', last_name: 'User') }
@@ -13,7 +13,8 @@ RSpec.describe 'Interview CREATE' do
     context 'blank start time' do
       it 'validates errors' do
         allow_any_instance_of(Courses::Interview::IntervalPolicy).to receive(:allowed?).and_return(true)
-        fill_in 'Start at',  with: ''
+
+        fill_in "Start at",  with: ''
         click_button 'Create Interview'
 
         expect_an_error interview_start_at: :blank
