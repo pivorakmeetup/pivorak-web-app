@@ -25,9 +25,6 @@ module Courses
     end
 
     def execute_create_policy
-      allowed =  Courses::TestTask::CreatePolicy.new(current_student, current_season).allowed?
-      redirect_to courses_season_path(current_season),
-        alert: t('flash.courses.test_task.create.fail') unless allowed
       allowed =  Courses::TestTask::CreatePolicy.new(current_student.id, current_season).allowed?
       redirect_to courses_season_path(current_season), alert:
           t('flash.courses.test_task.create.fail') unless allowed
