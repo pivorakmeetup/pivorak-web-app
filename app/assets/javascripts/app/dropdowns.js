@@ -24,7 +24,7 @@
 
     var parentToOpen;
     document.addEventListener("click", function(e) {
-      for (var target=e.target; target && target!=this; target=target.parentNode) {
+      for (var target = e.target; target && target !== this; target = target.parentNode) {
         if (target.classList.contains('js-toggle-dropdown')) {
 
           var parent = target.parentElement;

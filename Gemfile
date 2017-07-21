@@ -84,6 +84,7 @@ end
 
 group :development, :test do
   gem 'rspec'
+  gem 'rubocop', require: false
   gem 'rspec-rails'
   gem 'pry-rails'
   gem 'faker'

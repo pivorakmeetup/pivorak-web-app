@@ -13,7 +13,6 @@ describe Email::Create do
       it { expect{ subject }.to change(Email, :count).by(1) }
 
       it 'executes Send service' do
-        user = create(:user)
         email = create(:email)
 
         allow_any_instance_of(described_class).to receive(:email) { email }

@@ -15,7 +15,7 @@ module Admin
       "#{semantic_icon(icon)} #{text}".strip.html_safe
     end
 
-    def controls(&block)
+    def controls
       render layout: '/admin/shared/controls' do
         yield
       end
