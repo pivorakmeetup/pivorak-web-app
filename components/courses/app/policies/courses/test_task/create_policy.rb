@@ -2,7 +2,7 @@ module Courses
   class TestTask
     class CreatePolicy
       def initialize(student, season)
-        @student = student
+        @student_id = student
         @season = season
       end
 
@@ -12,10 +12,10 @@ module Courses
 
       private
 
-      attr_reader :student, :season
+      attr_reader :student_id, :season
 
       def has_no_test_tasks?
-        !(season.test_tasks.exists?(student_id: student.id))
+        !(season.test_tasks.exists?(student_id: student_id))
       end
     end
   end
