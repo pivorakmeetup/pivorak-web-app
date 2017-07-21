@@ -1,5 +1,4 @@
-require 'spec_helper'
-require './app/policies/courses/student/create_policy.rb'
+require 'rails_helper'
 
 describe Courses::Student::CreatePolicy do
   let(:user_id) { 1 }

@@ -36,8 +36,8 @@ en:
       mentors: Mentors
       status: Status
       register: Register
-      send_test_task: Send test task
-      send_homework: Send homework
+      send_test_task: Send Test Task
+      send_homework: Send Homework
 
     mentors:
       plural: Mentors
@@ -79,13 +79,6 @@ en:
       approved: Approved?
       approve: Approve
 
-    seasons:
-      plural: Seasons
-      start_at: Started At
-      finish_at: Finished At
-      mentors: Mentors
-      status: Status
-
   flash:
     courses:
       students:
@@ -103,6 +96,8 @@ en:
         update:
           success: You chose your time slot!
           error: You can't take second time slot!
+        list:
+          fail: Access denied!
 
       test_task:
         create:

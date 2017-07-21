@@ -30,7 +30,7 @@ describe Courses::Interview::IntervalPolicy do
       let!(:next_interview) { create(:interview, mentor_id: mentor.id, start_at: (Time.now + 20.minutes)) }
 
       it 'forbids to pass policy' do
-        expect(policy.allowed?).to be(false)
+        expect(policy).to_not be_allowed
       end
     end
   end
