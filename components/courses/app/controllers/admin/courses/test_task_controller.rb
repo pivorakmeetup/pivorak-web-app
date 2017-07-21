@@ -30,12 +30,12 @@ module Admin
 
       def test_tasks_breadcrumb
         add_breadcrumb 'courses.test_task.plural',
-           path: admin_courses_season_test_task_index_path(current_season)
+          path: admin_courses_season_test_task_index_path(current_season)
       end
 
       def add_test_tasks_breadcrumb
         add_breadcrumb 'test_tasks.plural',
-           path: admin_courses_season_test_task_index_path(current_season)
+          path: admin_courses_season_test_task_index_path(current_season)
       end
      end
     end
