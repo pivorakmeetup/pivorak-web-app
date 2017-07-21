@@ -3,7 +3,9 @@ module Admin
     class StudentsController < BaseController
       helper_method :students
 
-      before_action :add_season_breadcrumb, :add_student_breadcrumb
+      breadcrumps do
+        add :students_breadcrumb
+      end
 
       private
 
@@ -11,12 +13,7 @@ module Admin
         @students ||= current_season.students.includes(:user).page(params[:page])
       end
 
-      def add_season_breadcrumb
-        add_breadcrumb current_season,
-          path: admin_courses_season_path(current_season)
-      end
-
-      def add_student_breadcrumb
+      def students_breadcrumb
         add_breadcrumb 'courses.students.plural',
           path: admin_courses_season_students_path(current_season)
       end

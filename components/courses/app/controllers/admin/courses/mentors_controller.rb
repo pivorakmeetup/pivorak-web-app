@@ -3,8 +3,9 @@ module Admin
     class MentorsController < BaseController
       helper_method :mentors, :mentor, :available_for_mentoring
 
-      before_action :add_new_breadcump,  only: %i[new create]
-      before_action :add_season_breadcrumb, :add_mentor_breadcrumb
+      breadcrumps do
+        add :mentors_breadcrumb
+      end
 
       def new
         @mentor = current_season.mentors.build
@@ -26,7 +27,7 @@ module Admin
 
       private
 
-      def add_mentor_breadcrumb
+      def mentors_breadcrumb
         add_breadcrumb 'courses.mentors.plural',
           path: admin_courses_season_mentors_path(current_season)
       end
