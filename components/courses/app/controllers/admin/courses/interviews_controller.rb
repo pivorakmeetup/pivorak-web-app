@@ -3,9 +3,9 @@ module Admin
     class InterviewsController < BaseController
       helper_method :interviews, :interview
 
-      before_action :add_season_breadcrumb, :add_interview_breadcrumb
-      before_action :add_new_breadcump,  only: %i[new create]
-      before_action :add_edit_breadcump, only: %i[edit update]
+      breadcrumps do
+        add :interviews_breadcrumb
+      end
 
       def new
         @interview = current_season.interviews.new
@@ -38,9 +38,9 @@ module Admin
           .page(params[:page])
       end
 
-      def add_interview_breadcrumb
+      def interviews_breadcrumb
        add_breadcrumb 'courses.interviews.plural',
-        path: admin_courses_season_interviews_path(current_season)
+         path: admin_courses_season_interviews_path(current_season)
       end
 
       def interviews_params

@@ -1,44 +1,37 @@
 require 'rails_helper'
 
-RSpec.describe Courses::Interview::IntervalPolicy do
-  let!(:season)          { create(:season) }
-  let!(:user)            { create(:user) }
-  let!(:mentor)          { ::Courses::Mentor.create(user_id: user.id, season_id: season.id) }
-  let!(:first_student)   { create(:student) }
-  let!(:second_student)  { create(:student) }
-  let!(:third_student)   { create(:student) }
-  let!(:interval)        { 30 }
-  let!(:first_interview) { create(:interview,  mentor_id:  mentor.id,
-                                               student_id: first_student.id,
-                                               season_id:  season.id,
-                                               start_at:   Time.now - 20.minutes)}
-  let!(:second_interview) { create(:interview, mentor_id:  mentor.id,
-                                               student_id: second_student.id,
-                                               season_id:  season.id,
-                                               start_at:   Time.now + 20.minutes)}
+describe Courses::Interview::IntervalPolicy do
+  let!(:season)      { create(:season, title: 'Test Season') }
+  let!(:mentor)      { ::Courses::Mentor.create(user_id: 1, season_id: 1) }
+  let!(:interval)    { 30 }
 
+  let(:policy) { Courses::Interview::IntervalPolicy.new(mentor, interview, interval) }
 
-  context 'allow to create interview' do
-    it 'allowed to create' do
-      new_interview = ::Courses::Interview.new(mentor_id:  mentor.id,
-                                           student_id: third_student.id,
-                                           season_id:  season.id,
-                                           start_at:   Time.now + 80.minutes)
+  describe '#allowed?' do
+    context 'has no interviews in forbidden range' do
+      let(:interview) { create(:interview, mentor_id: mentor.id) }
 
-      policy = Courses::Interview::IntervalPolicy.new(mentor, new_interview, interval)
-
-      expect(policy.allowed?).to be_truthy
+      it 'allows to pass policy' do
+        expect(policy).to be_allowed
+      end
     end
 
-    it 'not allowed to destroy' do
-      new_interview = ::Courses::Interview.new(mentor_id:  mentor.id,
-                                           student_id: third_student.id,
-                                           season_id:  season.id,
-                                           start_at:   Time.now)
+    context 'has interviews 30 minutes prior' do
+      let(:interview) { build(:interview, mentor_id: mentor.id) }
+      let!(:prev_interview) { create(:interview, mentor_id: mentor.id, start_at: (Time.now - 20.minutes)) }
 
-      policy = Courses::Interview::IntervalPolicy.new(mentor, new_interview, interval)
+      it 'forbids to pass policy' do
+        expect(policy).to_not be_allowed
+      end
+    end
 
-      expect(policy.allowed?).to be_falsey
+    context 'has interviews 30 minutes after' do
+      let(:interview) { build(:interview, mentor_id: mentor.id) }
+      let!(:next_interview) { create(:interview, mentor_id: mentor.id, start_at: (Time.now + 20.minutes)) }
+
+      it 'forbids to pass policy' do
+        expect(policy.allowed?).to be(false)
+      end
     end
   end
 end
