@@ -25,7 +25,7 @@
 document.addEventListener("turbolinks:load", function() {
   var SIMPLEMDE_CONTAINER_CLASS = "simplemde-container"; // add this class to text area
   Array.prototype.forEach.call(document.getElementsByClassName(SIMPLEMDE_CONTAINER_CLASS), function(element) {
-    new SimpleMDE({ element: element });
+    new SimpleMDE({ element: element }); // eslint-disable-line no-new
   });
 
     // when checkboxes are checked - submit form

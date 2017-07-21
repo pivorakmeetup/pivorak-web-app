@@ -6,7 +6,7 @@ RSpec.describe Goal::Donations::Setup do
 
   describe '.call' do
     context 'provided with invalid params' do
-      let(:params) {{}}
+      let(:params) { {} }
 
       it { is_expected.to be_a_failure }
 
@@ -26,7 +26,7 @@ RSpec.describe Goal::Donations::Setup do
 
     context 'provided with valid params' do
       context "when user isn't anonymous" do
-        let(:params) {{ user: user, goal: goal }}
+        let(:params) { { user: user, goal: goal } }
 
         it { is_expected.to be_a_success }
 
@@ -41,7 +41,7 @@ RSpec.describe Goal::Donations::Setup do
         end
       end
       context 'when user is anonymous' do
-        let(:params) {{ goal: goal, user: user, anonymous: true }}
+        let(:params) { { goal: goal, user: user, anonymous: true } }
 
         it { is_expected.to be_a_success }
 

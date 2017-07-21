@@ -51,7 +51,7 @@ class ApplicationController < ActionController::Base
   end
 
   def add_flash(type, key = nil)
-    resource = params[:controller].gsub('/', '.')
+    resource = params[:controller].tr('/', '.')
     action   = params[:action]
 
     flash[type] = t(key || type, scope: [:flash, resource, action])

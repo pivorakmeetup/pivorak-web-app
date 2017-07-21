@@ -19,7 +19,7 @@ module Liqpay
         return unless json_string
 
         JSON.parse(json_string)
-      rescue JSON::ParserError => e
+      rescue JSON::ParserError
         false
       end
 

@@ -7,7 +7,7 @@ RSpec.describe Goal::Donations::Persist do
 
   describe '.call' do
     context "when user isn't anonymous" do
-      let(:params) {{ amount: amount, user: user, goal: goal }}
+      let(:params) { { amount: amount, user: user, goal: goal } }
 
       it { is_expected.to be_a_success }
 
@@ -19,7 +19,7 @@ RSpec.describe Goal::Donations::Persist do
       end
     end
     context 'when user is anonymous' do
-      let(:params) {{ goal: goal, amount: amount }}
+      let(:params) { { goal: goal, amount: amount } }
 
       it { is_expected.to be_a_success }
 
