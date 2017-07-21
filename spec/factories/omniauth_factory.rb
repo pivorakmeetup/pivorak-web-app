@@ -2,11 +2,13 @@ FactoryGirl.define do
   factory :omniauth_params, class: Hash do
     provider Devise.omniauth_providers.sample
     uid      Faker::Number.number(16)
-    info {{
-      email:      Faker::Internet.email,
-      first_name: Faker::Name.first_name,
-      last_name:  Faker::Name.last_name
-    }}
+    info {
+      {
+        email:      Faker::Internet.email,
+        first_name: Faker::Name.first_name,
+        last_name:  Faker::Name.last_name
+      }
+    }
 
     initialize_with { attributes }
 
@@ -18,10 +20,12 @@ FactoryGirl.define do
   factory :twitter_params, class: Hash do
     provider 'twitter'
     uid      Faker::Number.number(16)
-    info {{
-      email: Faker::Internet.email,
-      name:  Faker::Name.name
-    }}
+    info {
+      {
+        email: Faker::Internet.email,
+        name:  Faker::Name.name
+      }
+    }
 
     initialize_with { attributes }
   end
@@ -29,7 +33,7 @@ FactoryGirl.define do
   factory :facebook_params, class: Hash do
     provider 'facebook'
     uid      Faker::Number.number(16)
-    info {{
+    info { {
       email: Faker::Internet.email,
       name:  Faker::Name.name
     }}
@@ -40,7 +44,7 @@ FactoryGirl.define do
   factory :github_params, class: Hash do
     provider 'github'
     uid      Faker::Number.number(16)
-    info {{
+    info { {
       email: Faker::Internet.email,
       name:  Faker::Name.name
     }}

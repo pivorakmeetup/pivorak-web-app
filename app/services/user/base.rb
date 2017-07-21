@@ -21,7 +21,7 @@ class User
 
     private
 
-    attr_reader *PERMITTED_KEYS
+    attr_reader(*PERMITTED_KEYS)
     attr_reader :user, :options
 
     def user_params
