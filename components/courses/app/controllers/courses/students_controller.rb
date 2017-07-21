@@ -24,8 +24,12 @@ module Courses
     end
 
     def execute_create_policy
-      allowed =  Student::CreatePolicy.new(current_user.id, current_season).allowed?
-      redirect_to courses_season_path(current_season), alert: t('flash.courses.students.create.fail') unless allowed
+      allowed = Student::CreatePolicy.new(
+        current_user.id, current_season
+      ).allowed?
+      return if allowed
+      redirect_to courses_season_path(current_season),
+        alert: t('flash.courses.students.create.fail')
     end
 
     def student_params

@@ -11,19 +11,22 @@ module Courses
     def courses_send_homework_link(season)
       return unless season.status.to_sym == Courses::Season::LIVE
 
-      link_to t('courses.seasons.send_homework'), '#'
+      link_to t('courses.seasons.send_homework'),
+        new_courses_season_homework_path(season)
     end
 
     def courses_register_link(season)
       return unless season.status.to_sym == Courses::Season::REGISTRATION
 
-      link_to t('courses.seasons.register'), new_courses_season_student_path(season)
+      link_to t('courses.seasons.register'),
+        new_courses_season_student_path(season)
     end
 
     def courses_send_test_task_link(season)
       return unless season.status.to_sym == Courses::Season::REGISTRATION
 
-      link_to t('courses.seasons.send_test_task'), '#'
+      link_to t('courses.seasons.send_test_task'),
+        new_courses_season_test_task_path(season)
     end
   end
 end

@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe 'Interviews LIST' do
-  let!(:season)    { create(:season, title: 'Test Season', status: :registration) }
+  let!(:season)    { create(:season, title: 'Test Season', status: :selection) }
   let!(:user)      { User.create(email: 'test@test.com', first_name: 'Test', last_name: 'User') }
   let!(:mentor)    { ::Courses::Mentor.create(user_id: user.id, season_id: season.id) }
-  let!(:student)   { create(:student, user_id: user.id, season_id: season.id) }
+  let!(:student)   { create(:student, user_id: user.id, season_id: season.id, status: :test_task_done) }
   let!(:interview) { build(:interview, mentor_id: mentor.id) }
 
   context 'interviews are available' do
