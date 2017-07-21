@@ -5,6 +5,7 @@ module Admin
 
       breadcrumps do
         add :interviews_breadcrumb
+        add :interview_breadcrumb, only: %i[show edit update]
       end
 
       def new
@@ -41,6 +42,13 @@ module Admin
       def interviews_breadcrumb
        add_breadcrumb 'courses.interviews.plural',
          path: admin_courses_season_interviews_path(current_season)
+      end
+
+      def interview_breadcrumb
+        label_data = interview.student ? :full_name : :status
+
+        add_breadcrumb interview, label: label_data,
+          path: admin_courses_season_interview_path(current_season, interview)
       end
 
       def interviews_params

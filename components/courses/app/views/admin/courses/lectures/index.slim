@@ -6,18 +6,18 @@
   table.ui.very.basic.table
     thead
       tr
+        th = t('words.status')
         th = t('words.title')
         th = t('courses.lectures.lecturer')
         th = t('courses.lectures.venue')
-        th = t('words.status')
         th
 
     tbody
       - lectures.each do |lecture|
         tr
+          td               = lecture.status
           td               = link_to lecture.title, admin_courses_season_lecture_path(current_season, lecture)
           td               = lecture.mentor.full_name
           td               = lecture.venue.name
-          td               = lecture.status
           td.right.aligned = controls do
             = edit_lecture_link(current_season, lecture)

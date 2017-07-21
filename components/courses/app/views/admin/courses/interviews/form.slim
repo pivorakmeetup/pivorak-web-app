@@ -5,13 +5,16 @@
 
   = simple_form_for interview, url: interview_form_url, method: interview_form_method, as: :interview do |f|
     .fields
-      .four.wide.field.ui.slider.checkbox
-      .twelve.wide.field.right-align
+      .sixteen.wide.field.right-align
         = link_to t('words.back'), admin_courses_season_interviews_path(current_season), class: 'ui button grey'
         = f.button :submit
 
     .fields
-      .six.wide.field = f.input :description
-      .six.wide.field = f.input :start_at, as: :string
+      .five.wide.field = f.input :status, collection: Courses::Interview.statuses.keys
+      .five.wide.field = f.input :start_at, as: :datetime
       .six.wide.field = f.input :video_url
-      .six.wide.field = f.input :status, collection: Courses::Interview.statuses.keys
+
+    .fields
+      .sixteen.wide.field
+        = f.input :description
+
