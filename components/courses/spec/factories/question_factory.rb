@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :question, class: Courses::Question do
-    body       { 'Question'}
+    body       { Faker::Lorem.sentence }
   end
 end
