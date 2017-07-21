@@ -8,6 +8,7 @@
         th.center.aligned = t 'courses.test_tasks.git_url'
         th.center.aligned = t 'courses.test_tasks.show_url'
         th.center.aligned = t 'courses.test_tasks.comment'
+        th.center.aligned = t 'courses.test_tasks.approved'
 
     tbody
       - test_tasks.each do |test_task|
@@ -16,3 +17,4 @@
           td.center.aligned = test_task.git_url
           td.center.aligned = test_task.showcase_url
           td.center.aligned = test_task.comment
+          td.center.aligned = approve_test_task_link(current_season, current_mentor, test_task)

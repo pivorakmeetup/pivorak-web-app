@@ -3,7 +3,7 @@ module Courses
     helper_method :interview, :interviews
 
     def update
-      if interview.update(student_id: current_student.id)
+      if interview.update(student_id: current_student.id, status: :pending)
         flash_success and default_redirect
       else
         flash_error and default_redirect

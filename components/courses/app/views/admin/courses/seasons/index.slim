@@ -5,8 +5,8 @@
 table.ui.very.basic.table
   thead
     tr
-      th                = t 'words.title'
-      th.center.aligned = t 'courses.seasons.status'
+      th                = t 'courses.seasons.status'
+      th.center.aligned = t 'words.title'
       th.center.aligned = t 'courses.seasons.start_at'
       th.center.aligned = t 'courses.seasons.finish_at'
       th
@@ -14,8 +14,8 @@ table.ui.very.basic.table
   tbody
     - seasons.each do |season|
       tr
-        td                = link_to season.title, admin_courses_season_path(season)
-        td.center.aligned = season.status
+        td                = season.status
+        td.center.aligned = link_to season.title, admin_courses_season_path(season)
         td.center.aligned = format_timestamp(season.start_at)
         td.center.aligned = format_timestamp(season.finish_at)
         td.right.aligned  = controls do

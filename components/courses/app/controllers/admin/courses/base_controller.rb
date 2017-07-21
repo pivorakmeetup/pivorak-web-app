@@ -1,7 +1,7 @@
 module Admin
   module Courses
     class BaseController < ::Admin::BaseController
-      helper_method :current_season
+      helper_method :current_season, :current_mentor
 
       def self.breadcrumps(&block)
         before_action :add_season_breadcrumb
@@ -27,6 +27,11 @@ module Admin
         @current_season ||= ::Courses::Season
           .friendly
           .find(params[:season_id] ||= params[:id])
+      end
+
+      def current_mentor
+        @current_mentor ||= current_season.mentors
+          .find_by(user_id: current_user.id)
       end
 
       def authenticate_mentor!
