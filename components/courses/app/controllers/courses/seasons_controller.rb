@@ -9,7 +9,7 @@ module Courses
     end
 
     def mentors
-      @mentors ||= season.mentors
+      @mentors ||= season.mentors.includes(:user)
     end
   end
 end
