@@ -2,8 +2,8 @@ module PdfReports
   class EventVisitorsReport < BaseReport
     DEFAULT_FONT = 'Helvetica'.freeze
 
-    def initialize(visitors)
-      @visitors = visitors
+    def initialize(visit_requests)
+      @visit_requests = visit_requests
     end
 
     def generate_pdf
@@ -18,10 +18,13 @@ module PdfReports
 
     private
 
-    attr_reader :visitors
+    attr_reader :visit_requests
 
     def formated_data
-      @formated_data ||= visitors.map(&:full_name).each_slice(settings.fetch(:columns, 1)).to_a
+      @formated_data ||= visit_requests
+                         .map { |vr| vr.user.full_name }
+                         .sort
+                         .each_slice(settings.fetch(:columns, 1)).to_a
     end
 
     def report_options

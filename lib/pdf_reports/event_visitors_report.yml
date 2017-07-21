@@ -1,5 +1,5 @@
 columns: 3
-rows: 8
+rows: 7
 font: 'Helvetica'
 document:
   margin: 0
@@ -11,3 +11,4 @@ table:
     size: 21
     font_style: :bold
     text_color: 'FF5F00'
+    padding: [5, 20, 5, 20]
