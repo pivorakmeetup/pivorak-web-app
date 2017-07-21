@@ -1,7 +1,3 @@
-- title resource_form_text(test_task)
-
-= resource_form_header(test_task)
-
 = simple_form_for test_task, url: courses_season_test_task_index_path(current_season), as: :test_task do |f|
   .fields
     .six.wide.field = f.input :git_url

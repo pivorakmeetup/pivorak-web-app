@@ -67,9 +67,6 @@ en:
       lecturer: Lecturer
       venue: Venue
 
-    test_task:
-      plural: Test Task
-
     test_tasks:
       plural: Test Tasks
       full_name: Full Name
@@ -102,5 +99,4 @@ en:
       test_task:
         create:
           success: Successfully sent!
-          fail: You can't send test task again!
-          error: Some fields are blank!
+          fail: You have just sent test task!
