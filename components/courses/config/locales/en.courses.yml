@@ -68,7 +68,7 @@ en:
       venue: Venue
 
     test_task:
-      plural: Test Task
+      plural: Test Tasks
 
     test_tasks:
       plural: Test Tasks
@@ -107,5 +107,4 @@ en:
       test_task:
         create:
           success: Successfully sent!
-          fail: You can't send test task again!
-          error: Some fields are blank!
+          fail: You have just sent test task!

@@ -1,8 +1,12 @@
 module Admin
   module Courses
     class TestTaskController < BaseController
+<<<<<<< 494f4db8e18515ea8f38faa2ec502ad552d90cd6
       helper_method :test_task, :test_tasks
 
+=======
+      helper_method :test_tasks
+>>>>>>> 405 access control for test task form
       breadcrumps do
         add :test_tasks_breadcrumb
       end
@@ -31,8 +35,14 @@ module Admin
 
       def test_tasks_breadcrumb
         add_breadcrumb 'courses.test_task.plural',
-          path: admin_courses_season_test_task_index_path(current_season)
+           path: admin_courses_season_test_task_index_path(current_season)
       end
+
+      def add_test_tasks_breadcrumb
+        add_breadcrumb 'test_tasks.plural',
+           path: admin_courses_season_test_task_index_path(current_season)
+      end
+     end
     end
   end
 end
