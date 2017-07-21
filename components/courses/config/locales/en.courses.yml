@@ -76,7 +76,8 @@ en:
       git_url: Git URL
       show_url: Show URL
       comment: Comment
-
+      approved: Approved?
+      approve: Approve
 
     seasons:
       plural: Seasons
@@ -102,3 +103,9 @@ en:
         update:
           success: You chose your time slot!
           error: You can't take second time slot!
+
+      test_task:
+        create:
+          success: Successfully sent!
+          fail: You can't send test task again!
+          error: Some fields are blank!

@@ -1,6 +1,6 @@
 module Courses
   class TestTaskController < BaseController
-    helper_method :test_task, :test_tasks
+    helper_method :test_task
     before_action :authenticate_user!, only: %i[create new]
 
     def new
@@ -20,7 +20,7 @@ module Courses
     private
 
     def default_redirect
-      redirect_to root_path
+      redirect_to courses_season_path(current_season)
     end
 
     def test_task
@@ -30,6 +30,5 @@ module Courses
     def test_task_params
       params.require(:test_task).permit(:git_url, :showcase_url, :comment)
     end
-
   end
 end
