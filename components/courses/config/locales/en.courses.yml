@@ -67,9 +67,6 @@ en:
       lecturer: Lecturer
       venue: Venue
 
-    test_task:
-      plural: Test Tasks
-
     test_tasks:
       plural: Test Tasks
       full_name: Full Name
