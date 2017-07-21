@@ -4,16 +4,18 @@
   table.ui.very.basic.table
     thead
       tr
-        th                = t 'members.full_name'
-        th.center.aligned = t 'courses.students.status'
+        th                = t 'courses.students.status'
+        th.center.aligned = t 'members.full_name'
+        th.center.aligned = t 'words.email'
         th.center.aligned = t 'courses.students.personal_info'
         th.center.aligned = t 'courses.students.motivation_info'
 
     tbody
       - students.each do |student|
         tr
-          td                = student.full_name
-          td.center.aligned = student.status
+          td                = student.status
+          td.center.aligned = student.full_name
+          td.center.aligned = student.email
           td.center.aligned = student.personal_info
           td.center.aligned = student.motivation_info
 

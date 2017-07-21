@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170719140651) do
+ActiveRecord::Schema.define(version: 20170721081343) do
 
   create_table "courses_homeworks", force: :cascade do |t|
     t.integer  "student_id"
@@ -63,9 +63,9 @@ ActiveRecord::Schema.define(version: 20170719140651) do
     t.text     "description"
     t.datetime "start_at"
     t.datetime "finish_at"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "status"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "status",      default: 0
     t.index ["slug"], name: "index_courses_seasons_on_slug"
   end
 
@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(version: 20170719140651) do
     t.text     "comment"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "mentor_id"
   end
 
   create_table "season_mentors", force: :cascade do |t|

@@ -1,12 +1,12 @@
 - title resource_form_text(student)
 
-= simple_form_for student, url: courses_season_students_path(current_season), as: :student do |f|
-  .fields
-    .sixteen.wide.field.right-align
-      = f.button :submit
+= resource_form_header(student)
 
+= simple_form_for student, url: courses_season_students_path(current_season), as: :student do |f|
   .fields
     .six.wide.field = f.input :personal_info
     .six.wide.field = f.input :motivation_info
-
-= resource_form_header(student)
+    
+  .fields
+    .sixteen.wide.field.right-align
+      = f.button :submit
