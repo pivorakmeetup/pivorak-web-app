@@ -17,7 +17,7 @@ module Admin
       def create
         @lecture = current_season.lectures.new(lecture_params)
 
-        react_to lecture.save
+        react_to ::Courses::Lecture::Create.call(lecture)
       end
 
       def update

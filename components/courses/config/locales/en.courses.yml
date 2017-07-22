@@ -76,6 +76,29 @@ en:
       approved: Approved?
       approve: Approve
 
+    progress:
+      singular: Progress
+      plural: Progress
+      homework: Homework
+      git: Git
+      showcase: Showcase
+      mark: Mark
+      presence: Presence
+      set_presence: Set presence
+      set_mark: Set mark
+      absent: Absent?
+      not_absent: Not absent?
+      git: Git
+      showcase: Showcase
+      no_showcase: No showcase
+
+    seasons:
+      plural: Seasons
+      start_at: Started At
+      finish_at: Finished At
+      mentors: Mentors
+      status: Status
+
   flash:
     courses:
       students:
