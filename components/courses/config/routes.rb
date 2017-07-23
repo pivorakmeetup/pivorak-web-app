@@ -15,7 +15,9 @@ Rails.application.routes.draw do
       resources :seasons,      except: :destroy do
         resources :mentors,    except: %i[show edit update]
         resources :questions,  except: :destroy
-        resources :interviews, except: :destroy
+        resources :interviews, except: :destroy do
+          resources :interview_assessments, only: %i[create update]
+        end
         resources :students,   only:   :index
         resources :lectures,   except: :destroy do
           resources :progress, only:   %i[index update]

@@ -1,0 +1,3 @@
+= simple_form_for assessment(interview, question), url: courses_interview_assessment_form_url(assessment(interview, question)), as: :interview_assessment do |f|
+  = f.input :question_id, as: :hidden, input_html: { value: question.id }
+  = f.input :mark, collection: ::Courses::InterviewAssessment::RANGE, checked: assessment(interview, question).mark, as: :radio_buttons, label: question.body, input_html: { onchange: "this.form.submit()" }

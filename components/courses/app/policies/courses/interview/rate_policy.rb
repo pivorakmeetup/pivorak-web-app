@@ -1,0 +1,32 @@
+module Courses
+  class Interview < ApplicationRecord
+    class RatePolicy
+
+      def initialize(interview)
+        @interview = interview
+      end
+
+      def allowed?
+        interview_has_a_student? &&
+        interview_has_a_video_url? &&
+        interview_is_completed?
+      end
+
+      private
+
+      attr_reader :interview
+
+      def interview_has_a_student?
+        interview.student
+      end
+
+      def interview_has_a_video_url?
+        interview.video_url
+      end
+
+      def interview_is_completed?
+        interview.completed?
+      end
+    end
+  end
+end
