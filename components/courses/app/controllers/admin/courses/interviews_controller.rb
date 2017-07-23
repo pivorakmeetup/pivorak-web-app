@@ -1,7 +1,7 @@
 module Admin
   module Courses
     class InterviewsController < BaseController
-      helper_method :interviews, :interview
+      helper_method :interviews, :interview, :assessment, :questions
 
       breadcrumps do
         add :interviews_breadcrumb
@@ -16,6 +16,10 @@ module Admin
       def create
         @interview = current_season.interviews.new(interviews_params)
         react_to interview.save
+      end
+
+      def show
+        @average_assessment = ::Courses::Interview::AverageAssessment.new(interview, questions).call
       end
 
       def update
@@ -59,6 +63,16 @@ module Admin
       def mentor_id
         ::Courses::Mentor
           .find_by(season_id: current_season.id, user_id: current_user.id).id
+      end
+
+      def assessment(interview, question)
+        ::Courses::InterviewAssessment.find_or_initialize_by(mentor_id:    interview.mentor_id,
+                                                             interview_id: interview.id,
+                                                             question_id:  question.id)
+      end
+
+      def questions
+        current_season.questions
       end
     end
   end

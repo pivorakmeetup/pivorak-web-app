@@ -61,6 +61,11 @@ en:
       take: Take this time slot
       status: Status
       video_url: Video url
+      info: Interview Info
+      average_assessments: Average Assessments
+
+    interview_assessments:
+      rate: Please rate a student on a scale of 1-5
 
     lectures:
       plural: Lectures

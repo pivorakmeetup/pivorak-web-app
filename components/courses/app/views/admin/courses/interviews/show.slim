@@ -1,18 +1,27 @@
 = admin_courses_seasons_nav do
-  b = t 'courses.students.name'
-  p = interview.full_name
+  .ui.grid
+    .ten.wide.column
+      h3 = t 'courses.interviews.info'
+      b  = t 'courses.students.name'
+      p  = interview.full_name
 
-  b = t 'courses.mentors.name'
-  p = interview.mentor_name
+      b  = t 'courses.mentors.name'
+      p  = interview.mentor_name
 
-  b = t 'courses.interviews.start_at'
-  p = format_timestamp(interview.start_at)
+      b  = t 'courses.interviews.start_at'
+      p  = format_timestamp(interview.start_at)
 
-  b = t 'courses.interviews.status'
-  p = interview.status
+      b  = t 'courses.interviews.status'
+      p  = interview.status
 
-  b = t 'courses.interviews.description'
-  p = interview.description
+      b  = t 'courses.interviews.description'
+      p  = interview.description
 
-  b = t 'courses.interviews.video_url'
-  p = interview.video_url
+      b  = t 'courses.interviews.video_url'
+      p  = interview.video_url
+    .six.wide.column
+      = courses_interview_average_assessments(@average_assessment)
+  .ui.divider
+  .ui.grid
+    .eighteen.wide.column
+      = courses_interview_assessments_table(questions, interview)

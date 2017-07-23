@@ -37,7 +37,6 @@ module Admin
         add_breadcrumb 'test_tasks.plural',
           path: admin_courses_season_test_task_index_path(current_season)
       end
-     end
     end
   end
 end
