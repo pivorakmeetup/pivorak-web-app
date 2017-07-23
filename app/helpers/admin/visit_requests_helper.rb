@@ -11,7 +11,7 @@ module Admin
 
     def visit_request_status_label(status)
       content_tag :div, status,
-        class: ['ui label', STATUS_CLASS[status.to_sym]]
+        class: ['ui tiny label', STATUS_CLASS[status.to_sym]]
     end
 
     def admin_approve_visit_request_link(visit_request)
@@ -19,7 +19,7 @@ module Admin
 
       link_to t('visit_requests.approve'),
         admin_event_visit_request_approve_path(visit_request.event, visit_request),
-        method: :put, class: 'ui button green',
+        method: :put, class: 'mini ui basic button green',
         data: { confirm: t('phrases.confirm') },
         remote: true
     end
@@ -29,7 +29,7 @@ module Admin
 
       link_to t('visit_requests.cancel'),
         admin_event_visit_request_cancel_path(visit_request.event, visit_request),
-        method: :put, class: 'ui button red',
+        method: :put, class: 'mini ui basic button red',
         data: { confirm: t('phrases.confirm') },
         remote: true
     end
@@ -41,7 +41,7 @@ module Admin
 
       link_to i18n_label,
         admin_event_visit_request_toggle_list_path(visit_request.event, visit_request),
-        method: :put, class: ['ui', 'button', btn_class],
+        method: :put, class: ['mini', 'ui', 'basic', 'button', btn_class],
         data: { confirm: t('phrases.confirm') },
         remote: true
     end
