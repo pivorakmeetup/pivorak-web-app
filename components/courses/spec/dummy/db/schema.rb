@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170721081343) do
+ActiveRecord::Schema.define(version: 20170722113424) do
 
   create_table "courses_homeworks", force: :cascade do |t|
     t.integer  "student_id"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 20170721081343) do
     t.text     "description"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "lecture_id"
+    t.index ["lecture_id"], name: "index_courses_homeworks_on_lecture_id"
     t.index ["student_id"], name: "index_courses_homeworks_on_student_id"
   end
 
@@ -50,6 +52,17 @@ ActiveRecord::Schema.define(version: 20170721081343) do
     t.index ["venue_id"], name: "index_courses_lectures_on_venue_id"
   end
 
+  create_table "courses_progress", force: :cascade do |t|
+    t.integer "student_id"
+    t.integer "lecture_id"
+    t.integer "mentor_id"
+    t.integer "homework_mark"
+    t.integer "lecture_presence", default: 0
+    t.index ["lecture_id"], name: "index_courses_progress_on_lecture_id"
+    t.index ["mentor_id"], name: "index_courses_progress_on_mentor_id"
+    t.index ["student_id"], name: "index_courses_progress_on_student_id"
+  end
+
   create_table "courses_questions", force: :cascade do |t|
     t.string   "body"
     t.integer  "season_id"
@@ -63,9 +76,9 @@ ActiveRecord::Schema.define(version: 20170721081343) do
     t.text     "description"
     t.datetime "start_at"
     t.datetime "finish_at"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.integer  "status",      default: 0
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "status"
     t.index ["slug"], name: "index_courses_seasons_on_slug"
   end
 

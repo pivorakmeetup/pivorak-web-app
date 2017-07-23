@@ -1,0 +1,32 @@
+- title t('courses.progress.singular')
+
+= admin_courses_seasons_nav do
+
+  table.ui.very.basic.table
+    thead
+      tr
+        th = t('words.name')
+        th = t('courses.progress.homework')
+        th = t('courses.progress.presence')
+        th = t('courses.progress.git')
+        th = t('courses.progress.showcase')
+        th = t('courses.progress.mark')
+        th = t('courses.progress.set_presence')
+        th = t('courses.progress.set_mark') if authenticate_lecturer!
+
+    tbody
+      - students.each do |student|
+        tr
+          td = student.full_name
+          td = homework_presence_icon(current_lecture, student)
+          td = lecture_presence_icon(current_lecture, student)
+          td = homework_git_link(current_lecture, student)
+          td = homework_showcase_link(current_lecture, student)
+          td = homework_mark(current_lecture, student)
+          td = set_lecture_presence(current_season, current_lecture, student)
+          - if authenticate_lecturer!
+            td
+              = set_mark_button(current_season, current_lecture, student, -1)
+              = set_mark_button(current_season, current_lecture, student, 0)
+              = set_mark_button(current_season, current_lecture, student, 1)
+

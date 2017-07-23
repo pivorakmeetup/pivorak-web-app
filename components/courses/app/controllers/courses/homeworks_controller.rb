@@ -1,6 +1,6 @@
 module Courses
   class HomeworksController < BaseController
-    helper_method :homework
+    helper_method :homework, :lectures
 
     def new
       @homework = ::Courses::Homework.new
@@ -22,8 +22,12 @@ module Courses
       @homework ||= ::Courses::Homework.find(params[:id])
     end
 
+    def lectures
+      @lectures ||=  current_season.lectures
+    end
+
     def homework_params
-      params.require(:homework).permit(:git_url, :showcase_url, :description)
+      params.require(:homework).permit(:git_url, :showcase_url, :description, :lecture_id)
     end
   end
 end
