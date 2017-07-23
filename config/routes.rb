@@ -40,6 +40,7 @@ Rails.application.routes.draw do
   authenticate :user, ->(u) { u.admin? } do
     namespace :admin do
       get '/', to: 'home#index'
+      get '/donations', to: 'donations#index'
 
       resources :events,  except: %i[show destroy] do
         resources :visit_requests, only: %i[index] do
