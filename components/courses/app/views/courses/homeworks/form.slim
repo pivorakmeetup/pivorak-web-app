@@ -7,7 +7,10 @@
     .six.wide.field = f.input :git_url
     .six.wide.field = f.input :showcase_url
     .six.wide.field = f.input :description
+    .six.wide.field = f.input :lecture_id, collection: lectures
 
   .fields
     .sixteen.wide.field.right-align
       = f.button :submit
+
+= resource_form_header(homework)

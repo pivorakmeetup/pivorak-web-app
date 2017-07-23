@@ -1,9 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe 'Homework CREATE' do
-  let!(:season)  { create(:season, title: 'Test Season', status: :live) }
-  let!(:user)    { User.create(email: 'test@test.com', first_name: 'Test', last_name: 'User') }
-  let!(:student) { create(:student, season_id: season.id, user_id: user.id) }
+  let!(:season)         { create(:season, title: 'Test Season', status: :live) }
+  let!(:user)           { User.create(email: 'test@test.com', first_name: 'Test', last_name: 'User') }
+  let!(:student)        { create(:student, season_id: season.id, user_id: user.id) }
+  let!(:venue)          { create(:venue) }
+  let!(:season_creator) { ::Courses::Mentor.create(user_id: 1, season_id: 1) }
+  let!(:lecture)        { create(:lecture, mentor_id: 1, venue_id: 1, season_id: 1) }
+
 
   before { visit '/courses/seasons/test-season/homeworks/new' }
 
@@ -33,6 +37,8 @@ RSpec.describe 'Homework CREATE' do
     it 'creates new homework' do
       fill_in 'Git url', with: 'https://github.com/test_student/homework_test'
       fill_in 'Description', with: 'This homework is awesome!'
+      select lecture.title, from: 'homework[lecture_id]'
+
       expect { click_button 'Create Homework' }.to change{ ::Courses::Homework.count }.by(1)
     end
   end

@@ -8,6 +8,7 @@
       tr
         th = t('words.status')
         th = t('words.title')
+        th = t('courses.progress.singular')
         th = t('courses.lectures.lecturer')
         th = t('courses.lectures.venue')
         th
@@ -17,6 +18,7 @@
         tr
           td               = lecture.status
           td               = link_to lecture.title, admin_courses_season_lecture_path(current_season, lecture)
+          td               = link_to t('courses.progress.singular'), admin_courses_season_lecture_progress_index_path(current_season, lecture)
           td               = lecture.mentor.full_name
           td               = lecture.venue.name
           td.right.aligned = controls do

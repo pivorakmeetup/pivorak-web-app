@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170721081343) do
+ActiveRecord::Schema.define(version: 20170720113155) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20170721081343) do
     t.text     "description"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "lecture_id"
     t.index ["student_id"], name: "index_courses_homeworks_on_student_id", using: :btree
   end
 
@@ -52,6 +53,17 @@ ActiveRecord::Schema.define(version: 20170721081343) do
     t.index ["season_id"], name: "index_courses_lectures_on_season_id", using: :btree
     t.index ["slug"], name: "index_courses_lectures_on_slug", using: :btree
     t.index ["venue_id"], name: "index_courses_lectures_on_venue_id", using: :btree
+  end
+
+  create_table "courses_progress", force: :cascade do |t|
+    t.integer "student_id"
+    t.integer "lecture_id"
+    t.integer "mentor_id"
+    t.integer "homework_mark"
+    t.integer "lecture_presence", default: 0
+    t.index ["lecture_id"], name: "index_courses_progress_on_lecture_id", using: :btree
+    t.index ["mentor_id"], name: "index_courses_progress_on_mentor_id", using: :btree
+    t.index ["student_id"], name: "index_courses_progress_on_student_id", using: :btree
   end
 
   create_table "courses_questions", force: :cascade do |t|

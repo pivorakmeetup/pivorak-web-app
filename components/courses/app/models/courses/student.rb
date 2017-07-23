@@ -6,6 +6,8 @@ module Courses
     belongs_to :user
     has_one    :interview
     has_one    :test_task
+    has_many   :homeworks
+    has_many   :progresses
 
     delegate :full_name, to: :user
     delegate :email,     to: :user
