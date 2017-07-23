@@ -24,6 +24,16 @@ ActiveRecord::Schema.define(version: 20170722113424) do
     t.index ["student_id"], name: "index_courses_homeworks_on_student_id"
   end
 
+  create_table "courses_interview_assessments", force: :cascade do |t|
+    t.integer  "interview_id"
+    t.integer  "mentor_id"
+    t.integer  "question_id"
+    t.integer  "mark"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["interview_id"], name: "index_courses_interview_assessments_on_interview_id"
+  end
+
   create_table "courses_interviews", force: :cascade do |t|
     t.integer  "mentor_id"
     t.integer  "student_id"

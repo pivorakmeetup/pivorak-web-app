@@ -7,6 +7,8 @@ module Courses
     belongs_to :mentor
     belongs_to :student, optional: true
 
+    has_many :interview_assessments
+
     enum status: %i[vacant pending completed missed]
 
     validates :start_at,   presence: true
