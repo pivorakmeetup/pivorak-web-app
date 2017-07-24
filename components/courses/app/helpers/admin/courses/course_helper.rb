@@ -40,7 +40,7 @@ module Admin
       def admin_courses_season_lectures_link
         link_to icon(:university, t('courses.lectures.plural')),
                 admin_courses_season_lectures_path(current_season),
-                class: admin_courses_active_item?('lectures')
+                class: admin_courses_active_item?('lectures', 'progress')
       end
 
       def admin_courses_season_test_task_index_link
@@ -51,12 +51,12 @@ module Admin
 
       private
 
-      def admin_courses_active_item?(ethalon_controller_name)
-        if controller_name == ethalon_controller_name
-          'active item'
-        else
-          'item'
+      def admin_courses_active_item?(*ethalon_controller_names)
+        ethalon_controller_names.each do |name|
+          return 'active item' if controller_name == name
         end
+
+        'item'
       end
     end
   end
