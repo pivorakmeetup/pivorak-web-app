@@ -1,3 +1,5 @@
+require_relative 'base_controller'
+
 module Admin
   module Courses
     class SeasonsController < BaseController
