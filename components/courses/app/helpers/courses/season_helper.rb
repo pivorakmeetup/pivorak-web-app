@@ -34,11 +34,16 @@ module Courses
 
       link_to t('courses.students.pick_interview_time'),
         courses_season_interviews_path(season)
+    end
 
-    def courses_cancel(season)
-      return unless season.status.to_sym == Courses::Season::REGISTRATION || SELECTION || LIVE
-      link_to t('courses.season.cancel')
-      courses_season_path(season)
+    def courses_cancel_link(season)
+      return unless season.status.to_sym == Courses::Season::REGISTRATION ||
+          Courses::Season::SELECTION || Courses::Season::LIVE
+      link_to t('courses.season.cancel'),
+              courses_season_cancel_attendance_path(season),
+              method: :post,
+              confirm:  'Are you sure?'
     end
   end
 end
+
