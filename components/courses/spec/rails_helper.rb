@@ -25,4 +25,5 @@ RSpec.configure do |config|
 
   config.include FactoryGirl::Syntax::Methods
   config.include Courses::Test::FeaturesHelpers, type: :feature
+  config.include Courses::Test::DatePickerHelpers
 end
