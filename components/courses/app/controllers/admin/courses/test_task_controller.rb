@@ -7,7 +7,7 @@ module Admin
       end
 
       def update
-        if test_task.update(mentor_id: current_mentor.id)
+        if ::Courses::TestTask::Update.call(test_task, current_mentor)
           flash_success and default_redirect
         else
           flash_error and default_redirect
