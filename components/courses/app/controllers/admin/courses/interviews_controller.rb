@@ -1,7 +1,8 @@
 module Admin
   module Courses
     class InterviewsController < BaseController
-      helper_method :interviews, :interview, :assessment, :questions
+      helper_method :interviews, :interview, :assessment, :questions,
+        :assessments_hash
 
       breadcrumps do
         add :interviews_breadcrumb
@@ -40,6 +41,7 @@ module Admin
         @interviews ||= current_season.interviews
           .includes(:mentor)
           .includes(student: :user)
+          .includes(:interview_assessments)
           .page(params[:page])
       end
 
@@ -73,6 +75,12 @@ module Admin
 
       def questions
         current_season.questions
+      end
+
+      def assessments_hash
+        @assessments_hash ||= ::Courses::Interview::AssessmentsHash
+          .call(interviews, questions)
+          .sort_by { |k, v| -v[:average] }
       end
     end
   end

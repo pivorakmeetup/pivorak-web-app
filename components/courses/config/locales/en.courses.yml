@@ -63,6 +63,8 @@ en:
       video_url: Video url
       info: Interview Info
       average_assessments: Average Assessments
+      average_assessment: Average Assessment
+      mentors_assessed: Mentors Assessed
 
     interview_assessments:
       rate: Please rate a student on a scale of 1-5

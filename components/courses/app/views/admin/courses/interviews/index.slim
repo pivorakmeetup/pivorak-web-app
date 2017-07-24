@@ -11,16 +11,20 @@
         th = t 'words.email'
         th = t 'courses.mentors.name'
         th = t 'courses.interviews.start_at'
+        th = t 'courses.interviews.mentors_assessed'
+        th = t 'courses.interviews.average_assessment'
         th
 
     tbody
-      - interviews.each do |interview|
+      - assessments_hash.each do |interview, assessment|
         tr
           td = interview.status
           td = link_to interview.full_name, admin_courses_season_interview_path(current_season, interview) if interview.full_name
           td = interview.email
           td = interview.mentor_name
           td = format_timestamp(interview.start_at)
+          td = assessment[:count]
+          td = assessment[:average]
           td = controls do
             = link_to icon(:edit, t('words.edit')), edit_admin_courses_season_interview_path(current_season, interview), class: 'item'
 
