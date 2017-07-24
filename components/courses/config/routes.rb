@@ -19,7 +19,7 @@ Rails.application.routes.draw do
           resources :interview_assessments, only: %i[create update]
         end
         resources :students,   only:   :index
-        resources :lectures,   except: :destroy do
+        resources :lectures,   except: %i[show destroy] do
           resources :progress, only:   %i[index update]
         end
         resources :test_task,  only:   %i[index update]

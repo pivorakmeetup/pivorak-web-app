@@ -20,7 +20,7 @@ RSpec.describe 'Setting progress' do
 
   context 'has buttons to set student progress' do
     it 'has button for presence set' do
-      expect(page).to have_link 'Absent?'
+      expect(page).to have_link 'Absent!'
     end
 
     it 'has buttons for mark set' do
@@ -30,7 +30,7 @@ RSpec.describe 'Setting progress' do
 
   context 'progress set' do
     it 'changes presence mark after button pressing' do
-      click_link 'Absent?'
+      click_link 'Absent!'
       progress = ::Courses::Progress.last
 
       expect(progress.lecture_presence).to eq(-1)

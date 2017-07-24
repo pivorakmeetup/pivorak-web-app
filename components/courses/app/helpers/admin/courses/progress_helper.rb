@@ -20,7 +20,7 @@ module Admin
         return '-' unless homework_present?(lecture, student)
 
         homework = student.homeworks.find_by(lecture_id: lecture.id)
-        link_to t('courses.progress.git'), homework.git_url
+        link_to t('courses.progress.git'), homework.git_url, target: '_blank'
       end
 
       def homework_showcase_link(lecture, student)
@@ -34,20 +34,25 @@ module Admin
 
       def set_lecture_presence(season, lecture, student)
         progress = student_progress(lecture, student)
+
         if progress.lecture_presence == LECTURE_NOT_ABSENT_MARK
           link_to t('courses.progress.absent'),
-                  admin_courses_season_lecture_progress_path(season.id,
-                                                             lecture.id,
-                                                             progress,
-                                                             progress: { lecture_presence: LECTURE_ABSENT_MARK }),
+                  admin_courses_season_lecture_progress_path(
+                    season.id,
+                    lecture.id,
+                    progress,
+                    progress: { lecture_presence: LECTURE_ABSENT_MARK }
+                  ),
                   method: :put, class: 'ui button red',
                   data: { confirm: t('phrases.confirm') }
         else
           link_to t('courses.progress.not_absent'),
-                  admin_courses_season_lecture_progress_path(season.id,
-                                                             lecture.id,
-                                                             progress,
-                                                             progress: { lecture_presence: LECTURE_NOT_ABSENT_MARK }),
+                  admin_courses_season_lecture_progress_path(
+                    season.id,
+                    lecture.id,
+                    progress,
+                    progress: { lecture_presence: LECTURE_NOT_ABSENT_MARK }
+                  ),
                   method: :put, class: 'ui button grey',
                   data: { confirm: t('phrases.confirm') }
         end
@@ -70,10 +75,6 @@ module Admin
                                                            progress: { homework_mark: mark }),
                 method: :put, class: 'ui button',
                 data: { confirm: t('phrases.confirm') }
-      end
-
-      def student_progress(lecture, student)
-        student.progresses.find_by(lecture: lecture)
       end
     end
   end

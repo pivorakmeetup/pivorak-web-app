@@ -5,6 +5,6 @@ module Courses
     belongs_to :student
     belongs_to :lecture
 
-    validates :git_url, :description, :lecture_id, presence: true
+    validates :git_url, :lecture_id, presence: true
   end
 end

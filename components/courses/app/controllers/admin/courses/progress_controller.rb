@@ -1,11 +1,12 @@
 module Admin
   module Courses
     class ProgressController < BaseController
-      helper_method :current_lecture, :students, :authenticate_lecturer!
+      helper_method :current_lecture, :students, :authenticate_lecturer!, :student_progress
+
       before_action :authenticate_lecturer!, only: :update
+
       breadcrumps do
         add :lectures_breadcrumb
-        add :lecture_breadcrumb
         add :progress_breadcrumb
       end
 
@@ -32,10 +33,6 @@ module Admin
        add_breadcrumb 'courses.lectures.plural', path: admin_courses_season_lectures_path(current_season)
       end
 
-      def lecture_breadcrumb
-        add_breadcrumb current_lecture, path: admin_courses_season_lecture_path(current_season, current_lecture)
-      end
-
       def progress_breadcrumb
         add_breadcrumb 'courses.progress.singular'
       end
@@ -46,6 +43,10 @@ module Admin
 
       def progress_params
         params.require(:progress).permit(:homework_mark, :lecture_presence)
+      end
+
+      def student_progress(lecture, student)
+        student.progresses.find_by(lecture: lecture)
       end
     end
   end
