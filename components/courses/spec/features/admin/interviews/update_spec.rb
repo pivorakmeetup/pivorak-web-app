@@ -1,11 +1,13 @@
 require 'rails_helper'
 
-RSpec.xdescribe 'Interviews UPDATE' do
+RSpec.describe 'Interviews UPDATE' do
   let!(:season)             { create(:season, title: 'Test Season') }
-  let(:edit_interview_path) { '/admin/courses/seasons/test-season/interviews/1/edit' }
   let!(:user)               { User.create(email: 'test@test.com', first_name: 'Test', last_name: 'User') }
-  let!(:mentor)             { ::Courses::Mentor.create(user_id: user.id, season_id: season.id) }
-  let!(:interview)          { create(:interview, mentor_id: mentor.id, status: 1) }
+  let!(:mentor)             { ::Courses::Mentor.create(user: user, season: season) }
+  let!(:interview)          { create(:interview, mentor: mentor, status: 1) }
+
+  let(:edit_interview_path) { '/admin/courses/seasons/test-season/interviews/1/edit' }
+  let(:date_field_name)     { 'interview_start_at' }
 
   before { visit edit_interview_path }
 
@@ -13,17 +15,17 @@ RSpec.xdescribe 'Interviews UPDATE' do
     context 'blank start time' do
       it 'validates errors' do
         allow_any_instance_of(Courses::Interview::IntervalPolicy).to receive(:allowed?).and_return(true)
-        fill_in 'Start at',  with: ''
-        click_button 'Update Interview'
 
-        expect_an_error interview_start_at: :blank
+        interview.start_at = ''
+
+        expect(interview).not_to be_valid
       end
     end
 
     context 'invalid interval' do
       it 'validates errors' do
         allow_any_instance_of(Courses::Interview::IntervalPolicy).to receive(:allowed?).and_return(false)
-        fill_in 'Start at',  with: (Time.now).to_s
+        pick_a_date(date_field_name, Time.now)
         click_button 'Update Interview'
 
         expect_an_error interview_start_at: 'should be at least 30 minutes between interviews'
@@ -35,12 +37,13 @@ RSpec.xdescribe 'Interviews UPDATE' do
     context 'change of time' do
       it 'updates interview' do
         allow_any_instance_of(Courses::Interview::IntervalPolicy).to receive(:allowed?).and_return(true)
-        fill_in 'Start at',  with: '2017.06.06'.to_time
+        date = '2017.10.10'.to_time
+        pick_a_date(date_field_name, date)
         click_button 'Update Interview'
         interview.reload
 
         expect(page).to have_current_path '/admin/courses/seasons/test-season/interviews'
-        expect(interview.start_at).to eq('2017-06-06'.to_time)
+        expect(interview.start_at.strftime('%D')).to eq(date.strftime('%D'))
       end
     end
 
