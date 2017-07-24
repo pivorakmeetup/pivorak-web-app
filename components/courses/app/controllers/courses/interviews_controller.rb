@@ -4,7 +4,7 @@ module Courses
     before_action :execute_list_policy
 
     def update
-      if interview.update(student_id: current_student.id, status: :pending)
+      if ::Courses::Interview::Update.call(interview, current_student)
         flash_success and default_redirect
       else
         flash_error and default_redirect

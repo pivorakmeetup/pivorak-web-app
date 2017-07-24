@@ -7,9 +7,11 @@ module Courses
       end
 
       def call
-        test_task.update(mentor_id: mentor.id)
-        student.test_task_done!
-        student.save
+        transaction do
+          test_task.update(mentor_id: mentor.id)
+          
+          student.test_task_done!
+        end
       end
 
       private
