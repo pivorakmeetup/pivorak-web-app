@@ -3,7 +3,7 @@ require 'rails_helper'
 describe Courses::Interview::AverageAssessment do
   let!(:season)            { create(:season, title: 'Test Season') }
   let!(:first_mentor)      { ::Courses::Mentor.create(user_id: 1, season_id: season.id) }
-  let!(:second_mentor)     { ::Courses::Mentor.create(user_id: 1, season_id: season.id) }
+  let!(:second_mentor)     { ::Courses::Mentor.create(user_id: 2, season_id: season.id) }
   let!(:interview)         { create(:interview, mentor_id: first_mentor.id, season_id: season.id) }
   let!(:first_question)    { create(:question, season_id: season.id) }
   let!(:second_question)   { create(:question, season_id: season.id) }
@@ -18,9 +18,9 @@ describe Courses::Interview::AverageAssessment do
 
       average_assessments = described_class.call(interview, questions)
 
-      average_mark_for_first_question = 
+      average_mark_for_first_question =
         average_assessments.select{|hsh| hsh[:question] == first_question.body}.first[:mark]
-      average_mark_for_second_question = 
+      average_mark_for_second_question =
         average_assessments.select{|hsh| hsh[:question] == second_question.body}.first[:mark]
 
       expect(average_mark_for_first_question).to eq (first_assessment.mark+third_assessment.mark).to_f/2
