@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   namespace :courses do
     resources :seasons,      only: %i[index show] do
+      resource :cancel_attendance, only: :create
       resources :students,   only: %i[index new create]
       resources :interviews, only: %i[index update]
       resources :homeworks,  only: %i[index new create]
