@@ -1,6 +1,6 @@
 module Courses
   class StudentsController < BaseController
-    helper_method :student, :cancel_participation
+    helper_method :student
     before_action :execute_create_policy
 
     def new
@@ -22,7 +22,6 @@ module Courses
     def student
       @student ||= ::Courses::Student.find(params[:id])
     end
-
 
     def execute_create_policy
       allowed = Student::CreatePolicy.new(

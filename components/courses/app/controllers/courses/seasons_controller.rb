@@ -11,6 +11,5 @@ module Courses
     def mentors
       @mentors ||= season.mentors.includes(:user)
     end
-
   end
 end
