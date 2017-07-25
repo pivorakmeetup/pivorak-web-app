@@ -38,11 +38,11 @@ module Courses
 
     def courses_cancel_link(season)
       return unless season.status.to_sym == Courses::Season::REGISTRATION ||
-          Courses::Season::SELECTION || Courses::Season::LIVE
-      link_to t('courses.season.cancel'),
-              courses_season_cancel_attendance_path(season),
-              method: :post,
-              confirm:  'Are you sure?'
+        Courses::Season::SELECTION || Courses::Season::LIVE
+        link_to t('courses.season.cancel'),
+          courses_season_cancel_attendance_path(season),
+            method: :post,
+            confirm:  'Are you sure?'
     end
   end
 end
