@@ -12,3 +12,4 @@ describe Courses::Season::CancelAttendance do
     end
   end
 end
+
