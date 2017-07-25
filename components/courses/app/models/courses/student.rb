@@ -12,7 +12,15 @@ module Courses
     delegate :full_name, to: :user
     delegate :email,     to: :user
 
-    enum status: %i[enrolled test_task_done interviewing attending dropped graduated]
+    enum status: %i{
+      enrolled: 0,
+      refused: 1,
+      test_task_done: 2,
+      interviewing: 3,
+      attending: 4,
+      dropped: 5,
+      graduated: 6
+    }
 
     validates :personal_info, presence: true
     validates :motivation_info, presence: true
