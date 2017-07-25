@@ -2,7 +2,7 @@ module Admin
   module Courses
     class InterviewsController < BaseController
       helper_method :interviews, :interview, :assessment, :questions,
-        :assessments_hash
+        :assessments_hash, :average_assessment
 
       breadcrumps do
         add :interviews_breadcrumb
@@ -17,10 +17,6 @@ module Admin
       def create
         @interview = current_season.interviews.new(interviews_params)
         react_to interview.save
-      end
-
-      def show
-        @average_assessment = ::Courses::Interview::AverageAssessment.new(interview, questions).call
       end
 
       def update
@@ -81,6 +77,10 @@ module Admin
         @assessments_hash ||= ::Courses::Interview::AssessmentsHash
           .call(interviews, questions)
           .sort_by { |k, v| -v[:average] }
+      end
+
+      def average_assessment
+        @average_assessment ||= ::Courses::Interview::AverageAssessment.new(interview, questions).call
       end
     end
   end

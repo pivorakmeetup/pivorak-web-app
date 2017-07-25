@@ -8,25 +8,32 @@ module Courses
       "#{start_at} - #{finish_at}"
     end
 
-    def courses_send_homework_link(season)
-      return unless season.status.to_sym == Courses::Season::LIVE
+    def courses_send_homework_link(season, student)
+      return unless ::Courses::Season::SendHomeworkPolicy.new(season, student).allowed?
 
       link_to t('courses.seasons.send_homework'),
         new_courses_season_homework_path(season)
     end
 
-    def courses_register_link(season)
-      return unless season.status.to_sym == Courses::Season::REGISTRATION
+    def courses_register_link(season, student)
+      return unless ::Courses::Season::RegisterPolicy.new(season, student).allowed?
 
       link_to t('courses.seasons.register'),
         new_courses_season_student_path(season)
     end
 
-    def courses_send_test_task_link(season)
-      return unless season.status.to_sym == Courses::Season::REGISTRATION
+    def courses_send_test_task_link(season, student)
+      return unless ::Courses::Season::SendTestTaskPolicy.new(season, student).allowed?
 
       link_to t('courses.seasons.send_test_task'),
         new_courses_season_test_task_path(season)
+    end
+
+    def courses_interviews_link(season, student)
+      return unless ::Courses::Season::InterviewsPolicy.new(season, student).allowed?
+
+      link_to t('courses.students.pick_interview_time'),
+        courses_season_interviews_path(season)
     end
   end
 end

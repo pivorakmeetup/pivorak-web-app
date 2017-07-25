@@ -8,9 +8,10 @@ RSpec.describe 'Season SHOW' do
 
     it "expect page to have needed links" do
       expect(page).to have_content 'Test Season'
+
       expect(page).to have_link 'Register'
-      expect(page).to have_link 'Send Test Task'
       expect(page).not_to have_link 'Send Homework'
+      expect(page).not_to have_link 'Pick interview time'
     end
   end
 
@@ -25,6 +26,7 @@ RSpec.describe 'Season SHOW' do
       expect(page).not_to have_link 'Register'
       expect(page).not_to have_link 'Send test task'
       expect(page).not_to have_link 'Send Homework'
+      expect(page).not_to have_link 'Pick interview time'
     end
   end
 
@@ -36,10 +38,10 @@ RSpec.describe 'Season SHOW' do
     it "expect page to have needed links" do
       expect(page).to have_content 'Test Season'
 
+      expect(page).to have_link 'Send Homework'
       expect(page).not_to have_link 'Register'
       expect(page).not_to have_link 'Send test task'
-
-      expect(page).to have_link 'Send Homework'
+      expect(page).not_to have_link 'Pick interview time'
     end
   end
 end
