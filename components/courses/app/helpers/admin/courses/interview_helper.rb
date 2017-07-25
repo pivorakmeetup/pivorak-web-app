@@ -32,6 +32,24 @@ module Admin
       def courses_average_mark(hsh)
         "#{hsh[:question]}: #{hsh[:mark]}"
       end
+
+      def approve_after_interview_button(user, season, interview)
+        student = interview.student
+
+        return t('courses.interviews.approved') if student.present? && student.attending?
+
+        policy = ::Courses::Interview::ApprovePolicy.new(user, season, interview)
+        return '-' unless policy.allowed?
+
+        link_to t('courses.interviews.approve'),
+                admin_courses_season_student_path(
+                    season.id,
+                    student,
+                    student: { status: :attending }
+                ),
+                method: :put, class: 'ui button green',
+                data: { confirm: t('phrases.confirm') }
+      end
     end
   end
 end
