@@ -11,6 +11,7 @@ h2 = t 'courses.mentors.plural'
 
 br
 
-p = courses_register_link(season)
-p = courses_send_test_task_link(season)
-p = courses_send_homework_link(season)
+p = courses_register_link(season, current_student)
+p = courses_send_test_task_link(season, current_student)
+p = courses_send_homework_link(season, current_student)
+p = courses_interviews_link(season, current_student)

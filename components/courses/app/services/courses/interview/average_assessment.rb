@@ -1,6 +1,8 @@
 module Courses
   class Interview < ApplicationRecord
     class AverageAssessment < ApplicationService
+      ZERO_MARK = 0
+
       def initialize(interview, questions)
         @interview = interview
         @questions = questions
@@ -32,7 +34,7 @@ module Courses
         if marks.any?
           ( marks.inject(:+).to_f / marks.size ).round(2)
         else
-          0
+          ZERO_MARK
         end
       end
 
