@@ -14,11 +14,11 @@ module Admin
       private
 
       def interview
-        ::Courses::Interview.find(params[:interview_id])
+        @interview ||= ::Courses::Interview.find(params[:interview_id])
       end
 
       def assessment
-        ::Courses::InterviewAssessment.find(params[:id])
+        @assessment ||= ::Courses::InterviewAssessment.find(params[:id])
       end
 
       def interview_assessment_params
