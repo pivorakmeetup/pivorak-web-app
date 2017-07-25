@@ -20,4 +20,3 @@ module Courses
     end
   end
 end
-
