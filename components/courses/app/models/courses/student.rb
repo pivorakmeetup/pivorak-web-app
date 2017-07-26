@@ -12,7 +12,7 @@ module Courses
     delegate :full_name, to: :user
     delegate :email,     to: :user
 
-    enum status: %i{
+    enum status: {
       enrolled: 0,
       refused: 1,
       test_task_done: 2,

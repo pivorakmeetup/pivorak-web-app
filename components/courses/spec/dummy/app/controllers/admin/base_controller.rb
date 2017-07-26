@@ -1,6 +1,8 @@
 # Mock of original controller
 module Admin
   class BaseController < ApplicationController
+    helper_method :current_user
+
     def self.add_breadcrumb(*)
     end
 

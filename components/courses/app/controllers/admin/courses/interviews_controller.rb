@@ -4,6 +4,8 @@ module Admin
       helper_method :interviews, :interview, :assessment, :questions,
         :assessments_hash, :average_assessment
 
+      before_action :authenticate_interviewer!, only: %i[edit update]
+
       breadcrumps do
         add :interviews_breadcrumb
         add :interview_breadcrumb, only: %i[show edit update]
@@ -35,9 +37,9 @@ module Admin
 
       def interviews
         @interviews ||= current_season.interviews
-          .includes(:mentor)
+          .includes(mentor: :user)
           .includes(student: :user)
-          .includes(:interview_assessments)
+          .preload(:interview_assessments)
           .page(params[:page])
       end
 
@@ -81,6 +83,10 @@ module Admin
 
       def average_assessment
         @average_assessment ||= ::Courses::Interview::AverageAssessment.new(interview, questions).call
+      end
+
+      def authenticate_interviewer!
+        default_redirect unless interview.mentor == ::Courses::Mentor.find(mentor_id)
       end
     end
   end

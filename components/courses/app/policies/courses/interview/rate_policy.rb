@@ -8,8 +8,9 @@ module Courses
 
       def allowed?
         interview_has_a_student? &&
-        interview_has_a_video_url? &&
-        interview_is_completed?
+          interview_has_a_video_url? &&
+          interview_is_completed? &&
+          student_has_interviewing_status?
       end
 
       private
@@ -26,6 +27,10 @@ module Courses
 
       def interview_is_completed?
         interview.completed?
+      end
+
+      def student_has_interviewing_status?
+        interview.student.interviewing?
       end
     end
   end
