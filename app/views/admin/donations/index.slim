@@ -1,0 +1,18 @@
+- title t('donations.plural')
+
+table.ui.very.basic.table
+  thead
+    tr
+      th.center.aligned = t 'donations.donator'
+      th.center.aligned = t 'goals.amount'
+      th.center.aligned = t 'words.date'
+
+  tbody
+    - donations.each do |donation|
+      tr
+        - if donation.user
+          td.center.aligned = "#{donation.user.first_name} #{donation.user.last_name}"
+        - else
+          td.center.aligned = "-"
+        td.center.aligned = donation.amount.to_f
+        td.center.aligned = donation.updated_at.strftime("%d/%m/%Y")
