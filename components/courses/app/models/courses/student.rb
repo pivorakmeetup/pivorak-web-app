@@ -14,12 +14,12 @@ module Courses
 
     enum status: {
       enrolled: 0,
-      refused: 1,
-      test_task_done: 2,
-      interviewing: 3,
-      attending: 4,
-      dropped: 5,
-      graduated: 6
+      test_task_done: 1,
+      interviewing: 2,
+      attending: 3,
+      dropped: 4,
+      graduated: 5,
+      refused: 6
     }
 
     validates :personal_info, presence: true

@@ -1,0 +1,27 @@
+- title t('courses.journal.singular')
+
+= admin_courses_seasons_nav do
+
+  table.ui.celled.complex.table
+    thead
+      tr
+        th rowspan = '2' = t('courses.students.name')
+        - lectures.each_with_index do |lecture, index|
+          th.center.aligned colspan = '2' = link_to (index + 1), admin_courses_season_lecture_progress_index_path(current_season, lecture)
+        th.center.aligned rowspan = '2'   = t('courses.journal.total')
+
+        tr
+          - lectures.each_with_index do |lecture, index|
+            th.center.aligned = icon(:idea)
+            th.center.aligned = icon(:warning)
+
+    tbody
+      - total_hash.each do |student, total|
+        tr
+          td = student.full_name
+          - lectures.each do |lecture|
+            td.center.aligned id = journal_value_id(student, lecture, 'm') bgcolor = courses_journal_data_color(journal_mark(student, lecture), true)
+              = journal_mark(student, lecture)
+            td.center.aligned id = journal_value_id(student, lecture, 'p') bgcolor = courses_journal_data_color(journal_presence(student, lecture))
+              = journal_presence(student, lecture) if journal_presence(student, lecture).nonzero?
+          td.center.aligned   id = journal_value_id(student) = total

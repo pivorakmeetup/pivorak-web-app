@@ -1,6 +1,6 @@
 module Admin
   module Courses
-    class LecturesController < BaseController
+    class LecturesController < ::Admin::Courses::BaseController
       helper_method :lectures, :lecture, :venues, :mentors
 
       breadcrumps do

@@ -1,6 +1,6 @@
 module Admin
   module Courses
-    class InterviewsController < BaseController
+    class InterviewsController < ::Admin::Courses::BaseController
       helper_method :interviews, :interview, :assessment, :questions,
         :assessments_hash, :average_assessment
 

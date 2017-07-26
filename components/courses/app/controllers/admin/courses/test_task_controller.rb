@@ -1,6 +1,6 @@
 module Admin
   module Courses
-    class TestTaskController < BaseController
+    class TestTaskController < ::Admin::Courses::BaseController
       helper_method :test_tasks
 
       breadcrumps do

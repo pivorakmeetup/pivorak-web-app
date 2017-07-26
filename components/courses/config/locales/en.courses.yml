@@ -39,6 +39,7 @@ en:
       register: Register
       send_test_task: Send Test Task
       send_homework: Send Homework
+      cancel: Cancel attendance
 
     mentors:
       plural: Mentors
@@ -105,12 +106,10 @@ en:
       showcase: Showcase
       no_showcase: No showcase
 
-    seasons:
-      plural: Seasons
-      start_at: Started At
-      finish_at: Finished At
-      mentors: Mentors
-      status: Status
+    journal:
+      singular: Journal
+      plural: Journal
+      total: Total
 
   flash:
     courses:
