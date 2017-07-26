@@ -1,6 +1,11 @@
 module Admin
   class DonationsController < BaseController
-    def index
-    end
+    helper_method :donations
+
+    private
+
+      def donations
+        @donations ||= search_against(Donation).includes(:user)
+      end
   end
 end
