@@ -1,13 +1,12 @@
 table#visit-requests.ui.compact.selectable.grey.table
   thead
     tr
-      th = t('visit_requests.main_list')
+      th = 'Verified?'
       th = t 'words.name'
-      th.center.aligned = t 'words.list'
-      th.center.aligned = t 'words.status'
+      th.center.aligned = t 'visit_requests.visited'
 
   tbody
     - visit_requests.main_list.each do |visit_request|
       tr id = "visit-request-#{visit_request.id}"
         = render partial: 'visit_request',
-                 locals: { visit_request: visit_request, event: event }
+                locals: { visit_request: visit_request, event: event }

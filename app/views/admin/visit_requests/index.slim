@@ -15,19 +15,7 @@
 
   - if event.live?
     .sixteen.wide.column
-      table#visit-requests.ui.compact.selectable.grey.table
-        thead
-          tr
-            th = 'Verified?'
-            th = t 'words.name'
-            th.center.aligned = t 'visit_requests.visited'
-
-        tbody
-          - visit_requests.each do |visit_request|
-            - unless visit_request.waiting_list
-              tr id = "visit-request-#{visit_request.id}"
-                = render partial: 'visit_request',
-                         locals: { visit_request: visit_request, event: event }
+      = render 'live'
   - else
     .ten.wide.column
       = render 'main_list'

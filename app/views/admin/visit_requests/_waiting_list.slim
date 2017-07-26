@@ -2,12 +2,14 @@
   table#visit-requests.ui.compact.selectable.grey.table
     thead
       tr
-        th colspan="3"
-          = t('visit_requests.waiting_list')
+        th = t('visit_requests.waiting_list')
+        th = t 'words.name'
+        th.center.aligned = t 'words.list'
+        th.center.aligned = t 'words.status'
+
 
     tbody
       - visit_requests.waiting_list.each do |visit_request|
         tr id = "visit-request-#{visit_request.id}"
-          td = bool_icon(visit_request.user.verified?)
-          td = link_to visit_request.user.full_name, edit_admin_member_path(visit_request.user), target: '_blank'
-          td.center.aligned = visit_request_list_link(visit_request)
+          = render partial: 'visit_request',
+                  locals: { visit_request: visit_request, event: event }
