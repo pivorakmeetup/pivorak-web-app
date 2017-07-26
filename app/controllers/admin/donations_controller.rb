@@ -1,6 +1,7 @@
 module Admin
   class DonationsController < BaseController
     helper_method :donations
+    add_breadcrumb 'donations.plural', :admin_talks_path
 
     private
 
