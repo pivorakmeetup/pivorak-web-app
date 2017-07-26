@@ -2,7 +2,7 @@ FactoryGirl.define do
   factory :valid_credit_card, class: Hash do
     number     '42' *  8
     exp_month  Faker::Number.between(1, 12)
-    exp_year   (Time.now.year + 1).to_s
+    exp_year   Time.now.year.next.to_s
     cvc        Faker::Number.number(3)
 
     initialize_with { attributes }

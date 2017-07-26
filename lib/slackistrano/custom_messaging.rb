@@ -31,7 +31,7 @@ module Slackistrano
       }
     end
 
-    def payload_for_updated
+    def payload_for_updated # rubocop:disable Metrics/MethodLength
       {
         attachments: [{
           color: 'good',

@@ -18,6 +18,7 @@ gem 'carrierwave',                                                     '~> 1.0'
 gem 'acts-as-taggable-on',                                             '~> 4.0'
 gem 'sidekiq',                                                      '~> 4.2.10'
 gem 'sidekiq-scheduler',                                             '~> 2.1.4'
+gem 'redis',                                                            '~>3.2'
 
 gem 'ez-settings'
 
@@ -32,6 +33,7 @@ gem 'coffee-rails',                                                  '~> 4.2.1'
 gem 'uglifier',                                                      '~> 3.2.0'
 gem 'rails-assets-svgxuse',                  source: 'https://rails-assets.org'
 gem 'rails-assets-lory',                     source: 'https://rails-assets.org'
+gem 'rails-assets-semantic-ui-calendar',     source: 'https://rails-assets.org'
 
 #=== FEATURES ==================================================================
 gem 'chartkick',                                                     '~> 2.2.3'
@@ -82,6 +84,7 @@ end
 
 group :development, :test do
   gem 'rspec'
+  gem 'rubocop', require: false
   gem 'rspec-rails'
   gem 'pry-rails'
   gem 'faker'

@@ -5,7 +5,7 @@ engines:
   bundler-audit:
     enabled: false
   csslint:
-    enabled: false
+    enabled: true
   duplication:
     enabled: false
     config:
@@ -29,6 +29,7 @@ ratings:
   - "**.rhtml"
   - "**.slim"
   - "**.css"
+  - "**.scss"
   - "**.inc"
   - "**.js"
   - "**.jsx"

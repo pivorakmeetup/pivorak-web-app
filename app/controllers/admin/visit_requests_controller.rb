@@ -1,6 +1,6 @@
 module Admin
   class VisitRequestsController < ::Admin::BaseController
-    helper_method :visit_requests, :event, :visitors_ids
+    helper_method :visit_requests, :event, :visitors_ids, :confirmed_ids
 
     def index
       add_breadcrumb 'events.plural', path: :admin_events_path
@@ -24,6 +24,10 @@ module Admin
 
     def visitors_ids
       @visitors_ids ||= User::EventVisitors.call(event_id: event.id).ids
+    end
+
+    def confirmed_ids
+      @confirmed_ids ||= User::EventAttendees.call(event_id: event.id).ids
     end
   end
 end

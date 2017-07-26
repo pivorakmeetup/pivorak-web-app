@@ -38,4 +38,13 @@ class VisitRequestMailer < ApplicationMailer
       format.html { email_template.render(user: @user, event: @event) }
     end
   end
+
+  def notify_admin_about_canceled_attendee(visit_request)
+    @user = visit_request.user
+    @event = visit_request.event
+
+    mail(to: PIVORAK_EMAIL, from: NO_REPLY_EMAIL, subject: email_template.subject) do |format|
+      format.html { email_template.render(user: @user, event: @event) }
+    end
+  end
 end

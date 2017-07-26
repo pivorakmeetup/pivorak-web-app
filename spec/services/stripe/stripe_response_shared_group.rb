@@ -5,7 +5,7 @@ RSpec.shared_examples 'Stripe response' do |action_hook|
   after   { StripeMock.stop }
 
   context 'when provided with invalid params' do
-    let(:params) {{}}
+    let(:params) { {} }
 
     %i(
       incorrect_number

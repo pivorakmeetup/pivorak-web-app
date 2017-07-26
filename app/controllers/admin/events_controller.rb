@@ -32,6 +32,7 @@ module Admin
 
     def events
       @events ||= ::Event::List.(events: search_against(Event), page: params[:page])
+        .per(Ez::Settings[:app, :events, :default_events_per_page])
     end
 
     def venues
