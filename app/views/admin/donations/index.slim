@@ -15,4 +15,6 @@ table.ui.very.basic.table
         - else
           td.center.aligned = "-"
         td.center.aligned = donation.amount.to_f
-        td.center.aligned = donation.updated_at.strftime("%d/%m/%Y")
+        td.center.aligned = donation.created_at.strftime("%d/%m/%Y")
+
+= paginate donations
