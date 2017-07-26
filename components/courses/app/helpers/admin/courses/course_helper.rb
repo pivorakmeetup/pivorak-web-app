@@ -49,6 +49,12 @@ module Admin
           class: admin_courses_active_item?('test_task')
       end
 
+      def admin_courses_season_journal_link
+        link_to icon(:'list layout', t('courses.journal.singular')),
+                admin_courses_season_journal_path(current_season),
+                class: admin_courses_active_item?('journal')
+      end
+
       private
 
       def admin_courses_active_item?(*ethalon_controller_names)

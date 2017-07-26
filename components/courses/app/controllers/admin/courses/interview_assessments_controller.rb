@@ -1,6 +1,6 @@
 module Admin
   module Courses
-    class InterviewAssessmentsController < BaseController
+    class InterviewAssessmentsController < ::Admin::Courses::BaseController
       helper_method :interview, :assessment
 
       def create

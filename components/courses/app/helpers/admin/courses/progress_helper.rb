@@ -1,8 +1,9 @@
 module Admin
   module Courses
     module ProgressHelper
-      LECTURE_ABSENT_MARK = -1
+      LECTURE_ABSENT_MARK     = -1
       LECTURE_NOT_ABSENT_MARK = 0
+      MINIMAL_MARK            = -1
 
       def homework_present?(lecture, student)
         ::Courses::Homework.exists?(lecture_id: lecture.id, student_id: student.id)
@@ -59,13 +60,11 @@ module Admin
       end
 
       def homework_mark(lecture, student)
-        return '-' unless homework_present?(lecture, student)
-
         student_progress(lecture, student).homework_mark
       end
 
       def set_mark_button(season, lecture, student, mark)
-        return '-' unless homework_present?(lecture, student)
+        return '-' unless homework_present?(lecture, student) || mark == MINIMAL_MARK
 
         progress = student_progress(lecture, student)
         link_to mark.to_s,
