@@ -1,8 +1,10 @@
 module Courses
   class TestTask < ApplicationRecord
     self.table_name = 'courses_test_tasks'
+
     belongs_to :student
     belongs_to :season
+    belongs_to :mentor
 
     validates :git_url, presence: true
     validates :student_id, uniqueness: true

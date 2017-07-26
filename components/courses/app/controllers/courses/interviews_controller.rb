@@ -4,11 +4,7 @@ module Courses
     before_action :execute_list_policy
 
     def update
-      if ::Courses::Interview::Update.call(interview, current_student)
-        flash_success and default_redirect
-      else
-        flash_error and default_redirect
-      end
+      react_to ::Courses::Interview::Update.call(interview, current_student)
     end
 
     private
@@ -25,10 +21,6 @@ module Courses
       @interviews ||= current_season.interviews
         .attendance_available
         .page(params[:page])
-    end
-
-    def interview_params
-      params.require(:interview).permit(:student_id)
     end
 
     def execute_list_policy

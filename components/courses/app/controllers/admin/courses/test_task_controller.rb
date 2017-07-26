@@ -22,7 +22,7 @@ module Admin
       end
 
       def test_tasks
-        @test_tasks ||= current_season.test_tasks.includes(student: :user)
+        @test_tasks ||= current_season.test_tasks.includes(student: :user).preload(mentor: :user)
       end
 
       def default_redirect
