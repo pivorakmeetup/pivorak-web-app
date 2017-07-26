@@ -1,6 +1,6 @@
 module Admin
   module Courses
-    class StudentsController < BaseController
+    class StudentsController < ::Admin::Courses::BaseController
       helper_method :students
 
       breadcrumps do

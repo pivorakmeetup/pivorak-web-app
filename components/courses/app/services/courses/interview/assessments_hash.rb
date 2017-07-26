@@ -31,7 +31,7 @@ module Courses
 
       def total(interview)
         total = interview.interview_assessments.inject(0.0) do |sum, assessment|
-          sum += assessment.mark
+          sum + assessment.mark
         end
       end
 

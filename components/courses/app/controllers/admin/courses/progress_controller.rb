@@ -1,6 +1,6 @@
 module Admin
   module Courses
-    class ProgressController < BaseController
+    class ProgressController < ::Admin::Courses::BaseController
       helper_method :current_lecture, :students, :authenticate_lecturer!, :student_progress
 
       before_action :authenticate_lecturer!, only: :update

@@ -1,6 +1,6 @@
 module Admin
   module Courses
-    class QuestionsController < BaseController
+    class QuestionsController < ::Admin::Courses::BaseController
       helper_method :questions, :question
 
       breadcrumps do

@@ -1,6 +1,6 @@
 module Admin
   module Courses
-    class MentorsController < BaseController
+    class MentorsController < ::Admin::Courses::BaseController
       helper_method :mentors, :mentor, :available_for_mentoring
 
       breadcrumps do

@@ -1,8 +1,6 @@
-require_relative 'base_controller'
-
 module Admin
   module Courses
-    class SeasonsController < BaseController
+    class SeasonsController < ::Admin::Courses::BaseController
       helper_method :seasons, :season
 
       before_action :authenticate_mentor!,  only: %i[show edit update]
