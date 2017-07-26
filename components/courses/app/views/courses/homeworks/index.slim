@@ -1,0 +1,14 @@
+table.ui.very.basic.table
+  thead
+    tr
+      th = t 'courses.lecture'
+        th = t 'courses.homeworks.mark'
+        th = t 'courses.lecture.presence'
+        th
+
+  tbody
+    - homeworks.each do |homework|
+      tr
+        td = lecture(lecture.count)
+          td = homework_mark
+          td = lecture_presence

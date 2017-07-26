@@ -1,6 +1,6 @@
 module Courses
   class HomeworksController < BaseController
-    helper_method :homework, :lectures
+    helper_method :homework, :homeworks, :lectures
 
     def new
       @homework = ::Courses::Homework.new
@@ -10,6 +10,10 @@ module Courses
     def create
       @homework = Homework::Create.call(homework_params, current_student.id)
       react_to homework.save
+    end
+
+    def homeworks
+      @homeworks ||= current_student.homeworks
     end
 
     private
