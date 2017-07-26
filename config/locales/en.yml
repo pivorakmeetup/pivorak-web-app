@@ -73,6 +73,7 @@ en:
     plural: Donations
     donate: Donate
     success: Thank you, your donation has been accepted!
+    donator: Donator
 
   events:
     plural: Events
