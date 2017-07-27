@@ -12,6 +12,6 @@ table.ui.very.basic.table
       tr
         td.center.aligned = donation.user&.full_name || '-'
         td.center.aligned = donation.amount.to_f
-        td.center.aligned = donation.created_at.strftime("%d/%m/%Y")
+        td.center.aligned = I18n.localize donation.created_at, format: :date_month_year_concise_slash
 
 = paginate donations

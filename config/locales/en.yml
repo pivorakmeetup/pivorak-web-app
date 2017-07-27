@@ -228,3 +228,7 @@ en:
 
   filters:
     reset: 'Reset filters'
+
+  time:
+    formats:
+      date_month_year_concise_slash: '%d/%m/%Y'
