@@ -7,6 +7,7 @@ RSpec.describe 'Donations READ' do
     visit '/admin/donations'
   end
 
+  it { expect(page).to have_content 'Total: ' }
   it { expect(page).to have_content 'Donations' }
   it { expect(page).to have_content 'Donator' }
   it { expect(page).to have_content 'Amount' }
