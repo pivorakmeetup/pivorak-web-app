@@ -18,8 +18,6 @@ module Courses
       redirect_to courses_season_path(current_season)
     end
 
-
-
     def homework
       @homework ||= ::Courses::Homework.find(params[:id])
     end
