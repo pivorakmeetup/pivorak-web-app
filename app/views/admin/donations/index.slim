@@ -10,10 +10,7 @@ table.ui.very.basic.table
   tbody
     - donations.each do |donation|
       tr
-        - if donation.user
-          td.center.aligned = "#{donation.user.first_name} #{donation.user.last_name}"
-        - else
-          td.center.aligned = "-"
+        td.center.aligned = donation.user&.full_name || '-'
         td.center.aligned = donation.amount.to_f
         td.center.aligned = donation.created_at.strftime("%d/%m/%Y")
 
