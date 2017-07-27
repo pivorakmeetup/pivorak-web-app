@@ -74,6 +74,7 @@ en:
     donate: Donate
     success: Thank you, your donation has been accepted!
     donator: Donator
+    total: "Total: "
 
   events:
     plural: Events
