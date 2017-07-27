@@ -1,0 +1,4 @@
+.pk-archived-talk__search__bar
+  - if locals[:path]
+    .pk-archived-talk__search__container
+      = render 'shared/search_bar', path: locals[:path]
