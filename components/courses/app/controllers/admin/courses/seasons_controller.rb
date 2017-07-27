@@ -1,7 +1,9 @@
 module Admin
   module Courses
     class SeasonsController < ::Admin::Courses::BaseController
-      helper_method :seasons, :season
+      helper_method :seasons, :season, :stat, :stat_locals
+
+      before_action :add_season_breadcrumb, only: %i[show edit update]
 
       before_action :authenticate_mentor!,  only: %i[show edit update]
 
@@ -34,6 +36,44 @@ module Admin
         @seasons ||= ::Courses::Season::AllForCurrentMentor
           .call(current_user)
           .page(params[:page])
+      end
+
+      def stat_locals
+        @stat_locals ||= {
+            mentors: {
+                name: t('courses.mentors.plural'),
+                klass: 'green',
+                quantity: stat[:mentors_count]
+            },
+
+            students: {
+                name: t('courses.students.plural'),
+                klass: 'teal',
+                quantity: stat[:students_count]
+            },
+
+            students_attending: {
+                name: t('courses.students.attending'),
+                klass: 'orange',
+                quantity: stat[:students_attending_count]
+            },
+
+            lectures: {
+                name: t('courses.lectures.plural'),
+                klass: 'red',
+                quantity: stat[:lectures_count]
+            }
+        }
+      end
+
+      def stat
+        @stat ||= {
+            mentors_count:            ::Courses::Mentor.count,
+            students_count:           ::Courses::Student.count,
+            students_attending_count: ::Courses::Student.attending.count,
+            lectures_count:           ::Courses::Lecture.count,
+            students_by_status:       ::Courses::Student.group(:status).count
+        }
       end
 
       def seasons_params
