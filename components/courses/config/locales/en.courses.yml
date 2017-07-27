@@ -29,6 +29,7 @@ en:
       personal_info: Personal Info
       motivation_info: Motivation Info
       pick_interview_time: Pick interview time
+      attending: Attending
 
     seasons:
       plural: Seasons
