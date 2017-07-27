@@ -1,9 +1,12 @@
 # Mock of original controller
 module Admin
   class BaseController < ApplicationController
-    helper_method :current_user
+    helper_method :current_user, :line_chart
 
     def self.add_breadcrumb(*)
+    end
+
+    def line_chart(*)
     end
 
     def edit

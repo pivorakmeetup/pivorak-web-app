@@ -2,3 +2,13 @@
 
 = admin_courses_seasons_nav do
   h2 = season.title
+  .ui.main.stackable.grid
+
+    .ui.four.column.row
+      == render partial: 'stat', locals: stat_locals[:mentors]
+      == render partial: 'stat', locals: stat_locals[:students]
+      == render partial: 'stat', locals: stat_locals[:students_attending]
+      == render partial: 'stat', locals: stat_locals[:lectures]
+
+    == render partial: 'chart', locals: {chart: line_chart(stat[:students_by_status]),
+            chart_name: t('charts.by_status', resource: t('courses.students.plural'))}
