@@ -4,10 +4,9 @@ module Courses
 
     belongs_to :interview
     belongs_to :mentor
-    belongs_to :question
 
-    RANGE = 1..5
+    has_many :assessments, inverse_of: :interview_assessment
 
-    validates :mark, inclusion: { in: RANGE }
+    accepts_nested_attributes_for :assessments, allow_destroy: true
   end
 end

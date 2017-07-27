@@ -1,14 +1,22 @@
 module Admin
   module Courses
-    class InterviewsController < ::Admin::Courses::BaseController
-      helper_method :interviews, :interview, :assessment, :questions,
-        :assessments_hash, :average_assessment
+    class InterviewsController < BaseController
+      helper_method :interviews, :interview, :questions,
+        :assessments_hash, :average_assessment, :interview_assessment
 
       before_action :authenticate_interviewer!, only: %i[edit update]
 
       breadcrumps do
         add :interviews_breadcrumb
         add :interview_breadcrumb, only: %i[show edit update]
+      end
+
+      def show
+        if interview_assessment.new_record?
+          questions.each do |question|
+            interview_assessment.assessments.build(question: question)
+          end
+        end
       end
 
       def new
@@ -39,7 +47,6 @@ module Admin
         @interviews ||= current_season.interviews
           .includes(mentor: :user)
           .includes(student: :user)
-          .preload(:interview_assessments)
           .page(params[:page])
       end
 
@@ -65,12 +72,6 @@ module Admin
           .find_by(season_id: current_season.id, user_id: current_user.id).id
       end
 
-      def assessment(interview, question)
-        ::Courses::InterviewAssessment.find_or_initialize_by(mentor_id:    interview.mentor_id,
-                                                             interview_id: interview.id,
-                                                             question_id:  question.id)
-      end
-
       def questions
         current_season.questions
       end
@@ -87,6 +88,12 @@ module Admin
 
       def authenticate_interviewer!
         default_redirect unless interview.mentor == ::Courses::Mentor.find(mentor_id)
+      end
+
+      def interview_assessment
+        @interview_assessment ||=
+          interview.interview_assessments
+            .includes(assessments: [:question]).find_or_initialize_by(mentor: current_mentor)
       end
     end
   end

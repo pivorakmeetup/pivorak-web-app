@@ -25,12 +25,12 @@ module Courses
         }
       end
 
-      def assessments
+      def interview_assessments
         interview.interview_assessments
       end
 
       def question_average_mark(question)
-        marks = assessments.where(question_id: question).map(&:mark)
+        marks = Courses::Assessment.where(interview_assessment: interview_assessments, question: question).map(&:mark)
         if marks.any?
           ( marks.inject(:+).to_f / marks.size ).round(2)
         else
