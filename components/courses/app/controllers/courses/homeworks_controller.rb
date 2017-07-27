@@ -1,6 +1,6 @@
 module Courses
   class HomeworksController < BaseController
-    helper_method :homework, :homeworks, :lectures
+    helper_method :homework, :lectures
 
     def new
       @homework = ::Courses::Homework.new
@@ -12,15 +12,13 @@ module Courses
       react_to homework.save
     end
 
-    def homeworks
-      @homeworks ||= current_student.homeworks
-    end
-
     private
 
     def default_redirect
       redirect_to courses_season_path(current_season)
     end
+
+
 
     def homework
       @homework ||= ::Courses::Homework.find(params[:id])
