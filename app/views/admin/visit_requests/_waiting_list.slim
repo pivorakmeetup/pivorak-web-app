@@ -1,15 +1,14 @@
-.six.wide.column
-  table#visit-requests.ui.compact.selectable.grey.table
-    thead
-      tr
-        th = t('visit_requests.waiting_list')
-        th = t 'words.name'
-        th.center.aligned = t 'words.list'
-        th.center.aligned = t 'words.status'
+table#visit-requests.ui.compact.selectable.grey.table
+  thead
+    tr
+      th = t('visit_requests.waiting_list')
+      th = t 'words.name'
+      th.center.aligned = t 'words.list'
+      th.center.aligned = t 'words.status'
 
 
-    tbody
-      - visit_requests.waiting_list.each do |visit_request|
-        tr id = "visit-request-#{visit_request.id}"
-          = render partial: 'visit_request',
-                  locals: { visit_request: visit_request, event: event }
+  tbody
+    - visit_requests.waiting_list.each do |visit_request|
+      tr id = "visit-request-#{visit_request.id}"
+        = render partial: 'visit_request',
+                locals: { visit_request: visit_request, event: event }

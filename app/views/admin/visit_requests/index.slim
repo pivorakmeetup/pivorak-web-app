@@ -17,11 +17,12 @@
     .sixteen.wide.column
       = render 'live'
   - else
-    .ten.wide.column
+    .eight.wide.column
       = render 'main_list'
 
   - unless event.live?
-    = render 'waiting_list'
+    .eight.wide.column
+      = render 'waiting_list'
 
 == render 'admin/visit_requests/import' if event.passed?
 
