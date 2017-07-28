@@ -22,7 +22,7 @@ module Courses
       end
 
       def total
-        if marks_total || presences_total
+        if marks_total && presences_total
           marks_total + presences_total
         else
           nil
