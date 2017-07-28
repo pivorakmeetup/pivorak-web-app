@@ -38,7 +38,8 @@ module Admin
       end
 
       def authenticate_lecturer!
-        current_lecture.mentor == ::Courses::Mentor.find_by(user_id: current_user.id)
+        current_lecture.mentor == ::Courses::Mentor
+          .find_by(user_id: current_user.id, season_id: current_season.id)
       end
 
       def progress_params
