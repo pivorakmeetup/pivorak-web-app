@@ -11,7 +11,7 @@ describe Courses::TestTask::Create do
   describe '#call' do
     it 'creates test_task' do
       test_task = described_class.call(test_task_params, student)
-      expect test_task.save
+      expect { test_task.save }.to change { ::Courses::TestTask.count }.by(1)
     end
   end
 end
