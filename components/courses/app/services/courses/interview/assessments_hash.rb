@@ -21,8 +21,12 @@ module Courses
 
       attr_reader :interviews, :questions, :assessments_hash
 
+      def assessments(interview)
+        Courses::Assessment.where(interview_assessment: interview.interview_assessments)
+      end
+
       def assessments_count(interview)
-        interview.interview_assessments.count
+        assessments(interview).count
       end
 
       def mentors_count(interview)
@@ -30,8 +34,8 @@ module Courses
       end
 
       def total(interview)
-        total = interview.interview_assessments.inject(0.0) do |sum, assessment|
-          sum + assessment.mark
+        assessments(interview).inject(0.0) do |sum, assessment|
+          sum += assessment.mark
         end
       end
 

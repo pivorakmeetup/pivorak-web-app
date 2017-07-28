@@ -1,3 +1,6 @@
-= simple_form_for assessment(interview, question), url: courses_interview_assessment_form_url(assessment(interview, question)), as: :interview_assessment do |f|
-  = f.input :question_id, as: :hidden, input_html: { value: question.id }
-  = f.input :mark, collection: ::Courses::InterviewAssessment::RANGE, checked: assessment(interview, question).mark, as: :radio_buttons, label: question.body, input_html: { onchange: "this.form.submit()" }
+h4 = t 'courses.interview_assessments.rate'
+= simple_form_for interview_assessment, url: courses_interview_assessment_form_url(current_season, interview_assessment, interview), method: courses_interview_assessment_form_method(interview_assessment), as: :interview_assessment do |f|
+  = f.simple_fields_for :assessments do |ff|
+    = ff.input :question_id, as: :hidden, input_html: { value: ff.object.question_id}
+    = ff.input :mark, collection: ::Courses::Assessment::RANGE, as: :radio_buttons, required: false, label: ff.object.question.body
+  = f.button :submit

@@ -9,18 +9,23 @@ module Admin
         params[:action] == 'edit' ? :put : :post
       end
 
-      def courses_interview_assessment_form_url(assessment)
+      def courses_interview_assessment_form_url(season, assessment, interview)
         if assessment.new_record?
-          admin_courses_season_interview_interview_assessments_path(current_season, interview)
+          admin_courses_season_interview_interview_assessments_path(season, interview)
         else
-          admin_courses_season_interview_interview_assessment_path(current_season, interview, assessment)
+          admin_courses_season_interview_interview_assessment_path(season, interview, assessment)
         end
       end
 
-      def courses_interview_assessments_table(questions, interview)
+      def courses_interview_assessment_form_method(assessment)
+        assessment.new_record? ? :post : :put
+      end
+
+      def courses_interview_assessments_form(season, interview_assessment, interview)
         return unless ::Courses::Interview::RatePolicy.new(interview).allowed?
 
-        render 'admin/courses/interview_assessments/table', questions: questions, interview: interview
+        render 'admin/courses/interview_assessments/form',
+          season: season, interview_assessment: interview_assessment, interview: interview
       end
 
       def courses_interview_average_assessments(average_assessments)
