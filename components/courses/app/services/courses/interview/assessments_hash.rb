@@ -6,20 +6,18 @@ module Courses
       def initialize(interviews, questions)
         @interviews = interviews
         @questions  = questions
-        @assessments_hash = Hash.new
       end
 
       def call
-        interviews.each do |interview|
+        interviews.each_with_object({}) do |interview, assessments_hash|
           assessment = { count: mentors_count(interview), average: average_assessment(interview) }
           assessments_hash.merge!(interview => assessment)
         end
-        assessments_hash
       end
 
       private
 
-      attr_reader :interviews, :questions, :assessments_hash
+      attr_reader :interviews, :questions
 
       def assessments(interview)
         Courses::Assessment.where(interview_assessment: interview.interview_assessments)

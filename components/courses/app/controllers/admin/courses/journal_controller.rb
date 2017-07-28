@@ -26,7 +26,8 @@ module Admin
       end
 
       def total_hash
-        @total_hash ||= ::Courses::Student::TotalHash.call(students).sort.reverse
+        @total_hash ||= ::Courses::Student::TotalHash
+          .call(students, params[:sort_by], params[:lecture])
       end
     end
   end

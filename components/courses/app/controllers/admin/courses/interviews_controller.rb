@@ -44,9 +44,7 @@ module Admin
       end
 
       def interviews
-        @interviews ||= current_season.interviews
-          .includes(mentor: :user)
-          .includes(student: :user)
+        @interviews ||= ::Courses::Interview::AllInterviews.call(current_season)
           .page(params[:page])
       end
 
