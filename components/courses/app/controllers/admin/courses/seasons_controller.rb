@@ -68,11 +68,11 @@ module Admin
 
       def stat
         @stat ||= {
-            mentors_count:            ::Courses::Mentor.count,
-            students_count:           ::Courses::Student.count,
-            students_attending_count: ::Courses::Student.attending.count,
-            lectures_count:           ::Courses::Lecture.count,
-            students_by_status:       ::Courses::Student.group(:status).count
+            mentors_count:            season.mentors.count,
+            students_count:           season.students.count,
+            students_attending_count: season.students.attending.count,
+            lectures_count:           season.lectures.count,
+            students_by_status:       season.students.group(:status).count
         }
       end
 
