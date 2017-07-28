@@ -5,10 +5,12 @@ module Admin
 
       def create
         interview.interview_assessments.create(interview_assessment_params)
+        redirect_to :back
       end
 
       def update
         assessment.update(interview_assessment_params)
+        redirect_to :back
       end
 
       private
@@ -22,7 +24,9 @@ module Admin
       end
 
       def interview_assessment_params
-        params.require(:interview_assessment).permit(:mark, :question_id).merge(mentor_id: mentor_id)
+        params.require(:interview_assessment)
+          .permit(assessments_attributes: [:id, :question_id, :mark])
+          .merge(mentor_id: mentor_id)
       end
 
       def mentor_id
