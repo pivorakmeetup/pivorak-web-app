@@ -46,6 +46,12 @@ en:
       plural: Mentors
       name: Mentor Name
 
+    homework:
+      plural: Homeworks
+      title: Title
+      mark: Mark
+      presence: Presence
+
     questions:
       plural: Questions
 
