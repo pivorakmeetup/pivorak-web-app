@@ -23,7 +23,7 @@ module Courses
     end
 
     def lectures
-      @lectures ||=  current_season.lectures
+      @lectures ||=  Homework::AvailableLectures.call(current_season, current_student)
     end
 
     def homework_params

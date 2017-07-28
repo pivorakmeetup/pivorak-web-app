@@ -8,7 +8,8 @@ module Courses
     belongs_to :season
     belongs_to :venue
     belongs_to :mentor
-    has_many :progresses
+    has_many   :progresses
+    has_many   :homeworks
 
     UPCOMING = :upcoming
     PASSED   = :passed

@@ -66,15 +66,15 @@ puts ::Courses::Interview.where(mentor_id: 1, student_id: 4).first_or_create!(
 
 #=== Interview Assessments ==============================================================
 
-5.times do |n|
-  puts ::Courses::InterviewAssessment.where(interview_id: 2, question_id: n + 1).first_or_create!(
-      mentor_id: 1, mark: rand(1..5)
-  )
-
-  puts ::Courses::InterviewAssessment.where(interview_id: 3, question_id: n + 1).first_or_create!(
-      mentor_id: 1, mark: rand(1..5)
-  )
-end
+# 5.times do |n|
+#   puts ::Courses::InterviewAssessment.where(interview_id: 2, question_id: n + 1).first_or_create!(
+#       mentor_id: 1, mark: rand(1..5)
+#   )
+#
+#   puts ::Courses::InterviewAssessment.where(interview_id: 3, question_id: n + 1).first_or_create!(
+#       mentor_id: 1, mark: rand(1..5)
+#   )
+# end
 
 #=== Lectures ===========================================================================
 
