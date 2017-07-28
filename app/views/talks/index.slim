@@ -13,6 +13,8 @@
         .pk-archived-talk__wrapper
           = talk_link talk, "", class: "pk-archived-talk__show"
           span.pk-archived-talk__data =  format_timestamp(talk.event.finished_at, time: false)
+          .pk-archived-talk__speaker
+            = talk.speaker.full_name
           h4.pk-archived-talk__title
             = talk_link talk, talk.title, class: "pk-link pk-archived-talk__link"
           / .pk-archived-talk__media
