@@ -1,15 +1,6 @@
 .pk-auth
   h2.pk-uppercase = t('members.edit_profile')
   = simple_form_for [current_user], url: profile_path, html: { class: 'pk-form' } do |f|
-    /<div style="
-    /  width: 200px;
-    /  height: 198px;
-    /  border-radius: 50%;
-    /  margin: auto;
-    /  overflow: hidden;
-    /  position: relative;
-    /"><img src="/uploads/pivorak/development/user/cover/3/ava.jpg" alt="Ava"></div>
-    /= f.input :cover, as: :image_preview
     .form-inputs.pk-inline-block
       .pk-input__container.mtx = f.input :first_name, placeholder: 'First Name', 
         label_html: {class: 'pk-input__label'},
