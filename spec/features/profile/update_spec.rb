@@ -23,7 +23,7 @@ RSpec.describe 'Profile UPDATE' do
           fill_in 'Email', with: ''
           click_button 'Update'
 
-          expect(page).to have_content I18n.t('notifications.failure')
+          expect(page).to have_content I18n.t('members.failure')
         end
       end
       context 'when updating password' do
@@ -33,7 +33,7 @@ RSpec.describe 'Profile UPDATE' do
 
           click_button 'Update'
 
-          expect(page).to have_content I18n.t('notifications.failure')
+          expect(page).to have_content I18n.t('members.failure')
         end
       end
     end
@@ -52,7 +52,7 @@ RSpec.describe 'Profile UPDATE' do
 
           click_button 'Update'
 
-          expect(page).to have_content I18n.t('notifications.success')
+          expect(page).to have_content I18n.t('members.success')
 
           expect(user.reload.email).to eq(email)
           expect(user.reload.first_name).to eq(first_name)
@@ -70,7 +70,7 @@ RSpec.describe 'Profile UPDATE' do
 
           click_button 'Update'
 
-          expect(page).to have_content I18n.t('notifications.success')
+          expect(page).to have_content I18n.t('members.success')
         end
       end
     end
