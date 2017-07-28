@@ -4,6 +4,8 @@ module Courses
 
     belongs_to :season
 
+    has_many :assessments
+
     validates :body, presence: true
   end
 end

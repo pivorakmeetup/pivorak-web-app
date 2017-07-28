@@ -1,6 +1,6 @@
 module Admin
   module Courses
-    class InterviewsController < BaseController
+    class InterviewsController < ::Admin::Courses::BaseController
       helper_method :interviews, :interview, :questions,
         :assessments_hash, :average_assessment, :interview_assessment
 
@@ -12,11 +12,7 @@ module Admin
       end
 
       def show
-        if interview_assessment.new_record?
-          questions.each do |question|
-            interview_assessment.assessments.build(question: question)
-          end
-        end
+        ::Courses::InterviewAssessment::BuildAssessments.call(interview_assessment, questions)
       end
 
       def new
