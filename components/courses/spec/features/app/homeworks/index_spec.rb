@@ -26,7 +26,7 @@ RSpec.describe 'Homeworks SHOW for user' do
 
     # shows first student first lecture presence
     within('td#l1_p') do
-      expect(page).to have_content '0'
+      expect(page).to have_content ''
     end
 
     #shows first student second lecture mark
