@@ -1,4 +1,5 @@
 .pk-auth
+  = image_tag 'pivorak-logo.png', class: 'pk-auth__logo'
   h2.pk-uppercase = t('members.edit_profile')
   = simple_form_for [current_user], url: profile_path, html: { class: 'pk-form' } do |f|
     .form-inputs.pk-inline-block
