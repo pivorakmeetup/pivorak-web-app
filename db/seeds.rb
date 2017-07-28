@@ -1,5 +1,4 @@
 require 'factory_girl_rails'
-
 #=== Users ====================================================================
 puts User.where(email: 'admin@pivorak.com').first_or_create!(
   first_name: 'Pivorak',
@@ -76,8 +75,6 @@ puts event.visit_requests.where(user: User.second, status: :pending).first_or_cr
 puts event.visit_requests.where(user: User.third,  status: :canceled).first_or_create!
 
 #=== Courses ==================================================================
-
 puts '==== Courses seeds ===='
 
 Courses::Engine.load_seed
-

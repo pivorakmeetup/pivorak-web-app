@@ -6,7 +6,11 @@ module Admin
       end
 
       def journal_presence(student, lecture)
-        ::Courses::Journal::StudentPresenceForLecture.call(student, lecture)
+        presence = ::Courses::Journal::StudentPresenceForLecture
+          .call(student, lecture)
+
+        return nil if presence.zero? || presence.nil?
+        presence
       end
 
       # TODO: move to css
