@@ -17,5 +17,11 @@ module Courses
     enum status: [UPCOMING, PASSED]
 
     validates :title, :started_at, :finished_at, :venue_id, :mentor_id, presence: true
+    validate  :time_policy
+
+    def time_policy
+      return if Courses::Lecture::TimePolicy.new(self).allowed?
+      errors.add(:finished_at, 'must be after start time!')
+    end
   end
 end
