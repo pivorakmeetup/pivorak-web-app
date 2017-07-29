@@ -18,7 +18,7 @@ module Admin
       end
 
       def students
-        @students ||= ::Courses::Student::Index.call(current_season)
+        @students ||= ::Courses::Season::StudentsPerStatus.call(current_season)
       end
 
       def student
