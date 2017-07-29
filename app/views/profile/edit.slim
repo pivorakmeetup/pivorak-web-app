@@ -1,23 +1,22 @@
-.pk-profile-edit
-  - title t('members.edit_profile')
+.pk-auth
+  = image_tag 'pivorak-logo.png', class: 'pk-auth__logo'
+  h2.pk-uppercase = t('members.edit_profile')
+  = simple_form_for [current_user], url: profile_path, html: { class: 'pk-form' } do |f|
+    .form-inputs.pk-inline-block
+      .pk-input__container.mtx = f.input :first_name, placeholder: 'First Name', 
+        label_html: {class: 'pk-input__label'},
+        input_html: {class: 'pk-input'}
+      .pk-input__container.mtx = f.input :last_name, placeholder: 'Last Name', 
+        label_html: {class: 'pk-input__label'},
+        input_html: {class: 'pk-input'}
+      .pk-input__container.mtx = f.input :email, required: true, placeholder: 'E-mail', 
+        label_html: {class: 'pk-input__label'},
+        input_html: {class: 'pk-input'}
+      .pk-input__container.mtm.mbs = f.input :password, placeholder: 'Password', 
+        label_html: {class: 'pk-input__label'},
+        input_html: {class: 'pk-input'}
+      .pk-input__container.mtm.mbs = f.input :password_confirmation, value: f.object.password, placeholder: 'Password confirmation', 
+        label_html: {class: 'pk-input__label'},
+        input_html: {class: 'pk-input'}
 
-  .pk-container
-    h2.mbm
-      | Edit Profile
-    = simple_form_for [current_user], url: profile_path, html: { class: 'pk-form' } do |f|
-      /<div style="
-      /  width: 200px;
-      /  height: 198px;
-      /  border-radius: 50%;
-      /  margin: auto;
-      /  overflow: hidden;
-      /  position: relative;
-      /"><img src="/uploads/pivorak/development/user/cover/3/ava.jpg" alt="Ava"></div>
-      /= f.input :cover, as: :image_preview
-      = f.input :first_name, placeholder: 'First Name', input_html: { class: "pk-input" }
-      = f.input :last_name, placeholder: 'Last Name', input_html: { class: "pk-input" }
-      = f.input :email, required: true, placeholder: 'E-mail', input_html: { class: "pk-input" }
-      = f.input :password, input_html: { value: nil, class: "pk-input" }, placeholder: 'Password'
-      = f.input :password_confirmation, value: f.object.password, placeholder: 'Password confirmation', input_html: { class: "pk-input" }
-
-      = f.button :submit, t('words.update'), class: "pk-btn mtm pk-btn--medium"
+      = f.button :submit, t('words.update'), class: 'pk-btn pk-btn--medium'

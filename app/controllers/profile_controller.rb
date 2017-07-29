@@ -1,16 +1,14 @@
 class ProfileController < ApplicationController
-  disabled_feature_until '1.2'
-
   before_action :authenticate_user!
 
   helper_method :profile
 
   def update
     if User::Update.call current_user, params[:user]
-      flash[:notice] = t('notifications.success')
+      flash[:notice] = t('members.success')
       redirect_to root_path
     else
-      flash[:error] = t('notifications.failure')
+      flash[:alert] = t('members.failure')
       render :edit
     end
   end

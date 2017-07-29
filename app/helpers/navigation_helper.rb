@@ -40,7 +40,7 @@ module NavigationHelper
   end
 
   def profile_link
-    link_to t('members.profile'), profile_path
+    link_to t('members.profile'), edit_profile_path
   end
 
   def admin_link

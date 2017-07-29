@@ -1,5 +1,6 @@
 - title current_user.full_name
 
-== render 'members/profile', member: current_user
-
-= edit_profile_link
+.pk-container
+  == render 'members/profile', member: current_user
+  br/
+  = edit_profile_link

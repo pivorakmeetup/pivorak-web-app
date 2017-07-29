@@ -149,6 +149,9 @@ en:
     verified: Verified
     squash_danger: 'Member %{full_name} will be deleted from database'
     sign_in_as: Sign In As
+    count_of_sign_in: 'Count of sign in: '
+    success: Profile has been successfully updated!
+    failure: Profile cannot be updated. Please check the errors below.
     synthetic:
       singular: Synthetic
       greeting: 'Hello %{name}, we know You!'
