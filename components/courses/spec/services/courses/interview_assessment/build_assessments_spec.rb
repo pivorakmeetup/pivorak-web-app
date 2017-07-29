@@ -12,7 +12,7 @@ describe Courses::InterviewAssessment::BuildAssessments do
   let(:created_interview_assessment) { ::Courses::InterviewAssessment.create(interview: interview, mentor: second_mentor) }
 
   describe '#call' do
-    it 'builds assessments for each question for new interview assessment and not builds for created one' do
+    it "builds assessments for each question for new interview assessment and doesn't build for created one" do
       questions = [first_question, second_question]
 
       described_class.call(new_interview_assessment, questions)

@@ -18,7 +18,7 @@ module Admin
       end
 
       def students
-        @students ||= current_season.students.includes(:user).page(params[:page])
+        @students ||= ::Courses::Student::Index.call(current_season)
       end
 
       def student
