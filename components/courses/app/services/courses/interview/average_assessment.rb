@@ -29,10 +29,13 @@ module Courses
         interview.interview_assessments
       end
 
+      def marks(question)
+        question.assessments.where(interview_assessment: interview_assessments).map(&:mark)
+      end
+
       def question_average_mark(question)
-        marks = Courses::Assessment.where(interview_assessment: interview_assessments, question: question).map(&:mark)
-        if marks.any?
-          ( marks.inject(:+).to_f / marks.size ).round(2)
+        if marks(question).any?
+          ( marks(question).inject(:+).to_f / marks(question).size ).round(2)
         else
           ZERO_MARK
         end
