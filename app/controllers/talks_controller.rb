@@ -10,7 +10,7 @@ class TalksController < ApplicationController
   def talks
     @talks ||= search_against(Talk)
       .published
-      .includes(:event)
+      .includes(:event, :speaker)
       .page(params[:page])
       .sorted_by_date
   end

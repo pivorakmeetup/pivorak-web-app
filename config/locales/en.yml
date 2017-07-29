@@ -74,6 +74,8 @@ en:
     plural: Donations
     donate: Donate
     success: Thank you, your donation has been accepted!
+    donator: Donator
+    total: "Total: "
 
   events:
     plural: Events
@@ -231,3 +233,7 @@ en:
 
   filters:
     reset: 'Reset filters'
+
+  time:
+    formats:
+      date_month_year_concise_slash: '%d/%m/%Y'

@@ -3,8 +3,7 @@ class SeedNotifyAdminAboutCanceledAttendee < ActiveRecord::Migration[5.0]
     EmailTemplate.create!(
       title: 'VisitRequestMailer#notify_admin_about_canceled_attendee',
       subject: 'Attendee canceled his request',
-      note: 'Will be sent when attendee cancels his request',
-      body: File.read('db/seed/email_templates/notify_admin_about_canceled_attendee.md'),
+      body: File.read('db/seed/email_templates/notify_admin_about_canceled_attendee.md')
     )
   end
 

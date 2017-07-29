@@ -51,6 +51,7 @@ $namespace: ".pk-archived-talk";
   #{$namespace}__event,
   #{$namespace}__data,
   #{$namespace}__title,
+  #{$namespace}__speaker,
   #{$namespace}__media__slides,
   #{$namespace}__media__video__link,
   #{$namespace}__media__video__duration {
@@ -240,4 +241,10 @@ $namespace: ".pk-archived-talk";
 
 #{$namespace}__centered {
   margin: auto
+}
+
+#{$namespace}__speaker {
+  font-family: "Arvo", serif;
+  margin-top: 6px;
+  font-size: 1rem;
 }
