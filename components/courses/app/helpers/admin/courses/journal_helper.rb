@@ -9,7 +9,7 @@ module Admin
         presence = ::Courses::Journal::StudentPresenceForLecture
           .call(student, lecture)
 
-        return nil if presence.zero? || presence.nil?
+        return nil if presence.nil? || presence.zero?
         presence
       end
 

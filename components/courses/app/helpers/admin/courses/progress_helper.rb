@@ -39,8 +39,8 @@ module Admin
         if progress.lecture_presence == LECTURE_NOT_ABSENT_MARK
           link_to t('courses.progress.absent'),
                   admin_courses_season_lecture_progress_path(
-                    season.id,
-                    lecture.id,
+                    season,
+                    lecture,
                     progress,
                     progress: { lecture_presence: LECTURE_ABSENT_MARK }
                   ),
@@ -49,8 +49,8 @@ module Admin
         else
           link_to t('courses.progress.not_absent'),
                   admin_courses_season_lecture_progress_path(
-                    season.id,
-                    lecture.id,
+                    season,
+                    lecture,
                     progress,
                     progress: { lecture_presence: LECTURE_NOT_ABSENT_MARK }
                   ),
@@ -64,12 +64,12 @@ module Admin
       end
 
       def set_mark_button(season, lecture, student, mark)
-        return '-' unless homework_present?(lecture, student) || mark == MINIMAL_MARK
+        return nil unless homework_present?(lecture, student) || mark == MINIMAL_MARK
 
         progress = student_progress(lecture, student)
         link_to mark.to_s,
-                admin_courses_season_lecture_progress_path(season.id,
-                                                           lecture.id,
+                admin_courses_season_lecture_progress_path(season,
+                                                           lecture,
                                                            progress,
                                                            progress: { homework_mark: mark }),
                 method: :put, class: 'ui button',

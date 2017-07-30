@@ -1,7 +1,7 @@
 module Admin
   module Courses
     class StudentsController < ::Admin::Courses::BaseController
-      helper_method :students
+      helper_method :students, :total
 
       breadcrumps do
         add :students_breadcrumb
@@ -22,7 +22,11 @@ module Admin
       end
 
       def student
-        @student ||= current_season.students.find(params[:id])
+        @student ||= ::Courses::Student.find(params[:id])
+      end
+
+      def total(student)
+        ::Courses::Student::TotalHash.call(students)[student][:total]
       end
 
       def students_breadcrumb
