@@ -1,7 +1,7 @@
 module Admin
   module Courses
     class SeasonsController < ::Admin::Courses::BaseController
-      helper_method :seasons, :season, :stat, :stat_locals
+      helper_method :seasons, :season, :stat, :stat_locals, :graduate_policy
 
       before_action :add_season_breadcrumb, only: %i[show edit update]
 
@@ -74,6 +74,10 @@ module Admin
             lectures_count:           season.lectures.count,
             students_by_status:       season.students.group(:status).count
         }
+      end
+
+      def graduate_policy(season)
+        ::Courses::Season::GraduateStudentsPolicy.new(season)
       end
 
       def seasons_params
