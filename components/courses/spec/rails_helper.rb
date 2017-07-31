@@ -25,12 +25,6 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
 
-  config.before(:all) do
-    if ENV['CI']
-      FactoryGirl.find_definitions
-    end
-  end
-
   config.include FactoryGirl::Syntax::Methods
   config.include Courses::Test::FeaturesHelpers, type: :feature
   config.include Courses::Test::DatePickerHelpers
