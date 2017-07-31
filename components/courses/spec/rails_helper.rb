@@ -16,7 +16,7 @@ Dir[Courses::Engine.root.join('spec/support/*.rb')].each { |f| require f }
 
 ActiveRecord::Migration.maintain_test_schema!
 
-FactoryGirl.definition_file_paths << Couses::Engine.root.join('spec', 'factories')
+FactoryGirl.definition_file_paths << Courses::Engine.root.join('spec', 'factories')
 
 Dir['../spec/support/**/*.rb'].each { |f| require f }
 
