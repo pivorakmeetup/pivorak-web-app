@@ -1,9 +1,9 @@
 module Admin
   module Courses
     module CourseHelper
-      def admin_courses_seasons_nav(&block)
+      def admin_courses_seasons_nav
         render layout: '/admin/courses/shared/nav' do
-          yield
+          yield if block_given?
         end
       end
 

@@ -37,16 +37,16 @@ module Courses
       def sorted_hash
         case sort_by
         when TOTAL
-          total_hash.sort_by { |k, v| v[:total] }.reverse.to_h
+          total_hash.sort_by { |_k, v| v[:total] }.reverse.to_h
         when NAME
-          total_hash.sort_by { |k, v| k.full_name }.to_h
+          total_hash.sort_by { |k, _v| k.full_name }.to_h
         when LECTURE
-          total_hash.sort_by { |k, v| v[:per_lecture]
+          total_hash.sort_by { |_k, v| v[:per_lecture]
               .find_by(lecture_id: lecture_id)
               .homework_mark
-            }.reverse.to_h
+          }.reverse.to_h
         else
-          total_hash.sort_by { |k, v| k.full_name }.to_h
+          total_hash.sort_by { |k, _v| k.full_name }.to_h
         end
       end
     end

@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Courses::Mentor::DestroyPolicy do
   let!(:season)         { create(:season, title: 'Test Season') }
-  let!(:user)           { create(:user)}
+  let!(:user)           { create(:user) }
   let!(:season_creator) { ::Courses::Mentor.create(user_id: 1, season_id: season.id) }
-  let!(:user)           { create(:user, first_name: 'Another', last_name: 'User')}
+  let!(:user)           { create(:user, first_name: 'Another', last_name: 'User') }
   let!(:mentor)         { ::Courses::Mentor.create(user_id: 2, season_id: season.id) }
 
 

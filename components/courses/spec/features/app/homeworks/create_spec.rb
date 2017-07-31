@@ -21,7 +21,7 @@ RSpec.describe 'Homework CREATE' do
        expect_an_error homework_git_url:  :blank
      end
    end
- end
+  end
 
   describe 'valid input' do
     it 'creates new homework' do

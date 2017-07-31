@@ -16,7 +16,7 @@ Dir[Courses::Engine.root.join('spec/support/*.rb')].each { |f| require f }
 
 ActiveRecord::Migration.maintain_test_schema!
 
-Dir['../spec/support/**/*.rb'].each {|f| require f }
+Dir['../spec/support/**/*.rb'].each { |f| require f }
 
 RSpec.configure do |config|
   config.use_transactional_fixtures = true

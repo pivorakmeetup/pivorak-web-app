@@ -31,9 +31,9 @@ module Admin
 
       def journal_value_id(student, lecture = nil, word = 'total')
         if lecture.nil?
-          "s#{student.id.to_s}_#{word}"
+          "s#{student.id}_#{word}"
         else
-          "l#{lecture.id.to_s}_s#{student.id.to_s}_#{word}"
+          "l#{lecture.id}_s#{student.id}_#{word}"
         end
       end
     end

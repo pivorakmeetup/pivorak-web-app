@@ -6,20 +6,20 @@ module Courses
       end
 
       def call
-        base_scope = season_interviews
-          .includes(mentor: :user)
-          .includes(student: :user)
+        return base_scope unless assessments?
 
-        @interviews ||= if assessments?
-          base_scope.includes(:interview_assessments)
-        else
-          base_scope
-        end
+        base_scope.includes(:interview_assessments)
       end
 
       private
 
       attr_reader :season
+
+      def base_scope
+        @base_scope ||= season_interviews
+          .includes(mentor: :user)
+          .includes(student: :user)
+      end
 
       def assessments?
         season_interviews.select { |interview|

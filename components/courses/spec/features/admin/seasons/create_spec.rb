@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Season CREATE' do
 
-  before {visit '/admin/courses/seasons/new'}
+  before { visit '/admin/courses/seasons/new' }
 
   context 'invalid input' do
     it 'validates errors' do

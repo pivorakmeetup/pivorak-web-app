@@ -32,9 +32,13 @@ module Courses
       end
 
       def total(interview)
-        assessments(interview).inject(0.0) do |sum, assessment|
+        sum = 0
+
+        assessments(interview)do |assessment|
           sum += assessment.mark
         end
+
+        sum
       end
 
       def average_assessment(interview)

@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 describe Courses::Student::DropPolicy do
-  let!(:student)    { create(:student, status: :attending) }
-  let (:high_total) {  5 }
-  let (:low_total)  { -3 }
+  let!(:student)   { create(:student, status: :attending) }
+  let(:high_total) {  5 }
+  let(:low_total)  { -3 }
 
   describe '#allowed?' do
     context 'total is beyond drop point and status is not dropped' do

@@ -11,7 +11,7 @@ RSpec.describe 'TestTask CREATE' do
   describe 'valid input' do
     it 'create new test task' do
       fill_in 'Git url', with: 'https://github.com/test_student/homework_test'
-      expect { click_button 'Create Test task'}.to change{ ::Courses::TestTask.count }.by (1)
+      expect { click_button 'Create Test task' }.to change { ::Courses::TestTask.count }.by(1)
     end
   end
 end

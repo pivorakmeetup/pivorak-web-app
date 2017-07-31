@@ -73,7 +73,7 @@ module Admin
       def assessments_hash
         @assessments_hash ||= ::Courses::Interview::AssessmentsHash
           .call(interviews, questions)
-          .sort_by { |k, v| -v[:average] }
+          .sort_by { |_k, v| -v[:average] }
       end
 
       def average_assessment

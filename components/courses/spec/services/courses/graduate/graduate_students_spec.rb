@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Courses::Graduate::GraduateStudents do
-  let (:season)            { create(:season, title: 'Test Season', status: :passed) }
+  let(:season)            { create(:season,  title:  'Test Season', status: :passed) }
   let!(:attending_student) { create(:student, status: :attending, season: season) }
   let!(:dropped_student)   { create(:student, status: :dropped, season: season) }
 

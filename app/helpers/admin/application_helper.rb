@@ -9,7 +9,7 @@ module Admin
     def header_title
       controller = params[:controller]
         .gsub('admin/', '')
-        .gsub('/', '.')
+        .tr('/', '.')
 
       controller == 'home' ?  t('admin.admin') : t(:plural, scope: controller)
     end
