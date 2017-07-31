@@ -5,7 +5,7 @@ module Courses
       NAME    = 'name'
       LECTURE = 'lecture'
 
-      def initialize(students, sort_by = nil, lecture_id = nil)
+      def initialize(students, sort_by: nil, lecture_id: nil)
         @students   = students
         @sort_by    = sort_by
         @lecture_id = lecture_id

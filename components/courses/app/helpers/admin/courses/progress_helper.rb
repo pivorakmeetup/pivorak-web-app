@@ -64,7 +64,7 @@ module Admin
       end
 
       def set_mark_button(season, lecture, student, mark)
-        return nil unless homework_present?(lecture, student) || mark == MINIMAL_MARK
+        return unless homework_present?(lecture, student) || mark == MINIMAL_MARK
 
         progress = student_progress(lecture, student)
         link_to mark.to_s,
