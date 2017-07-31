@@ -84,6 +84,7 @@ group :development do
 end
 
 group :development, :test do
+  gem 'sqlite3'
   gem 'rspec'
   gem 'rubocop', require: false
   gem 'rspec-rails'
