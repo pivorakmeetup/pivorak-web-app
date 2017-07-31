@@ -35,7 +35,7 @@ class Talk
     attr_reader :talk
 
     def video
-      @video ||= video = Yt::Video.new(id: video_id)
+      @video ||= Yt::Video.new(id: video_id)
     end
 
     def video_id

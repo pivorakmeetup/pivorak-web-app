@@ -10,7 +10,7 @@ RSpec.describe Event do
 
       before { event.valid? }
 
-      it { expect(event).to have(1).errors_on(:limit_verified)}
+      it { expect(event).to have(1).errors_on(:limit_verified) }
       it { expect(event.errors[:limit_verified].first).to eq I18n.t 'errors.total_less_verified' }
     end
   end

@@ -56,6 +56,7 @@ en:
   search_result:
     singular: Search Result
     plural: Search Results
+    not_found: Sorry, no results for your search
 
   liqpay:
     status:
@@ -73,6 +74,8 @@ en:
     plural: Donations
     donate: Donate
     success: Thank you, your donation has been accepted!
+    donator: Donator
+    total: "Total: "
 
   events:
     plural: Events
@@ -146,6 +149,9 @@ en:
     verified: Verified
     squash_danger: 'Member %{full_name} will be deleted from database'
     sign_in_as: Sign In As
+    count_of_sign_in: 'Count of sign in: '
+    success: Profile has been successfully updated!
+    failure: Profile cannot be updated. Please check the errors below.
     synthetic:
       singular: Synthetic
       greeting: 'Hello %{name}, we know You!'
@@ -229,3 +235,7 @@ en:
 
   filters:
     reset: 'Reset filters'
+
+  time:
+    formats:
+      date_month_year_concise_slash: '%d/%m/%Y'

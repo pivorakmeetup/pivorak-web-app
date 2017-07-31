@@ -1,10 +1,8 @@
 module Admin
   class VisitRequest
-    class ReportController < VisitRequest::BaseController
-      delegate :verified_visitors, to: :event
-
+    class ReportController < VisitRequest::VisitRequestsController
       def download
-        send_file ::PdfReports::EventVisitorsReport.call(verified_visitors.sorted)
+        send_file ::PdfReports::EventVisitorsReport.call(visit_requests.final)
       end
     end
   end

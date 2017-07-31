@@ -51,6 +51,7 @@ $namespace: ".pk-archived-talk";
   #{$namespace}__event,
   #{$namespace}__data,
   #{$namespace}__title,
+  #{$namespace}__speaker,
   #{$namespace}__media__slides,
   #{$namespace}__media__video__link,
   #{$namespace}__media__video__duration {
@@ -182,4 +183,68 @@ $namespace: ".pk-archived-talk";
 
 #{$namespace}__media__video__link {
   border-bottom: none;
+}
+
+#{$namespace}__search__bar {
+  margin: 12px auto;
+  width: 300px;
+  height: 50px;
+}
+
+#{$namespace}__search__container {
+  width: 300px;
+  vertical-align: middle;
+  white-space: nowrap;
+  position: relative;
+
+  input#query {
+    width: 280px;
+    height: 38px;
+    border: none;
+    outline: none;
+    float: left;
+    padding-left: 25px;
+    -webkit-border-top-left-radius: 3px;
+    -webkit-border-bottom-left-radius: 3px;
+    -moz-border-radius-left: 3px;
+    -moz-border-radius-bottom-left: 3px;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+  }
+}
+
+#{$namespace}__search__button {
+  cursor: pointer;
+  display: inline-block;
+  min-height: 1em;
+  outline: none;
+  border: none;
+  background: #E0E1E2 none;
+  color: rgba(0, 0, 0, 0.6);
+  margin: 0em 0.25em 0em 0em;
+  padding: 11px 21px;
+  font-weight: bold;
+  text-decoration: none;
+  -webkit-border-top-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  -moz-border-radius-right: 3px;
+  -moz-border-radius-bottom-right: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+#{$namespace}__search__button:hover {
+  background-color: #CACBCD;
+  background-image: none;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+#{$namespace}__centered {
+  margin: auto
+}
+
+#{$namespace}__speaker {
+  font-family: "Arvo", serif;
+  margin-top: 6px;
+  font-size: 1rem;
 }

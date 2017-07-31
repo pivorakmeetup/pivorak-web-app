@@ -1,13 +1,20 @@
 - title t('talks.plural')
+
+= main_resource_header :talk, path: talks_path
+
 .pk-container
   h2.mbm = t 'talks.plural'
   .pk-grid.pk-grid--wrap.pk-archived-talks
+    - if talks.empty?
+      .pk-flash.pk-archived-talk__centered = t 'search_result.not_found'
     - talks.each do |talk|
       .pk-archived-talk.pk-grid--center-v
         .pk-archived-talk__img style=talk_img(talk)
         .pk-archived-talk__wrapper
           = talk_link talk, "", class: "pk-archived-talk__show"
           span.pk-archived-talk__data =  format_timestamp(talk.event.finished_at, time: false)
+          .pk-archived-talk__speaker
+            = talk.speaker&.full_name
           h4.pk-archived-talk__title
             = talk_link talk, talk.title, class: "pk-link pk-archived-talk__link"
           / .pk-archived-talk__media

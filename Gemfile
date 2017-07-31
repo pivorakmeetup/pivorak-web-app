@@ -18,6 +18,7 @@ gem 'carrierwave',                                                     '~> 1.0'
 gem 'acts-as-taggable-on',                                             '~> 4.0'
 gem 'sidekiq',                                                      '~> 4.2.10'
 gem 'sidekiq-scheduler',                                             '~> 2.1.4'
+gem 'redis',                                                            '~>3.2'
 
 gem 'ez-settings'
 gem 'courses', path: 'components/courses'
@@ -84,6 +85,7 @@ end
 
 group :development, :test do
   gem 'rspec'
+  gem 'rubocop', require: false
   gem 'rspec-rails'
   gem 'pry-rails'
   gem 'faker'
