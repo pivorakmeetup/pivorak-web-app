@@ -1,9 +1,5 @@
 module Courses
   module SeasonHelper
-    DROPPED   = 'dropped'
-    GRADUATED = 'graduated'
-    REFUSED   = 'refused'
-
     def courses_season_dates(season)
       return unless season.start_at && season.finish_at
 
@@ -41,8 +37,9 @@ module Courses
     end
 
     def courses_cancel_link(season, student)
-      return if student.nil? || student.status == DROPPED ||
-        student.status == GRADUATED || student.status == REFUSED
+      return if student.nil? || student.status.to_sym == Courses::Student::DROPPED ||
+        student.status.to_sym == Courses::Student::GRADUATED ||
+        student.status.to_sym == Courses::Student::REFUSED
           link_to t('courses.seasons.cancel'),
             courses_season_cancel_attendance_path(season),
             method: :post,
