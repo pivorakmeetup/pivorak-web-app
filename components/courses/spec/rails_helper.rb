@@ -26,7 +26,10 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
 
   config.before(:all) do
-    FactoryGirl.reload
+    if ENV['CI']
+      FactoryGirl.find_definitions
+      FactoryGirl.reload
+    end
   end
 
   config.include FactoryGirl::Syntax::Methods
