@@ -35,7 +35,7 @@ module Courses
       end
 
       def selection_season_students
-        season.students.where(status: %i[test_task_done interviewing]).includes(:user)
+        season.students.where(status: %i[test_task_done interviewing attending]).includes(:user)
       end
 
       def live_season_students

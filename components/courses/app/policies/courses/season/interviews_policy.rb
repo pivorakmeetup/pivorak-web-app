@@ -7,15 +7,15 @@ module Courses
       end
 
       def allowed?
-        season_has_status_registration? && student_test_task_done? && !student_has_interview?
+        season_has_status_selection? && student_test_task_done? && !student_has_interview?
       end
 
       private
 
       attr_reader :season, :student
 
-      def season_has_status_registration?
-        season.status.to_sym == Courses::Season::REGISTRATION
+      def season_has_status_selection?
+        season.status.to_sym == Courses::Season::SELECTION
       end
 
       def student_test_task_done?

@@ -7,7 +7,11 @@ module Courses
 
       def call
         existing_mentors_user_ids = ::Courses::Mentor.where(season_id: @season).pluck(:user_id)
-        User.where.not(id: existing_mentors_user_ids)
+
+        User.where.not(
+          admin: false,
+          id: existing_mentors_user_ids
+        )
       end
     end
   end

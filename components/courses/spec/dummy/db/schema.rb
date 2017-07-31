@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170725140731) do
+ActiveRecord::Schema.define(version: 20170731110533) do
 
   create_table "courses_assessments", force: :cascade do |t|
     t.integer  "interview_assessment_id"
@@ -129,9 +129,10 @@ ActiveRecord::Schema.define(version: 20170725140731) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email"
-    t.string "first_name"
-    t.string "last_name"
+    t.string  "email"
+    t.string  "first_name"
+    t.string  "last_name"
+    t.boolean "admin",      default: true
   end
 
   create_table "venues", force: :cascade do |t|

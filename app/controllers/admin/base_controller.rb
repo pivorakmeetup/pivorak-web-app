@@ -3,12 +3,19 @@ module Admin
     layout 'admin'
 
     before_action :authenticate_user!
+    before_action :authenticate_admin!
 
     def edit
       render_form
     end
 
     private
+
+    def authenticate_admin!
+      return if current_user&.admin?
+
+      flash_error and redirect_to(root_path)
+    end
 
     def search_against(model)
       Search::Resource.call params.merge(model: model)
