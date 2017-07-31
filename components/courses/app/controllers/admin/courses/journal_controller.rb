@@ -27,7 +27,7 @@ module Admin
 
       def total_hash
         @total_hash ||= ::Courses::Student::TotalHash
-          .call(students, params[:sort_by], params[:lecture])
+          .call(students, sort_by: params[:sort_by], lecture_id: params[:lecture])
       end
     end
   end

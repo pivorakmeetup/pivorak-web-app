@@ -39,7 +39,7 @@ module Courses
       end
 
       def live_season_students
-        season.students.attending.includes(:user)
+        season.students.attending.includes(:user).includes(:progresses)
       end
 
       def passed_season_students

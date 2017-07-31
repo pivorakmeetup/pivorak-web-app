@@ -26,7 +26,7 @@ describe Courses::Student::TotalHash do
       first_progresses  = [first_progress, third_progress]
       second_progresses = [second_progress, fourth_progress]
 
-      total_hash        = described_class.call(students, nil, nil)
+      total_hash        = described_class.call(students)
 
       expect(total_hash[first_student][:total]).to        eq(first_total)
       expect(total_hash[second_student][:total]).to       eq(second_total)
@@ -38,7 +38,7 @@ describe Courses::Student::TotalHash do
       students   = [first_student, second_student]
       name       = user_a.full_name
 
-      total_hash = described_class.call(students, nil, nil)
+      total_hash = described_class.call(students)
 
       expect(total_hash.keys[0].full_name).to eq(name)
     end
@@ -48,7 +48,7 @@ describe Courses::Student::TotalHash do
       total      = second_progress.homework_mark + second_progress.lecture_presence +
         fourth_progress.homework_mark + fourth_progress.lecture_presence
 
-      total_hash = described_class.call(students, 'total', nil)
+      total_hash = described_class.call(students, sort_by: 'total')
 
       expect(total_hash.values[0][:total]).to eq(total)
     end
@@ -57,7 +57,7 @@ describe Courses::Student::TotalHash do
       students   = [first_student, second_student]
       name       = user_a.full_name
 
-      total_hash = described_class.call(students, 'name', nil)
+      total_hash = described_class.call(students, sort_by: 'name')
 
       expect(total_hash.keys[0].full_name).to eq(name)
     end
@@ -66,7 +66,7 @@ describe Courses::Student::TotalHash do
       students     = [first_student, second_student]
       highest_mark = first_progress.homework_mark
 
-      total_hash = described_class.call(students, 'lecture', first_lecture.id)
+      total_hash = described_class.call(students, sort_by: 'lecture', lecture_id: first_lecture.id)
 
       expect(total_hash.values[0][:per_lecture][0].homework_mark).to eq(highest_mark)
     end
