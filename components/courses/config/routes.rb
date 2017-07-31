@@ -18,6 +18,7 @@ Rails.application.routes.draw do
         resources :test_task,  only:   %i[index update]
         resources :questions,  except: :destroy
         resource  :journal,    only:   :show, controller: 'journal'
+        resource  :graduate,   only:   :create
         resources :students,   only:   %i[index update] do
           resource :drop,      only:   :create, controller: 'drop'
         end

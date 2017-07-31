@@ -12,3 +12,5 @@
 
     == render partial: 'chart', locals: {chart: line_chart(stat[:students_by_status]),
             chart_name: t('charts.by_status', resource: t('courses.students.plural'))}
+
+    = graduate_students_link(season) if graduate_policy(season).allowed?

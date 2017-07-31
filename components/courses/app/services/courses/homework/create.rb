@@ -1,10 +1,6 @@
 module Courses
-  class Homework
-    class Create
-      def self.call(*args)
-        new(*args).call
-      end
-
+  class Homework < ApplicationRecord
+    class Create < ApplicationService
       def initialize(homework_params, student_id)
         @homework_params = homework_params
         @student_id = student_id
