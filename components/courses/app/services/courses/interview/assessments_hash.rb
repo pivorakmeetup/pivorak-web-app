@@ -32,9 +32,9 @@ module Courses
       end
 
       def total(interview)
-        sum = 0
+        sum = 0.0
 
-        assessments(interview)do |assessment|
+        assessments(interview).each do |assessment|
           sum += assessment.mark
         end
 

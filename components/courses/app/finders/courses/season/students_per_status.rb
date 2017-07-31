@@ -43,7 +43,7 @@ module Courses
       end
 
       def passed_season_students
-        season.students.graduated.includes(:user)
+        season.students.graduated.includes(:user).includes(:progresses)
       end
     end
   end

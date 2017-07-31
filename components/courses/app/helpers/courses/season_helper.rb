@@ -1,5 +1,9 @@
 module Courses
   module SeasonHelper
+    DROPPED   = 'dropped'
+    GRADUATED = 'graduated'
+    REFUSED   = 'refused'
+
     def courses_season_dates(season)
       return unless season.start_at && season.finish_at
 
@@ -36,13 +40,13 @@ module Courses
         courses_season_interviews_path(season)
     end
 
-    def courses_cancel_link(season)
-      return unless season.status.to_sym == Courses::Season::REGISTRATION ||
-        Courses::Season::SELECTION || Courses::Season::LIVE
-        link_to t('courses.seasons.cancel'),
-          courses_season_cancel_attendance_path(season),
+    def courses_cancel_link(season, student)
+      return if student.nil? || student.status == DROPPED ||
+        student.status == GRADUATED || student.status == REFUSED
+          link_to t('courses.seasons.cancel'),
+            courses_season_cancel_attendance_path(season),
             method: :post,
-            confirm:  'Are you sure?'
+            confirm: 'Are you sure?'
     end
   end
 end
