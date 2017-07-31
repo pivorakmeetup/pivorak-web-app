@@ -87,9 +87,8 @@ module Admin
       end
 
       def interview_assessment
-        @interview_assessment ||=
-          interview.interview_assessments
-            .includes(assessments: [:question]).find_or_initialize_by(mentor: current_mentor)
+        @interview_assessment ||= ::Courses::Interview::InterviewAssessmentForInterview
+          .call(interview, current_mentor)
       end
     end
   end

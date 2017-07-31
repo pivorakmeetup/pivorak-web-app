@@ -36,13 +36,14 @@ module Courses
         courses_season_interviews_path(season)
     end
 
-    def courses_cancel_link(season)
-      return unless season.status.to_sym == Courses::Season::REGISTRATION ||
-        Courses::Season::SELECTION || Courses::Season::LIVE
-        link_to t('courses.seasons.cancel'),
-          courses_season_cancel_attendance_path(season),
+    def courses_cancel_link(season, student)
+      return if student.nil? || student.status.to_sym == Courses::Student::DROPPED ||
+        student.status.to_sym == Courses::Student::GRADUATED ||
+        student.status.to_sym == Courses::Student::REFUSED
+          link_to t('courses.seasons.cancel'),
+            courses_season_cancel_attendance_path(season),
             method: :post,
-            confirm:  'Are you sure?'
+            confirm: 'Are you sure?'
     end
   end
 end
