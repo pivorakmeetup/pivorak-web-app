@@ -28,7 +28,6 @@ RSpec.configure do |config|
   config.before(:all) do
     if ENV['CI']
       FactoryGirl.find_definitions
-      FactoryGirl.reload
     end
   end
 
