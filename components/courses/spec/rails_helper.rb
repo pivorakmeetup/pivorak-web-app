@@ -25,6 +25,10 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
 
+  config.before(:all) do
+    FactoryGirl.reload
+  end
+
   config.include FactoryGirl::Syntax::Methods
   config.include Courses::Test::FeaturesHelpers, type: :feature
   config.include Courses::Test::DatePickerHelpers
