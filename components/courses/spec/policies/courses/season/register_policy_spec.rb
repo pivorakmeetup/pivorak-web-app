@@ -34,5 +34,14 @@ describe Courses::Season::RegisterPolicy do
         expect(policy).not_to be_allowed
       end
     end
+
+    context "student has test_task_done status" do
+      it "doesn't allow to pass policy" do
+        allow(policy).to receive(:season_has_status_registration?).and_return(true)
+        allow(policy).to receive(:student_test_task_done?).and_return(true)
+
+        expect(policy).not_to be_allowed
+      end
+    end
   end
 end
