@@ -9,7 +9,7 @@ module Courses
       end
 
       def allowed?
-        beyond_drop_point? && !student.dropped?
+        beyond_drop_point? && !student.dropped? && !student.graduated?
       end
 
       private

@@ -32,5 +32,16 @@ describe Courses::Student::DropPolicy do
         expect(policy.allowed?).to be_falsey
       end
     end
+
+    context 'status is graduated' do
+      it 'forbids to pass policy' do
+        student.graduated!
+        student.reload
+
+        policy = described_class.new(student, low_total)
+
+        expect(policy.allowed?).to be_falsey
+      end
+    end
   end
 end
