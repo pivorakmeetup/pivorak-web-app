@@ -21,5 +21,11 @@ module Courses
     enum status: [PLANNED, REGISTRATION, SELECTION, LIVE, PASSED]
 
     validates :title, presence: true
+    validate  :time_policy
+
+    def time_policy
+      return if Courses::Season::TimePolicy.new(self).allowed?
+      errors.add(:finish_at, 'must be after start time!')
+    end
   end
 end
