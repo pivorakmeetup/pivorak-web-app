@@ -144,3 +144,7 @@ en:
         create:
           success: Successfully sent!
           fail: You have just sent test task!
+
+      seasons:
+        show_tab:
+          forbidden: This action is not available for this season status!

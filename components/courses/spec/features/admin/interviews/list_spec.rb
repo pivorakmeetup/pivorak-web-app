@@ -1,12 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe 'Interviews LIST' do
-  let!(:season)    { create(:season, title: 'Test Season') }
+  let!(:season)    { create(:season, title: 'Test Season', status: :selection) }
   let!(:user)      { User.create(email: 'test@test.com', first_name: 'Test', last_name: 'User') }
-  let!(:student)   { create(:student, user_id: user.id, season_id: season.id, status: :interviewing) }
-  let!(:mentor)    { ::Courses::Mentor.create(user_id: user.id, season_id: season.id) }
-  let!(:interview) { create(:interview, mentor_id: mentor.id, season_id: season.id,
-                                 student_id: student.id, status: :completed) }
+  let!(:student)   { create(:student, user: user, season: season, status: :interviewing) }
+  let!(:mentor)    { ::Courses::Mentor.create(user: user, season: season) }
+  let!(:interview) { create(:interview, mentor: mentor, season_id: season.id, student: student, status: :completed) }
 
   before { visit '/admin/courses/seasons/test-season/interviews/' }
 

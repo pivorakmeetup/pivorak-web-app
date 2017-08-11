@@ -1,9 +1,9 @@
  require 'rails_helper'
 
 RSpec.describe 'Question CREATE' do
-  let!(:season)                 { create(:season, title: 'Test Season') }
+  let!(:season)                 { create(:season, title: 'Test Season', status: :planned) }
   let!(:user)                   { User.create(email: 'test@test.com', first_name: 'Test', last_name: 'User') }
-  let!(:season_creator)         { ::Courses::Mentor.create(user_id: 1, season_id: 1) }
+  let!(:season_creator)         { ::Courses::Mentor.create(user: user, season: season) }
   let(:test_questions_path)     { '/admin/courses/seasons/test-season/questions' }
   let(:test_new_questions_path) { '/admin/courses/seasons/test-season/questions/new' }
 

@@ -2,11 +2,11 @@ require 'rails_helper'
 
 RSpec.describe 'Questions READ' do
   context 'straight out of the box' do
-    let!(:season)             { create(:season, title: 'Test Season') }
+    let!(:season)             { create(:season, title: 'Test Season', status: :planned) }
     let(:test_questions_path) { '/admin/courses/seasons/test-season/questions' }
-    let!(:season_creator)     { ::Courses::Mentor.create(user_id: 1, season_id: 1) }
-    let!(:question_a)         { create(:question, body: 'Question A', season_id: season.id) }
-    let!(:question_b)         { create(:question, body: 'Question B', season_id: season.id) }
+    let!(:season_creator)     { ::Courses::Mentor.create(user_id: 1, season: season) }
+    let!(:question_a)         { create(:question, body: 'Question A', season: season) }
+    let!(:question_b)         { create(:question, body: 'Question B', season: season) }
 
     before { visit test_questions_path }
 

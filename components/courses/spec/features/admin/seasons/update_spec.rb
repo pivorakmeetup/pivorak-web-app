@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Seasons UPDATE' do
   let!(:season)         { create(:season, title: 'Test Season') }
   let!(:user)           { User.create(email: 'test@test.com', first_name: 'Test', last_name: 'User') }
-  let!(:season_creator) { ::Courses::Mentor.create(user_id: 1, season_id: 1) }
+  let!(:season_creator) { ::Courses::Mentor.create(user: user, season: season) }
   let(:test_edit_path)  { '/admin/courses/seasons/test-season/edit' }
 
   before { visit test_edit_path }

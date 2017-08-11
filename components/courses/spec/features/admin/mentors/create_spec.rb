@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe 'Mentor CREATE' do
-  let!(:season)         { create(:season, title: 'Test Season') }
+  let!(:season)         { create(:season, title: 'Test Season', status: :planned) }
   let!(:user)           { create(:user) }
   let!(:another_user)   { create(:user, first_name: 'Another') }
-  let!(:season_creator) { ::Courses::Mentor.create(user_id: 1, season_id: 1) }
+  let!(:season_creator) { ::Courses::Mentor.create(user: user, season: season) }
 
   before { visit '/admin/courses/seasons/test-season/mentors/new' }
 

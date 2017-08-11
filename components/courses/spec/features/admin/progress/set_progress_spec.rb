@@ -1,15 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe 'Setting progress' do
-  let!(:season)           { create(:season, title: 'Test Season') }
-  let!(:user)             { create(:user) }
-  let!(:venue)            { create(:venue) }
-  let!(:season_creator)   { ::Courses::Mentor.create(user_id: 1, season_id: 1) }
-  let!(:lecture)          { create(:lecture, mentor_id: 1, venue_id: 1, season_id: 1) }
-  let!(:student)          { ::Courses::Student.create(season_id: 1, user_id: 1, status: :attending,
+  let!(:season)   { create(:season, title: 'Test Season') }
+  let!(:user)     { create(:user) }
+  let!(:venue)    { create(:venue) }
+  let!(:mentor)   { ::Courses::Mentor.create(user: user, season: season) }
+  let!(:lecture)  { create(:lecture, mentor: mentor, venue: venue, season: season) }
+  let!(:student)  { ::Courses::Student.create(season: season, user: user, status: :attending,
                                                      personal_info: 'lorem', motivation_info: 'ipsum') }
-  let!(:student_progress) { ::Courses::Progress.create(student_id: 1, lecture_id: 1, mentor_id: 1) }
-  let!(:homework)         { ::Courses::Homework.create(student_id: 1, lecture_id: 1, git_url: 'lorem',
+  let!(:progress) { ::Courses::Progress.create(student: student, lecture: lecture, mentor: mentor) }
+  let!(:homework) { ::Courses::Homework.create(student: student, lecture: lecture, git_url: 'lorem',
                                                       showcase_url: 'ipsum', description: 'lorem')  }
 
   before { visit "/admin/courses/seasons/test-season/lectures/#{lecture.slug}/progress" }

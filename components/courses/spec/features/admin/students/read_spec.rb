@@ -6,7 +6,7 @@ RSpec.describe 'Students READ' do
     let(:test_students_path) { '/admin/courses/seasons/test-season/students' }
     let!(:user_a)            { User.create(email: 'test_a@test.com', first_name: 'User', last_name: 'A') }
     let(:user_b)             { User.create(email: 'test_b@test.com', first_name: 'User', last_name: 'B') }
-    let!(:season_creator)    { ::Courses::Mentor.create(user_id: 1, season_id: 1) }
+    let!(:season_creator)    { ::Courses::Mentor.create(user: user_a, season: season) }
     let!(:student_a)         { create(:student, personal_info: 'Student A', season: season, user: user_a, status: :attending) }
 
     it 'displays list of students' do

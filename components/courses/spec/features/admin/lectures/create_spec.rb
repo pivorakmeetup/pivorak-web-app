@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Lector CREATE' do
-  let!(:season)         { create(:season, title: 'Test Season') }
+  let!(:season)         { create(:season, title: 'Test Season', status: :live) }
   let!(:user)           { create(:user) }
   let!(:venue)          { create(:venue) }
   let!(:season_creator) { ::Courses::Mentor.create(user_id: 1, season_id: 1) }

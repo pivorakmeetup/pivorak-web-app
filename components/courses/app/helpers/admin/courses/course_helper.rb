@@ -55,6 +55,12 @@ module Admin
                 class: admin_courses_active_item?('journal')
       end
 
+      def tab_allowed?(controller)
+        ::Courses::Season::ShowTabPolicy.new(
+          current_season.status, controller
+        ).allowed?
+      end
+
       private
 
       def admin_courses_active_item?(*ethalon_controller_names)

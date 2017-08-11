@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Interview CREATE' do
-  let!(:season)            { create(:season, title: 'Test Season') }
+  let!(:season)            { create(:season, title: 'Test Season', status: :selection) }
   let!(:user)              { User.create(email: 'test@test.com', first_name: 'Test', last_name: 'User') }
   let!(:mentor)            { ::Courses::Mentor.create(user: user, season: season) }
   let!(:interview)         { create(:interview, mentor: mentor) }
