@@ -7,7 +7,9 @@ module Courses
       end
 
       def allowed?
-        season_has_status_registration? && !student_enrolled?
+        season_has_status_registration? &&
+          !student_enrolled? &&
+          !student_test_task_done?
       end
 
       private
@@ -20,6 +22,10 @@ module Courses
 
       def student_enrolled?
         student&.enrolled?
+      end
+
+      def student_test_task_done?
+        student&.test_task_done?
       end
     end
   end
