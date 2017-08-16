@@ -14,12 +14,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require svgxuse
-//= require lory
 //= require_tree .
 
 (function() {
   var initApplication = function() {
-    initSlider();
     loadFlash();
     blendedImg();
     initChangeImageColor();
