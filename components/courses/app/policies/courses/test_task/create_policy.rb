@@ -1,5 +1,5 @@
 module Courses
-  class TestTask
+  class TestTask < ApplicationRecord
     class CreatePolicy
       def initialize(student, season)
         @student_id = student
