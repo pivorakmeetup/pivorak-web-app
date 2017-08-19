@@ -47,7 +47,7 @@ RSpec.describe 'Season SHOW' do
 
   describe "studend refuse link" do
     let!(:season)  { create(:season, title: 'Test Season') }
-    let!(:user)    { create(:user, email: 'test@test.com', first_name: 'Test', last_name: 'User')}
+    let!(:user)    { create(:user, email: 'test@test.com', first_name: 'Test', last_name: 'User') }
     let!(:student) { ::Courses::Student.create(season: season, user: user, status: :attending,
                                                          personal_info: 'lorem', motivation_info: 'ipsum')  }
 
