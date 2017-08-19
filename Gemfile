@@ -21,7 +21,7 @@ gem 'sidekiq-scheduler',                                             '~> 2.1.4'
 gem 'redis',                                                            '~>3.2'
 
 gem 'ez-settings'
-gem 'courses', path: 'components/courses'
+# gem 'courses', path: 'components/courses'
 
 #=== UI =======================================================================
 gem 'sass-rails',                                                      '~> 5.0'
