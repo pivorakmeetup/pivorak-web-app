@@ -24,4 +24,5 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
 
   config.include FactoryGirl::Syntax::Methods
+  config.include AuthHelpers
 end

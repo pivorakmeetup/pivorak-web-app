@@ -6,6 +6,10 @@ en:
     home:
       plural: BooksBunker
       welcome_message: Welcome to BooksBunker!
+      description: BooksBunker it's a closed club of book readers and sharing books.
+      you_are_not_member: Seems like you are not club's member
+      knock_knock: Knock Knock
 
     admin:
       welcome_message: Welcome to BooksBunker's admin!
+

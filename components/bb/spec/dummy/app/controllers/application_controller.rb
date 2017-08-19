@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
+  helper_method :current_user
+
   def authenticate_user!
   end
 
@@ -13,6 +15,5 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    User.find_or_create_by(email: 'test@test.com', first_name: 'Test', last_name: 'User')
   end
 end
