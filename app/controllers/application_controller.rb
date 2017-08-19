@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception, prepend: true
 
-  helper_method :admin?, :about_page, :contacts_page, :courses_page
+  helper_method :admin?, :about_page, :contacts_page
 
   delegate :admin?, to: :current_user, allow_nil: true
 
@@ -36,10 +36,6 @@ class ApplicationController < ActionController::Base
 
   def contacts_page
     @contacts_page ||= Page.find_by(url: 'contacts')
-  end
-
-  def courses_page
-    @courses_page ||= Page.find_by(url: 'ruby-course')
   end
 
   def flash_success(key = nil)
