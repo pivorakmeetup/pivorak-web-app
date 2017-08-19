@@ -27,7 +27,7 @@ module Courses
     end
 
     def homework_params
-      params.require(:homework).permit(:git_url, :showcase_url, :description, :lecture_id)
+      params.require(:homework).permit(:git_url, :showcase_url, :lecture_id)
     end
   end
 end

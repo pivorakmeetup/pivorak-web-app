@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe 'Journal SHOW' do
-  let!(:season)            { create(:season, title: 'Test Season') }
-  let!(:user)              { User.create(email: 'test@test.com', first_name: 'Test', last_name: 'User') }
-  let!(:mentor)            { ::Courses::Mentor.create(user: user, season: season) }
+  let!(:season)          { create(:season, title: 'Test Season', status: :live) }
+  let!(:user)            { User.create(email: 'test@test.com', first_name: 'Test', last_name: 'User') }
+  let!(:mentor)          { ::Courses::Mentor.create(user: user, season: season) }
 
   let!(:second_user)     { User.create(email: 'second@test.com', first_name: 'Second', last_name: 'User') }
   let!(:third_user)      { User.create(email: 'third@test.com', first_name: 'Third', last_name: 'User') }

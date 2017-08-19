@@ -2,6 +2,7 @@ module Admin
   module Courses
     class BaseController < ::Admin::BaseController
       helper_method :current_season, :current_mentor
+      before_action :execute_show_tab_policy
 
       def self.breadcrumps(&block)
         before_action :add_season_breadcrumb
@@ -50,6 +51,16 @@ module Admin
           user_id:   current_user.id,
           season_id: current_season.id
         )
+      end
+
+      def execute_show_tab_policy
+        allowed = ::Courses::Season::ShowTabPolicy.new(
+          current_season.status, controller_name
+        ).allowed?
+
+        return if allowed
+        redirect_to admin_courses_season_path(current_season),
+          alert: t('flash.courses.seasons.show_tab.forbidden')
       end
     end
   end

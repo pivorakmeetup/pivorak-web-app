@@ -1,6 +1,8 @@
 module Admin
   module Courses
     class DropController < ::Admin::Courses::BaseController
+      skip_before_action :execute_show_tab_policy
+
       def create
         ::Courses::Student::Drop.call(student)
         redirect_back(

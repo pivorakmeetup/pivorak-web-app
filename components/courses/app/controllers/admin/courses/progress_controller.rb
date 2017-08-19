@@ -1,6 +1,8 @@
 module Admin
   module Courses
     class ProgressController < ::Admin::Courses::BaseController
+      skip_before_action :execute_show_tab_policy
+
       helper_method :current_lecture, :students, :authenticate_lecturer!, :student_progress
 
       before_action :authenticate_lecturer!, only: :update
@@ -26,7 +28,8 @@ module Admin
       end
 
       def students
-        @students ||= ::Courses::Student.attending.includes(:user).where(season_id: current_season.id)
+        @students ||= ::Courses::Student::AttendingAndGraduated
+          .call(current_season, :user)
       end
 
       def lectures_breadcrumb

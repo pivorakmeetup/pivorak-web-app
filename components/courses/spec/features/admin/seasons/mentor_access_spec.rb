@@ -4,7 +4,7 @@ RSpec.describe 'Mentor access' do
   let!(:season)         { create(:season, title: 'Test Season') }
   let!(:user)           { User.create(email: 'test@test.com', first_name: 'Test', last_name: 'User') }
   let!(:another_season) { create(:season, title: 'Another Season') }
-  let!(:season_creator) { ::Courses::Mentor.create(user_id: 1, season_id: 1) }
+  let!(:season_creator) { ::Courses::Mentor.create(user: user, season: season) }
 
   context 'mentor allowed' do
     it 'allow access' do

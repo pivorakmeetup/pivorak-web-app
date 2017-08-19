@@ -1,6 +1,8 @@
 module Admin
   module Courses
     class SeasonsController < ::Admin::Courses::BaseController
+      skip_before_action :execute_show_tab_policy
+
       helper_method :seasons, :season, :stat, :stat_locals, :graduate_policy
 
       before_action :add_season_breadcrumb, only: %i[show edit update]

@@ -1,6 +1,8 @@
 module Admin
   module Courses
     class InterviewAssessmentsController < ::Admin::Courses::BaseController
+      skip_before_action :execute_show_tab_policy
+
       helper_method :interview, :assessment
 
       def create

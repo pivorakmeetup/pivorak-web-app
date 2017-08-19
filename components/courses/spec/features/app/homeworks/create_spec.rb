@@ -15,7 +15,6 @@ RSpec.describe 'Homework CREATE' do
    context 'blank git_url' do
      it 'validates errors' do
        fill_in 'Git url', with: ''
-       fill_in 'Description', with: 'This homework is awesome!'
        click_button 'Create Homework'
 
        expect_an_error homework_git_url:  :blank
@@ -26,7 +25,6 @@ RSpec.describe 'Homework CREATE' do
   describe 'valid input' do
     it 'creates new homework' do
       fill_in 'Git url', with: 'https://github.com/test_student/homework_test'
-      fill_in 'Description', with: 'This homework is awesome!'
       select lecture.title, from: 'homework[lecture_id]'
 
       expect { click_button 'Create Homework' }.to change{ ::Courses::Homework.count }.by(1)

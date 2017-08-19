@@ -15,10 +15,8 @@ module Admin
       end
 
       def students
-        @students ||= ::Courses::Student.attending
-          .includes(:user)
-          .includes(:progresses)
-          .where(season_id: current_season.id)
+        @students ||= ::Courses::Student::AttendingAndGraduated
+          .call(current_season, [:user, :progresses])
       end
 
       def lectures
