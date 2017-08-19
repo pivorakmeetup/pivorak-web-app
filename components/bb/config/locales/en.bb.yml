@@ -1,0 +1,8 @@
+en:
+  bb:
+    home:
+      plural: BooksBunker
+      welcome_message: Welcome to BooksBunker!
+
+    admin:
+      welcome_message: Welcome to BooksBunker's admin!
