@@ -1,0 +1,15 @@
+- title t('courses.mentors.plural')
+
+= admin_bb_nav do
+  table.ui.very.basic.table
+    thead
+      tr
+        th
+        th
+
+    tbody
+      - members.each do |member|
+        tr
+          td               = member.full_name
+          td.right.aligned = controls do
+            = 'Test'

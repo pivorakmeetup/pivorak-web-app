@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   namespace :admin do
     namespace :bb do
       root to: 'home#index'
+
+      resources :members
     end
   end
 end

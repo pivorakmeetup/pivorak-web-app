@@ -1,5 +1,8 @@
 en:
   bb:
+    members:
+      plural: Members
+
     home:
       plural: BooksBunker
       welcome_message: Welcome to BooksBunker!

@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170731110533) do
+ActiveRecord::Schema.define(version: 20170819113459) do
+
+  create_table "bb_members", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "status"
+    t.datetime "membered_at"
+    t.index ["status"], name: "index_bb_members_on_status"
+    t.index ["user_id"], name: "index_bb_members_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string  "email"
