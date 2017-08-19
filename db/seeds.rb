@@ -79,5 +79,5 @@ puts event.visit_requests.where(user: User.third,  status: :canceled).first_or_c
 
 puts '==== Courses seeds ===='
 
-# Courses::Engine.load_seed
+Courses::Engine.load_seed
 
