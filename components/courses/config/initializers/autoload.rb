@@ -1,0 +1,9 @@
+Courses::Homework
+Courses::Interview
+Courses::InterviewAssessment
+Courses::Lecture
+Courses::Mentor
+Courses::Progress
+Courses::Question
+Courses::Season
+Courses::TestTask
