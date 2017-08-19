@@ -36,7 +36,7 @@ module Admin
         label  = resource.send(label)
       else
         prefix = 'new'
-        label  = resource.class
+        label  = resource.class.to_s.split('::').last
       end
 
       t("phrases.#{prefix}_resource", resource: label)

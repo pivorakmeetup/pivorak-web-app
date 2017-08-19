@@ -24,12 +24,12 @@ module Admin
     end
 
     def default_limit_total
-      return event.limit_total if Event.exists?(event)
+      return event.limit_total if Event.exists?(event.id)
       Ez::Settings[:app, :events, :default_limit]
     end
 
     def default_limit_verified
-      return event.limit_verified if Event.exists?(event)
+      return event.limit_verified if Event.exists?(event.id)
       Ez::Settings[:app, :events, :default_limit_verified]
     end
 

@@ -2,6 +2,7 @@ SimpleCov.profiles.define 'pivorak_cov' do
   add_filter '/spec/'
   add_filter '/config/'
   add_filter '/lib/tasks'
+  add_filter '/components'
 
   add_group 'Controllers', 'app/controllers'
   add_group 'Models',      'app/models'

@@ -1,0 +1,17 @@
+- title t('courses.questions.plural')
+
+= admin_courses_seasons_nav do
+  = resource_header :courses_season_question
+
+  table.ui.very.basic.table
+    thead
+      tr
+        th
+        th
+
+    tbody
+      - questions.each do |question|
+        tr
+          td                = question.body
+          td.right.aligned  = controls do
+            = edit_question_link(question)

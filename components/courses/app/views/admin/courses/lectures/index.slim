@@ -1,0 +1,23 @@
+- title t('courses.lectures.plural')
+
+= admin_courses_seasons_nav do
+  = resource_header :courses_season_lecture
+
+  table.ui.very.basic.table
+    thead
+      tr
+        th = t('words.status')
+        th = t('words.title')
+        th = t('courses.lectures.lecturer')
+        th = t('courses.lectures.venue')
+        th
+
+    tbody
+      - lectures.each do |lecture|
+        tr
+          td               = lecture.status
+          td               = link_to lecture.title, admin_courses_season_lecture_progress_index_path(current_season, lecture)
+          td               = lecture.mentor.full_name
+          td               = lecture.venue.name
+          td.right.aligned = controls do
+            = edit_lecture_link(current_season, lecture)

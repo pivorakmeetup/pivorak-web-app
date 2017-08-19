@@ -1,0 +1,20 @@
+- title resource_form_text(interview)
+
+= admin_courses_seasons_nav do
+  = resource_form_header(interview)
+
+  = simple_form_for interview, url: interview_form_url, method: interview_form_method, as: :interview do |f|
+    .fields
+      .sixteen.wide.field.right-align
+        = link_to t('words.back'), admin_courses_season_interviews_path(current_season), class: 'ui button grey'
+        = f.button :submit
+
+    .fields
+      .five.wide.field = f.input :status, collection: Courses::Interview.statuses.keys
+      .five.wide.field = f.input :start_at, as: :datetime
+      .six.wide.field = f.input :video_url
+
+    .fields
+      .sixteen.wide.field
+        = f.input :description
+

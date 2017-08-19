@@ -1,5 +1,7 @@
 AllCops:
   DisabledByDefault: true
+  Exclude:
+    - components/courses/spec/dummy/**/*
 
 #################### Lint ################################
 

@@ -1,0 +1,18 @@
+h3 = season.title
+p  = courses_season_dates(season)
+h5 = season.status
+p  = season.description
+
+br
+
+h2 = t 'courses.mentors.plural'
+- mentors.each do |mentor|
+  p = mentor.full_name
+
+br
+
+p = courses_register_link(season, current_student)
+p = courses_send_test_task_link(season, current_student)
+p = courses_send_homework_link(season, current_student)
+p = courses_interviews_link(season, current_student)
+p = courses_cancel_link(season, current_student)

@@ -4,6 +4,7 @@ require 'sidekiq/testing'
 
 if ENV['CI']
   require 'codecov'
+
   SimpleCov.formatter = SimpleCov::Formatter::Codecov
   SimpleCov.merge_timeout 1200 # 20 minutes
 end

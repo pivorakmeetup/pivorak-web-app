@@ -1,0 +1,15 @@
+
+    table.ui.very.basic.table
+      thead
+        tr
+          th = t('words.title')
+          th = t('courses.homework.mark')
+          th = t('courses.homework.presence')
+          th
+
+      tbody
+        - lectures.each do |lecture|
+          tr
+            td    = lecture.title
+            td id = homework_value_id(lecture, 'm') = journal_mark(current_student, lecture)
+            td id = homework_value_id(lecture, 'p') = journal_presence(current_student, lecture)

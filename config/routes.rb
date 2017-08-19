@@ -37,40 +37,40 @@ Rails.application.routes.draw do
   resource :supporters, only: %i[show]
 
   #=== ADMIN AREA ===============================
-  authenticate :user, ->(u) { u.admin? } do
-    namespace :admin do
-      get '/', to: 'home#index'
-      get '/donations', to: 'donations#index'
+  namespace :admin do
+    get '/', to: 'home#index'
+    get '/donations', to: 'donations#index'
 
-      resources :events,  except: %i[show destroy] do
-        resources :visit_requests, only: %i[index] do
-          collection do
-            post :send_confirmations, to: 'visit_request/send_confirmations#create'
-            post :import,             to: 'visit_request/import#create'
-            get  :report,             to: 'visit_request/report#download'
-          end
-
-          put  :approve,      to: 'visit_request/approve#update'
-          put  :cancel,       to: 'visit_request/cancel#update'
-          put  :toggle_list,  to: 'visit_request/toggle_list#update'
-          put  :toggle_visit, to: 'visit_request/toggle_visit#update'
+    resources :events,  except: %i[show destroy] do
+      resources :visit_requests, only: %i[index] do
+        collection do
+          post :send_confirmations, to: 'visit_request/send_confirmations#create'
+          post :import,             to: 'visit_request/import#create'
+          get  :report,             to: 'visit_request/report#download'
         end
-      end
-      resources :venues,  except: %i[show destroy]
-      resources :talks,   except: %i[show destroy]
-      resources :goals,   except: %i[show destroy]
-      resources :members, except: %i[show destroy] do
-        resource :squash, only: %i[show create], controller: 'members/squash'
-        post     :sign_in_as,                    to: 'members/sign_in_as#create'
-      end
-      resources :groups,  except: %i[show]
-      resources :emails,  only:   %i[new show index create]
-      resources :friends, except: %i[show destroy]
-      resources :pages,   except: %i[show]
-      resources :email_templates,   only: %i[index edit update]
 
-      ez_settings_for :app
+        put  :approve,      to: 'visit_request/approve#update'
+        put  :cancel,       to: 'visit_request/cancel#update'
+        put  :toggle_list,  to: 'visit_request/toggle_list#update'
+        put  :toggle_visit, to: 'visit_request/toggle_visit#update'
+      end
+    end
+    resources :venues,  except: %i[show destroy]
+    resources :talks,   except: %i[show destroy]
+    resources :goals,   except: %i[show destroy]
+    resources :members, except: %i[show destroy] do
+      resource :squash, only: %i[show create], controller: 'members/squash'
+      post     :sign_in_as,                    to: 'members/sign_in_as#create'
+    end
+    resources :groups,  except: %i[show]
+    resources :emails,  only:   %i[new show index create]
+    resources :friends, except: %i[show destroy]
+    resources :pages,   except: %i[show]
+    resources :email_templates,   only: %i[index edit update]
 
+    ez_settings_for :app
+
+    authenticate :user, ->(u) { u.admin? } do
       require 'sidekiq/web'
       mount Sidekiq::Web => '/sidekiq'
     end

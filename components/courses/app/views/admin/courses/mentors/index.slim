@@ -1,0 +1,17 @@
+- title t('courses.mentors.plural')
+
+= admin_courses_seasons_nav do
+  = resource_header :courses_season_mentor
+
+  table.ui.very.basic.table
+    thead
+      tr
+        th
+        th
+
+    tbody
+      - mentors.each do |mentor|
+        tr
+          td               = mentor.full_name
+          td.right.aligned = controls do
+            = remove_mentor_button(mentor.season, mentor)
