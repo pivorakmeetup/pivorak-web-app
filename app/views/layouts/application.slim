@@ -15,8 +15,7 @@ html
     == render 'layouts/ga/head' if Rails.env.production?
 
   body class="#{yield(:main_body_class)}"
-    = render 'layouts/ga/body' if Rails.env.production?
-    / canvas#main-bg-canvas.pk-main-bg
+    == render 'layouts/ga/body' if Rails.env.production?
     = yield(:before_header)
     == render 'layouts/app/flash'
     == render 'layouts/app/header'

@@ -17,19 +17,15 @@
       .pk-event-date__hour  = get_hour(event.started_at)
 
   - if talks.present?
-    .pk-slider.js-slider.js_slider
-      .lory-frame.js_frame
-        .pk-slider__container.js_slides
-          - talks.each do |talk|
-            .pk-slider__unit-container.js_slide
-              .pk-slider__unit
-                .pk-talk
-                  .pk-talk__image.pk-slider__blend-image(style="background-image: url(#{talk.speaker&.cover_url || ""})")
-                  .pk-talk__name = talk.speaker&.full_name
-                  .pk-talk__title = talk.title
-                  .pk-talk__content = MarkdownRenderer.call(talk.description)
-      .js_prev.pk-slider__prev
-      .js_next.pk-slider__next
+    .pk-main-speakers class="#{(talks.count == 4) ? 'pk-main-speakers--four-speakers' : ''}"
+      - talks.each do |talk|
+        .pk-main-speakers__unit-container
+          .pk-main-speakers__unit
+            .pk-talk
+              .pk-talk__image.pk-main-speakers__blend-image(style="background-image: url(#{talk.speaker&.cover_url || ""})")
+              .pk-talk__name = talk.speaker&.full_name
+              .pk-talk__title = talk.title
+              .pk-talk__content = MarkdownRenderer.call(talk.description)
 
   .pk-status-container.text-center
     == render 'events/attendance'

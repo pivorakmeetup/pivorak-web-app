@@ -33,7 +33,6 @@ gem 'autoprefixer-rails',                                          '~> 6.7.7.2'
 gem 'coffee-rails',                                                  '~> 4.2.1'
 gem 'uglifier',                                                      '~> 3.2.0'
 gem 'rails-assets-svgxuse',                  source: 'https://rails-assets.org'
-gem 'rails-assets-lory',                     source: 'https://rails-assets.org'
 gem 'rails-assets-semantic-ui-calendar',     source: 'https://rails-assets.org'
 
 #=== FEATURES ==================================================================
