@@ -38,6 +38,18 @@ class ApplicationController < ActionController::Base
     @contacts_page ||= Page.find_by(url: 'contacts')
   end
 
+  def render_form
+    render :form
+  end
+
+  def react_to(action)
+    if action
+      flash_success and default_redirect
+    else
+      flash_error and render_form
+    end
+  end
+
   def flash_success(key = nil)
     add_flash(:success, key)
   end

@@ -1,5 +1,5 @@
 module Bb
-  class BaseController < ApplicationController
+  class BaseController < ::ApplicationController
     before_action :authenticate_user!
 
     helper_method :access_policy

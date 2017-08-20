@@ -1,0 +1,7 @@
+= I18n.t('bb.knock.description')
+
+= simple_form_for book, url: bb_knock_index_path, as: :book do |f|
+  = f.input :title
+  = f.input :description, as: :text
+
+  = f.button :submit, t('bb.knock.submit')

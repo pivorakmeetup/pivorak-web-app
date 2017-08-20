@@ -4,6 +4,14 @@ class ApplicationController < ActionController::Base
   def authenticate_user!
   end
 
+  def react_to(action)
+    if action
+      flash_success and default_redirect
+    else
+      flash_error and render_form
+    end
+  end
+
   def flash_success
     true
   end

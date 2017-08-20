@@ -10,11 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170819113459) do
+ActiveRecord::Schema.define(version: 20170819131132) do
+
+  create_table "bb_books", force: :cascade do |t|
+    t.string  "title"
+    t.text    "description"
+    t.integer "member_id"
+    t.integer "status",      default: 0
+    t.index ["member_id"], name: "index_bb_books_on_member_id"
+    t.index ["status"], name: "index_bb_books_on_status"
+  end
 
   create_table "bb_members", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "status"
+    t.integer  "status",      default: 0
     t.datetime "membered_at"
     t.index ["status"], name: "index_bb_members_on_status"
     t.index ["user_id"], name: "index_bb_members_on_user_id"

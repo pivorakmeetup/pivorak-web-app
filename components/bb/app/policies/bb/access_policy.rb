@@ -8,7 +8,11 @@ module Bb
       already_member?
     end
 
-    def knock?
+    def reviewing?
+      member && book_under_review?
+    end
+
+    def can_knock?
       !already_member?
     end
 
@@ -16,8 +20,16 @@ module Bb
 
     attr_reader :user
 
+    def member
+      @member ||= ::Bb::Member.find_by(user_id: user.id)
+    end
+
     def already_member?
-      @already_member ||= ::Bb::Member.find_by(user_id: user.id)
+      member&.verified?
+    end
+
+    def book_under_review?
+      member.books.first&.moderation?
     end
   end
 end

@@ -10,6 +10,11 @@ en:
       you_are_not_member: Seems like you are not club's member
       knock_knock: Knock Knock
 
+    knock:
+      description: To become a member of BooksBunker's club you should share us one of your books. Decision will be made after moderation
+      submit: Knock Knock, let me in
+      request_under_review: Your request is under review. We will let you know about decision
+
     admin:
       welcome_message: Welcome to BooksBunker's admin!
 
