@@ -8,7 +8,7 @@ module Mailchimp
       def call
         @response ||= members(mail_hash).upsert(body: payload)
       rescue Gibbon::MailChimpError => e
-        logger.warn("Mailchimp Subscription Error: #{e.message}")
+        logger.warn("Mailchimp Subscription Error: #{e.message}") && return
       end
 
       private
