@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  rescue_from ActiveRecord::RecordNotFound, with: :not_found
+
   protect_from_forgery with: :exception, prepend: true
 
   helper_method :admin?, :about_page, :contacts_page
