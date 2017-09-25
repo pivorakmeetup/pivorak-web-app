@@ -17,8 +17,9 @@ describe 'Talk SHOW' do
   end
 
   context 'when talk is missing' do
-    it 'raises ActionController::RoutingError exception' do
-      expect { visit talk_path(talk.slug.reverse) }.to raise_error ActionController::RoutingError
+    it 'responds with 404 page' do
+      visit talk_path('unknown')
+      expect(page.body).to include("The page you were looking for doesn't exist")
     end
   end
 end

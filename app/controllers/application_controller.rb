@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   delegate :admin?, to: :current_user, allow_nil: true
 
-  # Workaound to allows PUMA work fatser for better_errors
+  # Workaround to allows PUMA work faster for better_errors
   before_action :better_errors_hack, if: -> { Rails.env.development? }
   def better_errors_hack
     request.env['puma.config'].options.user_options.delete :app
@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
   end
 
   def not_found
-    raise ActionController::RoutingError.new('Not Found')
+    render file: 'public/404.html', status: :not_found, layout: false
   end
 
   def about_page

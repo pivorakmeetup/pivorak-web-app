@@ -9,6 +9,9 @@ RSpec.describe 'Page READ' do
   end
 
   context 'open non existing page' do
-    it { expect { visit "/#{Faker::Lorem.word}" }.to raise_error ActionController::RoutingError }
+    it 'responds with 404 page' do
+      visit "/#{Faker::Lorem.word}"
+      expect(page.body).to include("The page you were looking for doesn't exist")
+    end
   end
 end
