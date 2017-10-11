@@ -11,7 +11,7 @@
   }
 
   function createBlendedBackgrounds() {
-    var els = document.querySelectorAll('.pk-slider__blend-image');
+    var els = document.querySelectorAll('.pk-main-speakers__blend-image');
     for(var i = 0; i < els.length; i++) {
       var el = els[i];
       processElement(el);
