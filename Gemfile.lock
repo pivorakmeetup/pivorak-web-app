@@ -5,8 +5,14 @@ GIT
     liqpay (0.0.1)
 
 PATH
-  remote: components/courses
+  remote: components
   specs:
+    bb (0.1.0)
+      friendly_id
+      kaminari
+      rails (~> 5.0.2)
+      simple_form
+      slim-rails
     courses (0.1.0)
       friendly_id
       kaminari
@@ -558,6 +564,7 @@ PLATFORMS
 DEPENDENCIES
   acts-as-taggable-on (~> 4.0)
   autoprefixer-rails (~> 6.7.7.2)
+  bb!
   better_errors
   binding_of_caller
   bullet
@@ -648,4 +655,4 @@ RUBY VERSION
    ruby 2.3.1p112
 
 BUNDLED WITH
-   1.15.1
+   1.15.3

@@ -77,5 +77,7 @@ Rails.application.routes.draw do
   end
 
   # This route must (!) be always (!) at the bottom of this file (!)
-  get '/:page_url', to: 'pages#show'
+
+  # TODO @VS -> FIX!
+  # get '/:page_url', to: 'pages#show'
 end

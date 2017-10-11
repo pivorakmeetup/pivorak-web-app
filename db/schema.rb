@@ -10,11 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170725140731) do
+ActiveRecord::Schema.define(version: 20170819131132) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
+
+  create_table "bb_books", force: :cascade do |t|
+    t.string  "title"
+    t.text    "description"
+    t.integer "member_id"
+    t.integer "status",      default: 0
+    t.index ["member_id"], name: "index_bb_books_on_member_id", using: :btree
+    t.index ["status"], name: "index_bb_books_on_status", using: :btree
+  end
+
+  create_table "bb_members", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "status",      default: 0
+    t.datetime "membered_at"
+    t.index ["status"], name: "index_bb_members_on_status", using: :btree
+    t.index ["user_id"], name: "index_bb_members_on_user_id", using: :btree
+  end
 
   create_table "courses_assessments", force: :cascade do |t|
     t.integer  "interview_assessment_id"
