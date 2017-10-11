@@ -14,6 +14,7 @@ en:
       description: To become a member of BooksBunker's club you should share us one of your books. Decision will be made after moderation
       submit: Knock Knock, let me in
       request_under_review: Your request is under review. We will let you know about decision
+      cancel_request: Cancel request
 
     admin:
       welcome_message: Welcome to BooksBunker's admin!
