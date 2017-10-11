@@ -118,8 +118,6 @@ $speakers-breakpoint: 960px;
   &:nth-child(4n+4) {
     background-color: #F7B332;
     z-index: 6;
-    &:before,
-    &:after,
     #{$namespace}__blend-image {
       background-color: #F7B332;
     }
