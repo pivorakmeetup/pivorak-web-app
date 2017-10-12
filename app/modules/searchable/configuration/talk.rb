@@ -4,11 +4,19 @@ module Searchable
       include Configurable
       include SearchOptions
 
-      FIELDS = %i(title description)
+      TALK_FIELDS    = %i(title description)
+      TAG_FIELDS     = %i(name)
+      SPEAKER_FIELDS = %i(first_name last_name)
 
       define_searchable do
-        multisearchable          against: FIELDS
-        pg_search_scope :search, against: FIELDS, using: TSEARCHABLE_WITH_PREFIX
+        multisearchable against: TALK_FIELDS
+        pg_search_scope :search,
+          against: TALK_FIELDS,
+          using:   TSEARCHABLE_WITH_PREFIX,
+          associated_against: {
+            speaker: SPEAKER_FIELDS,
+            tags:    TAG_FIELDS
+          }
       end
     end
   end

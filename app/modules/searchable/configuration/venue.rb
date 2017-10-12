@@ -4,11 +4,11 @@ module Searchable
       include Configurable
       include SearchOptions
 
-      FIELDS = %i(name address description)
+      VENUE_FIELDS = %i(name address description)
 
       define_searchable do
-        multisearchable          against: FIELDS
-        pg_search_scope :search, against: FIELDS, using: TSEARCHABLE_WITH_PREFIX
+        multisearchable          against: VENUE_FIELDS
+        pg_search_scope :search, against: VENUE_FIELDS, using: TSEARCHABLE_WITH_PREFIX
       end
     end
   end

@@ -4,10 +4,10 @@ module Searchable
       include Configurable
       include SearchOptions
 
-      FIELDS = %i(title url)
+      PAGE_FIELDS = %i(title url)
 
       define_searchable do
-        pg_search_scope :search, against: FIELDS, using: TSEARCHABLE_WITH_PREFIX
+        pg_search_scope :search, against: PAGE_FIELDS, using: TSEARCHABLE_WITH_PREFIX
       end
     end
   end

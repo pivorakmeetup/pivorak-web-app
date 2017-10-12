@@ -8,8 +8,16 @@ RSpec.describe 'Talks search' do
   let(:description_of_talk_1) { 'infrastructure' }
   let(:description_of_talk_2) { 'service objects' }
 
-  let!(:talk_1) { create :talk, title: title_of_talk_1, description: description_of_talk_1, event: event }
-  let!(:talk_2) { create :talk, title: title_of_talk_2, description: description_of_talk_2, event: event }
+  let(:tags_of_talk_1) { 'rails' }
+  let(:tags_of_talk_2) { 'rspec' }
+
+  let(:speaker_first_name) { 'John' }
+  let(:speaker_last_name)  { 'Doe' }
+
+  let(:speaker) { create :user, first_name: speaker_first_name, last_name: speaker_last_name }
+
+  let!(:talk_1) { create :talk, title: title_of_talk_1, description: description_of_talk_1, event: event, speaker: speaker, tag_list: tags_of_talk_1 }
+  let!(:talk_2) { create :talk, title: title_of_talk_2, description: description_of_talk_2, event: event, tag_list: tags_of_talk_2 }
 
   before do
     visit "/talks"
@@ -27,6 +35,22 @@ RSpec.describe 'Talks search' do
 
       expect(page).to have_content talk_1.title
       expect(page).not_to have_content talk_2.title
+    end
+
+    it "searches by speaker's full name" do
+      fill_in 'query', with: "#{speaker_first_name} #{speaker_last_name}"
+      click_button('Search')
+
+      expect(page).to have_content talk_1.title
+      expect(page).not_to have_content talk_2.title
+    end
+
+    it 'searches by tags' do
+      fill_in 'query', with: tags_of_talk_2
+      click_button('Search')
+
+      expect(page).to have_content talk_2.title
+      expect(page).not_to have_content talk_1.title
     end
 
     it 'searches by description' do
