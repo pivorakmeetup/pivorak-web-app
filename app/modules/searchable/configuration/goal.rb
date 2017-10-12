@@ -4,11 +4,11 @@ module Searchable
       include Configurable
       include SearchOptions
 
-      FIELDS = %i(title description)
+      GOAL_FIELDS = %i(title description)
 
       define_searchable do
-        multisearchable          against: FIELDS
-        pg_search_scope :search, against: FIELDS, using: TSEARCHABLE_WITH_PREFIX
+        multisearchable          against: GOAL_FIELDS
+        pg_search_scope :search, against: GOAL_FIELDS, using: TSEARCHABLE_WITH_PREFIX
       end
     end
   end

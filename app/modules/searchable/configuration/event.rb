@@ -4,10 +4,10 @@ module Searchable
       include Configurable
       include SearchOptions
 
-      FIELDS = %i(title description agenda)
+      EVENT_FIELDS = %i(title description agenda)
 
       define_searchable do
-        multisearchable          against: FIELDS
+        multisearchable          against: EVENT_FIELDS
         pg_search_scope :search, against: :title, using: TSEARCHABLE_WITH_PREFIX
       end
     end
