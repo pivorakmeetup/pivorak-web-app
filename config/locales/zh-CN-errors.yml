@@ -1,0 +1,5 @@
+zh-CN:
+  errors:
+    only_latin_letters: 只允许拉丁字母
+    total_less_verified: 整体限制小于被验证过的
+    donation_not_decoded: 捐赠未成功。数据未解码。

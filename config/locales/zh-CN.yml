@@ -1,0 +1,241 @@
+zh-CN:
+  pivorak: pivorak
+
+  words:
+    app: 应用
+    all: 全部
+    id: '#id'
+    new: 新建
+    edit: 编辑
+    update: 更新
+    create: 创建
+    destroy: 销毁
+    back: 后退
+    title: 标题
+    name: 名字
+    empty: 空
+    donate: 捐赠
+    email: 电子邮件
+    back: 后退
+    date: 日期
+    resource: 资源
+    status: 状态
+    tags: 标签
+    is_true: '是'
+    is_false: '否'
+    published: 已发布
+    description: 描述
+    list: 列表
+    url: Url
+    search: 搜索
+    preview: 预览
+    import: 导入
+    squash: Squash
+    into: 进入
+    danger: 危险
+    send: 发送
+
+  resources:
+    errors:
+      not_found: '找不到 %{resource}'
+
+  phrases:
+    new_resource: '新建 %{resource}'
+    edit_resource: '编辑 %{resource}'
+    show_resource: '%{resource} %{title}'
+    squash: '压缩 %{resource}'
+    confirm: '你确定？'
+    not_assigned: '未分配'
+    unauthorized: '请 <a href=%{login_url}>登录</a> 或 <a href=%{register_url}>注册</a> 然后参加这个活动'
+    not_assigned: 未分配
+    default_title: '#pivorak Lviv Ruby用户组'
+
+  settings:
+    plural: 设置
+
+  search_result:
+    singular: 搜索结果
+    plural: 搜索结果
+    not_found: 抱歉，找不到任何匹配结果
+
+  liqpay:
+    status:
+      success: 捐助成功。
+      failure: 捐助失败。
+      error:   捐助失败。输入值非法。
+
+  goals:
+    plural: 目标
+    singular: 目标
+    amount: 金额
+
+  donations:
+    singular: 捐助
+    plural: 捐助
+    donate: 捐助
+    success: 谢谢，你的捐助已被接受！
+    donator: 捐助者
+    total: "总计: "
+
+  events:
+    plural: 事件
+    singular: 事件
+    started_at: 开始于
+    finished_at: 结束于
+    limitation: 限制条件
+    visitors: 访客
+    attendees: 参与者
+    send_confirmations: 发送确认
+    visitors_report: 访客报告
+    index:
+      visitors:
+        requested: 请求已发送
+        approved:  已批准
+        confirmed: 已确认
+        visited:   已访问
+
+  notifications:
+    success: "%{resource} 已被成功的 %{action}"
+    error: "%{resource} 不能被 %{action}. 请检查如下出错信息"
+
+  venues:
+    plural: 场地
+    singular: 场地
+    address: 地址
+
+  talks:
+    plural: 演讲
+    singular: 演讲
+    speaker: 发言人
+
+  emails:
+    plural: 电子邮件
+    singular: 电子邮件
+    subject: 主题
+    body: 正文
+
+  email_templates:
+     plural: 电子邮件模板
+     singular: 电子邮件模板
+     subject: 主题
+     body: 正文
+     note: 备注
+
+  admin:
+    admin: 管理员
+    dashboard: '管理员面板'
+
+  chat:
+    singular: 聊天
+    description: Pivorak Slack 聊天
+    join: 加入 Pivorak 聊天
+    get_my_invite: 获得我的邀请
+    success: 邀请已发送至 %{email}。请检查你的邮件。
+    email_required: 电子邮件必添
+    errors:
+      already_in_team: 你已加入团队
+      sent_recently: 邀请已在近期发送
+
+  members:
+    singular: 成员
+    plural: 成员
+    full_name: 全名
+    profile: 个人描述
+    edit_profile: 编辑个人描述
+    first_name: 名
+    last_name: 姓
+    synthetic: 综合性的
+    change_gravatar: 更改图标
+    verified: 已验证
+    squash_danger: '成员： %{full_name} 将会被从数据库中删除'
+    sign_in_as: 已如下身份登录
+    count_of_sign_in: '登录计数：'
+    success: 个人描述信息已被更新！
+    failure: 无法更新个人描述信息。请检查如下错误。
+    synthetic:
+      singular: 综合性
+      greeting: '你好 %{name}, 我们知道你！'
+      message: 由于你是Pivorak社区成员，我们已为你创建了账户。你拥有该账户的所有权限。请在邮件中确认更改密码
+      get_account: 获取账户权限
+    squash:
+      plural: Squash成员
+
+  groups:
+    singular: 组
+    plural: 组
+
+  visit_requests:
+    send_email_to_visitors: '给访客发送邮件'
+    send_email_to_attendees: '给参与者发送邮件'
+    attend: 参加
+    already_created: 已经参加
+    approve: 批准
+    cancel: 取消
+    cancel_attendace: 取消参与者
+    plural: 请求访问
+    action: 参加这个活动
+    main_list: 主要
+    waiting_list: 等待
+    visited: 访问过
+    hello: 你好！
+    waiting: 等待
+    confirm: 确认
+    refuse: 拒绝
+    messages:
+      # TODO VS -> Better messages, please
+      pending:  "你的请求正在被考虑中 。我们会尽快和你联系"
+      approved: 我们可以确认你可以参加这个活动！
+      canceled: '抱歉，但我们取消了你的访问请求'
+      waiting_list: 位置已满，我们把你加入了等待列表
+      please_confirm: 请最终确认你会参加
+      see_you: 我们在活动上见！
+      so_pity: 非常遗憾你改变主意了，希望下次见。
+      confirmed: 你已确认参加活动！
+      refused: 非常遗憾我们没法见到你
+      registration_closed: 抱歉，申请已经结束。你可以通过电子邮件和我们联系 pivorak.me@gmail.com
+
+  become_a_speaker:
+    singular: 成为发言人
+    send: 发送
+
+  send_mail:
+    sended: 邮件已发送
+    error: 发送邮件出错
+
+  friends:
+    plural: 朋友
+    singular: 朋友
+
+  mailers:
+    notify_mailer:
+      become_speaker:
+        subject: 我想成为发言人
+      new_user_registered:
+        subject: '新用户已注册： %{user}'
+        body: '新用户已注册： %{user} 电子邮件： %{email}'
+    visit_request_mailer:
+      notify_admin_about_unverified_attendee:
+        subject: 新用户注册参加活动
+
+  speakers:
+    plural: 发言人
+    singular: 发言人
+
+  synthetic_user:
+    reset_password: 我们已经为你创建了账户。请检查邮箱
+
+  pages:
+    singular: 页面 
+    plural: 页面
+
+  charts:
+    by_status: '按状态：%{resource}'
+    per_month: '按月份：%{resource}'
+    per_event: '按活动：%{resource}'
+
+  filters:
+    reset: '重置过滤器'
+
+  time:
+    formats:
+      date_month_year_concise_slash: '%d/%m/%Y'

@@ -1,0 +1,13 @@
+zh-CN:
+  flash:
+    visit_requests:
+      create:
+        success: 感谢你的申请
+        # TODO
+        success_for_newbies: 感谢你的申请，我们就检查你的申请并尽快和你联系。
+        success_for_verified: 你的申请已确认！回头见！
+      destroy:
+        success: 抱歉，希望下次见！
+      show:
+        confirmed: 周五见！
+        refused: 抱歉，希望下次见！
