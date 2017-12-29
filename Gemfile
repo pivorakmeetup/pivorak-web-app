@@ -52,6 +52,7 @@ gem 'icalendar',                                                     '~> 2.4.1'
 gem 'yt',                                                           '~> 0.30.1'
 gem 'gibbon',                                                          '~> 3.0'
 gem 'coderay',                                                       '~> 1.1.1'
+gem "recaptcha", require: "recaptcha/rails"
 
 #=== CONFIG ===================================================================
 gem 'dotenv-rails',                                                    '~> 2.2'

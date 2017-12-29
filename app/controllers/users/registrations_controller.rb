@@ -1,5 +1,9 @@
 module Users
   class RegistrationsController < Devise::RegistrationsController
+    attr_reader :recaptcha_error_message
+    prepend_before_action :check_captcha, only: :create
+    helper_method :recaptcha_error_message
+
     def create
       synthetic_user = User::CheckSynthetic.call(params[:user][:email])
       if synthetic_user
@@ -31,6 +35,20 @@ module Users
         :password, :password_confirmation,
         :subscribed
       )
+    end
+
+    def check_captcha
+      return if verify_recaptcha
+
+      self.resource = resource_class.new sign_up_params
+      resource.validate # Look for any other validation errors besides Recaptcha
+      add_recaptcha_error
+      respond_with_navigational(resource) { render :new }
+    end
+
+    def add_recaptcha_error
+      @recaptcha_error_message = flash[:recaptcha_error]
+      flash.delete(:recaptcha_error)
     end
   end
 end
