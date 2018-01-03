@@ -5,6 +5,12 @@ h2
   .form-inputs.pk-inline-block
     .pk-input__container.mts
       = f.input :email, required: true, autofocus: true, placeholder: 'E-mail', label_html: { class: 'pk-input__label' }, input_html: { class: 'pk-input' }
+
+    .pk-input__container.mts
+      = recaptcha_tags
+      .div
+        .ui class='red pointing above label error'
+          = recaptcha_error_message
   .form-actions
     .mtl.mbl
       = f.button :submit, "Reset password", class: 'pk-btn pk-btn--medium'
