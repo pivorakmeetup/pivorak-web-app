@@ -393,6 +393,8 @@ GEM
     rb-fsevent (0.9.8)
     rb-inotify (0.9.8)
       ffi (>= 0.5.0)
+    recaptcha (4.6.2)
+      json
     redcarpet (3.4.0)
     redis (3.3.3)
     request_store (1.3.2)
@@ -614,6 +616,7 @@ DEPENDENCIES
   rails-assets-semantic-ui-calendar!
   rails-assets-svgxuse!
   rails_email_preview (~> 2.0.1)
+  recaptcha
   redcarpet (~> 3.4.0)
   redis (~> 3.2)
   rollbar (~> 2.14.1)

@@ -1,5 +1,9 @@
 module Users
   class RegistrationsController < Devise::RegistrationsController
+    include Users::Concerns::Recaptcha
+    prepend_before_action :check_captcha, only: :create
+    alias_method :user_params, :sign_up_params
+
     def create
       synthetic_user = User::CheckSynthetic.call(params[:user][:email])
       if synthetic_user
