@@ -8,11 +8,7 @@ class TalksController < ApplicationController
   end
 
   def talks
-    @talks ||= search_against(Talk)
-      .published
-      .includes(:event, :speaker)
-      .page(params[:page])
-      .sorted_by_date
+    @talks ||= params[:tag] ? untagged_talks.tagged_with(params[:tag]) : untagged_talks
   end
 
   def tags
@@ -21,5 +17,13 @@ class TalksController < ApplicationController
 
   def search_against(model)
     Search::Resource.call params.merge(model: model)
+  end
+
+  def untagged_talks
+    search_against(Talk)
+      .published
+      .includes(:event, :speaker)
+      .page(params[:page])
+      .sorted_by_date
   end
 end

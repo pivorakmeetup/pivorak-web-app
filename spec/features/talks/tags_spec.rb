@@ -1,38 +1,38 @@
-xdescribe 'Talks tags' do
-  let!(:talk_about_ruby)  { create :talk, title: 'Ruby Way', tag_list: 'ruby' }
-  let!(:talk_about_js)    { create :talk, title: 'JS Way',   tag_list: 'javascript' }
-  let!(:talk_about_rails) { create :talk, title: 'Rails Way', tag_list: 'ruby, rails' }
+describe 'Talks tags' do
+  let(:event){ create :event }
+  let!(:talk_about_ruby)  { create :talk, title: 'Ruby Way', tag_list: 'ruby', event: event }
+  let!(:talk_about_js)    { create :talk, title: 'JS Way',   tag_list: 'javascript', event: event }
+  let!(:talk_about_rails) { create :talk, title: 'Rails Way', tag_list: 'ruby, rails', event: event }
 
-  before { visit '/talks' }
+  before { visit "/talks?tag=#{tag}" }
 
-  it 'shows tags links' do
-    expect(page).to have_link 'All',        count: 1
-    expect(page).to have_link 'ruby',       count: 1
-    expect(page).to have_link 'rails',      count: 1
-    expect(page).to have_link 'javascript', count: 1
+  context 'when ruby tag' do
+    let(:tag) { 'ruby' }
+
+    it 'filter by ruby tags' do
+      expect(page).to     have_content 'Ruby Way'
+      expect(page).to     have_content 'Rails Way'
+      expect(page).to_not have_content 'JS Way'
+    end
   end
 
-  it 'filter by ruby tags' do
-    click_link 'ruby'
+  context 'when rails tag' do
+    let(:tag) { 'rails' }
 
-    expect(page).to     have_content 'Ruby Way'
-    expect(page).to     have_content 'Rails Way'
-    expect(page).to_not have_content 'JS Way'
+    it 'filter by rails tags' do
+      expect(page).to     have_content 'Rails Way'
+      expect(page).to_not have_content 'Ruby Way'
+      expect(page).to_not have_content 'JS Way'
+    end
   end
 
-  it 'filter by rails tags' do
-    click_link 'rails'
+  context 'when javascript tag' do
+    let(:tag) { 'javascript' }
 
-    expect(page).to     have_content 'Rails Way'
-    expect(page).to_not have_content 'Ruby Way'
-    expect(page).to_not have_content 'JS Way'
-  end
-
-  it 'filter by ruby tags' do
-    click_link 'javascript'
-
-    expect(page).to     have_content 'JS Way'
-    expect(page).to_not have_content 'Ruby Way'
-    expect(page).to_not have_content 'Rails Way'
+    it 'filter by javascript tags' do
+      expect(page).to     have_content 'JS Way'
+      expect(page).to_not have_content 'Ruby Way'
+      expect(page).to_not have_content 'Rails Way'
+    end
   end
 end
