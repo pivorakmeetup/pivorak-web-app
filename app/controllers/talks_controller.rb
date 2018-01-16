@@ -8,12 +8,15 @@ class TalksController < ApplicationController
   end
 
   def talks
-    @talks ||= search_against(Talk)
+    return @talks if defined? @talks
+
+    talks = search_against(Talk)
       .published
-      .tagged_with(params[:tag])
       .includes(:event, :speaker)
       .page(params[:page])
       .sorted_by_date
+
+    @talks = params[:tag] ? talks.tagged_with(params[:tag]) : talks
   end
 
   def tags
