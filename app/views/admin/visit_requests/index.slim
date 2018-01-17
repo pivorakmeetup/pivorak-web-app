@@ -9,9 +9,7 @@
   .six.wide.column.bottom.aligned
     = render 'admin/shared/search_bar', path: admin_event_visit_requests_path
 
-  .ten.wide.column
-    = send_email_to_recipient_ids_link(visitors_ids)
-    = send_email_to_attendees_link(confirmed_ids)
+  = render 'emails'
 
   table#visit-requests.ui.very.basic.table
     thead
