@@ -3,7 +3,6 @@ class VisitRequestsController < ApplicationController
 
   def show
     VisitRequest::FinalConfirmation.call(visit_request, params)
-    sign_in(:user, visit_request.user)
 
     flash_success(visit_request.status) and default_redirect
   end
