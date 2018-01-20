@@ -1,6 +1,6 @@
 RSpec.describe 'Visit Requests CONFIRMATION' do
   let(:event)          { create(:event, status: :confirmation) }
-  let(:user)           { create(:user)  }
+  let(:user)           { create(:user) }
   let!(:visit_request) { create(:visit_request, user: user, event: event, status: :approved) }
 
   before do
@@ -17,7 +17,6 @@ RSpec.describe 'Visit Requests CONFIRMATION' do
   context 'Click Confirm' do
     before { click_link 'Confirm' }
 
-    it { expect(page).to have_content I18n.t('visit_requests.messages.see_you') }
     it { expect(page).to have_content I18n.t('visit_requests.messages.see_you') }
     it { expect(page).to have_content I18n.t('flash.visit_requests.show.confirmed') }
     it { expect(page).to_not have_content I18n.t('visit_requests.messages.so_pity') }
