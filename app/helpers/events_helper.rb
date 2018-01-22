@@ -70,6 +70,10 @@ module EventsHelper
     t('visit_requests.messages.registration_closed').html_safe
   end
 
+  def get_event_counter(event)
+    "#{event.limit_newbies} #{t('events.free_places')}"
+  end
+
   private
 
   def visit_request_confirm_path(visit_request, answer)
