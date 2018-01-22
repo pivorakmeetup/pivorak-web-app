@@ -12,5 +12,25 @@ FactoryGirl.define do
     trait :visited do
       visited true
     end
+
+    trait :pending do
+      status VisitRequest::PENDING
+    end
+
+    trait :approved do
+      status VisitRequest::APPROVED
+    end
+
+    trait :refused do
+      status VisitRequest::REFUSED
+    end
+
+    trait :canceled do
+      status VisitRequest::CANCELED
+    end
+
+    trait :confirmed do
+      status VisitRequest::CONFIRMED
+    end
   end
 end

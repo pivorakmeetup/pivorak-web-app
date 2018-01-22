@@ -167,6 +167,9 @@ en:
   visit_requests:
     send_email_to_visitors: 'Send email to visitors'
     send_email_to_attendees: 'Send email to attendees'
+    send_email_to_applied: 'Send email to applied users'
+    send_email_to_pending: 'Send email to pending users'
+    send_email_to_approved: 'Send email to approved users'
     attend: Attend
     already_created: Already attending
     approve: Approve
