@@ -26,4 +26,12 @@ RSpec.describe Event do
       expect(event.limit_newbies).to eq 3
     end
   end
+
+  describe '#limit_percent' do
+    let(:event) { build(:event, limit_total: 10, limit_verified: 7) }
+
+    it 'returns percent of limit_verified/limit_total' do
+      expect(event.limit_percent).to eq 70
+    end
+  end
 end
