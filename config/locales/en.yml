@@ -68,6 +68,7 @@ en:
     plural: Goals
     singular: Goal
     amount: Amount
+    currency: Currency
 
   donations:
     singular: Donation

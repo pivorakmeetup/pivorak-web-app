@@ -1,6 +1,6 @@
 - title t('donations.plural')
 
-h2 
+h2
   = t 'donations.total'
   = total_donations
 
@@ -9,6 +9,7 @@ table.ui.very.basic.table
     tr
       th.center.aligned = t 'donations.donator'
       th.center.aligned = t 'goals.amount'
+      th.center.aligned = t 'goals.currency'
       th.center.aligned = t 'words.date'
 
   tbody
@@ -16,6 +17,7 @@ table.ui.very.basic.table
       tr
         td.center.aligned = donation.user&.full_name || '-'
         td.center.aligned = donation.amount.to_f
+        td.center.aligned = donation.currency
         td.center.aligned = I18n.localize donation.created_at, format: :date_month_year_concise_slash
 
 = paginate donations
