@@ -30,7 +30,8 @@ class Donation
     def donation_params
       {
         user_id: user_id,
-        amount:  data['amount']
+        amount:  data['amount'],
+        currency:  data['currency']
       }
     end
 

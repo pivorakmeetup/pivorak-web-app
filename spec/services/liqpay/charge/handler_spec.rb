@@ -36,6 +36,7 @@ describe Liqpay::Charge::Handler do
       before { described_class.(response_with_customer) }
 
       it { expect(Donation.last.user_id.class).to be Fixnum }
+      it { expect(Donation.last.currency.class).to be String }
     end
 
     context 'user_id does not saved' do

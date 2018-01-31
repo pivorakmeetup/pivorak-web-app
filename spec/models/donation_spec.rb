@@ -1,5 +1,6 @@
 RSpec.describe Donation, type: :model do
   describe 'validations' do
+    it { is_expected.to validate_presence_of(:currency) }
     it { is_expected.to validate_presence_of(:amount) }
     it { is_expected.to validate_numericality_of(:amount) }
   end
