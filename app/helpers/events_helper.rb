@@ -70,11 +70,11 @@ module EventsHelper
     t('visit_requests.messages.registration_closed').html_safe
   end
 
-  def get_event_counter(event)
+  def get_counter(event)
     "#{event.limit_newbies} #{t('events.free_places')}"
   end
 
-  def get_event_limit_percent(event)
+  def get_limit_percent(event)
     return 0 if event.limit_total.zero?
     (event.limit_verified.to_f / event.limit_total) * 100
   end
