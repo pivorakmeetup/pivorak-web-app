@@ -36,7 +36,20 @@ describe Liqpay::Charge::Handler do
       before { described_class.(response_with_customer) }
 
       it { expect(Donation.last.user_id.class).to be Fixnum }
-      it { expect(Donation.last.currency.class).to be String }
+    end
+
+    context 'currency saved' do
+      let(:response_with_customer) do
+        Base64.strict_encode64(
+          (build :liqpay_valid_response_data, :customer, payment_id: 999).to_json
+        )
+      end
+
+      let(:currency) { (build :liqpay_valid_response_data)[:currency] }
+
+      before { described_class.(response_with_customer) }
+
+      it { expect(Donation.last.currency).to eq currency }
     end
 
     context 'user_id does not saved' do

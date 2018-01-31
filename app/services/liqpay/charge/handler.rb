@@ -38,7 +38,7 @@ module Liqpay
           user_id:    customer_id,
           amount:     data['amount'],
           payment_id: data['payment_id'],
-          currency: data['currency']
+          currency:   data['currency']
         }
       end
 
