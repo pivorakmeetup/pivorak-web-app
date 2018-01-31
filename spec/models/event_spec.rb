@@ -26,19 +26,4 @@ RSpec.describe Event do
       expect(event.limit_newbies).to eq 3
     end
   end
-
-  describe '#limit_percent' do
-    let(:event) { build(:event, limit_total: 10, limit_verified: 7) }
-    let(:invalid_event) { build(:event, limit_total: 0, limit_verified: 66) }
-
-    context 'returns percent of limit_verified/limit_total' do
-      it 'succeed if data valid' do
-        expect(event.limit_percent).to eq 70
-      end
-
-      it 'returns zero percent when dividing by zero' do
-        expect(invalid_event.limit_percent).to eq 0
-      end
-    end
-  end
 end

@@ -40,9 +40,4 @@ class Event < ApplicationRecord
   def limit_newbies
     limit_total - limit_verified
   end
-
-  def limit_percent
-    return 0 if limit_total.zero?
-    (limit_verified.to_f / limit_total) * 100
-  end
 end
