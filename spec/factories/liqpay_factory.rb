@@ -3,7 +3,6 @@ FactoryGirl.define do
     status     :success
     amount     Faker::Number.number(3)
     currency   Faker::Lorem.word.first(3).upcase
-    # currency   Faker::Currency.code why isnt this working?
     payment_id Faker::Number.number(6)
 
     initialize_with { attributes }

@@ -45,7 +45,7 @@ describe Liqpay::Charge::Handler do
         )
       end
 
-      let(:currency) { (build :liqpay_valid_response_data)[:currency] }
+      let(:currency) { build(:liqpay_valid_response_data)[:currency] }
 
       before { described_class.(response_with_customer) }
 
