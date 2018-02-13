@@ -4,6 +4,6 @@ class SupportersController < ApplicationController
   private
 
   def friends
-    @friends ||= Friend.all
+    @friends ||= Friend.published
   end
 end
