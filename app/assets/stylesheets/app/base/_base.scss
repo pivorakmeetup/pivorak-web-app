@@ -33,6 +33,10 @@ body {
   &.pk-body--main-page {
     min-height: 900px;
   }
+
+  &.pk-body--green-bg {
+    background: #50B27E;
+  }
 }
 
 main {
@@ -100,6 +104,17 @@ q {
 .translation_missing {
   background-color: red   !important;
   color:            white !important;
+}
+
+.main-header {
+  font-size: 2.5rem;
+  font-family: $main-font-family;
+  font-weight: bold;
+  color: #FCF7EF;
+  letter-spacing: 0.15375em;
+  text-transform: uppercase;
+  margin: 32px 0 60px 0;
+  text-align: center;
 }
 
 .pk-container {
