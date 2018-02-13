@@ -2,14 +2,59 @@ $namespace: ".pk-supporter";
 
 #{$namespace} {
   text-decoration: none;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 16px;
+  background-clip: content-box;
+  overflow: hidden;
+  font-size: 0.875rem;
+  color: #FCF7EF;
+  border: 2px solid rgba(#FFF4DA, .25);
+  border-radius: 40px;
+  padding: 0 56px 40px 56px;
+
+  flex: 0 0 48%;
+  margin-bottom: 16px;
+
+  @include breakpoint-max(719) {
+    flex: 0 0 100%;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+  }
+
+  &:hover, &:active, &:focus {
+    text-decoration: none;
+    color: #44002F;
+    &:before {
+      background: #FCF7EF;
+    }
+    #{$namespace}__image {
+      img {
+        opacity: 1;
+      }
+
+      canvas {
+        opacity: 0;
+      }
+    }
+  }
+}
+
+#{$namespace}__image {
   display: inline-block;
   vertical-align: middle;
-  width: 200px;
-  height: 112px;
-  padding: 10px;
+  width: 300px;
+  height: 170px;
   position: relative;
   overflow: hidden;
-  margin: 8px 0;
   img, canvas {
     position: absolute;
     left: 50%;
@@ -27,33 +72,25 @@ $namespace: ".pk-supporter";
     opacity: 1;
   }
 
-  &:hover, &:active, &:focus {
-    text-decoration: none;
-    img {
-      opacity: 1;
-    }
+  @include breakpoint-max(920) {
+    width: 200px;
+    height: 112px;
+  }
 
-    canvas {
-      opacity: 0;
-    }
+  @include breakpoint-max(719) {
+    width: 300px;
+    height: 170px;
   }
 }
 
-#{$namespace}--medium {
-  width: 300px;
-  height: 170px;
+#{$namespace}__text {
+  text-align: left;
 }
 
 #{$namespace}-wrapper {
-  margin: 0 -20px;
-  #{$namespace} {
-    margin: 0 20px;
-  }
-}
+  justify-content: space-between;
 
-#{$namespace}-wrapper-medium {
-  margin: 0 -28px;
-  #{$namespace} {
-    margin: 0 28px;
+  @include breakpoint-max(320) {
+    flex-direction: column;
   }
 }
