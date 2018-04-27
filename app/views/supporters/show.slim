@@ -1,16 +1,10 @@
+= content_for :main_body_class, "pk-body--green-bg"
+
 .pk-container
-  h2 = 'Friends and supporters of pivorak community:'
-  .pk-supporter-wrapper-medium
-    - meetups_supporters.each do |meetups_supporter|
-      = link_to meetups_supporter.link, class: 'pk-supporter pk-supporter--medium pk-js-changed-color-images', target: '_blank'
-        = image_tag meetups_supporter.logo
-
-  h2 = 'Partners of Ruby Summer School:'
-  .pk-supporter-wrapper-medium
-    = link_to inlove_partner.link, class: 'pk-supporter pk-supporter--medium pk-js-changed-color-images', target: '_blank'
-      = image_tag inlove_partner.logo
-
-  .pk-supporter-wrapper
-    - course_supporters.each do |course_supporter|
-      = link_to course_supporter.link, class: 'pk-supporter pk-js-changed-color-images', target: '_blank'
-        = image_tag course_supporter.logo
+  h2.main-header = 'Friends'
+  .pk-supporter-wrapper.pk-grid.pk-grid--wrap
+    - friends.each do |friend|
+      = link_to friend.link, class: 'pk-supporter ', target: '_blank'
+        .pk-supporter__image.pk-js-changed-color-images
+          = image_tag friend.logo
+        .pk-supporter__text = friend.description

@@ -1,6 +1,6 @@
 - title t('phrases.show_resource', resource: t('pages.singular'), title: page.title)
 
 .pk-container
-  h2 = page.title
+  h2.main-header = page.title
 
   .pk-static-page = MarkdownRenderer.call(page.body)
