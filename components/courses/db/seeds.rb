@@ -21,19 +21,19 @@ puts ::Courses::Mentor.where(user_id: 1, season_id: 2).first_or_create!
 #=== Students ===========================================================================
 
 puts ::Courses::Student.where(user_id: 1, season_id: 1).first_or_create!(
-    personal_info: 'Lorem', motivation_info: 'Ipsum', status: :test_task_done
+    personal_info: 'Lorem', motivation_info: 'Ipsum', experience_info: 'Ipsum', devote_info: 'Ipsum', status: :test_task_done
 )
 
 puts ::Courses::Student.where(user_id: 2, season_id: 1).first_or_create!(
-    personal_info: 'Lorem', motivation_info: 'Ipsum', status: :interviewing
+    personal_info: 'Lorem', motivation_info: 'Ipsum', experience_info: 'Ipsum', devote_info: 'Ipsum', status: :interviewing
 )
 
 puts ::Courses::Student.where(user_id: 3, season_id: 1).first_or_create!(
-    personal_info: 'Lorem', motivation_info: 'Ipsum', status: :attending
+    personal_info: 'Lorem', motivation_info: 'Ipsum', experience_info: 'Ipsum', devote_info: 'Ipsum', status: :attending
 )
 
 puts ::Courses::Student.where(user_id: 4, season_id: 1).first_or_create!(
-    personal_info: 'Lorem', motivation_info: 'Ipsum', status: :attending
+    personal_info: 'Lorem', motivation_info: 'Ipsum', experience_info: 'Ipsum', devote_info: 'Ipsum', status: :attending
 )
 
 #=== Test tasks =========================================================================

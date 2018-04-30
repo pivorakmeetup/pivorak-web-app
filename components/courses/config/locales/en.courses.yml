@@ -28,10 +28,23 @@ en:
       status: Status
       personal_info: Personal Info
       motivation_info: Motivation Info
+      experience_info: Experience Info
+      devote_info: Devote Info
       pick_interview_time: Pick interview time
       attending: Attending
       drop: Drop!
       graduate: Graduate students!
+      form:
+        apply_title: Apply for a spot in %{season_name}
+        personal_info_title: Briefly introduce yourself
+        personal_info_description: Tell us about yourself - what’s your background, what are you doing at the moment, what brings you to the world of Ruby?
+        motivation_info_title: Tell us about your motivation
+        motivation_info_description: Tell us why you want to take this course. What do you plan to do with your newly acquired knowledge? Why should we choose your application over others?
+        experience_info_title: What can you do already?
+        experience_info_description: What's your experience with Ruby/Rails so far? Have you done some studying on your own? Can you write a simple web app?
+        devote_info_title: Can you devote 10-15 hours per week to this course?
+        devote_info_description: The course is quite intense - 2 lectures per week, followed by mandatory homework + practical project implementation. Will you be able to find the time?
+      confirm_cancel_attendance: You will not to be able to attendance to this season anymore, are you sure?
 
     seasons:
       plural: Seasons
