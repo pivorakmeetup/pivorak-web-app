@@ -11,5 +11,6 @@ module PivorakWebApp
     config.version   = '1.1.1'
     config.time_zone = 'Kyiv'
     config.autoload_paths << Rails.root.join('lib')
+    config.middleware.use Rack::Attack
   end
 end

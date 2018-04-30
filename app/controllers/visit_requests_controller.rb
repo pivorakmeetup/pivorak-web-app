@@ -2,7 +2,8 @@ class VisitRequestsController < ApplicationController
   before_action :authenticate_user!, only: %i[create destroy]
 
   def show
-    VisitRequest::FinalConfirmation.call(visit_request, params)
+    VisitRequest::FinalConfirmation.call(visit_request, answer: params[:answer])
+    sign_in(:user, visit_request.user)
 
     flash_success(visit_request.status) and default_redirect
   end
@@ -30,7 +31,7 @@ class VisitRequestsController < ApplicationController
   end
 
   def visit_request
-    @visit_request ||= VisitRequest.find(params[:id])
+    @visit_request ||= VisitRequest.find_by!(token: params[:token])
   end
 
   def user_verification_status
