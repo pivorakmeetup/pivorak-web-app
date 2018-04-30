@@ -83,7 +83,7 @@ module Admin
       end
 
       def seasons_params
-        params.require(:season).permit(:title, :start_at, :finish_at, :status)
+        params.require(:season).permit(:title, :start_at, :finish_at, :status, :description)
       end
     end
   end

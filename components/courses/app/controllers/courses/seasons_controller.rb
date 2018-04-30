@@ -9,7 +9,7 @@ module Courses
     end
 
     def mentors
-      @mentors ||= season.mentors.includes(:user)
+      @mentors ||= season.mentors.includes(:user).sort_by { |obj| obj.full_name }
     end
   end
 end

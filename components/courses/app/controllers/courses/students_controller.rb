@@ -33,7 +33,7 @@ module Courses
     end
 
     def student_params
-      params.require(:student).permit(:personal_info, :motivation_info)
+      params.require(:student).permit(:personal_info, :motivation_info, :experience_info, :devote_info)
     end
   end
 end
