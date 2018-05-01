@@ -2,7 +2,7 @@ RSpec.describe 'Members LIST' do
   let!(:user) { create(:user) }
 
   before do
-    assume_admin_logged_in
+    assume_admin_logged_in(supervisor: true)
   end
 
   it 'has member name' do

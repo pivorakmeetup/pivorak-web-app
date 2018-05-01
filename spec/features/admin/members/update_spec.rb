@@ -2,7 +2,7 @@ RSpec.describe 'Members UPDATE' do
   let!(:member) { create(:user, email: 'tester@example.com') }
 
   before do
-    assume_admin_logged_in
+    assume_admin_logged_in(supervisor: true)
     visit "/admin/members/#{member.id}/edit"
   end
 

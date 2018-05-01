@@ -10,6 +10,11 @@ FactoryGirl.define do
       admin true
     end
 
+    trait :supervisor do
+      admin      true
+      supervisor true
+    end
+
     trait :verified do
       verified true
     end

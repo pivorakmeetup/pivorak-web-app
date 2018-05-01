@@ -4,7 +4,7 @@ RSpec.describe 'Visit Requests APPROVE' do
   let!(:visit_request_2) { create(:visit_request, event: event) }
 
   before do
-    assume_admin_logged_in
+    assume_admin_logged_in(supervisor: true)
   end
 
   subject do
