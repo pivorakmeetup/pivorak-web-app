@@ -1,6 +1,6 @@
 RSpec.describe 'Events CREATE' do
   before do
-    assume_admin_logged_in
+    assume_admin_logged_in(supervisor: true)
     visit '/admin/events/new'
   end
 

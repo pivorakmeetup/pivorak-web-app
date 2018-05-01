@@ -3,7 +3,7 @@ RSpec.describe 'Events READ' do
   let!(:event_b) { create(:event, title: 'Test Event B') }
 
   before do
-    assume_admin_logged_in
+    assume_admin_logged_in(supervisor: true)
     visit '/admin/events'
   end
 

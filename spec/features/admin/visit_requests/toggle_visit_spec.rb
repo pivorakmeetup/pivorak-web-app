@@ -4,7 +4,7 @@ RSpec.describe 'Visit Requests TOGGLE LIST' do
   let(:visit_page) { -> { visit "/admin/events/#{event.slug}/visit_requests" } }
 
   before do
-    assume_admin_logged_in
+    assume_admin_logged_in(supervisor: true)
     visit_page.call
   end
 

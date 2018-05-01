@@ -4,7 +4,7 @@ RSpec.describe 'Visit Requests APPROVE' do
   let(:visit_page) { -> { visit "/admin/events/#{event.slug}/visit_requests" } }
 
   before do
-    assume_admin_logged_in
+    assume_admin_logged_in(supervisor: true)
     visit_page.call
 
     click_link I18n.t('visit_requests.approve')

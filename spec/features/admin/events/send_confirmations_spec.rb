@@ -3,7 +3,7 @@ RSpec.describe 'Events SEND CONFIRMATIONS' do
   let!(:visit_request) { create(:visit_request, event: event, status: VisitRequest::APPROVED, waiting_list: false) }
 
   before do
-    assume_admin_logged_in
+    assume_admin_logged_in(supervisor: true)
     visit "/admin/events/#{event.slug}/edit"
   end
 

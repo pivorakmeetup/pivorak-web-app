@@ -3,7 +3,7 @@ RSpec.describe 'Events UPDATE' do
   let(:test_edit_path) { '/admin/events/test-event/edit' }
 
   before do
-    assume_admin_logged_in
+    assume_admin_logged_in(supervisor: true)
     visit test_edit_path
   end
 

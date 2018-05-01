@@ -1,5 +1,5 @@
 class SpeakersController < ApplicationController
-  disabled_feature_until '1.2'
+  disabled_feature_until '1.3'
 
   helper_method :speakers
 
