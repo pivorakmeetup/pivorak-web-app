@@ -19,7 +19,7 @@ Rails.application.routes.draw do
         resources :questions,  except: :destroy
         resource  :journal,    only:   :show, controller: 'journal'
         resource  :graduate,   only:   :create
-        resources :students,   only:   %i[index update] do
+        resources :students,   only:   %i[index show update] do
           resource :drop,      only:   :create, controller: 'drop'
         end
 

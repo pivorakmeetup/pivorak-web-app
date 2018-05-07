@@ -7,19 +7,12 @@
         th                = t 'courses.students.status'
         th.center.aligned = t 'members.full_name'
         th.center.aligned = t 'words.email'
-        th.center.aligned = t 'courses.students.personal_info'
-        th.center.aligned = t 'courses.students.motivation_info'
-        th.center.aligned = t 'courses.students.experience_info'
-        th.center.aligned = t 'courses.students.devote_info'
+        th
 
     tbody
       - students.each do |student|
         tr
           td                = student.status
-          td.center.aligned = student.full_name
+          td.center.aligned = link_to student.full_name, admin_courses_season_student_path(current_season, student)
           td.center.aligned = student.email
-          td.center.aligned = student.personal_info
-          td.center.aligned = student.motivation_info
-          td.center.aligned = student.experience_info
-          td.center.aligned = student.devote_info
           td.center.aligned = drop_student_link(current_season, student)

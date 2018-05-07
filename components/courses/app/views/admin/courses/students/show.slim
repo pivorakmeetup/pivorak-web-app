@@ -1,0 +1,32 @@
+- title t('courses.students.plural')
+
+= admin_courses_seasons_nav do
+
+  .ui.list
+    .item
+      .header = t 'courses.students.status'
+      = student.status
+
+    .item
+      .header = t 'members.full_name'
+      = student.full_name
+
+    .item
+      .header = t 'words.email'
+      = student.email
+
+    .item
+      .header = t 'courses.students.personal_info'
+      = student.personal_info || '(none)'
+
+    .item
+      .header = t 'courses.students.motivation_info'
+      = student.motivation_info || '(none)'
+
+    .item
+      .header = t 'courses.students.experience_info'
+      = student.experience_info || '(none)'
+
+    .item
+      .header = t 'courses.students.devote_info'
+      = student.devote_info || '(none)'
