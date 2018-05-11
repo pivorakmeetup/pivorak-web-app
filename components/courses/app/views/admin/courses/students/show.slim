@@ -30,3 +30,12 @@
     .item
       .header = t 'courses.students.devote_info'
       = student.devote_info || '(none)'
+
+
+  hr
+
+  = simple_form_for student, url: admin_courses_season_student_path(current_season, student), as: :student do |f|
+    .field
+      = f.input :notes, input_html: { rows: 15 }, placeholder: t('courses.students.notes_placeholder')
+    .field
+      = f.button :submit, t('courses.students.save_notes')

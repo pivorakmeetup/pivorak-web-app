@@ -35,6 +35,7 @@ en:
     into: Into
     danger: Danger
     send: Send
+    notes: Notes
 
   resources:
     errors:

@@ -7,6 +7,7 @@
         th                = t 'courses.students.status'
         th.center.aligned = t 'members.full_name'
         th.center.aligned = t 'words.email'
+        th.center.aligned = t 'words.notes'
         th
 
     tbody
@@ -16,3 +17,4 @@
           td.center.aligned = link_to student.full_name, admin_courses_season_student_path(current_season, student)
           td.center.aligned = student.email
           td.center.aligned = drop_student_link(current_season, student)
+          td.center.aligned = student.notes

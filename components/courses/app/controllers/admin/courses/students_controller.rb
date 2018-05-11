@@ -9,7 +9,9 @@ module Admin
       end
 
       def update
-        react_to student.update(student_params)
+        student.update(student_params) ? flash_success : flash_error
+
+        redirect_to admin_courses_season_student_path(current_season, student)
       end
 
       private
@@ -41,7 +43,7 @@ module Admin
       end
 
       def student_params
-        params.require(:student).permit(:status)
+        params.require(:student).permit(:status, :notes)
       end
     end
   end

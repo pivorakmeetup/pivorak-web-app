@@ -34,6 +34,8 @@ en:
       attending: Attending
       drop: Drop!
       graduate: Graduate students!
+      notes_placeholder: As course mentor you able to add/edit short notes about student
+      save_notes: Save Notes
       form:
         apply_title: Apply for a spot in %{season_name}
         personal_info_title: Briefly introduce yourself
