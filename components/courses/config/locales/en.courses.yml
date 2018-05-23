@@ -113,6 +113,10 @@ en:
       comment: Comment
       approved: Approved?
       approve: Approve
+      form:
+        git_url: Please, push your code to github and put the link below
+        showcase_url: In case of app deploy to something like Heroku
+        comment: Comment your work if you wish to
 
     progress:
       singular: Progress
@@ -158,7 +162,8 @@ en:
       test_task:
         create:
           success: Successfully sent!
-          fail: You have just sent test task!
+          fail: You have just submitted test task!
+          error: Please, fill required fields
 
       seasons:
         show_tab:
