@@ -25,13 +25,11 @@ module Courses
     end
 
     def courses_send_test_task_link(season, student)
-      return # TODO: remove when text task form will be stylized
-
       return unless ::Courses::Season::SendTestTaskPolicy.new(season, student).allowed?
 
       link_to t('courses.seasons.send_test_task'),
         new_courses_season_test_task_path(season),
-        class: 'pk-btn pk-btn--medium'
+        class: 'pk-btn pk-btn--medium pk-btn--block pk-cources-seasons__send-task-btn'
     end
 
     def courses_interviews_link(season, student)

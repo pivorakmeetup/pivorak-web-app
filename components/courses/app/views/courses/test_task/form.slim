@@ -1,9 +1,25 @@
-= simple_form_for test_task, url: courses_season_test_task_index_path(current_season), as: :test_task do |f|
-  .fields
-    .six.wide.field = f.input :git_url
-    .six.wide.field = f.input :showcase_url
-    .six.wide.field = f.input :comment
+= content_for :main_body_class, "pk-body--green-bg"
 
-  .fields
-    .sixteen.wide.field.right-align
-      = f.button :submit
+.pk-courses-form
+  h2.pk-uppercase Submit Test Task
+
+  = simple_form_for test_task, url: courses_season_test_task_index_path(current_season), as: :test_task do |f|
+    .form-inputs
+      .pk-input__container.pk-input--container-full-width.mtx
+        = f.input :git_url, placeholder: "Git url",
+          label_html: {class: 'pk-input__label'},
+          input_html: {class: 'pk-input'}
+    .form-inputs
+      .pk-input__container.pk-input--container-full-width.mtx
+        = f.input :showcase_url, placeholder: "Showcase url",
+          label_html: {class: 'pk-input__label'},
+          input_html: {class: 'pk-input'}
+    .form-inputs
+      .pk-input__container.pk-input--container-full-width.mtx
+        = f.input :comment, placeholder: "Comment",
+          label_html: {class: 'pk-input__label'},
+          input_html: {class: 'pk-input pk-input--textarea'}
+
+    .form-actions
+      .mtl.mbl
+        = f.button :submit, "Submit", class: 'pk-btn pk-btn--medium'

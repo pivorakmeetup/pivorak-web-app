@@ -55,7 +55,7 @@ en:
       mentors: Mentors
       status: Status
       register: Register
-      send_test_task: Send Test Task
+      send_test_task: Submit Test Task
       send_homework: Send Homework
       cancel: Cancel attendance
 
