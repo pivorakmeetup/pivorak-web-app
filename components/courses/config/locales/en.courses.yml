@@ -115,7 +115,7 @@ en:
       approve: Approve
       form:
         git_url: Please, push your code to github and put the link below (the github repository MUST not contain "ATM" or "Pivorak" words")
-        showcase_url: In case of app deploy to something like Heroku
+        showcase_url: In case when app has been deployed to something like Heroku
         comment: Comment your work if you wish to
 
     progress:
