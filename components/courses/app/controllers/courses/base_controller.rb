@@ -11,7 +11,7 @@ module Courses
 
     def current_student
       @current_student ||= current_season.students
-        .find_by(user_id: current_user.id)
+        .find_by!(user_id: current_user.id)
     end
 
     private
