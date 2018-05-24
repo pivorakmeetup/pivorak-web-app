@@ -1,6 +1,7 @@
 module Courses
   class BaseController < ApplicationController
     before_action :authenticate_user!
+
     helper_method :current_season, :current_student
 
     def current_season
