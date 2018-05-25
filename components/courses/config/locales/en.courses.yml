@@ -93,6 +93,8 @@ en:
       mentors_assessed: Mentors Assessed
       approve: Approve
       approved: Approved
+      picked_time: "All done! Your interview is scheduled for: : %{timeslot}. How: %{description}"
+
 
     interview_assessments:
       rate: Please rate a student on a scale of 1-5

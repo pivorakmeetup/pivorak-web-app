@@ -40,6 +40,14 @@ module Courses
         class: 'pk-btn pk-btn--medium'
     end
 
+    def courses_interviews_info(season, student)
+      return unless ::Courses::Season::InterviewsPolicy.new(season, student).student_has_interview?
+
+      t 'courses.interviews.picked_time',
+        timeslot: student.interview.start_at.strftime("%e %b - %H:%M"),
+        description: student.interview.description
+    end
+
     def courses_cancel_link(season, student)
       return if student.nil? || student.status.to_sym == Courses::Student::DROPPED ||
         student.status.to_sym == Courses::Student::GRADUATED ||

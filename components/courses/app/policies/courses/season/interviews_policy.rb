@@ -10,6 +10,10 @@ module Courses
         season_has_status_selection? && student_test_task_done? && !student_has_interview?
       end
 
+      def student_has_interview?
+        Courses::Interview.find_by(student: student)
+      end
+
       private
 
       attr_reader :season, :student
@@ -20,10 +24,6 @@ module Courses
 
       def student_test_task_done?
         student&.test_task_done?
-      end
-
-      def student_has_interview?
-        Courses::Interview.find_by(student: student)
       end
     end
   end
