@@ -22,7 +22,7 @@ module PdfReports
 
     def formated_data
       @formated_data ||= visit_requests
-                         .map { |vr| vr.user.full_name }
+                         .map { |vr| vr.user.first_name.upcase }
                          .sort
                          .each_slice(settings.fetch(:columns, 1)).to_a
     end
