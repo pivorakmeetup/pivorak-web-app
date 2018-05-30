@@ -9,7 +9,6 @@
       - interviews.each do |interview|
         tr
           td = format_timestamp(interview.start_at)
-          td = interview.description
           td = link_to t('courses.interviews.take'),
             courses_season_interview_path(current_season, interview),
               method: 'patch',
