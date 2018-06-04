@@ -2,7 +2,7 @@ module Admin
   module Courses
     class InterviewsController < ::Admin::Courses::BaseController
       helper_method :interviews, :interview, :questions,
-        :assessments_hash, :average_assessment, :interview_assessment
+        :interviews_with_assessments, :average_assessment, :interview_assessment
 
       before_action :authenticate_interviewer!, only: %i[edit update]
 
@@ -44,7 +44,6 @@ module Admin
           .order(:status)
           .includes(mentor: :user)
           .includes(student: :user)
-          .page(params[:page])
       end
 
       def interviews_breadcrumb
@@ -73,10 +72,10 @@ module Admin
         current_season.questions
       end
 
-      def assessments_hash
-        @assessments_hash ||= ::Courses::Interview::AssessmentsHash
+      def interviews_with_assessments
+        @interviews_with_assessments ||= ::Courses::Interview::WithAssessments
           .call(interviews, questions)
-          .sort_by { |_k, v| -v[:average] }
+          .sort { |a,b| [a.status, -a.average_assessment] <=> [b.status, -b.average_assessment]}
       end
 
       def average_assessment

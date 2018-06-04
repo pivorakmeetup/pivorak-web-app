@@ -2,6 +2,8 @@ module Courses
   class Interview < ApplicationRecord
     include ApplicationHelper
 
+    attr_accessor :assessments_count, :average_assessment
+
     self.table_name = 'courses_interviews'
 
     belongs_to :mentor
