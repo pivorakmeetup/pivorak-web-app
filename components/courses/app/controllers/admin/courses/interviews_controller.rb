@@ -43,6 +43,7 @@ module Admin
         @interviews ||= current_season.interviews
           .includes(mentor: :user)
           .includes(student: :user)
+          .order(:status)
           .page(params[:page])
       end
 
