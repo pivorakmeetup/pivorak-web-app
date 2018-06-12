@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180511133719) do
+ActiveRecord::Schema.define(version: 20180612133741) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 20180511133719) do
     t.integer "student_id"
     t.integer "lecture_id"
     t.integer "mentor_id"
-    t.integer "homework_mark"
+    t.float   "homework_mark"
     t.integer "lecture_presence", default: 0
     t.index ["lecture_id"], name: "index_courses_progress_on_lecture_id", using: :btree
     t.index ["mentor_id"], name: "index_courses_progress_on_mentor_id", using: :btree

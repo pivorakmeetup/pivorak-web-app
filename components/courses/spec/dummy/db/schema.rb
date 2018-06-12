@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170731110533) do
+ActiveRecord::Schema.define(version: 20180612133741) do
 
   create_table "courses_assessments", force: :cascade do |t|
     t.integer  "interview_assessment_id"
@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 20170731110533) do
     t.integer "student_id"
     t.integer "lecture_id"
     t.integer "mentor_id"
-    t.integer "homework_mark"
+    t.float   "homework_mark"
     t.integer "lecture_presence", default: 0
     t.index ["lecture_id"], name: "index_courses_progress_on_lecture_id"
     t.index ["mentor_id"], name: "index_courses_progress_on_mentor_id"
@@ -108,6 +108,9 @@ ActiveRecord::Schema.define(version: 20170731110533) do
     t.text     "motivation_info"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.text     "experience_info"
+    t.text     "devote_info"
+    t.text     "notes"
     t.index ["user_id"], name: "index_courses_students_on_user_id"
   end
 
