@@ -1,13 +1,27 @@
-- title resource_form_text(homework)
+= content_for :main_body_class, "pk-body--green-bg"
 
-= resource_form_header(homework)
+.pk-courses-form
+  h2.pk-uppercase = resource_form_text(homework)
 
-= simple_form_for homework, url: courses_season_homeworks_path(current_season), as: :homework do |f|
-  .fields
-    .six.wide.field = f.input :git_url
-    .six.wide.field = f.input :showcase_url
-    .six.wide.field = f.input :lecture_id, collection: lectures
+  = simple_form_for homework, url: courses_season_homeworks_path(current_season), as: :homework do |f|
+    .form-inputs
+      .pk-input__container.pk-input--container-full-width.mtx
+        = f.input :git_url, placeholder: "Git url",
+          label_html: {class: 'pk-input__label'},
+          input_html: {class: 'pk-input'}
 
-  .fields
-    .sixteen.wide.field.right-align
-      = f.button :submit
+    .form-inputs
+      .pk-input__container.pk-input--container-full-width.mtx
+        = f.input :showcase_url, placeholder: "Showcase url",
+          label_html: {class: 'pk-input__label'},
+          input_html: {class: 'pk-input'}
+
+    .form-inputs
+      .pk-input__container.pk-input--container-full-width.mtx.pk-input--select
+        = f.input :lecture_id, placeholder: "Lecture", collection: lectures,
+          label_html: {class: 'pk-input__label'},
+          input_html: {class: 'pk-input pk-input--select'}
+
+    .form-actions
+      .mtl.mbl
+        = f.button :submit, "Submit", class: 'pk-btn pk-btn--medium'

@@ -1,6 +1,7 @@
 $namespace: ".pk-input";
 
 #{$namespace}__container {
+  position: relative;
   > div {
     position: relative;
     box-sizing: border-box;
@@ -101,4 +102,18 @@ $namespace: ".pk-input";
 #{$namespace}--textarea {
   min-height: 100px;
   resize: none;
+}
+
+#{$namespace}--select {
+  &:after {
+    content: "";
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    background: transparent image-url('arrow-select.svg') 0 0 no-repeat;
+    width: 24px;
+    height: 24px;
+    margin-top: -12px;
+    z-index: 1;
+  }
 }
