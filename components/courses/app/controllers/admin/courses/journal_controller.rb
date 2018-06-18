@@ -20,7 +20,7 @@ module Admin
       end
 
       def lectures
-        @lectures ||= current_season.lectures
+        @lectures ||= current_season.lectures.order(:started_at)
       end
 
       def total_hash
