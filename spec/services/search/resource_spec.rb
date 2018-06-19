@@ -7,7 +7,8 @@ RSpec.describe Search::Resource do
       let(:result) { described_class.call(query: string, model: user.class) }
 
       it 'returns resource specific collection' do
-        expect(result).to be_an_instance_of User::ActiveRecord_Relation
+        expect(result).to be_a ActiveRecord::Relation
+        expect(result.first).to be_a User
       end
 
       it 'returns correct amount of results' do

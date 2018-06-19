@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :visit_request do
     event
     user

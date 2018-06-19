@@ -22,7 +22,8 @@ RSpec.describe Search::Multisearch do
           let(:result) { described_class.call(query: string) }
 
           it 'returns PgSearch collection' do
-            expect(result).to be_an_instance_of PgSearch::Document::ActiveRecord_Relation
+            expect(result).to be_a ActiveRecord::Relation
+            expect(result.first).to be_a PgSearch::Document
           end
 
           it 'returns correct amount of results' do

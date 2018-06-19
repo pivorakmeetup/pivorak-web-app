@@ -54,10 +54,13 @@ RSpec.describe 'Talks READ' do
     let!(:talk_lastly_created)     { create(:talk, title: 'Test Talk C') }
 
     before do
+      Capybara.ignore_hidden_elements = false
       assume_admin_logged_in
       visit '/admin/talks'
     end
 
-      it { expect(page).to have_text(/(Test Talk C).+(Test Talk B).+(Test Talk A)/) }
+    after { Capybara.ignore_hidden_elements = true }
+
+    it { expect(page).to have_text(/(Test Talk C).+(Test Talk B).+(Test Talk A)/) }
   end
 end
