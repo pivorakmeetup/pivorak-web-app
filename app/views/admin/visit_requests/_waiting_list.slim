@@ -1,0 +1,18 @@
+h3= t('visit_requests.waiting_list')
+table#visit-requests.ui.compact.selectable.grey.table
+  thead
+    tr
+      th = t('members.verified')
+      th = t 'words.name'
+      th.center.aligned = t 'words.list'
+      th.center.aligned = t 'words.status'
+      - unless event.confirmation? || event.passed?
+        th
+        th
+
+
+  tbody
+    - visit_requests.waiting_list.each do |visit_request|
+      tr id = "visit-request-#{visit_request.id}"
+        = render partial: 'visit_request',
+                locals: { visit_request: visit_request, event: event }

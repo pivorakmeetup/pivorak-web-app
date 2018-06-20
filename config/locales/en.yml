@@ -179,8 +179,8 @@ en:
     cancel_attendace: Cancel attendance
     plural: Visit Requests
     action: to attend this event
-    main_list: Main
-    waiting_list: Waiting
+    main_list: Main list
+    waiting_list: Waiting list
     visited: Visited
     hello: Hello!
     waiting: Waiting

@@ -9,4 +9,5 @@ td = link_to visit_request.user.full_name, edit_admin_member_path(visit_request.
   - unless event.confirmation? || event.passed?
     td.center.aligned
       = admin_approve_visit_request_link(visit_request)
+    td.center.aligned
       = admin_cancel_visit_request_link(visit_request)
