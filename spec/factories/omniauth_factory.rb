@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :omniauth_params, class: Hash do
     provider Devise.omniauth_providers.sample
     uid      Faker::Number.number(16)

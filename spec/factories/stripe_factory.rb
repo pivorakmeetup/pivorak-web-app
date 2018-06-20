@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :valid_credit_card, class: Hash do
     number     '42' *  8
     exp_month  Faker::Number.between(1, 12)
