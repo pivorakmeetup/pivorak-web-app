@@ -11,7 +11,7 @@ module Courses
       end
 
       def student_has_interview?
-        Courses::Interview.find_by(student: student)
+        season_has_status_selection? && Courses::Interview.find_by(student: student)
       end
 
       private

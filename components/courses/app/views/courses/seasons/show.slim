@@ -3,11 +3,14 @@
 .pk-container
   h1.text-center = season.title
   h2.text-center = courses_season_dates(season)
-  p = MarkdownRenderer.call(season.description)
+  p = MarkdownRenderer.call(season.description) if season.description
 
   h2 = t 'courses.mentors.plural'
   - mentors.each do |mentor|
     p(style="margin: 0;") = mentor.full_name
+
+  - if season.live?
+    p.text-center = render 'journal'
 
   p.text-center
     = courses_register_link(season, current_student)
@@ -18,3 +21,5 @@
     br
     br
     = courses_cancel_link(season, current_student)
+
+
