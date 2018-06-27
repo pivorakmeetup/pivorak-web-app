@@ -24,7 +24,9 @@ RSpec.describe 'Setting progress' do
     end
 
     it 'has buttons for mark set' do
-      expect(page).to have_link '-1' && '0' && '1'
+      ::Courses::Progress::ALLOWED_MARKS.compact.each do |mark|
+        expect(page).to have_link mark.to_s
+      end
     end
   end
 
