@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Progress UPDATE' do
+RSpec.describe Courses::Progress, type: :model do
   let!(:season)   { create(:season, title: 'Test Season') }
   let!(:user)     { create(:user) }
   let!(:venue)    { create(:venue) }
