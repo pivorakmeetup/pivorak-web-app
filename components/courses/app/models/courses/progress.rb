@@ -7,8 +7,8 @@ module Courses
     belongs_to :mentor
     belongs_to :homework
 
-    ALLOWED_MARKS = [nil, -1, 0, 0.5, 1, 1.5, 2]
+    ALLOWED_MARKS = [-1, 0, 0.5, 1, 1.5, 2]
 
-    validates :homework_mark, inclusion: { in: ALLOWED_MARKS }
+    validates :homework_mark, inclusion: { in: ALLOWED_MARKS }, allow_blank: true
   end
 end
