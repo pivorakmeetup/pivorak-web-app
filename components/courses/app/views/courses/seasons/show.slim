@@ -1,18 +1,25 @@
-h3 = season.title
-p  = courses_season_dates(season)
-h5 = season.status
-p  = season.description
+= content_for :main_body_class, "pk-body--green-bg pk-courses-seasons"
 
-br
+.pk-container
+  h1.text-center = season.title
+  h2.text-center = courses_season_dates(season)
+  p = MarkdownRenderer.call(season.description) if season.description
 
-h2 = t 'courses.mentors.plural'
-- mentors.each do |mentor|
-  p = mentor.full_name
+  h2 = t 'courses.mentors.plural'
+  - mentors.each do |mentor|
+    p(style="margin: 0;") = mentor.full_name
 
-br
+  - if season.live?
+    p.text-center = render 'journal'
 
-p = courses_register_link(season, current_student)
-p = courses_send_test_task_link(season, current_student)
-p = courses_send_homework_link(season, current_student)
-p = courses_interviews_link(season, current_student)
-p = courses_cancel_link(season, current_student)
+  p.text-center
+    = courses_register_link(season, current_student)
+    = courses_send_test_task_link(season, current_student)
+    = courses_send_homework_link(season, current_student)
+    = courses_interviews_link(season, current_student)
+    = courses_interviews_info(season, current_student)
+    br
+    br
+    = courses_cancel_link(season, current_student)
+
+

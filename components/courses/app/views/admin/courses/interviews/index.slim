@@ -17,17 +17,15 @@
         th
 
     tbody
-      - assessments_hash.each do |interview, assessment|
+      - interviews_with_assessments.each do |interview|
         tr
           td = interview.status
           td = link_to interview.full_name, admin_courses_season_interview_path(current_season, interview) if interview.full_name
           td = interview.email
           td = interview.mentor_name
           td = format_timestamp(interview.start_at)
-          td = assessment[:count]
-          td = assessment[:average]
+          td = interview.assessments_count
+          td = interview.average_assessment
           td = approve_after_interview_button(current_user, current_season, interview)
           td = controls do
             = link_to icon(:edit, t('words.edit')), edit_admin_courses_season_interview_path(current_season, interview), class: 'item'
-
-  = paginate interviews

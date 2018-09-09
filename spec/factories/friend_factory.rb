@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :friend do
     name        Faker::Name.name
     description Faker::Lorem.paragraph

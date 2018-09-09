@@ -52,6 +52,7 @@ header.pk-header class="#{yield(:main_header_class)}"
                 ul.pk-header__li-list
                   /li.pk-header__li-list-item = events_link
                   li.pk-header__li-list-item = talks_link
+                  li.pk-header__li-list-item = link_to "Ruby Summer Course 2018", "https://pivorak.com/ruby-course"
 
               /li.pk-list__unit.pk-header__li-list-wr
               /  a = "community"
@@ -62,14 +63,14 @@ header.pk-header class="#{yield(:main_header_class)}"
               /li.pk-list__unit = goals_link
 
               li.pk-list__unit
-                = link_to "supporters", supporters_path
+                = link_to "friends", supporters_path
 
               li.pk-list__unit.pk-header__li-list-wr
                 a = "contacts"
                 ul.pk-header__li-list
+                  li.pk-header__li-list-item = page_link code_of_conduct_page
                   li.pk-header__li-list-item = page_link contacts_page
                   li.pk-header__li-list-item = page_link about_page
-                  /li.pk-header__li-list-item = chat_link
 
               - if user_signed_in?
                 / .pk-avatar     = image_tag gravatar_url(current_user)

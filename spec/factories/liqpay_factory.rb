@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :liqpay_valid_response_data, class: Hash do
     status     :success
     amount     Faker::Number.number(3)

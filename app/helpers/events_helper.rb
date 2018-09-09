@@ -17,7 +17,7 @@ module EventsHelper
     return if visit_request&.canceled?
 
     link_to t('visit_requests.cancel_attendace'),
-      event_visit_request_path(visit_request.event, visit_request),
+      event_visit_request_path(visit_request.event, visit_request, token: visit_request.token),
       method: :delete, data: { confirm: t('phrases.confirm') }
   end
 

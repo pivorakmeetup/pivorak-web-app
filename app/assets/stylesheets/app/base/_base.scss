@@ -33,6 +33,10 @@ body {
   &.pk-body--main-page {
     min-height: 900px;
   }
+
+  &.pk-body--green-bg {
+    background: #50B27E;
+  }
 }
 
 main {
@@ -102,6 +106,17 @@ q {
   color:            white !important;
 }
 
+.main-header {
+  font-size: 2.5rem;
+  font-family: $main-font-family;
+  font-weight: bold;
+  color: #FCF7EF;
+  letter-spacing: 0.15375em;
+  text-transform: uppercase;
+  margin: 32px 0 60px 0;
+  text-align: center;
+}
+
 .pk-container {
   width: (960px + (30px * 2));
   padding: 0 30px;
@@ -109,4 +124,8 @@ q {
   @include breakpoint-max((960 + (30 * 2))) {
     width: 100%;
   }
+}
+
+.pk-default-text-font {
+  font-family: 'Arvo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }

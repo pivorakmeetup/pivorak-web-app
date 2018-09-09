@@ -6,7 +6,7 @@ RSpec.describe 'Visit Requests APPROVE' do
   let(:user_c)           { create(:user, first_name: 'C', last_name: 'User') }
   let(:emails_list)      { [user_a, user_b].map(&:email).join(', ') + ', fake@user.com' }
 
-  before { assume_admin_logged_in }
+  before { assume_admin_logged_in(supervisor: true) }
 
   context 'visit not passed event visit requests' do
     before { visit admin_event_visit_requests_path(not_passed_event) }

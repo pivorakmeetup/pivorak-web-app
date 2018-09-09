@@ -140,3 +140,8 @@ $namespace: ".pk-btn";
     border-bottom: 1px solid $link-color;
   }
 }
+
+#{$namespace}--block {
+  display: block;
+  margin: 0 auto;
+}

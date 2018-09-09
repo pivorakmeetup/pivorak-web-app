@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :user do
     sequence(:first_name) { |n| "#{Faker::Name.first_name}#{n}" }
     sequence(:last_name) { |n| "#{Faker::Name.last_name}#{n}" }
@@ -8,6 +8,11 @@ FactoryGirl.define do
 
     trait :admin do
       admin true
+    end
+
+    trait :supervisor do
+      admin      true
+      supervisor true
     end
 
     trait :verified do

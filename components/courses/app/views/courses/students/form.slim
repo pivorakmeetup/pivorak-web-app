@@ -1,12 +1,33 @@
-- title resource_form_text(student)
+= content_for :main_body_class, "pk-body--green-bg"
 
-= resource_form_header(student)
+.pk-courses-form
+  - title t('courses.students.form.apply_title', season_name: current_season.title)
 
-= simple_form_for student, url: courses_season_students_path(current_season), as: :student do |f|
-  .fields
-    .six.wide.field = f.input :personal_info
-    .six.wide.field = f.input :motivation_info
-    
-  .fields
-    .sixteen.wide.field.right-align
-      = f.button :submit
+  h2.pk-uppercase = t('courses.students.form.apply_title', season_name: current_season.title)
+
+  = simple_form_for student, url: courses_season_students_path(current_season), as: :student do |f|
+    .form-inputs
+      .pk-input__container.pk-input--container-full-width.mtx
+        p.text-left.mbx = t('courses.students.form.personal_info_description')
+        = f.input :personal_info, placeholder: t('courses.students.form.personal_info_title'),
+          label_html: {class: 'pk-input__label'},
+          input_html: {class: 'pk-input pk-input--textarea'}
+      .pk-input__container.pk-input--container-full-width.mtx
+        p.text-left.mbx = t('courses.students.form.motivation_info_description')
+        = f.input :motivation_info, placeholder: t('courses.students.form.motivation_info_title'),
+          label_html: {class: 'pk-input__label'},
+          input_html: {class: 'pk-input pk-input--textarea'}
+      .pk-input__container.pk-input--container-full-width.mtx
+        p.text-left.mbx = t('courses.students.form.experience_info_description')
+        = f.input :experience_info, placeholder: t('courses.students.form.experience_info_title'),
+          label_html: {class: 'pk-input__label'},
+          input_html: {class: 'pk-input pk-input--textarea'}
+      .pk-input__container.pk-input--container-full-width.mtx
+        p.text-left.mbx = t('courses.students.form.devote_info_description')
+        = f.input :devote_info, placeholder: t('courses.students.form.devote_info_title'),
+          label_html: {class: 'pk-input__label'},
+          input_html: {class: 'pk-input pk-input--textarea'}
+
+    .form-actions
+      .mtl.mbl
+        = f.button :submit, "Apply", class: 'pk-btn pk-btn--medium'

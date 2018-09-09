@@ -26,7 +26,7 @@ RSpec.describe 'Goals UPDATE' do
       fill_in 'Amount',  with: 'Some value'
       click_button 'Update Goal'
 
-      expect_an_error goal_amount: :numericality
+      expect(page.find('div.ui.red.pointing.above.label.error').text).to eq('is not a number')
     end
   end
 

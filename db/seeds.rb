@@ -1,4 +1,4 @@
-require 'factory_girl_rails'
+require 'factory_bot_rails'
 
 #=== Users ====================================================================
 puts User.where(email: 'admin@pivorak.com').first_or_create!(

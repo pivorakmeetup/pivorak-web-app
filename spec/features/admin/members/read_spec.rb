@@ -3,7 +3,7 @@ RSpec.describe 'Members READ' do
   let!(:user_b) { create(:user, first_name: 'Second', last_name: 'User') }
 
   before do
-    assume_admin_logged_in
+    assume_admin_logged_in(supervisor: true)
     visit '/admin/members'
   end
 

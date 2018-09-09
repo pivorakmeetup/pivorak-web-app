@@ -22,7 +22,6 @@ Before database setup you should install Redis. Look install instructions here:
 **Note!** You should have PostgreSQL >= 9.4
 ```sh
 $ rails db:setup
-$ cp config/environments/development.rb.example config/environments/development.rb
 $ rails s
 ```
 

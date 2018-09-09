@@ -1,6 +1,6 @@
 module Courses
   class Interview < ApplicationRecord
-    class AssessmentsHash < ApplicationService
+    class WithAssessments < ApplicationService
       DEFAULT_VALUE = 0.0
 
       def initialize(interviews, questions)
@@ -9,9 +9,11 @@ module Courses
       end
 
       def call
-        interviews.each_with_object({}) do |interview, assessments_hash|
-          assessment = { count: mentors_count(interview), average: average_assessment(interview) }
-          assessments_hash.merge!(interview => assessment)
+        interviews.map do |interview|
+          interview.assessments_count = mentors_count(interview)
+          interview.average_assessment = average_assessment(interview)
+
+          interview
         end
       end
 

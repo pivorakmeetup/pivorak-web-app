@@ -3,7 +3,7 @@ RSpec.describe 'Events READ' do
   let!(:event_b) { create(:event, title: 'Test Event B') }
 
   before do
-    assume_admin_logged_in
+    assume_admin_logged_in(supervisor: true)
     visit '/admin/events'
   end
 
@@ -25,7 +25,7 @@ RSpec.describe 'Events READ' do
 
   context 'paginate more than 10 records on the page' do
     before do
-      11.times { FactoryGirl.create(:event) }
+      11.times { FactoryBot.create(:event) }
       visit '/admin/events'
     end
 

@@ -1,6 +1,6 @@
 require 'dotenv/load'
 # config valid only for current version of Capistrano
-lock "3.8.1"
+lock "3.11.0"
 
 set :application, proc { "pivorak-web-app_#{fetch :stage}" }
 set :repo_url, 'git@github.com:pivorakmeetup/pivorak-web-app.git'

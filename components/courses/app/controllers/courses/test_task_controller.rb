@@ -2,7 +2,6 @@ module Courses
   class TestTaskController < BaseController
     helper_method :test_task, :test_tasks
     before_action :execute_create_policy
-    before_action :authenticate_user!, only: %i[create new]
 
     def new
       @test_task = ::Courses::TestTask.new

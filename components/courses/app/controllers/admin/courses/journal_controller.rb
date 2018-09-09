@@ -11,7 +11,7 @@ module Admin
 
       def journal_breadcrumb
        add_breadcrumb 'courses.journal.singular',
-        path: admin_courses_season_journal_path(current_season)
+         path: admin_courses_season_journal_path(current_season)
       end
 
       def students
@@ -20,7 +20,7 @@ module Admin
       end
 
       def lectures
-        @lectures ||= current_season.lectures
+        @lectures ||= current_season.lectures.order(:started_at)
       end
 
       def total_hash

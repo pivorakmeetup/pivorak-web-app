@@ -1,6 +1,8 @@
+= content_for :main_body_class, "pk-body--green-bg"
+
 - title t('phrases.show_resource', resource: t('pages.singular'), title: page.title)
 
-.pk-container
-  h2 = page.title
+.pk-container.pk-default-text-font
+  h2.main-header = page.title
 
   .pk-static-page = MarkdownRenderer.call(page.body)

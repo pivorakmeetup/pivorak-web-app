@@ -5,6 +5,8 @@ module Admin
     before_action :add_new_breadcump,  only: %i[new create]
     before_action :add_edit_breadcump, only: %i[edit update]
 
+    before_action :only_supervisor!
+
     def new
       @event = Event::New.call
       render_form

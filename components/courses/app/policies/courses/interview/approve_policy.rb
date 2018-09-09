@@ -9,7 +9,7 @@ module Courses
       def allowed?
         current_user_interviewer? &&
           interview.completed? &&
-          interview.student.interviewing?
+          interview.student&.interviewing?
       end
 
       private
