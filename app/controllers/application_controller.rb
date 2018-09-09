@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception, prepend: true
 
-  helper_method :admin?, :about_page, :contacts_page
+  helper_method :admin?, :about_page, :contacts_page, :code_of_conduct_page
 
   delegate :admin?, to: :current_user, allow_nil: true
 
@@ -38,6 +38,10 @@ class ApplicationController < ActionController::Base
 
   def contacts_page
     @contacts_page ||= Page.find_by(url: 'contacts')
+  end
+
+  def code_of_conduct_page
+    @code_of_conduct_page ||= Page.find_by(url: 'codeofconduct')
   end
 
   def flash_success(key = nil)

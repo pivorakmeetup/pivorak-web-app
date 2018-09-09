@@ -1,6 +1,7 @@
 module Courses
   class BaseController < ApplicationController
     before_action :authenticate_user!
+
     helper_method :current_season, :current_student
 
     def current_season
@@ -11,7 +12,7 @@ module Courses
 
     def current_student
       @current_student ||= current_season.students
-        .find_by(user_id: current_user.id)
+        .find_by!(user_id: current_user.id)
     end
 
     private

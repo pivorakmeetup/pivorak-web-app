@@ -4,6 +4,7 @@ module Courses
 
       def initialize(interview)
         @interview = interview
+        @student = interview.student
       end
 
       def allowed?
@@ -15,10 +16,10 @@ module Courses
 
       private
 
-      attr_reader :interview
+      attr_reader :interview, :student
 
       def interview_has_a_student?
-        interview.student
+        student.present?
       end
 
       def interview_has_a_video_url?
@@ -30,7 +31,7 @@ module Courses
       end
 
       def student_has_interviewing_status?
-        interview.student.interviewing?
+        student.interviewing?
       end
     end
   end

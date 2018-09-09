@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  disabled_feature_until '1.2'
+  disabled_feature_until '1.3'
 
   helper_method :visit_request, :event, :events, :attendees, :talks
 

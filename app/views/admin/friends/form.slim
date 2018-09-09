@@ -3,9 +3,13 @@
 = resource_form_header(friend, label: :name)
 
 = simple_form_for [:admin, friend] do |f|
-  .right-align
-    = admin_back_link(:friends)
-    = f.button :submit
+
+  .fields
+    .four.wide.field.ui.slider.checkbox
+      = f.input :published, as: :boolean
+    .twelve.wide.field.right-align
+      = admin_back_link(:friends)
+      = f.button :submit
 
   .two.fields
     = f.input :name

@@ -6,7 +6,7 @@ RSpec.describe 'Events ASSIGN_TALK' do
     assigned = create(:talk, :assigned, title: 'talk-assigned')
     talk = create(:talk, title: 'talk')
 
-    assume_admin_logged_in
+    assume_admin_logged_in(supervisor: true)
     visit test_edit_path
 
     expect(page).to have_content(talk.title)
@@ -16,7 +16,7 @@ RSpec.describe 'Events ASSIGN_TALK' do
   it 'assigned talks are checked as assigned' do
     talk = create(:talk, title: 'talk', event: event)
 
-    assume_admin_logged_in
+    assume_admin_logged_in(supervisor: true)
     visit test_edit_path
 
     expect(page.has_checked_field?(talk.title)).to be_truthy
@@ -25,7 +25,7 @@ RSpec.describe 'Events ASSIGN_TALK' do
   it 'assigns talk to event' do
     talk = create(:talk, title: 'talk')
 
-    assume_admin_logged_in
+    assume_admin_logged_in(supervisor: true)
     visit test_edit_path
 
     page.check talk.title

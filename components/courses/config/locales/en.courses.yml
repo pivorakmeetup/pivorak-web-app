@@ -28,10 +28,25 @@ en:
       status: Status
       personal_info: Personal Info
       motivation_info: Motivation Info
+      experience_info: Experience Info
+      devote_info: Devote Info
       pick_interview_time: Pick interview time
       attending: Attending
       drop: Drop!
       graduate: Graduate students!
+      notes_placeholder: As course mentor you able to add/edit short notes about student
+      save_notes: Save Notes
+      form:
+        apply_title: Apply for a spot in %{season_name}
+        personal_info_title: Briefly introduce yourself
+        personal_info_description: Tell us about yourself - what’s your background, what are you doing at the moment, what brings you to the world of Ruby?
+        motivation_info_title: Tell us about your motivation
+        motivation_info_description: Tell us why you want to take this course. What do you plan to do with your newly acquired knowledge? Why should we choose your application over others?
+        experience_info_title: What can you do already?
+        experience_info_description: What's your experience with Ruby/Rails so far? Have you done some studying on your own? Can you write a simple web app?
+        devote_info_title: Can you devote 10-15 hours per week to this course?
+        devote_info_description: The course is quite intense - 2 lectures per week, followed by mandatory homework + practical project implementation. Will you be able to find the time?
+      confirm_cancel_attendance: You will not to be able to attendance to this season anymore, are you sure?
 
     seasons:
       plural: Seasons
@@ -40,7 +55,7 @@ en:
       mentors: Mentors
       status: Status
       register: Register
-      send_test_task: Send Test Task
+      send_test_task: Submit Test Task
       send_homework: Send Homework
       cancel: Cancel attendance
 
@@ -78,6 +93,8 @@ en:
       mentors_assessed: Mentors Assessed
       approve: Approve
       approved: Approved
+      picked_time: "All done! Your interview is scheduled for: : %{timeslot}. How: %{description}"
+
 
     interview_assessments:
       rate: Please rate a student on a scale of 1-5
@@ -98,6 +115,10 @@ en:
       comment: Comment
       approved: Approved?
       approve: Approve
+      form:
+        git_url: Please, push your code to github and put the link below (the github repository MUST not contain "ATM" or "Pivorak" words)
+        showcase_url: In case when app has been deployed to something like Heroku
+        comment: Comment your work if you wish to
 
     progress:
       singular: Progress
@@ -143,7 +164,8 @@ en:
       test_task:
         create:
           success: Successfully sent!
-          fail: You have just sent test task!
+          fail: You have just submitted test task!
+          error: Please, fill required fields
 
       seasons:
         show_tab:

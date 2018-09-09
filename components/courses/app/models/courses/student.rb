@@ -24,6 +24,8 @@ module Courses
 
     validates :personal_info,   presence: true
     validates :motivation_info, presence: true
+    validates :experience_info, presence: true
+    validates :devote_info,     presence: true
     validates :user_id,         uniqueness: { scope: :season_id }
   end
 end

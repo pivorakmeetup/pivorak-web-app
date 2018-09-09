@@ -1,22 +1,18 @@
-- title t('courses.interviews.plural')
+= content_for :main_body_class, "pk-body--green-bg"
 
-h2 = t('courses.interviews.plural')
+.pk-container
+  h1.text-center
+    = t('courses.interviews.plural')
 
-table.ui.very.basic.table
-  thead
-    tr
-      th = t 'courses.interviews.start_at'
-      th = t 'courses.interviews.description'
-      th
+  table.pk-table(style="margin: 0 auto;")
+    tbody
+      - interviews.each do |interview|
+        tr
+          td = format_timestamp(interview.start_at)
+          td = interview.description
+          td = link_to t('courses.interviews.take'),
+            courses_season_interview_path(current_season, interview),
+              method: 'patch',
+                data: { confirm: t('phrases.confirm') }
 
-  tbody
-    - interviews.each do |interview|
-      tr
-        td = format_timestamp(interview.start_at)
-        td = interview.description
-        td = link_to t('courses.interviews.take'),
-          courses_season_interview_path(current_season, interview),
-            method: 'patch',
-              data: { confirm: t('phrases.confirm') }
-
-  = paginate interviews
+    = paginate interviews

@@ -3,6 +3,7 @@ module Admin
     helper_method :visit_requests, :event, :visitors_ids, :confirmed_ids, :applied_ids,
                   :pending_ids, :approved_ids
 
+    before_action :only_supervisor!
 
     def index
       add_breadcrumb 'events.plural', path: :admin_events_path

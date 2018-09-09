@@ -1,14 +1,17 @@
 module Admin
   module Courses
     class StudentsController < ::Admin::Courses::BaseController
-      helper_method :students, :total
+      helper_method :students, :student, :total
 
       breadcrumps do
         add :students_breadcrumb
+        add :student_breadcrumb, only: :show
       end
 
       def update
-        react_to student.update(student_params)
+        student.update(student_params) ? flash_success : flash_error
+
+        redirect_to admin_courses_season_student_path(current_season, student)
       end
 
       private
@@ -34,8 +37,13 @@ module Admin
           path: admin_courses_season_students_path(current_season)
       end
 
+      def student_breadcrumb
+        add_breadcrumb student, label: :full_name,
+          path: admin_courses_season_students_path(current_season)
+      end
+
       def student_params
-        params.require(:student).permit(:status)
+        params.require(:student).permit(:status, :notes)
       end
     end
   end

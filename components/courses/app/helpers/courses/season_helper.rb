@@ -12,28 +12,40 @@ module Courses
       return unless ::Courses::Season::SendHomeworkPolicy.new(season, student).allowed?
 
       link_to t('courses.seasons.send_homework'),
-        new_courses_season_homework_path(season)
+        new_courses_season_homework_path(season),
+        class: 'pk-btn pk-btn--medium'
     end
 
     def courses_register_link(season, student)
       return unless ::Courses::Season::RegisterPolicy.new(season, student).allowed?
 
       link_to t('courses.seasons.register'),
-        new_courses_season_student_path(season)
+        new_courses_season_student_path(season),
+        class: 'pk-btn pk-btn--medium'
     end
 
     def courses_send_test_task_link(season, student)
       return unless ::Courses::Season::SendTestTaskPolicy.new(season, student).allowed?
 
       link_to t('courses.seasons.send_test_task'),
-        new_courses_season_test_task_path(season)
+        new_courses_season_test_task_path(season),
+        class: 'pk-btn pk-btn--medium pk-btn--block pk-cources-seasons__send-task-btn'
     end
 
     def courses_interviews_link(season, student)
       return unless ::Courses::Season::InterviewsPolicy.new(season, student).allowed?
 
       link_to t('courses.students.pick_interview_time'),
-        courses_season_interviews_path(season)
+        courses_season_interviews_path(season),
+        class: 'pk-btn pk-btn--medium'
+    end
+
+    def courses_interviews_info(season, student)
+      return unless ::Courses::Season::InterviewsPolicy.new(season, student).student_has_interview?
+
+      t 'courses.interviews.picked_time',
+        timeslot: student.interview.start_at.strftime("%e %b - %H:%M"),
+        description: student.interview.description
     end
 
     def courses_cancel_link(season, student)
@@ -42,8 +54,11 @@ module Courses
         student.status.to_sym == Courses::Student::REFUSED
           link_to t('courses.seasons.cancel'),
             courses_season_cancel_attendance_path(season),
+            class: 'pk-btn pk-btn--link',
             method: :post,
-            confirm: 'Are you sure?'
+            data: {
+              confirm: t('courses.students.confirm_cancel_attendance')
+            }
     end
   end
 end

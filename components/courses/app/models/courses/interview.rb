@@ -2,6 +2,8 @@ module Courses
   class Interview < ApplicationRecord
     include ApplicationHelper
 
+    attr_accessor :assessments_count, :average_assessment
+
     self.table_name = 'courses_interviews'
 
     belongs_to :mentor
@@ -13,7 +15,6 @@ module Courses
 
     validates :start_at,   presence: true
     validates :student_id, uniqueness: true, allow_nil: true
-    validate  :interval_policy
 
     delegate :full_name, to: :student, allow_nil: true
     delegate :email,     to: :student, allow_nil: true
@@ -22,6 +23,7 @@ module Courses
 
     ALLOWED_INTERVAL = 30
 
+    # DEPRECATED
     def interval_policy
       unless Courses::Interview::IntervalPolicy.new(mentor, self, ALLOWED_INTERVAL).allowed?
         errors.add(:start_at, "should be at least #{ALLOWED_INTERVAL} minutes between interviews")

@@ -3,7 +3,7 @@ RSpec.describe 'Donations READ' do
   let!(:event_b) { create(:donation, user_id: 1) }
 
   before do
-    assume_admin_logged_in
+    assume_admin_logged_in(supervisor: true)
     visit '/admin/donations'
   end
 

@@ -36,7 +36,7 @@ module Admin
 
     def friend_params
       params.require(:friend).permit(
-        :name, :group_id, :logo, :link, :description
+        :name, :group_id, :logo, :link, :description, :published
       )
     end
   end

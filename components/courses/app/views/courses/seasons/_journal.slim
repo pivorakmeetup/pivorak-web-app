@@ -1,0 +1,16 @@
+table.pk-table(style="margin: 0 auto;")
+  thead
+    tr
+      th rowspan = '2' = link_to t('courses.students.name'), courses_season_path(season, sort_by: :name)
+      - journal_lectures.each_with_index do |lecture, index|
+        th.center.aligned colspan = '2' = index + 1
+      th.center.aligned rowspan = '2'   = link_to t('courses.journal.total'), courses_season_path(season, sort_by: :total)
+
+  tbody
+    - journal_hash.each do |student, progress|
+      tr
+        td = student.full_name
+        - journal_lectures.each do |lecture|
+          td.text-center = journal_mark(student, lecture)
+          td.text-center = journal_presence(student, lecture)
+        td.text-center = progress[:total]

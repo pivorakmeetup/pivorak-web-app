@@ -17,6 +17,12 @@ module Admin
       flash_error and redirect_to(root_path)
     end
 
+    def only_supervisor!
+      return if current_user&.admin? && current_user&.supervisor?
+
+      flash_error and redirect_to(admin_path)
+    end
+
     def search_against(model)
       Search::Resource.call params.merge(model: model)
     end

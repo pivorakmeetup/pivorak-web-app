@@ -23,7 +23,7 @@ RSpec.describe 'Goals CREATE' do
       fill_in 'Amount',  with: 'Some value'
       click_button 'Create Goal'
 
-      expect_an_error goal_amount: :numericality
+      expect(find('div.goal_amount.error')).to have_content('is not a number')
     end
   end
 

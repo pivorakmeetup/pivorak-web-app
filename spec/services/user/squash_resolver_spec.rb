@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 describe ::User::SquashResolver do
-  let(:user_a) { FactoryGirl.create(:user) }
-  let(:user_b) { FactoryGirl.create(:user) }
+  let(:user_a) { FactoryBot.create(:user) }
+  let(:user_b) { FactoryBot.create(:user) }
 
   let(:relations_params) do
     {
@@ -21,19 +21,19 @@ describe ::User::SquashResolver do
   subject { described_class }
 
   describe '.call' do
-    let!(:event_a) { FactoryGirl.create(:event) }
-    let!(:event_b) { FactoryGirl.create(:event) }
-    let!(:event_c) { FactoryGirl.create(:event) }
+    let!(:event_a) { FactoryBot.create(:event) }
+    let!(:event_b) { FactoryBot.create(:event) }
+    let!(:event_c) { FactoryBot.create(:event) }
 
-    let!(:request_a)           { FactoryGirl.create(:visit_request, user: user_a, event: event_a) }
-    let!(:duplicate_request_a) { FactoryGirl.create(:visit_request, user: user_b, event: event_a) }
-    let!(:request_b)           { FactoryGirl.create(:visit_request, user: user_b, event: event_b) }
-    let!(:request_c)           { FactoryGirl.create(:visit_request, user: user_a, event: event_c) }
+    let!(:request_a)           { FactoryBot.create(:visit_request, user: user_a, event: event_a) }
+    let!(:duplicate_request_a) { FactoryBot.create(:visit_request, user: user_b, event: event_a) }
+    let!(:request_b)           { FactoryBot.create(:visit_request, user: user_b, event: event_b) }
+    let!(:request_c)           { FactoryBot.create(:visit_request, user: user_a, event: event_c) }
 
     context 'has_many associations' do
       context 'without squash' do
         context 'without duplicates' do
-          let!(:talk)  { FactoryGirl.create(:talk, speaker: user_a) }
+          let!(:talk)  { FactoryBot.create(:talk, speaker: user_a) }
           let(:params) { relations_params.merge(resource: Talk, foreign_key: :speaker_id) }
 
           before { subject.(params) }
@@ -60,8 +60,8 @@ describe ::User::SquashResolver do
     end
 
     context 'has_one association' do
-      let!(:donation_b) { FactoryGirl.create(:donation, user: user_b) }
-      let!(:donation_a) { FactoryGirl.create(:donation, user: user_a) }
+      let!(:donation_b) { FactoryBot.create(:donation, user: user_b) }
+      let!(:donation_a) { FactoryBot.create(:donation, user: user_a) }
       let(:params)      { relations_params.merge(resource: Donation, association_type: :has_one) }
 
       before { subject.(params) }
