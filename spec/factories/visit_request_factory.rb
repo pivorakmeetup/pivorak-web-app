@@ -11,6 +11,7 @@ FactoryBot.define do
 
     trait :visited do
       visited true
+      checked_in_at Time.zone.now
     end
 
     trait :pending do

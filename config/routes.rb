@@ -41,6 +41,8 @@ Rails.application.routes.draw do
     get '/', to: 'home#index'
     get '/donations', to: 'donations#index'
 
+    get  'visit_request/check_in', to: 'visit_request/check_in#show'
+
     resources :events,  except: %i[show destroy] do
       resources :visit_requests, only: %i[index] do
         collection do

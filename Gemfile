@@ -62,6 +62,7 @@ gem 'yt',                                                           '~> 0.30.1'
 gem 'gibbon',                                                          '~> 3.0'
 gem 'coderay',                                                       '~> 1.1.1'
 gem "recaptcha", require: "recaptcha/rails"
+gem 'rqrcode'
 
 #=== PDF GENERATION ===========================================================
 gem 'prawn'
@@ -106,6 +107,7 @@ group :test do
   gem 'database_cleaner'
   gem 'simplecov', require: false
   gem 'launchy'
+  gem 'timecop'
   gem 'vcr'
   gem 'webmock'
   gem 'codecov', require: false

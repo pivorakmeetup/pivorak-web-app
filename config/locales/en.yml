@@ -168,6 +168,10 @@ en:
     singular: Group
     plural: Groups
 
+  visit_request:
+    check_in:
+      plural: Check In
+
   visit_requests:
     send_email_to_visitors: 'Send email to visitors'
     send_email_to_attendees: 'Send email to attendees'
