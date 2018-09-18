@@ -68,9 +68,10 @@ header.pk-header class="#{yield(:main_header_class)}"
               li.pk-list__unit.pk-header__li-list-wr
                 a = "contacts"
                 ul.pk-header__li-list
-                  li.pk-header__li-list-item = page_link contacts_page
-                  li.pk-header__li-list-item = page_link about_page
-                  /li.pk-header__li-list-item = chat_link
+                  li.pk-header__li-list-item = link_to 'code of conduct','/code-of-conduct'
+                  li.pk-header__li-list-item = link_to 'contact us','/contacts'
+                  li.pk-header__li-list-item = link_to 'agreement','/user-agreement'
+                  li.pk-header__li-list-item = link_to 'about','/about'
 
               - if user_signed_in?
                 / .pk-avatar     = image_tag gravatar_url(current_user)
