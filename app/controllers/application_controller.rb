@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception, prepend: true
 
-  helper_method :admin?, :about_page, :contacts_page
+  helper_method :admin?
 
   delegate :admin?, to: :current_user, allow_nil: true
 
@@ -30,14 +30,6 @@ class ApplicationController < ActionController::Base
 
   def not_found
     render file: 'public/404.html', status: :not_found, layout: false
-  end
-
-  def about_page
-    @about_page ||= Page.find_by(url: 'about')
-  end
-
-  def contacts_page
-    @contacts_page ||= Page.find_by(url: 'contacts')
   end
 
   def flash_success(key = nil)
