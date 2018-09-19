@@ -15,6 +15,8 @@
       .pk-event-date__month = get_month(event.started_at)
       .pk-event-date__date  = get_day_of_the_month(event.started_at)
       .pk-event-date__hour  = get_hour(event.started_at)
+      progress value="#{get_limit_percent(event)}" max="100" style="width: 300px;"
+      .pk-event-date__counter = get_counter(event)
 
   - if talks.present?
     .pk-main-speakers class="#{(talks.count == 4) ? 'pk-main-speakers--four-speakers' : ''}"

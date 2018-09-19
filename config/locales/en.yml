@@ -89,6 +89,7 @@ en:
     attendees: Attendees
     send_confirmations: Send Confirmations
     visitors_report: Visitors Report
+    free_places: Open Places Left
     index:
       visitors:
         requested: Requested
