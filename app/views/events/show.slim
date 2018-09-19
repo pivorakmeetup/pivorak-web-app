@@ -15,8 +15,9 @@
       .pk-event-date__month = get_month(event.started_at)
       .pk-event-date__date  = get_day_of_the_month(event.started_at)
       .pk-event-date__hour  = get_hour(event.started_at)
-      progress value="#{get_limit_percent(event)}" max="100" style="width: 300px;"
-      .pk-event-date__counter = get_counter(event)
+      / TODO: revisit progess bar to unblock production
+      / progress value="#{get_event_fullness_percent(event)}" max="100" style="width: 300px;"
+      / .pk-event-date__counter = get_place_left_counter(event)
 
   - if talks.present?
     .pk-main-speakers class="#{(talks.count == 4) ? 'pk-main-speakers--four-speakers' : ''}"
@@ -35,8 +36,3 @@
     - if event.registration? && current_user.nil?
       .pk-status
         = unauthorized_message(t 'visit_requests.action')
-
-    / - if attendees.any?
-    /     ul
-    /       - attendees.each do |attendee|
-    /         li = attendee.full_name
