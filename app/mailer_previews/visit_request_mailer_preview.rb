@@ -19,6 +19,10 @@ class VisitRequestMailerPreview
     VisitRequestMailer.notify_admin_about_canceled_attendee visit_request
   end
 
+  def attendance_confirmed
+    VisitRequestMailer.attendance_confirmed visit_request
+  end
+
   private
 
   def visit_request

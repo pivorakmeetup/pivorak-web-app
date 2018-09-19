@@ -1,7 +1,7 @@
 module Admin
   class VisitRequest
     class CheckInController < ::Admin::BaseController
-      helper_method :event, :last_event, :user, :visit_request
+      helper_method :event, :last_event, :user, :visit_request, :visit_count
 
       def show
         begin
@@ -44,6 +44,10 @@ module Admin
 
       def last_event
         @event ||= Event.upcoming
+      end
+
+      def visit_count
+        @visit_count ||= User::VisitedEvents.call(user_id: user.id).count
       end
     end
   end

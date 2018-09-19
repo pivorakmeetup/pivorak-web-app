@@ -14,7 +14,6 @@ class VisitRequestMailer < ApplicationMailer
     @event         = @visit_request.event
     @user          = @visit_request.user
 
-    attachments['event.ics'] = Event::ExportToIcal.call(@event)
     mail(subject: email_template.subject, to: @user.email) do |format|
       format.html { email_template.render(visit_request: @visit_request, user: @user, event: @event) }
     end
@@ -43,8 +42,24 @@ class VisitRequestMailer < ApplicationMailer
     @user = visit_request.user
     @event = visit_request.event
 
+    attachments['event.ics'] = Event::ExportToIcal.call(@event)
+
     mail(to: PIVORAK_EMAIL, from: NO_REPLY_EMAIL, subject: email_template.subject) do |format|
       format.html { email_template.render(user: @user, event: @event) }
+    end
+  end
+
+  def attendance_confirmed(visit_request)
+    @visit_request = visit_request
+    @event         = @visit_request.event
+    @user          = @visit_request.user
+
+    binding.pry
+
+    attachments["#{@event.slug}.pdf"] = VisitRequest::GenerateQrCode.call(@visit_request)
+
+    mail(subject: email_template.subject, to: @user.email) do |format|
+      format.html { email_template.render(user: @user, event: @event, venue: @event.venue) }
     end
   end
 end

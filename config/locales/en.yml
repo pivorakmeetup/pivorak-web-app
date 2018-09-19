@@ -250,3 +250,4 @@ en:
   time:
     formats:
       date_month_year_concise_slash: '%d/%m/%Y'
+      date_month_year_and_date_time: '%e %b %Y %H:%M:%p'

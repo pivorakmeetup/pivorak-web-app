@@ -1,6 +1,6 @@
 RSpec.describe 'Visit Requests Check In' do
   subject { page }
-  let(:page_url) { "/admin/visit_request/check_in?token=#{visit_request_token}" }
+  let(:page_url) { "/admin/visit_request/#{visit_request_token}/check_in" }
 
   let(:visit_request_token) { visit_request.reload.token }
   let!(:event) { create(:event, title: 'Pivorak #1') }
@@ -20,7 +20,7 @@ RSpec.describe 'Visit Requests Check In' do
   context 'when visit request already checked in' do
     let(:visit_request) { create(:visit_request, :approved, :visited, event: event, user: user) }
 
-    it { expect(page).to have_content 'Already checked in at' }
+    it { expect(page).to have_content 'Already checked in' }
   end
 
   context 'when visit request has invalid status' do

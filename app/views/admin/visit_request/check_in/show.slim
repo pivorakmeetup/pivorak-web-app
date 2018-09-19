@@ -1,4 +1,14 @@
 .check_in
-  h1 Full Name: <b>#{user.first_name}</b> #{user.last_name}
-  h1 Event: #{event.title}
-  h1 Checked in at: #{visit_request.checked_in_at}
+  p
+    i.empty.user.icon.green
+    | Name: <b>#{user.first_name}</b> #{user.last_name}
+  p
+    i.empty.calendar.check.outline.icon.green
+    | Event: #{event.title}
+  p
+    - if visit_count > 1
+      i.empty.eye.icon.green
+      | Visits: #{visit_count}
+    - else
+      i.empty.hand.peace.outline.icon.green
+      | Hello newbie!
