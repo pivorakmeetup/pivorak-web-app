@@ -1,4 +1,6 @@
 module ApplicationHelper
+  BECOME_SPEAKER_URL = 'https://goo.gl/YxtVro'.freeze
+
   def format_timestamp(timestamp, time: true, delimiter: '-')
     return unless timestamp
 
@@ -26,6 +28,10 @@ module ApplicationHelper
 
   def title(page_title)
     content_for(:title) { page_title }
+  end
+
+  def become_a_speaker_link
+    link_to t('phrases.become_speaker'), BECOME_SPEAKER_URL, target: '_blank'
   end
 
   def admin_area
