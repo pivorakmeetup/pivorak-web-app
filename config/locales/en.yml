@@ -171,6 +171,14 @@ en:
   visit_request:
     check_in:
       plural: Check In
+      search: 'Find by name:'
+      name: "Name: <b>%{first_name}</b> %{last_name}"
+      already_checked_in: Already checked in %{time_ago} ago
+      invalid_status: "Invalid status: %{status}"
+      not_found: Not Found
+      event: "Event: %{title}"
+      visits_counter: "Visits: %{count}"
+      newbie: Hello newbie!
 
   visit_requests:
     send_email_to_visitors: 'Send email to visitors'
