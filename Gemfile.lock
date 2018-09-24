@@ -666,7 +666,6 @@ DEPENDENCIES
   redcarpet (~> 3.4.0)
   redis (~> 3.2)
   rollbar (~> 2.14.1)
-  rqrcode
   rspec
   rspec-activemodel-mocks
   rspec-collection_matchers
@@ -702,4 +701,4 @@ RUBY VERSION
    ruby 2.3.1p112
 
 BUNDLED WITH
-   1.16.4
+   1.16.2

@@ -62,7 +62,6 @@ gem 'yt',                                                           '~> 0.30.1'
 gem 'gibbon',                                                          '~> 3.0'
 gem 'coderay',                                                       '~> 1.1.1'
 gem "recaptcha", require: "recaptcha/rails"
-gem 'rqrcode'
 gem 'prawn-qrcode'
 
 #=== PDF GENERATION ===========================================================
