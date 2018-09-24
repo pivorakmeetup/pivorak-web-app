@@ -18,16 +18,32 @@ RSpec.describe VisitRequest::CheckIn do
       end
     end
 
-    context 'when already checked in' do
-      let(:visit_request) { create(:visit_request, :visited) }
+    it 'returns object and status' do
+      expect(call).to eq([visit_request, :success])
+    end
 
-      it { expect { call }.to raise_error(VisitRequest::CheckIn::AlreadyCheckedIn) }
+    context 'when already checked in' do
+      let(:visit_request) { create(:visit_request, :approved, :visited) }
+
+      it 'returns object and status' do
+        expect(call).to eq([visit_request, :already_visited])
+      end
     end
 
     context 'when rejected' do
       let(:visit_request) { create(:visit_request, :refused) }
 
-      it { expect { call }.to raise_error(VisitRequest::CheckIn::InvalidStatus) }
+      it 'returns object and status' do
+        expect(call).to eq([visit_request, :invalid_status])
+      end
+    end
+
+    context 'when visit request not passed' do
+      let(:visit_request) { nil }
+
+      it 'returns object and status' do
+        expect(call).to eq([visit_request, :not_found])
+      end
     end
   end
 end

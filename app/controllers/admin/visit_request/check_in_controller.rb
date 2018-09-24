@@ -4,34 +4,14 @@ module Admin
       helper_method :event, :upcoming_event, :user, :visit_request, :visit_count
 
       def show
-        begin
-          ::VisitRequest::CheckIn.new(visit_request).call
-          render :show
-        rescue ActiveRecord::RecordNotFound
-          render :not_found
-        rescue ::VisitRequest::CheckIn::AlreadyCheckedIn
-          render :already_checked_in
-        rescue ::VisitRequest::CheckIn::InvalidStatus
-          render :invalid_status
-        end
-      end
-
-      def not_found
-        render :not_found
-      end
-
-      def already_checked_in
-        render :already_checked_in
-      end
-
-      def invalid_status
-        render :invalid_status
+        @visit_request, status = ::VisitRequest::CheckIn.new(visit_request).call
+        render status
       end
 
       private
 
       def visit_request
-        @visit_request ||= ::VisitRequest.find_by!(token: params[:token])
+        @_visit_request ||= ::VisitRequest.find_by(token: params[:token])
       end
 
       def user

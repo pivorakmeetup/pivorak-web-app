@@ -4,6 +4,6 @@
     | Name: <b>#{user.first_name}</b> #{user.last_name}
   p
     i.empty.ban.icon.red
-    | Checked in #{time_ago_in_words(visit_request.checked_in_at, include_seconds: true)} ago
+    | Already checked in #{time_ago_in_words(visit_request.checked_in_at, include_seconds: true)} ago
 
   = render 'find_visitor_search'

@@ -1,17 +1,23 @@
 class VisitRequest
   class CheckIn < ApplicationService
-    AlreadyCheckedIn = Class.new(StandardError)
-    InvalidStatus = Class.new(StandardError)
-
     def initialize(visit_request)
       @visit_request = visit_request
     end
 
     def call
-      raise AlreadyCheckedIn if visit_request.visited?
-      raise InvalidStatus unless visit_request.approved?
+      status = if visit_request.nil?
+          :not_found
+        elsif visit_request.visited?
+         :already_visited
+        elsif  !visit_request.approved?
+          :invalid_status
+        else
+         :success
+      end
 
-      visit_request.update(visited: true, checked_in_at: Time.zone.now)
+      visit_request.update(visited: true, checked_in_at: Time.zone.now) if status == :success
+
+      [visit_request, status]
     end
 
     private
