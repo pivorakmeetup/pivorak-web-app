@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_07_183058) do
+ActiveRecord::Schema.define(version: 2018_09_25_115430) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -222,6 +222,19 @@ ActiveRecord::Schema.define(version: 2018_07_07_183058) do
     t.index ["user_id"], name: "index_identities_on_user_id"
   end
 
+  create_table "menu_items", force: :cascade do |t|
+    t.string "label"
+    t.string "href"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "menu_items_references", force: :cascade do |t|
+    t.integer "parent_id"
+    t.integer "child_id"
+    t.integer "order"
+  end
+
   create_table "pages", id: :serial, force: :cascade do |t|
     t.string "title"
     t.string "url"
@@ -341,6 +354,7 @@ ActiveRecord::Schema.define(version: 2018_07_07_183058) do
     t.boolean "waiting_list", default: false
     t.boolean "visited", default: false
     t.uuid "token", default: -> { "uuid_generate_v4()" }
+    t.datetime "checked_in_at"
   end
 
 end
