@@ -15,7 +15,7 @@ class VisitRequest
          :success
       end
 
-      visit_request.update(visited: true, checked_in_at: Time.zone.now) if status == :success
+      visit_request.update(visited: true, checked_in_at: Time.current) if status == :success
 
       [visit_request, status]
     end

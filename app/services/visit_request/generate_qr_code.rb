@@ -20,7 +20,7 @@ class VisitRequest
     def qr_code
       check_in_visit_request_url = admin_visit_request_check_in_url(token: visit_request.token, host: host)
       # docs - https://github.com/jabbrwcky/prawn-qrcode
-      qr_code = RQRCode::QRCode.new(check_in_visit_request_url, level: :h, size: 30)
+      RQRCode::QRCode.new(check_in_visit_request_url, level: :h, size: 30)
     end
 
     def pdf_document
