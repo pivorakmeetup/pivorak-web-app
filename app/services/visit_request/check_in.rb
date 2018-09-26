@@ -6,14 +6,14 @@ class VisitRequest
 
     def call
       status = if visit_request.nil?
-          :not_found
-        elsif visit_request.visited?
-         :already_visited
-        elsif  !visit_request.approved?
-          :invalid_status
-        else
-         :success
-      end
+                 :not_found
+               elsif visit_request.visited?
+                 :already_visited
+               elsif  !visit_request.approved?
+                 :invalid_status
+               else
+                 :success
+               end
 
       visit_request.update(visited: true, checked_in_at: Time.current) if status == :success
 
