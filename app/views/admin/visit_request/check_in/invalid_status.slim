@@ -1,0 +1,5 @@
+.check_in
+  p
+    i.empty.icon.exclamation.triangle.red
+    = t('visit_request.check_in.invalid_status', status: visit_request.status)
+  = render 'find_visitor_search'

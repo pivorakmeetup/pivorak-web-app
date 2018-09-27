@@ -1,0 +1,9 @@
+.check_in
+  p
+    i.empty.user.icon.green
+    = t('visit_request.check_in.name', first_name: user.first_name, last_name: user.last_name).html_safe
+  p
+    i.empty.ban.icon.red
+    = t('visit_request.check_in.already_checked_in', time_ago: time_ago_in_words(visit_request.checked_in_at, include_seconds: true))
+
+  = render 'find_visitor_search'

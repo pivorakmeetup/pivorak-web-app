@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_07_183058) do
+ActiveRecord::Schema.define(version: 2018_09_18_142725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -341,6 +341,7 @@ ActiveRecord::Schema.define(version: 2018_07_07_183058) do
     t.boolean "waiting_list", default: false
     t.boolean "visited", default: false
     t.uuid "token", default: -> { "uuid_generate_v4()" }
+    t.datetime "checked_in_at"
   end
 
 end

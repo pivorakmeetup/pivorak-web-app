@@ -47,4 +47,16 @@ class VisitRequestMailer < ApplicationMailer
       format.html { email_template.render(user: @user, event: @event) }
     end
   end
+
+  def attendance_confirmed(visit_request)
+    @visit_request = visit_request
+    @event         = @visit_request.event
+    @user          = @visit_request.user
+
+    attachments["#{@event.slug}.pdf"] = VisitRequest::GenerateQrCode.call(@visit_request)
+
+    mail(subject: email_template.subject, to: @user.email) do |format|
+      format.html { email_template.render(user: @user, event: @event, venue: @event.venue) }
+    end
+  end
 end

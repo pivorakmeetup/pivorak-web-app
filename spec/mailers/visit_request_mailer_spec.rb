@@ -62,6 +62,35 @@ describe VisitRequestMailer do
     end
   end
 
+  describe '#attendance_confirmed' do
+    let(:mail) { described_class.attendance_confirmed(visit_request.reload) }
+    let(:event) { create(:event, venue: venue) }
+    let(:venue) { create(:venue) }
+    let!(:email_template) do
+      EmailTemplate.create!(
+        title: 'VisitRequestMailer#attendance_confirmed',
+        subject: 'Thanks for confirming your visit',
+        note: 'Will be sent when attendee answers YES in the final confirmation message',
+        body: File.read('db/seed/email_templates/attendance_confirmed.md')
+      )
+    end
+
+    it 'renders the headers' do
+      expect(mail.subject).to eq(email_template.subject)
+      expect(mail.to).to eq([visit_request.user.email])
+      expect(mail.from).to eq([ApplicationMailer::PIVORAK_EMAIL])
+    end
+
+    it 'renders the body' do
+      expect(mail.body.encoded).to include event.title
+      expect(mail.body.encoded).to include user.full_name
+    end
+
+    it 'renders the pdf attachment' do
+      expect(mail.attachments["#{event.slug}.pdf"]).to be_present
+    end
+  end
+
   describe '#approved' do
     let(:mail) { described_class.approved(visit_request) }
     let(:email_template) { EmailTemplate.find_by!(title: 'VisitRequestMailer#approved') }
