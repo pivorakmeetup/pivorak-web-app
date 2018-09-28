@@ -25,11 +25,6 @@ Rails.application.routes.draw do
     post :become_speaker, to: 'become_speaker#create', on: :collection
   end
 
-  # TODO uncomment when page is created
-  # resource :donation,        only: %i[show create], controller: :donation
-  resource :donation,        only: %i[create], controller: :donation
-  resource :payment_handler, only: %i[create], controller: :payment_handler
-
   resources :goals,   only: %i[index show] do
     post :donate, on: :member
   end

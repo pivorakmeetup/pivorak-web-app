@@ -6,12 +6,6 @@ GIT
     acts-as-taggable-on (5.0.0)
       activerecord (~> 5.0)
 
-GIT
-  remote: https://github.com/liqpay/sdk-ruby
-  revision: a7a990f1410bdfc281fcfc66828555b4bc1e6260
-  specs:
-    liqpay (0.0.2)
-
 PATH
   remote: components/courses
   specs:
@@ -641,7 +635,6 @@ DEPENDENCIES
   kaminari
   launchy
   letter_opener
-  liqpay!
   listen
   meta_request
   newrelic_rpm (~> 4.1)
