@@ -9,7 +9,7 @@ class VisitRequest
                  :not_found
                elsif visit_request.visited?
                  :already_visited
-               elsif  !visit_request.approved?
+               elsif  !visit_request.confirmed?
                  :invalid_status
                else
                  :success
