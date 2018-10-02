@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe VisitRequest::FinalConfirmation do
+describe VisitRequest::FinalDecision do
   let(:visit_request) { create(:visit_request, status: 'pending') }
 
   subject { described_class.new(visit_request, answer: answer) }
@@ -9,20 +9,24 @@ describe VisitRequest::FinalConfirmation do
     context 'when answer is :yes' do
       let(:answer) { 'yes' }
 
-      it 'sets :confirmed status' do
+      it 'calls confirm service' do
+        allow(VisitRequest::Confirm).to receive(:call)
+
         subject.call
 
-        expect(visit_request.reload.status).to eq(VisitRequest::CONFIRMED.to_s)
+        expect(VisitRequest::Confirm).to have_received(:call)
       end
     end
 
     context 'when answer is :no' do
       let(:answer) { 'no' }
 
-      it 'sets :refused status' do
+      it 'calls cancel service' do
+        allow(VisitRequest::Refuse).to receive(:call)
+
         subject.call
 
-        expect(visit_request.reload.status).to eq(VisitRequest::REFUSED.to_s)
+        expect(VisitRequest::Refuse).to have_received(:call)
       end
     end
 

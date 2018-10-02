@@ -1,5 +1,5 @@
 class VisitRequest
-  class FinalConfirmation < ApplicationService
+  class FinalDecision < ApplicationService
     YES = 'yes'
     NO  = 'no'
 
@@ -12,9 +12,12 @@ class VisitRequest
 
     def call
       case answer
-      when YES then visit_request.confirmed!
-      when NO  then visit_request.refused!
-      else     fail UnrecognizedAnswerError
+      when YES
+        VisitRequest::Confirm.call(visit_request)
+      when NO
+        VisitRequest::Refuse.call(visit_request)
+      else
+        fail UnrecognizedAnswerError
       end
     end
 
