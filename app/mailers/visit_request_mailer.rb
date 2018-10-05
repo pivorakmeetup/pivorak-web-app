@@ -52,11 +52,11 @@ class VisitRequestMailer < ApplicationMailer
     @visit_request = visit_request
     @event         = @visit_request.event
     @user          = @visit_request.user
+    @venue         = @event.venue
+    @qr_code       = VisitRequest::QrCode::Generate.call(visit_request)
 
-    attachments["#{@event.slug}.pdf"] = VisitRequest::GenerateQrCode.call(@visit_request)
+    attachments["#{@event.slug}.pdf"] = VisitRequest::QrCode::Pdf.call(visit_request)
 
-    mail(subject: email_template.subject, to: @user.email) do |format|
-      format.html { email_template.render(user: @user, event: @event, venue: @event.venue) }
-    end
+    mail(subject: 'Attendance Confirmation - QR code is attached', to: @user.email)
   end
 end

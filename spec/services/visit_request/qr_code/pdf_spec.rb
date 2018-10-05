@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe VisitRequest::GenerateQrCode do
+describe VisitRequest::QrCode::Pdf do
   let(:visit_request) { create(:visit_request) }
 
   subject(:service) { described_class.new(visit_request) }

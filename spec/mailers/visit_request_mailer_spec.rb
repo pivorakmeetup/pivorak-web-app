@@ -66,17 +66,9 @@ describe VisitRequestMailer do
     let(:mail) { described_class.attendance_confirmed(visit_request.reload) }
     let(:event) { create(:event, venue: venue) }
     let(:venue) { create(:venue) }
-    let!(:email_template) do
-      EmailTemplate.create!(
-        title: 'VisitRequestMailer#attendance_confirmed',
-        subject: 'Thanks for confirming your visit',
-        note: 'Will be sent when attendee answers YES in the final confirmation message',
-        body: File.read('db/seed/email_templates/attendance_confirmed.md')
-      )
-    end
 
     it 'renders the headers' do
-      expect(mail.subject).to eq(email_template.subject)
+      expect(mail.subject).to eq('Attendance Confirmation - QR code is attached')
       expect(mail.to).to eq([visit_request.user.email])
       expect(mail.from).to eq([ApplicationMailer::PIVORAK_EMAIL])
     end
