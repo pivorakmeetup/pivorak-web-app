@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe VisitRequest::CheckIn do
   subject(:service) { described_class.new(visit_request) }
 
-  let(:visit_request) { create(:visit_request, :approved) }
+  let(:visit_request) { create(:visit_request, :confirmed) }
 
   describe '#call' do
     subject(:call) { service.call }

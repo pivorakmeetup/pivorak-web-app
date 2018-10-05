@@ -29,8 +29,8 @@ RSpec.describe 'Visit Requests Check In' do
     it { expect(page).to have_content 'refused' }
   end
 
-  context 'when approved visit request found' do
-    let(:visit_request) { create(:visit_request, :approved, event: event, user: user) }
+  context 'when confirmed visit request found' do
+    let(:visit_request) { create(:visit_request, :confirmed, event: event, user: user) }
 
     it { expect(page).to have_content user.full_name }
     it { expect(page).to have_content event.title }
