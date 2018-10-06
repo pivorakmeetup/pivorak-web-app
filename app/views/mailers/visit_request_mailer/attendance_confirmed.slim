@@ -1,0 +1,27 @@
+css:
+  table {
+    border-width: 0;
+    border-style: none;
+    border-color: #0000ff;
+    border-collapse: collapse;
+    transform: scale(0.33);
+    transform-origin: top left;
+  }
+
+  td {
+    border-left: solid 10px #000;
+    padding: 0;
+    margin: 0;
+    width: 0px;
+    height: 10px;
+  }
+
+  td.black { border-color: #000; }
+  td.white { border-color: #fff; }
+
+p Hi, #{@user.full_name}!
+p Thanks for confirming your attendance.
+p See you at the event at #{I18n.localize @event.started_at, format: :date_month_year_and_date_time} in #{@venue.name}.
+p Please show the QR code at the entrance.
+.qr_code
+  = raw @qr_code.as_html
