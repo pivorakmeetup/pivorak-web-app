@@ -62,6 +62,7 @@ gem 'gibbon',                                                          '~> 3.0'
 gem 'coderay',                                                       '~> 1.1.1'
 gem "recaptcha", require: "recaptcha/rails"
 gem 'prawn-qrcode'
+gem 'slack-notifier'
 
 #=== PDF GENERATION ===========================================================
 gem 'prawn'

@@ -10,7 +10,9 @@ module Courses
 
     def create
       @student = Student::Create.call(student_params, current_season.id, current_user.id)
-      react_to student.save
+      student_creation_status = student.save
+      NotifySlack::Base.new(student.id).call if student_creation_status
+      react_to student_creation_status
     end
 
     private
