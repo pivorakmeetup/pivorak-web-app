@@ -310,7 +310,7 @@ GEM
       net-ssh (>= 2.6.5)
     net-ssh (5.0.2)
     netrc (0.11.0)
-    newrelic_rpm (4.8.0.341)
+    newrelic_rpm (5.4.0.347)
     nio4r (2.3.1)
     nokogiri (1.8.5)
       mini_portile2 (~> 2.3.0)
@@ -637,7 +637,7 @@ DEPENDENCIES
   letter_opener
   listen
   meta_request
-  newrelic_rpm (~> 4.1)
+  newrelic_rpm (~> 5.4)
   oj (~> 2.18.5)
   omniauth-facebook (~> 4.0)
   omniauth-github (~> 1.2.3)
