@@ -328,7 +328,7 @@ GEM
     omniauth (1.8.1)
       hashie (>= 3.4.6, < 3.6.0)
       rack (>= 1.6.2, < 3)
-    omniauth-facebook (4.0.0)
+    omniauth-facebook (5.0.0)
       omniauth-oauth2 (~> 1.2)
     omniauth-github (1.2.3)
       omniauth (~> 1.5)
@@ -639,7 +639,7 @@ DEPENDENCIES
   meta_request
   newrelic_rpm (~> 4.1)
   oj (~> 2.18.5)
-  omniauth-facebook (~> 4.0)
+  omniauth-facebook (~> 5.0)
   omniauth-github (~> 1.2.3)
   omniauth-twitter (~> 1.4.0)
   pdf-inspector
