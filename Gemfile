@@ -46,7 +46,7 @@ gem 'rails-assets-semantic-ui-calendar',     source: 'https://rails-assets.org'
 
 #=== FEATURES ==================================================================
 gem 'chartkick',                                                     '~> 2.2.3'
-gem 'groupdate',                                                       '~> 3.2'
+gem 'groupdate',                                                       '~> 4.0'
 gem 'stripe',                                                          '~> 1.5'
 gem 'interactor-rails',                                                '~> 2.0'
 gem 'sitemap_generator',                                             '~> 5.3.1'
