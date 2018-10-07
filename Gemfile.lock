@@ -1,10 +1,10 @@
 GIT
   remote: https://github.com/Fodoj/acts-as-taggable-on
-  revision: ef3797a848bd76a5290d209ff856e55a9f9053c5
-  ref: rails-5.2
+  revision: 4d9a10c25e106bd2467662baea58510a17809ca2
+  ref: v5.0.0
   specs:
     acts-as-taggable-on (5.0.0)
-      activerecord (~> 5.0)
+      activerecord (>= 4.2.8)
 
 PATH
   remote: components/courses
