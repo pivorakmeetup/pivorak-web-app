@@ -27,7 +27,7 @@ gem 'courses', path: 'components/courses'
 #=== CONFIG ===================================================================
 gem 'dotenv-rails',                       '~> 2.2', require: 'dotenv/rails-now'
 gem 'slackistrano',                                                    '~> 3.1.1'
-gem 'newrelic_rpm',                                                    '~> 4.1'
+gem 'newrelic_rpm',                                                    '~> 5.4'
 gem 'versionomy',                                                      '~> 0.5.0'
 gem 'rollbar',                                                         '~> 2.14.1'
 gem 'tzinfo-data',              platforms: [:mingw, :mswin, :x64_mingw, :jruby]
