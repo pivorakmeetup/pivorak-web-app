@@ -57,7 +57,7 @@ gem 'rails_email_preview',                                           '~> 2.0.1'
 gem 'dry-validation',                                               '~> 0.10.5'
 gem 'inline_svg',                                                      '~> 1.2'
 gem 'icalendar',                                                     '~> 2.4.1'
-gem 'yt',                                                           '~> 0.30.1'
+gem 'yt',                                                           '~> 0.32.2'
 gem 'gibbon',                                                          '~> 3.0'
 gem 'coderay',                                                       '~> 1.1.1'
 gem "recaptcha", require: "recaptcha/rails"
