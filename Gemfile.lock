@@ -150,7 +150,7 @@ GEM
     declarative-builder (0.1.0)
       declarative-option (< 0.2.0)
     declarative-option (0.1.0)
-    devise (4.4.3)
+    devise (4.5.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0, < 6.0)
@@ -617,7 +617,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2.1)
   courses!
   database_cleaner
-  devise (~> 4.2)
+  devise (~> 4.5)
   dotenv-rails (~> 2.2)
   dry-validation (~> 0.12.2)
   ez-settings
