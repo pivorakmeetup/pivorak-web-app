@@ -6,7 +6,9 @@
 require 'dry_helpers/model'
 
 class Group < ApplicationRecord
+  extend FriendlyId
   RESOURCES = [ Talk, Friend ] # add groupable model here please...
+  friendly_id :name, use: :slugged
 
   # define socopes for each resource
   RESOURCES.each do |resource|
