@@ -1,10 +1,7 @@
 = content_for :main_body_class, "pk-body--green-bg"
 
 .pk-container
-  h2.main-header = 'Friends'
-  .pk-supporter-wrapper.pk-grid.pk-grid--wrap
-    - friends.each do |friend|
-      = link_to friend.link, class: 'pk-supporter ', target: '_blank'
-        .pk-supporter__image.pk-js-changed-color-images
-          = image_tag friend.logo_url
-        .pk-supporter__text = friend.description
+  = render 'group', header: 'Friends', group: meetup_group
+  = render 'group', header: 'Ruby Summer Course Friends', group: course_group
+  = render 'group', header: 'Info Partners', group: info_partners_group
+
