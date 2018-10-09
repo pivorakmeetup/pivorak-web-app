@@ -214,6 +214,7 @@ ActiveRecord::Schema.define(version: 2018_10_09_104139) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
+    t.index ["slug"], name: "index_groups_on_slug", unique: true
   end
 
   create_table "identities", id: :serial, force: :cascade do |t|
