@@ -1,0 +1,7 @@
+h2.main-header = header
+.pk-supporter-wrapper.pk-grid.pk-grid--wrap
+  - group.friends.published.each do |friend|
+    = link_to friend.link, class: 'pk-supporter ', target: '_blank'
+      .pk-supporter__image.pk-js-changed-color-images
+        = image_tag friend.logo_url
+      .pk-supporter__text = friend.description

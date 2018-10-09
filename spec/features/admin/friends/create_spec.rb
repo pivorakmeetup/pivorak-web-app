@@ -27,6 +27,9 @@ RSpec.describe 'Friends CREATE' do
       fill_in 'Name', with: name
       fill_in 'Description', with: description
       fill_in 'Link', with: link
+      attach_file('friend[logo]', Rails.root + 'spec/fixtures/images/pivorak.png')
+      select group.name, :from => 'friend[group_id]'
+
       click_button 'Create Friend'
 
       friend = Friend.last
@@ -35,25 +38,8 @@ RSpec.describe 'Friends CREATE' do
       expect(friend.name).to eq name
       expect(friend.description).to eq description
       expect(friend.link).to eq link
-    end
-
-    it 'create friend in group' do
-      fill_in 'Name',  with: 'Super New friend'
-
-      select group.name, :from => 'friend[group_id]'
-
-      click_button 'Create Friend'
-
-      expect(Friend.last.group_id).to eq group.id
-    end
-
-    it 'creates friend with image' do
-      fill_in 'Name',  with: 'Super New friend'
-      attach_file('friend[logo]', Rails.root + 'spec/fixtures/images/pivorak.png')
-
-      click_button 'Create Friend'
-
-      expect(Friend.last.logo).to be_present
+      expect(friend.group).to eq group
+      expect(friend.logo).to be_present
     end
   end
 end

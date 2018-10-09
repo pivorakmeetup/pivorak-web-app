@@ -31,7 +31,7 @@ module Admin
     end
 
     def group
-      @group ||= Group.find(params[:id])
+      @group ||= Group.friendly.find(params[:id])
     end
 
     def groups
