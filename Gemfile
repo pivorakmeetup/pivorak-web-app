@@ -5,7 +5,7 @@ ruby '2.3.1'
 #=== CORE =====================================================================
 gem 'rails',                                                           '5.2.0'
 gem 'pg',                                                              '~> 0.18'
-gem 'puma',                                                            '~> 3.0'
+gem 'puma',                                                            '~> 3.12'
 gem 'pg_search',                                                       '~> 2.0'
 gem 'devise',                                                          '~> 4.2'
 gem 'omniauth-facebook',                                               '~> 5.0'
