@@ -160,9 +160,9 @@ GEM
     docile (1.3.1)
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
-    dotenv (2.4.0)
-    dotenv-rails (2.4.0)
-      dotenv (= 2.4.0)
+    dotenv (2.5.0)
+    dotenv-rails (2.5.0)
+      dotenv (= 2.5.0)
       railties (>= 3.2, < 6.0)
     dry-configurable (0.7.0)
       concurrent-ruby (~> 1.0)
@@ -256,6 +256,7 @@ GEM
     interactor-rails (2.2.0)
       interactor (~> 3.0)
       rails (>= 4.2, < 5.3)
+    jaro_winkler (1.5.1)
     jquery-rails (4.2.2)
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
@@ -344,7 +345,7 @@ GEM
       rack
     orm_adapter (0.5.0)
     parallel (1.12.1)
-    parser (2.5.1.0)
+    parser (2.5.1.2)
       ast (~> 2.4.0)
     pdf-core (0.7.0)
     pdf-inspector (1.3.0)
@@ -417,8 +418,7 @@ GEM
       method_source
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
-    rainbow (2.2.2)
-      rake
+    rainbow (3.0.0)
     rake (12.3.1)
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
@@ -436,7 +436,7 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
-    rollbar (2.14.1)
+    rollbar (2.18.0)
       multi_json
     rqrcode (0.10.1)
       chunky_png (~> 1.0)
@@ -470,14 +470,15 @@ GEM
       rspec-mocks (~> 3.7.0)
       rspec-support (~> 3.7.0)
     rspec-support (3.7.1)
-    rubocop (0.49.1)
+    rubocop (0.59.2)
+      jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
-      parser (>= 2.3.3.1, < 3.0)
+      parser (>= 2.5, != 2.5.1.1)
       powerpack (~> 0.1)
-      rainbow (>= 1.99.1, < 3.0)
+      rainbow (>= 2.2.2, < 4.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (~> 1.0, >= 1.0.1)
-    ruby-progressbar (1.9.0)
+    ruby-progressbar (1.10.0)
     ruby-rc4 (0.1.5)
     ruby_dep (1.5.0)
     rufus-scheduler (3.5.0)
@@ -517,7 +518,7 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
-    sitemap_generator (5.3.1)
+    sitemap_generator (6.0.1)
       builder (~> 3.0)
     slackistrano (3.1.1)
       capistrano (>= 3.5.0)
@@ -557,9 +558,9 @@ GEM
     tilt (2.0.8)
     timecop (0.9.1)
     ttfunk (1.5.1)
-    turbolinks (5.1.1)
-      turbolinks-source (~> 5.1)
-    turbolinks-source (5.1.0)
+    turbolinks (5.2.0)
+      turbolinks-source (~> 5.2)
+    turbolinks-source (5.2.0)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     uber (0.1.0)
@@ -618,7 +619,7 @@ DEPENDENCIES
   courses!
   database_cleaner
   devise (~> 4.5)
-  dotenv-rails (~> 2.2)
+  dotenv-rails (~> 2.5)
   dry-validation (~> 0.12.2)
   ez-settings
   factory_bot_rails
@@ -658,13 +659,13 @@ DEPENDENCIES
   recaptcha
   redcarpet (~> 3.4.0)
   redis (~> 3.2)
-  rollbar (~> 2.14.1)
+  rollbar (~> 2.18.0)
   rspec
   rspec-activemodel-mocks
   rspec-collection_matchers
   rspec-its
   rspec-rails
-  rubocop (~> 0.49.0)
+  rubocop (~> 0.59.2)
   sass-rails (~> 5.0)
   semantic-ui-sass (~> 2.2)
   shoulda-matchers
@@ -672,7 +673,7 @@ DEPENDENCIES
   sidekiq-scheduler (~> 2.1.4)
   simple_form
   simplecov
-  sitemap_generator (~> 5.3.1)
+  sitemap_generator (~> 6.0.1)
   slackistrano (~> 3.1.1)
   slim-rails
   spring
@@ -681,7 +682,7 @@ DEPENDENCIES
   stripe (~> 1.5)
   stripe-ruby-mock (~> 2.3.1)
   timecop
-  turbolinks (~> 5.0)
+  turbolinks (~> 5.2)
   tzinfo-data
   uglifier (~> 4.1.19)
   vcr
