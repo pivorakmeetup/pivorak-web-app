@@ -25,16 +25,16 @@ gem 'ez-settings'
 gem 'courses', path: 'components/courses'
 
 #=== CONFIG ===================================================================
-gem 'dotenv-rails',                       '~> 2.2', require: 'dotenv/rails-now'
+gem 'dotenv-rails',                       '~> 2.5', require: 'dotenv/rails-now'
 gem 'slackistrano',                                                    '~> 3.1.1'
 gem 'newrelic_rpm',                                                    '~> 5.4'
 gem 'versionomy',                                                      '~> 0.5.0'
-gem 'rollbar',                                                         '~> 2.14.1'
+gem 'rollbar',                                                         '~> 2.18.0'
 gem 'tzinfo-data',              platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 #=== UI =======================================================================
 gem 'sass-rails',                                                      '~> 5.0'
-gem 'turbolinks',                                                      '~> 5.0'
+gem 'turbolinks',                                                      '~> 5.2'
 gem 'slim-rails'
 gem 'jquery-rails',                                                  '~> 4.2.2'
 gem 'semantic-ui-sass',                                                '~> 2.2'
@@ -49,7 +49,7 @@ gem 'chartkick',                                                     '~> 3.0.1'
 gem 'groupdate',                                                       '~> 4.0'
 gem 'stripe',                                                          '~> 1.5'
 gem 'interactor-rails',                                                '~> 2.0'
-gem 'sitemap_generator',                                             '~> 5.3.1'
+gem 'sitemap_generator',                                             '~> 6.0.1'
 gem 'httpclient',                                                    '~> 2.8.3'
 gem 'oj',                                                           '~> 2.18.5'
 gem 'redcarpet',                                                     '~> 3.4.0'
@@ -86,7 +86,7 @@ end
 
 group :development, :test do
   gem 'rspec'
-  gem 'rubocop',                                    '~> 0.49.0', require: false
+  gem 'rubocop',                                    '~> 0.59.2', require: false
   gem 'rspec-rails'
   gem 'pry-rails'
   gem 'faker'
