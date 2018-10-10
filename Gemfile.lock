@@ -69,7 +69,7 @@ GEM
       sshkit (>= 1.6.1, != 1.7.0)
     arel (9.0.0)
     ast (2.4.0)
-    autoprefixer-rails (6.7.7.2)
+    autoprefixer-rails (9.1.4)
       execjs
     bcrypt (3.1.12)
     better_errors (2.5.0)
@@ -600,7 +600,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-taggable-on!
-  autoprefixer-rails (~> 6.7.7.2)
+  autoprefixer-rails (~> 9.1.4)
   better_errors
   binding_of_caller
   bullet
