@@ -436,7 +436,7 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
-    rollbar (2.14.1)
+    rollbar (2.18.0)
       multi_json
     rqrcode (0.10.1)
       chunky_png (~> 1.0)
@@ -659,7 +659,7 @@ DEPENDENCIES
   recaptcha
   redcarpet (~> 3.4.0)
   redis (~> 3.2)
-  rollbar (~> 2.14.1)
+  rollbar (~> 2.18.0)
   rspec
   rspec-activemodel-mocks
   rspec-collection_matchers
