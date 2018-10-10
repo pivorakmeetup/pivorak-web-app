@@ -558,9 +558,9 @@ GEM
     tilt (2.0.8)
     timecop (0.9.1)
     ttfunk (1.5.1)
-    turbolinks (5.1.1)
-      turbolinks-source (~> 5.1)
-    turbolinks-source (5.1.0)
+    turbolinks (5.2.0)
+      turbolinks-source (~> 5.2)
+    turbolinks-source (5.2.0)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     uber (0.1.0)
@@ -682,7 +682,7 @@ DEPENDENCIES
   stripe (~> 1.5)
   stripe-ruby-mock (~> 2.3.1)
   timecop
-  turbolinks (~> 5.0)
+  turbolinks (~> 5.2)
   tzinfo-data
   uglifier (~> 4.1.19)
   vcr
