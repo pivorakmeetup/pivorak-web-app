@@ -34,7 +34,7 @@ gem 'tzinfo-data',              platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 #=== UI =======================================================================
 gem 'sass-rails',                                                      '~> 5.0'
-gem 'turbolinks',                                                      '~> 5.0'
+gem 'turbolinks',                                                      '~> 5.2'
 gem 'slim-rails'
 gem 'jquery-rails',                                                  '~> 4.2.2'
 gem 'semantic-ui-sass',                                                '~> 2.2'
