@@ -1,0 +1,16 @@
+<script type="text/javascript" id="widget-wfp-script" src="https://secure.wayforpay.com/server/pay-widget.js?ref=button"></script>
+<script type="text/javascript">function runWfpWdgt() {var wayforpay = new Wayforpay(); wayforpay.invoice('https://secure.wayforpay.com/button/b644556e003e4');}</script>
+
+.pk-donate-form
+  h2.pk-uppercase
+    = t('pages.donate.title', locale: locale)
+  p
+    = t('pages.donate.text_html', locale: locale)
+
+  = simple_form_for form, url: donate_url do |f|
+    .form-inputs.pk-inline-block
+      = f.input :agree_to_terms_of_use, label: t('pages.donate.by_pressing_btn_html', locale: locale), as: :boolean, required: true, error: false, input_html: {class: 'js-donate-form-agree'}
+    .form-actions
+      .mtl
+        = render 'btn', js_class: 'js-donate-form-payment-btn', onclick: 'runWfpWdgt();', hidden_class: 'pk-no-display'
+        = render 'btn', js_class: 'js-donate-form-validation-btn', type: 'submit'
