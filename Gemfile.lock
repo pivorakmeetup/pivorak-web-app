@@ -81,7 +81,7 @@ GEM
       debug_inspector (>= 0.0.1)
     blockenspiel (0.5.0)
     builder (3.2.3)
-    bullet (5.7.5)
+    bullet (5.7.6)
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.11.0)
     callsite (0.0.11)
