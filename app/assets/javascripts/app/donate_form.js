@@ -13,7 +13,7 @@
 
     if(agreeToTermsCheckbox) {
       agreeToTermsCheckbox.addEventListener('change', toggleBtns);
-      debugger
+      paymentBtn.addEventListener('click', runWayforpayWidget);
     }
 
     var toggleElement = function(element) {
