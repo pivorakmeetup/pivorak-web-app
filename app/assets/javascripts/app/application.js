@@ -14,6 +14,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require svgxuse
+//= require wayforpay
 //= require_tree .
 
 (function() {
