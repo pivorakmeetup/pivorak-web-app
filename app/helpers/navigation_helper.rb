@@ -11,8 +11,8 @@ module NavigationHelper
     link_to t('goals.plural'), goals_path
   end
 
-  def donate_link
-    link_to t('donations.donate'), donation_path
+  def donate_link(**options)
+    link_to t('donations.donate'), donate_path, **options
   end
 
   def chat_link
