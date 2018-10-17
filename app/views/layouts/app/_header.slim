@@ -74,6 +74,9 @@ header.pk-header class="#{yield(:main_header_class)}"
                   li.pk-header__li-list-item = link_to 'agreement','/user-agreement'
                   li.pk-header__li-list-item = link_to 'about','/about'
 
+              li.pk-list__unit
+                = link_to 'Report a bug',
+                        'https://github.com/pivorakmeetup/pivorak-web-app/issues/new?labels=bug'
               - if user_signed_in?
                 / .pk-avatar     = image_tag gravatar_url(current_user)
                 li.pk-list__unit = logout_link
