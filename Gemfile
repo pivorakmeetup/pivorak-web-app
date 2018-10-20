@@ -43,7 +43,7 @@ gem 'coffee-rails',                                                  '~> 4.2.1'
 gem 'uglifier',                                                      '~> 4.1.19'
 gem 'rails-assets-svgxuse',                  source: 'https://rails-assets.org'
 gem 'rails-assets-semantic-ui-calendar',     source: 'https://rails-assets.org'
-
+gem 'premailer-rails' # email inline styling
 #=== FEATURES ==================================================================
 gem 'chartkick',                                                     '~> 3.0.1'
 gem 'groupdate',                                                       '~> 4.0'

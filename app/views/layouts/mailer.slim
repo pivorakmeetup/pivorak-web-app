@@ -1,0 +1,52 @@
+doctype html
+html
+  head
+    meta content=("text/html; charset=utf-8") http-equiv="Content-Type" /
+    css:
+
+      @font-face {
+        font-family: 'Arvo';
+        font-style: italic;
+        font-weight: 400;
+        src: local('Arvo Italic'), local('Arvo-Italic'), url(https://fonts.gstatic.com/s/arvo/v10/tDbN2oWUg0MKqSIg75Tv3PjyjA.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+      /* latin */
+      @font-face {
+        font-family: 'Arvo';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Arvo'), url(https://fonts.gstatic.com/s/arvo/v10/tDbD2oWUg0MKqScQ7Z7o_vo.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+      /* latin */
+      @font-face {
+        font-family: 'Arvo';
+        font-style: normal;
+        font-weight: 700;
+        src: local('Arvo Bold'), local('Arvo-Bold'), url(https://fonts.gstatic.com/s/arvo/v10/tDbM2oWUg0MKoZw1-LPK89D4hAA.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+
+      body {
+        font-family: "Arvo";
+      }
+
+      .btn {
+          box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2);
+          border: 2px solid rgba(252,247,239,0.54);
+          border-radius: 20px;
+          color: white;
+          padding: 10px 38px;
+          text-decoration: none;
+      }
+
+      .red {
+        background: red;
+      }
+
+      .green {
+        background: darkgreen;
+      }
+  body
+    = yield

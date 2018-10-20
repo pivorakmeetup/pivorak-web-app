@@ -43,10 +43,10 @@ describe VisitRequestMailer do
 
   describe '#confirmation' do
     let(:mail) { described_class.confirmation(visit_request) }
-    let(:email_template) { EmailTemplate.find_by!(title: 'VisitRequestMailer#confirmation') }
+    let(:event) { create(:event, venue: create(:venue)) }
 
     it 'renders the headers' do
-      expect(mail.subject).to eq(email_template.subject)
+      expect(mail.subject).to eq("Final #pivorak details! | #{event.title}")
       expect(mail.to).to eq([visit_request.user.email])
       expect(mail.from).to eq([ApplicationMailer::PIVORAK_EMAIL])
     end
