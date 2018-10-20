@@ -1,10 +1,30 @@
+p Dear, #{@user.full_name}!
+
+p We are waiting for you on #{@start_at_date} at #{@venue.name}, #{@venue.address}.
+
+b We start at #{@event.started_at.strftime('%H:%M')}!
+
+p Confirm your attendance <b>ASAP</b> using the buttons below, so we'll know whether to keep a place for you!
+
+p Are you coming for sure?
 p
-  | Dear,
-  = @user.full_name
-p
-  | please confirm visit @event.title by clicking the link
-p = link_to 'YES', confirm_visit_url
+  b Sure!
+  '
+  = link_to 'YES', @confirm_visit_url, class: 'btn green'
 
 p
-  | or inform us that you change your mind and we should not wait for you
-p = link_to 'NO', cancel_visit_url
+  | Please, if you changed your mind cancel your attendance (we’ll invite smb from the waiting list):
+p
+  b Sorry, I won't come
+  '
+  = link_to 'NO', @cancel_visit_url, class: 'btn red'
+
+== @agenda
+
+p Thanks and see you!
+
+p With the warmest regards,
+| YOUR PIVORAK AUTHORITY
+
+p You have received this mail because we've launched our site :)  Hugs, kisses and appreciation to our contributors!
+p Want to jump in and take an issue on your shoulders? Just check #{link_to 'here', 'https://github.com/pivorakmeetup/pivorak-web-app/issues'}
