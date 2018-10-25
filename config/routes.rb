@@ -43,6 +43,7 @@ Rails.application.routes.draw do
       resources :visit_requests, only: %i[index] do
         collection do
           post :send_confirmations, to: 'visit_request/send_confirmations#create'
+          post :send_confirmation_reminders, to: 'visit_request/send_confirmation_reminders#create'
           post :import,             to: 'visit_request/import#create'
           get  :report,             to: 'visit_request/report#download'
         end

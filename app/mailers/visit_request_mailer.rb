@@ -24,6 +24,16 @@ class VisitRequestMailer < ApplicationMailer
     mail(subject: "Final #pivorak details! | #{@event.title}", to: @user.email)
   end
 
+  def confirmation_reminder(visit_request)
+    @visit_request     = visit_request
+    @event             = @visit_request.event
+    @user              = @visit_request.user
+    @confirm_visit_url = event_visit_request_url(@event, @visit_request, answer: :yes, token: @visit_request.token, host: host)
+    @cancel_visit_url  = event_visit_request_url(@event, @visit_request, answer: :no, token: @visit_request.token, host: host)
+
+    mail(subject: "Confirmation reminder | #{@event.title}", to: @user.email)
+  end
+
   def needs_confirmation(visit_request)
     @visit_request = visit_request
     @event         = @visit_request.event
