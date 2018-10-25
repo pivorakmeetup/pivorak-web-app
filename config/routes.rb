@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   end
 
   resource :supporters, only: %i[show]
+  resource :agenda, only: %i[show], controller: :agenda
 
   #=== ADMIN AREA ===============================
   namespace :admin do

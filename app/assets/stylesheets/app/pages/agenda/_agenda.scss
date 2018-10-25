@@ -1,0 +1,10 @@
+$mobile-breakpoint: "420";
+
+.pk-agenda-container {
+  font-size: 3vw;
+  padding: 20px 32px;
+
+  @include breakpoint-max($mobile-breakpoint) {
+    padding: 20px 16px;
+  }
+}
