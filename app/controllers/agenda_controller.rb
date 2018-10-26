@@ -6,7 +6,7 @@ class AgendaController < ApplicationController
   private
 
   def event
-    @event ||= Event.current.first!
+    Event.current || raise(ActiveRecord::RecordNotFound)
   end
 
   def agenda

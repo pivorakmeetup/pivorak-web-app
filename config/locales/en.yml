@@ -3,6 +3,7 @@ en:
   pivorak_description: A Ruby Community in Lviv, featuring monthly meetups with beer and crawfish :)
 
   words:
+    agenda: agenda
     app: App
     all: All
     id: '#id'

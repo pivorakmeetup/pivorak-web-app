@@ -29,13 +29,16 @@ class Event < ApplicationRecord
   has_many :newbie_visitors,   -> { merge(User.newbies) },  through: :visit_requests, source: :user
 
   scope :display, -> { where.not(status: PLANNED) }
-  scope :current, -> { where('started_at >= :beginning_of_day AND finished_at < :end_of_day', beginning_of_day: Time.now.beginning_of_day, end_of_day: Time.now.end_of_day) }
 
   validates :title, :limit_total, :limit_verified, presence: true
   validates_with LimitsValidator
 
   def self.upcoming
     where(published: true).order('started_at').last
+  end
+
+  def self.current
+    find_by('started_at >= :beginning_of_day AND finished_at < :end_of_day', beginning_of_day: Time.zone.now.beginning_of_day, end_of_day: Time.now.end_of_day)
   end
 
   def limit_newbies

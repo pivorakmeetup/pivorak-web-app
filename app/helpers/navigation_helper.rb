@@ -48,8 +48,8 @@ module NavigationHelper
   end
 
   def agenda_link
-    return unless Event.current.exists?
+    return unless Event.current
 
-    link_to "agenda", agenda_path
+    link_to t('words.agenda'), agenda_path
   end
 end
