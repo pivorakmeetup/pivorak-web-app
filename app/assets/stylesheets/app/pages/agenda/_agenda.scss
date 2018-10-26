@@ -1,10 +1,16 @@
+$tablet-breakpoint: "800";
 $mobile-breakpoint: "420";
 
 .pk-agenda-container {
-  font-size: 3vw;
+  font-size: 2vw;
   padding: 20px 32px;
 
+  @include breakpoint-max($tablet-breakpoint) {
+    font-size: 6vw;
+  }
+
   @include breakpoint-max($mobile-breakpoint) {
+    font-size: 2vw;
     padding: 20px 16px;
   }
 }
