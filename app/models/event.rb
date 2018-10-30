@@ -37,6 +37,10 @@ class Event < ApplicationRecord
     where(published: true).order('started_at').last
   end
 
+  def self.current
+    find_by('started_at >= :beginning_of_day AND finished_at < :end_of_day', beginning_of_day: Time.zone.now.beginning_of_day, end_of_day: Time.now.end_of_day)
+  end
+
   def limit_newbies
     limit_total - limit_verified
   end

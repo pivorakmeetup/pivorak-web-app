@@ -46,4 +46,10 @@ module NavigationHelper
   def admin_link
     link_to t('admin.admin'), admin_path
   end
+
+  def agenda_link
+    return unless Event.current
+
+    link_to t('words.agenda'), agenda_path
+  end
 end
