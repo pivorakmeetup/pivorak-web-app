@@ -4,7 +4,13 @@ class VisitRequestMailerPreview
   end
 
   def confirmation
-    VisitRequestMailer.confirmation visit_request
+    mail = VisitRequestMailer.confirmation visit_request
+    Premailer::Rails::Hook.perform(mail)
+  end
+
+  def confirmation_reminder
+    mail = VisitRequestMailer.confirmation_reminder visit_request
+    Premailer::Rails::Hook.perform(mail)
   end
 
   def needs_confirmation

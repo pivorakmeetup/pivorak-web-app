@@ -43,7 +43,7 @@ gem 'coffee-rails',                                                  '~> 4.2.1'
 gem 'uglifier',                                                      '~> 4.1.19'
 gem 'rails-assets-svgxuse',                  source: 'https://rails-assets.org'
 gem 'rails-assets-semantic-ui-calendar',     source: 'https://rails-assets.org'
-
+gem 'premailer-rails' # email inline styling
 #=== FEATURES ==================================================================
 gem 'chartkick',                                                     '~> 3.0.1'
 gem 'groupdate',                                                       '~> 4.0'
@@ -51,7 +51,7 @@ gem 'stripe',                                                          '~> 1.5'
 gem 'interactor-rails',                                                '~> 2.0'
 gem 'sitemap_generator',                                             '~> 6.0.1'
 gem 'httpclient',                                                    '~> 2.8.3'
-gem 'oj',                                                           '~> 2.18.5'
+gem 'oj',                                                           '~> 3.6.11'
 gem 'redcarpet',                                                     '~> 3.4.0'
 gem 'rails_email_preview',                                           '~> 2.0.1'
 gem 'dry-validation',                                               '~> 0.12.2'
@@ -87,6 +87,7 @@ end
 group :development, :test do
   gem 'rspec'
   gem 'rubocop',                                    '~> 0.59.2', require: false
+  gem 'rubocop-rspec'
   gem 'rspec-rails'
   gem 'pry-rails'
   gem 'faker'

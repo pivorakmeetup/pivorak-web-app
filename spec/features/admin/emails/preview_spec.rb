@@ -31,7 +31,8 @@ RSpec.describe 'Emails PREVIEW' do
 
     describe 'VisitRequestMailer#confirmation' do
       it do
-        create(:visit_request)
+        event = create(:event, venue: create(:venue))
+        create(:visit_request, event: event)
         visit '/emails/en/visit_request_mailer_preview-confirmation'
         expect(page.status_code).to eq(200)
       end
