@@ -67,5 +67,14 @@ module Admin
         method: :post, class: 'ui button red',
         data: { confirm: t('phrases.confirm') }
     end
+
+    def send_confirmation_reminders_emails_link(event)
+      return unless event.confirmation?
+
+      link_to t('events.send_confirmation_reminders'),
+        send_confirmation_reminders_admin_event_visit_requests_path(event),
+        method: :post, class: 'ui button blue',
+        data: { confirm: t('phrases.confirm') }
+    end
   end
 end

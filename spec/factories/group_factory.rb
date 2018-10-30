@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :group do
-    name     Faker::Lorem.word
-    resource 'Talk'
+    name     { Faker::Lorem.word }
+    resource { 'Talk' }
   end
 end

@@ -1,0 +1,22 @@
+p Hello, #{@user.full_name}!
+
+p
+  | Are you planning to visit #Pivorak Conference  tomorrow?
+  br This time we are sending a QR Code which will be your ticket to the world of crawfishes and Ruby.
+  br We have a limited amount of available places, so if you cannot join - please, let us know.
+  br You will make someone from a waiting list extremely happy!
+
+p
+  b Sure!
+  '
+  = link_to 'YES', @confirm_visit_url, class: 'btn green'
+
+p
+  b Sorry, I won't come
+  '
+  = link_to 'NO', @cancel_visit_url, class: 'btn red'
+
+p
+  | Thanks and see you soon!
+  br Regards,
+  br #pivorak Team
