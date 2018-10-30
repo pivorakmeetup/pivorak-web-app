@@ -14,7 +14,7 @@ gem 'omniauth-twitter',                                                '~> 1.4.0
 gem 'simple_form'
 gem 'friendly_id',                                                     '~> 5.1'
 gem 'kaminari'
-gem 'carrierwave',                                                     '~> 1.0'
+gem 'carrierwave',                                                     '~> 1.2'
 gem 'acts-as-taggable-on',  git: 'https://github.com/Fodoj/acts-as-taggable-on', ref: 'rails-5.2'
 gem 'sidekiq'
 gem 'sidekiq-scheduler',                                               '~> 2.1.4'
