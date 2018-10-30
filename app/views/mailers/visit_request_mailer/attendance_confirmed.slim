@@ -23,5 +23,3 @@ p Hi, #{@user.full_name}!
 p Thanks for confirming your attendance.
 p See you at the event at #{I18n.localize @event.started_at, format: :date_month_year_and_date_time} in #{@venue.name}.
 p Please show the QR code at the entrance.
-.qr_code
-  = raw @qr_code.as_html

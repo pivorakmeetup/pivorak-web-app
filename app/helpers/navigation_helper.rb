@@ -11,8 +11,8 @@ module NavigationHelper
     link_to t('goals.plural'), goals_path
   end
 
-  def donate_link
-    link_to t('donations.donate'), donation_path
+  def donate_link(**options)
+    link_to t('donations.donate'), donate_path, **options
   end
 
   def chat_link
@@ -45,5 +45,11 @@ module NavigationHelper
 
   def admin_link
     link_to t('admin.admin'), admin_path
+  end
+
+  def agenda_link
+    return unless Event.current
+
+    link_to t('words.agenda'), agenda_path
   end
 end
