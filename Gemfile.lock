@@ -388,7 +388,7 @@ GEM
     pry-rails (0.3.6)
       pry (>= 0.10.4)
     public_suffix (3.0.3)
-    puma (3.11.4)
+    puma (3.12.0)
     raabro (1.1.5)
     rack (2.0.5)
     rack-attack (5.2.0)
@@ -665,7 +665,7 @@ DEPENDENCIES
   prawn-table
   premailer-rails
   pry-rails
-  puma (~> 3.0)
+  puma (~> 3.12)
   rack-attack
   rails (= 5.2.0)
   rails-assets-semantic-ui-calendar!
