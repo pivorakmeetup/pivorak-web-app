@@ -34,7 +34,7 @@ $namespace: ".pk-list";
       z-index: 1;
     }
   }
-  input[type=submit] {
+  input[type=submit], .btn {
     @extend %btn-styles;
     background: transparent;
     border: 2px solid rgba(#FCF7EF, .54);

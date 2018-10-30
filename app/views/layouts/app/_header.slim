@@ -61,7 +61,8 @@ header.pk-header class="#{yield(:main_header_class)}"
               /    li.pk-header__li-list-item = members_link
               /    li.pk-header__li-list-item = speakers_link
 
-              /li.pk-list__unit = goals_link
+              li.pk-list__unit
+                = agenda_link
 
               li.pk-list__unit
                 = link_to "friends", supporters_path
@@ -88,8 +89,4 @@ header.pk-header class="#{yield(:main_header_class)}"
                 li.pk-list__unit = login_link
 
               li.pk-list__unit
-                <script type="text/javascript" id="widget-wfp-script" src="https://secure.wayforpay.com/server/pay-widget.js?ref=button"></script>
-                <script type="text/javascript">function runWfpWdgt() {var wayforpay = new Wayforpay(); wayforpay.invoice('https://secure.wayforpay.com/button/b644556e003e4');}</script>
-                <input type="submit" value= "donate" onclick="runWfpWdgt();" /></input>
-
-/ = render 'shared/search_bar', path: search_index_path
+                = donate_link(class: 'btn')

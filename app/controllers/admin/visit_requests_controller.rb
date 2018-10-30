@@ -40,7 +40,7 @@ module Admin
     def pending_ids
       @pending_ids ||= User::EventParticipantsByStatus.call(
         event_id: event.id,
-        status: ::VisitRequest::PENDING
+        status: ::VisitRequest::APPROVED
       ).ids
     end
 

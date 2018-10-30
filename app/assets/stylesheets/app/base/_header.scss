@@ -33,7 +33,7 @@ $header-mobile-breakpoint: "420";
 }
 
 #{$namespace}__dropdown-icon {
-  
+
   display: none;
   background-color: transparent;
   border: 0;
@@ -124,14 +124,14 @@ $header-mobile-breakpoint: "420";
       color: rgba($link-color, .87);
     }
 
-    input[type=submit] {
+    input[type=submit], .btn {
       margin: 8px 0 0 16px;
     }
 
     #{$namespace}__li-list-wr  {
        > a {
          display: none;
-       } 
+       }
     }
 
     #{$namespace}__li-list {
@@ -178,7 +178,7 @@ $header-mobile-breakpoint: "420";
 #{$namespace}__li-list-wr {
   position: relative;
   z-index: 10;
-  
+
   &:hover, &:active {
     #{$namespace}__li-list {
       display: flex;
@@ -191,7 +191,7 @@ $header-mobile-breakpoint: "420";
 
   > a:hover, a:active {
     color: rgba($link-color, .87) !important;
-    background-color: transparent !important;    
+    background-color: transparent !important;
   }
 }
 
