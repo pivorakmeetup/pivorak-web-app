@@ -390,7 +390,7 @@ GEM
     public_suffix (3.0.3)
     puma (3.12.0)
     raabro (1.1.5)
-    rack (2.0.5)
+    rack (2.0.6)
     rack-attack (5.2.0)
       rack
     rack-contrib (2.0.1)
