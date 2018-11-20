@@ -108,7 +108,6 @@ group :test do
   gem 'simplecov', require: false
   gem 'launchy'
   gem 'timecop'
-  gem 'vcr'
   gem 'webmock'
   gem 'codecov', require: false
   gem 'pdf-inspector', require: 'pdf/inspector'
