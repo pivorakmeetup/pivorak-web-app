@@ -2,71 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: https://slack.com/api/users.admin.invite?email=new-user@mail.com&token=xoxp-44605439956-44567237715-46971387168-841927fece
-    body:
-      encoding: UTF-8
-      string: ''
-    headers:
-      User-Agent:
-      - HTTPClient/1.0 (2.8.2.4, ruby 2.3.1 (2016-04-26))
-      Accept:
-      - "*/*"
-      Date:
-      - Thu, 01 Dec 2016 20:57:33 GMT
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/json; charset=utf-8
-      Content-Length:
-      - '38'
-      Connection:
-      - keep-alive
-      Access-Control-Allow-Origin:
-      - "*"
-      Cache-Control:
-      - private, no-cache, no-store, must-revalidate
-      Content-Security-Policy:
-      - referrer no-referrer;
-      Date:
-      - Thu, 01 Dec 2016 20:57:33 GMT
-      Expires:
-      - Mon, 26 Jul 1997 05:00:00 GMT
-      Pragma:
-      - no-cache
-      Server:
-      - Apache
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains; preload
-      Vary:
-      - Accept-Encoding
-      X-Accepted-Oauth-Scopes:
-      - client
-      X-Content-Type-Options:
-      - nosniff
-      X-Oauth-Scopes:
-      - identify,read,post,client,apps,admin
-      X-Slack-Backend:
-      - h
-      X-Slack-Req-Id:
-      - f6f13bb5-44b3-4580-99ea-34da8a6f252d
-      X-Xss-Protection:
-      - '0'
-      X-Cache:
-      - Miss from cloudfront
-      Via:
-      - 1.1 c0486ca54d4ad5a3da496bc2b5f49cd2.cloudfront.net (CloudFront)
-      X-Amz-Cf-Id:
-      - HxBh7TocECkpLWmTAMHg8hOzVoJrkz2Tq9rop5h396LO9fWrW7YYeQ==
-    body:
-      encoding: UTF-8
-      string: '{"ok":false,"error":"already_invited"}'
-    http_version: 
-  recorded_at: Thu, 01 Dec 2016 20:57:34 GMT
-- request:
-    method: get
     uri: https://slack.com/api/users.admin.invite?email=new-user@mail.com&resend=true&token=xoxp-44605439956-44567237715-46971387168-841927fece
     body:
       encoding: UTF-8
@@ -77,7 +12,7 @@ http_interactions:
       Accept:
       - "*/*"
       Date:
-      - Fri, 02 Dec 2016 08:42:07 GMT
+      - Tue, 20 Nov 2018 07:50:54 GMT
   response:
     status:
       code: 200
@@ -85,49 +20,45 @@ http_interactions:
     headers:
       Content-Type:
       - application/json; charset=utf-8
-      Content-Length:
-      - '36'
+      Transfer-Encoding:
+      - chunked
       Connection:
       - keep-alive
-      Access-Control-Allow-Origin:
-      - "*"
-      Cache-Control:
-      - private, no-cache, no-store, must-revalidate
-      Content-Security-Policy:
-      - referrer no-referrer;
       Date:
-      - Fri, 02 Dec 2016 08:42:08 GMT
-      Expires:
-      - Mon, 26 Jul 1997 05:00:00 GMT
-      Pragma:
-      - no-cache
+      - Tue, 20 Nov 2018 07:50:54 GMT
       Server:
       - Apache
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains; preload
       Vary:
       - Accept-Encoding
-      X-Accepted-Oauth-Scopes:
-      - client
-      X-Content-Type-Options:
-      - nosniff
-      X-Oauth-Scopes:
-      - identify,read,post,client,apps,admin
+      X-Slack-Exp:
+      - '1'
       X-Slack-Backend:
       - h
+      X-Slack-Router:
+      - p
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
       X-Slack-Req-Id:
-      - 917e65ca-9d67-47cb-9007-f66a839f82a5
+      - de89a15b-6963-49f9-a56a-bebb73bc7065
       X-Xss-Protection:
       - '0'
+      X-Content-Type-Options:
+      - nosniff
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Via:
+      - haproxy-www-wyuf
       X-Cache:
       - Miss from cloudfront
       Via:
-      - 1.1 91db3e27f70759a0dea967c4b34efea9.cloudfront.net (CloudFront)
+      - 1.1 61a9e59c5096de6d5aa2d30643685276.cloudfront.net (CloudFront)
       X-Amz-Cf-Id:
-      - DoGPRpKGp4aHIYCWbhv_7NgI0q1VyE8oBnbyY7aXGKckkqDkhyE0Pg==
+      - npuAHP99nO6avqRpX5rLuRYTBjsyzO1m2QuEXEVjLo-SLXT14wpX_g==
     body:
       encoding: UTF-8
-      string: '{"ok":false,"error":"sent_recently"}'
+      string: '{"ok":false,"error":"token_revoked"}'
     http_version: 
-  recorded_at: Fri, 02 Dec 2016 08:42:08 GMT
+  recorded_at: Tue, 20 Nov 2018 07:50:54 GMT
 recorded_with: VCR 3.0.3

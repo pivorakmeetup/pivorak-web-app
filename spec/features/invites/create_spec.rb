@@ -1,5 +1,7 @@
 RSpec.describe 'Invite features CREATE', vcr: { record: :new_episodes } do
   before do
+
+
     visit '/invites/new'
   end
 
