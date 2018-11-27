@@ -586,7 +586,6 @@ GEM
     unicode-display_width (1.4.0)
     uniform_notifier (1.11.0)
     url (0.3.2)
-    vcr (4.0.0)
     versionomy (0.5.0)
       blockenspiel (~> 0.5)
     warden (1.2.7)
@@ -701,7 +700,6 @@ DEPENDENCIES
   turbolinks (~> 5.2)
   tzinfo-data
   uglifier (~> 4.1.19)
-  vcr
   versionomy (~> 0.5.0)
   web-console
   webmock
