@@ -17,7 +17,7 @@ gem 'kaminari'
 gem 'carrierwave',                                                     '~> 1.2'
 gem 'acts-as-taggable-on',  git: 'https://github.com/Fodoj/acts-as-taggable-on', ref: 'rails-5.2'
 gem 'sidekiq'
-gem 'sidekiq-scheduler',                                               '~> 2.1.4'
+gem 'sidekiq-scheduler',                                               '~> 3.0.0'
 gem 'redis',                                                           '~>3.2'
 gem 'rack-attack'
 

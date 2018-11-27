@@ -194,7 +194,7 @@ GEM
       dry-logic (~> 0.4, >= 0.4.0)
       dry-types (~> 0.13.1)
     erubi (1.7.1)
-    et-orbi (1.1.2)
+    et-orbi (1.1.6)
       tzinfo
     execjs (2.7.0)
     ez-core (0.1.1)
@@ -218,8 +218,8 @@ GEM
     formatador (0.2.5)
     friendly_id (5.2.4)
       activerecord (>= 4.0.0)
-    fugit (1.1.1)
-      et-orbi (~> 1.1, >= 1.1.1)
+    fugit (1.1.6)
+      et-orbi (~> 1.1, >= 1.1.6)
       raabro (~> 1.1)
     gibbon (3.2.0)
       faraday (>= 0.9.1)
@@ -389,13 +389,13 @@ GEM
       pry (>= 0.10.4)
     public_suffix (3.0.3)
     puma (3.12.0)
-    raabro (1.1.5)
+    raabro (1.1.6)
     rack (2.0.6)
     rack-attack (5.2.0)
       rack
     rack-contrib (2.0.1)
       rack (~> 2.0)
-    rack-protection (2.0.3)
+    rack-protection (2.0.4)
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -495,8 +495,8 @@ GEM
     ruby-progressbar (1.10.0)
     ruby-rc4 (0.1.5)
     ruby_dep (1.5.0)
-    rufus-scheduler (3.5.0)
-      fugit (~> 1.1, >= 1.1.1)
+    rufus-scheduler (3.5.2)
+      fugit (~> 1.1, >= 1.1.5)
     safe_yaml (1.0.4)
     sass (3.5.6)
       sass-listen (~> 4.0.0)
@@ -519,7 +519,7 @@ GEM
       connection_pool (~> 2.2, >= 2.2.0)
       rack-protection (>= 1.5.0)
       redis (>= 3.3.5, < 5)
-    sidekiq-scheduler (2.1.10)
+    sidekiq-scheduler (3.0.0)
       redis (>= 3, < 5)
       rufus-scheduler (~> 3.2)
       sidekiq (>= 3)
@@ -685,7 +685,7 @@ DEPENDENCIES
   semantic-ui-sass (~> 2.2)
   shoulda-matchers
   sidekiq
-  sidekiq-scheduler (~> 2.1.4)
+  sidekiq-scheduler (~> 3.0.0)
   simple_form
   simplecov
   sitemap_generator (~> 6.0.1)
