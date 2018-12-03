@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '2.3.1'
 
 #=== CORE =====================================================================
-gem 'rails',                                                           '5.2.0'
+gem 'rails',                                                           '5.2.1.1'
 gem 'pg',                                                              '~> 0.18'
 gem 'puma',                                                            '~> 3.12'
 gem 'pg_search',                                                       '~> 2.0'
@@ -108,7 +108,6 @@ group :test do
   gem 'simplecov', require: false
   gem 'launchy'
   gem 'timecop'
-  gem 'vcr'
   gem 'webmock'
   gem 'codecov', require: false
   gem 'pdf-inspector', require: 'pdf/inspector'

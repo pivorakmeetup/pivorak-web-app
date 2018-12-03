@@ -24,14 +24,6 @@ require 'rspec/collection_matchers'
 require 'rspec/its'
 require 'rspec/active_model/mocks'
 
-require 'vcr'
-
-VCR.configure do |c|
-  c.cassette_library_dir = 'spec/cassettes'
-  c.hook_into :webmock
-  c.configure_rspec_metadata!
-end
-
 Dir[Rails.root.join('spec/support/*.rb')].each { |f| require f }
 
 Shoulda::Matchers.configure do |config|
