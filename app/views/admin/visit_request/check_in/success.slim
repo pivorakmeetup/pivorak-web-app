@@ -1,7 +1,10 @@
 .check_in
   p
     i.empty.user.icon.green
-    = t('visit_request.check_in.name', first_name: user.first_name, last_name: user.last_name).html_safe
+    - if user.first_name
+      = t('visit_request.check_in.name', first_name: user.first_name, last_name: user.last_name).html_safe
+    - elsif user.email
+      = t('visit_request.check_in.email', email: user.email).html_safe
   p
     i.empty.calendar.check.outline.icon.green
     = t('visit_request.check_in.event', title: event.title)

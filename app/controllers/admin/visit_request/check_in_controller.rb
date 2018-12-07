@@ -23,7 +23,7 @@ module Admin
       end
 
       def upcoming_event
-        @event ||= Event.upcoming
+        @event ||= Event.last
       end
 
       def visit_count

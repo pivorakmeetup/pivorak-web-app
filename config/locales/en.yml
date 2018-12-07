@@ -172,6 +172,7 @@ en:
 
   visit_request:
     check_in:
+      email: "Email: <b>%{email}</b>"
       plural: Check In
       search: 'Find by name:'
       name: "Name: <b>%{first_name}</b> %{last_name}"
