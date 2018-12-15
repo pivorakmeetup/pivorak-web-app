@@ -18,6 +18,7 @@ body {
   line-height: $main-line-height;
   color: $main-color;
   position: relative;
+  overflow-wrap: break-word;
   &:after {
     content: "";
     background: transparent image-url("paper-imit-bg.png") repeat center;
