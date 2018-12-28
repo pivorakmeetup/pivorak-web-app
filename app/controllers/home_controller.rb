@@ -3,10 +3,18 @@ class HomeController < ApplicationController
   helper_method :event, :talks, :visit_request, :attendees
 
   def index
-    render 'events/show'
+    if coming_soon?
+      render 'coming_soon/show'
+    else
+      render 'events/show'
+    end
   end
 
   private
+
+  def coming_soon?
+    ActiveModel::Type::Boolean.new.cast(Ez::Settings[:app, :home, :coming_soon])
+  end
 
   def event
     @event ||= Event.upcoming

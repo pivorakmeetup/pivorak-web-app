@@ -1,0 +1,17 @@
+= content_for :main_body_class, "pk-body--main-page"
+
+- if event
+  = content_for :before_header do
+    .pk-event-bg
+
+  .text-center
+    .pk-event-date
+      figure.pk-event-date__img
+        = image_tag "pivorak-logo.png"
+        figcaption
+          | #pivorak
+
+      = t('coming_soon.cfp_open')
+      br
+      = become_a_speaker_link
+

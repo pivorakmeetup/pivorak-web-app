@@ -262,3 +262,6 @@ en:
     formats:
       date_month_year_concise_slash: '%d/%m/%Y'
       date_month_year_and_date_time: '%e %b %Y %H:%M:%p'
+
+  coming_soon:
+    cfp_open: CFP is open

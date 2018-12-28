@@ -9,6 +9,10 @@ app = Ez::Settings::Interface.define(:app) do
     key :app_title, default: -> { 'Admin PivorakWebApp' }
   end
 
+  group :home do
+    key :coming_soon, type: :boolean, default: -> { false }
+  end
+
   group :events do
     key :default_limit,             type: :integer, default: -> { 50 }
     key :default_limit_verified,    type: :integer, default: -> { 35 }
