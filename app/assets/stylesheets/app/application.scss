@@ -25,6 +25,7 @@
 @import "mixins/typography";
 
 @import "base/base";
+@import "base/main-layout";
 @import "base/link";
 @import "base/floating-menu";
 @import "base/grid";
@@ -32,10 +33,13 @@
 @import "base/header";
 @import "base/footer";
 
-@import "pages/home/event-bg";
-@import "pages/home/event-date";
-@import "pages/home/main-speakers";
-@import "pages/home/status";
+@import "pages/home/base";
+@import "pages/home/layout";
+
+@import "pages/event/event-bg";
+@import "pages/event/event-date";
+@import "pages/event/main-speakers";
+@import "pages/event/status";
 @import "pages/static/base";
 
 @import "pages/talk/base";
@@ -69,3 +73,4 @@
 @import "shared/video";
 @import "shared/code";
 @import "shared/table";
+@import "shared/logo";

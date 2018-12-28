@@ -1,0 +1,28 @@
+$namespace: '.pk-home-layout';
+
+#{$namespace} {
+  display: flex;
+  flex-direction: column;
+  height: $main-content-min-height;
+}
+
+#{$namespace}__logo {
+  flex: 0 0 auto;
+  margin-top: 48px;
+}
+
+#{$namespace}__content-wrapper {
+  flex: 1 1 auto;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+#{$namespace}__content {
+  flex: 0 0 auto;
+}
+
+#{$namespace}__footer {
+  flex: 0 0 auto;
+}

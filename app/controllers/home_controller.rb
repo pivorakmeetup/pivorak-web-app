@@ -3,7 +3,7 @@ class HomeController < ApplicationController
   helper_method :event, :talks, :visit_request, :attendees
 
   def index
-    render 'events/show'
+    render 'events/show' if event.present?
   end
 
   private

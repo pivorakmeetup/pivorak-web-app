@@ -1,4 +1,6 @@
-header.pk-header class="#{yield(:main_header_class)}"
+- header_classlist = [yield(:main_header_class).present? ? yield(:main_header_class) : nil, local_assigns[:header_class]]
+
+header.pk-header class="#{header_classlist.compact.join(' ')}"
   .pk-grid
     .pk-grid__unit.pk-grid.text-left
       .pk-inline-block

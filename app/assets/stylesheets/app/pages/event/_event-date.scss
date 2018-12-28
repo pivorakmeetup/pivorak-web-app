@@ -8,22 +8,6 @@ $namespace: ".pk-event-date";
   text-align: center;
 }
 
-figure#{$namespace}__img {
-  margin: 0 0 14px 0;
-  img {
-    margin: 0 auto;
-    display: block;
-    max-width: 111px;
-  }
-  figcaption {
-    font-weight: bold;
-    font-size: 0.32945455em;
-    line-height: 1.37969095em;
-    letter-spacing: 0.05022075em;
-    text-align: center;
-    margin-left: -10px;
-  }
-}
 #{$namespace}__day {
   font-size: 1em;
   line-height: 1.21818182em;

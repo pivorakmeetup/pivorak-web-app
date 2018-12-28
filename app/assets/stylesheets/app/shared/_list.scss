@@ -51,4 +51,9 @@ $namespace: ".pk-list";
       background-color: $link-color;
     }
   }
+
+  #{$namespace}__donate-btn {
+    margin-top: 4px;
+    margin-bottom: 0;
+  }
 }

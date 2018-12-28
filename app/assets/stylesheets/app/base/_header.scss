@@ -96,7 +96,7 @@ $header-mobile-breakpoint: "420";
 }
 
 #{$namespace}__dropdown-list.pk-list {
-
+  margin: 0;
   @include breakpoint-max($header-menu-breakpoint) {
     position: relative;
     transform: translateX(100%);
