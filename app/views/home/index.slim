@@ -12,33 +12,4 @@
 
   .pk-home-layout__footer
     p follow us to keep in touch
-    .pk-grid-inline.pk-grid--wrap.pk-grid--center-v
-      .pk-header__soc-icon.pk-inline-block
-        = link_to 'https://twitter.com/pivorakmeetup', target: '_blank' do
-          svg.pk-icon
-            use xlink:href="#{asset_path('icons.svg')}#icon-twitter"
-
-      .pk-header__soc-icon.pk-inline-block
-        = link_to 'https://github.com/pivorakmeetup', target: '_blank' do
-          svg.pk-icon
-            use xlink:href="#{asset_path('icons.svg')}#icon-github"
-
-      .pk-header__soc-icon.pk-inline-block
-        = link_to 'https://www.facebook.com/pivorak', target: '_blank' do
-          svg.pk-icon
-            use xlink:href="#{asset_path('icons.svg')}#icon-facebook"
-
-      .pk-header__soc-icon.pk-inline-block
-        = link_to 'https://www.instagram.com/pivorakmeetup/', target: '_blank' do
-          svg.pk-icon
-            use xlink:href="#{asset_path('icons.svg')}#icon-instagram"
-
-      .pk-header__soc-icon.pk-inline-block
-        = link_to 'http://pivorak-slack.herokuapp.com/', target: '_blank' do
-          svg.pk-icon
-            use xlink:href="#{asset_path('icons.svg')}#icon-slack"
-
-      .pk-header__soc-icon.pk-inline-block
-        = link_to 'https://www.youtube.com/channel/UCPsfLdQH_0CaDIe4imm7bMA', target: '_blank' do
-          svg.pk-icon
-            use xlink:href="#{asset_path('icons.svg')}#icon-youtube"
+    = render 'layouts/app/social'
