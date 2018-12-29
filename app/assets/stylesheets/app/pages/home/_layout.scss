@@ -21,8 +21,16 @@ $namespace: '.pk-home-layout';
 
 #{$namespace}__content {
   flex: 0 0 auto;
+
+  p {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
 }
 
 #{$namespace}__footer {
+  font-weight: bold;
   flex: 0 0 auto;
+  text-align: center;
 }
