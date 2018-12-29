@@ -3,20 +3,27 @@ class HomeController < ApplicationController
   helper_method :event, :talks, :visit_request, :attendees, :upcoming_date
 
   def index
-    render 'events/show' if event.present?
+    if event
+      render 'events/show'
+    else
+      render :index
+    end
   end
 
   private
 
   def upcoming_date
-    next_event = Event.last
-    return 'soon' unless next_event
-    started_at = next_event.started_at
+    return 'soon' unless planned_event
+    started_at = planned_event.started_at
     started_at.strftime("#{started_at.day.ordinalize} of %B")
   end
 
   def event
     @event ||= Event.upcoming
+  end
+
+  def planned_event
+    @event ||= Event.planned.last
   end
 
   def talks
