@@ -8,21 +8,16 @@ RSpec.describe 'Visit Requests TOGGLE LIST' do
     visit_page.call
   end
 
-  describe 'toggling from one list to another' do
-    it { expect(page).to have_link 'Hello!', count: 1 }
+  it 'checking in the visitor and link is changed to text' do
+    visit_page.call
 
-    it 'toggle to the main list' do
-      click_link 'Hello!'
-      visit_page.call
+    expect(page).to have_link I18n.t('visit_request.check_in.plural')
+    expect(page).to_not have_content I18n.t('visit_request.check_in.already_checked_in')
 
-      expect(page).to have_link 'Waiting', count: 1
-      expect(page).to_not have_link 'Hello!', count: 1
+    click_link I18n.t('visit_request.check_in.plural')
+    visit_page.call
 
-      click_link 'Waiting'
-      visit_page.call
-
-      expect(page).to have_link 'Hello!', count: 1
-      expect(page).to_not have_link 'Waiting', count: 1
-    end
+    expect(page).not_to have_link I18n.t('visit_request.check_in.plural')
+    expect(page).to have_content I18n.t('visit_request.check_in.already_checked_in')
   end
 end

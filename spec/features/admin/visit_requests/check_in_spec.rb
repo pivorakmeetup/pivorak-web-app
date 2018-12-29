@@ -23,12 +23,6 @@ RSpec.describe 'Visit Requests Check In' do
     it { expect(page).to have_content 'Already checked in' }
   end
 
-  context 'when visit request has invalid status' do
-    let(:visit_request) { create(:visit_request, :refused, event: event, user: user) }
-
-    it { expect(page).to have_content 'refused' }
-  end
-
   context 'when confirmed visit request found' do
     let(:visit_request) { create(:visit_request, :confirmed, event: event, user: user) }
 
