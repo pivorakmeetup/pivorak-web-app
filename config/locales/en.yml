@@ -262,3 +262,7 @@ en:
     formats:
       date_month_year_concise_slash: '%d/%m/%Y'
       date_month_year_and_date_time: '%e %b %Y %H:%M:%p'
+  coming_soon:
+    next_event: Next event will happen on %{upcoming_date}.
+    cfp_is_open: Call for speakers is open!
+    follow_us: follow us to keep in touch

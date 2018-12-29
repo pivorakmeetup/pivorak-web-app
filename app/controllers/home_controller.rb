@@ -9,7 +9,9 @@ class HomeController < ApplicationController
   private
 
   def upcoming_date
-    started_at = Event.last.started_at
+    next_event = Event.last
+    return unless next_event
+    started_at = next_event.started_at
     started_at.strftime("#{started_at.day.ordinalize} of %B")
   end
 
