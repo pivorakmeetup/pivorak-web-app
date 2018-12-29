@@ -29,12 +29,13 @@ class Event < ApplicationRecord
   has_many :newbie_visitors,   -> { merge(User.newbies) },  through: :visit_requests, source: :user
 
   scope :display, -> { where.not(status: PLANNED) }
+  scope :ordered_by_start, -> { order(:started_at) }
 
   validates :title, :limit_total, :limit_verified, presence: true
   validates_with LimitsValidator
 
   def self.upcoming
-    where(published: true).order('started_at').last
+    where(published: true).where.not(status: [PASSED, PLANNED]).ordered_by_start.last
   end
 
   def self.current

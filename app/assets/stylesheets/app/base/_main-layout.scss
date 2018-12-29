@@ -1,0 +1,17 @@
+$namespace: ".pk-main-layout";
+
+#{$namespace} {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+#{$namespace}__header {
+  height: $main-header-height;
+  flex: 0 0 auto;
+}
+
+#{$namespace}__content {
+  min-height: $main-content-min-height;
+  flex: 1 1 auto;
+}

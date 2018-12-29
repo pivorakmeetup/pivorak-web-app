@@ -1,15 +1,29 @@
 class HomeController < ApplicationController
   # TODO [1.1] Remove
-  helper_method :event, :talks, :visit_request, :attendees
+  helper_method :event, :talks, :visit_request, :attendees, :upcoming_date
 
   def index
-    render 'events/show'
+    if event
+      render 'events/show'
+    else
+      render :index
+    end
   end
 
   private
 
+  def upcoming_date
+    return 'soon' unless planned_event
+    started_at = planned_event.started_at
+    started_at.strftime("#{started_at.day.ordinalize} of %B")
+  end
+
   def event
     @event ||= Event.upcoming
+  end
+
+  def planned_event
+    @event ||= Event.planned.last
   end
 
   def talks

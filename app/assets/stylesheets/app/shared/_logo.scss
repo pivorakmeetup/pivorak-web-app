@@ -1,0 +1,21 @@
+$namespace: ".pk-logo";
+
+#{$namespace} {
+  margin: 0 0 14px 0;
+  font-size: 55px;
+}
+
+#{$namespace}__img {
+  margin: 0 auto;
+  display: block;
+  max-width: 111px;
+}
+
+#{$namespace}__text {
+  font-weight: bold;
+  font-size: 0.32945455em;
+  line-height: 1.37969095em;
+  letter-spacing: 0.05022075em;
+  text-align: center;
+  margin-left: -10px;
+}
