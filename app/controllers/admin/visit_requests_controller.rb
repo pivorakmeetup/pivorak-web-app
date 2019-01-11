@@ -18,7 +18,7 @@ module Admin
     end
 
     def visit_requests
-      @visit_requests ||= search_against(base_scope).order('users.first_name, users.last_name').includes(:user).order(:id)
+      @visit_requests ||= search_against(base_scope).includes(:user).order('users.first_name, users.last_name')
     end
 
     def base_scope
