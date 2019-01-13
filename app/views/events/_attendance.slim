@@ -1,7 +1,7 @@
-- if event.registration? && current_user
+- present(visit_request, VisitRequestPresenter) do |visit_request_presenter|
   .pk-status
-    = visit_request_status_message(visit_request)
-    = waiting_list_message
-    = cancel_event_attendace_link(visit_request)
+    = visit_request_presenter.visit_request_status_message
+    = visit_request_presenter.waiting_list_message(event)
+    = visit_request_presenter.cancel_event_attendace_link
 
-  = attend_event_link(event, visit_request)
+  = visit_request_presenter.attend_event_link(event)

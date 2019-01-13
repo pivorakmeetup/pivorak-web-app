@@ -1,38 +1,29 @@
 = content_for :main_body_class, "pk-body--main-page"
 
 - if event
-  = content_for :before_header do
-    .pk-event-bg
+  - present(event) do |event_presenter|
+    = content_for :before_header do
+      .pk-event-bg
 
-  .text-center
-    .pk-event-date
-      figure.pk-logo
-        = image_tag "pivorak-logo.png", class: 'pk-logo__img'
-        figcaption.pk-logo__text
-          | #pivorak
+    .text-center
+      .pk-event-date
+        figure.pk-logo
+          = image_tag 'pivorak-logo.png', class: 'pk-logo__img'
+          figcaption.pk-logo__text
+            | #pivorak
 
-      .pk-event-date__day   = get_day(event.started_at)
-      .pk-event-date__month = get_month(event.started_at)
-      .pk-event-date__date  = get_day_of_the_month(event.started_at)
-      .pk-event-date__hour  = get_hour(event.started_at)
-      / TODO: revisit progess bar to unblock production
-      / progress value="#{get_event_fullness_percent(event)}" max="100" style="width: 300px;"
-      / .pk-event-date__counter = get_place_left_counter(event)
+        .pk-event-date__day   = event_presenter.day
+        .pk-event-date__month = event_presenter.month
+        .pk-event-date__date  = event_presenter.day_of_the_month
+        .pk-event-date__hour  = event_presenter.hour
+        / TODO: revisit progess bar to unblock production
+        / progress value="#{get_event_fullness_percent(event)}" max="100" style="width: 300px;"
+        / .pk-event-date__counter = get_place_left_counter(event)
 
-  - if talks.present?
-    .pk-main-speakers class="#{(talks.count == 4) ? 'pk-main-speakers--four-speakers' : ''}"
-      - talks.each do |talk|
-        .pk-main-speakers__unit-container
-          .pk-main-speakers__unit
-            .pk-talk
-              .pk-talk__image.pk-main-speakers__blend-image(style="background-image: url(#{talk.speaker&.cover_url || ""})")
-              .pk-talk__name = talk.speaker&.full_name
-              .pk-talk__title = talk.title
-              .pk-talk__content = MarkdownRenderer.call(talk.description)
+    - if event_presenter.show_talks?
+      .pk-main-speakers class="#{ event_presenter.speakers_css_class }"
+        = render 'events/talks', talks: event_presenter.talks_with_speaker
 
-  .pk-status-container.text-center
-    == render 'events/attendance'
-    == render 'events/confirmation'
-    - if event.registration? && current_user.nil?
-      .pk-status
-        = unauthorized_message(t 'visit_requests.action')
+    .pk-status-container.text-center
+      = render event_presenter.action_button
+

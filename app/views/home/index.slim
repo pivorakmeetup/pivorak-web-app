@@ -1,15 +1,16 @@
-.pk-home-layout
-  .pk-home-layout__logo.text-center
-    figure.pk-logo
-      = image_tag "pivorak-logo.png", class: 'pk-logo__img'
-      figcaption.pk-logo__text
-        | #pivorak
-  .pk-home-layout__content-wrapper
-    .pk-home-layout__content
-      p = t('coming_soon.next_event', upcoming_date: upcoming_date)
-      p = t('coming_soon.cfp_is_open')
-      = become_a_speaker_link(class: 'btn pk-btn pk-btn--biggest pk-btn--green-bg')
+- present(event, PlannedEventPresenter) do |planned_event_presenter|
+    .pk-home-layout
+      .pk-home-layout__logo.text-center
+        figure.pk-logo
+          = image_tag "pivorak-logo.png", class: 'pk-logo__img'
+          figcaption.pk-logo__text
+            | #pivorak
+      .pk-home-layout__content-wrapper
+        .pk-home-layout__content
+          p = t('coming_soon.next_event', upcoming_date: planned_event_presenter.upcoming_date)
+          p = t('coming_soon.cfp_is_open')
+          = become_a_speaker_link(class: 'btn pk-btn pk-btn--biggest pk-btn--green-bg')
 
-  .pk-home-layout__footer
-    p = t('coming_soon.follow_us')
-    = render 'layouts/app/social'
+      .pk-home-layout__footer
+        p = t('coming_soon.follow_us')
+        = render 'layouts/app/social'

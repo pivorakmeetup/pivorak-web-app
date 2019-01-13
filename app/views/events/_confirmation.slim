@@ -1,6 +1,6 @@
-- if event.confirmation? && !visit_request&.waiting_list?
-  .pk-status
-    p = visit_request_confirm_message(visit_request)
-    p = visit_request_confirm_link(visit_request)
-    p = visit_request_refuse_link(visit_request)
-    p = visit_request_please_text(visit_request)
+.pk-status
+  - present(visit_request, VisitRequestPresenter) do |visit_request_presenter|
+    p = visit_request_presenter.visit_request_confirm_message
+    p = visit_request_presenter.visit_request_confirm_link
+    p = visit_request_presenter.visit_request_refuse_link
+    p = visit_request_presenter.visit_request_please_text

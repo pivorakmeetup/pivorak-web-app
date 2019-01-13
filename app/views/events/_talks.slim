@@ -1,0 +1,9 @@
+- talks.each do |talk|
+  - present(talk) do |talk_presenter|
+    .pk-main-speakers__unit-container
+      .pk-main-speakers__unit
+        .pk-talk
+          .pk-talk__image.pk-main-speakers__blend-image(style="background-image: url(#{ talk_presenter.speaker_cover_url })")
+          .pk-talk__name = talk_presenter.speaker_full_name
+          .pk-talk__title = talk_presenter.title
+          .pk-talk__content = talk_presenter.description
