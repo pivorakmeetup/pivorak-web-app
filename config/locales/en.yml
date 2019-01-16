@@ -200,8 +200,8 @@ en:
     main_list: Main
     waiting_list: Waiting
     visited: Visited
-    hello: Hello!
-    waiting: Waiting
+    check_in: Check In
+    already_checked_in: Already Checked In
     confirm: Confirm
     refuse: Refuse
     messages:

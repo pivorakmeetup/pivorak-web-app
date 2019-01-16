@@ -5,11 +5,8 @@ module Admin
 
       def show
         @visit_request, status = ::VisitRequest::CheckIn.new(visit_request).call
-        if params[:redirect_back]
-          redirect_back(fallback_location: admin_path)
-        else
-          render status
-        end
+
+        render status
       end
 
       private

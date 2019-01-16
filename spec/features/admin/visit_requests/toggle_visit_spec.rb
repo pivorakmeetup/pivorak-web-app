@@ -8,16 +8,14 @@ RSpec.describe 'Visit Requests TOGGLE LIST' do
     visit_page.call
   end
 
-  it 'checking in the visitor and link is changed to text' do
+  it 'checking in the visitor' do
     visit_page.call
 
     expect(page).to have_link I18n.t('visit_request.check_in.plural')
     expect(page).to_not have_content I18n.t('visit_request.check_in.already_checked_in')
 
     click_link I18n.t('visit_request.check_in.plural')
-    visit_page.call
 
-    expect(page).not_to have_link I18n.t('visit_request.check_in.plural')
-    expect(page).to have_content I18n.t('visit_request.check_in.already_checked_in')
+    expect(visit_request.reload.checked_in_at).to be_present
   end
 end
