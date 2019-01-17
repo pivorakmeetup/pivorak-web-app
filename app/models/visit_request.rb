@@ -32,4 +32,8 @@ class VisitRequest < ApplicationRecord
   def final_decision?
     confirmed? || refused?
   end
+
+  def checked_in?
+    checked_in_at.present?
+  end
 end

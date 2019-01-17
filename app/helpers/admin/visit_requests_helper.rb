@@ -47,7 +47,7 @@ module Admin
     end
 
     def visit_request_check_in_link(visit_request)
-      if !visit_request.checked_in_at
+      if !visit_request.checked_in?
         link_to t('check_in', scope: 'visit_requests'),
         admin_event_visit_request_toggle_visit_path(visit_request.event, visit_request),
         method: :put, class: ['ui button', 'green'],

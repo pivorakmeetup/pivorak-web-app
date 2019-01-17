@@ -69,7 +69,7 @@ Rails.application.configure do
   # }
 
   config.after_initialize do
-    Bullet.enable = false
+    Bullet.enable = true
     Bullet.raise = true
   end
 end
