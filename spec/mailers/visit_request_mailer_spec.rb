@@ -46,7 +46,7 @@ describe VisitRequestMailer do
     let(:event) { create(:event, venue: create(:venue)) }
 
     it 'renders the headers' do
-      expect(mail.subject).to eq("Final #pivorak details! | #{event.title}")
+      expect(mail.subject).to eq("#pivorak details | #{event.title}")
       expect(mail.to).to eq([visit_request.user.email])
       expect(mail.from).to eq([ApplicationMailer::PIVORAK_EMAIL])
     end
@@ -67,7 +67,7 @@ describe VisitRequestMailer do
     let(:event) { create(:event, venue: create(:venue)) }
 
     it 'renders the headers' do
-      expect(mail.subject).to eq("Confirmation reminder | #{event.title}")
+      expect(mail.subject).to eq("#pivorak reminder | #{event.title}")
       expect(mail.to).to eq([visit_request.user.email])
       expect(mail.from).to eq([ApplicationMailer::PIVORAK_EMAIL])
     end
@@ -84,7 +84,7 @@ describe VisitRequestMailer do
     let(:venue) { create(:venue) }
 
     it 'renders the headers' do
-      expect(mail.subject).to eq('Attendance Confirmation - QR code is attached')
+      expect(mail.subject).to eq('#pivorak confirmation | QR code is attached')
       expect(mail.to).to eq([visit_request.user.email])
       expect(mail.from).to eq([ApplicationMailer::PIVORAK_EMAIL])
     end

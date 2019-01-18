@@ -21,7 +21,7 @@ class VisitRequestMailer < ApplicationMailer
     @agenda            = MarkdownRenderer.call(@event.agenda)
 
     attachments['event.ics'] = Event::ExportToIcal.call(@event)
-    mail(subject: "Final #pivorak details! | #{@event.title}", to: @user.email)
+    mail(subject: "#pivorak details | #{@event.title}", to: @user.email)
   end
 
   def confirmation_reminder(visit_request)
@@ -31,7 +31,7 @@ class VisitRequestMailer < ApplicationMailer
     @confirm_visit_url = event_visit_request_url(@event, @visit_request, answer: :yes, token: @visit_request.token, host: host)
     @cancel_visit_url  = event_visit_request_url(@event, @visit_request, answer: :no, token: @visit_request.token, host: host)
 
-    mail(subject: "Confirmation reminder | #{@event.title}", to: @user.email)
+    mail(subject: "#pivorak reminder | #{@event.title}", to: @user.email)
   end
 
   def needs_confirmation(visit_request)
@@ -71,7 +71,7 @@ class VisitRequestMailer < ApplicationMailer
 
     attachments["#{@event.slug}.pdf"] = VisitRequest::QrCode::Pdf.call(visit_request)
 
-    mail(subject: 'Attendance Confirmation - QR code is attached', to: @user.email)
+    mail(subject: '#pivorak confirmation | QR code is attached', to: @user.email)
   end
 
   private
