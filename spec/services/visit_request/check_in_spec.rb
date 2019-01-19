@@ -30,14 +30,6 @@ RSpec.describe VisitRequest::CheckIn do
       end
     end
 
-    context 'when rejected' do
-      let(:visit_request) { create(:visit_request, :refused) }
-
-      it 'returns object and status' do
-        expect(call).to eq([visit_request, :invalid_status])
-      end
-    end
-
     context 'when visit request not passed' do
       let(:visit_request) { nil }
 

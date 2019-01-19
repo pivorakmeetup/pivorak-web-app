@@ -3,6 +3,7 @@ en:
   pivorak_description: A Ruby Community in Lviv, featuring monthly meetups with beer and crawfish :)
 
   words:
+    actions: Actions
     agenda: agenda
     app: App
     all: All
@@ -176,7 +177,7 @@ en:
       plural: Check In
       search: 'Find by name:'
       name: "Name: <b>%{first_name}</b> %{last_name}"
-      already_checked_in: Already checked in %{time_ago} ago
+      already_checked_in: Already checked in
       invalid_status: "Invalid status: %{status}"
       not_found: Not Found
       event: "Event: %{title}"
@@ -199,8 +200,8 @@ en:
     main_list: Main
     waiting_list: Waiting
     visited: Visited
-    hello: Hello!
-    waiting: Waiting
+    check_in: Check In
+    already_checked_in: Already Checked In
     confirm: Confirm
     refuse: Refuse
     messages:

@@ -5,6 +5,7 @@ module Admin
 
       def show
         @visit_request, status = ::VisitRequest::CheckIn.new(visit_request).call
+
         render status
       end
 
