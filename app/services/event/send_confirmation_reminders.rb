@@ -5,8 +5,8 @@ class Event
     end
 
     def call
-      event.visit_requests.approved.each do |visit_request|
-        VisitRequestMailer.confirmation_reminder(visit_request).deliver_later
+      event.visit_requests.approved.each_with_index do |visit_request, index|
+        VisitRequestMailer.confirmation_reminder(visit_request).deliver_later(wait: index.minute)
       end
     end
 

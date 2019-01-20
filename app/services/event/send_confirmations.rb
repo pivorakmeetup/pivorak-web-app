@@ -5,8 +5,8 @@ class Event
     end
 
     def call
-      event.visit_requests.final.each do |visit_request|
-        VisitRequestMailer.confirmation(visit_request).deliver_later
+      event.visit_requests.final.each_with_index do |visit_request, index|
+        VisitRequestMailer.confirmation(visit_request).deliver_later(wait: index.minute)
       end
     end
 
