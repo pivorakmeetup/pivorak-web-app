@@ -183,6 +183,9 @@ en:
       event: "Event: %{title}"
       visits_counter: "Visits: %{count}"
       newbie: Hello newbie!
+    invite:
+      plural: Invite users
+      success: Users were successfully invited
 
   visit_requests:
     send_email_to_visitors: 'Send email to visitors'
@@ -190,6 +193,7 @@ en:
     send_email_to_applied: 'Send email to applied users'
     send_email_to_pending: 'Send email to pending users'
     send_email_to_approved: 'Send email to approved users'
+    invite_user: 'Invite user'
     attend: Attend
     already_created: Already attending
     approve: Approve
@@ -267,3 +271,9 @@ en:
     next_event: Next event will happen on %{upcoming_date}.
     cfp_is_open: Call for speakers is open!
     follow_us: follow us to keep in touch
+
+  invite_by_email_form:
+    submit: Invite
+    emails:
+      label: 'Emails separated by comma. Example: john@m.com OR john@m.com, peter@m.com'
+      error: "Should be comma separate list. Following emails are invalid: %{invalid_emails}"

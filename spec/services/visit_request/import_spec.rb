@@ -6,9 +6,9 @@ describe VisitRequest::Import do
   let(:user_b)      { create(:user) }
   let(:user_c)      { create(:user) }
   let(:separator)   { ', ' }
-  let(:emails_list) { [user_a, user_b].map(&:email).join(separator) + ', fake@user.com' }
+  let(:emails) { [user_a, user_b].map(&:email).join(separator) + ', fake@user.com' }
 
-  subject { described_class.new(event, separator, emails_list) }
+  subject { described_class.new(emails: emails, separator: separator, event: event) }
 
   describe '#call' do
     before { subject.call }
@@ -20,6 +20,5 @@ describe VisitRequest::Import do
 
     it { expect(event.visit_requests.first.user_id).to eq user_a.id }
     it { expect(event.visit_requests.first.status).to eq VisitRequest::CONFIRMED.to_s }
-    it { expect(event.visit_requests.first.visited).to eq true }
   end
 end
