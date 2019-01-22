@@ -5,7 +5,7 @@ lock "3.11.0"
 set :application, proc { "pivorak-web-app_#{fetch :stage}" }
 set :repo_url, 'git@github.com:pivorakmeetup/pivorak-web-app.git'
 set :deploy_to, proc { "/home/dev/projects/pivorak_#{fetch :stage}" }
-set :rvm_ruby_version, 'ruby-2.3.1@pivorak'
+set :rvm_ruby_version, 'ruby-2.6.0@pivorak'
 #set :linked_files, %w(config/database.yml config/secrets.yml .env)
 set :linked_files, %w(config/database.yml config/secrets.yml .env config/settings.yml)
 set :linked_dirs, fetch(:linked_dirs, []).push(

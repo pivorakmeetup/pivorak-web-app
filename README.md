@@ -11,7 +11,7 @@
 ```sh
 $ git clone git@github.com:pivorakmeetup/pivorak-web-app.git
 $ cd pivorak-web-app
-$ rvm use ruby-2.3.1@pivorak --create
+$ rvm use ruby-2.6.1@pivorak --create
 $ bundle
 $ cp config/database.yml.example config/database.yml
 ```
