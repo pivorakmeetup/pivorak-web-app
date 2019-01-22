@@ -29,6 +29,8 @@ describe Event::SendConfirmationReminders do
     end
 
     it 'spreads sending through the time' do
+      stub_const("Event::SendConfirmationReminders::EMAILS_BULK_SIZE", 1)
+
       create(:visit_request, :approved, event: event)
       mocked_mailer = double('Dummy', deliver_later: true)
 
@@ -36,8 +38,8 @@ describe Event::SendConfirmationReminders do
 
       call
 
-      expect(mocked_mailer).to have_received(:deliver_later).with(wait: 0.minute).once
-      expect(mocked_mailer).to have_received(:deliver_later).with(wait: 1.minute).once
+      expect(mocked_mailer).to have_received(:deliver_later).with(wait: 0.hour).once
+      expect(mocked_mailer).to have_received(:deliver_later).with(wait: 1.hour).once
     end
   end
 end
