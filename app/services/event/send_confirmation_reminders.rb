@@ -1,17 +1,11 @@
 class Event
   class SendConfirmationReminders < ApplicationService
-    EMAILS_BULK_SIZE = 100
-
     def initialize(event)
       @event = event
     end
 
     def call
-      event.visit_requests.approved.each_slice(EMAILS_BULK_SIZE).with_index do |visit_requests, index|
-        visit_requests.each do |visit_request|
-          VisitRequestMailer.confirmation_reminder(visit_request).deliver_later(wait: index.hour)
-        end
-      end
+      BulkEmailSender.call(mailer_klass: VisitRequestMailer, method_name: :confirmation_reminder, scope: event.visit_requests.approved)
     end
 
     private

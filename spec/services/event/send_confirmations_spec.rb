@@ -27,18 +27,12 @@ describe Event::SendConfirmations do
       expect(last_job[:args][1]).to eq 'confirmation'
     end
 
-    it 'spreads sending through the time' do
-      stub_const("Event::SendConfirmations::EMAILS_BULK_SIZE", 1)
-
-      create(:visit_request, :confirmed, event: event)
-      mocked_mailer = double('Dummy', deliver_later: true)
-
-      allow(VisitRequestMailer).to receive(:confirmation).and_return(mocked_mailer)
+    it 'uses bulk email sender' do
+      allow(BulkEmailSender).to receive(:call).with(mailer_klass: VisitRequestMailer, method_name: :confirmation, scope: [confirmed_request])
 
       call
 
-      expect(mocked_mailer).to have_received(:deliver_later).with(wait: 0.hour)
-      expect(mocked_mailer).to have_received(:deliver_later).with(wait: 1.hour)
+      expect(BulkEmailSender).to have_received(:call)
     end
   end
 end
