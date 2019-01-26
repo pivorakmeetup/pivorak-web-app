@@ -1,0 +1,5 @@
+= simple_form_for form, url: admin_event_invite_path(event) do |f|
+  .one.field
+    = f.input :emails, input_html: {id: :emails}, as: :text, label: t('invite_by_email_form.emails.label')
+  .one.field
+    = f.button :submit, value: t('invite_by_email_form.submit')

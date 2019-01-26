@@ -1,26 +1,26 @@
 class VisitRequest
   class Import < ApplicationService
-    def initialize(event, separator, emails_list)
+    def initialize(event:, emails:, separator: ',')
       @event       = event
       @separator   = separator.strip
-      @emails_list = emails_list
+      @emails = emails
     end
 
+    # @return <VisitRequest> returns list of newly created/found visit requests
     def call
-      emails_list.split(separator).each do |email|
+      emails.split(separator).map do |email|
         user = ::User.find_by(email: email.strip)
         next unless user
 
         event.visit_requests.where(
           user: user,
-          status: :confirmed,
-          visited: true
+          status: :confirmed
         ).first_or_create
-      end
+      end.compact
     end
 
     private
 
-    attr_reader :event, :emails_list, :separator
+    attr_reader :event, :emails, :separator
   end
 end

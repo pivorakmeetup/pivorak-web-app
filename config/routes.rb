@@ -46,6 +46,7 @@ Rails.application.routes.draw do
           post :send_confirmations, to: 'visit_request/send_confirmations#create'
           post :send_confirmation_reminders, to: 'visit_request/send_confirmation_reminders#create'
           post :import,             to: 'visit_request/import#create'
+          resource :invite, only: [:new, :create], controller: 'visit_request/invite'
           get  :report,             to: 'visit_request/report#download'
         end
 
