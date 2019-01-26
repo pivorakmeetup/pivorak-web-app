@@ -1,35 +1,34 @@
 require 'rails_helper'
 
-describe Event::SendConfirmationReminders do
+describe Event::SendConfirmations do
   subject(:service) { described_class.new(event) }
   let(:event) { create(:event) }
 
   describe '#call' do
     subject(:call) { service.call }
 
-    let!(:approved_request) { create(:visit_request, :approved, event: event) }
+    let!(:confirmed_request) { create(:visit_request, :confirmed, event: event) }
     let(:last_job) { active_jobs.last }
     before do
-      create(:visit_request, :confirmed, event: event)
       create(:visit_request, :refused, event: event)
       create(:visit_request, :approved)
     end
 
     it 'sends confirmation reminders to people who did not confirm their attendance' do
-      allow(VisitRequestMailer).to receive(:confirmation_reminder).with(approved_request).and_call_original
+      allow(VisitRequestMailer).to receive(:confirmation).with(confirmed_request).and_call_original
 
       call
 
-      expect(VisitRequestMailer).to have_received(:confirmation_reminder).once
+      expect(VisitRequestMailer).to have_received(:confirmation).once
 
       expect(active_jobs.size).to eq(1)
       expect(last_job[:job]).to eq ActionMailer::DeliveryJob
       expect(last_job[:args][0]).to eq 'VisitRequestMailer'
-      expect(last_job[:args][1]).to eq 'confirmation_reminder'
+      expect(last_job[:args][1]).to eq 'confirmation'
     end
 
     it 'uses bulk email sender' do
-      allow(BulkEmailSender).to receive(:call).with(mailer_klass: VisitRequestMailer, method_name: :confirmation_reminder, scope: [approved_request])
+      allow(BulkEmailSender).to receive(:call).with(mailer_klass: VisitRequestMailer, method_name: :confirmation, scope: [confirmed_request])
 
       call
 

@@ -5,9 +5,7 @@ class Event
     end
 
     def call
-      event.visit_requests.final.each do |visit_request|
-        VisitRequestMailer.confirmation(visit_request).deliver_later
-      end
+      BulkEmailSender.call(mailer_klass: VisitRequestMailer, method_name: :confirmation, scope: event.visit_requests.final)
     end
 
     private
