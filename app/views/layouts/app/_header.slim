@@ -64,6 +64,5 @@ header.pk-header class="#{header_classlist.compact.join(' ')}"
                 li.pk-list__unit = register_link
                 li.pk-list__unit = login_link
 
-              / li.pk-list__unit
-              /   - if current_user&.admin?
-              /     = donate_link(class: 'btn')
+              li.pk-list__unit
+                = donate_link(class: 'btn')
