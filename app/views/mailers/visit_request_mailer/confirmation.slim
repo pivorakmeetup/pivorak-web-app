@@ -1,36 +1,27 @@
 p Dear, #{@user.full_name}!
 
-p We are waiting for you on #{@start_at_date} at #{@venue.name}, #{link_to @venue.address, @venue.map_url}.
-
-b The registration starts at #{@event.started_at.strftime('%H:%M')}!
-
-p Please, Confirm your attendance <b>ASAP</b> using the buttons below, so we'll know whether to keep a place for you!
-
-p Are you attending the #pivorak Conference?
-
-p
-  b Sure!
-  '
-  = link_to 'YES', @confirm_visit_url, class: 'btn green'
-
-p
-  | We have a limited amount of available places, so if you cannot join - please, let us know. You will make someone from a waiting list extremely happy!:
-p
-  b Sorry, I won't come
-  '
-  = link_to 'NO', @cancel_visit_url, class: 'btn red'
+p #{@event.title} is coming up!
+p We will meet on #{@start_at_date} at #{@venue.name}, #{link_to @venue.address, @venue.map_url}.
+b We will start at #{@event.started_at.strftime('%H:%M')}!
 
 == @agenda
 
-p #{link_to 'Reintech', 'https://medium.com/oleksandr-bondar/reintech-270dca7e086e?fbclid=IwAR11FKJVWQFHT0QnHHLf14yKqGFkyiEBrY21oNZ1paVpE0w9zpvbpGpMKSk'} - a new remote work platform - helps us to make #pivorak Conference come true and is our "Invincible Claw" Sponsor!
+p Please let us know if you are coming - so that we save a seat for you!
 
-p We are an eco-friendly community.
-| Please, bring your water bottle, mention that during the registration and try to win a special #pivorak surprise!
+p
+  = link_to "NO, I can't come", @cancel_visit_url, class: 'btn red'
+  = link_to 'YES, I will be there!', @confirm_visit_url, class: 'btn green'
 
-p Thanks and see you soon!
+p
+  | (If you can't come that's okay, but please let us know right away so that we can invite somebody from the waiting list.)
 
-p With the warmest regards,
-| #pivorak Team
+p Thank you and we hope to see you very soon!
+p
+  | With warmest regards,
+  br/
+  | YOUR PIVORAK AUTHORITY
+p
+  | This email is powered by our very own website :) Hugs, kisses, and appreciation to our contributors! Want to jump in and take on an issue or two? Head on
+  '
+  = link_to 'over here', "https://github.com/pivorakmeetup/pivorak-web-app/issues"
 
-p P.S. Our contributors are helping us to improve and grow.  You can become one of them!
-p Want to jump in and take an issue on your shoulders? Just check #{link_to 'here', 'https://github.com/pivorakmeetup/pivorak-web-app/issues'}

@@ -7,16 +7,11 @@ p
   br You will make someone from a waiting list extremely happy!
 
 p
-  b Sure!
-  '
-  = link_to 'YES', @confirm_visit_url, class: 'btn green'
+  = link_to "NO, I can't come", @cancel_visit_url, class: 'btn red'
+  = link_to 'YES, I will be there!', @confirm_visit_url, class: 'btn green'
 
+p Thank you and we hope to see you very soon!
 p
-  b Sorry, I won't come
-  '
-  = link_to 'NO', @cancel_visit_url, class: 'btn red'
-
-p
-  | Thanks and see you soon!
-  br Regards,
-  br #pivorak Team
+  | With warmest regards,
+  br/
+  | YOUR PIVORAK AUTHORITY
