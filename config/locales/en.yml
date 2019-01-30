@@ -94,6 +94,8 @@ en:
     send_confirmation_reminders: Send Confirmation Reminders
     visitors_report: Visitors Report
     free_places: Open Places Left
+    qr_code:
+      show_button: QR code
     index:
       visitors:
         requested: Requested

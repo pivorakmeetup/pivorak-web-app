@@ -1,4 +1,4 @@
-RSpec.describe 'Events READ' do
+describe 'Events READ' do
   let(:event) { create(:event) }
   let(:user)  { create(:user, first_name: 'Attendee') }
 
@@ -7,6 +7,8 @@ RSpec.describe 'Events READ' do
     let(:other_event_attendee) { create(:user, first_name: 'Other Event Attendee') }
 
     before do
+      assume_logged_in(user)
+
       event
       create(:visit_request, :final, event: event, user: user)
       create(:visit_request, :final, event: create(:event), user: other_event_attendee)

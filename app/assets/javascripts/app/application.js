@@ -21,6 +21,7 @@
     loadFlash();
     blendedImg();
     initChangeImageColor();
+    initQrCode();
   }
 
   var contentLoaded = function() {
