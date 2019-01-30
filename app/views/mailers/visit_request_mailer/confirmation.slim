@@ -9,8 +9,10 @@ b We will start at #{@event.started_at.strftime('%H:%M')}!
 p Please let us know if you are coming - so that we save a seat for you!
 
 p
-  = link_to "NO, I can't come", @cancel_visit_url, class: 'btn red'
   = link_to 'YES, I will be there!', @confirm_visit_url, class: 'btn green'
+br
+p
+  = link_to "NO, I can't come", @cancel_visit_url, class: 'btn red'
 
 p
   | (If you can't come that's okay, but please let us know right away so that we can invite somebody from the waiting list.)
