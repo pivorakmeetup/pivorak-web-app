@@ -1,10 +1,14 @@
 RSpec.describe 'Create Donation' do
+  pending 'Disabled because of tax thing'
+
   subject { page }
 
-  before { visit donate_path }
+  before do
+    visit donate_path
+  end
 
   context 'when terms of use are accepted' do
-    it 'toggles submit and payment button when checkbox is clicked' do
+    xit 'toggles submit and payment button when checkbox is clicked' do
       expect(page).to have_selector('.js-donate-form-payment-btn', visible: true)
       expect(page).to have_selector('.js-donate-form-validation-btn', visible: false)
 
@@ -16,7 +20,7 @@ RSpec.describe 'Create Donation' do
   end
 
   context 'when terms of use not accepted' do
-    it 'does not proceed with payment' do
+    xit 'does not proceed with payment' do
       click_button I18n.t('pages.donate.submit_btn', locale: :ua)
 
       expect(page).to have_content I18n.t('pages.donate.failure', locale: :ua)
