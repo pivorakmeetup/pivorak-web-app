@@ -19,10 +19,10 @@ module Admin
 
     def visit_requests
       @visit_requests ||= if search?
-        search_against(base_scope).includes(:user, :event)
-      else
-        base_scope.includes(:user, :event).order('users.first_name, users.last_name')
-      end
+                            search_against(base_scope).includes(:user, :event)
+                          else
+                            base_scope.includes(:user, :event).order('users.first_name, users.last_name')
+                          end
     end
 
     def search?
