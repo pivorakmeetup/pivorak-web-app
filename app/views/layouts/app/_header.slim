@@ -20,13 +20,27 @@ header.pk-header class="#{header_classlist.compact.join(' ')}"
           ul.pk-list.pk-header__dropdown-list.js-dropdown-list
               // TODO: it's just an example of menu structure;
               // menu items might be reorganized to fit screen size
+
+              li.pk-list__unit
+                = about_link
+
+              li.pk-list__unit.pk-header__li-list-wr
+                a = "info"
+                ul.pk-header__li-list
+                  li.pk-header__li-list-item = link_to 'code of conduct','/code-of-conduct'
+                  li.pk-header__li-list-item = link_to 'contact us','/contacts'
+                  li.pk-header__li-list-item = link_to 'agreement','/user-agreement'
+                  li.pk-header__li-list-item = link_to 'bug?', 'https://github.com/pivorakmeetup/pivorak-web-app/issues/new?labels=bug'
+
               li.pk-list__unit.pk-header__li-list-wr
                 a = "activity"
                 ul.pk-header__li-list
                   /li.pk-header__li-list-item = events_link
                   li.pk-header__li-list-item = become_a_speaker_link
-                  li.pk-header__li-list-item = talks_link
                   li.pk-header__li-list-item = link_to "Ruby Summer Course 2018", "https://pivorak.com/ruby-course"
+
+              li.pk-list__unit
+                = talks_link
 
               /li.pk-list__unit.pk-header__li-list-wr
               /  a = "community"
@@ -40,29 +54,22 @@ header.pk-header class="#{header_classlist.compact.join(' ')}"
               li.pk-list__unit
                 = link_to "friends", supporters_path
 
-              li.pk-list__unit.pk-header__li-list-wr
-                a = "contacts"
-                ul.pk-header__li-list
-                  li.pk-header__li-list-item = link_to 'code of conduct','/code-of-conduct'
-                  li.pk-header__li-list-item = link_to 'contact us','/contacts'
-                  li.pk-header__li-list-item = link_to 'agreement','/user-agreement'
-                  li.pk-header__li-list-item = link_to 'about','/about'
-
-              li.pk-list__unit
-                = link_to 'bug?',
-                        'https://github.com/pivorakmeetup/pivorak-web-app/issues/new?labels=bug'
               - if user_signed_in?
-                / .pk-avatar     = image_tag gravatar_url(current_user)
-                li.pk-list__unit = logout_link
-                li.pk-list__unit = profile_link
-
-                - if admin?
-                  li.pk-list__unit = admin_link
+                li.pk-list__unit.pk-header__li-list-wr
+                  a = current_user.full_name
+                  ul.pk-header__li-list
+                    - if admin?
+                      li.pk-header__li-list-item = admin_link
+                    li.pk-header__li-list-item = profile_link
+                    li.pk-header__li-list-item = logout_link
 
               - else
+                li.pk-list__unit.pk-header__li-list-wr
+                  a = "authorization"
+                  ul.pk-header__li-list
+                    li.pk-header__li-list-item = register_link
+                    li.pk-header__li-list-item = login_link
 
-                li.pk-list__unit = register_link
-                li.pk-list__unit = login_link
-
-              li.pk-list__unit
-                = donate_link(class: 'btn')
+              / li.pk-list__unit
+              /   - if current_user&.admin?
+              /     = donate_link(class: 'btn')

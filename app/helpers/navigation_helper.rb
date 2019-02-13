@@ -52,4 +52,8 @@ module NavigationHelper
 
     link_to t('words.agenda'), agenda_path
   end
+
+  def about_link
+    link_to t('words.about'), '/about'
+  end
 end
