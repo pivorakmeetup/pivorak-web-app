@@ -11,7 +11,6 @@ class VisitRequest
       end
 
       unless user.verified?
-        VisitRequestMailer.notify_admin_about_unverified_attendee(visit_request).deliver_later
         VisitRequestMailer.needs_confirmation(visit_request).deliver_later
       end
 

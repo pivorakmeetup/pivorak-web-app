@@ -46,14 +46,6 @@ RSpec.describe 'Emails PREVIEW' do
       end
     end
 
-    describe 'VisitRequestMailer#notify_admin_about_unverified_attendee' do
-      it do
-        create(:visit_request)
-        visit '/emails/en/visit_request_mailer_preview-notify_admin_about_unverified_attendee'
-        expect(page.status_code).to eq(200)
-      end
-    end
-
     describe 'VisitRequestMailer#notify_admin_about_canceled_attendee' do
       it do
         EmailTemplate.create!(
@@ -65,15 +57,6 @@ RSpec.describe 'Emails PREVIEW' do
         create(:visit_request)
         visit '/emails/en/visit_request_mailer_preview-notify_admin_about_canceled_attendee'
         expect(page.status_code).to eq(200)
-      end
-    end
-  end
-
-  context 'when user is not admin' do
-    describe 'VisitRequestMailer#notify_admin_about_unverified_attendee' do
-      it do
-        create(:visit_request)
-        expect { visit '/emails/en/visit_request_mailer_preview-notify_admin_about_unverified_attendee' }.to raise_error(ActionController::UrlGenerationError)
       end
     end
   end

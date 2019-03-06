@@ -17,10 +17,6 @@ class VisitRequestMailerPreview
     VisitRequestMailer.needs_confirmation visit_request
   end
 
-  def notify_admin_about_unverified_attendee
-    VisitRequestMailer.notify_admin_about_unverified_attendee visit_request
-  end
-
   def notify_admin_about_canceled_attendee
     VisitRequestMailer.notify_admin_about_canceled_attendee visit_request
   end
