@@ -4,6 +4,10 @@ $namespace: '.pk-home-layout';
   display: flex;
   flex-direction: column;
   height: $main-content-min-height;
+
+  @include breakpoint-max(650) {
+    height: auto;
+  }
 }
 
 #{$namespace}__logo {
@@ -26,6 +30,19 @@ $namespace: '.pk-home-layout';
     font-size: 30px;
     font-weight: bold;
     margin-bottom: 30px;
+  }
+
+  @include breakpoint-max(650) {
+    flex: 1 1 auto;
+
+    p {
+      font-size: inherit;
+      margin-bottom: 10px;
+    }
+
+    .btn {
+      margin: 10px 0;
+    }
   }
 }
 
