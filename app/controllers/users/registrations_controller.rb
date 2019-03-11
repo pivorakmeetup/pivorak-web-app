@@ -16,7 +16,6 @@ module Users
 
       if resource.persisted?
         Mailchimp::SubscriptionJob.perform_later(resource.id)
-        NotifyMailer.new_user_registered(resource.id).deliver_later
       end
     end
 

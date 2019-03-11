@@ -16,12 +16,6 @@ namespace :email_templates do
     )
 
     email_templates << EmailTemplate.new(
-      title: "VisitRequestMailer#notify_admin_about_unverified_attendee",
-      body: File.read('db/seed/email_templates/notify_admin_about_unverified_attendee.md'),
-      subject: I18n.t('mailers.visit_request_mailer.notify_admin_about_unverified_attendee.subject')
-    )
-
-    email_templates << EmailTemplate.new(
       title: "VisitRequestMailer#confirmation",
       body: File.read('db/seed/email_templates/confirmation.md'),
       subject: 'Event registration confirmation'

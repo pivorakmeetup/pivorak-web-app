@@ -238,12 +238,6 @@ en:
     notify_mailer:
       become_speaker:
         subject: I want to be a speaker
-      new_user_registered:
-        subject: 'New user was registered: %{user}'
-        body: 'New user was registered: %{user} with email: %{email}'
-    visit_request_mailer:
-      notify_admin_about_unverified_attendee:
-        subject: New newbie signed up to event
 
   speakers:
     plural: Speakers

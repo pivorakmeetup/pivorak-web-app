@@ -28,7 +28,6 @@ describe VisitRequest::Create do
         before do
           allow_any_instance_of(Event::SlotsPolicy).to receive(:has_free_slot_for?).with(user) { false }
 
-          expect(VisitRequestMailer).not_to receive(:notify_admin_about_unverified_attendee)
           expect(VisitRequestMailer).not_to receive(:needs_confirmation) { mailer }
 
           subject.call
@@ -47,7 +46,6 @@ describe VisitRequest::Create do
         before do
           allow_any_instance_of(Event::SlotsPolicy).to receive(:has_free_slot_for?).with(user) { true }
 
-          expect(VisitRequestMailer).to receive(:notify_admin_about_unverified_attendee).and_call_original
           expect(VisitRequestMailer).to receive(:needs_confirmation).and_call_original
 
           subject.call
