@@ -70,6 +70,15 @@ module EventsHelper
     t('visit_requests.messages.registration_closed').html_safe
   end
 
+  def get_place_left_counter(event)
+    "#{event.limit_total} #{t('events.free_places')}"
+  end
+
+  def get_event_fullness_percent(event)
+    return 0 if event.limit_total.zero?
+    (event.visit_requests.approved.count.to_f / event.limit_total) * 100
+  end
+
   private
 
   def visit_request_confirm_path(visit_request, answer)

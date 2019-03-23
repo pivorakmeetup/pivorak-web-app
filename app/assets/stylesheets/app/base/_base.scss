@@ -18,6 +18,7 @@ body {
   line-height: $main-line-height;
   color: $main-color;
   position: relative;
+  overflow-wrap: break-word;
   &:after {
     content: "";
     background: transparent image-url("paper-imit-bg.png") repeat center;
@@ -128,4 +129,8 @@ q {
 
 .pk-default-text-font {
   font-family: 'Arvo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.pk-no-display {
+  display: none !important;
 }

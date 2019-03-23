@@ -12,6 +12,8 @@ $main-font-size: 0.875em;
 $main-font-weight: 400;
 $main-line-height: 1.6;
 $main-color: $text-color;
+$main-header-height: 99px;
+$main-content-min-height: calc(100vh - #{$main-header-height});
 
 $body-bg-color: #D35130;
 $body-text-hover: $body-bg-color;

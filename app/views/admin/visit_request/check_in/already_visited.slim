@@ -1,0 +1,11 @@
+.check_in
+  p
+    i.empty.user.icon.green
+    - if user.first_name
+      = t('visit_request.check_in.name', first_name: user.first_name, last_name: user.last_name).html_safe
+  p
+    i.empty.ban.icon.red
+    - if visit_request.checked_in_at
+      = t('visit_request.check_in.already_checked_in')
+
+  = render 'find_visitor_search'

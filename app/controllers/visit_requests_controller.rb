@@ -2,7 +2,7 @@ class VisitRequestsController < ApplicationController
   before_action :authenticate_user!, only: %i[create destroy]
 
   def show
-    VisitRequest::FinalConfirmation.call(visit_request, answer: params[:answer])
+    VisitRequest::FinalDecision.call(visit_request, answer: params[:answer])
     sign_in(:user, visit_request.user)
 
     flash_success(visit_request.status) and default_redirect

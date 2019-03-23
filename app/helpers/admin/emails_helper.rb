@@ -35,5 +35,9 @@ module Admin
               new_admin_email_path(recipient_ids: ids),
               class: 'ui button'
     end
+
+    def invite_user_link(event)
+      link_to t('visit_requests.invite_user'), new_admin_event_invite_path(event), class: 'ui button blue'
+    end
   end
 end

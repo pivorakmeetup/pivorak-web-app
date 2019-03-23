@@ -25,28 +25,12 @@ describe VisitRequestMailer do
     end
   end
 
-  describe '#notify_admin_about_unverified_attendee' do
-    let(:mail) { described_class.notify_admin_about_unverified_attendee(visit_request) }
-    let(:email_template) { EmailTemplate.find_by!(title: 'VisitRequestMailer#notify_admin_about_unverified_attendee') }
-
-    it 'renders the headers' do
-      expect(mail.subject).to eq(email_template.subject)
-      expect(mail.to).to eq([ApplicationMailer::PIVORAK_EMAIL])
-      expect(mail.from).to eq([ApplicationMailer::NO_REPLY_EMAIL])
-    end
-
-    it 'renders the body' do
-      expect(mail.body.encoded).to include event.title
-      expect(mail.body.encoded).to include user.full_name
-    end
-  end
-
   describe '#confirmation' do
     let(:mail) { described_class.confirmation(visit_request) }
-    let(:email_template) { EmailTemplate.find_by!(title: 'VisitRequestMailer#confirmation') }
+    let(:event) { create(:event, venue: create(:venue)) }
 
     it 'renders the headers' do
-      expect(mail.subject).to eq(email_template.subject)
+      expect(mail.subject).to eq("#pivorak details | #{event.title}")
       expect(mail.to).to eq([visit_request.user.email])
       expect(mail.from).to eq([ApplicationMailer::PIVORAK_EMAIL])
     end
@@ -59,6 +43,43 @@ describe VisitRequestMailer do
     it 'renders the event attachment' do
       expect(mail.attachments['event.ics']).to be_present
       expect(mail.attachments['event.ics'].body.encoded).to include('BEGIN:VCALENDAR')
+    end
+  end
+
+  describe '#confirmation_reminder' do
+    let(:mail) { described_class.confirmation_reminder(visit_request) }
+    let(:event) { create(:event, venue: create(:venue)) }
+
+    it 'renders the headers' do
+      expect(mail.subject).to eq("#pivorak reminder | #{event.title}")
+      expect(mail.to).to eq([visit_request.user.email])
+      expect(mail.from).to eq([ApplicationMailer::PIVORAK_EMAIL])
+    end
+
+    it 'renders the body' do
+      expect(mail.body.encoded).to include event.title
+      expect(mail.body.encoded).to include user.full_name
+    end
+  end
+
+  describe '#attendance_confirmed' do
+    let(:mail) { described_class.attendance_confirmed(visit_request.reload) }
+    let(:event) { create(:event, venue: venue) }
+    let(:venue) { create(:venue) }
+
+    it 'renders the headers' do
+      expect(mail.subject).to eq('#pivorak confirmation | QR code is attached')
+      expect(mail.to).to eq([visit_request.user.email])
+      expect(mail.from).to eq([ApplicationMailer::PIVORAK_EMAIL])
+    end
+
+    it 'renders the body' do
+      expect(mail.body.encoded).to include event.title
+      expect(mail.body.encoded).to include user.full_name
+    end
+
+    it 'renders the pdf attachment' do
+      expect(mail.attachments["#{event.slug}.pdf"]).to be_present
     end
   end
 

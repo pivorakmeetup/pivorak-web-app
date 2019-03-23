@@ -46,16 +46,15 @@ module Admin
         remote: true
     end
 
-    def visit_request_visited_link(visit_request)
-      label      = visit_request.visited? ? 'waiting' : 'hello'
-      btn_class  = visit_request.visited? ? 'grey' : 'green'
-      i18n_label = t(label, scope: 'visit_requests')
-
-      link_to i18n_label,
+    def visit_request_check_in_link(visit_request)
+      if !visit_request.checked_in?
+        link_to t('check_in', scope: 'visit_requests'),
         admin_event_visit_request_toggle_visit_path(visit_request.event, visit_request),
-        method: :put, class: ['ui button', btn_class],
-        data: { confirm: t('phrases.confirm') },
+        method: :put, class: ['ui button', 'green'],
         remote: true
+      else
+        t('already_checked_in', scope: 'visit_requests')
+      end
     end
   end
 end

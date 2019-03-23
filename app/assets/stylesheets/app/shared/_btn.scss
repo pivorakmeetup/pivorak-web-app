@@ -1,4 +1,5 @@
 $namespace: ".pk-btn";
+$green: #50B27E;
 
 #{$namespace} {
   position: relative;
@@ -6,6 +7,7 @@ $namespace: ".pk-btn";
   display: inline-block;
   margin-bottom: 0;
 
+  color: white;
   font-family: $main-font-family;
   font-weight: normal;
   text-align: center;
@@ -31,7 +33,6 @@ $namespace: ".pk-btn";
     text-decoration: none;
     outline: none;
   }
-
 }
 
 #{$namespace}--medium {
@@ -59,10 +60,12 @@ $namespace: ".pk-btn";
 }
 
 #{$namespace}--biggest {
-  font-size: 28px;
+  font-size: 24px;
   border-radius: 32px;
-  padding: 17px 144px 23px 144px;
   box-shadow: 0 2px 14px 0 rgba(0,0,0, .33);
+  padding: 10px 0;
+  text-transform: lowercase;
+  width: 300px;
 }
 
 #{$namespace}--tag {
@@ -145,3 +148,8 @@ $namespace: ".pk-btn";
   display: block;
   margin: 0 auto;
 }
+
+#{$namespace}--green-bg {
+  background: $green
+}
+

@@ -6,5 +6,5 @@ class Friend < ApplicationRecord
 
   belongs_to :group
 
-  validates :name, presence: true
+  validates :name, :logo, presence: true
 end

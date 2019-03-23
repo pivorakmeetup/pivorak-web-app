@@ -1,10 +1,29 @@
-p
-  | Dear,
-  = @user.full_name
-p
-  | please confirm visit @event.title by clicking the link
-p = link_to 'YES', confirm_visit_url
+p Dear, #{@user.full_name}!
+
+p #{@event.title} is coming up!
+p We will meet on #{@start_at_date} at #{@venue.name}, #{link_to @venue.address, @venue.map_url}.
+b We will start at #{@event.started_at.strftime('%H:%M')}!
+
+== @agenda
+
+p Please let us know if you are coming - so that we save a seat for you!
 
 p
-  | or inform us that you change your mind and we should not wait for you
-p = link_to 'NO', cancel_visit_url
+  = link_to 'YES, I will be there!', @confirm_visit_url, class: 'btn green'
+br
+p
+  = link_to "NO, I can't come", @cancel_visit_url, class: 'btn red'
+
+p
+  | (If you can't come that's okay, but please let us know right away so that we can invite somebody from the waiting list.)
+
+p Thank you and we hope to see you very soon!
+p
+  | With warmest regards,
+  br/
+  | YOUR PIVORAK AUTHORITY
+p
+  | This email is powered by our very own website :) Hugs, kisses, and appreciation to our contributors! Want to jump in and take on an issue or two? Head on
+  '
+  = link_to 'over here', "https://github.com/pivorakmeetup/pivorak-web-app/issues"
+
