@@ -22,11 +22,12 @@ header.pk-header class="#{header_classlist.compact.join(' ')}"
               // menu items might be reorganized to fit screen size
 
               li.pk-list__unit
-                = about_link
+                = link_to "Ruby Summer Course 2019", "https://pivorak.com/ruby-course"
 
               li.pk-list__unit.pk-header__li-list-wr
                 a = "info"
                 ul.pk-header__li-list
+                  li.pk-header__li-list-item = about_link
                   li.pk-header__li-list-item = link_to 'code of conduct','/code-of-conduct'
                   li.pk-header__li-list-item = link_to 'contact us','/contacts'
                   li.pk-header__li-list-item = link_to 'agreement','/user-agreement'
@@ -35,9 +36,7 @@ header.pk-header class="#{header_classlist.compact.join(' ')}"
               li.pk-list__unit.pk-header__li-list-wr
                 a = "activity"
                 ul.pk-header__li-list
-                  /li.pk-header__li-list-item = events_link
                   li.pk-header__li-list-item = become_a_speaker_link
-                  li.pk-header__li-list-item = link_to "Ruby Summer Course 2018", "https://pivorak.com/ruby-course"
 
               li.pk-list__unit
                 = talks_link

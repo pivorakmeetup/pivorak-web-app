@@ -3,7 +3,7 @@
 .pk-courses-form
   h2.pk-uppercase Submit Test Task
 
-  = simple_form_for test_task, url: courses_season_test_task_index_path(current_season), as: :test_task do |f|
+  = simple_form_for test_task, url: courses_test_task_form_url(current_season, test_task), method: :put, as: :test_task do |f|
     .form-inputs
       .pk-input__container.pk-input--container-full-width.mtx
         p.text-left.mbx = t('courses.test_tasks.form.git_url')

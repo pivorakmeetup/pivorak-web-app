@@ -27,9 +27,15 @@ module Courses
     def courses_send_test_task_link(season, student)
       return unless ::Courses::Season::SendTestTaskPolicy.new(season, student).allowed?
 
-      link_to t('courses.seasons.send_test_task'),
-        new_courses_season_test_task_path(season),
-        class: 'pk-btn pk-btn--medium pk-btn--block pk-cources-seasons__send-task-btn'
+      if student.test_task
+        label = t('courses.seasons.update_test_task')
+        path = edit_courses_season_test_task_path(season)
+      else
+        label = t('courses.seasons.send_test_task')
+        path = new_courses_season_test_task_path(season)
+      end
+
+      link_to label, path, class: 'pk-btn pk-btn--medium pk-btn--block pk-cources-seasons__send-task-btn'
     end
 
     def courses_interviews_link(season, student)
@@ -59,6 +65,14 @@ module Courses
             data: {
               confirm: t('courses.students.confirm_cancel_attendance')
             }
+    end
+
+    def courses_test_task_form_url(season, test_task)
+      if test_task.persisted?
+        courses_season_test_task_path(current_season, test_task)
+      else
+        courses_season_test_task_index_path(current_season)
+      end
     end
   end
 end

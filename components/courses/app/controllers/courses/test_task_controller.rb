@@ -1,16 +1,22 @@
 module Courses
   class TestTaskController < BaseController
     helper_method :test_task, :test_tasks
-    before_action :execute_create_policy
 
     def new
-      @test_task = ::Courses::TestTask.new
+      render_form
+    end
+
+    def edit
       render_form
     end
 
     def create
       @test_task = ::Courses::TestTask::Create.call(test_task_params, current_student.id)
       react_to test_task.save
+    end
+
+    def update
+      react_to test_task.update(test_task_params)
     end
 
     private
@@ -20,13 +26,7 @@ module Courses
     end
 
     def test_task
-      @test_task ||= ::Courses::TestTask.find(params[:id])
-    end
-
-    def execute_create_policy
-      allowed =  Courses::TestTask::CreatePolicy.new(current_student, current_season).allowed?
-      redirect_to courses_season_path(current_season),
-        alert: t('flash.courses.test_task.create.fail') unless allowed
+      current_student.test_task || current_student.build_test_task
     end
 
     def test_task_params
