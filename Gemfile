@@ -29,7 +29,7 @@ gem 'ez-settings'
 #=== CONFIG ===================================================================
 gem 'dotenv-rails', '~> 2.5', require: 'dotenv/rails-now'
 gem 'newrelic_rpm',                                                    '~> 5.4'
-gem 'rollbar',                                                         '~> 2.18.0'
+gem 'rollbar',                                                         '~> 2.19.3'
 gem 'slackistrano',                                                    '~> 3.1.1'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'versionomy', '~> 0.5.0'
