@@ -1,5 +1,5 @@
 language: ruby
-dist: precise
+dist: xenial
 
 rvm:
   - 2.3.1
