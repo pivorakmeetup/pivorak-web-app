@@ -5,14 +5,12 @@ describe Courses::Student::TotalHash do
   let!(:user_b)          { User.create(email: 'test_b@test.com', first_name: 'B', last_name: 'User') }
   let!(:first_lecture)   { create(:lecture, mentor_id: 1, venue_id: 1, season_id: 1) }
   let!(:second_lecture)  { create(:lecture, mentor_id: 1, venue_id: 1, season_id: 1) }
-  let(:first_student)    { ::Courses::Student.create(season_id: 1, user: user_b, status: :attending,
-                                                      personal_info: 'lorem', motivation_info: 'ipsum')  }
-  let(:second_student)   { ::Courses::Student.create(season_id: 1, user: user_a, status: :attending,
-                                                      personal_info: 'lorem', motivation_info: 'ipsum')  }
-  let!(:first_progress)  { create(:progress, student: first_student, lecture: first_lecture, homework_mark: 10, lecture_presence: -1) }
-  let!(:second_progress) { create(:progress, student: second_student, lecture: first_lecture, homework_mark: 9, lecture_presence: 0) }
-  let!(:third_progress)  { create(:progress, student: first_student, lecture: second_lecture, homework_mark: -8, lecture_presence: 1) }
-  let!(:fourth_progress) { create(:progress, student: second_student, lecture: second_lecture, homework_mark: 7, lecture_presence: 0) }
+  let(:first_student)    { create(:student, season_id: 1, user: user_b, status: :attending) }
+  let(:second_student)   { create(:student, season_id: 1, user: user_a, status: :attending) }
+  let!(:first_progress)  { create(:progress, student: first_student, lecture: first_lecture, homework_mark: 2, lecture_presence: -1) }
+  let!(:second_progress) { create(:progress, student: second_student, lecture: first_lecture, homework_mark: 1.5, lecture_presence: 0) }
+  let!(:third_progress)  { create(:progress, student: first_student, lecture: second_lecture, homework_mark: -1, lecture_presence: 1) }
+  let!(:fourth_progress) { create(:progress, student: second_student, lecture: second_lecture, homework_mark: 1, lecture_presence: 0) }
 
   describe '#call' do
     it 'returns total hash' do

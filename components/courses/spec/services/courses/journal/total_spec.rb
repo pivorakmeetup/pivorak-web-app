@@ -1,8 +1,7 @@
 require 'rails_helper'
 
 describe Courses::Journal::Total do
-  let!(:student)         { ::Courses::Student.create(season_id: 1, user_id: 1, status: :attending,
-                                                      personal_info: 'lorem', motivation_info: 'ipsum') }
+  let!(:student)         { create(:student, season_id: 1, user_id: 1, status: :attending) }
   let!(:first_progress)  { create(:progress, student: student, homework_mark: 1, lecture_presence: 0) }
   let!(:second_progress) { create(:progress, student: student, homework_mark: 1, lecture_presence: -1) }
 

@@ -10,7 +10,7 @@ RSpec.describe 'Students READ' do
     let!(:student_a)         { create(:student, personal_info: 'Student A', season: season, user: user_a, status: :attending) }
 
     it 'displays list of students' do
-      student_b = create(:student, personal_info: 'Student B', season: season, user: user_b, status: :enrolled)
+      student_b = create(:student, personal_info: 'User B', season: season, user: user_b, status: :enrolled)
       visit test_students_path
 
       expect(page).not_to have_content student_a.personal_info

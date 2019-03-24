@@ -21,16 +21,6 @@ RSpec.describe 'Interviews UPDATE' do
         expect(interview).not_to be_valid
       end
     end
-
-    context 'invalid interval' do
-      it 'validates errors' do
-        allow_any_instance_of(Courses::Interview::IntervalPolicy).to receive(:allowed?).and_return(false)
-        pick_a_date(date_field_name, Time.now)
-        click_button 'Update Interview'
-
-        expect_an_error interview_start_at: 'should be at least 30 minutes between interviews'
-      end
-    end
   end
 
   describe 'valid input' do
