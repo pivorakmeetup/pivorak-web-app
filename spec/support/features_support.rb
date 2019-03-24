@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Find error on the page in special div class for some resource
 #
 # it 'FAILS' do
@@ -7,7 +9,7 @@
 #   expect_an_error resource_title: :blank
 # end
 #
-def expect_an_error(hash_pair = {}, no = false)
+def expect_an_error(hash_pair = {}, nope = false) # rubocop:disable Metrics/AbcSize
   field     = hash_pair.keys.first
   value     = hash_pair.values.first
   error_div = "div.#{field}.error"
@@ -20,13 +22,13 @@ def expect_an_error(hash_pair = {}, no = false)
           value
         end
 
-  to_or_not = no ? :not_to : :to
+  to_or_not = nope ? :not_to : :to
 
   expect(page).send(to_or_not, have_css(error_div))
 
-  return if no
+  return if nope
 
-  expect(find("#{error_div}")).send(to_or_not, have_content(msg))
+  expect(find(error_div.to_s)).send(to_or_not, have_content(msg))
 end
 
 def expect_not_an_error(hash_pair = {})
@@ -43,14 +45,14 @@ end
 # assume_logged_in(my_user)
 #
 def assume_logged_in(user = nil)
-  user = user || create(:user)
+  user ||= create(:user)
   login_as(user)
 end
 
 # Assume admin user is logged in
 def assume_admin_logged_in(admin = nil, supervisor: false)
   admin_trait = supervisor ? :supervisor : :admin
-  admin = admin || create(:user, admin_trait)
+  admin ||= create(:user, admin_trait)
   assume_logged_in(admin)
 end
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Talks READ' do
   context 'without any assignes' do
     let!(:talk_a)    { create(:talk, title: 'Test Talk A') }
@@ -37,7 +39,7 @@ RSpec.describe 'Talks READ' do
 
   context 'with user assign' do
     let(:user)       { create(:user, first_name: 'Super', last_name: 'User') }
-    let!(:talk_with_user)       { create(:talk, title: 'Test Talk with User', speaker_id: user.id) }
+    let!(:talk_with_user) { create(:talk, title: 'Test Talk with User', speaker_id: user.id) }
 
     before do
       assume_admin_logged_in

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Stripe
   class Charge
     class Create < ::ApplicationService
@@ -8,7 +10,7 @@ module Stripe
       end
 
       def call
-        @charge ||= Stripe::Charge.create(charge_params)
+        Stripe::Charge.create(charge_params)
       end
 
       private
@@ -28,7 +30,7 @@ module Stripe
         }
       end
 
-      DEFAULT_CURRENCY = 'UAH'.freeze
+      DEFAULT_CURRENCY = 'UAH'
     end
   end
 end

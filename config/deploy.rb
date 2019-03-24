@@ -1,32 +1,29 @@
+# frozen_string_literal: true
+
+# rubocop:disable all
+
 require 'dotenv/load'
 # config valid only for current version of Capistrano
-lock "3.11.0"
+lock '3.11.0'
 
 set :application, proc { "pivorak-web-app_#{fetch :stage}" }
 set :repo_url, 'git@github.com:pivorakmeetup/pivorak-web-app.git'
 set :deploy_to, proc { "/home/dev/projects/pivorak_#{fetch :stage}" }
 set :rvm_ruby_version, 'ruby-2.3.1@pivorak'
-#set :linked_files, %w(config/database.yml config/secrets.yml .env)
-set :linked_files, %w(config/database.yml config/secrets.yml .env config/settings.yml)
+# set :linked_files, %w(config/database.yml config/secrets.yml .env)
+set :linked_files, %w[config/database.yml config/secrets.yml .env config/settings.yml]
 set :linked_dirs, fetch(:linked_dirs, []).push(
   'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system',
   'node_modules', 'public/uploads'
 )
 set :user, 'dev'
-set :ssh_options, keys: ["config/deploy_id_rsa"] if File.exist?("config/deploy_id_rsa")
-
+set :ssh_options, keys: ['config/deploy_id_rsa'] if File.exist?('config/deploy_id_rsa')
 
 set :rvm_map_bins, fetch(:rvm_map_bins, []).push('rvmsudo')
 
 set :rollbar_token, ENV['rollbar_TOKEN']
-set :rollbar_env, Proc.new { fetch :stage }
-set :rollbar_role, Proc.new { :app }
-
-set :slackistrano, {
-  klass: Slackistrano::CustomMessaging,
-  channel: ENV['slackistrano_SLACK_CHANNEL'],
-  webhook: ENV['slackistrano_SLACK_WEBHOOK']
-}
+set :rollbar_env, proc { fetch :stage }
+set :rollbar_role, proc { :app }
 
 set :postgres_remote_cluster, '9.6/main'
 set :postgres_backup_compression_level, 6 # Will use gzip level 6 to compress the output.
@@ -39,7 +36,7 @@ namespace :foreman do
               'export',
               'upstart',
               '/etc/init',
-              '-a', "#{fetch :application}",
+              '-a', (fetch :application).to_s,
               '-u', fetch(:user),
               '-l', shared_path.join('log'),
               '-e', shared_path.join('.env'),
@@ -53,16 +50,15 @@ namespace :deploy do
   desc 'Restart application'
   task :restart_application do
     on roles(:app), in: :sequence, wait: 5 do
-      unless test :sudo, :start,   "#{fetch :application}"
-        execute :sudo, :restart, "#{fetch :application}"
-      end
+      execute :sudo, :restart, (fetch :application).to_s unless test :sudo, :start, (fetch :application).to_s
     end
   end
 
-#  before 'deploy:updated'
-#  before 'deploy:compile_assets', 'webpack:build'
+  #  before 'deploy:updated'
+  #  before 'deploy:compile_assets', 'webpack:build'
 
   after :publishing, 'foreman:export'
   after :publishing, 'restart_application'
-
 end
+
+# rubocop:enable all

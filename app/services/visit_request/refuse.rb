@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class VisitRequest
   class Refuse < ApplicationService
     def initialize(visit_request)

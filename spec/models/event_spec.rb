@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Event do
   let!(:event) { build(:event) }
 

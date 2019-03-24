@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'Configurable' do |_action_hook|
   let(:configurable_module) { Searchable::Configurable }
 

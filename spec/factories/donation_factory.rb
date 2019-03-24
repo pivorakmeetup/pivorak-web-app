@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :donation do
     amount     { Faker::Number.decimal(3, 2) }

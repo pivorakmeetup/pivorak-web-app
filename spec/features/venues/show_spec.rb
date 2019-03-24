@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Venue SHOW' do
   let(:venue) { create(:venue) }
 

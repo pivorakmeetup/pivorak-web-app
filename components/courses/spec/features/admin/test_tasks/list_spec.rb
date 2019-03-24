@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Test tasks LIST' do
@@ -35,15 +37,15 @@ RSpec.describe 'Test tasks LIST' do
 
       within submited_test_task_id do
         expect(page).to have_content 'On Review'
-        expect(page).to have_link "Approve"
-        expect(page).to have_link "Take off review"
+        expect(page).to have_link 'Approve'
+        expect(page).to have_link 'Take off review'
 
         click_link 'Take off review'
       end
 
       within submited_test_task_id do
         expect(page).to have_content 'Submited'
-        expect(page).to have_link "Take on review"
+        expect(page).to have_link 'Take on review'
 
         click_link 'Take on review'
       end

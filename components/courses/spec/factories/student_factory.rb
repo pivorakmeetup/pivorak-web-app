@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryGirl.define do
   factory :student, class: Courses::Student do
     user_id         { rand(0..100) }

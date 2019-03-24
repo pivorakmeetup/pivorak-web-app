@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Events CREATE' do
   before do
     assume_admin_logged_in(supervisor: true)
@@ -11,13 +13,13 @@ RSpec.describe 'Events CREATE' do
     it 'should have default values' do
       expect(
         Time.zone.parse(
-          find("#event_started_at").value
+          find('#event_started_at').value
         ).hour
       ).to eq(default_started_at_hour)
 
       expect(
         Time.zone.parse(
-          find("#event_finished_at").value
+          find('#event_finished_at').value
         ).hour
       ).to eq(default_finished_at_hour)
     end
@@ -25,7 +27,7 @@ RSpec.describe 'Events CREATE' do
 
   context 'invalid input' do
     it 'validates errors' do
-      fill_in 'Title',  with: ''
+      fill_in 'Title', with: ''
       click_button 'Create Event'
 
       expect_an_error event_title: :blank
@@ -45,7 +47,7 @@ RSpec.describe 'Events CREATE' do
     end
 
     it 'creates event with image' do
-      fill_in 'Title',  with: 'Super New Event'
+      fill_in 'Title', with: 'Super New Event'
       attach_file('event[cover]', Rails.root + 'spec/fixtures/images/pivorak.png')
 
       click_button 'Create Event'
@@ -56,7 +58,7 @@ RSpec.describe 'Events CREATE' do
     it 'creates event with venue' do
       visit '/admin/events/new'
 
-      fill_in 'Title',  with: 'Super New Event'
+      fill_in 'Title', with: 'Super New Event'
       select(venue.name, from: 'Venue')
 
       click_button 'Create Event'
@@ -67,7 +69,7 @@ RSpec.describe 'Events CREATE' do
     it 'creates event with facebook embeded post code' do
       visit '/admin/events/new'
       fill_in 'Title',  with: 'Super New Event'
-      fill_in 'Facebook embeded post',  with: 'http://facebook.com'
+      fill_in 'Facebook embeded post', with: 'http://facebook.com'
 
       click_button 'Create Event'
 

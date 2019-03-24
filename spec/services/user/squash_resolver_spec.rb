@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe ::User::SquashResolver do
@@ -10,12 +12,12 @@ describe ::User::SquashResolver do
       association_type: :has_many,
       foreign_key:      :user_id,
       source_id:        user_a.id,
-      destination_id:   user_b.id,
+      destination_id:   user_b.id
     }
   end
 
   let(:squash_params) do
-    relations_params.merge(squash: true, conditions: %i[event_id] )
+    relations_params.merge(squash: true, conditions: %i[event_id])
   end
 
   subject { described_class }
@@ -36,14 +38,14 @@ describe ::User::SquashResolver do
           let!(:talk)  { FactoryBot.create(:talk, speaker: user_a) }
           let(:params) { relations_params.merge(resource: Talk, foreign_key: :speaker_id) }
 
-          before { subject.(params) }
+          before { subject.call(params) }
 
           it { expect(user_b.talks).to     include(talk) }
           it { expect(user_a.talks).not_to include(talk) }
         end
 
         context 'mixed' do
-          before { subject.(relations_params) }
+          before { subject.call(relations_params) }
 
           it { expect(user_b.visit_requests).to     include(request_a, duplicate_request_a, request_b, request_c) }
           it { expect(user_a.visit_requests).not_to include(request_a) }
@@ -51,7 +53,7 @@ describe ::User::SquashResolver do
       end
 
       context 'with squash' do
-        before { subject.(squash_params) }
+        before { subject.call(squash_params) }
 
         it { expect(user_b.visit_requests).to     have(3).items }
         it { expect(user_b.visit_requests).to     include(duplicate_request_a, request_b, request_c) }
@@ -64,7 +66,7 @@ describe ::User::SquashResolver do
       let!(:donation_a) { FactoryBot.create(:donation, user: user_a) }
       let(:params)      { relations_params.merge(resource: Donation, association_type: :has_one) }
 
-      before { subject.(params) }
+      before { subject.call(params) }
 
       it { expect(user_b.donations).to     include(donation_a) }
       it { expect(user_a.donations).not_to include(donation_b) }
@@ -76,36 +78,36 @@ describe ::User::SquashResolver do
       context 'resource' do
         let(:params) { relations_params.merge(resource: 5) }
 
-        it { expect(subject.(params)).to be_nil }
+        it { expect(subject.call(params)).to be_nil }
       end
 
       context 'association type' do
         let(:params) { relations_params.merge(association_type: :belongs_to) }
 
-        it { expect(subject.(params)).to be_nil }
+        it { expect(subject.call(params)).to be_nil }
       end
 
       context 'foreign key' do
         let(:params) { relations_params.merge(foreign_key: nil) }
 
-        it { expect(subject.(params)).to be_nil }
+        it { expect(subject.call(params)).to be_nil }
       end
 
       context 'source id' do
         let(:params) { relations_params.merge(source_id: Faker::Name.name) }
 
-        it { expect(subject.(params)).to be_nil }
+        it { expect(subject.call(params)).to be_nil }
       end
 
       context 'destination id' do
         let(:params) { relations_params.merge(destination_id: nil) }
 
-        it { expect(subject.(params)).to be_nil }
+        it { expect(subject.call(params)).to be_nil }
       end
     end
 
     context 'valid' do
-      it { expect(subject.(relations_params)).not_to be_nil }
+      it { expect(subject.call(relations_params)).not_to be_nil }
     end
   end
 end

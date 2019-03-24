@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class VisitRequest
   class Import < ApplicationService
     def initialize(event:, emails:, separator: ',')
@@ -13,7 +15,7 @@ class VisitRequest
         next unless user
 
         event.visit_requests.where(
-          user: user,
+          user:   user,
           status: :confirmed
         ).first_or_create
       end.compact

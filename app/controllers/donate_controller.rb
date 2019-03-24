@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DonateController < ApplicationController
   # Disabled because of tax thing.
   # Ask at Slack #core-team if it can be enabled.
@@ -6,7 +8,7 @@ class DonateController < ApplicationController
   layout 'devise'
 
   def show
-    render locals: {form: DonateForm.new}
+    render locals: { form: DonateForm.new }
   end
 
   def create
@@ -15,7 +17,7 @@ class DonateController < ApplicationController
     valid = form.valid?
     flash.now[:alert] = t('pages.donate.failure', locale: locale) unless valid
 
-    render :show, locals: {form: form}
+    render :show, locals: { form: form }
   end
 
   private

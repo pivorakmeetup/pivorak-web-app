@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   class IncreasingPerMonth < ApplicationFinder
     include ::ChartsData
@@ -7,8 +9,6 @@ class User < ApplicationRecord
     end
 
     private
-
-    attr_reader :users
 
     def users
       @users ||= User.group_by_month(:created_at).count

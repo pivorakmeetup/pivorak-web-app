@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe ::Omniauth::AuthenticationService do
   let(:result)   { subject.authenticate }
   let(:identity) { result.identities.first }

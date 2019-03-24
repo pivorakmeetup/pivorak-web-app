@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module NavigationHelper
   def events_link
     link_to t('events.plural'), events_path

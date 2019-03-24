@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Searchable
   module Mapping
     MAPPING = {
@@ -11,6 +13,6 @@ module Searchable
       friend:        Configuration::Friend,
       email:         Configuration::Email,
       visit_request: Configuration::VisitRequest
-    }
+    }.freeze
   end
 end

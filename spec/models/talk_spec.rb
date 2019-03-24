@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Talk do
   describe 'relations' do
     it { is_expected.to belong_to(:event) }

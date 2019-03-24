@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Courses
   class Interview < ApplicationRecord
     class WithAssessments < ApplicationService
@@ -47,7 +49,7 @@ module Courses
         if assessments_count(interview).zero?
           DEFAULT_VALUE
         else
-          (total(interview)/assessments_count(interview)).round(2)
+          (total(interview) / assessments_count(interview)).round(2)
         end
       end
     end

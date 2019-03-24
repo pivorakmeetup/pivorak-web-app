@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User
   class VisitedEvents < ApplicationFinder
     def initialize(params = {})
@@ -10,6 +12,6 @@ class User
 
     private
 
-    attr_reader :user_id    
+    attr_reader :user_id
   end
 end

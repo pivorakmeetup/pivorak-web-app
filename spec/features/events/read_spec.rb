@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Events READ' do
   let(:event) { create(:event) }
   let(:user)  { create(:user, first_name: 'Attendee') }

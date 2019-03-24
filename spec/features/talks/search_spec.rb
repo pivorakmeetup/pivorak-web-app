@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Talks search' do
   let(:event) { create :event, title: 'Event Title' }
 
@@ -12,7 +14,7 @@ RSpec.describe 'Talks search' do
   let!(:talk_2) { create :talk, title: title_of_talk_2, description: description_of_talk_2, event: event }
 
   before do
-    visit "/talks"
+    visit '/talks'
   end
 
   context 'should have all talks on the page' do

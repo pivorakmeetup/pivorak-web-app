@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Admin
   module TalksHelper
     NOT_ASSIGNED = I18n.t('phrases.not_assigned')

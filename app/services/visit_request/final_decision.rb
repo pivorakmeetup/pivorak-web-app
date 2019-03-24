@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class VisitRequest
   class FinalDecision < ApplicationService
     YES = 'yes'
@@ -17,7 +19,7 @@ class VisitRequest
       when NO
         VisitRequest::Refuse.call(visit_request)
       else
-        fail UnrecognizedAnswerError
+        raise UnrecognizedAnswerError
       end
     end
 

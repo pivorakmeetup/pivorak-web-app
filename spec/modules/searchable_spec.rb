@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe ::Searchable do
   let(:subject)       { Class.new }
   let(:resolver)      { ::Searchable::Resolver }

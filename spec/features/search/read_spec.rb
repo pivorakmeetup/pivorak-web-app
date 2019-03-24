@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Search GET' do
   let(:string) { 'example' }
 

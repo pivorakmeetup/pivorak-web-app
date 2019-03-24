@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Events SEND CONFIRMATIONS' do
   let!(:event) { create(:event, status: :confirmation) }
   let!(:visit_request) { create(:visit_request, event: event, status: VisitRequest::APPROVED, waiting_list: false) }

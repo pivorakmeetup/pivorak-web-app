@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe VisitRequest::QrCode::Generate do
@@ -14,7 +16,7 @@ RSpec.describe VisitRequest::QrCode::Generate do
 
       described_class.call(visit_request)
 
-      expect(RQRCode::QRCode).to have_received(:new).with('http://check-in-url', {level: :h})
+      expect(RQRCode::QRCode).to have_received(:new).with('http://check-in-url', level: :h)
     end
   end
 end

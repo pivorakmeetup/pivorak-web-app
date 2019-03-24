@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   include ::Searchable
 
@@ -19,7 +21,7 @@ class User < ApplicationRecord
 
   validates :first_name, :last_name, :slug, presence: true
   validates :first_name, :last_name, format: {
-    with: LATIN_LETTERS_REGEX,  message: I18n.t('errors.only_latin_letters')
+    with: LATIN_LETTERS_REGEX, message: I18n.t('errors.only_latin_letters')
   }
 
   scope :synthetic, -> { where(synthetic: true) }
@@ -44,7 +46,7 @@ class User < ApplicationRecord
   def normalize_friendly_id(string)
     count = User.where(first_name: first_name, last_name: last_name).count
 
-    count > 0 ? super + '-' + (count + 1).to_s : super
+    count.positive? ? super + '-' + (count + 1).to_s : super
   end
 
   # for sending emails in background

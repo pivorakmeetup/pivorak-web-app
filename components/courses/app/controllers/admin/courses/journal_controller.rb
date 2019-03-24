@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Admin
   module Courses
     class JournalController < ::Admin::Courses::BaseController
@@ -10,13 +12,13 @@ module Admin
       private
 
       def journal_breadcrumb
-       add_breadcrumb 'courses.journal.singular',
-         path: admin_courses_season_journal_path(current_season)
+        add_breadcrumb 'courses.journal.singular',
+                       path: admin_courses_season_journal_path(current_season)
       end
 
       def students
         @students ||= ::Courses::Student::AttendingAndGraduated
-          .call(current_season, [:user, :progresses])
+                      .call(current_season, %i[user progresses])
       end
 
       def lectures
@@ -25,7 +27,7 @@ module Admin
 
       def total_hash
         @total_hash ||= ::Courses::Student::TotalHash
-          .call(students, sort_by: params[:sort_by], lecture_id: params[:lecture])
+                        .call(students, sort_by: params[:sort_by], lecture_id: params[:lecture])
       end
     end
   end

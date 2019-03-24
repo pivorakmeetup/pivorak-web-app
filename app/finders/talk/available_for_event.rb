@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Talk < ApplicationRecord
   class AvailableForEvent < ApplicationFinder
     def initialize(params = {})

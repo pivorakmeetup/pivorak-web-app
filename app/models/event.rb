@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Event < ApplicationRecord
   include ::Searchable
   include Publishable
@@ -20,7 +22,7 @@ class Event < ApplicationRecord
   has_many :talks
   has_many :visit_requests
 
-  %i(approved pending final confirmed used).each do |scope_name|
+  %i[approved pending final confirmed used].each do |scope_name|
     has_many :"#{scope_name}_visit_requests", -> { send(scope_name) }, class_name: 'VisitRequest'
   end
 
@@ -39,7 +41,11 @@ class Event < ApplicationRecord
   end
 
   def self.current
-    find_by('started_at >= :beginning_of_day AND finished_at < :end_of_day', beginning_of_day: Time.zone.now.beginning_of_day, end_of_day: Time.now.end_of_day)
+    find_by(
+      'started_at >= :beginning_of_day AND finished_at < :end_of_day',
+      beginning_of_day: Time.zone.now.beginning_of_day,
+      end_of_day:       Time.now.end_of_day
+    )
   end
 
   def limit_newbies

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Pages CREATE' do
   before do
     assume_admin_logged_in
@@ -7,8 +9,8 @@ RSpec.describe 'Pages CREATE' do
   context 'invalid input' do
     it 'validates title presence' do
       fill_in 'Title',  with: ''
-      fill_in 'Url',  with: ''
-      fill_in 'Body',  with: ''
+      fill_in 'Url', with: ''
+      fill_in 'Body', with: ''
       click_button 'Create Page'
 
       expect_an_error page_title: :blank
@@ -20,7 +22,7 @@ RSpec.describe 'Pages CREATE' do
 
   context 'valid input' do
     it 'create new page' do
-      fill_in 'Title',  with: 'About Us'
+      fill_in 'Title', with: 'About Us'
       fill_in 'Url',  with: 'about-us'
       fill_in 'Body', with: 'Something about us'
       click_button 'Create Page'

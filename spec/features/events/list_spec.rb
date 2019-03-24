@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Events LIST' do
   let!(:event) { create(:event) }
 
   before do
-    visit "/events"
+    visit '/events'
   end
 
   it { expect(page).to have_content event.title }

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe User::Squash do
   let(:user_a) { create(:user) }
   let(:user_b) { create(:user) }
@@ -23,7 +25,7 @@ RSpec.describe User::Squash do
   end
 
   describe '#dependencies' do
-    let(:expected_dependencies) {
+    let(:expected_dependencies) do
       {
         has_many: {
           Identity     => { foreign_key: :user_id },
@@ -32,7 +34,7 @@ RSpec.describe User::Squash do
           VisitRequest => { foreign_key: :user_id, squash: true, conditions: %i[event_id] }
         }
       }
-    }
+    end
 
     it { expect(described_class.new.dependencies).to eq expected_dependencies }
   end

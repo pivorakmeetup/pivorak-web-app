@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Admin
   class VisitRequest
     class VisitRequestsController < ::Admin::BaseController

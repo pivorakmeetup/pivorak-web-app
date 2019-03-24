@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Admin
   module Courses
     class QuestionsController < ::Admin::Courses::BaseController
@@ -37,7 +39,7 @@ module Admin
 
       def questions_breadcrumb
         add_breadcrumb 'courses.questions.plural',
-          path: admin_courses_season_questions_path(current_season)
+                       path: admin_courses_season_questions_path(current_season)
       end
 
       def questions_params

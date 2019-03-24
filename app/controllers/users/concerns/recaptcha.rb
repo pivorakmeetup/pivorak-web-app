@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Users
   module Concerns
     module Recaptcha
@@ -30,7 +32,7 @@ module Users
 
       # List of permitted params assigned to the User
       def user_params
-        fail 'Should be implemented in the controller'
+        raise 'Should be implemented in the controller'
       end
     end
   end

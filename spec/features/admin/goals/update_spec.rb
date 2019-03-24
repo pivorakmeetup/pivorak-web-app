@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Goals UPDATE' do
   let!(:goal)          { create(:goal, title: 'Test Goal') }
   let(:test_edit_path) { '/admin/goals/test-goal/edit' }

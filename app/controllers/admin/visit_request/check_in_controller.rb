@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Admin
   class VisitRequest
     class CheckInController < ::Admin::BaseController
@@ -12,7 +14,7 @@ module Admin
       private
 
       def visit_request
-        @_visit_request ||= ::VisitRequest.find_by(token: params[:token])
+        @visit_request ||= ::VisitRequest.find_by(token: params[:token])
       end
 
       def user
@@ -24,7 +26,7 @@ module Admin
       end
 
       def upcoming_event
-        @event ||= Event.last
+        @upcoming_event ||= Event.last
       end
 
       def visit_count

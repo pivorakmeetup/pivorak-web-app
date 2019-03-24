@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 module Courses
   class TestTask < ApplicationRecord
     class Update < ApplicationService
-      def initialize(test_task, mentor, status:)
+      def initialize(test_task, mentor, status: Courses::TestTask::ON_REVIEW)
         @test_task = test_task
         @mentor    = mentor
         @status    = status
@@ -22,7 +24,7 @@ module Courses
       delegate :student, to: :test_task
 
       def mentor_id
-        return if  status == Courses::TestTask::SUBMITED
+        return if status == Courses::TestTask::SUBMITED
 
         mentor.id
       end

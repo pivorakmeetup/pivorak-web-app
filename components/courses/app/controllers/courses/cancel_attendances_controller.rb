@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Courses
   class CancelAttendancesController < BaseController
     helper_method :courses_cancel_link

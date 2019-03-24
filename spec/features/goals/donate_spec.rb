@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'stripe_mock'
 
 RSpec.describe 'Goals DONATE' do

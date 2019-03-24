@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class VisitRequest
   class Invite < ApplicationService
     def initialize(emails:, event:)

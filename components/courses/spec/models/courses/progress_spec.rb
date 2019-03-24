@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Courses::Progress, type: :model do
@@ -6,8 +8,10 @@ RSpec.describe Courses::Progress, type: :model do
   let!(:venue)    { create(:venue) }
   let!(:mentor)   { ::Courses::Mentor.create(user: user, season: season) }
   let!(:lecture)  { create(:lecture, mentor: mentor, venue: venue, season: season) }
-  let!(:student)  { ::Courses::Student.create(season: season, user: user, status: :attending,
-                                              personal_info: 'lorem', motivation_info: 'ipsum') }
+  let!(:student)  do
+    ::Courses::Student.create(season: season, user: user, status: :attending,
+                                              personal_info: 'lorem', motivation_info: 'ipsum')
+  end
   let!(:progress) { ::Courses::Progress.create(student: student, lecture: lecture, mentor: mentor, homework_mark: 2) }
 
   describe 'validations' do

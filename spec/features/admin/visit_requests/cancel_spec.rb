@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Visit Requests CANCEL' do
   let(:event) { create(:event) }
   let!(:visit_request) { create(:visit_request, event: event, status: VisitRequest::APPROVED) }
@@ -16,5 +18,4 @@ RSpec.describe 'Visit Requests CANCEL' do
   it { expect(page).to have_link 'Approve' }
   it { expect(page).to_not have_link 'Cancel' }
   it { expect(visit_request.reload.status).to eq(VisitRequest::CANCELED.to_s) }
-
 end

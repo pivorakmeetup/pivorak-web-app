@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Stripe
   class Token
     class Create < ::ApplicationService
@@ -9,7 +11,7 @@ module Stripe
       end
 
       def call
-        @token ||= Stripe::Token.create(card: token_params)
+        Stripe::Token.create(card: token_params)
       end
 
       private

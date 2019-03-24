@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Venues READ' do
   let!(:venue_a) { create(:venue, name: 'Test Venue A') }
   let!(:venue_b) { create(:venue, name: 'Test Venue B') }

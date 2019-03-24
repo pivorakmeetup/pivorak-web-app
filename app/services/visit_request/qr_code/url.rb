@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class VisitRequest
   module QrCode
     class Url < ApplicationService
@@ -10,6 +12,7 @@ class VisitRequest
       end
 
       private
+
       attr_reader :visit_request
 
       def url_helpers

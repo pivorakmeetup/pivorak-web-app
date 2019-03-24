@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Courses
   class TestTask < ApplicationRecord
     self.table_name = 'courses_test_tasks'

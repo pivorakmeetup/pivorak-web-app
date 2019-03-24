@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class VisitRequest
   class RealTimeUpdate < ApplicationService
     def initialize(visit_request)
@@ -7,7 +9,7 @@ class VisitRequest
     def call
       ActionCable.server.broadcast(
         "visit_requests_#{event.id}_channel",
-        partial: render_visit_request(visit_request),
+        partial:          render_visit_request(visit_request),
         visit_request_id: visit_request.id
       )
     end
@@ -20,9 +22,9 @@ class VisitRequest
     def render_visit_request(visit_request)
       ApplicationController.render(
         partial: 'admin/visit_requests/visit_request',
-        locals: {
+        locals:  {
           visit_request: visit_request,
-          event: event
+          event:         event
         }
       )
     end

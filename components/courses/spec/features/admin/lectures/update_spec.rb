@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Lecture UPDATE' do
@@ -7,11 +9,11 @@ RSpec.describe 'Lecture UPDATE' do
   let!(:mentor)  { ::Courses::Mentor.create(user: user, season: season) }
   let!(:lecture) { create(:lecture, title: 'Awesome lecture', mentor: mentor, venue_id: 1, season: season) }
 
-  before { visit "/admin/courses/seasons/test-season/lectures/awesome-lecture/edit" }
+  before { visit '/admin/courses/seasons/test-season/lectures/awesome-lecture/edit' }
 
   context 'invalid input' do
     it 'validates errors' do
-      fill_in 'Title',  with: ''
+      fill_in 'Title', with: ''
       click_button 'Update Lecture'
 
       expect_an_error lecture_title: :blank
@@ -20,7 +22,7 @@ RSpec.describe 'Lecture UPDATE' do
 
   context 'valid input' do
     it 'update season' do
-      fill_in 'Title',  with: 'Super Lecture'
+      fill_in 'Title', with: 'Super Lecture'
       click_button 'Update Lecture'
 
       expect(page).to have_current_path '/admin/courses/seasons/test-season/lectures'

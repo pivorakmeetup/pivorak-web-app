@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe VisitRequestMailer do
@@ -103,10 +105,10 @@ describe VisitRequestMailer do
     let(:mail) { described_class.notify_admin_about_canceled_attendee(visit_request) }
     let!(:email_template) do
       EmailTemplate.create!(
-        title: 'VisitRequestMailer#notify_admin_about_canceled_attendee',
+        title:   'VisitRequestMailer#notify_admin_about_canceled_attendee',
         subject: 'Attendee canceled his request',
-        note: 'Will be sent when attendee cancels his request',
-        body: File.read('db/seed/email_templates/notify_admin_about_canceled_attendee.md')
+        note:    'Will be sent when attendee cancels his request',
+        body:    File.read('db/seed/email_templates/notify_admin_about_canceled_attendee.md')
       )
     end
 

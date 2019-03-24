@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe VisitRequest do
   describe '#checked_in?' do
     subject { build_stubbed(:visit_request) }

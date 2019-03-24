@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Talk
   class Create < ApplicationService
     def initialize(talk)

@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class User
   class Import < ApplicationService
     def initialize(emails:, separator: ',')
-      @separator   = separator.strip
+      @separator = separator.strip
       @emails = emails
     end
 

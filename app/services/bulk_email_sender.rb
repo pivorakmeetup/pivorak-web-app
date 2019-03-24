@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BulkEmailSender < ApplicationService
   BULK_SIZE = 100
 

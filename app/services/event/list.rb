@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Event
   class List < ::ApplicationService
     def initialize(params)
@@ -14,7 +16,7 @@ class Event
     attr_reader :events, :page
 
     def associations_to_include
-      ::AssociationMapper.(visit_requests: %i(approved pending confirmed used), visitors: %i(verified newbie))
+      ::AssociationMapper.call(visit_requests: %i[approved pending confirmed used], visitors: %i[verified newbie])
     end
   end
 end

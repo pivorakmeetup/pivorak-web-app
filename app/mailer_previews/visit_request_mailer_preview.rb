@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class VisitRequestMailerPreview
   def approved
     VisitRequestMailer.approved visit_request

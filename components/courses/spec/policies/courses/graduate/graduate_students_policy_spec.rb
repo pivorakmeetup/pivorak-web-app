@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe Courses::Season::GraduateStudentsPolicy do
-  let(:season)    { create(:season, title: 'Test Season', status: :passed) }
+  let(:season) { create(:season, title: 'Test Season', status: :passed) }
   let!(:student)   { create(:student, season: season, status: :attending) }
 
   subject(:policy) { described_class.new(season) }

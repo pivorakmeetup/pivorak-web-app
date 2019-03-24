@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 describe 'Talk SHOW' do
   let(:user) { create :user, first_name: 'John', last_name: 'Doe' }
   let(:talk) { create :talk, speaker_id: user.id }
-
 
   context 'when talk is present' do
     before { visit talk_path(talk) }

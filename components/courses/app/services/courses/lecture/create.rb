@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Courses
   class Lecture
     class Create < ApplicationService
@@ -6,11 +8,11 @@ module Courses
       end
 
       def call
-        if lecture.valid?
-          lecture.save
-          ::Courses::Student.attending.each do |student|
-            lecture.progresses.create(student: student, mentor: lecture.mentor)
-          end
+        return unless lecture.valid?
+
+        lecture.save
+        ::Courses::Student.attending.each do |student|
+          lecture.progresses.create(student: student, mentor: lecture.mentor)
         end
       end
 

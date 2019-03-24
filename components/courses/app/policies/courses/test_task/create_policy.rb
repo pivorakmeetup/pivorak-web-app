@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Courses
   class TestTask < ApplicationRecord
     class CreatePolicy
@@ -7,15 +9,15 @@ module Courses
       end
 
       def allowed?
-        has_no_test_tasks?
+        no_test_tasks?
       end
 
       private
 
       attr_reader :student_id, :season
 
-      def has_no_test_tasks?
-        !(season.test_tasks.exists?(student_id: student_id))
+      def no_test_tasks?
+        !season.test_tasks.exists?(student_id: student_id)
       end
     end
   end

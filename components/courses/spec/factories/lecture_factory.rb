@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryGirl.define do
   factory :lecture, class: Courses::Lecture do
     title       { Faker::GameOfThrones.house }

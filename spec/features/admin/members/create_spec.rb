@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Members CREATE' do
   before do
     assume_admin_logged_in(supervisor: true)
@@ -6,7 +8,7 @@ RSpec.describe 'Members CREATE' do
 
   context 'invalid input' do
     it 'validates presence' do
-      fill_in 'Email',  with: ''
+      fill_in 'Email', with: ''
       click_button 'Create User'
 
       expect_an_error member_email:      :blank

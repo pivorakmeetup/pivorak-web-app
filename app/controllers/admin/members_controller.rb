@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Admin
   class MembersController < BaseController
     helper_method :admin_members_list, :filter, :member, :members, :url

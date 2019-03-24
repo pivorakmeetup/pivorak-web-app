@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe ::Mailchimp::SubscriptionJob, type: :job do
   let(:user)    { create(:user) }
   let(:service) { ::Mailchimp::User::Subscribe }

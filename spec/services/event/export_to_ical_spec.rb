@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe Event::ExportToIcal do
@@ -6,10 +8,10 @@ describe Event::ExportToIcal do
   describe '#call' do
     let(:event) do
       build(:event,
-        started_at: '2017-03-24 18:00',
-        finished_at: '2017-03-24 22:00',
-        title: '#pivorak 21: Elixir edition about Nerves, Docker & Flowex',
-        description: '#pivorak is happy to be back with Elixir Edition!')
+            started_at:  '2017-03-24 18:00',
+            finished_at: '2017-03-24 22:00',
+            title:       '#pivorak 21: Elixir edition about Nerves, Docker & Flowex',
+            description: '#pivorak is happy to be back with Elixir Edition!')
     end
 
     let(:icalendar_file) { subject.call(event) }

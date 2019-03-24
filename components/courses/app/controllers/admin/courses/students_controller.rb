@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Admin
   module Courses
     class StudentsController < ::Admin::Courses::BaseController
@@ -34,12 +36,12 @@ module Admin
 
       def students_breadcrumb
         add_breadcrumb 'courses.students.plural',
-          path: admin_courses_season_students_path(current_season)
+                       path: admin_courses_season_students_path(current_season)
       end
 
       def student_breadcrumb
         add_breadcrumb student, label: :full_name,
-          path: admin_courses_season_students_path(current_season)
+                                path:  admin_courses_season_students_path(current_season)
       end
 
       def student_params

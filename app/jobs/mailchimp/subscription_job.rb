@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Mailchimp
   class SubscriptionJob < ::ApplicationJob
     def perform(user_id)

@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Events ASSIGN_TALK' do
-  let!(:event)          { create(:event, title: 'Test Event') }
+  let!(:event) { create(:event, title: 'Test Event') }
   let(:test_edit_path) { '/admin/events/test-event/edit' }
 
   it 'only free talks can be assigned' do
@@ -33,5 +35,4 @@ RSpec.describe 'Events ASSIGN_TALK' do
 
     expect(event.talks).to include talk
   end
-
 end

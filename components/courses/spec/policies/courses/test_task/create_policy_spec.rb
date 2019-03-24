@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe Courses::TestTask::CreatePolicy do
   let(:student) { create(:student) }
-  let(:season)  { create(:season, title: 'Test Season' ) }
+  let(:season)  { create(:season, title: 'Test Season') }
 
   describe '#allowed?' do
     context 'student has not sent test tasks' do

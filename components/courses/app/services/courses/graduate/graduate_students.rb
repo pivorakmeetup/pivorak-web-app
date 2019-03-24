@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Courses
   module Graduate
     class GraduateStudents < ApplicationService

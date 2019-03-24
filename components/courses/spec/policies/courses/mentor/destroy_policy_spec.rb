@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Courses::Mentor::DestroyPolicy do
@@ -6,7 +8,6 @@ RSpec.describe Courses::Mentor::DestroyPolicy do
   let!(:season_creator) { ::Courses::Mentor.create(user_id: 1, season_id: season.id) }
   let!(:user)           { create(:user, first_name: 'Another', last_name: 'User') }
   let!(:mentor)         { ::Courses::Mentor.create(user_id: 2, season_id: season.id) }
-
 
   context 'allow to destroy' do
     it 'allowed to destroy' do

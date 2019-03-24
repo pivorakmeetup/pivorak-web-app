@@ -1,9 +1,13 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe Courses::Homework::Create do
-  let(:params)       { { git_url: Faker::Internet.url, showcase_url: Faker::Internet.url,
-                         description: Faker::Lorem.sentence, lecture_id: 1 } }
-  let(:student_id)   { 1 }
+  let(:params) do
+    { git_url: Faker::Internet.url, showcase_url: Faker::Internet.url,
+                         description: Faker::Lorem.sentence, lecture_id: 1 }
+  end
+  let(:student_id) { 1 }
 
   describe '#call' do
     it 'creates homework' do

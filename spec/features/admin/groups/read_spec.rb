@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Groups READ' do
   let!(:group_a) { create(:group, name: 'GeneralGroup',   resource: 'Talk') }
   let!(:group_b) { create(:group, name: 'SecondaryGroup', resource: 'Talk') }

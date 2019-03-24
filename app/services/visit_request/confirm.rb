@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class VisitRequest
   class Confirm < ApplicationService
     def initialize(visit_request)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class EmailMailer < ApplicationMailer
   def custom(email_id, user_id)
     email = Email.find(email_id)

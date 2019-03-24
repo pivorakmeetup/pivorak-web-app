@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User
   class Create < Base
     def call
@@ -11,7 +13,7 @@ class User
     def synthetic_user!
       user.synthetic = true
       user.skip_confirmation!
-      user.password  = SecureRandom.hex(16)
+      user.password = SecureRandom.hex(16)
     end
 
     def synthetic?

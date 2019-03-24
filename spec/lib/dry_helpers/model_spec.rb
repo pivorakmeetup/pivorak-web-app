@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'dry_helpers/model'
 
 RSpec.describe 'DRYHelpers/Model' do

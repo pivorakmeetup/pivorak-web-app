@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Students READ' do
@@ -7,7 +9,10 @@ RSpec.describe 'Students READ' do
     let!(:user_a)            { User.create(email: 'test_a@test.com', first_name: 'User', last_name: 'A') }
     let(:user_b)             { User.create(email: 'test_b@test.com', first_name: 'User', last_name: 'B') }
     let!(:season_creator)    { ::Courses::Mentor.create(user: user_a, season: season) }
-    let!(:student_a)         { create(:student, personal_info: 'Student A', season: season, user: user_a, status: :attending) }
+    let!(:student_a)         do
+      create(:student,
+             personal_info: 'Student A', season: season, user: user_a, status: :attending)
+    end
 
     it 'displays list of students' do
       student_b = create(:student, personal_info: 'User B', season: season, user: user_b, status: :enrolled)

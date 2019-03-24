@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Admin
   module Courses
     module ProgressHelper
@@ -33,7 +35,7 @@ module Admin
         link_to t('courses.progress.showcase'), homework.showcase_url
       end
 
-      def set_lecture_presence(season, lecture, student)
+      def set_lecture_presence(season, lecture, student) # rubocop:disable Metrics/MethodLength
         progress = student_progress(lecture, student)
 
         if progress.lecture_presence == LECTURE_NOT_ABSENT_MARK

@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe Courses::Season::Create do
-  let(:season) { build(:season, title: "Title", start_at: Time.now, finish_at: Time.now + 100.days) }
+  let(:season) { build(:season, title: 'Title', start_at: Time.now, finish_at: Time.now + 100.days) }
   let(:user)   { create(:user) }
 
   describe '#call' do

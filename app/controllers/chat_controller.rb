@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ChatController < ApplicationController
   disabled_feature_until '1.3'
 
@@ -7,10 +9,8 @@ class ChatController < ApplicationController
     else
       flash[:error] = I18n.t('chat.email_required')
     end
-
   rescue Chat::Client::ChatError => error
     flash[:error] = I18n.t(error, scope: 'chat.errors')
-
   ensure
     redirect_to chat_path
   end

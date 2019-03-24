@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Season CREATE' do
-
   before { visit '/admin/courses/seasons/new' }
 
   context 'invalid input' do

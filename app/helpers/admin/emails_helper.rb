@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 module Admin
   module EmailsHelper
     def send_email_to_recipient_ids_link(ids)
       link_to t('visit_requests.send_email_to_visitors'),
-        new_admin_email_path(recipient_ids: ids),
-        class: 'ui red button'
+              new_admin_email_path(recipient_ids: ids),
+              class: 'ui red button'
     end
 
     def send_email_to_attendees_link(ids)
@@ -16,8 +18,8 @@ module Admin
       return unless event.confirmation?
 
       link_to t('visit_requests.send_email_to_applied'),
-        new_admin_email_path(recipient_ids: ids),
-        class: 'ui green button'
+              new_admin_email_path(recipient_ids: ids),
+              class: 'ui green button'
     end
 
     def send_email_to_pending_users_link(ids)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Members LIST' do
   let!(:supervisor) { create(:user, :supervisor) }
   let!(:not_admin) { create(:user, first_name: 'Not', last_name: 'Admin') }

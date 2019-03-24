@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Courses
   class StudentsController < BaseController
     helper_method :student
@@ -28,8 +30,9 @@ module Courses
         current_user.id, current_season
       ).allowed?
       return if allowed
+
       redirect_to courses_season_path(current_season),
-        alert: t('flash.courses.students.create.fail')
+                  alert: t('flash.courses.students.create.fail')
     end
 
     def student_params

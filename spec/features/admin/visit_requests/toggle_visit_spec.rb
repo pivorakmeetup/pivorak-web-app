@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Visit Requests TOGGLE LIST' do
   let(:event) { create(:event, status: :live) }
   let!(:visit_request) { create(:visit_request, event: event, status: :approved, waiting_list: false) }

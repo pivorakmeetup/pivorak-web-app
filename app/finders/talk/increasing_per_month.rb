@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Talk < ApplicationRecord
   class IncreasingPerMonth < ApplicationFinder
     include ::ChartsData
@@ -7,8 +9,6 @@ class Talk < ApplicationRecord
     end
 
     private
-
-    attr_reader :talks
 
     def talks
       @talks ||= Talk.group_by_month(:created_at).count

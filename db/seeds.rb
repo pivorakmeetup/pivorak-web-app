@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'factory_bot_rails'
 
 #=== Users ====================================================================
@@ -12,34 +14,33 @@ puts User.where(email: 'admin@pivorak.com').first_or_create!(
 cover = File.open(Rails.root.join('db', 'pivorak_speaker.png'))
 
 puts User.where(email: 'first@example.com').first_or_create!(
-    first_name: 'First', last_name: 'User', password: 'password', cover: cover
+  first_name: 'First', last_name: 'User', password: 'password', cover: cover
 ).confirm
 
 puts User.where(email: 'second@example.com').first_or_create!(
-    first_name: 'Second', last_name: 'User', password: 'password', cover: cover
+  first_name: 'Second', last_name: 'User', password: 'password', cover: cover
 ).confirm
 
 puts User.where(email: 'third@example.com').first_or_create!(
-    first_name: 'Third', last_name: 'User', password: 'password', cover: cover
+  first_name: 'Third', last_name: 'User', password: 'password', cover: cover
 ).confirm
 
 #=== Goal =====================================================================
-puts Goal.where(title: 'General', amount: 99999999).first_or_create!
+puts Goal.where(title: 'General', amount: 99_999_999).first_or_create!
 
 #=== Groups ===================================================================
-[:regular, :lighting, :workshop].each do |talk_type|
+%i[regular lighting workshop].each do |talk_type|
   puts Group.where(resource: 'Talk', name: talk_type).first_or_create!
 end
 
-[:sponsors, :meetups, :books, :resources].each do |friend_type|
+%i[sponsors meetups books resources].each do |friend_type|
   puts Group.where(resource: 'Friend', name: friend_type).first_or_create!
 end
 
 #=== Venues ===================================================================
 puts Venue.where(name: 'iHUB', description: 'http://ihub.world/ua/lviv-ua/',
   address: 'Lviv, Zamknena Str 9',
-  map_url: 'https://www.google.com/maps/place/%D0%B2%D1%83%D0%BB%D0%B8%D1%86%D1%8F+%D0%97%D0%B0%D0%BC%D0%BA%D0%BD%D0%B5%D0%BD%D0%B0,+9,+%D0%9B%D1%8C%D0%B2%D1%96%D0%B2,+%D0%9B%D1%8C%D0%B2%D1%96%D0%B2%D1%81%D1%8C%D0%BA%D0%B0+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C,+%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0/@49.8404509,24.0134988,17z/data=!3m1!4b1!4m5!3m4!1s0x473add76e1c6ee3b:0xda08ff9150b3da68!8m2!3d49.8404475!4d24.0156875'
-).first_or_create!
+  map_url: 'https://www.google.com/maps/place/%D0%B2%D1%83%D0%BB%D0%B8%D1%86%D1%8F+%D0%97%D0%B0%D0%BC%D0%BA%D0%BD%D0%B5%D0%BD%D0%B0,+9,+%D0%9B%D1%8C%D0%B2%D1%96%D0%B2,+%D0%9B%D1%8C%D0%B2%D1%96%D0%B2%D1%81%D1%8C%D0%BA%D0%B0+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C,+%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0/@49.8404509,24.0134988,17z/data=!3m1!4b1!4m5!3m4!1s0x473add76e1c6ee3b:0xda08ff9150b3da68!8m2!3d49.8404475!4d24.0156875').first_or_create!
 
 #=== Pages ====================================================================
 puts Page.where(title: 'About',    body: '...', url: 'about').first_or_create!
@@ -80,4 +81,3 @@ puts event.visit_requests.where(user: User.third,  status: :canceled).first_or_c
 puts '==== Courses seeds ===='
 
 Courses::Engine.load_seed
-

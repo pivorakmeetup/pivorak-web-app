@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 module Admin
   module ApplicationHelper
-    ACTIVE = 'active'.freeze
+    ACTIVE = 'active'
 
     def active?(controller)
       ACTIVE if params[:controller].split('/').include?(controller.to_s)
@@ -8,8 +10,8 @@ module Admin
 
     def header_title
       controller = params[:controller]
-        .gsub('admin/', '')
-        .tr('/', '.')
+                   .gsub('admin/', '')
+                   .tr('/', '.')
 
       controller == 'home' ?  t('admin.admin') : t(:plural, scope: controller)
     end

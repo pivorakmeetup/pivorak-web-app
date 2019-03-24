@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Talk publishable' do
-  let(:event){ create :event }
+  let(:event) { create :event }
   let!(:published_talk)   { create :talk, title: 'Published Talk', event: event }
   let!(:unpublished_talk) { create :talk, title: 'Unpublished Talk', published: false, event: event }
 

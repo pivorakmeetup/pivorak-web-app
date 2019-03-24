@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class VenuesController < ApplicationController
   disabled_feature_until '1.3'
 

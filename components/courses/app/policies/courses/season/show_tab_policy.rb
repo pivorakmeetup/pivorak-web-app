@@ -1,13 +1,15 @@
+# frozen_string_literal: true
+
 module Courses
   class Season < ApplicationRecord
     class ShowTabPolicy
-      MENTORS    = ['mentors']
-      QUESTIONS  = ['questions']
-      STUDENTS   = ['students']
-      TEST_TASKS = ['test_task']
-      INTERVIEWS = ['interviews']
-      LECTURES   = ['lectures']
-      JOURNAL    = ['journal']
+      MENTORS    = ['mentors'].freeze
+      QUESTIONS  = ['questions'].freeze
+      STUDENTS   = ['students'].freeze
+      TEST_TASKS = ['test_task'].freeze
+      INTERVIEWS = ['interviews'].freeze
+      LECTURES   = ['lectures'].freeze
+      JOURNAL    = ['journal'].freeze
 
       def initialize(status, controller)
         @status     = status
@@ -25,15 +27,15 @@ module Courses
       def allowed_tabs
         {
           Courses::Season::PLANNED      =>
-            MENTORS + QUESTIONS,
+                                           MENTORS + QUESTIONS,
           Courses::Season::REGISTRATION =>
-            MENTORS + QUESTIONS + STUDENTS + TEST_TASKS,
+                                           MENTORS + QUESTIONS + STUDENTS + TEST_TASKS,
           Courses::Season::SELECTION    =>
-            MENTORS + STUDENTS + TEST_TASKS + INTERVIEWS,
+                                           MENTORS + STUDENTS + TEST_TASKS + INTERVIEWS,
           Courses::Season::LIVE         =>
-            MENTORS + STUDENTS + LECTURES + JOURNAL,
+                                           MENTORS + STUDENTS + LECTURES + JOURNAL,
           Courses::Season::PASSED       =>
-            MENTORS + STUDENTS + TEST_TASKS + INTERVIEWS + LECTURES + JOURNAL
+                                           MENTORS + STUDENTS + TEST_TASKS + INTERVIEWS + LECTURES + JOURNAL
         }
       end
 

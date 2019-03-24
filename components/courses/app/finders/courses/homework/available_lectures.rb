@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Courses
   class Homework < ApplicationRecord
     class AvailableLectures < ApplicationFinder
@@ -8,7 +10,7 @@ module Courses
 
       def call
         lectures_with_homeworks = season.lectures.includes(:homeworks)
-                                                 .where(courses_homeworks: { student_id: student.id } )
+                                        .where(courses_homeworks: { student_id: student.id })
         season.lectures - lectures_with_homeworks
       end
 

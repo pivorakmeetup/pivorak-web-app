@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User
   class Base < ApplicationService
     PERMITTED_KEYS = %i[
@@ -6,7 +8,7 @@ class User
       first_name last_name
       password password_confirmation
       synthetic
-    ]
+    ].freeze
 
     def initialize(user, params = {}, options = {})
       @user                  = user

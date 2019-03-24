@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Courses
   class TestTaskController < BaseController
     helper_method :test_task, :test_tasks
@@ -6,17 +8,17 @@ module Courses
       @test_task = ::Courses::TestTask::Create.call(test_task_params, current_student.id)
 
       if @test_task.save
-        flash_success and default_redirect
+        flash_success && default_redirect
       else
-        flash_error and render :new
+        flash_error && render(:new)
       end
     end
 
     def update
       if test_task.update(test_task_params)
-        flash_success and default_redirect
+        flash_success && default_redirect
       else
-        flash_error and render :edit
+        flash_error && render(:edit)
       end
     end
 

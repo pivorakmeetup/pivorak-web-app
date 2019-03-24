@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Users Sign Up' do
   before do
     visit '/users/sign_up'

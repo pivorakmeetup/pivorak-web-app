@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Admin
   class VisitRequestsController < ::Admin::BaseController
     helper_method :visit_requests, :event, :visitors_ids, :confirmed_ids, :applied_ids,
@@ -48,14 +50,14 @@ module Admin
     def pending_ids
       @pending_ids ||= User::EventParticipantsByStatus.call(
         event_id: event.id,
-        status: ::VisitRequest::APPROVED
+        status:   ::VisitRequest::APPROVED
       ).ids
     end
 
     def approved_ids
       @approved_ids ||= User::EventParticipantsByStatus.call(
         event_id: event.id,
-        status: ::VisitRequest::APPROVED
+        status:   ::VisitRequest::APPROVED
       ).ids
     end
   end

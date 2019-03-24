@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe User, type: :model do
   describe 'relations' do
     it { is_expected.to have_many(:identities).dependent(:destroy) }
@@ -16,7 +18,7 @@ RSpec.describe User, type: :model do
     it { is_expected.to_not allow_value('Я').for(:last_name) }
 
     describe 'error message' do
-      let(:user) { build(:user, first_name: 'Я',  last_name: 'Я', email: 'denys+1@lol.com') }
+      let(:user) { build(:user, first_name: 'Я', last_name: 'Я', email: 'denys+1@lol.com') }
 
       before { user.valid? }
 

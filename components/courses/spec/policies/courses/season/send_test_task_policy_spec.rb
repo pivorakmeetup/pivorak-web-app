@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe Courses::Season::SendTestTaskPolicy do
@@ -28,7 +30,7 @@ describe Courses::Season::SendTestTaskPolicy do
       end
     end
 
-    context "student is not enrolled" do
+    context 'student is not enrolled' do
       it "doesn't allow to pass policy" do
         allow(policy).to receive(:season_has_status_registration?).and_return(true)
         allow(policy).to receive(:student_enrolled?).and_return(false)
@@ -38,7 +40,7 @@ describe Courses::Season::SendTestTaskPolicy do
       end
     end
 
-    context "student has already sent a test task" do
+    context 'student has already sent a test task' do
       it "doesn't allow to pass policy" do
         allow(policy).to receive(:season_has_status_registration?).and_return(true)
         allow(policy).to receive(:student_enrolled?).and_return(true)

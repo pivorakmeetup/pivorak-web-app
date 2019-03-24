@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SupportersController < ApplicationController
   helper_method :meetup_group, :course_group, :info_partners_group
 

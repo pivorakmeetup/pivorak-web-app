@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Interviews UPDATE' do
@@ -40,7 +42,7 @@ RSpec.describe 'Interviews UPDATE' do
     context 'change of description' do
       it 'updates interview' do
         allow_any_instance_of(Courses::Interview::IntervalPolicy).to receive(:allowed?).and_return(true)
-        fill_in 'Description',  with: 'Nice description'
+        fill_in 'Description', with: 'Nice description'
         click_button 'Update Interview'
         interview.reload
 
@@ -52,7 +54,7 @@ RSpec.describe 'Interviews UPDATE' do
     context 'change of video url' do
       it 'updates interview' do
         allow_any_instance_of(Courses::Interview::IntervalPolicy).to receive(:allowed?).and_return(true)
-        fill_in 'Video url',  with: 'url.example/'
+        fill_in 'Video url', with: 'url.example/'
         click_button 'Update Interview'
         interview.reload
 

@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 module Filter
   class Member
     include ActiveModel::Model
-    ATTRIBUTES = [:admin, :speaker, :synthetic, :verified]
+    ATTRIBUTES = %i[admin speaker synthetic verified].freeze
     attr_accessor(*ATTRIBUTES)
   end
 end

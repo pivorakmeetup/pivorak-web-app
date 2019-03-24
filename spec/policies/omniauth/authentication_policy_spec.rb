@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe ::Omniauth::AuthenticationPolicy do
   let(:user)     { create(:user) }
   let(:identity) { create(:identity) }

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Profle READ' do
   context 'when user is not logged in' do
     before do

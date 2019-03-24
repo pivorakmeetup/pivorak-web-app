@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 module Searchable
   module Configuration
     module Event
       include Configurable
       include SearchOptions
 
-      FIELDS = %i(title description agenda)
+      FIELDS = %i[title description agenda].freeze
 
       define_searchable do
         multisearchable          against: FIELDS

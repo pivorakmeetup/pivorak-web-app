@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class VisitRequestMailer < ApplicationMailer
   def approved(visit_request)
     @visit_request = visit_request
@@ -9,13 +11,17 @@ class VisitRequestMailer < ApplicationMailer
     end
   end
 
-  def confirmation(visit_request)
+  def confirmation(visit_request) # rubocop:disable Metrics/AbcSize
     @visit_request     = visit_request
     @event             = @visit_request.event
     @venue             = @event.venue
     @user              = @visit_request.user
-    @confirm_visit_url = event_visit_request_url(@event, @visit_request, answer: :yes, token: @visit_request.token, host: host)
-    @cancel_visit_url  = event_visit_request_url(@event, @visit_request, answer: :no, token: @visit_request.token, host: host)
+    @confirm_visit_url = event_visit_request_url(
+      @event, @visit_request, answer: :yes, token: @visit_request.token, host: host
+    )
+    @cancel_visit_url = event_visit_request_url(
+      @event, @visit_request, answer: :no, token: @visit_request.token, host: host
+    )
     @start_at_date     = @event.started_at.strftime('%A, %d of %B')
     @start_at_time     = @event.started_at.strftime('%H:%M')
     @agenda            = MarkdownRenderer.call(@event.agenda)
@@ -28,8 +34,12 @@ class VisitRequestMailer < ApplicationMailer
     @visit_request     = visit_request
     @event             = @visit_request.event
     @user              = @visit_request.user
-    @confirm_visit_url = event_visit_request_url(@event, @visit_request, answer: :yes, token: @visit_request.token, host: host)
-    @cancel_visit_url  = event_visit_request_url(@event, @visit_request, answer: :no, token: @visit_request.token, host: host)
+    @confirm_visit_url = event_visit_request_url(
+      @event, @visit_request, answer: :yes, token: @visit_request.token, host: host
+    )
+    @cancel_visit_url = event_visit_request_url(
+      @event, @visit_request, answer: :no, token: @visit_request.token, host: host
+    )
 
     mail(subject: "#pivorak reminder | #{@event.title}", to: @user.email)
   end

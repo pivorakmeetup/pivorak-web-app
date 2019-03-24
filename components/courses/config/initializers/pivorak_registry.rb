@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 unless Rails.env.test?
   # Register as admin navigation menu link
   require 'ez/items/link'

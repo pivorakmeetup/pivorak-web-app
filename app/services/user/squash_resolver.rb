@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User
   class SquashResolver < ApplicationService
     def initialize(params = {})
@@ -8,7 +10,7 @@ class User
       @source_id        = params[:source_id]
       @destination_id   = params[:destination_id]
       @squash           = params.fetch(:squash, false)
-      @conditions       = params.fetch(:conditions, Array.new)
+      @conditions       = params.fetch(:conditions, [])
     end
 
     def call
@@ -70,7 +72,7 @@ class User
     end
 
     def form
-      schema.(params)
+      schema.call(params)
     end
   end
 end

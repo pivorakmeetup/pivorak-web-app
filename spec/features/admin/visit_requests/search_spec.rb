@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Visit Requests SEARCH' do
   let(:event) { create(:event) }
   let!(:visit_request) { create(:visit_request, user: user_1, event: event) }
@@ -9,7 +11,6 @@ RSpec.describe 'Visit Requests SEARCH' do
     assume_admin_logged_in(supervisor: true)
     visit "/admin/events/#{event.slug}/visit_requests"
   end
-
 
   it 'finds visit request by first name' do
     fill_in 'query', with: user_1.first_name

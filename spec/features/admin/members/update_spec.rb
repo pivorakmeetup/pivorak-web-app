@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Members UPDATE' do
   let!(:member) { create(:user, email: 'tester@example.com') }
 

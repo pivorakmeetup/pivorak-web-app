@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Visit Requests CONFIRMATION' do
   let(:event)          { create(:event, status: :confirmation) }
   let(:user)           { create(:user) }
@@ -35,7 +37,7 @@ RSpec.describe 'Visit Requests CONFIRMATION' do
   end
 
   context 'Get application closed message' do
-    before { logout and visit("/events/#{event.slug}") }
+    before { logout && visit("/events/#{event.slug}") }
 
     it { expect(page).to have_content I18n.t('visit_requests.messages.registration_closed') }
   end

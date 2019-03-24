@@ -1,7 +1,12 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe BulkEmailSender do
-  subject(:service) { described_class.new(mailer_klass: VisitRequestMailer, method_name: :confirmation_reminder, scope: VisitRequest.approved) }
+  subject(:service) do
+    described_class
+      .new(mailer_klass: VisitRequestMailer, method_name: :confirmation_reminder, scope: VisitRequest.approved)
+  end
 
   describe '#call' do
     subject(:call) { service.call }
@@ -23,7 +28,7 @@ describe BulkEmailSender do
     end
 
     it 'spreads sending through the time' do
-      stub_const("BulkEmailSender::BULK_SIZE", 1)
+      stub_const('BulkEmailSender::BULK_SIZE', 1)
 
       create(:visit_request, :approved)
       mocked_mailer = double('Dummy', deliver_later: true)

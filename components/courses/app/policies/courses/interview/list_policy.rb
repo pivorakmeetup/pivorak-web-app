@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 module Courses
   class Interview < ApplicationRecord
     class ListPolicy
-
       def initialize(student, season)
         @student = student
         @season  = season

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RemoveNameFromUsers < ActiveRecord::Migration[5.0]
   def up
     remove_column :users, :name

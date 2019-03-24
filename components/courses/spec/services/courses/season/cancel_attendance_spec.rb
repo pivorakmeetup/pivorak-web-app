@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe Courses::Season::CancelAttendance do
@@ -12,4 +14,3 @@ describe Courses::Season::CancelAttendance do
     end
   end
 end
-

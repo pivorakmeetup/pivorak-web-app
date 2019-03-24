@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Supporters LIST' do
   let!(:meetups_group)  { create(:group, slug: 'meetups') }
   let!(:course_group)   { create(:group, slug: 'course') }
@@ -9,7 +11,7 @@ RSpec.describe 'Supporters LIST' do
   let!(:unpublished_friend) { create(:friend, group: partners_group, description: 'Unpublished Sponsor') }
 
   before do
-    visit "/supporters"
+    visit '/supporters'
   end
 
   it { expect(page).to have_content meetup_friend.description }

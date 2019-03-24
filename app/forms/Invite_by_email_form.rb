@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class InviteByEmailForm
   include ActiveModel::Model
 
-  DELIMITER = ','.freeze
+  DELIMITER = ','
 
   attr_accessor :emails
 
@@ -13,8 +15,8 @@ class InviteByEmailForm
   def emails_are_valid
     return if emails.blank?
 
-    invalid_emails = email_list.select do |email|
-      !email.strip.match(Devise.email_regexp)
+    invalid_emails = email_list.reject do |email|
+      email.strip.match(Devise.email_regexp)
     end
 
     return if invalid_emails.empty?

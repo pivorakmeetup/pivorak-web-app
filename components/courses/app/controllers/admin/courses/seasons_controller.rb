@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Admin
   module Courses
     class SeasonsController < ::Admin::Courses::BaseController
@@ -36,45 +38,45 @@ module Admin
 
       def seasons
         @seasons ||= ::Courses::Season::AllForCurrentMentor
-          .call(current_user)
-          .page(params[:page])
+                     .call(current_user)
+                     .page(params[:page])
       end
 
-      def stat_locals
+      def stat_locals # rubocop:disable Metrics/MethodLength
         @stat_locals ||= {
-            mentors: {
-                name: t('courses.mentors.plural'),
-                klass: 'green',
-                quantity: stat[:mentors_count]
-            },
+          mentors:            {
+            name:     t('courses.mentors.plural'),
+            klass:    'green',
+            quantity: stat[:mentors_count]
+          },
 
-            students: {
-                name: t('courses.students.plural'),
-                klass: 'teal',
-                quantity: stat[:students_count]
-            },
+          students:           {
+            name:     t('courses.students.plural'),
+            klass:    'teal',
+            quantity: stat[:students_count]
+          },
 
-            students_attending: {
-                name: t('courses.students.attending'),
-                klass: 'orange',
-                quantity: stat[:students_attending_count]
-            },
+          students_attending: {
+            name:     t('courses.students.attending'),
+            klass:    'orange',
+            quantity: stat[:students_attending_count]
+          },
 
-            lectures: {
-                name: t('courses.lectures.plural'),
-                klass: 'red',
-                quantity: stat[:lectures_count]
-            }
+          lectures:           {
+            name:     t('courses.lectures.plural'),
+            klass:    'red',
+            quantity: stat[:lectures_count]
+          }
         }
       end
 
-      def stat
+      def stat # rubocop:disable Metrics/AbcSize
         @stat ||= {
-            mentors_count:            season.mentors.count,
-            students_count:           season.students.count,
-            students_attending_count: season.students.attending.count,
-            lectures_count:           season.lectures.count,
-            students_by_status:       season.students.group(:status).count
+          mentors_count:            season.mentors.count,
+          students_count:           season.students.count,
+          students_attending_count: season.students.attending.count,
+          lectures_count:           season.lectures.count,
+          students_by_status:       season.students.group(:status).count
         }
       end
 

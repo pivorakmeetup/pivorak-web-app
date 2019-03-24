@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Admin
   class TalksController < BaseController
     helper_method :talk, :talks
@@ -32,8 +34,8 @@ module Admin
 
     def talks
       @talks ||= search_against(Talk)
-        .includes(:tags, :event, :speaker, :group)
-        .page(params[:page]).sorted_by_date
+                 .includes(:tags, :event, :speaker, :group)
+                 .page(params[:page]).sorted_by_date
     end
 
     def talks_params

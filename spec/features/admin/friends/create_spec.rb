@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Friends CREATE' do
   let!(:group) { create(:group, resource: Friend) }
 
@@ -9,10 +11,10 @@ RSpec.describe 'Friends CREATE' do
   context 'invalid input' do
     context 'when name is too short' do
       it 'validates errors' do
-        fill_in 'Name',  with: ''
+        fill_in 'Name', with: ''
         click_button 'Create Friend'
 
-        expect_an_error friend_name:  :blank
+        expect_an_error friend_name: :blank
       end
     end
   end
@@ -28,7 +30,7 @@ RSpec.describe 'Friends CREATE' do
       fill_in 'Description', with: description
       fill_in 'Link', with: link
       attach_file('friend[logo]', Rails.root + 'spec/fixtures/images/pivorak.png')
-      select group.name, :from => 'friend[group_id]'
+      select group.name, from: 'friend[group_id]'
 
       click_button 'Create Friend'
 

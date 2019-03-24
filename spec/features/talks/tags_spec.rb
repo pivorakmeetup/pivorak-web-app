@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 describe 'Talks tags' do
-  let(:event){ create :event }
+  let(:event) { create :event }
   let!(:talk_about_ruby)  { create :talk, title: 'Ruby Way', tag_list: 'ruby', event: event }
   let!(:talk_about_js)    { create :talk, title: 'JS Way',   tag_list: 'javascript', event: event }
   let!(:talk_about_rails) { create :talk, title: 'Rails Way', tag_list: 'ruby, rails', event: event }

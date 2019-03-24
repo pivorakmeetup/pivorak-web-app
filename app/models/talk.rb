@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Talk < ApplicationRecord
   include ::Searchable
   include Publishable
@@ -27,7 +29,7 @@ class Talk < ApplicationRecord
     {
       video_duration:    extra['video_duration'],
       video_likes_count: extra['video_likes_count'],
-      video_views_count: extra['video_views_count'],
+      video_views_count: extra['video_views_count']
     }
   end
 end

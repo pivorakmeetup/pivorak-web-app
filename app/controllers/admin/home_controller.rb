@@ -1,32 +1,34 @@
+# frozen_string_literal: true
+
 module Admin
   class HomeController < BaseController
     helper_method :stat, :stat_locals
 
     private
 
-    def stat_locals
+    def stat_locals # rubocop:disable Metrics/MethodLength
       @stat_locals ||= {
-        events: {
-          name: t('events.plural'),
-          klass: 'green',
+        events:   {
+          name:     t('events.plural'),
+          klass:    'green',
           quantity: stat[:events_count]
         },
 
-        members: {
-          name: t('members.plural'),
-          klass: 'teal',
+        members:  {
+          name:     t('members.plural'),
+          klass:    'teal',
           quantity: stat[:users_count]
         },
 
         speakers: {
-          name: t('speakers.plural'),
-          klass: 'orange',
+          name:     t('speakers.plural'),
+          klass:    'orange',
           quantity: stat[:speakers_count]
         },
 
-        talks: {
-          name: t('talks.plural'),
-          klass: 'blue',
+        talks:    {
+          name:     t('talks.plural'),
+          klass:    'blue',
           quantity: stat[:talks_count]
         }
       }

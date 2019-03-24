@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 module Admin
   module Courses
     module QuestionHelper
       def edit_question_link(question)
         link_to icon(:edit, t('words.edit')),
-          edit_admin_courses_season_question_path(id: question.id),
-          class: 'item'
+                edit_admin_courses_season_question_path(id: question.id),
+                class: 'item'
       end
 
       def question_form_path(season, question)

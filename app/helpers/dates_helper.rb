@@ -1,17 +1,19 @@
+# frozen_string_literal: true
+
 module DatesHelper
   def get_day(date)
-    date.strftime("%a")
+    date.strftime('%a')
   end
 
   def get_month(date)
-    date.strftime("%b")
+    date.strftime('%b')
   end
 
   def get_day_of_the_month(date)
-    date.strftime("%d")
+    date.strftime('%d')
   end
 
   def get_hour(date)
-    date.strftime("%H:%M")
+    date.strftime('%H:%M')
   end
 end

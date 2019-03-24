@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 module Courses
   class Season < ApplicationRecord
     class StudentsPerStatus < ApplicationFinder
-      EMPTY_ARRAY = []
+      EMPTY_ARRAY = [].freeze
 
       def initialize(season)
         @season = season

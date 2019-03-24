@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Courses
   class Mentor < ApplicationRecord
     class AvailableForMentoring < ApplicationFinder
@@ -10,7 +12,7 @@ module Courses
 
         User.where.not(
           admin: false,
-          id: existing_mentors_user_ids
+          id:    existing_mentors_user_ids
         )
       end
     end

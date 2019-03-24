@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 module Chat
   class Invite < ApplicationService
-    INVITE_URL = 'https://slack.com/api/users.admin.invite'.freeze
+    INVITE_URL = 'https://slack.com/api/users.admin.invite'
 
     def initialize(email)
       @email = email

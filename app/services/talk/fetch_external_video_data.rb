@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class Talk
   class FetchExternalVideoData < ApplicationService
-    VIDEO_ID_REGEX = /(?:.be\/|\/watch\?v=|\/(?=p\/))([\w\/\-]+)/.freeze
+    VIDEO_ID_REGEX = %r{(?:.be\/|\/watch\?v=|\/(?=p\/))([\w\/\-]+)}x
 
-    def self.fetch_all!
+    def self.fetch_all! # rubocop:disable Metrics/AbcSize
       logger = Logger.new(Rails.root.join('log', 'fetch_external_video_data.log'))
 
       logger.info "==================== #{Time.now} ===================="
@@ -10,7 +12,7 @@ class Talk
         begin
           new(talk).call
           logger.info "Talk #{talk.id} was successfully fetched! #{talk.extra_video_data}"
-        rescue => ex
+        rescue StandardError => ex
           logger.error "Cannot fetch talk #{talk.id} data: #{ex.class}: #{ex.message}"
         end
       end
@@ -20,7 +22,7 @@ class Talk
       @talk = talk
     end
 
-    def call
+    def call # rubocop:disable Metrics/AbcSize
       return unless talk.video_url && video_id
 
       talk.extra['video_duration']    = video.duration
@@ -39,7 +41,11 @@ class Talk
     end
 
     def video_id
-      @video_id ||= talk.video_url.match(VIDEO_ID_REGEX)[1] rescue nil
+      @video_id ||= begin
+                      talk.video_url.match(VIDEO_ID_REGEX)[1]
+                    rescue StandardError
+                      nil
+                    end
     end
   end
 end

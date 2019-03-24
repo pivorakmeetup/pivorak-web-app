@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Talks CREATE' do
   let(:admin) { create(:user, :admin) }
   before do
@@ -10,7 +12,7 @@ RSpec.describe 'Talks CREATE' do
       fill_in 'Title', with: ''
       click_button 'Create Talk'
 
-      expect_an_error talk_title:  :blank
+      expect_an_error talk_title: :blank
       expect_error_flash_message 'Talk', 'created'
     end
   end
@@ -40,14 +42,13 @@ RSpec.describe 'Talks CREATE' do
 
   context 'with speaker' do
     it 'create talk with speaker' do
-      fill_in 'Title',    with: 'Talk with Tags'
+      fill_in 'Title', with: 'Talk with Tags'
 
-      select admin.reverse_full_name, :from => 'talk[speaker_id]'
+      select admin.reverse_full_name, from: 'talk[speaker_id]'
 
       click_button 'Create Talk'
 
       expect(Talk.last.speaker).to eq admin
     end
   end
-
 end

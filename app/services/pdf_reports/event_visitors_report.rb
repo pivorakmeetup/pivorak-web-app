@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 module PdfReports
   class EventVisitorsReport < BaseReport
-    DEFAULT_FONT = 'Helvetica'.freeze
+    DEFAULT_FONT = 'Helvetica'
 
     def initialize(visit_requests)
       @visit_requests = visit_requests
     end
 
-    def generate_pdf
+    def generate_pdf # rubocop:disable Metrics/AbcSize
       report do |pdf|
         pdf.font(settings.fetch(:font, DEFAULT_FONT))
         pdf.table(formated_data, settings.fetch(:table, {})) do |table|

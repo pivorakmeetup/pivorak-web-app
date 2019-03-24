@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Visit Requests ATTEND' do
   let(:event) { create(:event, limit_total: 2, limit_verified: 1) }
 
@@ -16,7 +18,7 @@ RSpec.describe 'Visit Requests ATTEND' do
       context 'as newbie' do
         before { click_link 'Attend' }
 
-        it { expect(page).to have_current_path("/") }
+        it { expect(page).to have_current_path('/') }
         it { expect(page).to_not have_link 'Attend' }
         it { expect(page).to have_content I18n.t('visit_requests.messages.pending') }
         it { expect(page).to have_content I18n.t('flash.visit_requests.create.success_for_newbies') }
@@ -38,7 +40,7 @@ RSpec.describe 'Visit Requests ATTEND' do
           click_link 'Attend'
         end
 
-        it { expect(page).to have_current_path("/") }
+        it { expect(page).to have_current_path('/') }
         it { expect(page).to_not have_link 'Attend' }
         it { expect(page).to have_content I18n.t('visit_requests.messages.approved') }
         it { expect(page).to have_content I18n.t('flash.visit_requests.create.success_for_verified') }

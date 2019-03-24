@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe Courses::Student::DropPolicy do
   let!(:student)   { create(:student, status: :attending) }
-  let(:high_total) {  5 }
+  let(:high_total) { 5 }
   let(:low_total)  { -3 }
 
   describe '#allowed?' do

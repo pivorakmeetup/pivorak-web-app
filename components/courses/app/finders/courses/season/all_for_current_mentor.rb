@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Courses
   class Season < ApplicationRecord
     class AllForCurrentMentor < ApplicationFinder
@@ -7,7 +9,7 @@ module Courses
 
       def call
         ::Courses::Season.joins(:mentors)
-                         .where(season_mentors: {user_id: @user.id} )
+                         .where(season_mentors: { user_id: @user.id })
       end
     end
   end

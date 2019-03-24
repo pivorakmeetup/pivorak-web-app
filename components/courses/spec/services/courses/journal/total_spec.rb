@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe Courses::Journal::Total do
@@ -9,7 +11,7 @@ describe Courses::Journal::Total do
     it 'counts total of homework marks and presence marks' do
       total = described_class.call(student)
       marks_sum = first_progress.homework_mark + second_progress.homework_mark +
-        first_progress.lecture_presence + second_progress.lecture_presence
+                  first_progress.lecture_presence + second_progress.lecture_presence
 
       expect(total).to eq(marks_sum)
     end

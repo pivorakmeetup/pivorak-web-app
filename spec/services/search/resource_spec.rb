@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Search::Resource do
   describe '.call' do
     let(:string) { 'example' }

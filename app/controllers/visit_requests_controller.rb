@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class VisitRequestsController < ApplicationController
   before_action :authenticate_user!, only: %i[create destroy]
 
@@ -5,19 +7,19 @@ class VisitRequestsController < ApplicationController
     VisitRequest::FinalDecision.call(visit_request, answer: params[:answer])
     sign_in(:user, visit_request.user)
 
-    flash_success(visit_request.status) and default_redirect
+    flash_success(visit_request.status) && default_redirect
   end
 
   def create
     VisitRequest::Create.call(current_user, event)
 
-    flash_success(user_verification_status) and default_redirect
+    flash_success(user_verification_status) && default_redirect
   end
 
   def destroy
     VisitRequest::Cancel.call(visit_request)
 
-    flash_success and default_redirect
+    flash_success && default_redirect
   end
 
   private

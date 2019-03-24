@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Donation
   class Create < ApplicationService
     def initialize(params)
@@ -18,12 +20,12 @@ class Donation
     attr_reader :data, :user_id
 
     def successful_donation
-      create_donation
+      donation
 
       { status: true }
     end
 
-    def create_donation
+    def donation
       @donation ||= Donation.create(donation_params)
     end
 
@@ -49,9 +51,9 @@ class Donation
     end
 
     def decoded_data(data)
-      Liqpay::Charge::Decode.(data)
+      Liqpay::Charge::Decode.call(data)
     end
 
-    SUCCESS_STATUS = 'success'.freeze
+    SUCCESS_STATUS = 'success'
   end
 end

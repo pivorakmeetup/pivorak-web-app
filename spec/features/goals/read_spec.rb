@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Goals READ' do
   let!(:goal_a) { create(:goal, title: 'Test Goal A') }
   let!(:goal_b) { create(:goal, title: 'Test Goal B') }

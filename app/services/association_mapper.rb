@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AssociationMapper < ApplicationService
   def initialize(params)
     @associations = params

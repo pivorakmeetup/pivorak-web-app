@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Groups DESTROY' do
-  let!(:group)  { create(:group, name: 'TestGroup') }
+  let!(:group) { create(:group, name: 'TestGroup') }
 
   before do
     assume_admin_logged_in

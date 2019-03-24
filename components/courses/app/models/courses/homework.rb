@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Courses
   class Homework < ApplicationRecord
     self.table_name = 'courses_homeworks'

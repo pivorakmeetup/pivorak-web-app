@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Admin
   module Courses
     class ProgressController < ::Admin::Courses::BaseController
@@ -24,16 +26,16 @@ module Admin
       end
 
       def current_lecture
-        @lecture ||= ::Courses::Lecture.friendly.find(params[:lecture_id])
+        @current_lecture ||= ::Courses::Lecture.friendly.find(params[:lecture_id])
       end
 
       def students
         @students ||= ::Courses::Student::AttendingAndGraduated
-          .call(current_season, :user)
+                      .call(current_season, :user)
       end
 
       def lectures_breadcrumb
-       add_breadcrumb 'courses.lectures.plural', path: admin_courses_season_lectures_path(current_season)
+        add_breadcrumb 'courses.lectures.plural', path: admin_courses_season_lectures_path(current_season)
       end
 
       def progress_breadcrumb
@@ -42,7 +44,7 @@ module Admin
 
       def authenticate_lecturer!
         current_lecture.mentor == ::Courses::Mentor
-          .find_by(user_id: current_user.id, season_id: current_season.id)
+                                  .find_by(user_id: current_user.id, season_id: current_season.id)
       end
 
       def progress_params

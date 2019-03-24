@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe Email::Create do
@@ -10,7 +12,7 @@ describe Email::Create do
     context 'when params are valid' do
       let(:params) { { subject: 'subject-subject', body: 'body-body' } }
 
-      it { expect{ subject }.to change(Email, :count).by(1) }
+      it { expect { subject }.to change(Email, :count).by(1) }
 
       it 'executes Send service' do
         email = create(:email)
@@ -24,7 +26,7 @@ describe Email::Create do
 
     context 'when params are invalid' do
       let(:params) { { subject: '', body: '' } }
-      it { expect{ subject }.to change(Email, :count).by(0) }
+      it { expect { subject }.to change(Email, :count).by(0) }
       it { expect(subject).to be_falsey }
     end
   end

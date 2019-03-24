@@ -1,18 +1,20 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Member READ' do
   let(:member) { create(:user, :tester) }
 
   describe 'single' do
     context 'any visitor'
-      before { visit "/members/#{member.id}" }
+    before { visit "/members/#{member.id}" }
 
-      it { expect(page).to have_content('Tester User') }
+    it { expect(page).to have_content('Tester User') }
   end
 
   describe 'plural' do
     context 'any visitor'
     before do
       member
-      visit "/members"
+      visit '/members'
     end
 
     it { expect(page).to have_content('Tester User') }
@@ -51,10 +53,10 @@ RSpec.describe 'Member READ' do
       user = create(:user)
       visited_event = create(:event)
       not_visited_event = create(:event, title: 'not visited')
-      not_visited_event_2 = create(:event, title: 'not visited-2')
+      other_not_visited_event = create(:event, title: 'not visited-2')
       create(:visit_request, event: not_visited_event, user: user)
       create(:visit_request, :visited, event: visited_event, user: user)
-      create(:visit_request, :visited, event: not_visited_event_2)
+      create(:visit_request, :visited, event: other_not_visited_event)
 
       visit "/members/#{user.id}"
 

@@ -1,4 +1,6 @@
- require 'rails_helper'
+# frozen_string_literal: true
+
+require 'rails_helper'
 
 RSpec.describe 'Question CREATE' do
   let!(:season)                 { create(:season, title: 'Test Season', status: :planned) }
@@ -14,7 +16,7 @@ RSpec.describe 'Question CREATE' do
       fill_in 'Body', with: ''
       click_button 'Create Question'
 
-      expect_an_error question_body:  :blank
+      expect_an_error question_body: :blank
     end
   end
 

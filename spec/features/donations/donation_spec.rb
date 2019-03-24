@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Donate Process' do
   pending 'Disabled because of tax thing'
   subject { page }

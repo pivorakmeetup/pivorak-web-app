@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
-  BECOME_SPEAKER_URL = 'https://goo.gl/YxtVro'.freeze
+  BECOME_SPEAKER_URL = 'https://goo.gl/YxtVro'
 
   def format_timestamp(timestamp, time: true, delimiter: '-')
     return unless timestamp
@@ -7,7 +9,7 @@ module ApplicationHelper
     formatted_date = timestamp.strftime('%Y %b %d')
     formatted_time = timestamp.strftime('%H:%M')
 
-    return formatted_date if !time
+    return formatted_date unless time
 
     "#{formatted_date} #{delimiter} #{formatted_time}"
   end
@@ -22,8 +24,7 @@ module ApplicationHelper
     t('phrases.unauthorized',
       action_message: action_message,
       login_url:      new_user_session_path,
-      register_url:   new_user_registration_path
-     ).html_safe
+      register_url:   new_user_registration_path).html_safe
   end
 
   def title(page_title)

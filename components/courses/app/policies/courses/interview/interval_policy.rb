@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 module Courses
   class Interview < ApplicationRecord
     class IntervalPolicy
-
       def initialize(mentor, interview, interval)
         @mentor    = mentor
         @interview = interview
@@ -10,26 +11,26 @@ module Courses
 
       def allowed?
         interview_start_time &&
-          has_no_interviews_30_minutes_prior? &&
-          has_no_interviews_30_minutes_after?
+          no_interviews_30_minutes_prior? &&
+          no_interviews_30_minutes_after?
       end
 
       private
 
       attr_reader :mentor, :interview, :interval
 
-      def has_no_interviews_30_minutes_prior?
-        !(mentor_interviews
+      def no_interviews_30_minutes_prior?
+        !mentor_interviews
           .where(start_at:
-          (interview_start_time - interval_minutes)...interview_start_time)
-          .exists?)
+                           (interview_start_time - interval_minutes)...interview_start_time)
+          .exists?
       end
 
-      def has_no_interviews_30_minutes_after?
-        !(mentor_interviews
+      def no_interviews_30_minutes_after?
+        !mentor_interviews
           .where(start_at:
-          interview_start_time...(interview_start_time + interval_minutes))
-          .exists?)
+                           interview_start_time...(interview_start_time + interval_minutes))
+          .exists?
       end
 
       def mentor_interviews

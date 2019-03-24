@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Search
   module Formatters
     class Default < ::ApplicationService

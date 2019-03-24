@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Visit Requests IMPORT' do
   let(:not_passed_event) { create(:event) }
   let(:passed_event)     { create(:event, status: :passed) }

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe Courses::InterviewAssessment::BuildAssessments do
@@ -9,7 +11,11 @@ describe Courses::InterviewAssessment::BuildAssessments do
   let(:first_question)               { create(:question, season: season) }
   let(:second_question)              { create(:question, season: season) }
   let(:new_interview_assessment)     { ::Courses::InterviewAssessment.new(interview: interview, mentor: first_mentor) }
-  let(:created_interview_assessment) { ::Courses::InterviewAssessment.create(interview: interview, mentor: second_mentor) }
+  let(:created_interview_assessment) do
+    ::Courses::InterviewAssessment.create(
+      interview: interview, mentor: second_mentor
+    )
+  end
 
   describe '#call' do
     it "builds assessments for each question for new interview assessment and doesn't build for created one" do

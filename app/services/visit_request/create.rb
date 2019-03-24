@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class VisitRequest
   class Create < ApplicationService
     def initialize(user, event)
@@ -5,17 +7,12 @@ class VisitRequest
       @event = event
     end
 
-    def call
-      if user.verified? && policy.has_free_slot_for?(user)
-        return VisitRequest::Approve.call(visit_request)
-      end
+    def call # rubocop:disable Metrics/AbcSize
+      return VisitRequest::Approve.call(visit_request) if user.verified? && policy.free_slot_for?(user)
 
-      unless user.verified?
-        VisitRequestMailer.needs_confirmation(visit_request).deliver_later
-      end
-
+      VisitRequestMailer.needs_confirmation(visit_request).deliver_later unless user.verified?
       visit_request.pending!
-      visit_request.waiting_list! unless policy.has_free_slot_for?(user)
+      visit_request.waiting_list! unless policy.free_slot_for?(user)
     end
 
     private

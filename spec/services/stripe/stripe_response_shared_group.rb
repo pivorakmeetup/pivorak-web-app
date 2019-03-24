@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'stripe_mock'
 
 RSpec.shared_examples 'Stripe response' do |action_hook|
@@ -7,7 +9,7 @@ RSpec.shared_examples 'Stripe response' do |action_hook|
   context 'when provided with invalid params' do
     let(:params) { {} }
 
-    %i(
+    %i[
       incorrect_number
       invalid_number
       invalid_expiry_month
@@ -18,7 +20,7 @@ RSpec.shared_examples 'Stripe response' do |action_hook|
       card_declined
       missing
       processing_error
-    ).each do |stripe_error|
+    ].each do |stripe_error|
       it "raises exception if :#{stripe_error} response-code is returned" do
         StripeMock.prepare_card_error(stripe_error, action_hook)
         expect { subject }.to raise_error(Stripe::CardError)

@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 module Users
   class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     def handle_callback
       user = handler.authenticate
-      user.confirm if user
+      user&.confirm
       if user
         flash[:success] = 'You have successfully logged in'
         sign_in_and_redirect(user)

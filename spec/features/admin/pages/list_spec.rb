@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Page LIST' do
   let!(:about_page)    { create(:page, title: 'About') }
   let!(:contacts_page) { create(:page, title: 'Contacts') }

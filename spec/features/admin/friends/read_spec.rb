@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Friends READ' do
   let!(:friend_a) { create(:friend, name: 'Test Friend A') }
   let!(:friend_b) { create(:friend, name: 'Test Friend B') }

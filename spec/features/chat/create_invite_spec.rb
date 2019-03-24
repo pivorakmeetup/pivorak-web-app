@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Chat features CREATE INVITE' do
   before do
     visit '/chat'
@@ -29,7 +31,9 @@ RSpec.describe 'Chat features CREATE INVITE' do
 
   context 'when email already joined chat' do
     before do
-      allow(Chat::Invite).to receive(:call).and_raise(Chat::Client::ChatError.new(I18n.t('chat.errors.already_in_team')))
+      allow(Chat::Invite)
+        .to receive(:call)
+        .and_raise(Chat::Client::ChatError.new(I18n.t('chat.errors.already_in_team')))
     end
 
     it 'shows error message' do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Synthetic user try to sign up' do
   let!(:synth_user) { create(:user, :synth) }
 

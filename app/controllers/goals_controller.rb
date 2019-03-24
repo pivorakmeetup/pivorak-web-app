@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class GoalsController < ApplicationController
   disabled_feature_until '1.3'
 

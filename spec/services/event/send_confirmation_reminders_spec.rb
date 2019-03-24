@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe Event::SendConfirmationReminders do
@@ -29,7 +31,8 @@ describe Event::SendConfirmationReminders do
     end
 
     it 'uses bulk email sender' do
-      allow(BulkEmailSender).to receive(:call).with(mailer_klass: VisitRequestMailer, method_name: :confirmation_reminder, scope: [approved_request])
+      allow(BulkEmailSender).to receive(:call)
+        .with(mailer_klass: VisitRequestMailer, method_name: :confirmation_reminder, scope: [approved_request])
 
       call
 

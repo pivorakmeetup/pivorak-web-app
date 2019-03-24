@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'stripe_mock'
 require 'services/stripe/stripe_response_shared_group'
 
@@ -7,7 +9,7 @@ RSpec.describe ::Stripe::Charge::Create do
       subject { described_class.call(params) }
 
       context 'when provided with valid params' do
-        let(:params) { build(:valid_charge).merge(customer: double()) }
+        let(:params) { build(:valid_charge).merge(customer: double) }
 
         it 'returns valid Stripe::Charge instance' do
           expect(subject).to be_an_instance_of Stripe::Charge

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Courses
   module Journal
     class StudentPresenceForLecture < ApplicationFinder
@@ -19,11 +21,7 @@ module Courses
       end
 
       def presence
-        if progresses
-          progresses.lecture_presence
-        else
-          nil
-        end
+        progresses&.lecture_presence
       end
     end
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Admin
   module Courses
     class InterviewAssessmentsController < ::Admin::Courses::BaseController
@@ -27,8 +29,8 @@ module Admin
 
       def interview_assessment_params
         params.require(:interview_assessment)
-          .permit(assessments_attributes: [:id, :question_id, :mark])
-          .merge(mentor_id: mentor_id)
+              .permit(assessments_attributes: %i[id question_id mark])
+              .merge(mentor_id: mentor_id)
       end
 
       def mentor_id

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class VisitRequest < ApplicationRecord
   include ::Searchable
 
@@ -7,7 +9,7 @@ class VisitRequest < ApplicationRecord
   CONFIRMED = :confirmed
   REFUSED   = :refused
 
-  enum status:  [PENDING, APPROVED, CANCELED, CONFIRMED, REFUSED]
+  enum status: [PENDING, APPROVED, CANCELED, CONFIRMED, REFUSED]
 
   validates :event_id, :user_id, presence: true
 

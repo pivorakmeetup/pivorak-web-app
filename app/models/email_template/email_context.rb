@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class EmailTemplate < ApplicationRecord
   class EmailContext < ActionView::Base
     include Rails.application.routes.url_helpers

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Courses
   class InterviewsController < BaseController
     helper_method :interview, :interviews
@@ -19,8 +21,8 @@ module Courses
 
     def interviews
       @interviews ||= current_season.interviews
-        .attendance_available
-        .page(params[:page])
+                                    .attendance_available
+                                    .page(params[:page])
     end
 
     def execute_list_policy
@@ -28,8 +30,9 @@ module Courses
         current_student, current_season
       ).allowed?
       return if allowed
+
       redirect_to courses_season_path(current_season),
-        alert: t('flash.courses.interviews.list.fail')
+                  alert: t('flash.courses.interviews.list.fail')
     end
   end
 end

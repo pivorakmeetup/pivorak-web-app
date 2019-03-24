@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddVideoUrlAndStatusToCoursesInterviews < ActiveRecord::Migration[5.0]
   def change
     add_column :courses_interviews, :video_url, :string

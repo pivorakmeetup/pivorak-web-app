@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 module Courses
   module Journal
     class Total < ApplicationService
       def initialize(student)
-        @student   = student
+        @student = student
       end
 
       def call
@@ -22,11 +24,7 @@ module Courses
       end
 
       def total
-        if marks_total && presences_total
-          marks_total + presences_total
-        else
-          nil
-        end
+        marks_total + presences_total if marks_total && presences_total
       end
 
       def progresses
@@ -34,11 +32,11 @@ module Courses
       end
 
       def marks
-        progresses.map{ |progress| progress.homework_mark }.compact
+        progresses.map(&:homework_mark).compact
       end
 
       def presences
-        progresses.map{ |progress| progress.lecture_presence }.compact
+        progresses.map(&:lecture_presence).compact
       end
     end
   end

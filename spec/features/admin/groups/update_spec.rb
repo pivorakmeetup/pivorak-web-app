@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Groups UPDATE' do
-  let!(:group)  { create(:group, name: 'TestGroup') }
+  let!(:group) { create(:group, name: 'TestGroup') }
 
   before do
     assume_admin_logged_in
@@ -8,7 +10,7 @@ RSpec.describe 'Groups UPDATE' do
 
   context 'invalid input' do
     it 'validates title presence' do
-      fill_in 'Name',  with: ''
+      fill_in 'Name', with: ''
       click_button 'Update Group'
 
       expect_an_error group_name: :blank
@@ -17,7 +19,7 @@ RSpec.describe 'Groups UPDATE' do
 
   context 'valid input' do
     it 'create new group' do
-      fill_in 'Name',  with: 'NewNameForGroup'
+      fill_in 'Name', with: 'NewNameForGroup'
       click_button 'Update Group'
 
       expect(page).to have_current_path '/admin/groups'

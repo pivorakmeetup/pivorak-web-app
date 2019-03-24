@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Courses
   class HomeworksController < BaseController
     helper_method :homework, :lectures
@@ -23,7 +25,7 @@ module Courses
     end
 
     def lectures
-      @lectures ||=  Homework::AvailableLectures.call(current_season, current_student)
+      @lectures ||= Homework::AvailableLectures.call(current_season, current_student)
     end
 
     def homework_params

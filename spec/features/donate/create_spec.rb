@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Create Donation' do
   pending 'Disabled because of tax thing'
 

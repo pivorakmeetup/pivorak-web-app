@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Question UPDATE' do
@@ -12,7 +14,7 @@ RSpec.describe 'Question UPDATE' do
 
   context 'invalid input' do
     it 'validates errors' do
-      fill_in 'Body',  with: ''
+      fill_in 'Body', with: ''
       click_button 'Update Question'
 
       expect_an_error question_body: :blank
@@ -21,7 +23,7 @@ RSpec.describe 'Question UPDATE' do
 
   context 'valid input' do
     it 'update question' do
-      fill_in 'Body',  with: 'Awesome Question'
+      fill_in 'Body', with: 'Awesome Question'
       click_button 'Update Question'
 
       expect(page).to have_current_path test_questions_path

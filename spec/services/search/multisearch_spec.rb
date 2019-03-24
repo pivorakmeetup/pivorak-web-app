@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Search::Multisearch do
   describe '.call' do
     context 'when provided without params' do
