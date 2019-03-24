@@ -8,7 +8,7 @@ module Courses
       end
 
       def call
-        season.test_tasks.includes(student: :user, mentor: :user)
+        season.test_tasks.includes(student: :user)
       end
 
       private

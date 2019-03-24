@@ -11,7 +11,7 @@ abort('The Rails environment is running in production mode!') if Rails.env.produ
 require 'rspec/rails'
 require 'pry-rails'
 require 'capybara/rails'
-require 'factory_girl_rails'
+require 'factory_bot_rails'
 require 'faker'
 
 Dir[Courses::Engine.root.join('spec/support/*.rb')].each { |f| require f }
@@ -25,7 +25,7 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
 
-  config.include FactoryGirl::Syntax::Methods
+  config.include FactoryBot::Syntax::Methods
   config.include Courses::Test::FeaturesHelpers, type: :feature
   config.include Courses::Test::DatePickerHelpers
 end

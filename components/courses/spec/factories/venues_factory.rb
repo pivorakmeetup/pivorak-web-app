@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :venue do
-    name { Faker::GameOfThrones.city }
+    name { Faker::TvShows::GameOfThrones.city }
     address { 'Westeros' }
   end
 end

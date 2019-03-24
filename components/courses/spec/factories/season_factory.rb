@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :season, class: Courses::Season do
     title     { Faker::Lorem.word }
     start_at  { Time.now }

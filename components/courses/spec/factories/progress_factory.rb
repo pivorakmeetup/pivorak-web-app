@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :progress, class: Courses::Progress do
     student_id       { rand(1..100) }
     lecture_id       { rand(1..100) }
