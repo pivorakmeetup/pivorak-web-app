@@ -1,0 +1,24 @@
+.form-inputs
+  .pk-input__container.pk-input--container-full-width.mtx
+    p.text-left.mbx = t('courses.test_tasks.form.git_url')
+    = f.input :git_url, placeholder: "Git url",
+      label_html: {class: 'pk-input__label'},
+      input_html: {class: 'pk-input'}
+
+.form-inputs
+  .pk-input__container.pk-input--container-full-width.mtx
+    p.text-left.mbx = t('courses.test_tasks.form.showcase_url')
+    = f.input :showcase_url, placeholder: "Showcase url",
+      label_html: {class: 'pk-input__label'},
+      input_html: {class: 'pk-input'}
+
+.form-inputs
+  .pk-input__container.pk-input--container-full-width.mtx
+    p.text-left.mbx = t('courses.test_tasks.form.comment')
+    = f.input :comment, placeholder: "Comment",
+      label_html: {class: 'pk-input__label'},
+      input_html: {class: 'pk-input pk-input--textarea'}
+
+.form-actions
+  .mtl.mbl
+    = f.button :submit, "Submit", class: 'pk-btn pk-btn--medium'

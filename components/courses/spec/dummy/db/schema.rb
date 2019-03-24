@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180612133741) do
+ActiveRecord::Schema.define(version: 20190323181951) do
 
   create_table "courses_assessments", force: :cascade do |t|
     t.integer  "interview_assessment_id"
@@ -119,9 +119,10 @@ ActiveRecord::Schema.define(version: 20180612133741) do
     t.string   "git_url"
     t.string   "showcase_url"
     t.text     "comment"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.integer  "mentor_id"
+    t.integer  "status",       default: 0
   end
 
   create_table "season_mentors", force: :cascade do |t|

@@ -1,60 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe 'Season SHOW' do
-  context "season with 'registration' status" do
-    let!(:season)  { create(:season, title: 'Test Season', status: :registration) }
-    let!(:user)    { create(:user, email: 'test@test.com', first_name: 'Test', last_name: 'User') }
-    let!(:student) { create(:student, season: season, user: user) }
-
-    before { visit 'courses/seasons/test-season' }
-
-    it "expect page to have needed links" do
-      expect(page).to have_content 'Test Season'
-
-      expect(page).to have_link     'Register'
-      expect(page).not_to have_link 'Send Homework'
-      expect(page).not_to have_link 'Pick interview time'
-    end
-  end
-
-  context "season with 'selection' status" do
-    let!(:season)  { create(:season, title: 'Test Season', status: :selection) }
-    let!(:user)    { create(:user, email: 'test@test.com', first_name: 'Test', last_name: 'User') }
-    let!(:student) { create(:student, season: season, user: user) }
-
-    before { visit 'courses/seasons/test-season' }
-
-    it "expect page to have needed links" do
-      expect(page).to have_content 'Test Season'
-
-      expect(page).not_to have_link 'Register'
-      expect(page).not_to have_link 'Send test task'
-      expect(page).not_to have_link 'Send Homework'
-      expect(page).not_to have_link 'Pick interview time'
-    end
-  end
-
-  context "season with 'live' status" do
-    let!(:season)  { create(:season, title: 'Test Season', status: :live) }
-    let!(:user)    { create(:user, email: 'test@test.com', first_name: 'Test', last_name: 'User') }
-    let!(:student) { create(:student, season: season, user: user) }
-
-    before { visit 'courses/seasons/test-season' }
-
-    it "expect page to have needed links" do
-      expect(page).to have_content 'Test Season'
-
-      expect(page).to have_link     'Send Homework'
-      expect(page).not_to have_link 'Register'
-      expect(page).not_to have_link 'Send test task'
-      expect(page).not_to have_link 'Pick interview time'
-    end
-  end
-
   describe "studend refuse link" do
     let!(:season)  { create(:season, title: 'Test Season') }
     let!(:user)    { create(:user, email: 'test@test.com', first_name: 'Test', last_name: 'User') }
-    let!(:student) { create(:student, season: season, user: user, status: :attending) }
+    let!(:student) { create(:student, season: season, user: user, status: :attending)  }
 
     context "student status is enrolled" do
       it 'shows link' do

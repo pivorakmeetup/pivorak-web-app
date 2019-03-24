@@ -8,13 +8,19 @@
         th.center.aligned = t 'courses.test_tasks.git_url'
         th.center.aligned = t 'courses.test_tasks.show_url'
         th.center.aligned = t 'courses.test_tasks.comment'
-        th.center.aligned = t 'courses.test_tasks.approved'
+        th.center.aligned = t 'courses.test_tasks.status.singular'
+        th.center.aligned = t 'words.actions'
 
     tbody
       - test_tasks.each do |test_task|
-        tr
+        tr id="test_task_#{test_task.id}"
           td                = test_task.full_name
-          td.center.aligned = test_task.git_url
-          td.center.aligned = test_task.showcase_url
+          td.center.aligned = link_to t('courses.test_tasks.git_url'), test_task.git_url
+          td.center.aligned = courses_test_task_showcase_url(test_task)
           td.center.aligned = test_task.comment
-          td.center.aligned = approve_test_task_link(current_season, test_task)
+          td.center.aligned = t(test_task.status, scope: 'courses.test_tasks.status')
+          td.center.aligned
+            = courses_test_task_take_on_review_link(current_season, test_task)
+            = courses_test_task_review_by_info(test_task)
+            = courses_test_task_take_off_review_link(current_season, test_task)
+            = courses_test_task_approve_link(current_season, test_task)

@@ -2,21 +2,22 @@ module Courses
   class TestTaskController < BaseController
     helper_method :test_task, :test_tasks
 
-    def new
-      render_form
-    end
-
-    def edit
-      render_form
-    end
-
     def create
       @test_task = ::Courses::TestTask::Create.call(test_task_params, current_student.id)
-      react_to test_task.save
+
+      if @test_task.save
+        flash_success and default_redirect
+      else
+        flash_error and render :new
+      end
     end
 
     def update
-      react_to test_task.update(test_task_params)
+      if test_task.update(test_task_params)
+        flash_success and default_redirect
+      else
+        flash_error and render :edit
+      end
     end
 
     private

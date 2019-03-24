@@ -39,6 +39,7 @@ en:
     danger: Danger
     send: Send
     notes: Notes
+    none: none
 
   resources:
     errors:

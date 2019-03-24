@@ -10,7 +10,7 @@ module Courses
                          .includes(student: :user)
 
         @test_tasks ||= if exists?
-                          base_scope.includes(mentor: :user)
+                          base_scope #.includes(mentor: :user)
                         else
                           base_scope
                         end

@@ -66,13 +66,5 @@ module Courses
               confirm: t('courses.students.confirm_cancel_attendance')
             }
     end
-
-    def courses_test_task_form_url(season, test_task)
-      if test_task.persisted?
-        courses_season_test_task_path(current_season, test_task)
-      else
-        courses_season_test_task_index_path(current_season)
-      end
-    end
   end
 end

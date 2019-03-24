@@ -1,0 +1,7 @@
+= content_for :main_body_class, "pk-body--green-bg"
+
+.pk-courses-form
+  h2.pk-uppercase Submit Test Task
+
+  = simple_form_for test_task, url: courses_season_test_task_index_path(current_season), as: :test_task do |f|
+    == render 'courses/test_task/form', f: f
