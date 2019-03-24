@@ -11,10 +11,8 @@ RSpec.describe 'Journal SHOW' do
   let!(:first_lecture)   { create(:lecture, title: 'Awesome lecture', mentor: mentor, venue_id: 1, season: season) }
   let!(:second_lecture)  { create(:lecture, title: 'Cool lecture', mentor: mentor, venue_id: 1, season: season) }
 
-  let!(:first_student)   { ::Courses::Student.create(season: season, user: second_user, status: :attending,
-                                                      personal_info: 'lorem', motivation_info: 'ipsum')  }
-  let!(:second_student)  { ::Courses::Student.create(season: season, user: third_user, status: :attending,
-                                                      personal_info: 'lorem', motivation_info: 'ipsum')  }
+  let!(:first_student)   { create(:student, season: season, user: second_user, status: :attending) }
+  let!(:second_student)  { create(:student, season: season, user: third_user, status: :attending) }
 
   let!(:first_progress)  { create(:progress, student: first_student, lecture: first_lecture, homework_mark: 1, lecture_presence: 0) }
   let!(:second_progress) { create(:progress, student: second_student, lecture: first_lecture, homework_mark: 1, lecture_presence: -1) }

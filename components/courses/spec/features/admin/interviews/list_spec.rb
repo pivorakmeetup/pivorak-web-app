@@ -10,7 +10,6 @@ RSpec.describe 'Interviews LIST' do
   before { visit '/admin/courses/seasons/test-season/interviews/' }
 
   context 'open existing page' do
-
     it { expect(page).to have_content(mentor.full_name) }
   end
 
@@ -18,7 +17,6 @@ RSpec.describe 'Interviews LIST' do
     it 'approves student' do
       click_link 'Approve'
 
-      expect(page).to have_content 'Approved'
       expect(::Courses::Student.last.status).to eq('attending')
     end
   end
