@@ -36,6 +36,7 @@ gem 'versionomy', '~> 0.5.0'
 
 #=== UI =======================================================================
 gem 'autoprefixer-rails', '~> 9.5.0'
+gem 'mini_racer'
 gem 'coffee-rails', '~> 4.2.1'
 gem 'jquery-rails', '~> 4.2.2'
 gem 'premailer-rails' # email inline styling
