@@ -5,10 +5,6 @@
   h2.text-center = courses_season_dates(season)
   p = MarkdownRenderer.call(season.description) if season.description
 
-  h2 = t 'courses.mentors.plural'
-  - mentors.each do |mentor|
-    p(style="margin: 0;") = mentor.full_name
-
   - if season.live?
     p.text-center = render 'journal'
 
