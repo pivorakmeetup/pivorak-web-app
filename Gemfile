@@ -110,7 +110,7 @@ group :test do
   gem 'rspec-its'
   gem 'shoulda-matchers'
   gem 'simplecov', require: false
-  gem 'stripe-ruby-mock', '~> 2.3.1', require: 'stripe_mock'
+  gem 'stripe-ruby-mock', '~> 2.4.1', require: 'stripe_mock'
   gem 'timecop'
   gem 'webmock'
 end
