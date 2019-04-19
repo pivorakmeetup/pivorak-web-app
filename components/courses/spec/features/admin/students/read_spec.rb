@@ -24,6 +24,16 @@ RSpec.describe 'Students READ' do
       expect(page).to have_content user_b.full_name
     end
 
+    it 'students registered first will be shown first' do
+      student_recent = create(:student, user: create(:user, first_name: 'Recent', last_name: 'Student'), status: :enrolled)
+      student_old = create(:student, user: create(:user, first_name: 'Old', last_name: 'Student') status: :enrolled, created_at: 1.week.ago)
+
+      visit test_students_path
+
+      expect(page).to have_tag('tr:first-child', text: 'Recent Student')
+      expect(page).to have_tag('tr:last-child', text: 'Old Student')
+    end
+
     it 'can drop bad students' do
       season.live!
       season.reload
