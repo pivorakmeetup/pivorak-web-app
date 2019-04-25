@@ -37,7 +37,7 @@ class Event < ApplicationRecord
   validates_with LimitsValidator
 
   def self.upcoming
-    where(published: true).where.not(status: [PASSED, PLANNED]).ordered_by_start.last
+    where(published: true).where.not(status: [PASSED]).ordered_by_start.last
   end
 
   def self.current
