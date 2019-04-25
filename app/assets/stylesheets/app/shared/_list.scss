@@ -34,9 +34,9 @@ $namespace: ".pk-list";
       z-index: 1;
     }
   }
+
   input[type=submit], .btn {
     @extend %btn-styles;
-    background: transparent;
     border: 2px solid rgba(#FCF7EF, .54);
     border-radius: 20px;
     color: rgba($link-color, .87);
