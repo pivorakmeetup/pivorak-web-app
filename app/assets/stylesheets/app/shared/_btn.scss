@@ -1,6 +1,10 @@
 $namespace: ".pk-btn";
 $green: #50B27E;
 
+.donate-btn {
+  width: 180px;
+}
+
 #{$namespace} {
   position: relative;
   z-index: 1;
