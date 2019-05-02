@@ -30,15 +30,14 @@ module Admin
       end
 
       def courses_test_task_review_by_info(test_task)
-        return if test_task.mentor_id == current_mentor.id
         return unless test_task.on_review?
 
         t('courses.test_tasks.by', name: test_task.mentor.full_name)
       end
 
       def courses_test_task_approve_link(season, test_task)
-        return t('courses.test_tasks.by', name: current_mentor.full_name) if test_task.approved?
-        return unless test_task.on_review? && test_task.mentor_id == current_mentor.id
+        return t('courses.test_tasks.by', name: test_task.mentor.full_name) if test_task.approved?
+        return unless test_task.on_review? && test_task.mentor_id == test_task.mentor.id
 
         link_to t('courses.test_tasks.approve'),
                 admin_courses_season_test_task_path(season, test_task,

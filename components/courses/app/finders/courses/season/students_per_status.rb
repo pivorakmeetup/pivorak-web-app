@@ -3,8 +3,6 @@
 module Courses
   class Season < ApplicationRecord
     class StudentsPerStatus < ApplicationFinder
-      EMPTY_ARRAY = [].freeze
-
       def initialize(season)
         @season = season
       end
@@ -29,7 +27,7 @@ module Courses
       attr_reader :season
 
       def planned_season_students
-        EMPTY_ARRAY
+        ::Courses::Season.none
       end
 
       def registration_season_students
