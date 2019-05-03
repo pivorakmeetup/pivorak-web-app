@@ -10,6 +10,7 @@
         th.center.aligned = t 'courses.test_tasks.comment'
         th.center.aligned = t 'courses.test_tasks.status.singular'
         th.center.aligned = t 'words.actions'
+        th.center.aligned = t 'courses.test_tasks.notes'
 
     tbody
       - test_tasks.each do |test_task|
@@ -24,3 +25,9 @@
             = courses_test_task_review_by_info(test_task)
             = courses_test_task_take_off_review_link(current_season, test_task)
             = courses_test_task_approve_link(current_season, test_task)
+          td.center.aligned
+            = simple_form_for test_task, url: admin_courses_season_test_task_path(current_season, test_task), as: :test_task do |f|
+              .field
+                = f.input :notes, input_html: {rows: 10}, placeholder: t('courses.test_tasks.notes_placeholder')
+              .field
+                = f.button :submit, t('courses.students.save_notes')
