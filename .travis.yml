@@ -12,8 +12,6 @@ before_install:
   - sudo apt-get install postgresql-9.5
 
 before_script:
-  - gem install bundler
-  - bundle install
   - cp config/database.yml.example config/database.yml && bundle exec rake db:setup RAILS_ENV=test
 
 notifications:

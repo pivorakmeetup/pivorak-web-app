@@ -1,5 +1,5 @@
 AllCops:
-  TargetRubyVersion: 2.3
+  TargetRubyVersion: 2.3.1
   Exclude:
     - Guardfile
     - db/migrate/*
@@ -7,6 +7,9 @@ AllCops:
     - bin/*
     - components/courses/db/migrate/*
     - components/courses/spec/dummy/**/*
+    - 'vendor/**/*'
+    - 'Gemfile'
+    - 'Gemfile.lock'
 
 Style/Documentation:
   Enabled: false
