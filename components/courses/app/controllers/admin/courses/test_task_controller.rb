@@ -10,7 +10,7 @@ module Admin
       end
 
       def update
-        if ::Courses::TestTask::Update.call(test_task, current_mentor, status: params[:status], notes: get_test_task_notes)
+        if ::Courses::TestTask::Update.call(test_task, current_mentor, status: params[:status], notes: test_task_notes)
           flash_success && default_redirect
         else
           flash_error && default_redirect
@@ -41,7 +41,7 @@ module Admin
                        path: admin_courses_season_test_task_index_path(current_season)
       end
 
-      def get_test_task_notes
+      def test_task_notes
         params.dig(:test_task, :notes)
       end
     end
