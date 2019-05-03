@@ -20,11 +20,11 @@ module Admin
       private
 
       def form
-        @form ||= ::InviteByEmailForm.new(visit_request_params)
+        @form ||= ::EmailInvitationForm.new(visit_request_params)
       end
 
       def visit_request_params
-        params.fetch(:invite_by_email_form, {}).permit(:emails)
+        params.fetch(:email_invitation_form, {}).permit(:emails)
       end
 
       def event

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class InviteByEmailForm
+class EmailInvitationForm
   include ActiveModel::Model
 
   DELIMITER = ','
