@@ -114,6 +114,8 @@ en:
       git_url: Git
       show_url: Showcase
       comment: Comment
+      notes: Notes
+      notes_placeholder: Add your note about this test task
       status:
         singular: Status
         submited: Submited
