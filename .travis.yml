@@ -11,8 +11,11 @@ before_install:
   - sudo apt-get update
   - sudo apt-get install postgresql-9.5
 
-before_script: cp config/database.yml.example config/database.yml && bundle exec rake
-  db:setup RAILS_ENV=test
+before_script:
+  - cp config/database.yml.example config/database.yml && bundle exec rake db:setup RAILS_ENV=test
+
+notifications:
+  - false
 
 script:
   - bundle exec rubocop
