@@ -6,8 +6,8 @@ module Courses
       def initialize(test_task, mentor, status: Courses::TestTask::ON_REVIEW, notes: nil)
         @test_task = test_task
         @mentor    = mentor
-        @status    = status
-        @notes     = notes || test_task.notes
+        @status    = status || test_task.status
+        @notes     = notes  || test_task.notes
       end
 
       def call
