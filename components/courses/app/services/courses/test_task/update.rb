@@ -3,16 +3,16 @@
 module Courses
   class TestTask < ApplicationRecord
     class Update < ApplicationService
-      def initialize(test_task, mentor, params = {})
+      def initialize(test_task, mentor, status: Courses::TestTask::ON_REVIEW, notes: nil)
         @test_task = test_task
         @mentor    = mentor
-        @notes     = params.fetch(:notes, test_task.notes)
-        @status    = params.fetch(:status, test_task.status)
+        @status    = status
+        @notes     = notes || test_task.notes
       end
 
       def call
         transaction do
-          test_task.update(mentor_id: mentor_id, notes: notes, status: status)
+          test_task.update(mentor_id: mentor_id, status: status, notes: notes)
 
           student.test_task_done!
         end
@@ -20,7 +20,7 @@ module Courses
 
       private
 
-      attr_reader :test_task, :mentor, :notes, :status
+      attr_reader :test_task, :mentor, :status, :notes
 
       delegate :student, to: :test_task
 
