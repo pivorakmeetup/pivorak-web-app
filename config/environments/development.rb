@@ -70,7 +70,9 @@ Rails.application.configure do
   # }
 
   config.after_initialize do
-    Bullet.enable = true
-    Bullet.raise = true
+    Bullet.enable       = true
+    Bullet.alert        = true
+    Bullet.console      = true
+    Bullet.rails_logger = true
   end
 end
