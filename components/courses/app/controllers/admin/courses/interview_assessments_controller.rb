@@ -9,12 +9,12 @@ module Admin
 
       def create
         interview.interview_assessments.create(interview_assessment_params)
-        redirect_to :back
+        redirect_back(fallback_location: current_season)
       end
 
       def update
         assessment.update(interview_assessment_params)
-        redirect_to :back
+        redirect_back(fallback_location: current_season)
       end
 
       private
