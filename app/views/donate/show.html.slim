@@ -6,7 +6,7 @@
   p
     = t('pages.donate.text_html', locale: locale)
 
-  = simple_form_for form, url: donate_url do |f|
+  = simple_form_for form, url: donate_url, html: { autocomplete: 'off' } do |f|
     .form-inputs.pk-inline-block
       = f.input :agree_to_terms_of_use, label: t('pages.donate.by_pressing_btn_html', locale: locale), as: :boolean, required: true, error: false, input_html: {class: 'js-donate-form-agree'}
     .form-actions
