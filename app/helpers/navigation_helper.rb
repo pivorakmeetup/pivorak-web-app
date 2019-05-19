@@ -14,7 +14,7 @@ module NavigationHelper
   end
 
   def donate_link(**options)
-    link_to t('donations.support_us'), donate_path, **options
+    link_to t('donations.support_us'), donate_path, data: {turbolinks: false}, **options
   end
 
   def chat_link
