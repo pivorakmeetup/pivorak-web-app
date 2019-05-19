@@ -28,4 +28,6 @@
 
   window.listenDonateTermsOfUse = listenDonateTermsOfUse;
   window.runWayforpayWidget = runWayforpayWidget;
+
+  $('.pk-donate-form').removeClass('pk-no-display')
 })();
