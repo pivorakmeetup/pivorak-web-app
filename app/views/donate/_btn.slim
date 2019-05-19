@@ -1,4 +1,5 @@
 - onclick ||= ''
 - hidden_class ||= ''
 - type ||= ''
-input class="#{js_class} #{hidden_class} ui primary submit button pk-btn pk-btn--medium" value="#{t('pages.donate.submit_btn', locale: locale)}" type="#{type}" /
+button class="#{js_class} #{hidden_class} ui primary submit button pk-btn pk-btn--medium" type="#{type}"
+  = t('pages.donate.submit_btn', locale: locale)
