@@ -36,7 +36,6 @@ module Admin
     end
 
     def visitors_ids
-      fail User::EventAttendeesWithoutRefusedAndCanceled.call(event_id: event.id).ids.size
       @visitors_ids ||= User::EventAttendeesWithoutRefusedAndCanceled.call(event_id: event.id).ids
     end
   end
