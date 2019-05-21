@@ -18,10 +18,12 @@ class VisitRequest < ApplicationRecord
 
   delegate :full_name, to: :user
 
-  scope :main_list,    -> { where(waiting_list: false) }
-  scope :waiting_list, -> { where(waiting_list: true)  }
-  scope :final,        -> { where(status: [APPROVED, CONFIRMED]).main_list }
-  scope :used,         -> { where(visited: true) }
+  scope :main_list,       -> { where(waiting_list: false) }
+  scope :waiting_list,    -> { where(waiting_list: true)  }
+  scope :final,           -> { where(status: [APPROVED, CONFIRMED]).main_list }
+  scope :used,            -> { where(visited: true) }
+  # TODO: why do we have 2 statuses?
+  scope :without_refused_and_canceled, -> { where.not(status: [CANCELED, REFUSED]) }
 
   def main_list!
     update(waiting_list: false)
