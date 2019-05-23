@@ -50,7 +50,7 @@ module NavigationHelper
   end
 
   def agenda_link
-    return unless Event.current
+    return unless Event.upcoming
 
     link_to t('words.agenda'), agenda_path
   end

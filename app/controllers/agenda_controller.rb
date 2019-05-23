@@ -8,7 +8,7 @@ class AgendaController < ApplicationController
   private
 
   def event
-    Event.current || raise(ActiveRecord::RecordNotFound)
+    Event.upcoming || raise(ActiveRecord::RecordNotFound)
   end
 
   def agenda

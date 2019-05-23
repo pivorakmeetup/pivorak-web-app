@@ -18,9 +18,9 @@ RSpec.describe 'Agenda page' do
     end
   end
 
-  context 'when no upcoming event exist' do
+  context 'when no published event exist' do
     it 'returns 404' do
-      create(:event, status: :confirmation, started_at: 2.days.ago, finished_at: 1.day.ago)
+      create(:event, published: false)
 
       visit '/agenda'
 
