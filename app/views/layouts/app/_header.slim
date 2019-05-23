@@ -48,9 +48,6 @@ header.pk-header class="#{header_classlist.compact.join(' ')}"
               /    li.pk-header__li-list-item = speakers_link
 
               li.pk-list__unit
-                = agenda_link
-
-              li.pk-list__unit
                 = link_to "friends", supporters_path
 
               - if user_signed_in?

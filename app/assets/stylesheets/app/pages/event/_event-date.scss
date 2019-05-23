@@ -8,6 +8,12 @@ $namespace: ".pk-event-date";
   text-align: center;
 }
 
+@include breakpoint-max(400) {
+  #{$namespace} {
+    margin: 20px 0;
+  }
+}
+
 #{$namespace}__day {
   font-size: 1em;
   line-height: 1.21818182em;
