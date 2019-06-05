@@ -47,7 +47,7 @@ gem 'slim-rails'
 gem 'turbolinks', '~> 5.2'
 gem 'uglifier', '~> 4.1.19'
 #=== FEATURES ==================================================================
-gem 'chartkick', '~> 3.0.2'
+gem 'chartkick', '~> 3.2.0'
 gem 'coderay', '~> 1.1.1'
 gem 'dry-validation', '~> 0.12.2'
 gem 'gibbon', '~> 3.0'
