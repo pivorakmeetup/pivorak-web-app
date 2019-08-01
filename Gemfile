@@ -37,7 +37,7 @@ gem 'versionomy', '~> 0.5.0'
 #=== UI =======================================================================
 gem 'autoprefixer-rails', '~> 7.1.6'
 gem 'coffee-rails', '~> 4.2.1'
-gem 'jquery-rails', '~> 4.2.2'
+gem 'jquery-rails', '~> 4.3.5'
 gem 'premailer-rails' # email inline styling
 gem 'rails-assets-semantic-ui-calendar', source: 'https://rails-assets.org'
 gem 'rails-assets-svgxuse', source: 'https://rails-assets.org'
