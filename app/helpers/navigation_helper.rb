@@ -58,4 +58,8 @@ module NavigationHelper
   def about_link
     link_to t('words.about'), '/about'
   end
+
+  def ruby_course_link
+    link_to "Become a student of Ruby Summer Course", '/ruby-course'
+  end
 end

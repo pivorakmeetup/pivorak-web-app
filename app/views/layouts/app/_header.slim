@@ -18,12 +18,6 @@ header.pk-header class="#{header_classlist.compact.join(' ')}"
       .pk-header__dropdown-list-wr
         nav
           ul.pk-list.pk-header__dropdown-list.js-dropdown-list
-              // TODO: it's just an example of menu structure;
-              // menu items might be reorganized to fit screen size
-
-              li.pk-list__unit
-                = link_to "Ruby Summer Course 2019", "https://pivorak.com/ruby-course"
-
               li.pk-list__unit.pk-header__li-list-wr
                 a = "info"
                 ul.pk-header__li-list
@@ -37,6 +31,7 @@ header.pk-header class="#{header_classlist.compact.join(' ')}"
                 a = "activity"
                 ul.pk-header__li-list
                   li.pk-header__li-list-item = become_a_speaker_link
+                  li.pk-header__li-list-item = ruby_course_link
 
               li.pk-list__unit
                 = talks_link
