@@ -14,7 +14,7 @@ module NavigationHelper
   end
 
   def donate_link(**options)
-    link_to t('donations.support_us'), donate_path, data: {turbolinks: false}, **options
+    link_to t('donations.support_us'), donate_path, data: { turbolinks: false }, **options
   end
 
   def chat_link
@@ -60,6 +60,6 @@ module NavigationHelper
   end
 
   def ruby_course_link
-    link_to "Become a student of Ruby Summer Course", '/ruby-course'
+    link_to 'Become a student of Ruby Summer Course', '/ruby-course'
   end
 end
