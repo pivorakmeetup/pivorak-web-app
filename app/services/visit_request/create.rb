@@ -13,6 +13,8 @@ class VisitRequest
       VisitRequestMailer.needs_confirmation(visit_request).deliver_later unless user.verified?
       visit_request.pending!
       visit_request.waiting_list! unless policy.free_slot_for?(user)
+
+      visit_request
     end
 
     private

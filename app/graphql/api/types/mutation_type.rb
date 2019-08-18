@@ -3,7 +3,7 @@
 module Api
   module Types
     class MutationType < Types::BaseType
-      # field :dummy, mutation: Api::Mutations::Dummy
+      field :create_visit_request, mutation: Api::Mutations::CreateVisitRequest
     end
   end
 end

@@ -36,8 +36,8 @@ RSpec.describe 'GraphqQL Api Events query' do
       GQL
     end
 
-    let!(:event_a) { create(:event) }
-    let!(:event_b) { create(:event) }
+    let!(:event_a) { create(:event, started_at: Time.current) }
+    let!(:event_b) { create(:event, started_at: 10.days.ago) }
     let!(:event_c) { create(:event, status: :planned) }
 
     let!(:talk_a1) { create(:talk, event: event_a, speaker: speaker_a) }
@@ -177,8 +177,8 @@ RSpec.describe 'GraphqQL Api Events query' do
         puts result.inspect
 
         expect(result['data']['events'].size).to eq 2
-        expect(result['data']['events'][0]['id']).to eq event_a.id.to_s
-        expect(result['data']['events'][1]['id']).to eq event_c.id.to_s
+        expect(result['data']['events'][0]['id']).to eq event_c.id.to_s
+        expect(result['data']['events'][1]['id']).to eq event_a.id.to_s
       end
     end
   end

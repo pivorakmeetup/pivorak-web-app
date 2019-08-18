@@ -3,7 +3,7 @@
 module Api
   module Types
     class VisitType < BaseType
-      description 'Member event visit info'
+      description 'Pivorak event visit info'
 
       field :id,           ID,                 'Visit ID',                          null: false
       field :status,       Enums::VisitStatus, 'Visit status',                      null: false
