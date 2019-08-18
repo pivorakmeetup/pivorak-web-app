@@ -15,7 +15,7 @@ module Users
     end
 
     def payload
-      @payload ||= { user_id: current_user.id, exp: 2.hours.from_now.to_i }
+      @payload ||= { user_id: current_user.id, exp: 12.hours.from_now.to_i }
     end
   end
 end

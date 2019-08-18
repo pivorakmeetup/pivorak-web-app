@@ -20,7 +20,7 @@ RSpec.describe 'Profle TOKEN' do
     end
 
     let(:expected_token) do
-      payload = { user_id: user.id, exp: 2.hours.from_now.to_i }
+      payload = { user_id: user.id, exp: 12.hours.from_now.to_i }
       JWT.encode payload, Rails.application.secrets.secret_key_base
     end
 
