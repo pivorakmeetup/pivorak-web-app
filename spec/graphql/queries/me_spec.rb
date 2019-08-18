@@ -49,7 +49,7 @@ RSpec.describe 'GraphqQL Api Me query' do
         expect(result['data']['me']['visits']).to include(
           hash_including(
             'id'          => visit.id.to_s,
-            'status'      => visit.status,
+            'status'      => visit.status.upcase,
             'waitingList' => visit.waiting_list,
             'visited'     => visit.visited,
             'checkedInAt' => visit.checked_in_at,

@@ -55,7 +55,7 @@ RSpec.describe 'GraphqQL Api Events query' do
       expect(result['data']['events'][0]['title']).to       eq event_a.title
       expect(result['data']['events'][0]['description']).to eq event_a.description
       expect(result['data']['events'][0]['agenda']).to      eq event_a.agenda
-      expect(result['data']['events'][0]['status']).to      eq event_a.status
+      expect(result['data']['events'][0]['status']).to      eq event_a.status.upcase
 
       expect(result['data']['events'][0]['talks'].size).to  eq 2
 
@@ -80,7 +80,7 @@ RSpec.describe 'GraphqQL Api Events query' do
       expect(result['data']['events'][1]['title']).to       eq event_b.title
       expect(result['data']['events'][1]['description']).to eq event_b.description
       expect(result['data']['events'][1]['agenda']).to      eq event_b.agenda
-      expect(result['data']['events'][1]['status']).to      eq event_b.status
+      expect(result['data']['events'][1]['status']).to      eq event_b.status.upcase
 
       expect(result['data']['events'][1]['talks'].size).to  eq 1
 

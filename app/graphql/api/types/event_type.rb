@@ -6,7 +6,7 @@ module Api
       description 'Pivorak event info'
 
       field :id,           ID,                              'Event ID',                 null: false
-      field :status,       String,                          'Event status',             null: false
+      field :status,       Enums::EventStatus,              'Event status',             null: false
       field :title,        String,                          'Title of the event',       null: false
       field :description,  String,                          'Description of the event', null: true
       field :agenda,       String,                          'Agenda of the event',      null: true
