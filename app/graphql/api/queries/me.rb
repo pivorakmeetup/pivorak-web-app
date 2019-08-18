@@ -5,7 +5,7 @@ module Api
     class Me < BaseQuery
       type Types::MemberType, null: false
 
-      description 'Current member profile info'
+      description 'Get your member profile info'
 
       def resolve
         context[:current_user]

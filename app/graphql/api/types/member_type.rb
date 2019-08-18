@@ -13,6 +13,14 @@ module Api
             Boolean,
             'Is member verified. Only verified members can get auto-approve at meetup events',
             null: false
+
+      field :visits, [Types::VisitType], null: true do
+        argument :pagination, InputObjects::Pagination, required: false
+      end
+
+      def visits(pagination: {})
+        object.visit_requests.offset(pagination[:offset]).limit(pagination[:limit])
+      end
     end
   end
 end
