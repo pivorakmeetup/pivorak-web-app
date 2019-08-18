@@ -132,4 +132,54 @@ RSpec.describe 'GraphqQL Api Events query' do
       expect(result['data']['events'][0]['talks'][0]['id']).to eq talk_b2.id.to_s
     end
   end
+
+  context 'filter events' do
+    let(:query) do
+      <<~GQL
+        query Events($filter: EventFilter) {
+          events(filter: $filter) {
+            id
+          }
+        }
+      GQL
+    end
+
+    context 'by single status' do
+      let(:variables) do
+        {
+          filter: { status: ['REGISTRATION'] }
+        }
+      end
+
+      let!(:event_a) { create(:event, status: :registration) }
+      let!(:event_b) { create(:event, status: :confirmation) }
+
+      it 'returns lits of active events with talks and speakers' do
+        puts result.inspect
+
+        expect(result['data']['events'].size).to eq 1
+        expect(result['data']['events'][0]['id']).to eq event_a.id.to_s
+      end
+    end
+
+    context 'by multiple statuses' do
+      let(:variables) do
+        {
+          filter: { status: %w[REGISTRATION LIVE] }
+        }
+      end
+
+      let!(:event_a) { create(:event, status: :registration) }
+      let!(:event_b) { create(:event, status: :confirmation) }
+      let!(:event_c) { create(:event, status: :live) }
+
+      it 'returns lits of active events with talks and speakers' do
+        puts result.inspect
+
+        expect(result['data']['events'].size).to eq 2
+        expect(result['data']['events'][0]['id']).to eq event_a.id.to_s
+        expect(result['data']['events'][1]['id']).to eq event_c.id.to_s
+      end
+    end
+  end
 end
