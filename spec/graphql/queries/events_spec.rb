@@ -19,6 +19,11 @@ RSpec.describe 'GraphqQL Api Events query' do
             description
             videoUrl
             slidesUrl
+            speaker {
+              id
+              firstName
+              lastName
+            }
           }
         }
       }
@@ -33,11 +38,15 @@ RSpec.describe 'GraphqQL Api Events query' do
   let!(:event_b) { create(:event) }
   let!(:event_c) { create(:event, status: :planned) }
 
-  let!(:talk_a1) { create(:talk, event: event_a) }
-  let!(:talk_a2) { create(:talk, event: event_a) }
-  let!(:talk_b1) { create(:talk, event: event_b) }
+  let!(:talk_a1) { create(:talk, event: event_a, speaker: speaker_a) }
+  let!(:talk_a2) { create(:talk, event: event_a, speaker: speaker_b) }
+  let!(:talk_b1) { create(:talk, event: event_b, speaker: speaker_c) }
 
-  it 'returns member info' do
+  let(:speaker_a) { create(:user) }
+  let(:speaker_b) { create(:user) }
+  let(:speaker_c) { create(:user) }
+
+  it 'returns lits of active events with talks and speakers' do
     expect(result['data']['events'].size).to              eq 2
 
     expect(result['data']['events'][0]['id']).to          eq event_a.id.to_s
@@ -52,9 +61,15 @@ RSpec.describe 'GraphqQL Api Events query' do
       expect(result['data']['events'][0]['talks']).to include(
         hash_including(
           'id'          => talk.id.to_s,
+          'title'       => talk.title,
           'description' => talk.description,
           'videoUrl'    => talk.video_url,
-          'slidesUrl'   => talk.slides_url
+          'slidesUrl'   => talk.slides_url,
+          'speaker'     => hash_including(
+            'id'        => talk.speaker.id.to_s,
+            'firstName' => talk.speaker.first_name,
+            'lastName'  => talk.speaker.last_name
+          )
         )
       )
     end
@@ -72,5 +87,9 @@ RSpec.describe 'GraphqQL Api Events query' do
     expect(result['data']['events'][1]['talks'][0]['description']).to eq talk_b1.description
     expect(result['data']['events'][1]['talks'][0]['videoUrl']).to    eq talk_b1.video_url
     expect(result['data']['events'][1]['talks'][0]['slidesUrl']).to   eq talk_b1.slides_url
+
+    expect(result['data']['events'][1]['talks'][0]['speaker']['id']).to        eq speaker_c.id.to_s
+    expect(result['data']['events'][1]['talks'][0]['speaker']['firstName']).to eq speaker_c.first_name
+    expect(result['data']['events'][1]['talks'][0]['speaker']['lastName']).to  eq speaker_c.last_name
   end
 end
