@@ -5,11 +5,14 @@ module Api
     class MemberType < BaseType
       description 'Pivorak member **profile** info'
 
-      field :id,          ID,     null: false
-      field :email,       String, null: false
-      field :first_name,  String, null: false
-      field :last_name,   String, null: false
-      field :verified,    Boolean, null: false
+      field :id,          ID,      'Member ID',         null: false
+      field :email,       String,  'Member email',      null: false
+      field :first_name,  String,  'Member first name', null: false
+      field :last_name,   String,  'Member last name',  null: false
+      field :verified,
+            Boolean,
+            'Is member verified. Only verified members can get auto-approve at meetup events',
+            null: false
     end
   end
 end
