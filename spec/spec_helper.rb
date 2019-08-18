@@ -54,6 +54,7 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
+  config.filter_run_when_matching :focus
 
   config.before(:suite) do |_|
     DatabaseCleaner.strategy = :transaction
@@ -62,6 +63,12 @@ RSpec.configure do |config|
 
   config.around(:each) do |example|
     DatabaseCleaner.cleaning do
+      example.run
+    end
+  end
+
+  config.around(:each) do |example|
+    aggregate_failures do
       example.run
     end
   end

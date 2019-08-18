@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  mount GraphiQL::Rails::Engine, at: '/graphiql', graphql_path: '/api/graphql' if Rails.env.development?
+
+  post '/api/graphql', to: 'graphql#execute'
+
   root 'home#index'
 
   mount RailsEmailPreview::Engine, at: 'emails'
@@ -23,8 +27,12 @@ Rails.application.routes.draw do
   resources :venues,    only: %i[show]
   resources :talks,     only: %i[index show]
   resource  :chat,      only: %i[show create],      controller: :chat
-  resource  :profile,   only: %i[show edit update], controller: :profile
-  resources :members,   only: %i[index show] do
+
+  resource  :profile,   only: %i[show edit update], controller: :profile do
+    get :token, to: 'users/token#show'
+  end
+
+  resources :members, only: %i[index show] do
     post :become_speaker, to: 'become_speaker#create', on: :collection
   end
 
