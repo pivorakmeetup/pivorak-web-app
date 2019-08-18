@@ -68,6 +68,7 @@ gem 'sitemap_generator', '~> 6.0.2'
 gem 'stripe', '~> 1.5'
 gem 'yt', '~> 0.32.2'
 gem 'jwt', '~> 2.2.1'
+gem 'goldiloader', '~> 3.1.1'
 
 #=== PDF GENERATION ===========================================================
 gem 'prawn'

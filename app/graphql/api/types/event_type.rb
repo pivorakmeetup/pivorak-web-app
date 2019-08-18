@@ -3,7 +3,7 @@
 module Api
   module Types
     class EventType < BaseType
-      description 'Pivorak member **profile** info'
+      description 'Pivorak event info'
 
       field :id,           ID,                              'Event ID',                 null: false
       field :status,       String,                          'Event status',             null: false
@@ -12,6 +12,7 @@ module Api
       field :agenda,       String,                          'Agenda of the event',      null: true
       field :startedAt,    GraphQL::Types::ISO8601DateTime, 'When event starts at',     null: false
       field :finishedAt,   GraphQL::Types::ISO8601DateTime, 'When event finished at',   null: false
+      field :talks,        [Types::TalkType],               'Event related talks',      null: true
     end
   end
 end
