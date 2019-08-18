@@ -7,13 +7,13 @@ class VisitRequestsController < ApplicationController
     VisitRequest::FinalDecision.call(visit_request, answer: params[:answer])
     sign_in(:user, visit_request.user)
 
-    flash_success(visit_request.status) && default_redirect
+    flash_success(visit_request.status) && user_agreement_redirect
   end
 
   def create
     VisitRequest::Create.call(current_user, event)
 
-    flash_success(user_verification_status) && default_redirect
+    flash_success(user_verification_status) && user_agreement_redirect
   end
 
   def destroy
@@ -23,6 +23,10 @@ class VisitRequestsController < ApplicationController
   end
 
   private
+
+  def user_agreement_redirect
+    redirect_to '/code-of-conduct'
+  end
 
   def default_redirect
     redirect_to root_path # redirect_to event_path(event) TODO [1.1]
