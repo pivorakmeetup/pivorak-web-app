@@ -2,8 +2,10 @@
 
 module Admin
   class VisitRequestsController < ::Admin::BaseController
-    helper_method :visit_requests, :event, :visitors_ids, :confirmed_ids, :applied_ids,
-                  :pending_ids, :approved_ids
+    helper_method :visit_requests, :event, :visitors_ids,
+    :visitors_count,
+    :pending_count,
+    :places_left_count
 
     before_action :only_supervisor!
 
@@ -36,7 +38,19 @@ module Admin
     end
 
     def visitors_ids
-      @visitors_ids ||= User::EventAttendeesWithoutRefusedAndCanceled.call(event_id: event.id).ids
+      @visitors_ids ||= User::EventConfirmedAttendees.call(event_id: event.id).ids
+    end
+
+    def visitors_count
+      @visitors_count ||= visitors_ids.size
+    end
+
+    def pending_count
+      @pending_count ||= event.visit_requests.pending.count
+    end
+
+    def places_left_count
+      @places_left_count ||= event.limit_total - visitors_count
     end
   end
 end

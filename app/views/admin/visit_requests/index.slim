@@ -6,6 +6,12 @@
       = event.title
     = event_status_label(event)
 
+    h3 Refresh the page to update info below:
+
+    h3 Visitors: #{visitors_ids.size}
+    h3 Pending: #{pending_count}
+    h3 Places Left: #{places_left_count}
+
   .six.wide.column.bottom.aligned
     = render 'admin/shared/search_bar', path: admin_event_visit_requests_path
 

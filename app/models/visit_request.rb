@@ -23,7 +23,7 @@ class VisitRequest < ApplicationRecord
   scope :final,           -> { where(status: [APPROVED, CONFIRMED]).main_list }
   scope :used,            -> { where(visited: true) }
   # TODO: why do we have 2 statuses?
-  scope :without_refused_and_canceled, -> { where.not(status: [CANCELED, REFUSED]) }
+  scope :confirmed_attendees, -> { where.not(status: [CANCELED, REFUSED, PENDING]) }
 
   def main_list!
     update(waiting_list: false)
