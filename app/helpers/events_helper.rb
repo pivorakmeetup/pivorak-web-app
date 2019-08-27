@@ -28,10 +28,7 @@ module EventsHelper
     return if Event::SlotsPolicy.new(event).free_slot_for?(current_user)
     return if event.visitors.include?(current_user)
 
-    render(
-      html: "#{t('visit_requests.messages.waiting_list')} #{link_to t('visit_requests.attend'),
-                                                                    event_visit_requests_path(event), method: :post}"
-    ).html_safe
+    "#{t('visit_requests.messages.waiting_list')}: <br> #{link_to t('visit_requests.messages.add_to_waiting_list'), event_visit_requests_path(event), method: :post}"
   end
   # rubocop:enable Metrics/AbcSize
 
