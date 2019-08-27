@@ -1,10 +1,13 @@
 - title t('visit_requests.plural')
 
 .ui.stackable.grid
-  .ten.wide.column
+  .six.wide.column
     h2#event data-event-id = event.id
       = event.title
     = event_status_label(event)
+
+  .six.wide.column.row-chart
+    = column_chart(event_visitors(event), height: '100px', width: '400px')
 
   .six.wide.column.bottom.aligned
     = render 'admin/shared/search_bar', path: admin_event_visit_requests_path
