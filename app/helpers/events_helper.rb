@@ -23,14 +23,15 @@ module EventsHelper
             method: :delete, data: { confirm: t('phrases.confirm') }
   end
 
-  # rubocop:disable Metrics/AbcSize
   def waiting_list_message
     return if Event::SlotsPolicy.new(event).free_slot_for?(current_user)
     return if event.visitors.include?(current_user)
 
-    "#{t('visit_requests.messages.waiting_list')}: <br> #{link_to t('visit_requests.messages.add_to_waiting_list'), event_visit_requests_path(event), method: :post}"
+    link =
+      link_to(t('visit_requests.messages.add_to_waiting_list'), event_visit_requests_path(event), method: :post)
+
+    "#{t('visit_requests.messages.waiting_list')}: <br> #{link}"
   end
-  # rubocop:enable Metrics/AbcSize
 
   def visit_request_confirm_message(visit_request)
     return unless visit_request && current_user
