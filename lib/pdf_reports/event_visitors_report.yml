@@ -1,14 +1,12 @@
-columns: 3
-rows: 7
+columns: 1
+rows: 20
 font: 'Helvetica'
 document:
   margin: 0
 table:
   cell_style:
-    align: :center
+    align: :left
     valign: :center
     border_width: 0
-    size: 21
+    size: 14
     font_style: :bold
-    text_color: 'FF5F00'
-    padding: [5, 20, 5, 20]

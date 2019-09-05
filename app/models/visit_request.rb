@@ -22,6 +22,7 @@ class VisitRequest < ApplicationRecord
   scope :waiting_list,    -> { where(waiting_list: true)  }
   scope :final,           -> { where(status: [APPROVED, CONFIRMED]).main_list }
   scope :used,            -> { where(visited: true) }
+  scope :sort_by_user_full_name, -> { joins(:user).order("LOWER(users.first_name)", "LOWER(users.last_name)") }
   # TODO: why do we have 2 statuses?
   scope :without_refused_and_canceled, -> { where.not(status: [CANCELED, REFUSED]) }
 
