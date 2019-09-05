@@ -23,10 +23,10 @@ module PdfReports
     attr_reader :visit_requests
 
     def formated_data
-      @formated_data ||= visit_requests
-                         .map { |vr| vr.user.full_name }
-                         .sort
-                         .each_slice(settings.fetch(:columns, 1)).to_a
+      @formated_data ||= visit_requests.sort_by_user_full_name
+                                       .includes(:user)
+                                       .map.with_index { |vr, index| "#{index + 1}. #{vr.user.full_name}" }
+                                       .each_slice(settings.fetch(:columns, 1)).to_a
     end
 
     def report_options
