@@ -11,9 +11,6 @@ x-app: &app
   image: pivorak-web-app:0.0.1
   tmpfs:
     - /tmp
-
-x-backend: &backend
-  <<: *app
   stdin_open: true
   tty: true
   volumes:
@@ -29,17 +26,17 @@ x-backend: &backend
 
 services:
   runner:
-    <<: *backend
+    <<: *app
     command: /bin/bash
 
   rails:
-    <<: *backend
+    <<: *app
     command: bundle exec rails server -b 0.0.0.0
     ports:
       - '3000:3000'
 
   sidekiq:
-    <<: *backend
+    <<: *app
     command: bundle exec sidekiq -C config/sidekiq.yml
 
   postgres:
