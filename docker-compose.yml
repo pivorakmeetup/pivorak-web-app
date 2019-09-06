@@ -1,33 +1,33 @@
 version: '3.7'
 
+x-app: &app
+  build:
+    context: .
+    dockerfile: ./Dockerfile
+    args:
+      RUBY_VERSION: '2.3.1'
+      BUNDLER_VERSION: '1.16.6'
+      NODE_MAJOR: '10'
+  image: pivorak-web-app:0.0.1
+  tmpfs:
+    - /tmp
+
+x-backend: &backend
+  <<: *app
+  stdin_open: true
+  tty: true
+  volumes:
+    - .:/app:cached
+    - rails_cache:/app/tmp/cache
+    - bundle:/bundle
+  environment:
+    - REDIS_URL=redis://redis:6379
+    - DATABASE_URL=postgres://postgres:postgres@postgres:5432
+  depends_on:
+    - postgres
+    - redis
+
 services:
-  app: &app
-    build:
-      context: .
-      dockerfile: ./Dockerfile
-      args:
-        RUBY_VERSION: '2.3.1'
-        BUNDLER_VERSION: '1.16.6'
-        NODE_MAJOR: '10'
-    image: pivorak-web-app:0.0.1
-    tmpfs:
-      - /tmp
-
-  backend: &backend
-    <<: *app
-    stdin_open: true
-    tty: true
-    volumes:
-      - .:/app:cached
-      - rails_cache:/app/tmp/cache
-      - bundle:/bundle
-    environment:
-      - REDIS_URL=redis://redis:6379
-      - DATABASE_URL=postgres://postgres:postgres@postgres:5432
-    depends_on:
-      - postgres
-      - redis
-
   runner:
     <<: *backend
     command: /bin/bash
