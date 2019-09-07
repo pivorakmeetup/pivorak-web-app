@@ -27,6 +27,7 @@ gem 'courses', path: 'components/courses'
 gem 'ez-settings'
 
 gem 'graphql'
+gem 'goldiloader'
 
 #=== CONFIG ===================================================================
 gem 'dotenv-rails', '~> 2.5', require: 'dotenv/rails-now'

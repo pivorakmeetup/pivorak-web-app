@@ -69,8 +69,8 @@ Rails.application.configure do
   #   :password => ENV['MAILGUN_PASSWORD']
   # }
 
-  config.after_initialize do
-    Bullet.enable = true
-    Bullet.raise = true
-  end
+  # config.after_initialize do
+  #   Bullet.enable = true
+  #   Bullet.raise = true
+  # end
 end

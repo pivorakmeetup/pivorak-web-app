@@ -10,6 +10,11 @@ module Api
       field :first_name, String, null: false
       field :last_name, String, null: false
       field :verified, Boolean, null: false
+      field :visits, [Types::VisitType], null: true
+
+      def visits
+        object.visit_requests
+      end
     end
   end
 end
