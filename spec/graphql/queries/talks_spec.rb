@@ -79,4 +79,29 @@ RSpec.describe 'GraphqQL Api Talks query' do
       end
     end
   end
+
+  context 'filter talks' do
+    let(:query) do
+      <<~GQL
+        {
+          talks(filter: { tags: ["ruby"] }) {
+            id
+            title
+          }
+        }
+      GQL
+    end
+
+    let!(:talk_about_ruby)  { create :talk, title: 'Ruby Way', tag_list: 'ruby' }
+    let!(:talk_about_js)    { create :talk, title: 'JS Way',   tag_list: 'javascript' }
+    let!(:talk_about_rails) { create :talk, title: 'Rails Way', tag_list: 'ruby, rails' }
+
+    context 'by tags' do
+      it 'returns matched talks' do
+        expect(
+          result['data']['talks'].map { |talk| talk['id'].to_i }
+        ).to match_array [talk_about_ruby.id, talk_about_rails.id]
+      end
+    end
+  end
 end
