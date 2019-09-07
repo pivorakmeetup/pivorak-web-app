@@ -3,7 +3,7 @@
 module Api
   module Types
     class QueryType < Types::BaseType
-      # field :test, resolver: Queries::Test
+      field :me, resolver: Queries::Me
     end
   end
 end
