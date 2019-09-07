@@ -56,6 +56,8 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   config.filter_run_when_matching :focus
 
+  DatabaseCleaner.allow_remote_database_url = true
+
   config.before(:suite) do |_|
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)

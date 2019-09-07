@@ -30,7 +30,7 @@ class Event < ApplicationRecord
   has_many :verified_visitors, -> { merge(User.verified) }, through: :visit_requests, source: :user
   has_many :newbie_visitors,   -> { merge(User.newbies) },  through: :visit_requests, source: :user
 
-  scope :display, -> { where.not(status: PLANNED) }
+  scope :visible, -> { where.not(status: PLANNED) }
   scope :ordered_by_start, -> { order(:started_at) }
 
   validates :title, :limit_total, :limit_verified, presence: true

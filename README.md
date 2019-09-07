@@ -25,6 +25,40 @@ $ rails db:setup
 $ rails s
 ```
 
+## Setup with Docker
+
+Install [Docker](https://docs.docker.com/install/) and [Docker Compose](https://docs.docker.com/compose/install/)
+
+```sh
+$ git clone https://github.com/pivorakmeetup/pivorak-web-app.git
+$ cd pivorak-web-app
+$ cp config/database.yml.example config/database.yml
+$ docker-compose build
+$ docker-compose run runner bundle install
+```
+
+To run tests, first setup test database
+```sh
+$ docker-compose run -e RAILS_ENV=test runner bundle exec rails db:setup
+```
+and then
+
+```sh
+$ docker-compose run runner bundle exec rspec
+```
+
+To run the app in development, first prepare development database
+
+```sh
+$ docker-compose run runner bundle exec rails db:setup
+```
+
+and then execute
+
+```sh
+$ docker-compose up rails
+```
+
 # Onboarding Instructions
 - Add ssh key to the server
 - Add user to the rollbar

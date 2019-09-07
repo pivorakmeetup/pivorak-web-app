@@ -21,16 +21,16 @@ RSpec.describe PdfReports::EventVisitorsReport do
     end
 
     context 'valid text' do
-      it { expect(text_inspector.strings.first).to eq first_user.full_name }
+      it { expect(text_inspector.strings.first).to eq "1. #{first_user.full_name}" }
       it { expect(text_inspector.strings.last).to eq third_user.last_name }
       it { expect(text_inspector.strings.size).to eq 4 }
     end
 
     context 'valid pages' do
-      it { expect(page_inspector.pages.first[:strings]).to include(first_user.full_name) }
+      it { expect(page_inspector.pages.first[:strings]).to include("1. #{first_user.full_name}") }
       it {
         expect(page_inspector.pages.second[:strings])
-          .to contain_exactly(third_user.first_name, third_user.last_name)
+          .to contain_exactly("3. #{third_user.first_name}", third_user.last_name)
       }
       it { expect(page_inspector.pages.size).to eq 2 }
     end
