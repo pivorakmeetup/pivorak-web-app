@@ -11,7 +11,7 @@ module Api
       description "Get list of all visible pivorak's events info"
 
       def resolve(pagination: {}, filter: {})
-        events = Event.display.published
+        events = Event.visible.published
         events = events.where(status: filter[:status]) if filter[:status].present?
 
         events.offset(pagination[:offset]).limit(pagination[:limit]).order(started_at: :desc)
