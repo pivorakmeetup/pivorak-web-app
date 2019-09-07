@@ -5,6 +5,8 @@ module Api
     class Me < BaseQuery
       type Types::MemberType, null: false
 
+      description "Get your pivorak **profile** record"
+
       def resolve
         context[:current_user]
       end
