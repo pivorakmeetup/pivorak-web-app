@@ -12,6 +12,7 @@ module Api
       field :agenda,       String,                          'Agenda of the event',      null: true
       field :startedAt,    GraphQL::Types::ISO8601DateTime, 'When event starts at',     null: false
       field :finishedAt,   GraphQL::Types::ISO8601DateTime, 'When event finished at',   null: false
+      field :venue,        Types::VenueType,                'Where event were hosted',  null: false
 
       field :talks, [Types::TalkType], 'Event related talks', null: true do
         argument :pagination, InputObjects::Pagination, required: false

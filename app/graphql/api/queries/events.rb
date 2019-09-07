@@ -12,7 +12,9 @@ module Api
 
       def resolve(pagination: {}, filter: {})
         events = Event.visible.published
-        events = events.where(status: filter[:status]) if filter[:status].present?
+
+        events = events.where(status:   filter[:status])   if filter[:status]
+        events = events.where(venue_id: filter[:venueIds]) if filter[:venueIds]
 
         events.offset(pagination[:offset]).limit(pagination[:limit]).order(started_at: :desc)
       end
