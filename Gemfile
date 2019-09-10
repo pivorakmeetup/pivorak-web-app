@@ -7,7 +7,7 @@ ruby '2.3.1'
 #=== CORE =====================================================================
 gem 'acts-as-taggable-on', git: 'https://github.com/Fodoj/acts-as-taggable-on', ref: 'rails-5.2'
 gem 'carrierwave', '~> 1.2'
-gem 'devise', '~> 4.6'
+gem 'devise', '~> 4.7'
 gem 'friendly_id', '~> 5.1'
 gem 'kaminari'
 gem 'omniauth-facebook', '~> 5.0'
