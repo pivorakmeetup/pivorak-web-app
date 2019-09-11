@@ -16,7 +16,7 @@ RSpec.describe User::EventApplied do
     create(:visit_request, :refused, event: event, user: visitor_refused)
 
     expect(
-      described_class.call(event_id: event.id)
-    ).to eq [visitor_approved, visitor_pending, visitor_refused]
+      described_class.call(event_id: event.id).sort_by(&:id)
+    ).to eq [visitor_approved, visitor_pending, visitor_refused].sort_by(&:id)
   end
 end
