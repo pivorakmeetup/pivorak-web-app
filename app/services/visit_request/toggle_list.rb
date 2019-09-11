@@ -9,6 +9,7 @@ class VisitRequest
     def call
       if visit_request.waiting_list?
         visit_request.main_list!
+        VisitRequestMailer.confirmation(visit_request).deliver_later
       else
         visit_request.waiting_list!
       end
