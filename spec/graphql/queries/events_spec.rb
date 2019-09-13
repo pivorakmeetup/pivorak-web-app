@@ -139,6 +139,7 @@ RSpec.describe 'GraphqQL Api Events query' do
         query Events($filter: EventFilter) {
           events(filter: $filter) {
             id
+            title
           }
         }
       GQL
@@ -179,6 +180,24 @@ RSpec.describe 'GraphqQL Api Events query' do
         expect(result['data']['events'].size).to eq 2
         expect(result['data']['events'][0]['id']).to eq event_c.id.to_s
         expect(result['data']['events'][1]['id']).to eq event_a.id.to_s
+      end
+    end
+
+    context 'by date range' do
+      let(:start_date) { 2.hours.ago.iso8601 }
+
+      let(:variables) do
+        {
+          filter: { startAt: { from: start_date.to_s } }
+        }
+      end
+
+      let!(:event_a) { create(:event, status: :registration, started_at: 1.day.ago) }
+      let!(:event_b) { create(:event, status: :confirmation, started_at: 1.week.ago) }
+      let!(:event_c) { create(:event, status: :live, started_at: 1.hour.ago) }
+
+      it 'returns lits of events started 2 hours ago' do
+        expect(result['data']['events'].size).to eq 1
       end
     end
   end
