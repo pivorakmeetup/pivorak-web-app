@@ -1,168 +1,164 @@
-# Contributing to Operational Visualizations
-
-⚠️This is not a final version of documented dapted from https://github.com/atom/atom/blob/master/CONTRIBUTING.md. TODO: simplify this document, use automated tools when possible and issue templates ⚠️
-
+# Contributing to pivorak WebApp
 :+1::tada: First off, thanks for taking the time to contribute! :tada::+1:
 
-The following is a set of guidelines for contributing to Operational Visualizations on GitHub. These are mostly guidelines, not rules. Use your best judgment, and feel free to propose changes to this document in a pull request.
+The following is a set of guidelines for contributing to pivorak WebApp on GitHub. These are mostly guidelines, not rules. Use your best judgment, and feel free to propose changes to this document in a pull request.
 
 #### Table Of Contents
+- [How to setup project](#how-to-setup-project)
+    - [Option 1: Without docker](#option-1-without-docker)
+    - [Option 2: With docker](#option-2-with-docker)
+- [How to deploy](#how-to-deploy)
+- [How to report a bug](#how-to-report-a-bug)
+- [What should I know before I get started?](#what-should-i-know-before-i-get-started)
+    - [Git Branches](#git-branches)
+    - [Design Decisions](#design-decisions)
 
-[Code of Conduct](#code-of-conduct)
+# How to setup project
+## Option 1: Without docker
+#### Step 1: Clone the repo
+```sh
+$ git clone git@github.com:pivorakmeetup/pivorak-web-app.git
+```
+#### Step 2: Install dependencies
+- Install gems
+```sh
+$ cd pivorak-web-app
+$ rvm use ruby-2.3.1@pivorak --create
+$ bundle
+```
+- Setup database
+    **Notice:** Before database setup you should install *Redis*. Look install instructions here:
+    - for Ubuntu: https://goo.gl/PbG00W
+    - for MacOS: https://goo.gl/W8xQMJ
 
-[What should I know before I get started?](#what-should-i-know-before-i-get-started)
-
-- [Packages](#packages)
-- [Design Decisions](#design-decisions)
-
-[How Can I Contribute?](#how-can-i-contribute)
-
-- [Reporting Bugs](#reporting-bugs)
-- [Suggesting Enhancements](#suggesting-enhancements)
-- [Your First Code Contribution](#your-first-code-contribution)
-- [Pull Requests](#pull-requests)
-
-[Styleguides](#styleguides)
-
-- [Git Commit Messages](#git-commit-messages)
-- [TypesScript Styleguide](#typescript-styleguide)
-- [Documentation Styleguide](#documentation-styleguide)
-
-[Additional Notes](#additional-notes)
-
-- [Issue and Pull Request Labels](#issue-and-pull-request-labels)
-
-## Code of Conduct
-
-This project and everyone participating in it is governed by the [Berlin Code of Conduct](https://berlincodeofconduct.org). By participating, you are expected to uphold this code. Please report unacceptable behavior to TODO
-
-## What should I know before I get started?
-
-### Packages
-
-This project is structured as a [monorepo](https://www.atlassian.com/git/tutorials/monorepos) for operational visualizations and related libraries. It consists of three libraries:
-
-- [`@operational/frame`](packages/frame) - representation of multidimensional data.
-- [`@operational/visualizations`](packages/visualizations) - set of visualisations primitives for building visualisations, React library. Uses frame as data source.
-- [`@operational/grid`](packages/grid) - React component pivot table. Uses frame as data source. You can use `grid` together with `visualizations` to show visualisations in cells of pivot table.
-
-### Design Decisions
-
-When we make a significant decision in how we maintain the project and what we can or cannot support, we will document it in the [docs/adr](https://github.com/contiamo/operational-visualizations/tree/master/docs/adr). If you have a question around how we do things, check to see if it is documented there. If it is _not_ documented there, please open a new issue and ask your question.
-
-## How Can I Contribute?
-
-### Reporting Bugs
-
-This section guides you through submitting a bug report for Operational Visualizations. Following these guidelines helps maintainers and the community understand your report :pencil:, reproduce the behavior :computer: :computer:, and find related reports :mag_right:.
-
-Before creating bug reports, please check [this list](#before-submitting-a-bug-report) as you might find out that you don't need to create one. When you are creating a bug report, please [include as many details as possible](#how-do-i-submit-a-good-bug-report). Fill out [the required template](https://github.com/atom/.github/blob/master/.github/ISSUE_TEMPLATE/bug_report.md), the information it asks for helps us resolve issues faster.
-
-> **Note:** If you find a **Closed** issue that seems like it is the same thing that you're experiencing, open a new issue and include a link to the original issue in the body of your new one.
-
-#### Before Submitting A Bug Report
-
-- Search through issue tracker to make sure your problem is not resolved yet.
-- Try out latest package
-- Try to remove `node_modules` folder and install dependencies again
-
-#### How Do I Submit A (Good) Bug Report?
-
-Bugs are tracked as [GitHub issues](https://guides.github.com/features/issues/).
-
-Explain the problem and include additional details to help maintainers reproduce the problem:
-
-- **Use a clear and descriptive title** for the issue to identify the problem.
-- **Describe the exact steps which reproduce the problem** in as many details as possible. For example, start by explaining how you started Atom, e.g. which command exactly you used in the terminal, or how you started Atom otherwise. When listing steps, **don't just say what you did, but explain how you did it**. For example, if you moved the cursor to the end of a line, explain if you used the mouse, or a keyboard shortcut or an Atom command, and if so which one?
-- **Provide specific examples to demonstrate the steps**. Include links to files or GitHub projects, or copy/pasteable snippets, which you use in those examples. If you're providing snippets in the issue, use [Markdown code blocks](https://help.github.com/articles/markdown-basics/#multiple-lines).
-- **Describe the behavior you observed after following the steps** and point out what exactly is the problem with that behavior.
-- **Explain which behavior you expected to see instead and why.**
-- **Include screenshots and animated GIFs** which show you following the described steps and clearly demonstrate the problem.
-- **If the problem wasn't triggered by a specific action**, describe what you were doing before the problem happened and share more information using the guidelines below.
-
-Provide more context by answering these questions:
-
-- **Did the problem start happening recently** (e.g. after updating to a new version) or was this always a problem?
-- If the problem started happening recently, **can you reproduce the problem in an older version?** What's the most recent version in which the problem doesn't happen?
-- **Can you reliably reproduce the issue?** If not, provide details about how often the problem happens and under which conditions it normally happens.
-
-Include details about your configuration and environment:
-
-- **Which version are you using?**
-- **What's the name and version of the OS you're using**?
-
-### Suggesting Enhancements
-
-This section guides you through submitting an enhancement suggestion, including completely new features and minor improvements to existing functionality. Following these guidelines helps maintainers and the community understand your suggestion :pencil: and find related suggestions :mag_right:.
-
-#### How Do I Submit A (Good) Enhancement Suggestion?
-
-Enhancement suggestions are tracked as [GitHub issues](https://guides.github.com/features/issues/). Create an issue on that repository and provide the following information:
-
-- **Use a clear and descriptive title** for the issue to identify the suggestion.
-- **Provide a step-by-step description of the suggested enhancement** in as many details as possible.
-- **Provide specific examples to demonstrate the steps**. Include copy/pasteable snippets which you use in those examples, as [Markdown code blocks](https://help.github.com/articles/markdown-basics/#multiple-lines).
-- **Describe the current behavior** and **explain which behavior you expected to see instead** and why.
-- **Include screenshots and animated GIFs** which help you demonstrate the steps or point out the part of Atom which the suggestion is related to.
-- **Explain why this enhancement would be useful.**
-- **Specify which version you're using.**
-- **Specify the name and version of the OS you're using.**
-
-### Your First Code Contribution
-
-Unsure where to begin contributing? You can start by looking through these `beginner` and `help-wanted` issues:
-
-- [Good first issue][https://github.com/contiamo/operational-visualizations/issues?q=is%3aissue+is%3aopen+label%3a%22good+first+issue%22] - issues which should only require a few lines of code, and a test or two.
-- [Help wanted issues][https://github.com/contiamo/operational-visualizations/labels/help%20wanted] - issues which should be a bit more involved than `beginner` issues.
-
-Both issue lists are sorted by total number of comments. While not perfect, number of comments is a reasonable proxy for impact a given change will have.
-
-#### Local development
+    **Notice:**  You should have PostgreSQL >= 9.4
 
 ```sh
-yarn
-yarn start
+$ cp config/database.yml.example config/database.yml
+$ rails db:setup
+$ rails s
 ```
 
-Open http://localhost:7000/
+## Option 2: With docker
+#### Step 1: Install [Docker](https://docs.docker.com/install/) and [Docker Compose](https://docs.docker.com/compose/install/)
+#### Step 2: Clone the repo
+```sh
+$ git clone https://github.com/pivorakmeetup/pivorak-web-app.git
+```
+#### Step 3: Clone database config
+```sh
+$ cd pivorak-web-app
+$ cp config/database.yml.example config/database.yml
+```
+#### Step 4: Build project
+```sh
+$ docker-compose build
+$ docker-compose run runner bundle install
+```
 
-To run tests:
+**Notice:** How to deal with docker?
+
+**Test environment:**
+To run tests, first setup test database
+```sh
+$ docker-compose run -e RAILS_ENV=test runner bundle exec rails db:setup
+```
+and then run test suite
 
 ```sh
-yarn test --watch
+$ docker-compose run runner bundle exec rspec
 ```
 
-### Pull Requests
+**Development environment:**
+To run the app in development, first prepare development database
+```sh
+$ docker-compose run runner bundle exec rails db:setup
+```
+and then execute
+```sh
+$ docker-compose up rails
+```
 
-Please follow these steps to have your contribution considered by the maintainers:
+<!-- TODO: Disscuss this section -->
+# Onboarding Instructions
+- Add ssh key to the server
+- Add user to the rollbar
+- Add user to the *#web-app* Pivorak Slack channel
 
-1. Follow all instructions in [the template](PULL_REQUEST_TEMPLATE.md)
-2. Follow the [styleguides](#styleguides)
-3. After you submit your pull request, verify that all [status checks](https://help.github.com/articles/about-status-checks/) are passing <details><summary>What if the status checks are failing?</summary>If a status check is failing, and you believe that the failure is unrelated to your change, please leave a comment on the pull request explaining why you believe the failure is unrelated. A maintainer will re-run the status check for you. If we conclude that the failure was a false positive, then we will open an issue to track that problem with our status check suite.</details>
+<!-- TODO: Disscuss this section -->
 
-While the prerequisites above must be satisfied prior to having your pull request reviewed, the reviewer(s) may ask you to complete additional design work, tests, or other changes before your pull request can be ultimately accepted.
+# How to Deploy
+```sh
+$ cap production deploy
+```
+# How to contribute
 
-## Styleguides
+1. Detect which [issue](https://github.com/pivorakmeetup/pivorak-web-app/issues) you want to resolve. Write comment about this and how you supposed to do this.
+2. Fork project *(if you don't have permissions to push)*.
+3. Prepare your solution step by step:
+    - Checkout new branch: `"#{issue_id}-#{add or fix or improve}-#{job-done-description}"`
 
-### Git Commit Messages
+        *For example:* `77-add-payments-feature`
 
-We follow [Conventional Changelog](https://www.conventionalcommits.org/en/).
+    - **Write tests**
+    - Write code
 
-You can use `yarn commit` to produce commit message according to convention.
+    - Compose descriptive commit message `"##{issue-id} commit message text"`
 
-### TyoeScript Styleguide
+        *For example:* `#77 Add payments feature :tada:` -> *you may use emoji*
 
-We use [Prettier](https://prettier.io/) and eslint to control styleguides.
+    -  Push your branch to origin.
 
-### Documentation Styleguide
+4. Create merge request into **development** branch, add reviewers.
+5. **Thank you!**
 
-- Use [Markdown](https://daringfireball.net/projects/markdown).
-- Use [Prettier](https://prettier.io/) to foramt documents.
 
-## Additional Notes
+# What should I know before I get started?
+## Git Branches
 
-### Issue and Pull Request Labels
+The main and the most up-to-date branch of the project is `development` branch.
+Please checkout your new branch from `development` branch.
+And use `development` branch for deployment to production.
 
-This section lists the labels we use to help us track and manage issues and pull requests.
+## Design Decisions
+- We use Ruby on Rails as a framework but with some additional application design layers.
+### Layers:
+- Model
+- View
+- Controller
+- Service
+- Finder
+- Policy
 
-For now we use GitHub's default set of labels.
+#### Model
+Model should containe only data-logic.
+- Processing -> to service/interactor.
+- Complex queries -> to finders
+- Predicates -> to policy.
+
+#### View
+View should be clean as much as possible. Please, use helpers to avoid call methods with some params at template.
+
+#### Controller
+Skinny controller. Only REST. Only 7 allowed actions (index, show, new, create, edit, update, destroy). If you need additional action - extract to new sub-controller
+
+
+#### Service
+Single responsibility resource action that represents business logic.
+Only one public method allowed `.call`. Everething else - to private
+
+#### Finder
+QueryObject.
+
+
+#### Policy
+Domain predicates store. Knows answers for all questions.
+
+# How to report a bug
+
+1. Go to [issue tracker](https://github.com/pivorakmeetup/pivorak-web-app/issues/new)
+2. Add descriptive **title**
+3. Add **steps** to reproduce with screenshots
+4. Add label **bug**
+5. What **happens** and what you **expected to happen**
+6. Browser if it is UI related issue
