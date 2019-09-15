@@ -1,9 +1,11 @@
-# Contributing to pivorak WebApp
-:+1::tada: First off, thanks for taking the time to contribute! :tada::+1:
+# Contributing to PivorakWebApp
+:+1::tada: Greetings, contributor! From the #pivorak Ruby usergroup we want to say thank you for joining us on this path to community development. We appreaciate your effort, every change counts!
+ :tada::+1:
 
-The following is a set of guidelines for contributing to pivorak WebApp on GitHub. These are mostly guidelines, not rules. Use your best judgment, and feel free to propose changes to this document in a pull request.
+The following is a set of guidelines for contributing to PivorakWebApp. We've tried our best to ease this process for you, so please read it carefully. 
 
 #### Table Of Contents
+- [Code of conduct](https://pivorak.com/code-of-conduct)
 - [How to setup project](#how-to-setup-project)
     - [Option 1: Without docker](#option-1-without-docker)
     - [Option 2: With docker](#option-2-with-docker)
@@ -17,12 +19,16 @@ The following is a set of guidelines for contributing to pivorak WebApp on GitHu
 ## Option 1: Without docker
 #### Step 1: Clone the repo
 ```sh
-$ git clone git@github.com:pivorakmeetup/pivorak-web-app.git
+$ git clone https://github.com/pivorakmeetup/pivorak-web-app.git
 ```
 #### Step 2: Install dependencies
-- Install gems
+- Install ruby 2.3.1
 ```sh
 $ cd pivorak-web-app
+$ rvm install ruby-2.3.1
+```
+- Install gems
+```sh
 $ rvm use ruby-2.3.1@pivorak --create
 $ bundle
 ```
@@ -32,6 +38,10 @@ $ bundle
     - for MacOS: https://goo.gl/W8xQMJ
 
     **Notice:**  You should have PostgreSQL >= 9.4
+    To check your version
+```sh
+$ psql --version
+```
 
 ```sh
 $ cp config/database.yml.example config/database.yml
@@ -162,3 +172,5 @@ Domain predicates store. Knows answers for all questions.
 4. Add label **bug**
 5. What **happens** and what you **expected to happen**
 6. Browser if it is UI related issue
+
+Congratulations with achievement - you've made it till the end of the file! These are mostly guidelines, not rules. Use your best judgment, and feel free to propose changes to this document in a pull request.
