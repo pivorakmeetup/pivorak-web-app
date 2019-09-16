@@ -2,14 +2,13 @@
 :+1::tada: Greetings, contributor! From the #pivorak Ruby usergroup we want to say thank you for joining us on this path to community development. We appreaciate your effort, every change counts!
  :tada::+1:
 
-The following is a set of guidelines for contributing to PivorakWebApp. We've tried our best to ease this process for you, so please read it carefully. 
+The following is a set of guidelines for contributing to PivorakWebApp. We've tried our best to ease this process for you, so please read it carefully.
 
 #### Table Of Contents
 - [Code of conduct](https://pivorak.com/code-of-conduct)
 - [How to setup project](#how-to-setup-project)
     - [Option 1: Without docker](#option-1-without-docker)
     - [Option 2: With docker](#option-2-with-docker)
-- [How to deploy](#how-to-deploy)
 - [How to report a bug](#how-to-report-a-bug)
 - [What should I know before I get started?](#what-should-i-know-before-i-get-started)
     - [Git Branches](#git-branches)
@@ -89,18 +88,6 @@ and then execute
 $ docker-compose up rails
 ```
 
-<!-- TODO: Disscuss this section -->
-# Onboarding Instructions
-- Add ssh key to the server
-- Add user to the rollbar
-- Add user to the *#web-app* Pivorak Slack channel
-
-<!-- TODO: Disscuss this section -->
-
-# How to Deploy
-```sh
-$ cap production deploy
-```
 # How to contribute
 
 1. Detect which [issue](https://github.com/pivorakmeetup/pivorak-web-app/issues) you want to resolve. Write comment about this and how you supposed to do this.

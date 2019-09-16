@@ -25,7 +25,7 @@ We started in June 2015 and kept gathering for almost 4 years.
 We are proud to have 30+ speakers and Aaron Patterson, Andrzej Krzywda, Piotr Solnica, Piotr Szotkowski, Nick Sutterer, Michał Papis, Miha Rekar, Ivan Nemytchenko, José Valim,  Tobias Pfeiffer, Sroop Sunar among them.
 
 # How you can help us?
-You can help us by **[contributing](.github/CONTRIBUTING.md)** to the *pivorak-web-app*!
+You can help us by **[contributing](./CONTRIBUTING.md)** to the *pivorak-web-app*!
 
 You can *[report a bug](https://github.com/pivorakmeetup/pivorak-web-app/issues/new?labels=bug)*!
 
