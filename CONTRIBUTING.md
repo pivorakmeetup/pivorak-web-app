@@ -48,11 +48,11 @@ $ rails db:setup
 $ rails s
 ```
 
-**Notice:**  If you get an error messages during the `rails db:setup` like this:
+**Notice:**  If during the execution `rails db:setup` you get an error messages:
 ```sh
 'require': cannot load such file -- bundler (LoadError)
 ```
-then try to run `gem pristine --all` and after that `rails db:setup`.
+run `gem pristine --all` and repeat `rails db:setup`.
 
 
 ## Option 2: With docker
