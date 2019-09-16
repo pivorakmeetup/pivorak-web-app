@@ -48,6 +48,13 @@ $ rails db:setup
 $ rails s
 ```
 
+**Notice:**  If you get an error messages during the `rails db:setup` like this:
+```sh
+'require': cannot load such file -- bundler (LoadError)
+```
+then try to run `gem pristine --all` and after that `rails db:setup`.
+
+
 ## Option 2: With docker
 #### Step 1: Install [Docker](https://docs.docker.com/install/) and [Docker Compose](https://docs.docker.com/compose/install/)
 #### Step 2: Clone the repo
