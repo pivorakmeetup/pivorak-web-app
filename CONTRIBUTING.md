@@ -9,10 +9,12 @@ The following is a set of guidelines for contributing to PivorakWebApp. We've tr
 - [How to setup project](#how-to-setup-project)
     - [Option 1: Without docker](#option-1-without-docker)
     - [Option 2: With docker](#option-2-with-docker)
-- [How to report a bug](#how-to-report-a-bug)
 - [What should I know before I get started?](#what-should-i-know-before-i-get-started)
     - [Git Branches](#git-branches)
     - [Design Decisions](#design-decisions)
+- [How to report a bug](#how-to-report-a-bug)
+- [How to contribute](#how-to-contribute)
+- [How to contribute during Hacktoberfest](#how-to-contribute-during-hacktoberfest)
 
 # How to setup project
 ## Option 1: Without docker
@@ -95,28 +97,6 @@ and then execute
 $ docker-compose up rails
 ```
 
-# How to contribute
-
-1. Detect which [issue](https://github.com/pivorakmeetup/pivorak-web-app/issues) you want to resolve. Write comment about this and how you supposed to do this.
-2. Fork project *(if you don't have permissions to push)*.
-3. Prepare your solution step by step:
-    - Checkout new branch: `"#{issue_id}-#{add or fix or improve}-#{job-done-description}"`
-
-        *For example:* `77-add-payments-feature`
-
-    - **Write tests**
-    - Write code
-
-    - Compose descriptive commit message `"##{issue-id} commit message text"`
-
-        *For example:* `#77 Add payments feature :tada:` -> *you may use emoji*
-
-    -  Push your branch to origin.
-
-4. Create merge request into **development** branch, add reviewers.
-5. **Thank you!**
-
-
 # What should I know before I get started?
 ## Git Branches
 
@@ -167,4 +147,47 @@ Domain predicates store. Knows answers for all questions.
 5. What **happens** and what you **expected to happen**
 6. Browser if it is UI related issue
 
-Congratulations with achievement - you've made it till the end of the file! These are mostly guidelines, not rules. Use your best judgment, and feel free to propose changes to this document in a pull request.
+# How to contribute
+
+1. Detect which [issue](https://github.com/pivorakmeetup/pivorak-web-app/issues) you want to resolve. Write comment about this and how you supposed to do this.
+2. Fork project *(if you don't have permissions to push)*.
+3. Prepare your solution step by step:
+    - Checkout new branch: `"#{issue_id}-#{add or fix or improve}-#{job-done-description}"`
+
+        *For example:* `77-add-payments-feature`
+
+    - **Write tests**
+    - Write code
+
+    - Compose descriptive commit message `"##{issue-id} commit message text"`
+
+        *For example:* `#77 Add payments feature :tada:` -> *you may use emoji*
+
+    -  Push your branch to origin.
+
+4. Create merge request into **development** branch, add reviewers.
+5. **Thank you!**
+
+
+# How to contribute during Hacktoberfest
+
+1. Detect which [hacktoberfest issue](https://github.com/pivorakmeetup/pivorak-web-app/labels/hacktoberfest) you want to resolve. Write comment about this and how you supposed to do this.
+2. Fork project.
+3. Prepare your solution step by step:
+    - Checkout new branch: `"#{issue_id}-#{add or fix or improve}-#{job-done-description}"`
+
+        *For example:* `77-add-payments-feature`
+
+    - **Write tests**
+    - Write code
+
+    - Compose descriptive commit message `"##{issue-id} commit message text"`
+
+        *For example:* `#77 Add payments feature :tada:` -> *you may use emoji*
+
+    -  Push your branch to origin.
+
+4. Create merge request into **development** branch, add reviewers.
+5. **Thank you for joining us during the Hacktoberfest!** :tada: :tada: :tada:
+
+
