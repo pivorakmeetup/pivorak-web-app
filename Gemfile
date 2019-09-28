@@ -2,13 +2,13 @@
 
 source 'https://rubygems.org'
 
-ruby '2.3.1'
+ruby '2.6.5'
 
 #=== CORE =====================================================================
-gem 'acts-as-taggable-on', git: 'https://github.com/Fodoj/acts-as-taggable-on', ref: 'rails-5.2'
+gem 'acts-as-taggable-on', '~> 6.0'
 gem 'carrierwave', '~> 1.2'
-gem 'devise', '~> 4.6'
-gem 'friendly_id', '~> 5.1'
+gem 'devise', '~> 4.7'
+gem 'friendly_id', '~> 5.3'
 gem 'kaminari'
 gem 'omniauth-facebook', '~> 5.0'
 gem 'omniauth-github', '~> 1.3.0'
