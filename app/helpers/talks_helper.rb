@@ -17,7 +17,7 @@ module TalksHelper
 
   def talk_slides_url(talk, options = {})
     options[:target] = '_blank'
-    link_to 'watch slideshare', talk.slides_url, options if talk.slides_url.present?
+    link_to 'check slides', talk.slides_url, options if talk.slides_url.present?
   end
 
   def talk_img(talk)
