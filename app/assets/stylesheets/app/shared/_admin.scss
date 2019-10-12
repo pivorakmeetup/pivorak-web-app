@@ -1,5 +1,16 @@
-.pk-admin-area {
+.pk-admin-area-btn {
   background-color: $body-bg-color;
   border-radius: 5px;
   padding: 10px 20px;
+  @extend %btn-styles;
+  border: 2px solid rgba(#FCF7EF, .54);
+  border-radius: 20px;
+  color: rgba($link-color, .87);
+  line-height: 1.6;
+  padding: 10px 38px;
+  cursor: pointer;
+  &:hover, &:active, &:focus {
+    outline: none;
+    box-shadow: none;
+  }
 }

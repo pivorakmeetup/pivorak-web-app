@@ -38,7 +38,7 @@ module ApplicationHelper
   def admin_area
     return unless admin?
 
-    content_tag(:div, class: 'pk-admin-area') do
+    content_tag(:div, class: 'pk-admin-area-btn') do
       yield
     end
   end
