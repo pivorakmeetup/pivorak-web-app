@@ -27,7 +27,7 @@ RSpec.describe 'Events READ' do
 
   context 'paginate more than 10 records on the page' do
     before do
-      11.times { FactoryBot.create(:event) }
+      FactoryBot.create_list(:event, 11)
       visit '/admin/events'
     end
 

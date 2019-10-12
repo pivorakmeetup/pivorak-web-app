@@ -28,6 +28,7 @@ RSpec.describe 'Profile UPDATE' do
           expect(page).to have_content I18n.t('members.failure')
         end
       end
+
       context 'when updating password' do
         it 'validates errors' do
           fill_in 'Password', with: '123'
@@ -59,7 +60,7 @@ RSpec.describe 'Profile UPDATE' do
           expect(user.reload.email).to eq(email)
           expect(user.reload.first_name).to eq(first_name)
           expect(user.reload.last_name).to eq(last_name)
-          expect(user.reload.slug).to_not eq(old_slug)
+          expect(user.reload.slug).not_to eq(old_slug)
         end
       end
 

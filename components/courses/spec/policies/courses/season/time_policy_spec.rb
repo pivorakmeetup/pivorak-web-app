@@ -9,7 +9,7 @@ describe Courses::Season::TimePolicy do
         season = build(:season)
         policy = described_class.new(season)
 
-        expect(policy.allowed?).to be_truthy
+        expect(policy).to be_allowed
       end
     end
 
@@ -18,7 +18,7 @@ describe Courses::Season::TimePolicy do
         season = build(:season, start_at: nil)
         policy = described_class.new(season)
 
-        expect(policy.allowed?).to be_truthy
+        expect(policy).to be_allowed
       end
     end
 
@@ -27,7 +27,7 @@ describe Courses::Season::TimePolicy do
         season = build(:season, finish_at: nil)
         policy = described_class.new(season)
 
-        expect(policy.allowed?).to be_truthy
+        expect(policy).to be_allowed
       end
     end
 
@@ -36,7 +36,7 @@ describe Courses::Season::TimePolicy do
         season = build(:season, finish_at: (Time.now - 100.days))
         policy = described_class.new(season)
 
-        expect(policy.allowed?).to be_falsey
+        expect(policy).not_to be_allowed
       end
     end
   end

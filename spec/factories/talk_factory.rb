@@ -4,8 +4,8 @@ FactoryBot.define do
   factory :talk do
     title       { Faker::Lorem.word }
     description { Faker::Lorem.paragraph }
-    video_url   { Faker::Internet.url('youtube.com') }
-    slides_url  { Faker::Internet.url('slideshare.net') }
+    video_url   { Faker::Internet.url(host: 'youtube.com') }
+    slides_url  { Faker::Internet.url(host: 'slideshare.net') }
     published   { true }
   end
 

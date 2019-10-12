@@ -5,7 +5,7 @@ require 'rails_helper'
 describe Courses::Season::SendTestTaskPolicy do
   let(:season)  { create(:season) }
   let(:student) { create(:student) }
-  let(:policy)  { Courses::Season::SendTestTaskPolicy.new(season, student) }
+  let(:policy)  { described_class.new(season, student) }
 
   describe '#allowed?' do
     context "season has status registration, student is enrolled & student didn't send a test task yet" do

@@ -2,19 +2,17 @@
 
 class Talk
   class FetchExternalVideoData < ApplicationService
-    VIDEO_ID_REGEX = %r{(?:.be\/|\/watch\?v=|\/(?=p\/))([\w\/\-]+)}x
+    VIDEO_ID_REGEX = %r{(?:.be\/|\/watch\?v=|\/(?=p\/))([\w\/\-]+)}x.freeze
 
     def self.fetch_all! # rubocop:disable Metrics/AbcSize
       logger = Logger.new(Rails.root.join('log', 'fetch_external_video_data.log'))
 
       logger.info "==================== #{Time.now} ===================="
       Talk.find_each do |talk|
-        begin
-          new(talk).call
-          logger.info "Talk #{talk.id} was successfully fetched! #{talk.extra_video_data}"
-        rescue StandardError => ex
-          logger.error "Cannot fetch talk #{talk.id} data: #{ex.class}: #{ex.message}"
-        end
+        new(talk).call
+        logger.info "Talk #{talk.id} was successfully fetched! #{talk.extra_video_data}"
+      rescue StandardError => e
+        logger.error "Cannot fetch talk #{talk.id} data: #{e.class}: #{e.message}"
       end
     end
 

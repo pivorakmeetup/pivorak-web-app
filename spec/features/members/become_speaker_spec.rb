@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 RSpec.describe 'Become a speaker features' do
+  let(:text) { Faker::Lorem.paragraph }
+  let(:email) { 'fake@mail.com' }
+  let(:name) { 'fake name' }
+
   context 'when user is logged in' do
     let(:user) { create(:user) }
 
@@ -31,10 +35,6 @@ RSpec.describe 'Become a speaker features' do
       expect(find_field('email').value).to eq(nil)
     end
   end
-
-  let(:name) { 'fake name' }
-  let(:email) { 'fake@mail.com' }
-  let(:text) { Faker::Lorem.paragraph }
 
   context 'when params are valid' do
     before do

@@ -34,7 +34,7 @@ class Event < ApplicationRecord
   scope :ordered_by_start, -> { order(:started_at) }
 
   validates :title, :limit_total, :limit_verified, presence: true
-  validates_with LimitsValidator
+  validate :total_less_verified
 
   def self.upcoming
     where(published: true).where.not(status: [PASSED]).ordered_by_start.last
@@ -50,5 +50,13 @@ class Event < ApplicationRecord
 
   def limit_newbies
     limit_total - limit_verified
+  end
+
+  def total_less_verified
+    return unless limit_total && limit_verified
+
+    return if limit_total >= limit_verified
+
+    errors.add :limit_verified, I18n.t('errors.total_less_verified')
   end
 end

@@ -12,7 +12,7 @@ describe NotifyMailer do
     let(:mail_subject) { 'I want to be a speaker' }
 
     let(:mail) do
-      NotifyMailer.become_speaker(
+      described_class.become_speaker(
         name:  name,
         email: mail_from,
         text:  mail_text

@@ -4,6 +4,7 @@ require 'rails_helper'
 
 describe Event::SendConfirmations do
   subject(:service) { described_class.new(event) }
+
   let(:event) { create(:event) }
 
   describe '#call' do
@@ -11,6 +12,7 @@ describe Event::SendConfirmations do
 
     let!(:confirmed_request) { create(:visit_request, :confirmed, event: event) }
     let(:last_job) { active_jobs.last }
+
     before do
       create(:visit_request, :refused, event: event)
       create(:visit_request, :approved)

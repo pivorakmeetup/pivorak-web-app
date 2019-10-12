@@ -3,7 +3,7 @@
 FactoryBot.define do
   factory :omniauth_params, class: Hash do
     provider { Devise.omniauth_providers.sample }
-    uid      { Faker::Number.number(16) }
+    uid      { SecureRandom.uuid }
     info do
       {
         email:      Faker::Internet.email,
@@ -21,7 +21,7 @@ FactoryBot.define do
 
   factory :twitter_params, class: Hash do
     provider { 'twitter' }
-    uid      { Faker::Number.number(16) }
+    uid      { SecureRandom.uuid }
     info do
       {
         email: Faker::Internet.email,
@@ -34,7 +34,7 @@ FactoryBot.define do
 
   factory :facebook_params, class: Hash do
     provider { 'facebook' }
-    uid      { Faker::Number.number(16) }
+    uid      { SecureRandom.uuid }
     info do
       {
         email: Faker::Internet.email,
@@ -47,7 +47,7 @@ FactoryBot.define do
 
   factory :github_params, class: Hash do
     provider { 'github' }
-    uid      { Faker::Number.number(16) }
+    uid      { SecureRandom.uuid }
     info do
       {
         email: Faker::Internet.email,
