@@ -11,7 +11,7 @@ RSpec.describe 'Visit Requests CANCEL' do
     end
 
     describe 'event page' do
-      it { expect(page).to_not have_link 'Attend' }
+      it { expect(page).not_to have_link 'Attend' }
       it { expect(page).to have_content 'Please log in or register and then enroll in this event to attend' }
     end
   end
@@ -26,7 +26,7 @@ RSpec.describe 'Visit Requests CANCEL' do
       before { click_link 'Cancel attendance' }
 
       it { expect(page).to have_current_path('/') }
-      it { expect(page).to_not have_link 'Attend' }
+      it { expect(page).not_to have_link 'Attend' }
 
       it 'changes visit request status to canceled' do
         expect(visit_request.reload.status).to eq(VisitRequest::CANCELED.to_s)

@@ -12,6 +12,7 @@ RSpec.describe 'Lectures LIST' do
 
   context 'open existing page' do
     before { visit '/admin/courses/seasons/test-season/lectures/' }
+
     it { expect(page).to have_content(lecture.title) }
     it { expect(page).to have_content(another_lecture.title) }
   end

@@ -3,7 +3,7 @@
 RSpec.describe Goal::Donations::Persist do
   subject(:context) { described_class.call(params) }
 
-  let(:amount)      { Faker::Number.decimal(3, 2) }
+  let(:amount)      { Faker::Number.decimal(l_digits: 3, r_digits: 2) }
   let(:goal)        { create(:goal) }
   let(:user)        { create(:user) }
 
@@ -20,6 +20,7 @@ RSpec.describe Goal::Donations::Persist do
         expect(context.donation.goal).to eq goal
       end
     end
+
     context 'when user is anonymous' do
       let(:params) { { goal: goal, amount: amount } }
 

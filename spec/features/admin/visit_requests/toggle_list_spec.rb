@@ -18,13 +18,13 @@ RSpec.describe 'Visit Requests TOGGLE LIST' do
       visit_page.call
 
       expect(page).to have_link 'Main', count: 1
-      expect(page).to_not have_link 'Waiting', count: 1
+      expect(page).not_to have_link 'Waiting', count: 1
 
       click_link 'Main'
       visit_page.call
 
       expect(page).to have_link 'Waiting', count: 1
-      expect(page).to_not have_link 'Main', count: 1
+      expect(page).not_to have_link 'Main', count: 1
     end
   end
 end

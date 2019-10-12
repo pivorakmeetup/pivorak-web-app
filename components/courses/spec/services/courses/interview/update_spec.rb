@@ -10,14 +10,14 @@ describe Courses::Interview::Update do
 
   describe '#call' do
     it 'updates interview' do
-      Courses::Interview::Update.call(interview, student)
+      described_class.call(interview, student)
 
       expect(interview.student_id).to eq(student.id)
       expect(interview.status).to     eq('pending')
     end
 
     it 'changes status to interviewing for student' do
-      Courses::Interview::Update.call(interview, student)
+      described_class.call(interview, student)
 
       expect(interview.student.status).to eq('interviewing')
     end

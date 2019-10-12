@@ -9,7 +9,7 @@ describe Courses::Lecture::TimePolicy do
   describe '#allowed?' do
     context 'start time is before finish time' do
       it 'allows to pass policy' do
-        expect(policy.allowed?).to be_truthy
+        expect(policy).to be_allowed
       end
     end
 
@@ -17,7 +17,7 @@ describe Courses::Lecture::TimePolicy do
       it 'forbids to pass policy' do
         lecture.finished_at = Time.now - 100.days
 
-        expect(policy.allowed?).to be_falsey
+        expect(policy).not_to be_allowed
       end
     end
   end

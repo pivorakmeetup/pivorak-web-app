@@ -4,15 +4,15 @@ RSpec.describe ::Searchable::Configurable do
   let(:subject) { Class.new }
   let(:definition) { proc {} }
 
+  before do
+    subject.include(described_class)
+  end
+
   describe '.included' do
     it 'extends target class' do
       expect(subject).to receive(:extend).with(described_class::ClassMethods)
       subject.include(described_class)
     end
-  end
-
-  before do
-    subject.include(described_class)
   end
 
   it 'makes .define_searchable available' do

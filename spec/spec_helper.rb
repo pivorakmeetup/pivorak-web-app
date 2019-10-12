@@ -26,7 +26,7 @@ require 'rspec/collection_matchers'
 require 'rspec/its'
 require 'rspec/active_model/mocks'
 
-Dir[Rails.root.join('spec/support/*.rb')].each { |f| require f }
+Dir[Rails.root.join('spec/support/*.rb')].sort.each { |f| require f }
 
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
@@ -62,14 +62,14 @@ RSpec.configure do |config|
     DatabaseCleaner.clean_with(:truncation)
   end
 
-  config.around(:each) do |example|
+  config.around do |example|
     DatabaseCleaner.cleaning do
       example.run
     end
   end
 
   include ActiveJob::TestHelper
-  config.before(:each) do
+  config.before do
     # Clears out the jobs for tests using the fake testing
     clear_enqueued_jobs
   end

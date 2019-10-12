@@ -24,7 +24,7 @@ RSpec.describe 'Agenda page' do
 
       visit '/agenda'
 
-      expect(page).to have_http_status(404)
+      expect(page).to have_http_status(:not_found)
     end
   end
 end

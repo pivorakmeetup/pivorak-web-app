@@ -6,10 +6,10 @@ module Admin
       link_to 'Preview', email_template_preview_path(email_template), target: '_blank'
     end
 
-    # rubocop:disable Metrics/LineLength
+    # rubocop:disable Layout/LineLength
     def email_template_preview_path(email_template)
       "/emails/en/#{email_template.title.split('#')[0].underscore}_preview-#{email_template.title.split('#')[1].underscore}"
     end
-    # rubocop:enable Metrics/LineLength
+    # rubocop:enable Layout/LineLength
   end
 end

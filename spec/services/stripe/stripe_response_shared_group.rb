@@ -4,6 +4,7 @@ require 'stripe_mock'
 
 RSpec.shared_examples 'Stripe response' do |action_hook|
   before  { StripeMock.start }
+
   after   { StripeMock.stop }
 
   context 'when provided with invalid params' do

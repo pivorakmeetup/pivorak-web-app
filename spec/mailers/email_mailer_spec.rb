@@ -9,7 +9,7 @@ describe EmailMailer do
   let(:email_id) { email.id }
 
   describe 'custom' do
-    let(:mail) { EmailMailer.custom(email_id, user_id) }
+    let(:mail) { described_class.custom(email_id, user_id) }
 
     it 'renders the headers' do
       expect(mail.subject).to eq(email.subject)
