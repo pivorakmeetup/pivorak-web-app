@@ -11,6 +11,7 @@ RSpec.describe 'Mentors LIST' do
 
   context 'open existing page' do
     before { visit '/admin/courses/seasons/test-season/mentors/' }
+
     it { expect(page).to have_content(user.full_name) }
     it { expect(page).to have_content(another_user.full_name) }
   end

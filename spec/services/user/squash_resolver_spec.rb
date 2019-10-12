@@ -3,6 +3,8 @@
 require 'rails_helper'
 
 describe ::User::SquashResolver do
+  subject { described_class }
+
   let(:user_a) { FactoryBot.create(:user) }
   let(:user_b) { FactoryBot.create(:user) }
 
@@ -19,8 +21,6 @@ describe ::User::SquashResolver do
   let(:squash_params) do
     relations_params.merge(squash: true, conditions: %i[event_id])
   end
-
-  subject { described_class }
 
   describe '.call' do
     let!(:event_a) { FactoryBot.create(:event) }

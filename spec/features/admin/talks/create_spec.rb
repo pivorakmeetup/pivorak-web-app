@@ -2,6 +2,7 @@
 
 RSpec.describe 'Talks CREATE' do
   let(:admin) { create(:user, :admin) }
+
   before do
     assume_admin_logged_in(admin)
     visit '/admin/talks/new'

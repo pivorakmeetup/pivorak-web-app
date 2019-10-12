@@ -16,7 +16,7 @@ RSpec.describe 'Pages CREATE' do
       expect_an_error page_title: :blank
       expect_an_error page_url:   :blank
       expect_an_error page_body:  :blank
-      expect(page).to_not have_link 'Preview'
+      expect(page).not_to have_link 'Preview'
     end
   end
 

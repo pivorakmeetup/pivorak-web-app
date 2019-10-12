@@ -22,7 +22,7 @@ RSpec.describe 'Visit Request INVITE' do
 
         click_user_invite
 
-        expect(VisitRequest.exists?(user_id: user.id, event_id: event.id)).to be_truthy
+        expect(VisitRequest).to be_exists(user_id: user.id, event_id: event.id)
       end
 
       it 'sends email to user' do
@@ -43,7 +43,7 @@ RSpec.describe 'Visit Request INVITE' do
         click_user_invite
 
         user = User.find_by!(email: entered_email_data)
-        expect(VisitRequest.exists?(user_id: user.id, event_id: event.id)).to be_truthy
+        expect(VisitRequest).to be_exists(user_id: user.id, event_id: event.id)
       end
     end
 
@@ -54,7 +54,7 @@ RSpec.describe 'Visit Request INVITE' do
         click_user_invite
 
         user = User.find_by!(email: entered_email_data)
-        expect(VisitRequest.exists?(user_id: user.id, event_id: event.id)).to be_truthy
+        expect(VisitRequest).to be_exists(user_id: user.id, event_id: event.id)
       end
     end
   end

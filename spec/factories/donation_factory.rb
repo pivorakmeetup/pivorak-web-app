@@ -2,8 +2,8 @@
 
 FactoryBot.define do
   factory :donation do
-    amount     { Faker::Number.decimal(3, 2) }
-    payment_id { Faker::Number.number(6) }
+    amount     { Faker::Number.decimal(l_digits: 3, r_digits: 2) }
+    payment_id { Faker::Number.number(digits: 6) }
 
     trait :assigned do
       goal

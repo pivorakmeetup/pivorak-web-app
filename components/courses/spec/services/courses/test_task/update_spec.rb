@@ -9,13 +9,13 @@ describe Courses::TestTask::Update do
 
   describe '#call' do
     it 'updates mentor_id' do
-      Courses::TestTask::Update.call(test_task, mentor)
+      described_class.call(test_task, mentor)
 
       expect(test_task.mentor_id).to eq(mentor.id)
     end
 
     it 'changes status to test_task_done for student' do
-      Courses::TestTask::Update.call(test_task, mentor)
+      described_class.call(test_task, mentor)
 
       expect(test_task.student.status).to eq('test_task_done')
     end

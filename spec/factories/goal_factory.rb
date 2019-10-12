@@ -4,7 +4,7 @@ FactoryBot.define do
   factory :goal do
     title       { Faker::Lorem.word }
     description { Faker::Lorem.paragraph }
-    amount      { Faker::Number.decimal(3, 2) }
+    amount      { Faker::Number.decimal(l_digits: 3, r_digits: 2) }
   end
 
   trait :with_donations do

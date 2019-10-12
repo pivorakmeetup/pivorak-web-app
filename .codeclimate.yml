@@ -3,7 +3,7 @@ engines:
   brakeman:
     enabled: false
   bundler-audit:
-    enabled: false
+    enabled: true
   csslint:
     enabled: true
   duplication:
@@ -19,7 +19,7 @@ engines:
   fixme:
     enabled: false
   rubocop:
-    enabled: true
+    enabled: false
 ratings:
   paths:
   - Gemfile.lock

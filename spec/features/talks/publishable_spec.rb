@@ -9,6 +9,6 @@ RSpec.describe 'Talk publishable' do
 
   it 'shows only published talks' do
     expect(page).to     have_content 'Published Talk'
-    expect(page).to_not have_content 'Unpublished Talk'
+    expect(page).not_to have_content 'Unpublished Talk'
   end
 end

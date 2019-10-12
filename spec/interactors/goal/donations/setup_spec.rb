@@ -42,6 +42,7 @@ RSpec.describe Goal::Donations::Setup do
           expect(context.description).to eq goal.title
         end
       end
+
       context 'when user is anonymous' do
         let(:params) { { goal: goal, user: user, anonymous: true } }
 

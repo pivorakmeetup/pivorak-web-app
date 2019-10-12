@@ -12,6 +12,6 @@ RSpec.describe Talk do
   end
 
   it 'applies a scope to talk collections by created_date' do
-    expect(Talk.all.sorted_by_date.to_sql).to eq Talk.all.order(created_at: :desc).to_sql
+    expect(described_class.all.sorted_by_date.to_sql).to eq described_class.all.order(created_at: :desc).to_sql
   end
 end

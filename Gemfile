@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-ruby '2.3.1'
+ruby '2.6.5'
 
 #=== CORE =====================================================================
 gem 'acts-as-taggable-on', git: 'https://github.com/Fodoj/acts-as-taggable-on', ref: 'rails-5.2'
@@ -65,6 +65,7 @@ gem 'redcarpet', '~> 3.4.0'
 gem 'sitemap_generator', '~> 6.0.2'
 gem 'stripe', '~> 1.5'
 gem 'yt', '~> 0.32.2'
+gem 'factory_bot_rails'
 
 #=== PDF GENERATION ===========================================================
 gem 'prawn'
@@ -95,15 +96,15 @@ group :development, :test do
   gem 'pry-rails'
   gem 'rspec'
   gem 'rspec-rails'
-  gem 'rubocop', '~> 0.59.2', require: false
+  gem 'rubocop', require: false
   gem 'rubocop-rspec'
+  gem 'rubocop-faker'
 end
 
 group :test do
   gem 'capybara'
   gem 'codecov', require: false
   gem 'database_cleaner'
-  gem 'factory_bot_rails'
   gem 'launchy'
   gem 'pdf-inspector', require: 'pdf/inspector'
   gem 'rspec-activemodel-mocks'

@@ -3,11 +3,11 @@
 require 'rails_helper'
 
 describe VisitRequest::Cancel do
-  let(:visit_request) { create(:visit_request) }
-
   subject do
     described_class.new(visit_request)
   end
+
+  let(:visit_request) { create(:visit_request) }
 
   describe '#call' do
     it 'sets canceled status' do

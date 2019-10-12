@@ -13,7 +13,7 @@ describe Courses::Interview::RatePolicy do
         create(:interview,
                mentor_id: mentor.id, status: :completed, student_id: student.id, video_url: 'some url')
       end
-      let(:policy) { Courses::Interview::RatePolicy.new(interview) }
+      let(:policy) { described_class.new(interview) }
 
       it 'allows to pass policy' do
         expect(policy).to be_allowed
@@ -24,7 +24,7 @@ describe Courses::Interview::RatePolicy do
   describe 'not allowed?' do
     context 'interview has no student' do
       let(:interview) { create(:interview, mentor_id: mentor.id, status: :completed, video_url: 'some url') }
-      let(:policy) { Courses::Interview::RatePolicy.new(interview) }
+      let(:policy) { described_class.new(interview) }
 
       it 'allows to pass policy' do
         expect(policy).not_to be_allowed
@@ -33,7 +33,7 @@ describe Courses::Interview::RatePolicy do
 
     context 'interview has no video url' do
       let(:interview) { create(:interview, mentor_id: mentor.id, status: :completed, student_id: student.id) }
-      let(:policy) { Courses::Interview::RatePolicy.new(interview) }
+      let(:policy) { described_class.new(interview) }
 
       it 'allows to pass policy' do
         expect(policy).not_to be_allowed
@@ -45,7 +45,7 @@ describe Courses::Interview::RatePolicy do
         create(:interview,
                mentor_id: mentor.id, status: :pending, student_id: student.id, video_url: 'some url')
       end
-      let(:policy) { Courses::Interview::RatePolicy.new(interview) }
+      let(:policy) { described_class.new(interview) }
 
       it 'allows to pass policy' do
         expect(policy).not_to be_allowed
