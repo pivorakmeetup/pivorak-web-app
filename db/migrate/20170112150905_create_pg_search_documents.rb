@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CreatePgSearchDocuments < ActiveRecord::Migration
+class CreatePgSearchDocuments < ActiveRecord::Migration[5.0]
   def self.up
     say_with_time('Creating table for pg_search multisearch') do
       create_table :pg_search_documents do |t|
