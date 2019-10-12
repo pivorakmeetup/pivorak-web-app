@@ -1,3 +1,4 @@
+
 # #pivorak WebApp [![Build Status](https://travis-ci.org/pivorakmeetup/pivorak-web-app.svg?branch=development)](https://travis-ci.org/pivorakmeetup/pivorak-web-app) [![codecov](https://codecov.io/gh/pivorakmeetup/pivorak-web-app/branch/development/graph/badge.svg)](https://codecov.io/gh/pivorakmeetup/pivorak-web-app) [![Code Climate](https://codeclimate.com/github/pivorakmeetup/pivorak-web-app/badges/gpa.svg)](https://codeclimate.com/github/pivorakmeetup/pivorak-web-app) [![Issue Count](https://codeclimate.com/github/pivorakmeetup/pivorak-web-app/badges/issue_count.svg)](https://codeclimate.com/github/pivorakmeetup/pivorak-web-app)
 
 ![](.github/photo.jpg)
@@ -25,7 +26,7 @@ We started in June 2015 and kept gathering for almost 4 years.
 We are proud to have 30+ speakers and Aaron Patterson, Andrzej Krzywda, Piotr Solnica, Piotr Szotkowski, Nick Sutterer, Michał Papis, Miha Rekar, Ivan Nemytchenko, José Valim,  Tobias Pfeiffer, Sroop Sunar among them.
 
 # How you can help us?
-You can help us by **[contributing](./CONTRIBUTING.md)** to the *pivorak-web-app*!
+You can help us by **[CONTRIBUTING](./CONTRIBUTING.md)** to the *pivorak-web-app*!
 
 You can *[report a bug](https://github.com/pivorakmeetup/pivorak-web-app/issues/new?labels=bug)*!
 
