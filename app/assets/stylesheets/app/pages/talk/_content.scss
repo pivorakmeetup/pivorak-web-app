@@ -42,9 +42,13 @@ $pk-talk-content-space: 32px;
   }
 }
 
-#{$namespace}__link {
+#{$namespace}__slides-link.pk-btn {
+  font-weight: bold;
+  border: none;
+  padding: 10px 20px;
+
   &:hover, &:active, &:focus {
-    color: #50B27E;
+    text-decoration: none;
   }
 }
 
