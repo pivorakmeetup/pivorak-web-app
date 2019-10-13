@@ -571,7 +571,6 @@ GEM
     thor (0.20.3)
     thread_safe (0.3.6)
     tilt (2.0.9)
-    timecop (0.9.1)
     ttfunk (1.5.1)
     turbolinks (5.2.0)
       turbolinks-source (~> 5.2)
@@ -697,7 +696,6 @@ DEPENDENCIES
   spring-watcher-listen
   stripe (~> 1.5)
   stripe-ruby-mock (~> 2.3.1)
-  timecop
   turbolinks (~> 5.2)
   tzinfo-data
   uglifier (~> 4.1.19)

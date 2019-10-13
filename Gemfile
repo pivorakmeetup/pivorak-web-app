@@ -111,6 +111,5 @@ group :test do
   gem 'shoulda-matchers'
   gem 'simplecov', require: false
   gem 'stripe-ruby-mock', '~> 2.3.1', require: 'stripe_mock'
-  gem 'timecop'
   gem 'webmock'
 end
