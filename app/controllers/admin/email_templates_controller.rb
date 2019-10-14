@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Admin
   class EmailTemplatesController < BaseController
     helper_method :email_template, :email_templates

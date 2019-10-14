@@ -1,16 +1,18 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe Courses::Season::ShowTabPolicy do
   describe '#allowed?' do
-    let(:allowed_for_planned)        { ['mentors', 'questions'] }
-    let(:forbidden_for_planned)      { ['students', 'test_task', 'interviews', 'lectures', 'journal'] }
-    let(:allowed_for_registration)   { ['mentors', 'questions', 'students', 'test_task'] }
-    let(:forbidden_for_registration) { ['interviews', 'lectures', 'journal'] }
-    let(:allowed_for_selection)      { ['mentors', 'students', 'test_task', 'interviews'] }
-    let(:forbidden_for_selection)    { ['questions', 'lectures', 'journal'] }
-    let(:allowed_for_live)           { ['mentors', 'students', 'lectures', 'journal'] }
-    let(:forbidden_for_live)         { ['test_task', 'interviews', 'questions'] }
-    let(:allowed_for_passed)         { ['mentors', 'students', 'lectures', 'journal', 'test_task', 'interviews'] }
+    let(:allowed_for_planned)        { %w[mentors questions] }
+    let(:forbidden_for_planned)      { %w[students test_task interviews lectures journal] }
+    let(:allowed_for_registration)   { %w[mentors questions students test_task] }
+    let(:forbidden_for_registration) { %w[interviews lectures journal] }
+    let(:allowed_for_selection)      { %w[mentors students test_task interviews] }
+    let(:forbidden_for_selection)    { %w[questions lectures journal] }
+    let(:allowed_for_live)           { %w[mentors students lectures journal] }
+    let(:forbidden_for_live)         { %w[test_task interviews questions] }
+    let(:allowed_for_passed)         { %w[mentors students lectures journal test_task interviews] }
     let(:forbidden_for_passed)       { ['questions'] }
 
     describe 'status: planned' do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Courses
   module Journal
     class StudentMarkForLecture < ApplicationFinder
@@ -19,11 +21,7 @@ module Courses
       end
 
       def mark
-        if progresses
-          progresses.homework_mark
-        else
-          nil
-        end
+        progresses&.homework_mark
       end
     end
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Homework CREATE' do
@@ -12,14 +14,14 @@ RSpec.describe 'Homework CREATE' do
   before { visit '/courses/seasons/test-season/homeworks/new' }
 
   describe 'invalid input' do
-   context 'blank git_url' do
-     it 'validates errors' do
-       fill_in 'Git url', with: ''
-       click_button 'Create Homework'
+    context 'blank git_url' do
+      it 'validates errors' do
+        fill_in 'Git url', with: ''
+        click_button 'Submit'
 
-       expect_an_error homework_git_url:  :blank
-     end
-   end
+        expect_an_error homework_git_url: :blank
+      end
+    end
   end
 
   describe 'valid input' do
@@ -27,7 +29,7 @@ RSpec.describe 'Homework CREATE' do
       fill_in 'Git url', with: 'https://github.com/test_student/homework_test'
       select lecture.title, from: 'homework[lecture_id]'
 
-      expect { click_button 'Create Homework' }.to change{ ::Courses::Homework.count }.by(1)
+      expect { click_button 'Submit' }.to change { ::Courses::Homework.count }.by(1)
     end
   end
 end

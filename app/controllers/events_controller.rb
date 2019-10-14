@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class EventsController < ApplicationController
   disabled_feature_until '1.3'
 
@@ -14,11 +16,11 @@ class EventsController < ApplicationController
   end
 
   def events
-    @events ||= Event.display.published
+    @events ||= Event.visible.published
   end
 
   def talks
-    @talk ||= event.talks.includes(:speaker)
+    @talks ||= event.talks.includes(:speaker)
   end
 
   def visit_request

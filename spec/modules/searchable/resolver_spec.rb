@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 RSpec.describe Searchable::Resolver do
   let(:target)     { User }
   let(:subject)    { described_class.new(target: target) }
-  let(:config)     { double() }
-  let(:definition) { Proc.new { pg_search_scope :by_name, against: [:first_name] } }
+  let(:config)     { double }
+  let(:definition) { proc { pg_search_scope :by_name, against: [:first_name] } }
 
   before do
     allow(subject).to receive(:configuration) { config }

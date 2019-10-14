@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe Courses::Interview::RatePolicy do
@@ -7,7 +9,10 @@ describe Courses::Interview::RatePolicy do
 
   describe '#allowed?' do
     context 'has student, video url & is completed' do
-      let(:interview) { create(:interview, mentor_id: mentor.id, status: :completed, student_id: student.id, video_url: 'some url') }
+      let(:interview) do
+        create(:interview,
+               mentor_id: mentor.id, status: :completed, student_id: student.id, video_url: 'some url')
+      end
       let(:policy) { Courses::Interview::RatePolicy.new(interview) }
 
       it 'allows to pass policy' do
@@ -36,7 +41,10 @@ describe Courses::Interview::RatePolicy do
     end
 
     context 'interview is not completed' do
-      let(:interview) { create(:interview, mentor_id: mentor.id, status: :pending, student_id: student.id, video_url: 'some url') }
+      let(:interview) do
+        create(:interview,
+               mentor_id: mentor.id, status: :pending, student_id: student.id, video_url: 'some url')
+      end
       let(:policy) { Courses::Interview::RatePolicy.new(interview) }
 
       it 'allows to pass policy' do

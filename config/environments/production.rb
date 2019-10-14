@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -37,7 +39,7 @@ Rails.application.configure do
   # Mount Action Cable outside main process or domain
   # config.action_cable.mount_path = nil
   config.action_cable.url = 'wss://pivorak.com/cable'
-  config.action_cable.allowed_request_origins = [ 'https://pivorak.com' ]
+  config.action_cable.allowed_request_origins = ['https://pivorak.com']
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
@@ -47,7 +49,7 @@ Rails.application.configure do
   config.log_level = :debug
 
   # Prepend all log lines with the following tags.
-  config.log_tags = [ :request_id ]
+  config.log_tags = [:request_id]
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
@@ -75,7 +77,7 @@ Rails.application.configure do
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
-  if ENV["RAILS_LOG_TO_STDOUT"].present?
+  if ENV['RAILS_LOG_TO_STDOUT'].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
     config.logger = ActiveSupport::TaggedLogging.new(logger)
@@ -86,24 +88,24 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :authentication => :plain,
-    :address => "smtp.mailgun.org",
-    :port => 587,
-    :domain => ENV['MAILGUN_DOMAIN'],
-    :user_name => ENV['MAILGUN_USER_NAME'],
-    :password => ENV['MAILGUN_PASSWORD']
+    authentication: :plain,
+    address:        'smtp.mailgun.org',
+    port:           587,
+    domain:         ENV['MAILGUN_DOMAIN'],
+    user_name:      ENV['MAILGUN_USER_NAME'],
+    password:       ENV['MAILGUN_PASSWORD']
   }
-
 
   config.action_mailer.preview_path ||= defined?(Rails.root) ? "#{Rails.root}/spec/mailer_previews" : nil
   config.autoload_paths += [config.action_mailer.preview_path]
-  class ::Rails::MailersController
-    before_action :authenticate_user!
-    def local_request?
-      true
+  module Rails
+    class MailersController
+      before_action :authenticate_user!
+      def local_request?
+        true
+      end
     end
   end
 
-  config.action_mailer.default_url_options = { :host => 'pivorak.com', :protocol => "https" }
-
+  config.action_mailer.default_url_options = { host: 'pivorak.com', protocol: 'https' }
 end

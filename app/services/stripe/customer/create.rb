@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Stripe
   class Customer
     class Create < ::ApplicationService
@@ -7,7 +9,7 @@ module Stripe
       end
 
       def call
-        @customer ||= Stripe::Customer.create(customer_params)
+        Stripe::Customer.create(customer_params)
       end
 
       private
@@ -16,8 +18,8 @@ module Stripe
 
       def customer_params
         {
-          email:  email,
-          card:   card
+          email: email,
+          card:  card
         }
       end
     end

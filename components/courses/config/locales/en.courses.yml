@@ -56,6 +56,7 @@ en:
       status: Status
       register: Register
       send_test_task: Submit Test Task
+      update_test_task: Update Test Task
       send_homework: Send Homework
       cancel: Cancel attendance
 
@@ -110,10 +111,20 @@ en:
     test_tasks:
       plural: Test Tasks
       full_name: Full Name
-      git_url: Git URL
-      show_url: Show URL
+      git_url: Git
+      show_url: Showcase
       comment: Comment
-      approved: Approved?
+      notes: Notes
+      notes_placeholder: Add your note about this test task
+      status:
+        singular: Status
+        submited: Submited
+        on_review: On Review
+        approved: Approved
+        declined: Declined
+      take_on_review: Take on review
+      take_off_review: Take off review
+      by: 'by %{name}'
       approve: Approve
       form:
         git_url: Please, push your code to github and put the link below (the github repository MUST not contain "ATM" or "Pivorak" words)
@@ -165,6 +176,9 @@ en:
         create:
           success: Successfully sent!
           fail: You have just submitted test task!
+          error: Please, fill required fields
+        update:
+          success: Successfully update
           error: Please, fill required fields
 
       seasons:

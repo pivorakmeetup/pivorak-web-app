@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 module Searchable
   module Configuration
     module Venue
       include Configurable
       include SearchOptions
 
-      FIELDS = %i(name address description)
+      FIELDS = %i[name address description].freeze
 
       define_searchable do
         multisearchable          against: FIELDS

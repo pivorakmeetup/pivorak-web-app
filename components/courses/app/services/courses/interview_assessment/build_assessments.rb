@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Courses
   class InterviewAssessment < ApplicationRecord
     class BuildAssessments < ApplicationService

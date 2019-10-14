@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :searchable do
   desc 'reindex models that include searchable module for multisearch purposes'
   task reindex: :environment do

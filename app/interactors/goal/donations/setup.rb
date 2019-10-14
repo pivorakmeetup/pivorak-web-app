@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Goal < ApplicationRecord
   module Donations
     class Setup
@@ -19,6 +21,7 @@ class Goal < ApplicationRecord
 
       def assign_email!
         return context.delete_field(:user) if anonymous
+
         context.email = user&.email
       end
 

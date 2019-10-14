@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Event < ApplicationRecord
   include ::Searchable
   include Publishable
@@ -20,7 +22,7 @@ class Event < ApplicationRecord
   has_many :talks
   has_many :visit_requests
 
-  %i(approved pending final confirmed used).each do |scope_name|
+  %i[approved pending final confirmed used].each do |scope_name|
     has_many :"#{scope_name}_visit_requests", -> { send(scope_name) }, class_name: 'VisitRequest'
   end
 
@@ -28,13 +30,22 @@ class Event < ApplicationRecord
   has_many :verified_visitors, -> { merge(User.verified) }, through: :visit_requests, source: :user
   has_many :newbie_visitors,   -> { merge(User.newbies) },  through: :visit_requests, source: :user
 
-  scope :display, -> { where.not(status: PLANNED) }
+  scope :visible, -> { where.not(status: PLANNED) }
+  scope :ordered_by_start, -> { order(:started_at) }
 
   validates :title, :limit_total, :limit_verified, presence: true
   validates_with LimitsValidator
 
   def self.upcoming
-    where(published: true).order('started_at').last
+    where(published: true).where.not(status: [PASSED]).ordered_by_start.last
+  end
+
+  def self.current
+    find_by(
+      'started_at >= :beginning_of_day AND finished_at < :end_of_day',
+      beginning_of_day: Time.zone.now.beginning_of_day,
+      end_of_day:       Time.now.end_of_day
+    )
   end
 
   def limit_newbies

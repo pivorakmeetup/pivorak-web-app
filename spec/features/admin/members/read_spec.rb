@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Members READ' do
   let!(:user_a) { create(:user, first_name: 'First',  last_name: 'User') }
   let!(:user_b) { create(:user, first_name: 'Second', last_name: 'User') }

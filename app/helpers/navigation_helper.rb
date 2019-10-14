@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module NavigationHelper
   def events_link
     link_to t('events.plural'), events_path
@@ -11,8 +13,8 @@ module NavigationHelper
     link_to t('goals.plural'), goals_path
   end
 
-  def donate_link
-    link_to t('donations.donate'), donation_path
+  def donate_link(**options)
+    link_to t('donations.support_us'), donate_path, data: { turbolinks: false }, **options
   end
 
   def chat_link
@@ -45,5 +47,19 @@ module NavigationHelper
 
   def admin_link
     link_to t('admin.admin'), admin_path
+  end
+
+  def agenda_link
+    return unless Event.upcoming
+
+    link_to t('words.agenda'), agenda_path
+  end
+
+  def about_link
+    link_to t('words.about'), '/about'
+  end
+
+  def ruby_course_link
+    link_to 'Become a student of Ruby Summer Course', '/ruby-course'
   end
 end

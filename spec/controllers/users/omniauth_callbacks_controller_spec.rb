@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 RSpec.describe ::Users::OmniauthCallbacksController do
   include Devise::Test::ControllerHelpers
 
   before { request.env['devise.mapping'] = Devise.mappings[:user] }
 
-  Devise.omniauth_providers.each do |provider|
+  Devise.omniauth_providers.each do |provider| # rubocop:disable Metrics/BlockLength
     describe "##{provider}" do
       context 'with valid params' do
         before { request.env['omniauth.auth'] = build(:omniauth_params) }
@@ -41,4 +43,3 @@ RSpec.describe ::Users::OmniauthCallbacksController do
     end
   end
 end
-

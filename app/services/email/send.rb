@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Email
   class Send < ApplicationService
     def initialize(email:, recipient_ids:)

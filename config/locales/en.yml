@@ -3,6 +3,9 @@ en:
   pivorak_description: A Ruby Community in Lviv, featuring monthly meetups with beer and crawfish :)
 
   words:
+    actions: Actions
+    about: About
+    agenda: agenda
     app: App
     all: All
     id: '#id'
@@ -36,6 +39,7 @@ en:
     danger: Danger
     send: Send
     notes: Notes
+    none: none
 
   resources:
     errors:
@@ -79,6 +83,7 @@ en:
     success: Thank you, your donation has been accepted!
     donator: Donator
     total: "Total: "
+    support_us: Support Us
 
   events:
     plural: Events
@@ -89,6 +94,7 @@ en:
     visitors: Visitors
     attendees: Attendees
     send_confirmations: Send Confirmations
+    send_confirmation_reminders: Send Confirmation Reminders
     visitors_report: Visitors Report
     free_places: Open Places Left
     index:
@@ -168,12 +174,29 @@ en:
     singular: Group
     plural: Groups
 
+  visit_request:
+    check_in:
+      email: "Email: <b>%{email}</b>"
+      plural: Check In
+      search: 'Find by name:'
+      name: "Name: <b>%{first_name}</b> %{last_name}"
+      already_checked_in: Already checked in
+      invalid_status: "Invalid status: %{status}"
+      not_found: Not Found
+      event: "Event: %{title}"
+      visits_counter: "Visits: %{count}"
+      newbie: Hello newbie!
+    invite:
+      plural: Invite users
+      success: Users were successfully invited
+
   visit_requests:
     send_email_to_visitors: 'Send email to visitors'
     send_email_to_attendees: 'Send email to attendees'
     send_email_to_applied: 'Send email to applied users'
     send_email_to_pending: 'Send email to pending users'
     send_email_to_approved: 'Send email to approved users'
+    invite_user: 'Invite user'
     attend: Attend
     already_created: Already attending
     approve: Approve
@@ -184,8 +207,8 @@ en:
     main_list: Main
     waiting_list: Waiting
     visited: Visited
-    hello: Hello!
-    waiting: Waiting
+    check_in: Check In
+    already_checked_in: Already Checked In
     confirm: Confirm
     refuse: Refuse
     messages:
@@ -194,6 +217,7 @@ en:
       approved: You have been confirmed for this event!
       canceled: 'Sorry, but have canceled your visit request'
       waiting_list: Seems like all seats have been taken, but you can add yourself to waiting list
+      add_to_waiting_list: 'Add me to waiting list'
       please_confirm: Please, confirm your final attendance
       see_you: See you at the event!
       so_pity: So pity that you change your mind. See you at the next event.
@@ -217,12 +241,6 @@ en:
     notify_mailer:
       become_speaker:
         subject: I want to be a speaker
-      new_user_registered:
-        subject: 'New user was registered: %{user}'
-        body: 'New user was registered: %{user} with email: %{email}'
-    visit_request_mailer:
-      notify_admin_about_unverified_attendee:
-        subject: New newbie signed up to event
 
   speakers:
     plural: Speakers
@@ -246,3 +264,14 @@ en:
   time:
     formats:
       date_month_year_concise_slash: '%d/%m/%Y'
+      date_month_year_and_date_time: '%e %b %Y %H:%M:%p'
+  coming_soon:
+    next_event: Next event will happen on %{upcoming_date}.
+    cfp_is_open: Call for speakers is open!
+    follow_us: follow us to keep in touch
+
+  invite_by_email_form:
+    submit: Invite
+    emails:
+      label: 'Emails separated by comma. Example: john@m.com OR john@m.com, peter@m.com'
+      error: "Should be comma separate list. Following emails are invalid: %{invalid_emails}"

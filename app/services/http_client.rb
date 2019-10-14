@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class HttpClient
   attr_reader :client
   extend Forwardable
 
-  delegate [:get, :put, :post, :delete] => :client
+  delegate %i[get put post delete] => :client
 
   def initialize(args = {})
     @client = HTTPClient.new

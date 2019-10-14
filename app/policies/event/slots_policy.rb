@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Event
   class SlotsPolicy
     delegate :limit_verified, :limit_newbies, :visit_requests, to: :event
@@ -9,16 +11,16 @@ class Event
       @options = options
     end
 
-    def has_free_verified_slots?
-      (limit_verified - approved_visitors(:verified).count) > 0
+    def free_verified_slots?
+      (limit_verified - approved_visitors(:verified).count).positive?
     end
 
-    def has_free_newbies_slots?
-      (limit_newbies - approved_visitors(:newbies).count) > 0
+    def free_newbies_slots?
+      (limit_newbies - approved_visitors(:newbies).count).positive?
     end
 
-    def has_free_slot_for?(user)
-      user.verified ? has_free_verified_slots? : has_free_newbies_slots?
+    def free_slot_for?(user)
+      user.verified ? free_verified_slots? : free_newbies_slots?
     end
 
     private

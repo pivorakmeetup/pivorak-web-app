@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Admin
   module Courses
     class TestTaskController < ::Admin::Courses::BaseController
@@ -8,10 +10,10 @@ module Admin
       end
 
       def update
-        if ::Courses::TestTask::Update.call(test_task, current_mentor)
-          flash_success and default_redirect
+        if ::Courses::TestTask::Update.call(test_task, current_mentor, status: params[:status], notes: test_task_notes)
+          flash_success && default_redirect
         else
-          flash_error and default_redirect
+          flash_error && default_redirect
         end
       end
 
@@ -31,12 +33,16 @@ module Admin
 
       def test_tasks_breadcrumb
         add_breadcrumb 'courses.test_task.plural',
-          path: admin_courses_season_test_task_index_path(current_season)
+                       path: admin_courses_season_test_task_index_path(current_season)
       end
 
       def add_test_tasks_breadcrumb
         add_breadcrumb 'test_tasks.plural',
-          path: admin_courses_season_test_task_index_path(current_season)
+                       path: admin_courses_season_test_task_index_path(current_season)
+      end
+
+      def test_task_notes
+        params.dig(:test_task, :notes)
       end
     end
   end

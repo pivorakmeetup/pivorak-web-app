@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Searchable
   class Resolver < ::ApplicationService
     include Mapping

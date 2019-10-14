@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateCoursesTestTasks < ActiveRecord::Migration[5.0]
   def change
     create_table :courses_test_tasks do |t|

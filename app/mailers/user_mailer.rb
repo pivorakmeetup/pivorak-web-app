@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UserMailer < Devise::Mailer
   default template_path: 'devise/mailer' # to make sure that your mailer uses the devise views
 

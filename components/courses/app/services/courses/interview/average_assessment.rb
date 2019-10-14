@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Courses
   class Interview < ApplicationRecord
     class AverageAssessment < ApplicationService
@@ -19,7 +21,7 @@ module Courses
       attr_reader :interview
 
       def question_params(question)
-        { 
+        {
           question: question.body,
           mark:     question_average_mark(question)
         }
@@ -35,12 +37,11 @@ module Courses
 
       def question_average_mark(question)
         if marks(question).any?
-          ( marks(question).inject(:+).to_f / marks(question).size ).round(2)
+          (marks(question).inject(:+).to_f / marks(question).size).round(2)
         else
           ZERO_MARK
         end
       end
-
     end
   end
 end

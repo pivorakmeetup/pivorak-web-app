@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 module Admin
   module NavigationHelper
-    ITEM = 'item'.freeze
+    ITEM = 'item'
 
     def sidebar_toogle_link
       link_to semantic_icon('align justify'), '#', data: { 'menu-toggle' => true }

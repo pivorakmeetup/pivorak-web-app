@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User
   class EventParticipantsByStatus < ApplicationFinder
     def initialize(params = {})

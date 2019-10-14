@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Courses
   class Season < ApplicationRecord
     class TimePolicy
@@ -6,7 +8,7 @@ module Courses
       end
 
       def allowed?
-        season.start_at.nil? || season.finish_at.nil? || time_is_correct? 
+        season.start_at.nil? || season.finish_at.nil? || time_is_correct?
       end
 
       private

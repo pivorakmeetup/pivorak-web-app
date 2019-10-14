@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 module Users
   class RegistrationsController < Devise::RegistrationsController
     include Users::Concerns::Recaptcha
     prepend_before_action :check_captcha, only: :create
-    alias_method :user_params, :sign_up_params
+    alias user_params sign_up_params
 
     def create
       synthetic_user = User::CheckSynthetic.call(params[:user][:email])
@@ -14,10 +16,7 @@ module Users
 
       super
 
-      if resource.persisted?
-        Mailchimp::SubscriptionJob.perform_later(resource.id)
-        NotifyMailer.new_user_registered(resource.id).deliver_later
-      end
+      Mailchimp::SubscriptionJob.perform_later(resource.id) if resource.persisted?
     end
 
     protected

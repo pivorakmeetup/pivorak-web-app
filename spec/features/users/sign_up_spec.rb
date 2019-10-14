@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Users Sign Up' do
   before do
     visit '/users/sign_up'
@@ -38,25 +40,6 @@ RSpec.describe 'Users Sign Up' do
 
       active_job = active_jobs.find { |x| x.key(Mailchimp::SubscriptionJob) }
       expect(active_job).not_to eq nil
-    end
-
-    it 'sends notification' do
-      first_name = Faker::Name.first_name
-      last_name = Faker::Name.last_name
-      email = Faker::Internet.email
-
-      fill_in 'First name', with: first_name
-      fill_in 'Last name', with: last_name
-      fill_in 'Email', with: email
-      fill_in 'Password', with: '123456', match: :prefer_exact
-      fill_in 'Password confirmation', with: '123456', match: :prefer_exact
-
-      click_button 'Sign up'
-
-      active_job = active_jobs.last
-      expect(active_job[:job]).to eq ActionMailer::DeliveryJob
-      expect(active_job[:args][0]).to eq 'NotifyMailer'
-      expect(active_job[:args][1]).to eq 'new_user_registered'
     end
 
     context 'when creating user with the same first_name and last_name' do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UserMailerPreview
   def reset_password_instructions
     UserMailer.reset_password_instructions record, token

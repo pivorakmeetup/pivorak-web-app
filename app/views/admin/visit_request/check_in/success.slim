@@ -1,0 +1,18 @@
+.check_in
+  p
+    i.empty.user.icon.green
+    - if user.first_name
+      = t('visit_request.check_in.name', first_name: user.first_name, last_name: user.last_name).html_safe
+    - elsif user.email
+      = t('visit_request.check_in.email', email: user.email).html_safe
+  p
+    i.empty.calendar.check.outline.icon.green
+    = t('visit_request.check_in.event', title: event.title)
+  p
+    - if visit_count > 1
+      i.empty.eye.icon.green
+      = t('visit_request.check_in.visits_counter', count: visit_count)
+    - else
+      i.empty.hand.peace.outline.icon.green
+      = t('visit_request.check_in.newbie')
+

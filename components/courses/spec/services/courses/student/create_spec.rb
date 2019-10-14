@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe Courses::Student::Create do
-  let(:params)    { { status: 0, personal_info: "Skills", motivation_info: "Reasons"} }
+  let(:params)    { attributes_for(:student) }
   let(:season_id) { 2 }
   let(:user_id)   { 3 }
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Goal < ApplicationRecord
   module Donations
     class Persist

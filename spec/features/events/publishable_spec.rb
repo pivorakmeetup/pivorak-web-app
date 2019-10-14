@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Events publishable' do
   let!(:published_event)   { create :event, title: 'Published Event',   published: true }
   let!(:unpublished_event) { create :event, title: 'Unpublished Event', published: false }

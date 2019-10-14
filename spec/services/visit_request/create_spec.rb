@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe VisitRequest::Create do
@@ -12,7 +14,7 @@ describe VisitRequest::Create do
 
       context 'event has free slots for verified users' do
         before do
-          allow_any_instance_of(Event::SlotsPolicy).to receive(:has_free_slot_for?).with(user) { true }
+          allow_any_instance_of(Event::SlotsPolicy).to receive(:free_slot_for?).with(user) { true }
 
           expect(VisitRequest::Approve).to receive(:call).and_call_original
 
@@ -26,9 +28,8 @@ describe VisitRequest::Create do
 
       context 'event has no free slots for verified users' do
         before do
-          allow_any_instance_of(Event::SlotsPolicy).to receive(:has_free_slot_for?).with(user) { false }
+          allow_any_instance_of(Event::SlotsPolicy).to receive(:free_slot_for?).with(user) { false }
 
-          expect(VisitRequestMailer).not_to receive(:notify_admin_about_unverified_attendee)
           expect(VisitRequestMailer).not_to receive(:needs_confirmation) { mailer }
 
           subject.call
@@ -45,9 +46,8 @@ describe VisitRequest::Create do
 
       context 'event has free slots for newbies' do
         before do
-          allow_any_instance_of(Event::SlotsPolicy).to receive(:has_free_slot_for?).with(user) { true }
+          allow_any_instance_of(Event::SlotsPolicy).to receive(:free_slot_for?).with(user) { true }
 
-          expect(VisitRequestMailer).to receive(:notify_admin_about_unverified_attendee).and_call_original
           expect(VisitRequestMailer).to receive(:needs_confirmation).and_call_original
 
           subject.call
@@ -60,7 +60,7 @@ describe VisitRequest::Create do
 
       context 'event has no free slots for newbies' do
         before do
-          allow_any_instance_of(Event::SlotsPolicy).to receive(:has_free_slot_for?).with(user) { false }
+          allow_any_instance_of(Event::SlotsPolicy).to receive(:free_slot_for?).with(user) { false }
           subject.call
         end
 

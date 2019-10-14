@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'stripe_mock'
 require 'services/stripe/stripe_response_shared_group'
 

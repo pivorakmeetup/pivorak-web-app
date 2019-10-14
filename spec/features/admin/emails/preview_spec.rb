@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Emails PREVIEW' do
   context 'when user is admin' do
     before do
@@ -31,7 +33,8 @@ RSpec.describe 'Emails PREVIEW' do
 
     describe 'VisitRequestMailer#confirmation' do
       it do
-        create(:visit_request)
+        event = create(:event, venue: create(:venue))
+        create(:visit_request, event: event)
         visit '/emails/en/visit_request_mailer_preview-confirmation'
         expect(page.status_code).to eq(200)
       end
@@ -45,34 +48,17 @@ RSpec.describe 'Emails PREVIEW' do
       end
     end
 
-    describe 'VisitRequestMailer#notify_admin_about_unverified_attendee' do
-      it do
-        create(:visit_request)
-        visit '/emails/en/visit_request_mailer_preview-notify_admin_about_unverified_attendee'
-        expect(page.status_code).to eq(200)
-      end
-    end
-
     describe 'VisitRequestMailer#notify_admin_about_canceled_attendee' do
       it do
         EmailTemplate.create!(
-          title: 'VisitRequestMailer#notify_admin_about_canceled_attendee',
+          title:   'VisitRequestMailer#notify_admin_about_canceled_attendee',
           subject: 'Attendee canceled his request',
-          note: 'Will be sent when attendee cancels his request',
-          body: File.read('db/seed/email_templates/notify_admin_about_canceled_attendee.md')
+          note:    'Will be sent when attendee cancels his request',
+          body:    File.read('db/seed/email_templates/notify_admin_about_canceled_attendee.md')
         )
         create(:visit_request)
         visit '/emails/en/visit_request_mailer_preview-notify_admin_about_canceled_attendee'
         expect(page.status_code).to eq(200)
-      end
-    end
-  end
-
-  context 'when user is not admin' do
-    describe 'VisitRequestMailer#notify_admin_about_unverified_attendee' do
-      it do
-        create(:visit_request)
-        expect { visit '/emails/en/visit_request_mailer_preview-notify_admin_about_unverified_attendee' }.to raise_error(ActionController::UrlGenerationError)
       end
     end
   end

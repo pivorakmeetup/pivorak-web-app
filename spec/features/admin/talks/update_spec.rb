@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Talks UPDATE' do
   let!(:talk)          { create(:talk, title: 'Test Talk', tag_list: 'old tags') }
   let(:test_edit_path) { '/admin/talks/test-talk/edit' }
@@ -9,17 +11,17 @@ RSpec.describe 'Talks UPDATE' do
 
   context 'invalid input' do
     it 'validates errors' do
-      fill_in 'Title',  with: ''
+      fill_in 'Title', with: ''
       click_button 'Update Talk'
 
-      expect_an_error talk_title:  :blank
+      expect_an_error talk_title: :blank
       expect_error_flash_message 'Talk', 'updated'
     end
   end
 
   context 'valid input' do
     it 'update talk' do
-      fill_in 'Title',  with: 'Super New Talk'
+      fill_in 'Title', with: 'Super New Talk'
       click_button 'Update Talk'
 
       expect_success_flash_message 'Talk', 'updated'

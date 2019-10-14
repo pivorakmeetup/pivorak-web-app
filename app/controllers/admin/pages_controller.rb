@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Admin
   class PagesController < BaseController
     helper_method :page, :pages
@@ -21,7 +23,7 @@ module Admin
     end
 
     def destroy
-      page.destroy and redirect_to(admin_pages_path)
+      page.destroy && redirect_to(admin_pages_path)
     end
 
     private

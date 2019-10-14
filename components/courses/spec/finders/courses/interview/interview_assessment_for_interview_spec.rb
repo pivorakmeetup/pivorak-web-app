@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe Courses::Interview::InterviewAssessmentForInterview do
@@ -5,7 +7,11 @@ describe Courses::Interview::InterviewAssessmentForInterview do
   let!(:user)                  { User.create(email: 'test@test.com', first_name: 'Test', last_name: 'User') }
   let!(:mentor)                { ::Courses::Mentor.create(user: user, season: season) }
   let!(:first_interview)       { create(:interview, mentor: mentor, season_id: season.id) }
-  let!(:second_interview)      { create(:interview, mentor: mentor, season_id: season.id, start_at: (Time.now + 1.hour)) }
+  let!(:second_interview)      do
+    create(
+      :interview, mentor: mentor, season_id: season.id, start_at: (Time.now + 1.hour)
+    )
+  end
   let!(:first_int_assessment)  { create(:interview_assessment, interview: first_interview, mentor: mentor) }
   let!(:second_int_assessment) { create(:interview_assessment, interview: second_interview, mentor: mentor) }
 

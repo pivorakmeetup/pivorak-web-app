@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Goal::Donations::Setup do
   subject(:context) { described_class.call(params) }
 

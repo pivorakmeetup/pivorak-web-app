@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Become a speaker features' do
   context 'when user is logged in' do
     let(:user) { create(:user) }
@@ -7,11 +9,11 @@ RSpec.describe 'Become a speaker features' do
       visit '/members'
     end
 
-    it "contains user name in input" do
+    it 'contains user name in input' do
       expect(find_field('name').value).to eq(user.first_name)
     end
 
-    it "contains user email in input" do
+    it 'contains user email in input' do
       expect(find_field('email').value).to eq(user.email)
     end
   end
@@ -21,11 +23,11 @@ RSpec.describe 'Become a speaker features' do
       visit '/members'
     end
 
-    it "contains blank name input" do
+    it 'contains blank name input' do
       expect(find_field('name').value).to eq(nil)
     end
 
-    it "contains blank email input" do
+    it 'contains blank email input' do
       expect(find_field('email').value).to eq(nil)
     end
   end
@@ -40,9 +42,9 @@ RSpec.describe 'Become a speaker features' do
     end
 
     it 'sends email' do
-      fill_in 'name',  with: name
-      fill_in 'email',  with: email
-      fill_in 'text',  with: text
+      fill_in 'name', with: name
+      fill_in 'email', with: email
+      fill_in 'text', with: text
       click_button 'Send'
 
       active_job = active_jobs[0]

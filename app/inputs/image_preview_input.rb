@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ImagePreviewInput < SimpleForm::Inputs::FileInput
-  def input(_wrapper_options = nil)
+  def input(_wrapper_options = nil) # rubocop:disable Metrics/AbcSize
     # :preview_version is a custom attribute from :input_html hash, so you can pick custom sizes
     version = input_html_options.delete(:preview_version)
     out = ActiveSupport::SafeBuffer.new # the output buffer we're going to build

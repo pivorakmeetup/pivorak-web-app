@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe User::EventVisitors do
-  let!(:visitor)  { create(:user) }
+  let!(:visitor) { create(:user) }
   let!(:not_visitor) { create(:user) }
   let!(:event) { create(:event) }
 

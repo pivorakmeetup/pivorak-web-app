@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 module Courses
   class Interview < ApplicationRecord
     class RatePolicy
-
       def initialize(interview)
         @interview = interview
         @student = interview.student

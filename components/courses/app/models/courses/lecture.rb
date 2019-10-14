@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Courses
   class Lecture < ApplicationRecord
     self.table_name = 'courses_lectures'
@@ -21,6 +23,7 @@ module Courses
 
     def time_policy
       return if Courses::Lecture::TimePolicy.new(self).allowed?
+
       errors.add(:finished_at, 'must be after start time!')
     end
   end

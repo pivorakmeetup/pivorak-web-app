@@ -33,3 +33,27 @@ $namespace: ".pk-link";
     }
   }
 }
+
+#{$namespace}--btn-slides {
+  background-color: rgba(255, 244, 218, 0.87);
+  color: #50b27e;
+  border-radius: 1rem;
+  border: 2px solid rgba(252, 247, 239, 0.54);
+  padding: 10px;
+  letter-spacing: 0.10714286em;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  &:after {
+    content: "";
+    border-top: 2px solid #fff;
+    border-color: inherit;
+    width: 100%;
+    display: block;
+  }
+  &:hover, &:active, &:focus {
+    &:after {
+      border-color: transparent;
+    }
+  }
+}

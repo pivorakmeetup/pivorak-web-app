@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Seasons UPDATE' do
@@ -10,7 +12,7 @@ RSpec.describe 'Seasons UPDATE' do
 
   context 'invalid input' do
     it 'validates errors' do
-      fill_in 'Title',  with: ''
+      fill_in 'Title', with: ''
       click_button 'Update Season'
 
       expect_an_error season_title: :blank
@@ -19,7 +21,7 @@ RSpec.describe 'Seasons UPDATE' do
 
   context 'valid input' do
     it 'update season' do
-      fill_in 'Title',  with: 'Super New Season'
+      fill_in 'Title', with: 'Super New Season'
       click_button 'Update Season'
 
       expect(page).to have_current_path '/admin/courses/seasons'

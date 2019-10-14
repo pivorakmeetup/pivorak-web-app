@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 module Admin
   class EmailsController < BaseController
     helper_method :email, :emails, :recipient_ids, :recipient_emails
     add_breadcrumb 'emails.plural', :admin_emails_path
-    before_action :add_new_breadcump,  only: %i[new create]
+    before_action :add_new_breadcump, only: %i[new create]
 
     def new
       render_form

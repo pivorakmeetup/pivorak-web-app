@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe Courses::Season::StudentsPerStatus do
   let(:season)          { create(:season, status: :planned) }
   let(:first_user)      { create(:user) }
   let(:second_user)     { create(:user) }
-  let(:student)   { create(:student, user: first_user,  season: season, status: :enrolled) }
+  let(:student) { create(:student, user: first_user, season: season, status: :enrolled) }
   let(:refused_student) { create(:student, user: second_user, season: season, status: :refused) }
 
   describe '#call' do

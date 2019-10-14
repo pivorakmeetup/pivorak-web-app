@@ -1,7 +1,7 @@
+# frozen_string_literal: true
+
 class Email
   class Create < ApplicationService
-    attr_reader :email
-
     def initialize(params:, recipient_ids:)
       @params = params
       @recipient_ids = recipient_ids

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Admin
   module Courses
     class MentorsController < ::Admin::Courses::BaseController
@@ -22,14 +24,14 @@ module Admin
         return react_to mentor.destroy if policy.allowed?
 
         redirect_to admin_courses_season_mentors_path,
-          alert: t('courses.flash.season-creator-destroy')
+                    alert: t('courses.flash.season-creator-destroy')
       end
 
       private
 
       def mentors_breadcrumb
         add_breadcrumb 'courses.mentors.plural',
-          path: admin_courses_season_mentors_path(current_season)
+                       path: admin_courses_season_mentors_path(current_season)
       end
 
       def default_redirect
@@ -45,7 +47,7 @@ module Admin
       end
 
       def available_for_mentoring
-        @mentors ||= ::Courses::Mentor::AvailableForMentoring.call(current_season)
+        @available_for_mentoring ||= ::Courses::Mentor::AvailableForMentoring.call(current_season)
       end
 
       def policy

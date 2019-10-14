@@ -1,28 +1,29 @@
 - title t('visit_requests.plural')
 
 .ui.stackable.grid
-  .ten.wide.column
+  .six.wide.column
     h2#event data-event-id = event.id
       = event.title
     = event_status_label(event)
 
+  .six.wide.column.row-chart
+    = column_chart(event_visitors(event), height: '100px', width: '400px')
+
   .six.wide.column.bottom.aligned
     = render 'admin/shared/search_bar', path: admin_event_visit_requests_path
 
-  = render 'emails'
+  = render 'links'
 
   table#visit-requests.ui.very.basic.table
     thead
       tr
         th = 'Verified?'
         th = t 'words.name'
-        - if event.live?
-          th.center.aligned = t 'visit_requests.visited'
-        - else
+        - unless event.live?
           th.center.aligned = t 'words.list'
           th.center.aligned = t 'words.status'
-          - unless event.confirmation? || event.passed?
-            th.status
+        th.center.aligned
+          = t 'words.actions'
 
     tbody
       - visit_requests.each do |visit_request|

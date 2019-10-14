@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 module Searchable
   module Configuration
     module User
       include Configurable
       include SearchOptions
 
-      FIELDS = %i(first_name last_name email)
+      FIELDS = %i[first_name last_name email].freeze
 
       define_searchable do
         multisearchable          against: FIELDS

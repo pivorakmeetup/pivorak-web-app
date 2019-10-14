@@ -1,8 +1,8 @@
+# frozen_string_literal: true
+
 module Courses
   class Season < ApplicationRecord
     class StudentsPerStatus < ApplicationFinder
-      EMPTY_ARRAY = []
-
       def initialize(season)
         @season = season
       end
@@ -19,7 +19,7 @@ module Courses
           live_season_students
         when ::Courses::Season::PASSED
           passed_season_students
-        end
+        end.order(:created_at)
       end
 
       private
@@ -27,11 +27,11 @@ module Courses
       attr_reader :season
 
       def planned_season_students
-        EMPTY_ARRAY
+        ::Courses::Season.none
       end
 
       def registration_season_students
-        season.students.enrolled.includes(:user)
+        season.students.enrolled.includes(:user, :progresses)
       end
 
       def selection_season_students

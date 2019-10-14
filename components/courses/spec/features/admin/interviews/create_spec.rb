@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Interview CREATE' do
@@ -19,17 +21,6 @@ RSpec.describe 'Interview CREATE' do
         interview.start_at = ''
 
         expect(interview).not_to be_valid
-      end
-    end
-
-    context 'invalid interval' do
-      it 'validates errors' do
-        allow_any_instance_of(Courses::Interview::IntervalPolicy).to receive(:allowed?).and_return(false)
-
-        pick_a_date(date_field_name, Time.now + 20.minutes)
-        click_button 'Create Interview'
-
-        expect_an_error interview_start_at: 'should be at least 30 minutes between interviews'
       end
     end
   end

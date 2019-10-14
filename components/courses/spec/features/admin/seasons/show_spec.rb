@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Seasons SHOW' do
@@ -6,7 +8,7 @@ RSpec.describe 'Seasons SHOW' do
   context 'season is passed' do
     let!(:season)            { create(:season, title: 'Test Season', status: :passed) }
     let!(:attending_student) { create(:student, user_id: 2, status: :attending, season: season) }
-    let!(:dropped_student)   { create(:student, user_id: 3,status: :dropped, season: season) }
+    let!(:dropped_student)   { create(:student, user_id: 3, status: :dropped, season: season) }
 
     before { visit '/admin/courses/seasons/test-season' }
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Admin
   class VisitRequestsController < ::Admin::BaseController
     helper_method :visit_requests, :event, :visitors_ids, :confirmed_ids, :applied_ids,
@@ -18,7 +20,15 @@ module Admin
     end
 
     def visit_requests
-      @visit_requests ||= search_against(base_scope).includes(:user).order(:id)
+      @visit_requests ||= if search?
+                            search_against(base_scope).includes(:user, :event)
+                          else
+                            base_scope.includes(:user, :event).order('users.first_name, users.last_name')
+                          end
+    end
+
+    def search?
+      params[:query].present?
     end
 
     def base_scope
@@ -26,29 +36,7 @@ module Admin
     end
 
     def visitors_ids
-      @visitors_ids ||= User::EventVisitors.call(event_id: event.id).ids
-    end
-
-    def confirmed_ids
-      @confirmed_ids ||= User::EventAttendees.call(event_id: event.id).ids
-    end
-
-    def applied_ids
-      @applied_ids ||= User::EventApplied.call(event_id: event.id).ids
-    end
-
-    def pending_ids
-      @pending_ids ||= User::EventParticipantsByStatus.call(
-        event_id: event.id,
-        status: ::VisitRequest::PENDING
-      ).ids
-    end
-
-    def approved_ids
-      @approved_ids ||= User::EventParticipantsByStatus.call(
-        event_id: event.id,
-        status: ::VisitRequest::APPROVED
-      ).ids
+      @visitors_ids ||= User::EventAttendeesWithoutRefusedAndCanceled.call(event_id: event.id).ids
     end
   end
 end

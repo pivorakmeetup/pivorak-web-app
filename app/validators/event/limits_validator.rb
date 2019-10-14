@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Event
   class LimitsValidator < ActiveModel::Validator
     def validate(event)

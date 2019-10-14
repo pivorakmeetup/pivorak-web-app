@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Admin
   module Courses
     module JournalHelper
@@ -7,9 +9,10 @@ module Admin
 
       def journal_presence(student, lecture)
         presence = ::Courses::Journal::StudentPresenceForLecture
-          .call(student, lecture)
+                   .call(student, lecture)
 
         return if presence.nil? || presence.zero?
+
         presence
       end
 

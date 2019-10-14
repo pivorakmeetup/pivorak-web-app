@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Home READ' do
   before do
     assume_admin_logged_in

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Event
   class New < ApplicationService
     def call

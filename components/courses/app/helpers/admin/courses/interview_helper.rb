@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Admin
   module Courses
     module InterviewHelper
@@ -25,7 +27,7 @@ module Admin
         return unless ::Courses::Interview::RatePolicy.new(interview).allowed?
 
         render 'admin/courses/interview_assessments/form',
-          season: season, interview_assessment: interview_assessment, interview: interview
+               season: season, interview_assessment: interview_assessment, interview: interview
       end
 
       def courses_interview_average_assessments(average_assessments)
@@ -48,9 +50,9 @@ module Admin
 
         link_to t('courses.interviews.approve'),
                 admin_courses_season_student_path(
-                    season.id,
-                    student,
-                    student: { status: :attending }
+                  season.id,
+                  student,
+                  student: { status: :attending }
                 ),
                 method: :put, class: 'ui button green',
                 data: { confirm: t('phrases.confirm') }

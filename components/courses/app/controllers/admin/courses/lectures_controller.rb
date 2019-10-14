@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Admin
   module Courses
     class LecturesController < ::Admin::Courses::BaseController
@@ -50,18 +52,18 @@ module Admin
 
       def lectures_breadcrumb
         add_breadcrumb 'courses.lectures.plural',
-          path: admin_courses_season_lectures_path(current_season)
+                       path: admin_courses_season_lectures_path(current_season)
       end
 
       def lecture_breadcrumb
         add_breadcrumb lecture,
-          path: admin_courses_season_lecture_path(current_season, lecture)
+                       path: admin_courses_season_lecture_path(current_season, lecture)
       end
 
       def lecture_params
         params.require(:lecture)
-          .permit(:title, :started_at, :finished_at, :mentor_id,
-            :venue_id, :description, :status)
+              .permit(:title, :started_at, :finished_at, :mentor_id,
+                      :venue_id, :description, :status)
       end
     end
   end

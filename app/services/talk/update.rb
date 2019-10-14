@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Talk
   class Update < ApplicationService
     def initialize(talk, params)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Omniauth
   class AuthenticationService
     delegate :authenticated?, to: :policy

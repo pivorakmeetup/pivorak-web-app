@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Donations READ' do
   let!(:event_a) { create(:donation, user_id: 1, amount: 100) }
   let!(:event_b) { create(:donation, user_id: 1) }

@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 module Chat
   class Client
-
     class ChatError < StandardError; end
 
     def initialize(args)

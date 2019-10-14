@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Friends CREATE' do
   let!(:friend) { create(:friend, group: group) }
   let!(:group) { create(:group, resource: Friend) }
@@ -10,10 +12,10 @@ RSpec.describe 'Friends CREATE' do
   context 'invalid input' do
     context 'when name is too short' do
       it 'validates errors' do
-        fill_in 'Name',  with: ''
+        fill_in 'Name', with: ''
         click_button 'Update Friend'
 
-        expect_an_error friend_name:  :blank
+        expect_an_error friend_name: :blank
       end
     end
   end
@@ -31,7 +33,7 @@ RSpec.describe 'Friends CREATE' do
       click_button 'Update Friend'
 
       expect(page).to have_current_path "/admin/friends/#{friend.id}/edit"
-      
+
       expect(friend.reload.name).to eq name
       expect(friend.reload.description).to eq description
       expect(friend.reload.link).to eq link

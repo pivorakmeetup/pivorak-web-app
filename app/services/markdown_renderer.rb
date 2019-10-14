@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MarkdownRenderer < ApplicationService
   def initialize(text)
     @text = text
@@ -22,7 +24,7 @@ class MarkdownRenderer < ApplicationService
   def render_options
     {
       filter_html: true,
-      hard_wrap:   true,
+      hard_wrap:   true
     }
   end
 

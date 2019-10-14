@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TalksController < ApplicationController
   helper_method :talks, :talk, :tags
 

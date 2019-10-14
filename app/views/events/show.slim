@@ -6,9 +6,9 @@
 
   .text-center
     .pk-event-date
-      figure.pk-event-date__img
-        = image_tag "pivorak-logo.png"
-        figcaption
+      figure.pk-logo
+        = image_tag "pivorak-logo.png", class: 'pk-logo__img'
+        figcaption.pk-logo__text
           | #pivorak
 
       .pk-event-date__day   = get_day(event.started_at)

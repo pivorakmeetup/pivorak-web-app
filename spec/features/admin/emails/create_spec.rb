@@ -1,8 +1,9 @@
-RSpec.describe 'Emails CREATE' do
+# frozen_string_literal: true
 
+RSpec.describe 'Emails CREATE' do
   before do
     assume_admin_logged_in
-    visit "admin/emails/new?recipient_ids[]=0"
+    visit 'admin/emails/new?recipient_ids[]=0'
   end
 
   context 'when params are valid' do
@@ -11,8 +12,8 @@ RSpec.describe 'Emails CREATE' do
       subject = email.subject
       body = email.body
 
-      fill_in 'Subject',  with: subject
-      fill_in 'Body',  with: body
+      fill_in 'Subject', with: subject
+      fill_in 'Body', with: body
 
       click_button 'Send'
 
@@ -24,15 +25,14 @@ RSpec.describe 'Emails CREATE' do
 
   context 'when params are invalid' do
     it 'creates Email' do
-      fill_in 'Subject',  with: ''
-      fill_in 'Body',  with: ''
+      fill_in 'Subject', with: ''
+      fill_in 'Body', with: ''
 
       click_button 'Send'
 
-      expect(page).to have_current_path "/admin/emails"
-      expect_an_error email_subject:  :blank
+      expect(page).to have_current_path '/admin/emails'
+      expect_an_error email_subject: :blank
       expect_an_error email_body:  :blank
     end
   end
-
 end

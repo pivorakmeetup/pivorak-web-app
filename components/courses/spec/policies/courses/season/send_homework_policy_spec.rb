@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe Courses::Season::SendHomeworkPolicy do
@@ -6,7 +8,7 @@ describe Courses::Season::SendHomeworkPolicy do
   let(:policy)  { Courses::Season::SendHomeworkPolicy.new(season, student) }
 
   describe '#allowed?' do
-    context "season has status live, student is not dropped" do
+    context 'season has status live, student is not dropped' do
       it 'allows to pass policy' do
         allow(policy).to receive(:season_has_status_live?).and_return(true)
         allow(policy).to receive(:student_is_dropped?).and_return(false)
@@ -26,7 +28,7 @@ describe Courses::Season::SendHomeworkPolicy do
       end
     end
 
-    context "student is dropped" do
+    context 'student is dropped' do
       it "doesn't allow to pass policy" do
         allow(policy).to receive(:season_has_status_live?).and_return(true)
         allow(policy).to receive(:student_is_dropped?).and_return(true)

@@ -9,6 +9,7 @@
       .pk-grid.pk-grid--center-v.pk-talk-header__grid
         .pk-grid__unit.pk-talk-header__grid-unit
           h1.pk-talk-header__title = talk.title
+          = talk_slides_url(talk, class: "pk-link pk-link--btn pk-link--btn-slides pk-talk-content__link")
           h2.pk-talk-header__name = talk.speaker&.full_name
         .pk-grid__unit-static
           = talk_video_url(talk, inline_svg("play-btn.svg"), { class: "pk-video-play-btn js-video-link" })
@@ -20,7 +21,6 @@
           = markdownify(talk.description)
         .pk-talk-content__right
           .pk-talk-content__link-area
-            = talk_slides_url(talk, class: "pk-link pk-link--btn pk-talk-content__link")
           - talk.tags.each do |tag|
             = talks_tag_link(tag, class: "pk-bubble pk-talk-content__bubble")
 

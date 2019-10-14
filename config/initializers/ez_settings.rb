@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Ez::Settings.config.base_controller = 'Admin::BaseController'
 
 app = Ez::Settings::Interface.define(:app) do
@@ -22,7 +24,7 @@ app = Ez::Settings::Interface.define(:app) do
     key :string,                        default: -> { 'string' }
     key :bool,         type: :boolean,  default: -> { true }
     key :integer,      type: :integer,  default: -> { 777 }
-    key :select,       type: :select,   default: -> { 'foo' }, collection: %w(foo bar baz)
+    key :select,       type: :select,   default: -> { 'foo' }, collection: %w[foo bar baz]
     key :not_validate, required: false, presence: false
     key :not_for_ui,   required: false, ui:       false
   end
@@ -51,7 +53,7 @@ app.configure do |config|
   config.dynamic_css_map = {
     nav_menu_item: {
       css_class: 'active',
-      if: ->(controller, path_fragment) { controller.request.path.end_with?(path_fragment.to_s) }
+      if:        ->(controller, path_fragment) { controller.request.path.end_with?(path_fragment.to_s) }
     }
   }
 end

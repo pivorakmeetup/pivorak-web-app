@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe Courses::Season::RegisterPolicy do
@@ -6,7 +8,7 @@ describe Courses::Season::RegisterPolicy do
   let(:policy)  { described_class.new(season, student) }
 
   describe '#allowed?' do
-    context "season has status registration, student is not registered yet" do
+    context 'season has status registration, student is not registered yet' do
       it 'allows to pass policy' do
         allow(policy).to receive(:season_has_status_registration?).and_return(true)
         allow(policy).to receive(:student_enrolled?).and_return(false)
@@ -27,7 +29,7 @@ describe Courses::Season::RegisterPolicy do
       end
     end
 
-    context "student is registered already" do
+    context 'student is registered already' do
       it "doesn't allow to pass policy" do
         allow(policy).to receive(:season_has_status_registration?).and_return(true)
         allow(policy).to receive(:student_enrolled?).and_return(true)
@@ -36,7 +38,7 @@ describe Courses::Season::RegisterPolicy do
       end
     end
 
-    context "student has test_task_done status" do
+    context 'student has test_task_done status' do
       it "doesn't allow to pass policy" do
         allow(policy).to receive(:season_has_status_registration?).and_return(true)
         allow(policy).to receive(:student_test_task_done?).and_return(true)

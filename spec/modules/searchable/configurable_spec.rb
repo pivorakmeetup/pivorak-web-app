@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 RSpec.describe ::Searchable::Configurable do
   let(:subject) { Class.new }
-  let(:definition) { Proc.new {} }
+  let(:definition) { proc {} }
 
   describe '.included' do
     it 'extends target class' do

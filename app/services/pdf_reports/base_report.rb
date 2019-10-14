@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PdfReports
   class BaseReport < ::ApplicationService
     def call
@@ -6,7 +8,7 @@ module PdfReports
     end
 
     def generate_pdf
-      fail NotImplementedError, 'For subclasses only!'
+      raise NotImplementedError, 'For subclasses only!'
     end
 
     def report
@@ -16,7 +18,7 @@ module PdfReports
     end
 
     def report_file
-      @report_file ||= Tempfile.new(["#{report_file_name}", '.pdf'])
+      @report_file ||= Tempfile.new([report_file_name.to_s, '.pdf'])
     end
 
     def report_file_name

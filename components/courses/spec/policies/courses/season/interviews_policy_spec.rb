@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe Courses::Season::InterviewsPolicy do
@@ -38,7 +40,7 @@ describe Courses::Season::InterviewsPolicy do
       end
     end
 
-    context "student already have an interview" do
+    context 'student already have an interview' do
       it "doesn't allow to pass policy" do
         allow(policy).to receive(:season_has_status_selection?).and_return(true)
         allow(policy).to receive(:student_test_task_done?).and_return(true)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class EmailTemplate < ApplicationRecord
   class EmailContext < ActionView::Base
     include Rails.application.routes.url_helpers
@@ -20,14 +22,6 @@ class EmailTemplate < ApplicationRecord
 
     def admin_visit_requests_url
       admin_event_visit_requests_url(@event, host: host)
-    end
-
-    def confirm_visit_url
-      event_visit_request_url(@event, @visit_request, answer: :yes, token: @visit_request.token, host: host)
-    end
-
-    def cancel_visit_url
-      event_visit_request_url(@event, @visit_request, answer: :no, token: @visit_request.token, host: host)
     end
 
     def initialize(args = {})

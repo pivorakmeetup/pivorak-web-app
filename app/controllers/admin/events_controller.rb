@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Admin
   class EventsController < BaseController
     helper_method :event, :events, :venues
@@ -33,8 +35,8 @@ module Admin
     end
 
     def events
-      @events ||= ::Event::List.(events: search_against(Event), page: params[:page])
-        .per(Ez::Settings[:app, :events, :default_events_per_page])
+      @events ||= ::Event::List.call(events: search_against(Event), page: params[:page])
+                               .per(Ez::Settings[:app, :events, :default_events_per_page])
     end
 
     def venues

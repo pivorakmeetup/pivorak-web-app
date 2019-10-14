@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_email_preview'
 
 #= REP hooks and config
-#RailsEmailPreview.setup do |config|
+# RailsEmailPreview.setup do |config|
 #
 #  # hook before rendering preview:
 #  config.before_render do |message, preview_class_name, mailer_action|
@@ -16,7 +18,7 @@ require 'rails_email_preview'
 #
 #  # You can specify a controller for RailsEmailPreview::ApplicationController to inherit from:
 #  config.parent_controller = 'Admin::ApplicationController' # default: '::ApplicationController'
-#end
+# end
 
 #= REP + Comfortable Mexican Sofa integration
 #
@@ -38,10 +40,9 @@ Rails.application.config.to_prepare do
     before_action :authorize!
 
     private
+
     def authorize!
-      unless current_user && current_user.admin?
-        redirect_to root_path
-      end
+      redirect_to root_path unless current_user&.admin?
     end
   end
 end

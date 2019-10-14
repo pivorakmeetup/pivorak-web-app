@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Courses
   class Interview < ApplicationRecord
     include ApplicationHelper
@@ -22,13 +24,6 @@ module Courses
     scope :attendance_available, -> { where(student_id: nil) }
 
     ALLOWED_INTERVAL = 30
-
-    # DEPRECATED
-    def interval_policy
-      unless Courses::Interview::IntervalPolicy.new(mentor, self, ALLOWED_INTERVAL).allowed?
-        errors.add(:start_at, "should be at least #{ALLOWED_INTERVAL} minutes between interviews")
-      end
-    end
 
     def mentor_name
       mentor.full_name

@@ -26,8 +26,5 @@
           td = homework_mark(current_lecture, student)
           - if authenticate_lecturer!
             td
-              = set_mark_button(current_season, current_lecture, student, -1)
-              = set_mark_button(current_season, current_lecture, student, 0)
-              = set_mark_button(current_season, current_lecture, student, 1)
-              = set_mark_button(current_season, current_lecture, student, 1.5)
-              = set_mark_button(current_season, current_lecture, student, 2)
+              - ::Courses::Progress::ALLOWED_MARKS.each do |mark|
+                = set_mark_button(current_season, current_lecture, student, mark)

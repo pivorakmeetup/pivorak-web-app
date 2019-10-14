@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class EmailMailerPreview
   def custom
     email_id = Email.last.id

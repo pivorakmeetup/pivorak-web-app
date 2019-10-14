@@ -9,12 +9,30 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended that you check this file into your version control system.
-
 ActiveRecord::Schema.define(version: 2018_09_25_115430) do
+
+ActiveRecord::Schema.define(version: 2019_05_03_213454) 
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
+
+  create_table "bb_books", id: :serial, force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.integer "member_id"
+    t.integer "status", default: 0
+    t.index ["member_id"], name: "index_bb_books_on_member_id"
+    t.index ["status"], name: "index_bb_books_on_status"
+  end
+
+  create_table "bb_members", id: :serial, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "status", default: 0
+    t.datetime "membered_at"
+    t.index ["status"], name: "index_bb_members_on_status"
+    t.index ["user_id"], name: "index_bb_members_on_user_id"
+  end
 
   create_table "courses_assessments", id: :serial, force: :cascade do |t|
     t.integer "interview_assessment_id"
@@ -126,6 +144,8 @@ ActiveRecord::Schema.define(version: 2018_09_25_115430) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "mentor_id"
+    t.integer "status", default: 0
+    t.text "notes"
   end
 
   create_table "donations", id: :serial, force: :cascade do |t|
@@ -213,6 +233,8 @@ ActiveRecord::Schema.define(version: 2018_09_25_115430) do
     t.string "resource"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "slug"
+    t.index ["slug"], name: "index_groups_on_slug", unique: true
   end
 
   create_table "identities", id: :serial, force: :cascade do |t|

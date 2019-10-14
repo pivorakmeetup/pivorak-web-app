@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 RSpec.describe Mailchimp::User::Subscribe do
-  let(:lists)    { double() }
-  let(:members)  { double() }
+  let(:lists)    { double }
+  let(:members)  { double }
   let(:user)     { create(:user) }
   let(:response) { described_class.call(user: user) }
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Visit Requests CANCEL' do
   let(:event)          { create(:event) }
   let(:user)           { create(:user)  }
@@ -23,7 +25,7 @@ RSpec.describe 'Visit Requests CANCEL' do
     describe "click 'Cancel attendance'" do
       before { click_link 'Cancel attendance' }
 
-      it { expect(page).to have_current_path("/") }
+      it { expect(page).to have_current_path('/') }
       it { expect(page).to_not have_link 'Attend' }
 
       it 'changes visit request status to canceled' do

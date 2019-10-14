@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 module Admin
   module Courses
     class InterviewsController < ::Admin::Courses::BaseController
       helper_method :interviews, :interview, :questions,
-        :interviews_with_assessments, :average_assessment, :interview_assessment
+                    :interviews_with_assessments, :average_assessment, :interview_assessment
 
       before_action :authenticate_interviewer!, only: %i[edit update]
 
@@ -41,26 +43,26 @@ module Admin
 
       def interviews
         @interviews ||= current_season.interviews
-          .order(:status)
-          .includes(mentor: :user)
-          .includes(student: :user)
+                                      .order(:status)
+                                      .includes(mentor: :user)
+                                      .includes(student: :user)
       end
 
       def interviews_breadcrumb
-       add_breadcrumb 'courses.interviews.plural',
-         path: admin_courses_season_interviews_path(current_season)
+        add_breadcrumb 'courses.interviews.plural',
+                       path: admin_courses_season_interviews_path(current_season)
       end
 
       def interview_breadcrumb
         label_data = interview.student ? :full_name : :status
 
         add_breadcrumb interview, label: label_data,
-          path: admin_courses_season_interview_path(current_season, interview)
+                                  path:  admin_courses_season_interview_path(current_season, interview)
       end
 
       def interviews_params
         params.require(:interview).permit(:start_at, :description, :video_url, :status)
-          .merge(mentor_id: mentor_id)
+              .merge(mentor_id: mentor_id)
       end
 
       def mentor_id
@@ -74,8 +76,10 @@ module Admin
 
       def interviews_with_assessments
         @interviews_with_assessments ||= ::Courses::Interview::WithAssessments
-          .call(interviews, questions)
-          .sort { |a,b| [a.status, -a.average_assessment] <=> [b.status, -b.average_assessment]}
+                                         .call(interviews, questions)
+                                         .sort do |a, b|
+          [a.status, -a.average_assessment] <=> [b.status, -b.average_assessment]
+        end
       end
 
       def average_assessment
@@ -88,7 +92,7 @@ module Admin
 
       def interview_assessment
         @interview_assessment ||= ::Courses::Interview::InterviewAssessmentForInterview
-          .call(interview, current_mentor)
+                                  .call(interview, current_mentor)
       end
     end
   end

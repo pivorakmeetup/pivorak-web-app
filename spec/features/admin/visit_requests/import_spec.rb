@@ -1,4 +1,6 @@
-RSpec.describe 'Visit Requests APPROVE' do
+# frozen_string_literal: true
+
+RSpec.describe 'Visit Requests IMPORT' do
   let(:not_passed_event) { create(:event) }
   let(:passed_event)     { create(:event, status: :passed) }
   let(:user_a)           { create(:user, first_name: 'A', last_name: 'User') }
@@ -18,6 +20,7 @@ RSpec.describe 'Visit Requests APPROVE' do
     before { visit admin_event_visit_requests_path(passed_event) }
 
     it { expect(page).to have_content 'Import' }
+
     it 'import visit requests of users' do
       fill_in 'Emails list', with: emails_list
       click_button 'Import'

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Admin
   class BaseController < ApplicationController
     layout 'admin'
@@ -11,24 +13,26 @@ module Admin
 
     private
 
+    class << self
+      def add_breadcrumb(i18n_label, path = nil)
+        semantic_breadcrumb I18n.t(i18n_label), path
+      end
+    end
+
     def authenticate_admin!
       return if current_user&.admin?
 
-      flash_error and redirect_to(root_path)
+      flash_error && redirect_to(root_path)
     end
 
     def only_supervisor!
       return if current_user&.admin? && current_user&.supervisor?
 
-      flash_error and redirect_to(admin_path)
+      flash_error && redirect_to(admin_path)
     end
 
     def search_against(model)
       Search::Resource.call params.merge(model: model)
-    end
-
-    def self.add_breadcrumb(i18n_label, path = nil)
-      semantic_breadcrumb I18n.t(i18n_label), path
     end
 
     add_breadcrumb 'admin.admin', :admin_path # It must be bellow declaration
@@ -55,9 +59,9 @@ module Admin
 
     def react_to(action)
       if action
-        flash_success and default_redirect
+        flash_success && default_redirect
       else
-        flash_error and render_form
+        flash_error && render_form
       end
     end
 

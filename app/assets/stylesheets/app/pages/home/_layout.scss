@@ -1,0 +1,53 @@
+$namespace: '.pk-home-layout';
+
+#{$namespace} {
+  display: flex;
+  flex-direction: column;
+  height: $main-content-min-height;
+
+  @include breakpoint-max(650) {
+    height: auto;
+  }
+}
+
+#{$namespace}__logo {
+  flex: 0 0 auto;
+  margin-top: 48px;
+}
+
+#{$namespace}__content-wrapper {
+  flex: 1 1 auto;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+#{$namespace}__content {
+  flex: 0 0 auto;
+
+  p {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+
+  @include breakpoint-max(650) {
+    flex: 1 1 auto;
+
+    p {
+      font-size: inherit;
+      margin-bottom: 10px;
+    }
+
+    .btn {
+      margin: 10px 0;
+    }
+  }
+}
+
+#{$namespace}__footer {
+  font-weight: bold;
+  flex: 0 0 auto;
+  text-align: center;
+}

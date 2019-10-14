@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'email_templates UPDATE' do
   let(:email_template) { create(:email_template) }
 
@@ -13,7 +15,7 @@ RSpec.describe 'email_templates UPDATE' do
       note = email_template_params.note
       body = email_template_params.body
 
-      fill_in 'Subject',  with: subject
+      fill_in 'Subject', with: subject
       fill_in 'Note',  with: note
       fill_in 'Body',  with: body
 
@@ -28,15 +30,14 @@ RSpec.describe 'email_templates UPDATE' do
 
   context 'when params are invalid' do
     it 'shows errors' do
-      fill_in 'Subject',  with: ''
-      fill_in 'Body',  with: ''
+      fill_in 'Subject', with: ''
+      fill_in 'Body', with: ''
 
       click_button 'Update Email template'
 
       expect(page).to have_current_path "/admin/email_templates/#{email_template.id}"
-      expect_an_error email_template_subject:  :blank
+      expect_an_error email_template_subject: :blank
       expect_an_error email_template_body:  :blank
     end
   end
-
 end

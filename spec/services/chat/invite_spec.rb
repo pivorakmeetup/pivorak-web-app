@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe Chat::Invite do
@@ -8,7 +10,11 @@ describe Chat::Invite do
   describe '#call' do
     context 'when success' do
       before do
-        expect(Chat::Client).to receive(:new).with({:url=> Chat::Invite::INVITE_URL, :params=>{:resend=>true, :email=> email}}) { mocked_client }
+        expect(Chat::Client)
+          .to receive(:new)
+          .with(url: Chat::Invite::INVITE_URL, params: { resend: true, email: email })
+          .and_return(mocked_client)
+
         expect(mocked_client).to receive(:call) { true }
       end
       it { expect(subject.call).to be_truthy }

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Admin
   module Courses
     class GraduatesController < ::Admin::Courses::BaseController

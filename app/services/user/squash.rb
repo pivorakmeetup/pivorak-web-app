@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User
   class Squash < ApplicationService
     def initialize(params = {})
@@ -35,7 +37,7 @@ class User
 
     def fix_has_many_dependencies!
       dependencies[:has_many].each_pair do |resource, options|
-        ::User::SquashResolver.(
+        ::User::SquashResolver.call(
           resource:         resource,
           association_type: :has_many,
           foreign_key:      options[:foreign_key],

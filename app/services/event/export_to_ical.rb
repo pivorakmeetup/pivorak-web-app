@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 class Event
   class ExportToIcal < ApplicationService
     def initialize(event)
       @event = event
     end
 
-    def call
+    def call # rubocop:disable Metrics/AbcSize
       calendar = Icalendar::Calendar.new
       calendar.event do |e|
         e.dtstart     = Icalendar::Values::DateTime.new(event.started_at)
@@ -27,4 +29,3 @@ class Event
     attr_reader :event
   end
 end
-

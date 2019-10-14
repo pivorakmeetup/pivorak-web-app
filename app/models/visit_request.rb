@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class VisitRequest < ApplicationRecord
   include ::Searchable
 
@@ -7,7 +9,7 @@ class VisitRequest < ApplicationRecord
   CONFIRMED = :confirmed
   REFUSED   = :refused
 
-  enum status:  [PENDING, APPROVED, CANCELED, CONFIRMED, REFUSED]
+  enum status: [PENDING, APPROVED, CANCELED, CONFIRMED, REFUSED]
 
   validates :event_id, :user_id, presence: true
 
@@ -16,10 +18,13 @@ class VisitRequest < ApplicationRecord
 
   delegate :full_name, to: :user
 
-  scope :main_list,    -> { where(waiting_list: false) }
-  scope :waiting_list, -> { where(waiting_list: true)  }
-  scope :final,        -> { where(status: [APPROVED, CONFIRMED]).main_list }
-  scope :used,         -> { where(visited: true) }
+  scope :main_list,       -> { where(waiting_list: false) }
+  scope :waiting_list,    -> { where(waiting_list: true)  }
+  scope :final,           -> { where(status: [APPROVED, CONFIRMED]).main_list }
+  scope :used,            -> { where(visited: true) }
+  scope :sort_by_user_full_name, -> { joins(:user).order(Arel.sql('LOWER(users.first_name), LOWER(users.last_name)')) }
+  # TODO: why do we have 2 statuses?
+  scope :without_refused_and_canceled, -> { where.not(status: [CANCELED, REFUSED]) }
 
   def main_list!
     update(waiting_list: false)
@@ -31,5 +36,9 @@ class VisitRequest < ApplicationRecord
 
   def final_decision?
     confirmed? || refused?
+  end
+
+  def checked_in?
+    checked_in_at.present?
   end
 end

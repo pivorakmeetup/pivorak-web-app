@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Page UPDATE' do
   let(:test_page) { create(:page, title: 'Test page', url: 'test-page') }
   let(:test_edit_path) { "/admin/pages/#{test_page.id}/edit" }

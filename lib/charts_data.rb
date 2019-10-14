@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ChartsData
   def hash_prefix_sum(hash)
     hash.each_with_object({}) do |(sym, val), acc|

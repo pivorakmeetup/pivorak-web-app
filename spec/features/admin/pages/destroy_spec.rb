@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Page DESTROY' do
   let!(:test_page) { create(:page, title: 'Test Page') }
 

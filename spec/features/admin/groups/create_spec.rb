@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Groups CREATE' do
   before do
     assume_admin_logged_in
@@ -6,7 +8,7 @@ RSpec.describe 'Groups CREATE' do
 
   context 'invalid input' do
     it 'validates presence' do
-      fill_in 'Name',     with: ''
+      fill_in 'Name', with: ''
       click_button 'Create Group'
 
       expect_an_error group_name:     :blank

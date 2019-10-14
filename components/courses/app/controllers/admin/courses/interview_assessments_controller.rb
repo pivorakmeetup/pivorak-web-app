@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Admin
   module Courses
     class InterviewAssessmentsController < ::Admin::Courses::BaseController
@@ -7,12 +9,12 @@ module Admin
 
       def create
         interview.interview_assessments.create(interview_assessment_params)
-        redirect_to :back
+        redirect_back(fallback_location: current_season)
       end
 
       def update
         assessment.update(interview_assessment_params)
-        redirect_to :back
+        redirect_back(fallback_location: current_season)
       end
 
       private
@@ -27,8 +29,8 @@ module Admin
 
       def interview_assessment_params
         params.require(:interview_assessment)
-          .permit(assessments_attributes: [:id, :question_id, :mark])
-          .merge(mentor_id: mentor_id)
+              .permit(assessments_attributes: %i[id question_id mark])
+              .merge(mentor_id: mentor_id)
       end
 
       def mentor_id

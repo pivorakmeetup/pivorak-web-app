@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 module Searchable
   module Configuration
     module Talk
       include Configurable
       include SearchOptions
 
-      FIELDS = %i(title description)
+      FIELDS = %i[title description].freeze
 
       define_searchable do
         multisearchable          against: FIELDS

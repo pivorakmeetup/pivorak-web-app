@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 module PdfReports
   class EventVisitorsReport < BaseReport
-    DEFAULT_FONT = 'Helvetica'.freeze
+    DEFAULT_FONT = 'Helvetica'
 
     def initialize(visit_requests)
       @visit_requests = visit_requests
     end
 
-    def generate_pdf
+    def generate_pdf # rubocop:disable Metrics/AbcSize
       report do |pdf|
         pdf.font(settings.fetch(:font, DEFAULT_FONT))
         pdf.table(formated_data, settings.fetch(:table, {})) do |table|
@@ -21,10 +23,10 @@ module PdfReports
     attr_reader :visit_requests
 
     def formated_data
-      @formated_data ||= visit_requests
-                         .map { |vr| vr.user.full_name }
-                         .sort
-                         .each_slice(settings.fetch(:columns, 1)).to_a
+      @formated_data ||= visit_requests.sort_by_user_full_name
+                                       .includes(:user)
+                                       .map.with_index { |vr, index| "#{index + 1}. #{vr.user.full_name}" }
+                                       .each_slice(settings.fetch(:columns, 1)).to_a
     end
 
     def report_options

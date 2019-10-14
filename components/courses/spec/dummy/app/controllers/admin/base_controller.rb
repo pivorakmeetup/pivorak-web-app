@@ -1,13 +1,13 @@
+# frozen_string_literal: true
+
 # Mock of original controller
 module Admin
   class BaseController < ApplicationController
     helper_method :current_user, :line_chart
 
-    def self.add_breadcrumb(*)
-    end
+    def self.add_breadcrumb(*); end
 
-    def line_chart(*)
-    end
+    def line_chart(*); end
 
     def edit
       render_form
@@ -23,8 +23,7 @@ module Admin
       render :form
     end
 
-    def semantic_breadcrumb(*)
-    end
+    def semantic_breadcrumb(*); end
 
     def add_breadcrumb(resource, label: :title, path: nil)
       if resource.instance_of?(String)
@@ -44,9 +43,9 @@ module Admin
 
     def react_to(action)
       if action
-        flash_success and default_redirect
+        flash_success && default_redirect
       else
-        flash_error and render_form
+        flash_error && render_form
       end
     end
 

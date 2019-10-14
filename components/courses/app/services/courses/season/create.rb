@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Courses
   class Season < ApplicationRecord
     class Create < ApplicationService
@@ -9,16 +11,16 @@ module Courses
       end
 
       def call
-        if season.valid?
-          transaction do
-            default_questions.each do |default|
-              season.questions.new(body: default)
-            end
+        return unless season.valid?
 
-            season.mentors.new(user: user)
-
-            season.save
+        transaction do
+          default_questions.each do |default|
+            season.questions.new(body: default)
           end
+
+          season.mentors.new(user: user)
+
+          season.save
         end
       end
 

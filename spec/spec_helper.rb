@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'simplecov'
 require 'sidekiq/testing'
@@ -10,12 +12,12 @@ if ENV['CI']
 end
 
 ENV['RAILS_ENV'] ||= 'test'
-require File.expand_path('../../config/environment', __FILE__)
+require File.expand_path('../config/environment', __dir__)
 
 Rails.application.load_tasks
 
 # Prevent database truncation if the environment is production
-abort("The Rails environment is running in production mode!") if Rails.env.production?
+abort('The Rails environment is running in production mode!') if Rails.env.production?
 
 require 'rspec/rails'
 require 'capybara/rails'
@@ -23,14 +25,6 @@ require 'database_cleaner'
 require 'rspec/collection_matchers'
 require 'rspec/its'
 require 'rspec/active_model/mocks'
-
-require 'vcr'
-
-VCR.configure do |c|
-  c.cassette_library_dir = 'spec/cassettes'
-  c.hook_into :webmock
-  c.configure_rspec_metadata!
-end
 
 Dir[Rails.root.join('spec/support/*.rb')].each { |f| require f }
 
@@ -60,6 +54,8 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
+
+  DatabaseCleaner.allow_remote_database_url = true
 
   config.before(:suite) do |_|
     DatabaseCleaner.strategy = :transaction

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Omniauth
   class Resolver
     class Default
@@ -5,7 +7,7 @@ module Omniauth
         @params = params
       end
 
-      %i(uid provider).each do |method_name|
+      %i[uid provider].each do |method_name|
         define_method method_name do
           params[method_name]
         end

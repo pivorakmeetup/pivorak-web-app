@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User
   class EventVisitors < ApplicationFinder
     def initialize(event_id:)
@@ -6,7 +8,7 @@ class User
 
     def call
       User.joins(:visit_requests)
-        .where(visit_requests: { event_id: event_id, visited: true })
+          .where(visit_requests: { event_id: event_id, visited: true })
     end
 
     private

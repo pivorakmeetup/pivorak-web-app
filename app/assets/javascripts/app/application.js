@@ -25,6 +25,7 @@
 
   var contentLoaded = function() {
     initDropdowns();
+    listenDonateTermsOfUse();
   }
 
   document.addEventListener('turbolinks:load', initApplication);

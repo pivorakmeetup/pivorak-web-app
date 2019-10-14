@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe User::EventApplied do
   let!(:visitor_approved) { create(:user) }
   let!(:visitor_pending) { create(:user) }
-  let!(:visitor_refused){ create(:user) }
-  let!(:visitor_canceled){ create(:user) }
-  let!(:visitor_confirmed){ create(:user) }
+  let!(:visitor_refused) { create(:user) }
+  let!(:visitor_canceled) { create(:user) }
+  let!(:visitor_confirmed) { create(:user) }
   let!(:not_visitor) { create(:user) }
 
   let(:event) { create(:event) }

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   root 'home#index'
 
@@ -11,10 +13,11 @@ Rails.application.routes.draw do
   }
 
   #=== MAIN APP =================================
-  resources :events,  only: %i[index show] do
+  resources :events, only: %i[index show] do
     resources :visit_requests, only: %i[show create destroy]
   end
 
+  resource :donate,     only: %i[show create], controller: :donate
   resources :speakers,  only: %i[index]
   resources :search,    only: %i[index]
   resources :venues,    only: %i[show]
@@ -25,28 +28,28 @@ Rails.application.routes.draw do
     post :become_speaker, to: 'become_speaker#create', on: :collection
   end
 
-  # TODO uncomment when page is created
-  # resource :donation,        only: %i[show create], controller: :donation
-  resource :donation,        only: %i[create], controller: :donation
-  resource :payment_handler, only: %i[create], controller: :payment_handler
-
   resources :goals,   only: %i[index show] do
     post :donate, on: :member
   end
 
   resource :supporters, only: %i[show]
+  resource :agenda, only: :show, controller: :agenda
 
   #=== ADMIN AREA ===============================
-  namespace :admin do
+  namespace :admin do # rubocop:disable Metrics/BlockLength
     get '/', to: 'home#index'
     get '/donations', to: 'donations#index'
+
+    get 'visit_request/:token/check_in/', to: 'visit_request/check_in#show', as: :visit_request_check_in
 
     resources :events,  except: %i[show destroy] do
       resources :visit_requests, only: %i[index] do
         collection do
           post :send_confirmations, to: 'visit_request/send_confirmations#create'
-          post :import,             to: 'visit_request/import#create'
-          get  :report,             to: 'visit_request/report#download'
+          post :send_confirmation_reminders, to: 'visit_request/send_confirmation_reminders#create'
+          post :import, to: 'visit_request/import#create'
+          resource :invite, only: %i[new create], controller: 'visit_request/invite'
+          get :report, to: 'visit_request/report#download'
         end
 
         put  :approve,      to: 'visit_request/approve#update'
@@ -66,7 +69,7 @@ Rails.application.routes.draw do
     resources :emails,  only:   %i[new show index create]
     resources :friends, except: %i[show destroy]
     resources :pages,   except: %i[show]
-    resources :email_templates,   only: %i[index edit update]
+    resources :email_templates, only: %i[index edit update]
 
     ez_settings_for :app
 

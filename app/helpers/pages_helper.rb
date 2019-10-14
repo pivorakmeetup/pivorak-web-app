@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PagesHelper
   def page_link(page, options = {})
     return unless page&.persisted?

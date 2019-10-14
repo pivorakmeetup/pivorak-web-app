@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe Chat::Client do
@@ -10,14 +12,14 @@ describe Chat::Client do
 
   describe '#call' do
     context 'when call is succesful' do
-      let(:body) { {'ok' => true}.to_json }
+      let(:body) { { 'ok' => true }.to_json }
       it { expect(client.call).to be_truthy }
     end
 
     context 'when call is failure' do
       let(:error) { 'auth_error' }
-      let(:body) { {'error' => error}.to_json }
-      it { expect{ client.call }.to raise_error(Chat::Client::ChatError) }
+      let(:body) { { 'error' => error }.to_json }
+      it { expect { client.call }.to raise_error(Chat::Client::ChatError) }
     end
   end
 end

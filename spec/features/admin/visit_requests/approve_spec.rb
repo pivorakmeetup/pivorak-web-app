@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Visit Requests APPROVE' do
   let(:event) { create(:event) }
   let!(:visit_request) { create(:visit_request, event: event) }

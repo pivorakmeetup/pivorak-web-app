@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Admin
   class GroupsController < BaseController
     helper_method :group, :groups
@@ -31,7 +33,7 @@ module Admin
     end
 
     def group
-      @group ||= Group.find(params[:id])
+      @group ||= Group.friendly.find(params[:id])
     end
 
     def groups

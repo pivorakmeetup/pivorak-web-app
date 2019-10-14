@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 module Admin
   module DryHelper
     BOOL_BG_COLOR_CLASS = {
       true  => 'green',
       false => 'grey'
-    }
+    }.freeze
 
     def admin_resources_link(resources, options = {})
       link_text = options.delete(:text) || t(:plural, scope: resources)
@@ -13,21 +15,21 @@ module Admin
 
     def admin_new_resource_link(resource_name)
       link_to icon(:add, t('phrases.new_resource', resource: t(:singular, scope: resource_name.to_s.pluralize))),
-        new_polymorphic_path([:admin, resource_name]),
-        class: 'ui button green'
+              new_polymorphic_path([:admin, resource_name]),
+              class: 'ui button green'
     end
 
     def admin_edit_resource_link(resource)
       link_to icon(:edit, t('words.edit')),
-        edit_polymorphic_path([:admin, resource]),
-        class: 'item'
+              edit_polymorphic_path([:admin, resource]),
+              class: 'item'
     end
 
     def admin_destroy_resource_link(resource)
       link_to icon(:trash, t('words.destroy')),
-        polymorphic_path([:admin, resource]),
-        method: :delete, class: 'item',
-        data: { confirm: t('phrases.confirm') }
+              polymorphic_path([:admin, resource]),
+              method: :delete, class: 'item',
+              data: { confirm: t('phrases.confirm') }
     end
 
     def resource_form_text(resource, label: :title)
@@ -54,8 +56,8 @@ module Admin
     end
 
     def admin_back_link(resources_name)
-      admin_resources_link(resources_name, text: t('words.back'),
-        class: 'ui button grey')
+      admin_resources_link(resources_name, text:  t('words.back'),
+                                           class: 'ui button grey')
     end
 
     def bool_icon(bool)

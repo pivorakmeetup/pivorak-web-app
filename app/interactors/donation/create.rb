@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Donation
   include Charge
   include Customer

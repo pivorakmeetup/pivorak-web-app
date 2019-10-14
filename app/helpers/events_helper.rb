@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module EventsHelper
   def attend_event_link(event, visit_request)
     return unless current_user
@@ -5,10 +7,10 @@ module EventsHelper
     return if visit_request&.pending?
     return if visit_request&.approved?
 
-    return if !(Event::SlotsPolicy.new(event).has_free_slot_for?(current_user))
+    return unless Event::SlotsPolicy.new(event).free_slot_for?(current_user)
     return if event.visitors.include?(current_user)
 
-    link_to t('visit_requests.attend'), event_visit_requests_path(event), method: :post, class: "pk-btn pk-btn--biggest"
+    link_to t('visit_requests.attend'), event_visit_requests_path(event), method: :post, class: 'pk-btn pk-btn--biggest'
   end
 
   def cancel_event_attendace_link(visit_request)
@@ -17,15 +19,18 @@ module EventsHelper
     return if visit_request&.canceled?
 
     link_to t('visit_requests.cancel_attendace'),
-      event_visit_request_path(visit_request.event, visit_request, token: visit_request.token),
-      method: :delete, data: { confirm: t('phrases.confirm') }
+            event_visit_request_path(visit_request.event, visit_request, token: visit_request.token),
+            method: :delete, data: { confirm: t('phrases.confirm') }
   end
 
   def waiting_list_message
-    return if Event::SlotsPolicy.new(event).has_free_slot_for?(current_user)
+    return if Event::SlotsPolicy.new(event).free_slot_for?(current_user)
     return if event.visitors.include?(current_user)
 
-    render html: "#{t('visit_requests.messages.waiting_list')} #{link_to t('visit_requests.attend'), event_visit_requests_path(event), method: :post}".html_safe
+    link =
+      link_to(t('visit_requests.messages.add_to_waiting_list'), event_visit_requests_path(event), method: :post)
+
+    "#{t('visit_requests.messages.waiting_list')}: <br> #{link}"
   end
 
   def visit_request_confirm_message(visit_request)
@@ -36,7 +41,7 @@ module EventsHelper
     elsif visit_request.refused?
       t('visit_requests.messages.so_pity')
     else
-    t('visit_requests.messages.please_confirm')
+      t('visit_requests.messages.please_confirm')
     end
   end
 
@@ -45,8 +50,8 @@ module EventsHelper
     return if visit_request.final_decision?
 
     link_to t('visit_requests.confirm'),
-      visit_request_confirm_path(visit_request, :yes),
-      data: { confirm: t('phrases.confirm') }
+            visit_request_confirm_path(visit_request, :yes),
+            data: { confirm: t('phrases.confirm') }
   end
 
   def visit_request_refuse_link(visit_request)
@@ -54,8 +59,8 @@ module EventsHelper
     return if visit_request.refused?
 
     link_to t('visit_requests.refuse'),
-      visit_request_confirm_path(visit_request, :no),
-      data: { confirm: t('phrases.confirm') }
+            visit_request_confirm_path(visit_request, :no),
+            data: { confirm: t('phrases.confirm') }
   end
 
   def visit_request_status_message(visit_request)
@@ -76,6 +81,7 @@ module EventsHelper
 
   def get_event_fullness_percent(event)
     return 0 if event.limit_total.zero?
+
     (event.visit_requests.approved.count.to_f / event.limit_total) * 100
   end
 
@@ -83,6 +89,6 @@ module EventsHelper
 
   def visit_request_confirm_path(visit_request, answer)
     event_visit_request_path(visit_request.event, visit_request,
-      answer: answer, token: visit_request.token)
+                             answer: answer, token: visit_request.token)
   end
 end

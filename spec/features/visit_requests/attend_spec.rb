@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Visit Requests ATTEND' do
   let(:event) { create(:event, limit_total: 2, limit_verified: 1) }
 
@@ -16,21 +18,14 @@ RSpec.describe 'Visit Requests ATTEND' do
       context 'as newbie' do
         before { click_link 'Attend' }
 
-        it { expect(page).to have_current_path("/") }
+        it { expect(page).to have_current_path('/') }
         it { expect(page).to_not have_link 'Attend' }
         it { expect(page).to have_content I18n.t('visit_requests.messages.pending') }
         it { expect(page).to have_content I18n.t('flash.visit_requests.create.success_for_newbies') }
         it { expect(page).to have_link 'Cancel attendance' }
 
-        it 'enques notify admin job' do
-          active_job = active_jobs[0]
-          expect(active_job[:job]).to eq ActionMailer::DeliveryJob
-          expect(active_job[:args][0]).to eq 'VisitRequestMailer'
-          expect(active_job[:args][1]).to eq 'notify_admin_about_unverified_attendee'
-        end
-
         it 'enques needs confirmation' do
-          active_job = active_jobs[1]
+          active_job = active_jobs[0]
           expect(active_job[:job]).to eq ActionMailer::DeliveryJob
           expect(active_job[:args][0]).to eq 'VisitRequestMailer'
           expect(active_job[:args][1]).to eq 'needs_confirmation'
@@ -45,7 +40,7 @@ RSpec.describe 'Visit Requests ATTEND' do
           click_link 'Attend'
         end
 
-        it { expect(page).to have_current_path("/") }
+        it { expect(page).to have_current_path('/') }
         it { expect(page).to_not have_link 'Attend' }
         it { expect(page).to have_content I18n.t('visit_requests.messages.approved') }
         it { expect(page).to have_content I18n.t('flash.visit_requests.create.success_for_verified') }

@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 module Courses
   class SeasonsController < BaseController
-    helper_method :mentors, :season, :journal_students, :journal_lectures, :journal_hash
+    helper_method :season, :journal_students, :journal_lectures, :journal_hash
 
     private
 
@@ -8,13 +10,9 @@ module Courses
       @season ||= ::Courses::Season.friendly.find(params[:id])
     end
 
-    def mentors
-      @mentors ||= season.mentors.includes(:user).sort_by { |obj| obj.full_name }
-    end
-
     def journal_students
       @journal_students ||= ::Courses::Student::AttendingAndGraduated
-        .call(season, [:user, :progresses])
+                            .call(season, %i[user progresses])
     end
 
     def journal_lectures
@@ -23,7 +21,7 @@ module Courses
 
     def journal_hash
       @journal_hash ||= ::Courses::Student::TotalHash
-        .call(journal_students, sort_by: params[:sort_by], lecture_id: params[:lecture])
+                        .call(journal_students, sort_by: params[:sort_by], lecture_id: params[:lecture])
     end
   end
 end

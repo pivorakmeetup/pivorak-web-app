@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'slim-rails'
 require 'kaminari'
 require 'simple_form'

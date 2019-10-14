@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module DryHelper
   def resource_link(resource, options = {})
     return unless resource.persisted?
