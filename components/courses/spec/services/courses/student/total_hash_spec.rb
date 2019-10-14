@@ -32,7 +32,7 @@ describe Courses::Student::TotalHash do
 
   describe '#call' do
     it 'returns total hash' do
-      students          = [first_student, second_student]
+      students = [first_student, second_student]
 
       first_total       = first_progress.homework_mark + first_progress.lecture_presence +
                           third_progress.homework_mark + third_progress.lecture_presence
@@ -42,7 +42,7 @@ describe Courses::Student::TotalHash do
       first_progresses  = [first_progress, third_progress]
       second_progresses = [second_progress, fourth_progress]
 
-      total_hash        = described_class.call(students)
+      total_hash = described_class.call(students)
 
       expect(total_hash[first_student][:total]).to        eq(first_total)
       expect(total_hash[second_student][:total]).to       eq(second_total)

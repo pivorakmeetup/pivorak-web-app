@@ -6,7 +6,7 @@ class User < ApplicationRecord
   extend FriendlyId
   friendly_id :full_name, use: :slugged
 
-  LATIN_LETTERS_REGEX = /[a-zA-Z]+/
+  LATIN_LETTERS_REGEX = /[a-zA-Z]+/.freeze
 
   mount_uploader :cover, SpeakerCoverUploader
 
