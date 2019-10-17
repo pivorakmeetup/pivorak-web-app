@@ -112,6 +112,8 @@ en:
     plural: Venues
     singular: Venue
     address: Address
+    errors:
+      missing: Please select venue
 
   talks:
     plural: Talks
