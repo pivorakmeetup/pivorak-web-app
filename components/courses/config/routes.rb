@@ -22,6 +22,7 @@ Rails.application.routes.draw do
         resource  :journal,    only:   :show, controller: 'journal'
         resource  :graduate,   only:   :create
         resources :students,   only:   %i[index show update] do
+          resources :notes,    module: :students, only: %i[show update delete]
           resource :drop,      only:   :create, controller: 'drop'
         end
 

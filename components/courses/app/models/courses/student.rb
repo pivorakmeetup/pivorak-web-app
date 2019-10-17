@@ -10,6 +10,7 @@ module Courses
     has_one    :test_task
     has_many   :homeworks
     has_many   :progresses
+    has_many   :notes, as: :notable
 
     delegate :full_name, to: :user
     delegate :email,     to: :user
