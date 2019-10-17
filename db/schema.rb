@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_03_213454) do
+ActiveRecord::Schema.define(version: 2019_10_15_140601) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,6 +89,15 @@ ActiveRecord::Schema.define(version: 2019_05_03_213454) do
     t.index ["season_id"], name: "index_courses_lectures_on_season_id"
     t.index ["slug"], name: "index_courses_lectures_on_slug"
     t.index ["venue_id"], name: "index_courses_lectures_on_venue_id"
+  end
+
+  create_table "courses_notes", force: :cascade do |t|
+    t.string "notable_type"
+    t.bigint "notable_id"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["notable_type", "notable_id"], name: "index_courses_notes_on_notable_type_and_notable_id"
   end
 
   create_table "courses_progress", id: :serial, force: :cascade do |t|
@@ -241,6 +250,15 @@ ActiveRecord::Schema.define(version: 2019_05_03_213454) do
     t.string "provider"
     t.integer "user_id"
     t.index ["user_id"], name: "index_identities_on_user_id"
+  end
+
+  create_table "notes", force: :cascade do |t|
+    t.string "notable_type"
+    t.bigint "notable_id"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["notable_type", "notable_id"], name: "index_notes_on_notable_type_and_notable_id"
   end
 
   create_table "pages", id: :serial, force: :cascade do |t|
