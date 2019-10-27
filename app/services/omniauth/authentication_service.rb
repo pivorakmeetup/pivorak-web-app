@@ -29,19 +29,32 @@ module Omniauth
     end
 
     def user
-      @user ||= ::User.find_or_create_by(email: email) do |user|
+      @user ||= identified_user
+      @user ||= found_user
+    end
+
+    def identified_user
+      identity.user
+    end
+
+    def found_user
+      user = ::User.find_or_initialize_by(email: email) do |user|
         user.email      = email
         user.first_name = first_name
         user.last_name  = last_name
         user.password   = Devise.friendly_token[0, 20]
       end
+      if user.new_record?
+        user.save
+        identity.update(user: user)
+      end
+      user
     end
 
     def identity
       @identity ||= ::Identity.find_or_create_by(
         uid:      uid,
-        provider: provider,
-        user:     user
+        provider: provider
       )
     end
   end
