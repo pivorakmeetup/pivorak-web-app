@@ -29,8 +29,7 @@ module Omniauth
     end
 
     def user
-      @user ||= identified_user
-      @user ||= found_user
+      @user ||= identified_user || found_user
     end
 
     def identified_user
