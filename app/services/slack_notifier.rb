@@ -7,7 +7,7 @@ class SlackNotifier < ApplicationService
   def initialize(channel:, message:)
     @channel = channel
     @message = message
-    end
+  end
 
   def call
     notifier = Slack::Notifier.new(

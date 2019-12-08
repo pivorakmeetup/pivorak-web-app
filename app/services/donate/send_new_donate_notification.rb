@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 # Donate::SendNewDonateNotification.call('amount' => 5, 'currency' => 'USD')
 module Donate
   class SendNewDonateNotification < ApplicationService
     attr_reader :params
 
     def initialize(params)
-      @params = params
+      @params = params.deep_symbolize_keys
     end
 
     def call
@@ -18,9 +20,8 @@ module Donate
 
     def message
       I18n.t('slack.new_donation_notification_message',
-        amount: params.fetch(:amount),
-        currency: params.fetch(:currency)
-      )
+             amount:   params.fetch(:amount),
+             currency: params.fetch(:currency))
     end
   end
 end

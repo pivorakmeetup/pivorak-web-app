@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe SlackNotifier do
   let(:service) { described_class.new(channel: channel, message: message) }
 
@@ -12,7 +14,7 @@ describe SlackNotifier do
         notifier = instance_double(Slack::Notifier, ping: true)
         allow(Slack::Notifier).to receive(:new).with(
           'webhook-url.slack',
-          channel: 'dummy-channel-name',
+          channel:  'dummy-channel-name',
           username: 'notifier-bot-name'
         ).and_return(notifier)
 

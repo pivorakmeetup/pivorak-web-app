@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     resources :visit_requests, only: %i[show create destroy]
   end
 
-  resource :donate,     only: %i[show create], controller: :donate do
+  resource :donate, only: %i[show create], controller: :donate do
     post :webhook, to: 'donate/webhook#create', on: :collection
   end
   resources :speakers,  only: %i[index]
