@@ -9,11 +9,11 @@ RSpec.describe ::Donate::WebhookController do
     end
 
     it 'saves donation into database with payload without ' do
-      allow(Donate::SendNotification).to receive(:call)
+      allow(Donate::SendNewDonateNotification).to receive(:call)
 
       do_request
 
-      expect(Donate::SendNotification).to have_received(:call).with(
+      expect(Donate::SendNewDonateNotification).to have_received(:call).with(
         strong_params(amount: "5", currency: 'USD', clientName: 'John Doe')
       )
     end

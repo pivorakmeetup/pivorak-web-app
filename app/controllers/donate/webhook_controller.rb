@@ -4,7 +4,7 @@ module Donate
 
     # POST /donate/webhook
     def create
-      Donate::SendNotification.call(payload_params)
+      Donate::SendNewDonateNotification.call(payload_params)
     end
 
     private
