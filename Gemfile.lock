@@ -590,7 +590,6 @@ GEM
     unicode-display_width (1.5.0)
     uniform_notifier (1.12.1)
     url (0.3.2)
-    vcr (5.0.0)
     versionomy (0.5.0)
       blockenspiel (~> 0.5)
     warden (1.2.8)
@@ -708,7 +707,6 @@ DEPENDENCIES
   turbolinks (~> 5.2)
   tzinfo-data
   uglifier (~> 4.1.19)
-  vcr
   versionomy (~> 0.5.0)
   web-console
   webmock
@@ -718,4 +716,4 @@ RUBY VERSION
    ruby 2.3.1p112
 
 BUNDLED WITH
-   1.16.6
+   1.17.3
