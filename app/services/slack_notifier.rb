@@ -1,16 +1,18 @@
+# frozen_string_literal: true
+
 class SlackNotifier < ApplicationService
-  USER_NAME = 'notifier'.freeze
+  USER_NAME = 'notifier'
   attr_reader :channel, :message
 
-def initialize(channel:, message:)
+  def initialize(channel:, message:)
     @channel = channel
     @message = message
-  end
+    end
 
   def call
     notifier = Slack::Notifier.new(
       ENV.fetch('SLACK_WEBHOOK_URL'),
-      channel: channel,
+      channel:  channel,
       username: USER_NAME
     )
 
