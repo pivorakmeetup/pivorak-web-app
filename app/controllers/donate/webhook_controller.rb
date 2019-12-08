@@ -10,7 +10,8 @@ module Donate
     private
 
     def payload_params
-      params.permit(:amount, :currency, :clientName)
+      payload = params.except('controller', 'action').keys.first
+      JSON.parse(payload).symbolize_keys
     end
   end
 end

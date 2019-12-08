@@ -18,8 +18,8 @@ module Donate
 
     def message
       I18n.t('slack.new_donation_notification_message',
-        amount: params.fetch('amount'),
-        currency: params.fetch('currency')
+        amount: params.fetch(:amount),
+        currency: params.fetch(:currency)
       )
     end
   end
