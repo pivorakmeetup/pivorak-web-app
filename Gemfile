@@ -65,6 +65,7 @@ gem 'redcarpet', '~> 3.4.0'
 gem 'sitemap_generator', '~> 6.0.2'
 gem 'stripe', '~> 1.5'
 gem 'yt', '~> 0.32.2'
+gem 'slack-notifier', '~> 2.3.2'
 
 #=== PDF GENERATION ===========================================================
 gem 'prawn'
@@ -101,6 +102,7 @@ end
 
 group :test do
   gem 'capybara'
+  gem 'climate_control'
   gem 'codecov', require: false
   gem 'database_cleaner'
   gem 'factory_bot_rails'
