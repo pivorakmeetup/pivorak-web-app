@@ -6,8 +6,9 @@ RSpec.describe ::Omniauth::AuthenticationService do
 
   describe '#authenticate' do
     context 'with valid params' do
-      let(:params) { build(:omniauth_params) }
       subject      { described_class.new(params) }
+
+      let(:params) { build(:omniauth_params) }
 
       it 'returns a valid instance of User class' do
         expect(result).to be_an_instance_of User
@@ -35,8 +36,9 @@ RSpec.describe ::Omniauth::AuthenticationService do
     end
 
     context 'when twitter params' do
-      let(:params) { build(:twitter_params) }
       subject      { described_class.new(params) }
+
+      let(:params) { build(:twitter_params) }
 
       it 'returns a valid instance of User class' do
         expect(result).to be_an_instance_of User
@@ -62,8 +64,9 @@ RSpec.describe ::Omniauth::AuthenticationService do
     end
 
     context 'when facebook params' do
-      let(:params) { build(:facebook_params) }
       subject      { described_class.new(params) }
+
+      let(:params) { build(:facebook_params) }
 
       it 'returns a valid instance of User class' do
         expect(result).to be_an_instance_of User
@@ -89,8 +92,9 @@ RSpec.describe ::Omniauth::AuthenticationService do
     end
 
     context 'when github params' do
-      let(:params) { build(:github_params) }
       subject      { described_class.new(params) }
+
+      let(:params) { build(:github_params) }
 
       it 'returns a valid instance of User class' do
         expect(result).to be_an_instance_of User
@@ -115,6 +119,7 @@ RSpec.describe ::Omniauth::AuthenticationService do
       end
     end
   end
+
   context 'with invalid params' do
     subject { described_class.new({}) }
 

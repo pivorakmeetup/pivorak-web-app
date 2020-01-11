@@ -41,6 +41,7 @@ RSpec.describe Search::Multisearch do
           end
         end
       end
+
       context 'with default formatter' do
         context 'when there are matches' do
           let(:result) { described_class.call(query: string, formatter: Search::Formatters::Default) }
@@ -62,6 +63,7 @@ RSpec.describe Search::Multisearch do
 
         context 'when there are no matches' do
           let(:result) { described_class.call(query: string.reverse, formatter: Search::Formatters::Default) }
+
           it 'returns no results' do
             expect(result.keys.length).to eq 0
           end

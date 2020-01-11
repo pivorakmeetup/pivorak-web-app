@@ -7,7 +7,7 @@ module Courses
     belongs_to :interview_assessment, inverse_of: :assessments
     belongs_to :question
 
-    RANGE = 1..5
+    RANGE = (1..5).freeze
 
     validates :mark, inclusion: { in: RANGE }
   end

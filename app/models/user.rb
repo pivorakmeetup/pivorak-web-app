@@ -6,7 +6,7 @@ class User < ApplicationRecord
   extend FriendlyId
   friendly_id :full_name, use: :slugged
 
-  LATIN_LETTERS_REGEX = /[a-zA-Z]+/
+  LATIN_LETTERS_REGEX = /[a-zA-Z]+/.freeze
 
   mount_uploader :cover, SpeakerCoverUploader
 
@@ -15,7 +15,6 @@ class User < ApplicationRecord
          :validatable, :omniauthable, omniauth_providers: Devise.omniauth_providers
 
   has_many :identities,                      dependent: :destroy
-  has_many :donations,                       dependent: :destroy
   has_many :talks, foreign_key: :speaker_id, dependent: :nullify
   has_many :visit_requests,                  dependent: :destroy
 

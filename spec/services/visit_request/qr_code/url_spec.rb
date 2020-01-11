@@ -4,6 +4,7 @@ require 'rails_helper'
 
 RSpec.describe VisitRequest::QrCode::Url do
   subject(:service) { described_class.new(visit_request) }
+
   let(:visit_request) { build_stubbed(:visit_request) }
 
   before do

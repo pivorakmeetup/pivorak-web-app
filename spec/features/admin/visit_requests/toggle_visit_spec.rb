@@ -14,7 +14,7 @@ RSpec.describe 'Visit Requests TOGGLE LIST' do
     visit_page.call
 
     expect(page).to have_link I18n.t('visit_request.check_in.plural')
-    expect(page).to_not have_content I18n.t('visit_request.check_in.already_checked_in')
+    expect(page).not_to have_content I18n.t('visit_request.check_in.already_checked_in')
 
     click_link I18n.t('visit_request.check_in.plural')
 

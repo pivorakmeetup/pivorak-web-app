@@ -5,7 +5,7 @@ require 'rails_helper'
 describe Courses::Season::InterviewsPolicy do
   let(:season)  { create(:season) }
   let(:student) { create(:student) }
-  let(:policy)  { Courses::Season::InterviewsPolicy.new(season, student) }
+  let(:policy)  { described_class.new(season, student) }
 
   describe '#allowed?' do
     context "season has status registration, student has done a test task & student doesn't have an interview yet" do

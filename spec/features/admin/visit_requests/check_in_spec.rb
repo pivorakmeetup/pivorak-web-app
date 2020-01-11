@@ -2,6 +2,7 @@
 
 RSpec.describe 'Visit Requests Check In' do
   subject { page }
+
   let(:page_url) { "/admin/visit_request/#{visit_request_token}/check_in" }
 
   let(:visit_request_token) { visit_request.reload.token }

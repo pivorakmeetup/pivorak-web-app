@@ -5,7 +5,7 @@ require 'rails_helper'
 describe Courses::Season::SendHomeworkPolicy do
   let(:season)  { create(:season) }
   let(:student) { create(:student) }
-  let(:policy)  { Courses::Season::SendHomeworkPolicy.new(season, student) }
+  let(:policy)  { described_class.new(season, student) }
 
   describe '#allowed?' do
     context 'season has status live, student is not dropped' do

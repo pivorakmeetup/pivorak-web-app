@@ -25,9 +25,6 @@ puts User.where(email: 'third@example.com').first_or_create!(
   first_name: 'Third', last_name: 'User', password: 'password', cover: cover
 ).confirm
 
-#=== Goal =====================================================================
-puts Goal.where(title: 'General', amount: 99_999_999).first_or_create!
-
 #=== Groups ===================================================================
 %i[regular lighting workshop].each do |talk_type|
   puts Group.where(resource: 'Talk', name: talk_type).first_or_create!

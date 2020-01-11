@@ -11,15 +11,15 @@ RSpec.describe Courses::Mentor::DestroyPolicy do
 
   context 'allow to destroy' do
     it 'allowed to destroy' do
-      policy = Courses::Mentor::DestroyPolicy.new(mentor, season)
+      policy = described_class.new(mentor, season)
 
-      expect(policy.allowed?).to be_truthy
+      expect(policy).to be_allowed
     end
 
     it 'not allowed to destroy' do
-      policy = Courses::Mentor::DestroyPolicy.new(season_creator, season)
+      policy = described_class.new(season_creator, season)
 
-      expect(policy.allowed?).to be_falsey
+      expect(policy).not_to be_allowed
     end
   end
 end

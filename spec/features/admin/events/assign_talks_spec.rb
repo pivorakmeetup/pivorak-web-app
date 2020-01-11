@@ -12,7 +12,7 @@ RSpec.describe 'Events ASSIGN_TALK' do
     visit test_edit_path
 
     expect(page).to have_content(talk.title)
-    expect(page).to_not have_content(assigned.title)
+    expect(page).not_to have_content(assigned.title)
   end
 
   it 'assigned talks are checked as assigned' do
@@ -21,7 +21,7 @@ RSpec.describe 'Events ASSIGN_TALK' do
     assume_admin_logged_in(supervisor: true)
     visit test_edit_path
 
-    expect(page.has_checked_field?(talk.title)).to be_truthy
+    expect(page).to have_checked_field(talk.title)
   end
 
   it 'assigns talk to event' do
