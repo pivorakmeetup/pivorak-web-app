@@ -228,6 +228,18 @@ GEM
       multi_json (>= 1.11.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    goldiloader (3.1.1)
+      activerecord (>= 4.2, < 6.1)
+      activesupport (>= 4.2, < 6.1)
+    graphiql-rails (1.7.0)
+      railties
+      sprockets-rails
+    graphql (1.9.9)
+    graphql-rails_logger (1.2.0)
+      actionpack (~> 5.0)
+      activesupport (~> 5.0)
+      railties (~> 5.0)
+      rouge (~> 3.0)
     groupdate (4.1.1)
       activesupport (>= 4.2)
     guard (2.15.0)
@@ -269,7 +281,7 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (2.2.0)
-    jwt (2.1.0)
+    jwt (2.2.1)
     kaminari (1.1.1)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.1.1)
@@ -452,6 +464,7 @@ GEM
       netrc (~> 0.8)
     rollbar (2.19.3)
       multi_json
+    rouge (3.8.0)
     rqrcode (0.10.1)
       chunky_png (~> 1.0)
     rspec (3.8.0)
@@ -642,6 +655,10 @@ DEPENDENCIES
   faker
   friendly_id (~> 5.1)
   gibbon (~> 3.0)
+  goldiloader (~> 3.1.1)
+  graphiql-rails
+  graphql
+  graphql-rails_logger
   groupdate (~> 4.0)
   guard-rspec
   httpclient (~> 2.8.3)
@@ -649,6 +666,7 @@ DEPENDENCIES
   inline_svg (~> 1.2)
   interactor-rails (~> 2.0)
   jquery-rails (~> 4.2.2)
+  jwt (~> 2.2.1)
   kaminari
   launchy
   letter_opener

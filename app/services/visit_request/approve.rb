@@ -9,6 +9,7 @@ class VisitRequest
     def call
       visit_request.approved!
       VisitRequestMailer.approved(visit_request).deliver_later
+      visit_request
     end
 
     private

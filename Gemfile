@@ -27,6 +27,8 @@ gem 'simple_form'
 gem 'courses', path: 'components/courses'
 gem 'ez-settings'
 
+gem 'graphql'
+
 #=== CONFIG ===================================================================
 gem 'dotenv-rails', '~> 2.5', require: 'dotenv/rails-now'
 gem 'newrelic_rpm',                                                    '~> 5.4'
@@ -47,6 +49,7 @@ gem 'semantic-ui-sass', '~> 2.2'
 gem 'slim-rails'
 gem 'turbolinks', '~> 5.2'
 gem 'uglifier', '~> 4.1.19'
+
 #=== FEATURES ==================================================================
 gem 'chartkick', '~> 3.2.0'
 gem 'coderay', '~> 1.1.1'
@@ -65,6 +68,8 @@ gem 'redcarpet', '~> 3.4.0'
 gem 'sitemap_generator', '~> 6.0.2'
 gem 'stripe', '~> 1.5'
 gem 'yt', '~> 0.32.2'
+gem 'jwt', '~> 2.2.1'
+gem 'goldiloader', '~> 3.1.1'
 
 #=== PDF GENERATION ===========================================================
 gem 'prawn'
@@ -85,6 +90,7 @@ group :development do
   gem 'spring-commands-rspec'
   gem 'spring-watcher-listen'
   gem 'web-console'
+  gem 'graphql-rails_logger'
 end
 
 group :development, :test do
@@ -115,3 +121,5 @@ group :test do
   gem 'timecop'
   gem 'webmock'
 end
+
+gem 'graphiql-rails', group: :development

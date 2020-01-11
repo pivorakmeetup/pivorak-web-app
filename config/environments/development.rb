@@ -69,8 +69,9 @@ Rails.application.configure do
   #   :password => ENV['MAILGUN_PASSWORD']
   # }
 
-  config.after_initialize do
-    Bullet.enable = true
-    Bullet.raise = true
-  end
+  # Bullet conflicts with goldiloader which relosvle N+1 perfectly
+  # config.after_initialize do
+  #   Bullet.enable = true
+  #   Bullet.raise = true
+  # end
 end
