@@ -38,7 +38,6 @@ Rails.application.routes.draw do
   #=== ADMIN AREA ===============================
   namespace :admin do # rubocop:disable Metrics/BlockLength
     get '/', to: 'home#index'
-    get '/donations', to: 'donations#index'
 
     get 'visit_request/:token/check_in/', to: 'visit_request/check_in#show', as: :visit_request_check_in
 

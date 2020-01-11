@@ -13,8 +13,8 @@ module NavigationHelper
     link_to t('goals.plural'), goals_path
   end
 
-  def donate_link(**options)
-    link_to t('donations.support_us'), donate_path, data: { turbolinks: false }, **options
+  def support_us_link(**options)
+    link_to t('support_us'), donate_path, data: { turbolinks: false }, **options
   end
 
   def chat_link

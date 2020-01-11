@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe 'Not available feature' do
+xdescribe 'Not available feature' do
   subject { page }
 
   before do

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe 'Goals CREATE' do
+xdescribe 'Goals CREATE' do
   before do
     assume_admin_logged_in
     visit '/admin/goals/new'

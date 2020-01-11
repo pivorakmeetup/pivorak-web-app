@@ -56,10 +56,6 @@ module Admin
       link_to t('pages.plural'), admin_pages_path, class: class_for(:pages)
     end
 
-    def admin_donations_link
-      link_to t('donations.plural'), admin_donations_path, class: class_for(:donations)
-    end
-
     private
 
     def class_for(item)
