@@ -8,6 +8,6 @@ RSpec.describe 'Events publishable' do
 
   it 'shows only published events' do
     expect(page).to     have_content 'Published Event'
-    expect(page).to_not have_content 'Unpublished Event'
+    expect(page).not_to have_content 'Unpublished Event'
   end
 end

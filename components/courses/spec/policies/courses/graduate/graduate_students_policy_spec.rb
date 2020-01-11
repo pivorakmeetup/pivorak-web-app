@@ -3,15 +3,15 @@
 require 'rails_helper'
 
 describe Courses::Season::GraduateStudentsPolicy do
-  let(:season) { create(:season, title: 'Test Season', status: :passed) }
-  let!(:student)   { create(:student, season: season, status: :attending) }
-
   subject(:policy) { described_class.new(season) }
+
+  let(:season) { create(:season, title: 'Test Season', status: :passed) }
+  let!(:student) { create(:student, season: season, status: :attending) }
 
   describe '#allowed?' do
     context 'passed season' do
       it 'allows to pass policy' do
-        expect(policy.allowed?).to be_truthy
+        expect(policy).to be_allowed
       end
     end
 
@@ -20,13 +20,13 @@ describe Courses::Season::GraduateStudentsPolicy do
         season.update_attribute(:status, :selection)
         season.reload
 
-        expect(policy.allowed?).to be_falsey
+        expect(policy).not_to be_allowed
       end
     end
 
     context 'there are attending students' do
       it 'allows to pass policy' do
-        expect(policy.allowed?).to be_truthy
+        expect(policy).to be_allowed
       end
     end
 
@@ -35,7 +35,7 @@ describe Courses::Season::GraduateStudentsPolicy do
         student.update_attribute(:status, :enrolled)
         student.reload
 
-        expect(policy.allowed?).to be_falsey
+        expect(policy).not_to be_allowed
       end
     end
   end

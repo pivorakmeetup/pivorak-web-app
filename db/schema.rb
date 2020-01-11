@@ -10,28 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_03_213454) do
+ActiveRecord::Schema.define(version: 2020_01_11_090300) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
-
-  create_table "bb_books", id: :serial, force: :cascade do |t|
-    t.string "title"
-    t.text "description"
-    t.integer "member_id"
-    t.integer "status", default: 0
-    t.index ["member_id"], name: "index_bb_books_on_member_id"
-    t.index ["status"], name: "index_bb_books_on_status"
-  end
-
-  create_table "bb_members", id: :serial, force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "status", default: 0
-    t.datetime "membered_at"
-    t.index ["status"], name: "index_bb_members_on_status"
-    t.index ["user_id"], name: "index_bb_members_on_user_id"
-  end
 
   create_table "courses_assessments", id: :serial, force: :cascade do |t|
     t.integer "interview_assessment_id"
@@ -147,18 +130,6 @@ ActiveRecord::Schema.define(version: 2019_05_03_213454) do
     t.text "notes"
   end
 
-  create_table "donations", id: :serial, force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "goal_id"
-    t.decimal "amount", precision: 10, scale: 2
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "payment_id"
-    t.index ["goal_id"], name: "index_donations_on_goal_id"
-    t.index ["payment_id"], name: "index_donations_on_payment_id"
-    t.index ["user_id"], name: "index_donations_on_user_id"
-  end
-
   create_table "email_templates", id: :serial, force: :cascade do |t|
     t.string "title"
     t.string "subject"
@@ -217,23 +188,12 @@ ActiveRecord::Schema.define(version: 2019_05_03_213454) do
     t.boolean "published", default: false
   end
 
-  create_table "goals", id: :serial, force: :cascade do |t|
-    t.string "title"
-    t.string "slug"
-    t.text "description"
-    t.decimal "amount", precision: 10, scale: 2
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["slug"], name: "index_goals_on_slug"
-  end
-
   create_table "groups", id: :serial, force: :cascade do |t|
     t.string "name"
     t.string "resource"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
-    t.index ["slug"], name: "index_groups_on_slug", unique: true
   end
 
   create_table "identities", id: :serial, force: :cascade do |t|
@@ -281,9 +241,11 @@ ActiveRecord::Schema.define(version: 2019_05_03_213454) do
     t.index ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
     t.index ["taggable_id", "taggable_type", "tagger_id", "context"], name: "taggings_idy"
     t.index ["taggable_id"], name: "index_taggings_on_taggable_id"
+    t.index ["taggable_type", "taggable_id"], name: "index_taggings_on_taggable_type_and_taggable_id"
     t.index ["taggable_type"], name: "index_taggings_on_taggable_type"
     t.index ["tagger_id", "tagger_type"], name: "index_taggings_on_tagger_id_and_tagger_type"
     t.index ["tagger_id"], name: "index_taggings_on_tagger_id"
+    t.index ["tagger_type", "tagger_id"], name: "index_taggings_on_tagger_type_and_tagger_id"
   end
 
   create_table "tags", id: :serial, force: :cascade do |t|

@@ -49,8 +49,8 @@ RSpec.describe Talk::FetchExternalVideoData do
     end
 
     it 'calls service for all talks' do
-      expect(Talk::FetchExternalVideoData).to receive(:new).with(talk)
-      expect(Talk::FetchExternalVideoData).to receive(:new).with(talk_2)
+      expect(described_class).to receive(:new).with(talk)
+      expect(described_class).to receive(:new).with(talk_2)
 
       described_class.fetch_all!
     end

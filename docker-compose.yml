@@ -5,8 +5,8 @@ x-app: &app
     context: .
     dockerfile: ./Dockerfile
     args:
-      RUBY_VERSION: '2.3.1'
-      BUNDLER_VERSION: '1.16.6'
+      RUBY_VERSION: '2.6.5'
+      BUNDLER_VERSION: '2.1.2'
       NODE_MAJOR: '10'
   image: pivorak-web-app:0.0.1
   tmpfs:

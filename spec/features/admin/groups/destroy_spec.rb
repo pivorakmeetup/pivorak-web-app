@@ -17,7 +17,7 @@ RSpec.describe 'Groups DESTROY' do
       click_link 'Destroy'
 
       expect(page).to have_current_path '/admin/groups'
-      expect(page).to_not have_content 'TestGroup'
+      expect(page).not_to have_content 'TestGroup'
     end
   end
 end

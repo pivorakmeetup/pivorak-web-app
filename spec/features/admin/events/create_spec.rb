@@ -12,7 +12,7 @@ RSpec.describe 'Events CREATE' do
     let(:default_started_at_hour)  { Ez::Settings[:app, :events, :default_started_at_hours].to_i }
     let(:default_finished_at_hour) { Ez::Settings[:app, :events, :default_finished_at_hours].to_i }
 
-    it 'should have default values' do
+    it 'has default values' do
       expect(
         Time.zone.parse(
           find('#event_started_at').value
@@ -108,12 +108,12 @@ RSpec.describe 'Events CREATE' do
     let(:default_limit_total)      { Ez::Settings[:app, :events, :default_limit] }
     let(:default_limit_verified)   { Ez::Settings[:app, :events, :default_limit_verified] }
 
-    it 'should have default values' do
+    it 'has default values' do
       expect(page).to have_field('Limit total', with: default_limit_total)
       expect(page).to have_field('Limit verified', with: default_limit_verified)
     end
 
-    it 'should show defined values after creation' do
+    it 'shows defined values after creation' do
       fill_in 'Title', with: 'Super New Event'
       fill_in 'Limit total', with: 2
       fill_in 'Limit verified', with: 1

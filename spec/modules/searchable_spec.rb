@@ -12,7 +12,7 @@ RSpec.describe ::Searchable do
     end
 
     it 'responds to search module methods' do
-      allow(resolver).to receive(:call) { true }
+      allow(resolver).to receive(:call).and_return(true)
       subject.include(described_class)
 
       expect(subject).to respond_to :pg_search_scope

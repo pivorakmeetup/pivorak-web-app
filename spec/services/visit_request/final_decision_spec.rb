@@ -3,9 +3,9 @@
 require 'rails_helper'
 
 describe VisitRequest::FinalDecision do
-  let(:visit_request) { create(:visit_request, status: 'pending') }
-
   subject { described_class.new(visit_request, answer: answer) }
+
+  let(:visit_request) { create(:visit_request, status: 'pending') }
 
   describe '#call' do
     context 'when answer is :yes' do

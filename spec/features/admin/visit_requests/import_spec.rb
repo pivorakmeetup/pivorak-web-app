@@ -13,7 +13,7 @@ RSpec.describe 'Visit Requests IMPORT' do
   context 'visit not passed event visit requests' do
     before { visit admin_event_visit_requests_path(not_passed_event) }
 
-    it { expect(page).to_not have_content 'Import' }
+    it { expect(page).not_to have_content 'Import' }
   end
 
   context 'visit passed event visit requests' do
@@ -28,7 +28,7 @@ RSpec.describe 'Visit Requests IMPORT' do
       expect(page).to have_current_path(admin_event_visit_requests_path(passed_event))
       expect(page).to have_link user_a.full_name
       expect(page).to have_link user_b.full_name
-      expect(page).to_not have_link user_c.full_name
+      expect(page).not_to have_link user_c.full_name
     end
   end
 end

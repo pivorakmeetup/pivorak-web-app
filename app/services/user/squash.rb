@@ -24,7 +24,6 @@ class User
       {
         has_many: {
           Identity     => { foreign_key: :user_id },
-          Donation     => { foreign_key: :user_id },
           Talk         => { foreign_key: :speaker_id },
           VisitRequest => { foreign_key: :user_id, squash: true, conditions: %i[event_id] }
         }

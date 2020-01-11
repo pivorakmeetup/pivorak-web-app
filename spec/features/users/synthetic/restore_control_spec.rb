@@ -14,6 +14,6 @@ RSpec.describe 'Synthetic user try to sign up' do
   it 'resirects to root' do
     expect(page).to have_current_path '/'
     expect(page).to have_content 'Your password has been changed successfully. You are now signed in.'
-    expect(synth_user.reload).to_not be_synthetic
+    expect(synth_user.reload).not_to be_synthetic
   end
 end

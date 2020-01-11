@@ -197,11 +197,10 @@ $header-mobile-breakpoint: "420";
 
 #{$namespace}__li-list {
   position: absolute;
-  top: 0;
   left: 0;
   flex-direction: column;
   text-align: left;
-  padding: 38px 0 0 24px;
+  padding: 0 0 0 24px;
   list-style: none;
   display: none;
 }

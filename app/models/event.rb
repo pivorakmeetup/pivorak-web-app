@@ -35,7 +35,7 @@ class Event < ApplicationRecord
 
   validate :venue_existing
   validates :title, :limit_total, :limit_verified, presence: true
-  validates_with LimitsValidator
+  validate :total_less_verified
 
   def self.upcoming
     where(published: true).where.not(status: [PASSED]).ordered_by_start.last
@@ -57,5 +57,13 @@ class Event < ApplicationRecord
 
   def venue_existing
     errors.add(:venue_id, :missing, message: I18n.t('venues.errors.missing')) if venue.blank? && !planned?
+  end
+  
+  def total_less_verified
+    return unless limit_total && limit_verified
+
+    return if limit_total >= limit_verified
+
+    errors.add :limit_verified, I18n.t('errors.total_less_verified')
   end
 end

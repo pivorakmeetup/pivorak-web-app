@@ -12,7 +12,7 @@ describe Courses::Student::DropPolicy do
       it 'allows to pass policy' do
         policy = described_class.new(student, low_total)
 
-        expect(policy.allowed?).to be_truthy
+        expect(policy).to be_allowed
       end
     end
 
@@ -20,7 +20,7 @@ describe Courses::Student::DropPolicy do
       it 'forbids to pass policy' do
         policy = described_class.new(student, high_total)
 
-        expect(policy.allowed?).to be_falsey
+        expect(policy).not_to be_allowed
       end
     end
 
@@ -31,7 +31,7 @@ describe Courses::Student::DropPolicy do
 
         policy = described_class.new(student, low_total)
 
-        expect(policy.allowed?).to be_falsey
+        expect(policy).not_to be_allowed
       end
     end
 
@@ -42,7 +42,7 @@ describe Courses::Student::DropPolicy do
 
         policy = described_class.new(student, low_total)
 
-        expect(policy.allowed?).to be_falsey
+        expect(policy).not_to be_allowed
       end
     end
   end
