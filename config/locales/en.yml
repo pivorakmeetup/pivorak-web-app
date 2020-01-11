@@ -65,25 +65,13 @@ en:
     plural: Search Results
     not_found: Sorry, no results for your search
 
+  support_us: Support us
+
   liqpay:
     status:
       success: Donation successful.
       failure: Donation failed.
       error:   Donation failed. Full field values is not correct.
-
-  goals:
-    plural: Goals
-    singular: Goal
-    amount: Amount
-
-  donations:
-    singular: Donation
-    plural: Donations
-    donate: Donate
-    success: Thank you, your donation has been accepted!
-    donator: Donator
-    total: "Total: "
-    support_us: Support Us
 
   events:
     plural: Events

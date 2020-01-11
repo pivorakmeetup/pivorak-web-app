@@ -30,17 +30,12 @@ Rails.application.routes.draw do
     post :become_speaker, to: 'become_speaker#create', on: :collection
   end
 
-  resources :goals,   only: %i[index show] do
-    post :donate, on: :member
-  end
-
   resource :supporters, only: %i[show]
   resource :agenda, only: :show, controller: :agenda
 
   #=== ADMIN AREA ===============================
   namespace :admin do # rubocop:disable Metrics/BlockLength
     get '/', to: 'home#index'
-    get '/donations', to: 'donations#index'
 
     get 'visit_request/:token/check_in/', to: 'visit_request/check_in#show', as: :visit_request_check_in
 
@@ -62,7 +57,6 @@ Rails.application.routes.draw do
     end
     resources :venues,  except: %i[show destroy]
     resources :talks,   except: %i[show destroy]
-    resources :goals,   except: %i[show destroy]
     resources :members, except: %i[show destroy] do
       resource :squash, only: %i[show create], controller: 'members/squash'
       post     :sign_in_as,                    to: 'members/sign_in_as#create'
