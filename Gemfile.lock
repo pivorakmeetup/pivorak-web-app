@@ -147,7 +147,6 @@ GEM
     css_parser (1.7.1)
       addressable
     dante (0.2.0)
-    database_cleaner (1.7.0)
     debug_inspector (0.0.3)
     declarative-builder (0.1.0)
       declarative-option (< 0.2.0)
@@ -628,7 +627,6 @@ DEPENDENCIES
   coderay (~> 1.1.1)
   coffee-rails (~> 4.2.1)
   courses!
-  database_cleaner
   devise (~> 4.7.1)
   dotenv-rails (~> 2.5)
   dry-validation (~> 0.12.2)

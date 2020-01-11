@@ -13,8 +13,8 @@ before_install:
 
 install:
   - cp config/database.yml.example config/database.yml
-  - docker-compose run -e RAILS_ENV=test runner bundle exec rails db:setup
-
+  - docker-compose run -e RAILS_ENV=test runner bundle exec rails db:create db:schema:load
+  
 notifications:
   - false
 

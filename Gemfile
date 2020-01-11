@@ -104,7 +104,6 @@ end
 group :test do
   gem 'capybara'
   gem 'codecov', require: false
-  gem 'database_cleaner'
   gem 'launchy'
   gem 'pdf-inspector', require: 'pdf/inspector'
   gem 'rspec-activemodel-mocks'
