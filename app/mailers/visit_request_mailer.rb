@@ -22,9 +22,9 @@ class VisitRequestMailer < ApplicationMailer
     @cancel_visit_url = event_visit_request_url(
       @event, @visit_request, answer: :no, token: @visit_request.token, host: host
     )
-    @start_at_date     = @event.started_at.strftime('%A, %d of %B')
-    @start_at_time     = @event.started_at.strftime('%H:%M')
-    @agenda            = MarkdownRenderer.call(@event.agenda)
+    @start_at_date = @event.started_at.strftime('%A, %d of %B')
+    @start_at_time = @event.started_at.strftime('%H:%M')
+    @agenda = MarkdownRenderer.call(@event.agenda)
 
     attachments['event.ics'] = Event::ExportToIcal.call(@event)
     mail(subject: "#pivorak details | #{@event.title}", to: @user.email)

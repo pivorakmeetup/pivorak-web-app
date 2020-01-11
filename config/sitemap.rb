@@ -14,7 +14,6 @@ SitemapGenerator::Sitemap.create do
     add talk_path(talk), lastmod: talk.updated_at
   end
 
-  add goals_path, priority: 0.7, changefreq: 'daily'
   add speakers_path, priority: 0.7, changefreq: 'daily'
   add chat_path, priority: 0.7, changefreq: 'daily'
   add members_path, priority: 0.7, changefreq: 'daily'

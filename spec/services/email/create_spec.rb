@@ -6,6 +6,7 @@ describe Email::Create do
   subject do
     described_class.call(params: params, recipient_ids: recipient_ids)
   end
+
   let(:recipient_ids) { [0] }
 
   describe '#call' do
@@ -26,6 +27,7 @@ describe Email::Create do
 
     context 'when params are invalid' do
       let(:params) { { subject: '', body: '' } }
+
       it { expect { subject }.to change(Email, :count).by(0) }
       it { expect(subject).to be_falsey }
     end

@@ -9,7 +9,7 @@ RSpec.describe User::Squash do
     context 'user_a was destroyed' do
       before { described_class.call(valid_params) }
 
-      it { expect(user_a).to_not be_persisted }
+      it { expect(user_a).not_to be_persisted }
     end
   end
 
@@ -18,7 +18,7 @@ RSpec.describe User::Squash do
     let(:invalid_params) { { squashed_user: Class.new, into_user: Class.new } }
     let(:stupid_params)  { { squashed_user: user_a, into_user: user_a } }
 
-    it { expect(described_class.call(valid_params)).to_not be_nil }
+    it { expect(described_class.call(valid_params)).not_to be_nil }
     it { expect(described_class.call(wrong_params)).to be_nil }
     it { expect(described_class.call(invalid_params)).to be_nil }
     it { expect(described_class.call(stupid_params)).to be_nil }
@@ -29,7 +29,6 @@ RSpec.describe User::Squash do
       {
         has_many: {
           Identity     => { foreign_key: :user_id },
-          Donation     => { foreign_key: :user_id },
           Talk         => { foreign_key: :speaker_id },
           VisitRequest => { foreign_key: :user_id, squash: true, conditions: %i[event_id] }
         }

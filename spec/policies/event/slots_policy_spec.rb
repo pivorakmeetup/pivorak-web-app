@@ -19,7 +19,7 @@ RSpec.describe Event::SlotsPolicy do
   end
 
   describe '#free_newbies_slots?' do
-    before { allow(event).to receive(:limit_newbies) { 5 } }
+    before { allow(event).to receive(:limit_newbies).and_return(5) }
 
     context 'has' do
       before { allow(policy).to receive_message_chain(:approved_visitors, :count) { 3 } }

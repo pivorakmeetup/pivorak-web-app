@@ -25,7 +25,7 @@ require 'rspec/collection_matchers'
 require 'rspec/its'
 require 'rspec/active_model/mocks'
 
-Dir[Rails.root.join('spec/support/*.rb')].each { |f| require f }
+Dir[Rails.root.join('spec/support/*.rb')].sort.each { |f| require f }
 
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
@@ -39,6 +39,8 @@ OmniAuth.config.test_mode = true
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
+  config.include ActiveSupport::Testing::TimeHelpers
+
   # Add factory girl
   config.include FactoryBot::Syntax::Methods
 
@@ -55,7 +57,8 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
 
   include ActiveJob::TestHelper
-  config.before(:each) do
+
+  config.before do
     # Clears out the jobs for tests using the fake testing
     clear_enqueued_jobs
   end

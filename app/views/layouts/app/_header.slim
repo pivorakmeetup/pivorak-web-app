@@ -23,6 +23,7 @@ header.pk-header class="#{header_classlist.compact.join(' ')}"
                 ul.pk-header__li-list
                   li.pk-header__li-list-item = about_link
                   li.pk-header__li-list-item = link_to 'code of conduct','/code-of-conduct'
+                  li.pk-header__li-list-item = link_to 'guide for speakers','/guide-for-speakers'
                   li.pk-header__li-list-item = link_to 'contact us','/contacts'
                   li.pk-header__li-list-item = link_to 'agreement','/user-agreement'
                   li.pk-header__li-list-item = link_to 'bug?', 'https://github.com/pivorakmeetup/pivorak-web-app/issues/new?labels=bug'
@@ -62,4 +63,4 @@ header.pk-header class="#{header_classlist.compact.join(' ')}"
                     li.pk-header__li-list-item = login_link
 
               li.pk-list__unit
-                = donate_link(class: 'btn pk-btn--green-bg donate-btn')
+                = support_us_link(class: 'btn pk-btn--green-bg donate-btn')

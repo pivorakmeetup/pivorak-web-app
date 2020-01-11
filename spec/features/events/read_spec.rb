@@ -16,7 +16,7 @@ RSpec.describe 'Events READ' do
       visit "/events/#{event.slug}"
     end
 
-    it { expect(page).to_not have_content not_attendee.full_name }
-    it { expect(page).to_not have_content other_event_attendee.full_name }
+    it { expect(page).not_to have_content not_attendee.full_name }
+    it { expect(page).not_to have_content other_event_attendee.full_name }
   end
 end

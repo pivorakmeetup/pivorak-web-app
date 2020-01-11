@@ -9,7 +9,7 @@ RSpec.describe 'Chat features CREATE INVITE' do
 
   context 'when valid input' do
     before do
-      expect(Chat::Invite).to receive(:call).with(email) { true }
+      expect(Chat::Invite).to receive(:call).with(email).and_return(true)
     end
 
     it 'sends invite' do
