@@ -9,10 +9,6 @@ module NavigationHelper
     link_to title, talks_path
   end
 
-  def goals_link
-    link_to t('goals.plural'), goals_path
-  end
-
   def support_us_link(**options)
     link_to t('support_us'), donate_path, data: { turbolinks: false }, **options
   end

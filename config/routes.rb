@@ -28,10 +28,6 @@ Rails.application.routes.draw do
     post :become_speaker, to: 'become_speaker#create', on: :collection
   end
 
-  resources :goals,   only: %i[index show] do
-    post :donate, on: :member
-  end
-
   resource :supporters, only: %i[show]
   resource :agenda, only: :show, controller: :agenda
 
@@ -59,7 +55,6 @@ Rails.application.routes.draw do
     end
     resources :venues,  except: %i[show destroy]
     resources :talks,   except: %i[show destroy]
-    resources :goals,   except: %i[show destroy]
     resources :members, except: %i[show destroy] do
       resource :squash, only: %i[show create], controller: 'members/squash'
       post     :sign_in_as,                    to: 'members/sign_in_as#create'
