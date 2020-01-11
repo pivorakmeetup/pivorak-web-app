@@ -33,6 +33,7 @@ class Event < ApplicationRecord
   scope :visible, -> { where.not(status: PLANNED) }
   scope :ordered_by_start, -> { order(:started_at) }
 
+  validate :venue_existing
   validates :title, :limit_total, :limit_verified, presence: true
   validate :total_less_verified
 
@@ -50,6 +51,12 @@ class Event < ApplicationRecord
 
   def limit_newbies
     limit_total - limit_verified
+  end
+
+  private
+
+  def venue_existing
+    errors.add(:venue_id, :missing, message: I18n.t('venues.errors.missing')) if venue.blank? && !planned?
   end
 
   def total_less_verified

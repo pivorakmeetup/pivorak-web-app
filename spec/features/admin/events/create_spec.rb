@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 RSpec.describe 'Events CREATE' do
+  let!(:venue) { create(:venue) }
+
   before do
     assume_admin_logged_in(supervisor: true)
     visit '/admin/events/new'
@@ -26,20 +28,48 @@ RSpec.describe 'Events CREATE' do
   end
 
   context 'invalid input' do
-    it 'validates errors' do
-      fill_in 'Title', with: ''
-      click_button 'Create Event'
+    context 'invalid title' do
+      it 'returns error' do
+        fill_in 'Title', with: ''
 
-      expect_an_error event_title: :blank
-      expect_error_flash_message 'Event', 'created'
+        click_button 'Create Event'
+
+        expect_an_error event_title: :blank
+        expect_error_flash_message 'Event', 'created'
+      end
+    end
+
+    context 'absent venue' do
+      context 'when planned' do
+        it 'creates new event' do
+          fill_in 'Title', with: 'Super New Event'
+          select('planned', from: 'Status')
+
+          click_button 'Create Event'
+
+          expect_success_flash_message 'Event', 'created'
+          expect(page).to have_current_path '/admin/events/super-new-event/edit'
+        end
+      end
+
+      context 'when status different from planned' do
+        it 'returns error' do
+          fill_in 'Title', with: 'Super New Event'
+          select('passed', from: 'Status')
+
+          click_button 'Create Event'
+
+          expect_an_error event_venue_id: 'Please select venue'
+          expect_error_flash_message 'Event', 'created'
+        end
+      end
     end
   end
 
   context 'valid input' do
-    let!(:venue) { create(:venue) }
-
-    it 'create new event' do
+    it 'creates new event' do
       fill_in 'Title', with: 'Super New Event'
+
       click_button 'Create Event'
 
       expect_success_flash_message 'Event', 'created'
@@ -56,8 +86,6 @@ RSpec.describe 'Events CREATE' do
     end
 
     it 'creates event with venue' do
-      visit '/admin/events/new'
-
       fill_in 'Title', with: 'Super New Event'
       select(venue.name, from: 'Venue')
 
@@ -67,7 +95,6 @@ RSpec.describe 'Events CREATE' do
     end
 
     it 'creates event with facebook embeded post code' do
-      visit '/admin/events/new'
       fill_in 'Title',  with: 'Super New Event'
       fill_in 'Facebook embeded post', with: 'http://facebook.com'
 
