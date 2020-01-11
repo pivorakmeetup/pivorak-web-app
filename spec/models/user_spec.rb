@@ -3,7 +3,6 @@
 RSpec.describe User, type: :model do
   describe 'relations' do
     it { is_expected.to have_many(:identities).dependent(:destroy) }
-    it { is_expected.to have_many(:donations).dependent(:destroy) }
   end
 
   describe 'validations' do

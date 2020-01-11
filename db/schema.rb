@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_03_213454) do
+ActiveRecord::Schema.define(version: 2020_01_11_090300) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -130,18 +130,6 @@ ActiveRecord::Schema.define(version: 2019_05_03_213454) do
     t.text "notes"
   end
 
-  create_table "donations", id: :serial, force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "goal_id"
-    t.decimal "amount", precision: 10, scale: 2
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "payment_id"
-    t.index ["goal_id"], name: "index_donations_on_goal_id"
-    t.index ["payment_id"], name: "index_donations_on_payment_id"
-    t.index ["user_id"], name: "index_donations_on_user_id"
-  end
-
   create_table "email_templates", id: :serial, force: :cascade do |t|
     t.string "title"
     t.string "subject"
@@ -198,16 +186,6 @@ ActiveRecord::Schema.define(version: 2019_05_03_213454) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "published", default: false
-  end
-
-  create_table "goals", id: :serial, force: :cascade do |t|
-    t.string "title"
-    t.string "slug"
-    t.text "description"
-    t.decimal "amount", precision: 10, scale: 2
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["slug"], name: "index_goals_on_slug"
   end
 
   create_table "groups", id: :serial, force: :cascade do |t|
