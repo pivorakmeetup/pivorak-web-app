@@ -106,7 +106,6 @@ group :test do
   gem 'capybara'
   gem 'climate_control'
   gem 'codecov', require: false
-  gem 'database_cleaner'
   gem 'launchy'
   gem 'pdf-inspector', require: 'pdf/inspector'
   gem 'rspec-activemodel-mocks'
@@ -115,6 +114,5 @@ group :test do
   gem 'shoulda-matchers'
   gem 'simplecov', require: false
   gem 'stripe-ruby-mock', '~> 2.3.1', require: 'stripe_mock'
-  gem 'timecop'
   gem 'webmock'
 end

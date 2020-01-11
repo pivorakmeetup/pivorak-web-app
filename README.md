@@ -40,5 +40,3 @@ Join our **[slack](http://pivorak-slack.herokuapp.com)** chat!
 We have special `#pivorak-web-app` channel for contributors.
 
 *Follow us on socials:* [youtube](https://www.youtube.com/channel/UCPsfLdQH_0CaDIe4imm7bMA/featured) | [facebook](https://www.facebook.com/pivorak) | [twitter](https://twitter.com/pivorakmeetup) | [instagram](https://instagram.com/pivorakmeetup)
-
-

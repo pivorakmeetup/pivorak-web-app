@@ -15,7 +15,7 @@ RSpec.describe VisitRequest::CheckIn do
     end
 
     it 'updates checked_in_at' do
-      Timecop.freeze Time.zone.now do
+      travel_to Time.zone.now do
         expect { call }.to change(visit_request.reload, :checked_in_at).from(nil).to(Time.zone.now)
       end
     end
