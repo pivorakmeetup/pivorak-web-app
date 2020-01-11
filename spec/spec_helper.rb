@@ -40,6 +40,8 @@ OmniAuth.config.test_mode = true
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
+  config.include ActiveSupport::Testing::TimeHelpers
+
   # Add factory girl
   config.include FactoryBot::Syntax::Methods
 

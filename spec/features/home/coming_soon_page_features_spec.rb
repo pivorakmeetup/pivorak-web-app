@@ -14,7 +14,7 @@ RSpec.describe 'Coming Soon page' do
 
   context 'when there is planned event' do
     it 'renders coming soon page with event date' do
-      Timecop.freeze(Time.zone.parse('2018-01-11 12:00')) do
+      travel_to(Time.zone.parse('2018-01-11 12:00')) do
         create(:event, status: :passed, started_at: 2.months.ago)
         create(:event, published: false, started_at: 2.months.from_now)
         # planned event
