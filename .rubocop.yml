@@ -1,5 +1,5 @@
 AllCops:
-  TargetRubyVersion: 2.3.1
+  TargetRubyVersion: 2.6.5
   Exclude:
     - Guardfile
     - db/migrate/*

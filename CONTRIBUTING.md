@@ -23,14 +23,14 @@ The following is a set of guidelines for contributing to PivorakWebApp. We've tr
 $ git clone https://github.com/pivorakmeetup/pivorak-web-app.git
 ```
 #### Step 2: Install dependencies
-- Install ruby 2.3.1
+- Install ruby 2.6.5
 ```sh
 $ cd pivorak-web-app
-$ rvm install ruby-2.3.1
+$ rvm install ruby-2.6.5
 ```
 - Install gems
 ```sh
-$ rvm use ruby-2.3.1@pivorak --create
+$ rvm use ruby-2.6.5@pivorak --create
 $ bundle
 ```
 - Setup database

@@ -8,9 +8,11 @@ before_install:
   - sudo mv docker-compose /usr/local/bin
 
 before_install:
-  - cp config/database.yml.example config/database.yml
   - docker-compose build
-  - docker-compose run runner bundle install
+  - docker-compose run runner bundle install --jobs=3 --retry=3 --deployment
+
+install:
+  - cp config/database.yml.example config/database.yml
   - docker-compose run -e RAILS_ENV=test runner bundle exec rails db:setup
 
 notifications:
