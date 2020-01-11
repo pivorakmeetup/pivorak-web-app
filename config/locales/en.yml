@@ -275,3 +275,8 @@ en:
     emails:
       label: 'Emails separated by comma. Example: john@m.com OR john@m.com, peter@m.com'
       error: "Should be comma separate list. Following emails are invalid: %{invalid_emails}"
+
+  slack:
+    new_donation_notification_message: |-
+      :pivorak: Щойно задонатили %{amount} %{currency} :tada:.
+      Дякую :bow: тобі анонімний #pivorak-ер!
