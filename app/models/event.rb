@@ -58,7 +58,7 @@ class Event < ApplicationRecord
   def venue_existing
     errors.add(:venue_id, :missing, message: I18n.t('venues.errors.missing')) if venue.blank? && !planned?
   end
-  
+
   def total_less_verified
     return unless limit_total && limit_verified
 
