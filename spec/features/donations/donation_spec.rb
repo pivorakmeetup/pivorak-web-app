@@ -6,6 +6,6 @@ RSpec.describe 'Donate Process' do
   before { visit root_path }
 
   it 'home page should have donate link' do
-    expect(page).to have_selector('a', text: I18n.t('donations.support_us'))
+    expect(page).to have_selector('a', text: I18n.t('support_us'))
   end
 end

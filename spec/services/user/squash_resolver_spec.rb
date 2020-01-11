@@ -60,17 +60,6 @@ describe ::User::SquashResolver do
         it { expect(user_b.visit_requests).not_to include(request_a) }
       end
     end
-
-    context 'has_one association' do
-      let!(:donation_b) { FactoryBot.create(:donation, user: user_b) }
-      let!(:donation_a) { FactoryBot.create(:donation, user: user_a) }
-      let(:params)      { relations_params.merge(resource: Donation, association_type: :has_one) }
-
-      before { subject.call(params) }
-
-      it { expect(user_b.donations).to     include(donation_a) }
-      it { expect(user_a.donations).not_to include(donation_b) }
-    end
   end
 
   describe '#schema' do
