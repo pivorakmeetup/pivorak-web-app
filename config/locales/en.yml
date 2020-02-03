@@ -219,18 +219,9 @@ en:
     singular: Become a speaker
     send: Send
 
-  send_mail:
-    sended: Letter was sent
-    error: Error sending letter
-
   friends:
     plural: Friends
     singular: Friend
-
-  mailers:
-    notify_mailer:
-      become_speaker:
-        subject: I want to be a speaker
 
   speakers:
     plural: Speakers

@@ -5,6 +5,3 @@ h2 = t 'members.plural'
 - members.each do |member|
   .col-md-12
     = link_to member.full_name, member_path(member)
-
-h2 = t 'become_a_speaker.singular'
-== render 'become_speaker_form'
