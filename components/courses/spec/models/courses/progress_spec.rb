@@ -15,14 +15,14 @@ RSpec.describe Courses::Progress, type: :model do
   let!(:progress) { ::Courses::Progress.create(student: student, lecture: lecture, mentor: mentor, homework_mark: 2) }
 
   describe 'validations' do
-    it 'pass,s due to correct homework mark input' do
+    it 'passes due to correct homework mark input' do
       ::Courses::Progress::ALLOWED_MARKS.each do |mark|
         progress.update_attributes(homework_mark: mark)
         expect(progress.valid?).to be true
       end
     end
 
-    it 'fail,s due to bad homework mark input' do
+    it 'fails due to bad homework mark input' do
       custom_marks = ::Courses::Progress::ALLOWED_MARKS
       max_mark = custom_marks.compact.max
       extended_bound = max_mark * 2
