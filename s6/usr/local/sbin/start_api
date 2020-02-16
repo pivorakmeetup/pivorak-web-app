@@ -1,0 +1,11 @@
+#!/bin/sh
+while :
+do
+  if [ -z "$STOP_PUMA" ]
+  then
+    echo "Cleaning old puma.pid\n";
+    rm -f /app/tmp/pids/puma.pid;
+    echo "Starting puma\n";
+    cd /app && bundle exec puma --config config/puma.rb
+  fi
+done

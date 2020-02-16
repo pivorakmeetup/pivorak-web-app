@@ -1,8 +1,7 @@
 # frozen_string_literal: true
-
 source 'https://rubygems.org'
 
-ruby '2.6.5'
+ruby File.open('.ruby-version').readline.chomp
 
 #=== CORE =====================================================================
 gem 'acts-as-taggable-on', git: 'https://github.com/Fodoj/acts-as-taggable-on', ref: 'rails-5.2'

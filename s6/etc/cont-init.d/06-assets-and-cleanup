@@ -1,0 +1,7 @@
+#!/usr/bin/execlineb -P
+
+with-contenv
+rm -rf /app/public/uploads/tmp
+s6-envuidgid -D 32769:32769 daemon
+# Precompile assets
+bundle exec rake assets:precompile --trace

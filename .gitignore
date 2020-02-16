@@ -25,6 +25,8 @@ config/database.yml
 config/secrets.yml
 config/settings.yml
 .ruby-gemset
+.docker_compose.env
+.env
 
 
 .DS_store
