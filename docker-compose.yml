@@ -31,7 +31,7 @@ services:
 
   rails:
     <<: *app
-    command: bundle exec rails server -b 0.0.0.0
+    command: /bin/sh -c "rm -f /app/tmp/pids/server.pid && bundle exec rails server -b 0.0.0.0"
     ports:
       - '3000:3000'
 
