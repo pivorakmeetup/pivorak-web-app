@@ -6,7 +6,6 @@ module Admin
       def update
         ::VisitRequest::Approve.call(visit_request)
 
-        ::VisitRequest::RealTimeUpdate.call(visit_request)
         head :ok
       end
     end
