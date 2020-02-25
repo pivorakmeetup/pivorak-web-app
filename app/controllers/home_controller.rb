@@ -5,12 +5,11 @@ class HomeController < ApplicationController
   helper_method :event, :talks, :visit_request, :attendees, :upcoming_date
 
   def index
-    # if event
-    #   render 'events/show'
-    # else
-    #   render :index
-    # end
-    render :maintainance
+    if event
+      render 'events/show'
+    else
+      render :index
+    end
   end
 
   private

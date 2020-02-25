@@ -72,5 +72,9 @@ module Admin
 
       flash[type] = t(key || type, scope: :notifications, resource: resource, action: action)
     end
+
+    def maintenance_enabled?
+      current_user && !current_user&.supervisor?
+    end
   end
 end

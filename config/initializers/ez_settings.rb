@@ -7,6 +7,10 @@ app = Ez::Settings::Interface.define(:app) do
     key :app_title, default: -> { '#pivorak Lviv Ruby User Group' }
   end
 
+  group :maintenance do
+    key :enabled, type: :boolean, default: -> { false }
+  end
+
   group :admin do
     key :app_title, default: -> { 'Admin PivorakWebApp' }
   end

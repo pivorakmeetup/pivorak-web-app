@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   helper_method :admin?
 
   delegate :admin?, to: :current_user, allow_nil: true
+  before_action :check_for_maintenance, if: :maintenance_enabled?
 
   # Workaround to allows PUMA work faster for better_errors
   before_action :better_errors_hack, if: -> { Rails.env.development? }
@@ -47,5 +48,16 @@ class ApplicationController < ActionController::Base
     action   = params[:action]
 
     flash[type] = t(key || type, scope: [:flash, resource, action])
+  end
+
+  private
+
+  def check_for_maintenance
+    render 'maintainance/show', layout: 'maintenance'
+  end
+
+  def maintenance_enabled?
+    enabled = Ez::Settings[:app, :maintenance, :enabled]
+    ActiveModel::Type::Boolean.new.cast(enabled)
   end
 end
