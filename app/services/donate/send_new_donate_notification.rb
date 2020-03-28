@@ -6,8 +6,8 @@ module Donate
     attr_reader :amount, :currency
 
     def initialize(params)
-      @amount = params.fetch('amount')
-      @currency = params.fetch('currency')
+      @amount = params.fetch(:amount)
+      @currency = params.fetch(:currency)
     end
 
     def call
@@ -22,9 +22,7 @@ module Donate
     private
 
     def message
-      I18n.t('slack.new_donation_notification_message',
-             amount: amount,
-             currency: currency)
+      I18n.t('slack.new_donation_notification_message', amount: amount, currency: currency)
     end
   end
 end

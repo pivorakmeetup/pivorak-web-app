@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 describe Donate::SendNewDonateNotification do
-  let(:call) { described_class.call('amount' => amount, 'currency' => 'UAH') }
+  let(:call) { described_class.call(amount: amount, currency: 'UAH') }
   let(:amount) { 5 }
 
   describe '#call' do
