@@ -4,8 +4,9 @@ module Admin
   class BaseController < ApplicationController
     layout 'admin'
 
-    before_action :authenticate_user!
-    before_action :authenticate_admin!
+    before_action      :authenticate_user!
+    before_action      :authenticate_admin!
+    skip_before_action :check_for_maintenance!
 
     def edit
       render_form

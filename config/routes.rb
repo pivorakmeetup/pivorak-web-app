@@ -74,5 +74,6 @@ Rails.application.routes.draw do
   end
 
   # This route must (!) be always (!) at the bottom of this file (!)
-  get '/:page_url', to: 'pages#show'
+  get '/maintenance', to: 'pages#maintenance'
+  get '/:page_url',   to: 'pages#show'
 end

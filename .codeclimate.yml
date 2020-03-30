@@ -4,6 +4,9 @@ engines:
     enabled: false
   bundler-audit:
     enabled: true
+    checks:
+      omniauth:
+        enabled: false
   csslint:
     enabled: true
   duplication:
