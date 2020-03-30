@@ -31,7 +31,7 @@ describe Donate::SendNewDonateNotification do
     end
 
     context 'when donation is duplicated' do
-      it 'skips saving data' do
+      it 'skips notification' do
         ClimateControl.modify SLACK_NEW_DONATION_CHANNEL: 'dummy-notifications-test' do
           allow(SlackNotifier).to receive(:call)
           DonationData.create!(order_reference: order_reference)
