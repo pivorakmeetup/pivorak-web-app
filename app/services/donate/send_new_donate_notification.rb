@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Donate::SendNewDonateNotification.call('amount' => 5, 'currency' => 'USD')
+# Donate::SendNewDonateNotification.call(amount: 5, currency: 'USD', orderReference: 'foo-123')
 module Donate
   class SendNewDonateNotification < ApplicationService
     attr_reader :amount, :currency, :order_reference

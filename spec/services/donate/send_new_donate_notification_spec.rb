@@ -3,7 +3,7 @@
 describe Donate::SendNewDonateNotification do
   let(:call) { described_class.call(amount: amount, currency: 'UAH', orderReference: order_reference) }
   let(:amount) { 5 }
-  let(:order_reference) { "WFP-2102129-5decabc01799e" }
+  let(:order_reference) { 'WFP-2102129-5decabc01799e' }
 
   describe '#call' do
     it 'sends slack message with correct params' do
