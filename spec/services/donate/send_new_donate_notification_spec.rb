@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 describe Donate::SendNewDonateNotification do
-  let(:call) { described_class.call(amount: amount, currency: 'UAH') }
+  let(:call) { described_class.call(amount: amount, currency: 'UAH', orderReference: order_reference) }
   let(:amount) { 5 }
+  let(:order_reference) { 'WFP-2102129-5decabc01799e' }
 
   describe '#call' do
     it 'sends slack message with correct params' do
@@ -18,6 +19,26 @@ describe Donate::SendNewDonateNotification do
             'Дякую :bow: тобі анонімний #pivorak-ер!'
           ].join("\n")
         )
+      end
+    end
+
+    it 'saves donation data' do
+      ClimateControl.modify SLACK_NEW_DONATION_CHANNEL: 'dummy-notifications-test' do
+        allow(SlackNotifier).to receive(:call)
+
+        expect { call }.to change(DonationData, :count).from(0).to(1)
+      end
+    end
+
+    context 'when donation is duplicated' do
+      it 'skips notification' do
+        ClimateControl.modify SLACK_NEW_DONATION_CHANNEL: 'dummy-notifications-test' do
+          allow(SlackNotifier).to receive(:call)
+          DonationData.create!(order_reference: order_reference)
+
+          expect { call }.not_to change(DonationData, :count)
+          expect(SlackNotifier).not_to have_received(:call)
+        end
       end
     end
 
