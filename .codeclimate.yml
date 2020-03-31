@@ -3,10 +3,7 @@ engines:
   brakeman:
     enabled: false
   bundler-audit:
-    enabled: true
-    checks:
-      omniauth:
-        enabled: false
+    enabled: false
   csslint:
     enabled: true
   duplication:
