@@ -36,7 +36,7 @@ RSpec.describe 'Talks UPDATE' do
       click_button 'Update Talk'
       visit '/admin/talks'
 
-      expect(page).to have_content 'tags, new'
+      expect(page).to have_content 'new, tags'
     end
   end
 end

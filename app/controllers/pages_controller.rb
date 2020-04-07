@@ -3,6 +3,10 @@
 class PagesController < ApplicationController
   helper_method :page
 
+  def maintenance
+    render 'maintainance/show', layout: 'maintenance'
+  end
+
   private
 
   def page

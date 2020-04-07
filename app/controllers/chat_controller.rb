@@ -9,8 +9,8 @@ class ChatController < ApplicationController
     else
       flash[:error] = I18n.t('chat.email_required')
     end
-  rescue Chat::Client::ChatError => error
-    flash[:error] = I18n.t(error, scope: 'chat.errors')
+  rescue Chat::Client::ChatError => e
+    flash[:error] = I18n.t(e, scope: 'chat.errors')
   ensure
     redirect_to chat_path
   end

@@ -51,7 +51,6 @@ en:
     show_resource: '%{resource} %{title}'
     squash: 'Squash %{resource}'
     confirm: 'Are you sure ?'
-    not_assigned: 'not assigned'
     unauthorized: 'Please <a href=%{login_url}>log in</a> or <a href=%{register_url}>register</a> and then enroll in this event to attend'
     not_assigned: Not assigned
     default_title: '#pivorak Lviv Ruby User Group'
@@ -65,25 +64,13 @@ en:
     plural: Search Results
     not_found: Sorry, no results for your search
 
+  support_us: Support us
+
   liqpay:
     status:
       success: Donation successful.
       failure: Donation failed.
       error:   Donation failed. Full field values is not correct.
-
-  goals:
-    plural: Goals
-    singular: Goal
-    amount: Amount
-
-  donations:
-    singular: Donation
-    plural: Donations
-    donate: Donate
-    success: Thank you, your donation has been accepted!
-    donator: Donator
-    total: "Total: "
-    support_us: Support Us
 
   events:
     plural: Events
@@ -112,6 +99,8 @@ en:
     plural: Venues
     singular: Venue
     address: Address
+    errors:
+      missing: Please select venue
 
   talks:
     plural: Talks
@@ -229,18 +218,9 @@ en:
     singular: Become a speaker
     send: Send
 
-  send_mail:
-    sended: Letter was sent
-    error: Error sending letter
-
   friends:
     plural: Friends
     singular: Friend
-
-  mailers:
-    notify_mailer:
-      become_speaker:
-        subject: I want to be a speaker
 
   speakers:
     plural: Speakers

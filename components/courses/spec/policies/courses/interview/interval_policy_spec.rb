@@ -7,7 +7,7 @@ describe Courses::Interview::IntervalPolicy do
   let!(:mentor)      { ::Courses::Mentor.create(user_id: 1, season_id: 1) }
   let!(:interval)    { 30 }
 
-  let(:policy) { Courses::Interview::IntervalPolicy.new(mentor, interview, interval) }
+  let(:policy) { described_class.new(mentor, interview, interval) }
 
   describe '#allowed?' do
     context 'has no interviews in forbidden range' do
@@ -23,7 +23,7 @@ describe Courses::Interview::IntervalPolicy do
       let!(:prev_interview) { create(:interview, mentor_id: mentor.id, start_at: (Time.now - 20.minutes)) }
 
       it 'forbids to pass policy' do
-        expect(policy).to_not be_allowed
+        expect(policy).not_to be_allowed
       end
     end
 
@@ -32,7 +32,7 @@ describe Courses::Interview::IntervalPolicy do
       let!(:next_interview) { create(:interview, mentor_id: mentor.id, start_at: (Time.now + 20.minutes)) }
 
       it 'forbids to pass policy' do
-        expect(policy).to_not be_allowed
+        expect(policy).not_to be_allowed
       end
     end
   end

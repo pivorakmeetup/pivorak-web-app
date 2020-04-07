@@ -9,7 +9,7 @@ describe Courses::TestTask::CreatePolicy do
   describe '#allowed?' do
     context 'student has not sent test tasks' do
       it 'allows to pass policy' do
-        policy = Courses::TestTask::CreatePolicy.new(student, season)
+        policy = described_class.new(student, season)
         expect(policy.allowed?).to be(true)
       end
     end
@@ -17,7 +17,7 @@ describe Courses::TestTask::CreatePolicy do
     context 'student has just sent test tasks' do
       it 'forbids to pass policy' do
         allow(season).to receive_message_chain(:test_tasks, :exists?).and_return(true)
-        policy = Courses::TestTask::CreatePolicy.new(student, season)
+        policy = described_class.new(student, season)
         expect(policy.allowed?).to be(false)
       end
     end

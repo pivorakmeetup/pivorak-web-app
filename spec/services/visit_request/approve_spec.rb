@@ -3,11 +3,11 @@
 require 'rails_helper'
 
 describe VisitRequest::Approve do
-  let(:visit_request) { create(:visit_request) }
-
   subject do
     described_class.new(visit_request)
   end
+
+  let(:visit_request) { create(:visit_request) }
 
   describe '#call' do
     it 'sets approved status' do

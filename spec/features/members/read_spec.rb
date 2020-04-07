@@ -43,7 +43,7 @@ RSpec.describe 'Member READ' do
 
         visit "/members/#{user.id}"
 
-        expect(page).to_not have_link(talk.title, href: "talks/#{talk.slug}")
+        expect(page).not_to have_link(talk.title, href: "talks/#{talk.slug}")
       end
     end
   end
@@ -61,7 +61,7 @@ RSpec.describe 'Member READ' do
       visit "/members/#{user.id}"
 
       expect(find(:xpath, "//a[@href='/events/#{visited_event.slug}']").text).to eq visited_event.title
-      expect(page).to_not have_link(not_visited_event.title, href: "events/#{not_visited_event.slug}")
+      expect(page).not_to have_link(not_visited_event.title, href: "events/#{not_visited_event.slug}")
     end
   end
 end

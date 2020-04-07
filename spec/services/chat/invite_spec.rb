@@ -3,9 +3,10 @@
 require 'rails_helper'
 
 describe Chat::Invite do
+  subject { described_class.new(email) }
+
   let(:email) { 'new-user@mail.com' }
   let(:mocked_client) { double('Chat::Client') }
-  subject { described_class.new(email) }
 
   describe '#call' do
     context 'when success' do
@@ -15,8 +16,9 @@ describe Chat::Invite do
           .with(url: Chat::Invite::INVITE_URL, params: { resend: true, email: email })
           .and_return(mocked_client)
 
-        expect(mocked_client).to receive(:call) { true }
+        expect(mocked_client).to receive(:call).and_return(true)
       end
+
       it { expect(subject.call).to be_truthy }
     end
 

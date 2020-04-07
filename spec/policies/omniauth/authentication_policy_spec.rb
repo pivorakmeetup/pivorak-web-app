@@ -14,7 +14,7 @@ RSpec.describe ::Omniauth::AuthenticationPolicy do
       end
 
       it "returns falsey value if identity hasn't been linked to the user" do
-        expect(subject.authenticated?).to be_falsey
+        expect(subject).not_to be_authenticated
       end
     end
 
@@ -22,7 +22,7 @@ RSpec.describe ::Omniauth::AuthenticationPolicy do
       subject { described_class.new({}) }
 
       it 'returns falsey value' do
-        expect(subject.authenticated?).to be_falsey
+        expect(subject).not_to be_authenticated
       end
     end
   end

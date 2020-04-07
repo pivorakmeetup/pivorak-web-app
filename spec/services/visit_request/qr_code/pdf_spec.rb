@@ -3,9 +3,9 @@
 require 'rails_helper'
 
 describe VisitRequest::QrCode::Pdf do
-  let(:visit_request) { create(:visit_request) }
-
   subject(:service) { described_class.new(visit_request) }
+
+  let(:visit_request) { create(:visit_request) }
 
   describe '#call' do
     subject(:call) { service.call }

@@ -22,7 +22,7 @@ RSpec.describe ::Mailchimp::SubscriptionJob, type: :job do
       end
 
       it 'returns if user is not subscribed' do
-        allow(user).to receive(:subscribed) { false }
+        allow(user).to receive(:subscribed).and_return(false)
         expect(service).not_to receive(:call).with(user: user)
         described_class.perform_later(user.id)
       end

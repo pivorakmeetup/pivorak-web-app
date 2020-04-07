@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-ruby '2.3.1'
+ruby '2.6.5'
 
 #=== CORE =====================================================================
 gem 'acts-as-taggable-on', git: 'https://github.com/Fodoj/acts-as-taggable-on', ref: 'rails-5.2'
@@ -47,7 +47,7 @@ gem 'slim-rails'
 gem 'turbolinks', '~> 5.2'
 gem 'uglifier', '~> 4.1.19'
 #=== FEATURES ==================================================================
-gem 'chartkick', '~> 3.2.0'
+gem 'chartkick', '~> 3.3.0'
 gem 'coderay', '~> 1.1.1'
 gem 'dry-validation', '~> 0.12.2'
 gem 'gibbon', '~> 3.0'
@@ -65,6 +65,7 @@ gem 'sitemap_generator', '~> 6.0.2'
 gem 'stripe', '~> 1.5'
 gem 'yt', '~> 0.32.2'
 gem 'slack-notifier', '~> 2.3.2'
+gem 'factory_bot_rails'
 
 #=== PDF GENERATION ===========================================================
 gem 'prawn'
@@ -96,16 +97,15 @@ group :development, :test do
   gem 'pry-rails'
   gem 'rspec'
   gem 'rspec-rails'
-  gem 'rubocop', '~> 0.59.2', require: false
+  gem 'rubocop', require: false
   gem 'rubocop-rspec'
+  gem 'rubocop-faker'
 end
 
 group :test do
   gem 'capybara'
   gem 'climate_control'
   gem 'codecov', require: false
-  gem 'database_cleaner'
-  gem 'factory_bot_rails'
   gem 'launchy'
   gem 'pdf-inspector', require: 'pdf/inspector'
   gem 'rspec-activemodel-mocks'
@@ -114,6 +114,5 @@ group :test do
   gem 'shoulda-matchers'
   gem 'simplecov', require: false
   gem 'stripe-ruby-mock', '~> 2.3.1', require: 'stripe_mock'
-  gem 'timecop'
   gem 'webmock'
 end

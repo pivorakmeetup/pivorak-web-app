@@ -14,7 +14,7 @@ describe 'Talks tags' do
     it 'filter by ruby tags' do
       expect(page).to     have_content 'Ruby Way'
       expect(page).to     have_content 'Rails Way'
-      expect(page).to_not have_content 'JS Way'
+      expect(page).not_to have_content 'JS Way'
     end
   end
 
@@ -23,8 +23,8 @@ describe 'Talks tags' do
 
     it 'filter by rails tags' do
       expect(page).to     have_content 'Rails Way'
-      expect(page).to_not have_content 'Ruby Way'
-      expect(page).to_not have_content 'JS Way'
+      expect(page).not_to have_content 'Ruby Way'
+      expect(page).not_to have_content 'JS Way'
     end
   end
 
@@ -33,8 +33,8 @@ describe 'Talks tags' do
 
     it 'filter by javascript tags' do
       expect(page).to     have_content 'JS Way'
-      expect(page).to_not have_content 'Ruby Way'
-      expect(page).to_not have_content 'Rails Way'
+      expect(page).not_to have_content 'Ruby Way'
+      expect(page).not_to have_content 'Rails Way'
     end
   end
 end

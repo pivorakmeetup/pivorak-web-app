@@ -2,6 +2,7 @@
 
 describe HttpClient do
   subject { described_class.new }
+
   let(:url) { {} }
   let(:params) { {} }
   let(:headers) { {} }
