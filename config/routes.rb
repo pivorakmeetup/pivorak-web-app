@@ -19,8 +19,6 @@ Rails.application.routes.draw do
 
   resource :donate, only: %i[show create], controller: :donate do
     post :webhook, to: 'donate/webhook#create', on: :collection
-    # post :after_success, to: redirect('/thank-you-for-donating')
-    # post :after_failure, to: redirect('/donate-failed')
   end
   resources :speakers,  only: %i[index]
   resources :search,    only: %i[index]
