@@ -14,7 +14,7 @@
     tbody
       - test_tasks.each do |test_task|
         tr id="test_task_#{test_task.id}"
-          td                = test_task.full_name
+          td                = link_to test_task.full_name, admin_courses_season_student_path(current_season, test_task.student), target: :blank
           td.center.aligned = link_to t('courses.test_tasks.git_url'), test_task.git_url
           td.center.aligned = courses_test_task_showcase_url(test_task)
           td.center.aligned
