@@ -3,10 +3,10 @@
 module Courses
   class TestTask < ApplicationRecord
     class Update < ApplicationService
-      def initialize(test_task, mentor, status: Courses::TestTask::ON_REVIEW, notes: nil)
+      def initialize(test_task, mentor, status:, notes: nil)
         @test_task = test_task
         @mentor    = mentor
-        @status    = status
+        @status    = status || Courses::TestTask::ON_REVIEW
         @notes     = notes || test_task.notes
       end
 
