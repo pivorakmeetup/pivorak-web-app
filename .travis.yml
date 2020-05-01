@@ -1,17 +1,16 @@
-env:
-  - DOCKER_COMPOSE_VERSION=1.24.0
+language: ruby
+os: linux
+dist: xenial
 
 before_install:
   - sudo rm /usr/local/bin/docker-compose
-  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
-  - chmod +x docker-compose
-  - sudo mv docker-compose /usr/local/bin
-
-before_install:
+  - sudo curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+  - sudo chmod +x /usr/local/bin/docker-compose
+  - sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
   - docker-compose run runner bundle install --jobs=3 --retry=3 --deployment
 
 install:
-  - cp config/database.yml.example config/database.yml
+  - docker-compose run runner cp config/database.yml.travis config/database.yml
   - docker-compose run -e RAILS_ENV=test runner bundle exec rails db:create db:schema:load
 
 notifications:

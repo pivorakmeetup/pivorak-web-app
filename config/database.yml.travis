@@ -1,0 +1,12 @@
+default: &default
+  adapter:  postgresql
+  encoding: unicode
+  pool:     <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host:     <%= ENV.fetch('DATABASE_HOST', '127.0.0.1') %>
+  port:     <%= ENV.fetch('DATABASE_PORT', 5432) %>
+  username: <%= ENV.fetch('DATABASE_USERNAME', 'postgres') %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+
+test:
+  <<: *default
+  database: pivorak_test
