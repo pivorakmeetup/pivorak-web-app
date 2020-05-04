@@ -1,0 +1,8 @@
+#!/bin/sh
+
+/usr/local/sbin/add_external_dns
+echo "Installing gems\n";
+echo 'gem: --no-document' >> ~/.gemrc
+gem install bundler -v '2.1.4'
+bundle check || bundle install --without development test -j 2 --binstubs="$BUNDLE_BIN"
+chown -R daemon:32769 /bundle

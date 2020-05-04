@@ -1,60 +1,111 @@
 version: '3.7'
 
-x-app: &app
-  build:
-    context: .
-    dockerfile: ./Dockerfile
-    args:
-      RUBY_VERSION: '2.6.5'
-      BUNDLER_VERSION: '2.1.2'
-      NODE_MAJOR: '10'
-  image: pivorak-web-app:0.0.1
-  tmpfs:
-    - /tmp
-  stdin_open: true
-  tty: true
-  volumes:
-    - .:/app:cached
-    - rails_cache:/app/tmp/cache
-    - bundle:/bundle
-  environment:
-    - REDIS_URL=redis://redis:6379
-    - DATABASE_URL=postgres://postgres:postgres@postgres:5432
-  depends_on:
-    - postgres
-    - redis
-
-services:
-  runner:
-    <<: *app
-    command: /bin/bash
-
-  rails:
-    <<: *app
-    command: bundle exec rails server -b 0.0.0.0
-    ports:
-      - '3000:3000'
-
-  sidekiq:
-    <<: *app
-    command: bundle exec sidekiq -C config/sidekiq.yml
+services: 
+  app: &app
+    image: pivorak-web-app:0.0.1
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "30"
+    command: bundle exec rails server -p 3000 -b 0.0.0.0
+    tmpfs:
+      - /tmp
+    environment:
+      - REDIS_URL=redis://redis:6379
+      - DATABASE_URL=postgres://postgres:postgres@postgres:5432
+    networks:
+      - pivorak-network
+    volumes:
+      - rails_cache_pivorak:/app/tmp/cache
+    deploy:
+      mode: replicated
+      replicas: 1
+      update_config:
+        parallelism: 2
+        delay: 10s
+        order: start-first
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints:
+          - node.role == manager
+    depends_on:
+      - postgres
+      - redis
 
   postgres:
     image: postgres:9.5
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "30"
     volumes:
-      - postgres:/var/lib/postgresql/data
-    ports:
-      - 5432
+      - postgres_pivorak:/var/lib/postgresql/data
+    networks:
+      - pivorak-network
+    expose: 
+      - "5432"
+    deploy:
+      mode: replicated
+      replicas: 1
+      update_config:  
+        parallelism: 2
+        delay: 10s
+        order: start-first
+      restart_policy:
+        condition: on-failure
 
   redis:
     image: redis:3.2-alpine
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "30"
     volumes:
-      - redis:/data
-    ports:
-      - 6379
+      - redis_pivorak:/data
+    networks:
+      - pivorak-network
+    expose: 
+      - "6379"
+    deploy:
+      mode: replicated
+      replicas: 1
+      update_config:
+        parallelism: 2
+        delay: 10s
+        order: start-first
+      restart_policy:
+        condition: on-failure
+
+  api:
+    <<: *app
+    hostname: pivorak_api:3000
+    ports: 
+      - 3000:3000
+
+  sidekiq:
+    <<: *app
+    environment:
+      WAIT_HOSTS: pivorak_api:3000 
+    command: sh -c "/wait && bundle exec sidekiq -C config/sidekiq.yml"
+    environment:
+      - REDIS_URL=redis://redis:6379
+      - DATABASE_URL=postgres://postgres:postgres@postgres:5432
+
+networks:
+  pivorak-network:
+    name: pivorak-network
 
 volumes:
-  rails_cache:
-  bundle:
-  redis:
-  postgres:
+  rails_cache_pivorak:
+    external: true
+  redis_pivorak:
+    external: true
+  postgres_pivorak:
+    external: true

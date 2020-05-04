@@ -1,0 +1,9 @@
+#!/bin/sh
+echo "Creating tmp folders\n";
+mkdir -p /app/data/shared/config || echo 0
+mkdir -p /app/data/shared/bundle || echo 0
+mkdir -p /app/data/shared/log || echo 0
+mkdir -p /app/data/shared/public || echo 0
+mkdir -p /app/data/shared/tmp/sockets || echo 0
+mkdir -p /app/data/shared/tmp/pids || echo 0
+rm /app/data/shared/tmp/pids/puma.pid || echo 0

@@ -1,0 +1,148 @@
+version: '3.7'
+
+services:
+  app: &app
+    image: pivorak-web-app:0.0.1
+    build:
+      context: .
+      dockerfile: ./Dockerfile.deploy
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "30"
+    tmpfs:
+      - /tmp
+    env_file:
+      - /data/docker/.docker_compose.env
+    networks:
+      - pivorak-network
+    volumes:
+      - pivorak-app-data:/app/data
+      - .docker_compose.env:/app/.env
+    deploy:
+      mode: replicated
+      replicas: 1
+      update_config:
+        parallelism: 2
+        delay: 10s
+        order: start-first
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints:
+          - node.role == manager
+    depends_on:
+      - postgres
+      - redis
+    hostname: pivorak_api:3000
+
+  postgres:
+    image: postgres:12-alpine
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "30"
+    volumes:
+      - pivorak-postgres:/var/lib/postgresql/data
+    networks:
+      - pivorak-network
+    expose:
+      - 5432
+    env_file:
+      - /data/docker/.docker_compose.env
+    deploy:
+      mode: replicated
+      replicas: 1
+      update_config:
+        parallelism: 1
+        delay: 10s
+        order: start-first
+      restart_policy:
+        condition: on-failure
+    healthcheck:
+      test: ["CMD", "pg_isready"]
+      timeout: 5s
+      retries: 15
+
+  redis:
+    image: redis:5-alpine
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "30"
+    volumes:
+      - pivorak-redis:/data
+    networks:
+      - pivorak-network
+    expose:
+      - "6379"
+    env_file:
+      - /data/docker/.docker_compose.env
+    deploy:
+      mode: replicated
+      replicas: 1
+      update_config:
+        parallelism: 1
+        delay: 10s
+        order: start-first
+      restart_policy:
+        condition: on-failure
+    healthcheck:
+      test: ["CMD", "redis-cli", "-h", "localhost", "ping"]
+      timeout: 1s
+      retries: 30
+
+  nginx:
+    image: nginx:1.15-alpine
+    restart: unless-stopped
+    volumes:
+      - pivorak-app-data:/app
+      - pivorak-nginx:/etc/nginx/conf.d
+      - pivorak-certbot-conf:/etc/letsencrypt
+      - pivorak-cerbot-www:/var/www/certbot
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - pivorak-network
+    depends_on:
+      - app
+    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+
+  certbot:
+    image: certbot/certbot
+    restart: unless-stopped
+    volumes:
+      - pivorak-certbot-conf:/etc/letsencrypt
+      - pivorak-cerbot-www:/var/www/certbot
+    environment:
+      EMAIL: mail@pivorak.com
+      DOMAINS: pivorak.com
+      SERVER_CONTAINER_LABEL: nginx.proxy
+      WEBROOT_PATH: /tmp/letsencrypt/www
+      CERTS_PATH: /etc/ssl/certs
+      CHECK_FREQ: 1
+    networks:
+      - pivorak-network
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+
+networks:
+  pivorak-network:
+    name: pivorak-network
+
+volumes:
+  pivorak-nginx:
+    external: true
+  pivorak-cerbot-www:
+    external: true
+  pivorak-certbot-conf:
+    external: true
+  pivorak-app-data:
+    external: true
+  pivorak-redis:
+    external: true
+  pivorak-postgres:
+    external: true

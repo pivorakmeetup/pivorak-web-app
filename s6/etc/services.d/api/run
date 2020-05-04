@@ -1,0 +1,5 @@
+#!/usr/bin/execlineb -P
+
+with-contenv
+s6-envuidgid -D 32769:32769 daemon
+/usr/local/sbin/start_api

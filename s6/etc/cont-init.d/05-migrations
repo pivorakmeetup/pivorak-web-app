@@ -1,0 +1,6 @@
+#!/usr/bin/execlineb -P
+
+with-contenv
+s6-envuidgid -D 32769:32769 daemon
+# Migrate db
+bundle exec rake db:migrate --trace

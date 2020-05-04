@@ -1,0 +1,63 @@
+#!/bin/sh
+/usr/local/sbin/init_tmp_folders
+echo "Creating symlinks\n";
+rm -rf /app/tmp
+ln -s /app/data/shared/tmp /app/tmp
+rm -rf /app/public
+ln -s /app/data/shared/public /app/public
+rm -rf /app/log
+ln -s /app/data/shared/log /app/log
+rm -rf /bundle
+ln -s /app/data/shared/bundle /bundle
+# secrets.yml
+if [ -f "/app/data/shared/config/secrets.yml" ]
+then
+	echo "Shared secrets.yml found."
+else
+	echo "Shared secrets.yml not found."
+	cp /app/config/secrets.docker.yml /app/data/shared/config/secrets.yml
+fi
+rm /app/config/secrets.yml
+ln -s /app/data/shared/config/secrets.yml /app/config/secrets.yml
+# cable.yml
+if [ -f "/app/data/shared/config/cable.yml" ]
+then
+	echo "Shared cable.yml found."
+else
+	echo "Shared cable.yml not found."
+	cp /app/config/cable.docker.yml /app/data/shared/config/cable.yml
+fi
+rm /app/config/cable.yml
+ln -s /app/data/shared/config/cable.yml /app/config/cable.yml
+# sidekiq.yml
+if [ -f "/app/data/shared/config/sidekiq.yml" ]
+then
+	echo "Shared sidekiq.yml found."
+else
+	echo "Shared sidekiq.yml not found."
+	cp /app/config/sidekiq.docker.yml /app/data/shared/config/sidekiq.yml
+fi
+rm /app/config/sidekiq.yml
+ln -s /app/data/shared/config/sidekiq.yml /app/config/sidekiq.yml
+# database.yml
+if [ -f "/app/data/shared/config/database.yml" ]
+then
+	echo "Shared database.yml found."
+else
+	echo "Shared database.yml not found."
+	cp /app/config/database.docker.yml /app/data/shared/config/database.yml
+fi
+rm /app/config/database.yml
+ln -s /app/data/shared/config/database.yml /app/config/database.yml
+# puma.rb
+if [ -f "/app/data/shared/config/puma.rb" ]
+then
+	echo "Shared puma.rb found."
+else
+	echo "Shared puma.rb not found."
+	cp /app/config/puma.docker.rb /app/data/shared/config/puma.rb
+fi
+rm /app/config/puma.rb
+ln -s /app/data/shared/config/puma.rb /app/config/puma.rb
+
+chown -R daemon:32769 /app

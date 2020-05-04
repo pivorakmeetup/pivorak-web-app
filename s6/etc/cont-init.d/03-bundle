@@ -1,0 +1,6 @@
+#!/usr/bin/execlineb -P
+
+with-contenv
+s6-envuidgid -D 32769:32769 daemon
+# Ensure all gems installed. Add binstubs to bin which has been added to PATH in Dockerfile.
+/usr/local/sbin/install_gems

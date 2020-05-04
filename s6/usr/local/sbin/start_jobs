@@ -1,0 +1,9 @@
+#!/bin/sh
+while :
+do
+  if [ -z "$STOP_SIDEKIQ" ]
+  then
+    echo "Starting sidekiq\n"
+    cd /app && bundle exec sidekiq -C config/sidekiq.yml
+  fi
+done

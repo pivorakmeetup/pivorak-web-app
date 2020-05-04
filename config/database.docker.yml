@@ -1,0 +1,19 @@
+default: &default
+  encoding: unicode
+  adapter:  postgresql
+  host:     postgres
+  pool:     20
+  username: <%= ENV['DATABASE_USER'] %>
+  password:
+
+development:
+  <<: *default
+  pool:     50
+  database: pivorak_production
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+
+production:
+  <<: *default
+  pool:     100
+  database: pivorak_production
+  password: <%= ENV['DATABASE_PASSWORD'] %>

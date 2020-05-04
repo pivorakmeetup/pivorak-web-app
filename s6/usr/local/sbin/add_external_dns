@@ -1,0 +1,3 @@
+#!/bin/sh
+
+echo "$(cat /etc/resolv.conf)\nnameserver 8.8.8.8\nnameserver 1.1.1.1" > /etc/resolv.conf

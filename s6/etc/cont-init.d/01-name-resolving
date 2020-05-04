@@ -1,0 +1,4 @@
+#!/usr/bin/execlineb -P
+
+with-contenv
+/usr/local/sbin/add_external_dns
