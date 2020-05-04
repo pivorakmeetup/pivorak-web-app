@@ -4,6 +4,7 @@
   h1.text-center
     = t('courses.interviews.plural')
 
+.pk-container
   table.pk-table(style="margin: 0 auto;")
     tbody
       - interviews.each do |interview|
@@ -11,8 +12,9 @@
           td = format_timestamp(interview.start_at)
           td = interview.description
           td = link_to t('courses.interviews.take'),
-            courses_season_interview_path(current_season, interview),
-              method: 'patch',
-                data: { confirm: t('phrases.confirm') }
+               courses_season_interview_path(current_season, interview),
+               method: 'patch', data: { confirm: t('phrases.confirm') }
 
+.pk-container
+  h4.text-center
     = paginate interviews
