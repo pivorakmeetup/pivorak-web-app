@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception, prepend: true
 
   helper_method :admin?
+  helper_method :student
 
   delegate :admin?, to: :current_user, allow_nil: true
   before_action :check_for_maintenance!
@@ -48,6 +49,13 @@ class ApplicationController < ActionController::Base
     action   = params[:action]
 
     flash[type] = t(key || type, scope: [:flash, resource, action])
+  end
+
+
+  def student
+    return unless current_user
+
+    @student ||= ::Courses::Student.without_rejected.find_by(user_id: current_user.id)
   end
 
   private
