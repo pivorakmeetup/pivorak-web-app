@@ -55,7 +55,7 @@ class ApplicationController < ActionController::Base
   def student
     return unless current_user
 
-    @student ||= ::Courses::Student.find_by(user_id: current_user.id)
+    @student ||= ::Courses::Student.without_rejected.find_by(user_id: current_user.id)
   end
 
   private

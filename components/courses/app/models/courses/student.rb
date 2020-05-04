@@ -29,5 +29,7 @@ module Courses
     validates :experience_info, presence: true
     validates :devote_info,     presence: true
     validates :user_id,         uniqueness: { scope: :season_id }
+
+    scope :without_rejected, -> { where.not(status: %i[dropped refused]) }
   end
 end
