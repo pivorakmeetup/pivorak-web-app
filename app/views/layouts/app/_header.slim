@@ -54,6 +54,8 @@ header.pk-header class="#{header_classlist.compact.join(' ')}"
                       li.pk-header__li-list-item = admin_link
                     li.pk-header__li-list-item = profile_link
                     li.pk-header__li-list-item = logout_link
+                    - if student
+                      li.pk-header__li-list-item = student_course_link(student)
 
               - else
                 li.pk-list__unit.pk-header__li-list-wr

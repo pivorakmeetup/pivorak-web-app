@@ -58,4 +58,8 @@ module NavigationHelper
   def ruby_course_link
     link_to 'Become a student of Ruby Summer Course', '/ruby-course'
   end
+
+  def student_course_link(student)
+    link_to 'Course', courses_season_path(student.season_id)
+  end
 end
