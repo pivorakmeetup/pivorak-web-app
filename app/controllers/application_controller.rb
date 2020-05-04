@@ -51,10 +51,11 @@ class ApplicationController < ActionController::Base
     flash[type] = t(key || type, scope: [:flash, resource, action])
   end
 
+
   def student
     return unless current_user
 
-    @student ||= ::Courses::Student.find_by!(user_id: current_user.id)
+    @student ||= ::Courses::Student.find_by(user_id: current_user.id)
   end
 
   private
