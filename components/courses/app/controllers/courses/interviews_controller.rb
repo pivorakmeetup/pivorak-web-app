@@ -20,9 +20,13 @@ module Courses
     end
 
     def interviews
-      @interviews ||= current_season.interviews
-                                    .attendance_available
-                                    .page(params[:page])
+      @interviews ||= avaliable_timeslots.page(params[:page])
+    end
+
+    def avaliable_timeslots
+      current_season.interviews
+                    .where('start_at > ?', Time.current)
+                    .attendance_available
     end
 
     def execute_list_policy
