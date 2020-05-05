@@ -25,7 +25,7 @@ module Courses
 
     def avaliable_timeslots
       current_season.interviews
-                    .where('start_at > ?', Time.current)
+                    .where('start_at > ?', Time.current.end_of_day)
                     .attendance_available
     end
 
