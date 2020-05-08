@@ -1,8 +1,8 @@
 ### Donation
 
-Ми використовуємо віджет https://wayforpay.com/uk на сторінці https://pivorak.com/donate.
+Ми використовуємо платіжну кнопку [WayForPay](https://wayforpay.com/uk) на сторінці https://pivorak.com/donate.
 
-Техпідтримка працює добре, рекомендую.
+Техпідтримка працює добре через Telegram, рекомендую.
 
 ### Корисні посилання
 
