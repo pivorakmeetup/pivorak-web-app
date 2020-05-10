@@ -6,7 +6,8 @@
 
 ### Корисні посилання
 
-- [Налаштування магазину тут](https://m.wayforpay.com/uk/mportal/payed-block-configure/notice-update?id=50029)
+- [Платіжна кнопка](https://m.wayforpay.com/uk/mportal/payments/button)
+- [Налаштування магазину](https://m.wayforpay.com/uk/mportal/payed-block-configure/notice-update?id=50029)
 
 ### Webhoook / Slack повідомлення
 
