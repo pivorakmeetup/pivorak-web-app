@@ -11,5 +11,8 @@
       = f.input :agree_to_terms_of_use, label: t('pages.donate.by_pressing_btn_html', locale: locale), as: :boolean, required: true, error: false, input_html: {class: 'js-donate-form-agree'}
     .form-actions
       .mtl
-        = render 'btn', js_class: 'js-donate-form-payment-btn', onclick: 'runWayforpayWidget();', hidden_class: 'pk-no-display'
-        = render 'btn', js_class: 'js-donate-form-validation-btn', type: 'submit'
+        - style_css_class = 'ui primary submit button pk-btn pk-btn--medium'
+        / button for actual payment, hidden before you accept terms of use
+        = link_to t('pages.donate.submit_btn', locale: locale), 'https://secure.wayforpay.com/button/b644556e003e4', target: '_blank', class: ['js-donate-form-payment-btn', 'pk-no-display', style_css_class]
+        / accepts terms of use button
+        = button_tag t('pages.donate.submit_btn', locale: locale), class: ['js-donate-form-validation-btn', style_css_class]

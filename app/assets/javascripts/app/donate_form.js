@@ -13,10 +13,6 @@
 
     if(agreeToTermsCheckbox) {
       agreeToTermsCheckbox.addEventListener('change', toggleBtns);
-      paymentBtn.addEventListener('click', function (event) {
-        event.preventDefault()
-        runWayforpayWidget()
-      });
     }
 
     var toggleElement = function(element) {
@@ -24,10 +20,7 @@
     }
   }
 
-  function runWayforpayWidget() {var wayforpay = new Wayforpay(); wayforpay.invoice('https://secure.wayforpay.com/button/b644556e003e4');}
-
   window.listenDonateTermsOfUse = listenDonateTermsOfUse;
-  window.runWayforpayWidget = runWayforpayWidget;
 
   $('.pk-donate-form').removeClass('pk-no-display')
 })();
