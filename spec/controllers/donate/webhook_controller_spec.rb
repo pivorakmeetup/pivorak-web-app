@@ -2,18 +2,18 @@
 
 RSpec.describe ::Donate::WebhookController do
   describe 'POST /donate/webhook' do
+  let(:donation_data) { { amount: 5, currency: 'USD', clientName: 'John Doe', transactionStatus: 'Approved' } }
+
     subject(:do_request) do
-      post :create, params: { { amount: 5, currency: 'USD', clientName: 'John Doe' }.to_json => 'none' }
+      post :create, params: { donation_data.to_json => 'none' }
     end
 
-    it 'saves donation into database with payload without ' do
+    it 'saves donation into database with' do
       allow(Donate::SendNewDonateNotification).to receive(:call)
 
       do_request
 
-      expect(Donate::SendNewDonateNotification).to have_received(:call).with(
-        amount: 5, currency: 'USD', clientName: 'John Doe'
-      )
+      expect(Donate::SendNewDonateNotification).to have_received(:call).with(donation_data)
     end
   end
 end

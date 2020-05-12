@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 describe Donate::SendNewDonateNotification do
-  let(:call) { described_class.call(amount: amount, currency: 'UAH', orderReference: order_reference) }
+  let(:call) { described_class.call(amount: amount, currency: 'UAH', orderReference: order_reference, transactionStatus: transactionStatus) }
   let(:amount) { 5 }
   let(:order_reference) { 'WFP-2102129-5decabc01799e' }
+  let(:transactionStatus) { 'Approved' }
 
   describe '#call' do
     it 'sends slack message with correct params' do
@@ -51,6 +52,19 @@ describe Donate::SendNewDonateNotification do
 
           call
 
+          expect(SlackNotifier).not_to have_received(:call)
+        end
+      end
+    end
+
+    context 'when donation do not have `Approved status`' do
+      let(:transactionStatus) { 'Expired' }
+
+      it 'skips notification' do
+        ClimateControl.modify SLACK_NEW_DONATION_CHANNEL: 'dummy-notifications-test' do
+          allow(SlackNotifier).to receive(:call)
+
+          expect { call }.not_to change(DonationData, :count)
           expect(SlackNotifier).not_to have_received(:call)
         end
       end

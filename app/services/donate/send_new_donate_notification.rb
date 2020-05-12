@@ -3,15 +3,17 @@
 # Donate::SendNewDonateNotification.call(amount: 5, currency: 'USD', orderReference: 'foo-123')
 module Donate
   class SendNewDonateNotification < ApplicationService
-    attr_reader :amount, :currency, :order_reference
+    attr_reader :amount, :currency, :order_reference, :transaction_status
 
     def initialize(params)
       @amount = params.fetch(:amount)
       @currency = params.fetch(:currency)
       @order_reference = params.fetch(:orderReference)
+      @transaction_status = params.fetch(:transactionStatus)
     end
 
     def call
+      return unless transaction_status == 'Approved'
       return if amount.zero?
       return if donation_data.persisted?
 
