@@ -24,6 +24,7 @@ class TalksController < ApplicationController
   def untagged_talks
     search_against(Talk)
       .published
+      .assigned
       .includes(:event, :speaker)
       .page(params[:page])
       .sorted_by_date
