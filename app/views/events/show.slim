@@ -14,7 +14,7 @@
       .pk-event-date__day   = get_day(event.started_at)
       .pk-event-date__month = get_month(event.started_at)
       .pk-event-date__date  = get_day_of_the_month(event.started_at)
-      .pk-event-date__hour  = get_hour(event.started_at)
+      .pk-event-date__hour  = "#{get_hour(event.started_at)} EEST"
       / TODO: revisit progess bar to unblock production
       / progress value="#{get_event_fullness_percent(event)}" max="100" style="width: 300px;"
       / .pk-event-date__counter = get_place_left_counter(event)
