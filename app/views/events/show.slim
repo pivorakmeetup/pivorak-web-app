@@ -36,3 +36,4 @@
     - if event.registration? && current_user.nil?
       .pk-status
         = unauthorized_message(t 'visit_requests.action')
+    == render 'events/afterparty'
