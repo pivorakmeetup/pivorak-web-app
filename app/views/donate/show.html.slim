@@ -2,17 +2,17 @@
 
 .pk-donate-form.pk-no-display
   h2.pk-uppercase
-    = t('pages.donate.title', locale: locale)
+    = t('pages.donate.title')
   p
-    = t('pages.donate.text_html', locale: locale)
+    = t('pages.donate.text_html')
 
   = simple_form_for form, url: donate_url, html: { autocomplete: 'off' } do |f|
     .form-inputs.pk-inline-block
-      = f.input :agree_to_terms_of_use, label: t('pages.donate.by_pressing_btn_html', locale: locale), as: :boolean, required: true, error: false, input_html: {class: 'js-donate-form-agree'}
+      = f.input :agree_to_terms_of_use, label: t('pages.donate.terms_and_conditions_label_html'), as: :boolean, required: true, error: false, input_html: {class: 'js-donate-form-agree'}
     .form-actions
       .mtl
         - style_css_class = 'ui primary submit button pk-btn pk-btn--medium'
         / button for actual payment, hidden before you accept terms of use
-        = link_to t('pages.donate.submit_btn', locale: locale), 'https://secure.wayforpay.com/button/b644556e003e4', target: '_blank', class: ['js-donate-form-payment-btn', 'pk-no-display', style_css_class]
+        = link_to t('pages.donate.submit_btn'), 'https://secure.wayforpay.com/button/b644556e003e4', target: '_blank', class: ['js-donate-form-payment-btn', 'pk-no-display', style_css_class]
         / accepts terms of use button
-        = button_tag t('pages.donate.submit_btn', locale: locale), class: ['js-donate-form-validation-btn', style_css_class]
+        = button_tag t('pages.donate.submit_btn'), class: ['js-donate-form-validation-btn', style_css_class]

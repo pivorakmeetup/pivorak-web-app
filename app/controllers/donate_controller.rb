@@ -2,7 +2,7 @@
 
 class DonateController < ApplicationController
   helper_method :form, :locale
-  layout 'devise'
+  layout 'bare'
 
   def show
     render locals: { form: DonateForm.new }
@@ -12,7 +12,7 @@ class DonateController < ApplicationController
     form = DonateForm.new(params[:donate_form].to_unsafe_hash)
 
     valid = form.valid?
-    flash.now[:alert] = t('pages.donate.failure', locale: locale) unless valid
+    flash.now[:alert] = t('pages.donate.failure') unless valid
 
     render :show, locals: { form: form }
   end
