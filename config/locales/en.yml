@@ -232,6 +232,17 @@ en:
   pages:
     singular: Page
     plural: Pages
+    donate:
+      title: Support Pivorak
+      text_html: >
+        We are thrilled you decided to support Pivorak.
+        <br><br>
+        Your donation lets us keep our events and our summer course free of charge. We couldn’t do this without you.
+        <br><br>
+        From all of us at the #pivorak core team: THANK YOU!
+      terms_and_conditions_label_html: I agree to the <b><a target="_blank" href="/public-agreement">Terms and Conditions</a></b>
+      failure: You must agree to the Terms and Conditions
+      submit_btn: Proceed to payment
 
   charts:
     by_status: '%{resource} by status'
