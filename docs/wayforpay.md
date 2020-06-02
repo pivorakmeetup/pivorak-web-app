@@ -8,6 +8,7 @@
 
 - [Платіжна кнопка](https://m.wayforpay.com/uk/mportal/payments/button)
 - [Налаштування магазину](https://m.wayforpay.com/uk/mportal/payed-block-configure/notice-update?id=50029)
+- [Список транзацій](https://m.wayforpay.com/mportal/transaction/index)
 
 ### Webhoook / Slack повідомлення
 
