@@ -2,7 +2,7 @@
 
 class HomeController < ApplicationController
   # TODO: [1.1] Remove
-  helper_method :event, :talks, :visit_request, :attendees, :upcoming_date
+  helper_method :event, :talks, :visit_request, :attendees, :planned_event, :upcoming_date
 
   def index
     if event
