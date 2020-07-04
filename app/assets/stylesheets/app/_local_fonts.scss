@@ -1,0 +1,28 @@
+@font-face {
+  font-family: 'Arvo';
+  font-style: normal;
+  font-weight: 400;
+  src: asset_url('Arvo-Regular_201.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Arvo';
+  font-style: italic;
+  font-weight: 400;
+  src: asset_url('Arvo-Italic_201.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Arvo';
+  font-style: normal;
+  font-weight: 700;
+  src: asset_url('Arvo-Bold_201.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Arvo';
+  font-style: italic;
+  font-weight: 700;
+  src: asset_url('Arvo-BoldItalic_201.ttf') format('truetype');
+}
+
