@@ -7,7 +7,7 @@ RSpec.describe 'Coming Soon page' do
     it 'renders coming soon page with unknown date' do
       visit root_path
 
-      expect(page).to have_content(I18n.t('coming_soon.next_event', upcoming_date: 'soon'))
+      expect(page).to have_content(I18n.t('coming_soon.getting_ready'))
       expect(page).to have_content(I18n.t('coming_soon.cfp_is_open'))
     end
   end

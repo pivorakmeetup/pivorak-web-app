@@ -2,7 +2,7 @@
 
 class HomeController < ApplicationController
   # TODO: [1.1] Remove
-  helper_method :event, :talks, :visit_request, :attendees, :upcoming_date
+  helper_method :event, :talks, :visit_request, :attendees, :coming_soon_message
 
   def index
     if event
@@ -13,6 +13,12 @@ class HomeController < ApplicationController
   end
 
   private
+
+  def coming_soon_message
+    return t('coming_soon.getting_ready') if planned_event.blank?
+
+    t('coming_soon.next_event', upcoming_date: upcoming_date)
+  end
 
   def upcoming_date
     return 'soon' unless planned_event.present?
