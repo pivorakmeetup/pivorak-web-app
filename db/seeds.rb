@@ -42,8 +42,12 @@ puts Venue.where(name: 'iHUB', description: 'http://ihub.world/ua/lviv-ua/',
 #=== Pages ====================================================================
 puts Page.where(title: 'About',    body: '...', url: 'about').first_or_create!
 puts Page.where(title: 'Contacts', body: '...', url: 'contacts').first_or_create!
-puts Page.where(url: 'public-agreement').first_or_create!(title: 'Public Agreement',
-                                                          body: File.read('db/seed/pages/public_agreement.md'))
+
+public_agreement = File.join('db', 'seed', 'pages', 'public_agreement.md')
+puts Page.where(url: 'public-agreement').first_or_create!(title: 'Public Agreement', body: File.read(public_agreement))
+
+privacy_policy = File.join('db', 'seed', 'pages', 'privacy_policy.md')
+puts Page.where(url: 'privacy').first_or_create!(title: 'Privacy Policy', body: File.read(privacy_policy))
 
 #=== Email Template ===========================================================
 puts Rake::Task['email_templates:seed'].execute

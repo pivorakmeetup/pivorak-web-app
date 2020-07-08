@@ -6,7 +6,7 @@
         | #pivorak
   .pk-home-layout__content-wrapper
     .pk-home-layout__content
-      p = t('coming_soon.next_event', upcoming_date: upcoming_date)
+      p = coming_soon_message
       p = t('coming_soon.cfp_is_open')
       = become_a_speaker_link(class: 'btn pk-btn pk-btn--biggest pk-btn--green-bg')
 
