@@ -125,7 +125,7 @@ GEM
     cells-slim (0.0.6)
       cells (>= 4.0.1, < 6.0.0)
       slim (~> 3.0)
-    chartkick (3.3.1)
+    chartkick (3.4.0)
     chunky_png (1.3.11)
     climate_control (0.2.0)
     codecov (0.2.11)
@@ -624,7 +624,7 @@ DEPENDENCIES
   capistrano3-postgres
   capybara
   carrierwave (~> 1.2)
-  chartkick (~> 3.3.0)
+  chartkick (~> 3.4.0)
   climate_control
   codecov
   coderay (~> 1.1.1)
