@@ -20,7 +20,7 @@
       / .pk-event-date__counter = get_place_left_counter(event)
 
   - if talks.present?
-    .pk-main-speakers class="#{(talks.count == 4) ? 'pk-main-speakers--four-speakers' : ''}"
+    .pk-main-speakers class="pk-main-speakers--#{(talks.count == 4) ? 'four' : ((talks.count > 4) ?  'more-than-four' :  '')}-speakers"
       - talks.each do |talk|
         .pk-main-speakers__unit-container
           .pk-main-speakers__unit
