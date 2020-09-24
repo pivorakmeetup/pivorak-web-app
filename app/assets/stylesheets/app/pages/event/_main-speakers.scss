@@ -133,3 +133,13 @@ $speakers-breakpoint: 960px;
     }
   }
 }
+
+#{$namespace}--more-than-four-speakers {
+  flex-wrap: wrap;
+  @media(min-width: $speakers-breakpoint) {
+    #{$namespace}__unit-container {
+      width: 30%;
+      flex: 1 0 30%;
+    }
+  }
+}
