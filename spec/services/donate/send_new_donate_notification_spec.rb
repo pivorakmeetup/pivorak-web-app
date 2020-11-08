@@ -1,7 +1,15 @@
 # frozen_string_literal: true
 
 describe Donate::SendNewDonateNotification do
-  let(:call) { described_class.call(amount: amount, currency: 'UAH', orderReference: order_reference, transactionStatus: transactionStatus) }
+  let(:call) do
+    described_class.call(
+      amount:            amount,
+      currency:          'UAH',
+      orderReference:    order_reference,
+      transactionStatus: transactionStatus
+    )
+  end
+
   let(:amount) { 5 }
   let(:order_reference) { 'WFP-2102129-5decabc01799e' }
   let(:transactionStatus) { 'Approved' }
