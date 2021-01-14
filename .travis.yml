@@ -2,12 +2,12 @@ env:
   - DOCKER_COMPOSE_VERSION=1.24.0
 
 before_install:
-  - sudo rm /usr/local/bin/docker-compose
   - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
 
 before_install:
+  - docker-compose build
   - docker-compose run runner bundle install --jobs=3 --retry=3 --deployment
 
 install:
@@ -24,3 +24,4 @@ script:
 env:
   global:
     secure: VWsbAzw8ZK7VFyEZwanEbV5srrPHY+El2urwDP3tTZN9ril5kRRaXxNeI+63qZIpeo/JS31O8n3x0SnzLUQ2vzANrHrhX9DiwdV9+wU04wm7eVwWeCCunTsv97o4X83UDsghryRoZfq7ILQf6PPyjZJuqF1nBQvq6BOiLHnDclD0/iYuXLhhtBzRFZrf1mqXi7jjNaXcWZIwHe5HHgq8RYQoGY3gQ0XL5Nb6BMxd6cBqDtbi7MexEtYqmIlTnlpMtofBI59qHV0L0ZRPjbAM3NVCWxfC37yEfYrQmWAjRf8VbrZsykU9cVNh2FfrK7hK1iSdCAyGPDq+yMiYUfU6Tk7H9ecrLnSFIUe14IAaArtIpNsQ3OUpdoTpAYWLkyQakiEV/1MYe8DqXng7bJye7F5b4rKm2pU1NtWS60vN0BMYqlpMR56hiZSfimQ5bCvO0eXJTUP7OkTedA3mPIGtO96h73KzPvTyVJxsBoiKxPo2GDNnxcdte3028I1J4dD4ffa9PnZyeQB7XoWTIL6ELi/2hYzItMv3KJSjOxFXZeDyCeEGX6I3il1+KKJj74rgePMTK+xk8SptziFz2dYuv8lfRAaM862tLBF8oLTR7SErVUIbZ4Pt5DFRadnux4ZkppupzpeSqfC43FqrtJEdM46OiyNX9i8p5zkiZXuJTGU=
+
