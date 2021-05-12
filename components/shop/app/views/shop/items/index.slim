@@ -1,0 +1,12 @@
+h2.main-header Shop
+
+.main
+  ul.cards
+    - items.each do |item|
+      li.cards_item
+        .card
+          = image_tag item.item_images.first.image_url(:middle).to_s, class: 'card_image' if item.item_images.first.try(:image_url)
+          .card_content
+            h2.card_title = item.name
+            p.card_text = item.description
+            button.btn.card_btn Add to cart

@@ -6,6 +6,8 @@ ruby File.open('.ruby-version').readline.chomp
 #=== CORE =====================================================================
 gem 'acts-as-taggable-on', git: 'https://github.com/Fodoj/acts-as-taggable-on', ref: 'rails-5.2'
 gem 'carrierwave', '~> 1.2'
+gem "mini_magick"
+gem 'rmagick'
 gem 'devise', '~> 4.7.1'
 gem 'friendly_id', '~> 5.1'
 gem 'kaminari'
@@ -23,6 +25,7 @@ gem 'sidekiq-scheduler', '~> 2.1.4'
 gem 'simple_form'
 
 gem 'courses', path: 'components/courses'
+gem 'shop', path: 'components/shop'
 gem 'ez-settings'
 
 #=== CONFIG ===================================================================
@@ -38,8 +41,8 @@ gem 'autoprefixer-rails', '~> 7.1.6'
 gem 'coffee-rails', '~> 4.2.1'
 gem 'jquery-rails', '~> 4.2.2'
 gem 'premailer-rails' # email inline styling
-gem 'rails-assets-semantic-ui-calendar', source: 'https://rails-assets.org'
-gem 'rails-assets-svgxuse', source: 'https://rails-assets.org'
+gem 'rails-assets-semantic-ui-calendar', source: 'http://insecure.rails-assets.org'
+gem 'rails-assets-svgxuse', source: 'http://insecure.rails-assets.org'
 gem 'sass-rails', '~> 5.0'
 gem 'semantic-ui-sass', '~> 2.2'
 gem 'slim-rails'
