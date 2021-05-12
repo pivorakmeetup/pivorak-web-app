@@ -25,10 +25,6 @@ module Admin
         react_to item.update(items_params)
       end
 
-      def destroy
-        item.destroy && redirect_to(admin_shop_items_path)
-      end
-
       private
 
       def default_redirect

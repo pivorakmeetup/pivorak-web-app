@@ -1,4 +1,6 @@
 en:
+  shop:
+    singular: Shop
   shop_items:
     singular: Item
   shop:

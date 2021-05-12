@@ -4,8 +4,8 @@ module Shop
   class Item < ApplicationRecord
     self.table_name = 'shop_items'
 
-    validation :name,          presence: true
-    validation :price,         presence: true
-    validation :available_qty, presence: true
+    validates :name,          presence: true
+    validates :price,         presence: true
+    validates :available_qty, presence: true
   end
 end

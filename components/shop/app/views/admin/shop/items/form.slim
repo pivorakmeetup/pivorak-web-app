@@ -1,16 +1,16 @@
 - title resource_form_text(item, label: :name)
 
-= admin_shop_items_nav do
-  = resource_form_header(item, label: :name)
-  = simple_form_for item, url: item_form_url, method: item_form_method, as: :item do |f|
-    .fields
-      .sixteen.wide.field.right-align
-        = link_to t('words.back'), admin_shop_items_path(item), class: 'ui button grey'
-        = f.button :submit
+= resource_form_header(item, label: :name)
+= simple_form_for item, url: item_form_url, method: item_form_method, as: :item do |f|
+  .ui.grid
+    .sixteen.wide.field.right-align
+      = link_to t('words.back'), admin_shop_items_path(item), class: 'ui button grey'
+      = f.button :submit
 
-    .fields
-      .five.wide.field = f.input :name
-      .five.wide.field = f.input :description
-      .six.wide.field = f.input :price
-      .six.wide.field = f.input :available_qty
-
+  .ui.grid
+    .sixteen.wide.field = f.input :name
+  .ui.grid
+    .sixteen.wide.field = f.input :description
+  .ui.grid
+    .six.wide.field = f.input :price
+    .six.wide.field = f.input :available_qty
