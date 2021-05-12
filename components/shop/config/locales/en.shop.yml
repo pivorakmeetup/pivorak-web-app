@@ -1,0 +1,11 @@
+en:
+  shop_items:
+    singular: Item
+  shop:
+    items:
+      plural: Shop Items
+      singular: Shop Item
+      name: Name
+      description: Description
+      price: Price
+      available_qty: Avaliable quantity

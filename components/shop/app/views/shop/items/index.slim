@@ -1,0 +1,11 @@
+
+.pk-container.pk-default-text-font
+  h2.main-header Shop
+
+  - items.each do |item|
+    .card.float-left style=("width: 18rem;")
+      img.card-img-top alt="..." src="https://homepages.cae.wisc.edu/~ece533/images/airplane.png" /
+      .card-body
+        h5.card-title= item.name
+        p.card-text= item.description
+        a.btn.btn-primary href="#"  Go somewhere

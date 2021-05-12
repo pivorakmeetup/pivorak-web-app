@@ -16,6 +16,12 @@ PATH
       simple_form
       slim-rails
 
+PATH
+  remote: components/shop
+  specs:
+    shop (0.1.0)
+      rails (~> 5.2.2, >= 5.2.2.1)
+
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -684,6 +690,7 @@ DEPENDENCIES
   rubocop-rspec
   sass-rails (~> 5.0)
   semantic-ui-sass (~> 2.2)
+  shop!
   shoulda-matchers
   sidekiq
   sidekiq-scheduler (~> 2.1.4)

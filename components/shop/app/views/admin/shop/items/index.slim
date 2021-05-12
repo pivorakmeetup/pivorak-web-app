@@ -1,0 +1,23 @@
+- title t 'shop_items.plural'
+
+= resource_header :shop_item
+
+table.ui.very.basic.table
+  thead
+    tr
+      th = t 'shop.items.name'
+      th = t 'shop.items.description'
+      th = t 'shop.items.price'
+      th = t 'shop.items.available_qty'
+      th
+
+  tbody
+    - items.each do |item|
+      tr
+        td = item.name
+        td = item.description
+        td = item.price
+        td = item.available_qty
+        td = controls do
+          = admin_edit_resource_link(item)
+          = admin_destroy_resource_link(item)

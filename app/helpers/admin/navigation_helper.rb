@@ -52,6 +52,10 @@ module Admin
       link_to t('pages.plural'), admin_pages_path, class: class_for(:pages)
     end
 
+    def admin_shop_link
+      link_to t('shop.singular'), admin_shop_items_path, class: class_for(:shop)
+    end
+
     private
 
     def class_for(item)

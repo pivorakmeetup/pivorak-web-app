@@ -23,6 +23,7 @@ gem 'sidekiq-scheduler', '~> 2.1.4'
 gem 'simple_form'
 
 gem 'courses', path: 'components/courses'
+gem 'shop', path: 'components/shop'
 gem 'ez-settings'
 
 #=== CONFIG ===================================================================
