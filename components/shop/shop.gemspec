@@ -29,11 +29,11 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'rails', '~> 5.2.2', '>= 5.2.2.1'
 
+  spec.add_dependency 'carrierwave', '~> 1.2'
   spec.add_dependency 'friendly_id'
   spec.add_dependency 'kaminari'
   spec.add_dependency 'simple_form'
   spec.add_dependency 'slim-rails'
-  spec.add_dependency 'carrierwave', '~> 1.2'
 
   spec.add_development_dependency 'capybara'
   spec.add_development_dependency 'faker'

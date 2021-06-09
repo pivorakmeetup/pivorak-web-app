@@ -4,6 +4,10 @@ module Shop
   class BaseController < ApplicationController
     before_action :authenticate_user!
 
+    def current_order
+      session[:order_id] ? Shop::Order.find(session[:order_id]) : []
+    end
+
     private
 
     def render_form
