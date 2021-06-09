@@ -23,6 +23,7 @@ gem 'redis', '~>3.2'
 gem 'sidekiq'
 gem 'sidekiq-scheduler', '~> 2.1.4'
 gem 'simple_form'
+gem 'font-awesome-rails'
 
 gem 'courses', path: 'components/courses'
 gem 'shop', path: 'components/shop'

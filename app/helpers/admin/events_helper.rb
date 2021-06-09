@@ -42,7 +42,6 @@ module Admin
                   class: ['ui label', BG_STATUS_CLASS[event.status.to_sym]]
     end
 
-    # rubocop:disable Metrics/AbcSize
     def event_visitors(event)
       requested = event.pending_visit_requests.length
       approved  = event.approved_visit_requests.length
@@ -56,7 +55,6 @@ module Admin
         t('events.index.visitors.visited')   => visited
       }
     end
-    # rubocop:enable Metrics/AbcSize
 
     def event_verified_user_data(event)
       verified = event.verified_visitors.length

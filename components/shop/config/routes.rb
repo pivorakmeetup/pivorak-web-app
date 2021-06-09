@@ -3,6 +3,7 @@
 Rails.application.routes.draw do
   namespace :shop do
     resources :items, only: %i[index]
+    resources :order_items, only: %i[index update destroy]
   end
 
   namespace :admin do
