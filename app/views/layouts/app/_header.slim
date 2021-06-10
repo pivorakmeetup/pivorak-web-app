@@ -19,6 +19,8 @@ header.pk-header class="#{header_classlist.compact.join(' ')}"
         nav
           ul.pk-list.pk-header__dropdown-list.js-dropdown-list
               li.pk-list__unit.pk-header__li-list-wr
+                = link_to "shop", '/shop/items'
+              li.pk-list__unit.pk-header__li-list-wr
                 a = "info"
                 ul.pk-header__li-list
                   li.pk-header__li-list-item = about_link

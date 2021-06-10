@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'friendly_id'
   s.add_dependency 'kaminari'
-  s.add_dependency 'rails'
+  s.add_dependency 'rails', '~> 5.2.2', '>= 5.2.2.1'
   s.add_dependency 'simple_form'
   s.add_dependency 'slim-rails'
 
