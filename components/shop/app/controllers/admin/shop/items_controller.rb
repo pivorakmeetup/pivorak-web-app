@@ -40,7 +40,8 @@ module Admin
       end
 
       def items_params
-        params.require(:item).permit(:name, :description, :price, :available_qty)
+        params.require(:item).permit(:name, :description, :price, :available_qty, :published,
+                                     item_images_attributes: [:image])
       end
     end
   end

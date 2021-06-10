@@ -29,5 +29,20 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'rails', '~> 5.2.2', '>= 5.2.2.1'
 
+  spec.add_dependency 'friendly_id'
+  spec.add_dependency 'kaminari'
+  spec.add_dependency 'simple_form'
+  spec.add_dependency 'slim-rails'
+  spec.add_dependency 'carrierwave', '~> 1.2'
+
+  spec.add_development_dependency 'capybara'
+  spec.add_development_dependency 'faker'
+  spec.add_development_dependency 'guard-rspec'
+  spec.add_development_dependency 'launchy'
+  spec.add_development_dependency 'pry-rails'
+  spec.add_development_dependency 'rspec-rails'
+  spec.add_development_dependency 'simplecov'
+
+  spec.add_development_dependency 'factory_bot_rails'
   spec.add_development_dependency 'sqlite3'
 end

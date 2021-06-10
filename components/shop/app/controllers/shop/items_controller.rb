@@ -7,7 +7,7 @@ module Shop
     private
 
     def items
-      @items ||= Shop::Item.all
+      @items ||= Shop::Item.active
     end
   end
 end

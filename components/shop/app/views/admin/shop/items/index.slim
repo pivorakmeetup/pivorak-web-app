@@ -9,6 +9,8 @@ table.ui.very.basic.table
       th = t 'shop.items.description'
       th = t 'shop.items.price'
       th = t 'shop.items.available_qty'
+      th = t 'shop.items.published'
+      th = t 'shop.items.img'
       th
 
   tbody
@@ -18,6 +20,8 @@ table.ui.very.basic.table
         td = item.description
         td = item.price
         td = item.available_qty
+        td = item.published
+        td
+          = image_tag item.item_images.first.image_url(:small).to_s if item.item_images.first.try(:image_url)
         td = controls do
           = admin_edit_resource_link(item)
-          = admin_destroy_resource_link(item)

@@ -12,12 +12,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_210_510_190_241) do
-  create_table 'items', force: :cascade do |t|
-    t.string 'name'
+ActiveRecord::Schema.define(version: 20_210_514_113_103) do
+  create_table 'shop_item_images', force: :cascade do |t|
+    t.string 'image'
+    t.integer 'item_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['item_id'], name: 'index_shop_item_images_on_item_id'
+  end
+
+  create_table 'shop_items', force: :cascade do |t|
+    t.string 'name', null: false
     t.text 'description'
-    t.decimal 'price'
-    t.integer 'available_qty'
+    t.decimal 'price', null: false
+    t.integer 'available_qty', default: 0, null: false
+    t.boolean 'published', default: false
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
   end
