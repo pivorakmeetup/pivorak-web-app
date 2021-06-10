@@ -1,9 +1,8 @@
 en:
-  shop:
-    singular: Shop
   shop_items:
     singular: Item
   shop:
+    singular: Shop
     items:
       plural: Shop Items
       singular: Shop Item
@@ -11,3 +10,5 @@ en:
       description: Description
       price: Price
       available_qty: Avaliable quantity
+      published: Published
+      img: Image

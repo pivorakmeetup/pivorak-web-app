@@ -2,12 +2,12 @@
 
 Rails.application.routes.draw do
   namespace :shop do
-    resources :items
+    resources :items, only: %i[index]
   end
 
   namespace :admin do
     namespace :shop do
-      resources :items
+      resources :items, only: %i[index show new edit create update]
     end
   end
 end

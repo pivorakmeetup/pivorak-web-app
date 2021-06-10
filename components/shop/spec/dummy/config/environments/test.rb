@@ -3,6 +3,9 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  # I am very proud of this WORKAROUND! :)
+  config.paths['db/migrate'] << Shop::Engine.root.join('db', 'migrate').to_s
+
   # The test environment is used exclusively to run your application's
   # test suite. You never need to work with it otherwise. Remember that
   # your test database is "scratch space" for the test suite and is wiped
