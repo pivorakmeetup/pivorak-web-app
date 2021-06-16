@@ -9,7 +9,7 @@ module Shop
     def current_order
       return unless session[:order_id]
 
-      @current_order ||= Shop::Order.find(session[:order_id])
+      @current_order ||= Shop::Order.find_by(id: session[:order_id])
     end
 
     private
