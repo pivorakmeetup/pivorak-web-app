@@ -5,6 +5,7 @@ module Shop
     self.table_name = 'shop_items'
 
     has_many :item_images
+    has_many :order_items
     accepts_nested_attributes_for :item_images
 
     scope :active, -> { where(published: true) }

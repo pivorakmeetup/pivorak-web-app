@@ -1,5 +1,13 @@
 h2.main-header Shop
 
+- if current_order.present?
+  span.shopping_cart-icon
+    = link_to shop_order_items_path do
+      i.fas.fa-shopping-cart.fa-8x
+      div.item_counts
+      span
+        = current_order.order_items_count
+
 .main
   ul.cards
     - items.each do |item|
@@ -9,4 +17,9 @@ h2.main-header Shop
           .card_content
             h2.card_title = item.name
             p.card_text = item.description
-            button.btn.card_btn Add to cart
+            - if current_order.present? && current_order.items.include?(item)
+              = link_to shop_order_items_path do
+                button.btn.card_btn Added to the cart
+            - else
+              = link_to shop_order_items_path(item_id: item.id), method: :post  do
+                button.btn.card_btn Add to cart

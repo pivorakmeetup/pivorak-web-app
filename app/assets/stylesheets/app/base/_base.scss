@@ -134,3 +134,28 @@ q {
 .pk-no-display {
   display: none !important;
 }
+
+.shopping_cart-icon {
+  display: inline-block;
+  position: fixed;
+  left: 1450px;
+  opacity: 80%;
+
+  &:hover {
+    opacity: 100%;
+  }
+}
+
+.cart_table {
+  margin: 40px;
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th, td {
+    text-align: left;
+    padding: 8px;
+  }
+}
