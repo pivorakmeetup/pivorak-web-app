@@ -2,9 +2,7 @@
 
 module Shop
   class OrderItemsController < BaseController
-    helper_method :item
-    helper_method :order_items
-    helper_method :current_order
+    helper_method :item, :order_items
 
     def create
       order_item = ::Shop::OrderItem.new(item_id: item.id, order_id: order_id, price: item.price)
@@ -14,19 +12,21 @@ module Shop
     end
 
     def update
-      order_item.increase_quantity!
+      OrderItemService.new(order_item).increase_quantity!
       redirect_to shop_order_items_path
     end
 
     def destroy
-      order_item.reduce_quantity!
+      OrderItemService.new(order_item).reduce_quantity!
       redirect_to shop_order_items_path
     end
 
     private
 
     def order_items
-      order_items = Shop::OrderItem.includes(:item)
+      @order_items ||= Shop::OrderItem.includes(:item).map do |order_item|
+        Shop::OrderItemDecorator.new(order_item)
+      end
     end
 
     def order_item

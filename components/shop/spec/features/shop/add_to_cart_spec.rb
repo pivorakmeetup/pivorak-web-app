@@ -11,6 +11,6 @@ RSpec.describe '/shop' do
     click_button 'Add to cart'
 
     expect(page).to have_current_path '/shop/items'
-    # expect(page).to have_button('Added to the cart')
+    expect(page).to have_button('Added to the cart')
   end
 end

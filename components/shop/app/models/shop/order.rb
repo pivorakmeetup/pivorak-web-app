@@ -14,12 +14,13 @@ module Shop
     has_many :order_items
     has_many :items, through: :order_items
 
-    def total_sum
-      order_items.map(&:price).sum.to_f
-    end
+    # TODO: OrderDecorator
+    # def total_sum
+    #   order_items.map(&:price).sum.to_f
+    # end
 
-    def order_items_count
-      order_items.count
-    end
+    # def order_items_count
+    #   order_items.count
+    # end
   end
 end

@@ -4,8 +4,12 @@ module Shop
   class BaseController < ApplicationController
     before_action :authenticate_user!
 
+    helper_method :current_order
+
     def current_order
-      session[:order_id] ? Shop::Order.find(session[:order_id]) : []
+      return unless session[:order_id]
+
+      @current_order ||= Shop::Order.find(session[:order_id])
     end
 
     private
