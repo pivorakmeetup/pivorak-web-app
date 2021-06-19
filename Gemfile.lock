@@ -435,7 +435,7 @@ GEM
       ffi (~> 1.0)
     recaptcha (5.4.1)
       json
-    redcarpet (3.4.0)
+    redcarpet (3.5.1)
     redis (3.3.5)
     regexp_parser (1.7.0)
     request_store (1.5.0)
@@ -671,7 +671,7 @@ DEPENDENCIES
   rails-assets-svgxuse!
   rails_email_preview (~> 2.0.1)
   recaptcha
-  redcarpet (~> 3.4.0)
+  redcarpet (~> 3.5.1)
   redis (~> 3.2)
   rollbar (~> 2.19.3)
   rspec
