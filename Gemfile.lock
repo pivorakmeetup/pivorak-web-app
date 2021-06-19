@@ -12,7 +12,7 @@ PATH
     courses (0.1.0)
       friendly_id
       kaminari
-      rails
+      rails (= 5.2.5)
       simple_form
       slim-rails
 

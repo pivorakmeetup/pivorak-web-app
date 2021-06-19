@@ -4,6 +4,7 @@
 
 = simple_form_for [:admin, season], as: :season do |f|
   .fields
+    .six.wide.field.ui.slider.checkbox = f.input :open_format, as: :boolean
     .sixteen.wide.field.right-align
       = admin_back_link('courses_seasons')
       = f.button :submit
@@ -13,6 +14,7 @@
     .six.wide.field = f.input :title
     .six.wide.field = f.input :start_at,  as: :datetime
     .six.wide.field = f.input :finish_at, as: :datetime
+
   .fields
     .sixteen.wide.field
       = f.input :description, input_html: { rows: 30, class: Simplemde::CONTAINER_CLASS }

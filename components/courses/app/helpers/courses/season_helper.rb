@@ -27,6 +27,7 @@ module Courses
     end
 
     def courses_send_test_task_link(season, student)
+      return if season.open_format?
       return unless ::Courses::Season::SendTestTaskPolicy.new(season, student).allowed?
 
       if student.test_task

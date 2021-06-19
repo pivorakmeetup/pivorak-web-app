@@ -11,7 +11,7 @@ module Courses
     end
 
     def create
-      @student = Student::Create.call(student_params, current_season.id, current_user.id)
+      @student = Student::Create.call(student_params, current_season, current_user.id)
       react_to student.save
     end
 

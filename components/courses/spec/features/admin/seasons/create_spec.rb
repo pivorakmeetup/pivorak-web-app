@@ -34,4 +34,17 @@ RSpec.describe 'Season CREATE' do
       expect(page).to have_content 'Super New Course Season'
     end
   end
+
+  context 'open format' do
+    it 'create new season' do
+      fill_in 'Title', with: 'Super New Course Season'
+      pick_a_date('season_start_at', Time.now)
+      pick_a_date('season_finish_at', Time.now + 60.days)
+      check 'Open format'
+      click_button 'Create Season'
+
+      expect(page).to have_current_path '/admin/courses/seasons'
+      expect(page).to have_content 'Super New Course Season'
+    end
+  end
 end
