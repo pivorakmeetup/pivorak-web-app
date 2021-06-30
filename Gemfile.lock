@@ -26,6 +26,7 @@ PATH
       rails (~> 5.2.2, >= 5.2.2.1)
       simple_form
       slim-rails
+      wayforpay
 
 GEM
   remote: https://rubygems.org/
@@ -606,6 +607,7 @@ GEM
       blockenspiel (~> 0.5)
     warden (1.2.8)
       rack (>= 2.0.6)
+    wayforpay (0.1.7)
     web-console (3.7.0)
       actionview (>= 5.0)
       activemodel (>= 5.0)
@@ -721,6 +723,7 @@ DEPENDENCIES
   tzinfo-data
   uglifier (~> 4.1.19)
   versionomy (~> 0.5.0)
+  wayforpay
   web-console
   webmock
   yt (~> 0.32.2)

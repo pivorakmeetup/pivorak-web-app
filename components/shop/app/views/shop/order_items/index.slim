@@ -1,32 +1,36 @@
 h2.main-header Cart
 
-.cart_table
-  - if current_order.present? && current_order.order_items.any?
-    table
-      thead
-        tr
-          th Image
-          th.company Name
-          th.company Price
-          th.count Count
-      tbody
-        - order_items.each do |item|
+.main
+  .cart_table
+    - if current_order.present? && current_order.order_items.any?
+      table
+        thead
           tr
-            td= image_tag item.item.item_images.first.image_url(:small).to_s, class: 'card_image' if item.item.item_images.first.try(:image_url)
-            td= item.item.name
-            td= item.sum
-            td
-              div
-                = link_to shop_order_item_path(item.id), method: :delete  do
-                  i.fas.fa-minus
+            th Image
+            th.company Name
+            th.company Price
+            th.count Count
+        tbody
+          - order_items.each do |item|
+            tr
+              td= image_tag item.item.item_images.first.image_url(:small).to_s, class: 'card_image' if item.item.item_images.first.try(:image_url)
+              td= item.item.name
+              td= item.sum
+              td
+                div
+                  = link_to shop_order_item_path(item.id), method: :delete  do
+                    i.fas.fa-minus
 
-                = item.quantity
+                  = item.quantity
 
-                = link_to shop_order_item_path(item.id), method: :put  do
-                  i.fas.fa-plus
+                  = link_to shop_order_item_path(item.id), method: :put  do
+                    i.fas.fa-plus
+      .total_sum
+        h2 Total
+        h2= order_items.map(&:sum).sum.to_f
 
-    .total_sum
-      h2 Total
-      h2= current_order.total_sum
-  - else
-    h1 Your cart is empty for now
+      .click_checkout
+        = link_to shop_checkouts_path do
+          button.btn.pk-btn--green-bg.donate-btn Купити
+    - else
+      h1 Your cart is empty for now

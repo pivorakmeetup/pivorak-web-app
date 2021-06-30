@@ -16,7 +16,7 @@ module Admin
       end
 
       def create
-        item = ::Shop::Item.new(items_params)
+        item = ::Shop::ItemForm.new(items_params)
 
         react_to item.save
       end

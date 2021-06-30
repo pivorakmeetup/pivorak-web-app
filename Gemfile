@@ -69,6 +69,7 @@ gem 'stripe', '~> 1.5'
 gem 'yt', '~> 0.32.2'
 gem 'slack-notifier', '~> 2.3.2'
 gem 'factory_bot_rails'
+gem 'wayforpay'
 
 #=== PDF GENERATION ===========================================================
 gem 'prawn'

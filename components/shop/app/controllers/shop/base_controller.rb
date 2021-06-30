@@ -2,7 +2,6 @@
 
 module Shop
   class BaseController < ApplicationController
-    before_action :authenticate_user!
 
     helper_method :current_order
 
