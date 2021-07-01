@@ -20,7 +20,8 @@
   var initApplication = function() {
     loadFlash();
     blendedImg();
-    initChangeImageColor();
+    // Disable due to some sponsor(Blackbird) logos are not visible.
+    // initChangeImageColor();
   }
 
   var contentLoaded = function() {
