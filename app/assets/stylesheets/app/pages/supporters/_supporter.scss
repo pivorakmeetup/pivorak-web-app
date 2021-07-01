@@ -39,15 +39,6 @@ $namespace: ".pk-supporter";
     &:before {
       background: #FCF7EF;
     }
-    #{$namespace}__image {
-      img {
-        opacity: 1;
-      }
-
-      canvas {
-        opacity: 0;
-      }
-    }
   }
 }
 
@@ -64,14 +55,6 @@ $namespace: ".pk-supporter";
     transform: translate3d(-50%,-50%,0);
     width: 100%;
     transition: opacity .2s ease-out;
-  }
-
-  img {
-    opacity: 0;
-  }
-
-  canvas {
-    opacity: 1;
   }
 
   @include breakpoint-max(920) {
