@@ -96,7 +96,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'rspec'
   gem 'rspec-rails'
-  gem 'rubocop', require: false
+  gem 'rubocop', '~> 1.23', require: false
   gem 'rubocop-rspec'
   gem 'rubocop-faker'
 end

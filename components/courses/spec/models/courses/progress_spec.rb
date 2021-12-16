@@ -10,7 +10,7 @@ RSpec.describe Courses::Progress, type: :model do
   let!(:lecture)  { create(:lecture, mentor: mentor, venue: venue, season: season) }
   let!(:student)  do
     ::Courses::Student.create(season: season, user: user, status: :attending,
-                                              personal_info: 'lorem', motivation_info: 'ipsum')
+                              personal_info: 'lorem', motivation_info: 'ipsum')
   end
   let!(:progress) { ::Courses::Progress.create(student: student, lecture: lecture, mentor: mentor, homework_mark: 2) }
 

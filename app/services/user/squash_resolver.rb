@@ -26,6 +26,7 @@ class User
     HAS_ONE    = :has_one
 
     attr_reader :params, :resource, :association_type, :foreign_key, :source_id, :destination_id, :squash, :conditions
+
     delegate :success?, to: :form
 
     def resolve_relations!

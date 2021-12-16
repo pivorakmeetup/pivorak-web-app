@@ -2,9 +2,9 @@
 
 class Talk
   class FetchExternalVideoData < ApplicationService
-    VIDEO_ID_REGEX = %r{(?:.be\/|\/watch\?v=|\/(?=p\/))([\w\/\-]+)}x.freeze
+    VIDEO_ID_REGEX = %r{(?:.be/|/watch\?v=|/(?=p/))([\w/\-]+)}x.freeze
 
-    def self.fetch_all! # rubocop:disable Metrics/AbcSize
+    def self.fetch_all!
       logger = Logger.new(Rails.root.join('log', 'fetch_external_video_data.log'))
 
       logger.info "==================== #{Time.now} ===================="
@@ -40,10 +40,10 @@ class Talk
 
     def video_id
       @video_id ||= begin
-                      talk.video_url.match(VIDEO_ID_REGEX)[1]
-                    rescue StandardError
-                      nil
-                    end
+        talk.video_url.match(VIDEO_ID_REGEX)[1]
+      rescue StandardError
+        nil
+      end
     end
   end
 end

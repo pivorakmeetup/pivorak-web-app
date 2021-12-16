@@ -45,7 +45,7 @@ class User < ApplicationRecord
   def normalize_friendly_id(string)
     count = User.where(first_name: first_name, last_name: last_name).count
 
-    count.positive? ? super + '-' + (count + 1).to_s : super
+    count.positive? ? "#{super}-#{count + 1}" : super
   end
 
   # for sending emails in background

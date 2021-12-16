@@ -12,7 +12,7 @@ RSpec.describe 'Setting progress' do
   let!(:progress) { ::Courses::Progress.create(student: student, lecture: lecture, mentor: mentor) }
   let!(:homework) do
     ::Courses::Homework.create(student: student, lecture: lecture, git_url: 'lorem',
-                                                      showcase_url: 'ipsum', description: 'lorem')
+                               showcase_url: 'ipsum', description: 'lorem')
   end
 
   before { visit "/admin/courses/seasons/test-season/lectures/#{lecture.slug}/progress" }

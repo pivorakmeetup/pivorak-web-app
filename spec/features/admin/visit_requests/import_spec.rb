@@ -6,7 +6,7 @@ RSpec.describe 'Visit Requests IMPORT' do
   let(:user_a)           { create(:user, first_name: 'A', last_name: 'User') }
   let(:user_b)           { create(:user, first_name: 'B', last_name: 'User') }
   let(:user_c)           { create(:user, first_name: 'C', last_name: 'User') }
-  let(:emails_list)      { [user_a, user_b].map(&:email).join(', ') + ', fake@user.com' }
+  let(:emails_list)      { "#{[user_a, user_b].map(&:email).join(', ')}, fake@user.com" }
 
   before { assume_admin_logged_in(supervisor: true) }
 

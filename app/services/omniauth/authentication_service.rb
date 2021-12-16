@@ -43,11 +43,13 @@ module Omniauth
         u.last_name  = last_name
         u.password   = Devise.friendly_token[0, 20]
       end
-      if user.new_record?
-        user.save
-        identity.update(user_id: user.id)
-      end
+      save_new_user(user) if user.new_record?
       user
+    end
+
+    def save_new_user(user)
+      user.save
+      identity.update(user_id: user.id)
     end
 
     def identity

@@ -17,6 +17,7 @@ class VisitRequest
     private
 
     attr_reader :visit_request
+
     delegate :event, to: :visit_request
 
     def render_visit_request(visit_request)

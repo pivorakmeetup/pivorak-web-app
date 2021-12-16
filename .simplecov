@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 SimpleCov.profiles.define 'pivorak_cov' do
   add_filter '/spec/'
   add_filter '/config/'

@@ -10,7 +10,7 @@ describe VisitRequest::Import do
   let(:user_b)      { create(:user) }
   let(:user_c)      { create(:user) }
   let(:separator)   { ', ' }
-  let(:emails) { [user_a, user_b].map(&:email).join(separator) + ', fake@user.com' }
+  let(:emails) { "#{[user_a, user_b].map(&:email).join(separator)}, fake@user.com" }
 
   describe '#call' do
     before { subject.call }

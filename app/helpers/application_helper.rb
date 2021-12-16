@@ -35,11 +35,9 @@ module ApplicationHelper
     link_to t('phrases.become_speaker'), BECOME_SPEAKER_URL, options.merge(target: '_blank')
   end
 
-  def admin_area
+  def admin_area(&block)
     return unless admin?
 
-    content_tag(:div, class: 'pk-admin-area') do
-      yield
-    end
+    content_tag(:div, class: 'pk-admin-area', &block)
   end
 end

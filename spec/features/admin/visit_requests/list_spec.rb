@@ -7,7 +7,7 @@ RSpec.describe 'Visit Requests APPROVE' do
 
   let(:event) { create(:event) }
   let!(:visit_request) { create(:visit_request, event: event) }
-  let!(:visit_request_2) { create(:visit_request, event: event) }
+  let!(:visit_request2) { create(:visit_request, event: event) }
 
   before do
     assume_admin_logged_in(supervisor: true)
@@ -26,7 +26,7 @@ RSpec.describe 'Visit Requests APPROVE' do
     context 'valid visit requests ids' do
       it { expect(page).to have_css('table#visit-requests') }
       it { expect(page).to have_css("tr#visit-request-#{visit_request.id}") }
-      it { expect(page).to have_css("tr#visit-request-#{visit_request_2.id}") }
+      it { expect(page).to have_css("tr#visit-request-#{visit_request2.id}") }
     end
   end
 end

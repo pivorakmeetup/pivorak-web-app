@@ -23,7 +23,7 @@ module Admin
       WARNING  = '#fffde0'
       NEUTRAL  = '#ffffff'
 
-      def courses_journal_data_color(value, mark = false)
+      def courses_journal_data_color(value, mark: false)
         return NEUTRAL  if value.nil?
         return POSITIVE if value.positive?
         return NEGATIVE if value.negative?

@@ -5,7 +5,7 @@ require 'rails_helper'
 describe Courses::Journal::StudentMarkForLecture do
   let!(:student) do
     ::Courses::Student.create(season_id: 1, user_id: 1, status: :attending,
-                                                      personal_info: 'lorem', motivation_info: 'ipsum')
+                              personal_info: 'lorem', motivation_info: 'ipsum')
   end
   let!(:lecture)         { create(:lecture, title: 'awesome lecture', mentor_id: 1, venue_id: 1, season_id: 1) }
   let!(:first_progress)  do

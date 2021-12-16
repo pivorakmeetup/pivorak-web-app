@@ -28,8 +28,15 @@ Layout/HashAlignment:
   EnforcedColonStyle: table
   EnforcedHashRocketStyle: table
 
+Lint/ConstantDefinitionInBlock:
+  Exclude:
+    - 'spec/lib/dry_helpers/model_spec.rb'
+
+Lint/MissingSuper:
+  Enabled: false
+
 Metrics/BlockLength:
-  ExcludedMethods: [
+  IgnoredMethods: [
     'describe', 'xdescribe', 'context', 'xcontext', 'it', 'xit', 'get', 'post', 'put', 'FactoryBot.define',
     'factory', 'let', 'before', 'after', 'configure',  'resource', 'aggregate_failures', 'draw', 'collection',
     'example'
