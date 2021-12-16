@@ -5,7 +5,7 @@ ruby File.open('.ruby-version').readline.chomp
 
 #=== CORE =====================================================================
 gem 'acts-as-taggable-on', git: 'https://github.com/Fodoj/acts-as-taggable-on', ref: 'rails-5.2'
-gem 'carrierwave', '~> 1.2'
+gem 'carrierwave', '~> 2.2'
 gem 'devise', '~> 4.7.1'
 gem 'friendly_id', '~> 5.1'
 gem 'kaminari'
