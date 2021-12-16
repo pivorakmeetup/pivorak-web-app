@@ -36,7 +36,7 @@ describe Courses::Interview::AverageAssessment do
       average_assessments = described_class.call(interview, questions)
 
       average_mark_for_question =
-        average_assessments.select { |hsh| hsh[:question] == question.body }.first[:mark]
+        average_assessments.find { |hsh| hsh[:question] == question.body }[:mark]
 
       expect(average_mark_for_question).to eq((first_mentor_assessment.mark + second_mentor_assessment.mark).to_f / 2)
     end

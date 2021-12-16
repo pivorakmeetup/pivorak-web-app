@@ -99,6 +99,7 @@ group :development, :test do
   gem 'rubocop', '~> 1.23', require: false
   gem 'rubocop-rspec'
   gem 'rubocop-faker'
+  gem 'rubocop-performance'
 end
 
 group :test do

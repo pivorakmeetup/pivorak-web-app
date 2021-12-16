@@ -1,6 +1,7 @@
 require:
   - rubocop
   - rubocop-faker
+  - rubocop-performance
 
 AllCops:
   TargetRubyVersion: 2.6.9
