@@ -2,6 +2,7 @@ require:
   - rubocop
   - rubocop-faker
   - rubocop-performance
+  - rubocop-rails
 
 AllCops:
   TargetRubyVersion: 2.6.9
@@ -43,3 +44,25 @@ Metrics/BlockLength:
     'factory', 'let', 'before', 'after', 'configure',  'resource', 'aggregate_failures', 'draw', 'collection',
     'example'
   ]
+
+Rails/LexicallyScopedActionFilter:
+  Exclude:
+    - 'app/controllers/admin/events_controller.rb'
+    - 'app/controllers/admin/friends_controller.rb'
+    - 'app/controllers/admin/groups_controller.rb'
+    - 'app/controllers/admin/members_controller.rb'
+    - 'app/controllers/admin/pages_controller.rb'
+    - 'app/controllers/admin/talks_controller.rb'
+    - 'app/controllers/admin/venues_controller.rb'
+    - 'app/controllers/users/passwords_controller.rb'
+
+Rails/OutputSafety:
+  Exclude:
+    - 'app/helpers/admin/application_helper.rb'
+    - 'app/helpers/application_helper.rb'
+    - 'app/helpers/events_helper.rb'
+    - 'app/inputs/date_time_input.rb'
+    - 'app/inputs/image_preview_input.rb'
+    - 'app/services/markdown_renderer.rb'
+Rails/SkipsModelValidations:
+  AllowedMethods: ['upsert']

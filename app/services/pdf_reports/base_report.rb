@@ -28,7 +28,7 @@ module PdfReports
     end
 
     def settings_file
-      File.expand_path("#{Rails.root}/lib/pdf_reports/#{report_file_name}.yml")
+      Rails.root.join("lib/pdf_reports/#{report_file_name}.yml")
     end
 
     def report_options

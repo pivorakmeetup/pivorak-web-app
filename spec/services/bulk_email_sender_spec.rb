@@ -37,7 +37,7 @@ describe BulkEmailSender do
 
       call
 
-      expect(mocked_mailer).to have_received(:deliver_later).with(wait: 0.hour).once
+      expect(mocked_mailer).to have_received(:deliver_later).with(wait: 0.hours).once
       expect(mocked_mailer).to have_received(:deliver_later).with(wait: 1.hour).once
     end
   end

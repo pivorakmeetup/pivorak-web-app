@@ -28,7 +28,7 @@ RSpec.describe 'Interview CREATE' do
   context 'valid input' do
     it 'creates interview' do
       fill_in 'Description', with: 'Very hard interview'
-      pick_a_date(date_field_name, Time.now + 40.minutes)
+      pick_a_date(date_field_name, Time.current + 40.minutes)
       select('vacant', from: 'Status')
       click_button 'Create Interview'
 

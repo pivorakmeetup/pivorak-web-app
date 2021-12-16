@@ -3,11 +3,11 @@
 #=== Seasons ============================================================================
 
 puts ::Courses::Season.where(title: 'Sample season').first_or_create!(
-  start_at: Time.now, finish_at: Time.now + 100.days, status: :live
+  start_at: Time.current, finish_at: Time.current + 100.days, status: :live
 )
 
 puts ::Courses::Season.where(title: 'Planned season').first_or_create!(
-  start_at: Time.now, finish_at: Time.now + 100.days, status: :planned
+  start_at: Time.current, finish_at: Time.current + 100.days, status: :planned
 )
 
 #=== Questions ==========================================================================
@@ -71,15 +71,15 @@ puts ::Courses::TestTask.where(student_id: 4).first_or_create!(
 #=== Interviews =========================================================================
 
 puts ::Courses::Interview.where(mentor_id: 1, student_id: nil).first_or_create!(
-  start_at: Time.now
+  start_at: Time.current
 )
 
 puts ::Courses::Interview.where(mentor_id: 1, student_id: 3).first_or_create!(
-  start_at: Time.now, status: :completed
+  start_at: Time.current, status: :completed
 )
 
 puts ::Courses::Interview.where(mentor_id: 1, student_id: 4).first_or_create!(
-  start_at: Time.now, status: :completed
+  start_at: Time.current, status: :completed
 )
 
 #=== Interview Assessments ==============================================================
@@ -96,12 +96,12 @@ puts ::Courses::Interview.where(mentor_id: 1, student_id: 4).first_or_create!(
 #=== Lectures ===========================================================================
 
 puts ::Courses::Lecture.where(title: 'First lecture').first_or_create!(
-  season_id: 1, mentor_id: 1, started_at: Time.now, finished_at: Time.now + 2.hours, venue_id: 1,
+  season_id: 1, mentor_id: 1, started_at: Time.current, finished_at: Time.current + 2.hours, venue_id: 1,
   status: :passed
 )
 
 puts ::Courses::Lecture.where(title: 'Second lecture').first_or_create!(
-  season_id: 1, mentor_id: 1, started_at: Time.now + 1.day, finished_at: Time.now + 26.hours, venue_id: 1,
+  season_id: 1, mentor_id: 1, started_at: Time.current + 1.day, finished_at: Time.current + 26.hours, venue_id: 1,
   status: :upcoming
 )
 

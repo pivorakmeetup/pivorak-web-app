@@ -8,7 +8,7 @@ module Admin
     def admin_talk_event_link(talk)
       return NOT_ASSIGNED unless talk.event
 
-      link_to talk.event.title, event_path(talk.event), target: '_blank'
+      link_to talk.event.title, event_path(talk.event), target: '_blank', rel: 'noopener'
     end
 
     def admin_talk_speaker_info(talk)

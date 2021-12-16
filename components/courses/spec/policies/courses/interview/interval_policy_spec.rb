@@ -20,7 +20,7 @@ describe Courses::Interview::IntervalPolicy do
 
     context 'has interviews 30 minutes prior' do
       let(:interview) { build(:interview, mentor_id: mentor.id) }
-      let!(:prev_interview) { create(:interview, mentor_id: mentor.id, start_at: (Time.now - 20.minutes)) }
+      let!(:prev_interview) { create(:interview, mentor_id: mentor.id, start_at: (Time.current - 20.minutes)) }
 
       it 'forbids to pass policy' do
         expect(policy).not_to be_allowed
@@ -29,7 +29,7 @@ describe Courses::Interview::IntervalPolicy do
 
     context 'has interviews 30 minutes after' do
       let(:interview) { build(:interview, mentor_id: mentor.id) }
-      let!(:next_interview) { create(:interview, mentor_id: mentor.id, start_at: (Time.now + 20.minutes)) }
+      let!(:next_interview) { create(:interview, mentor_id: mentor.id, start_at: (Time.current + 20.minutes)) }
 
       it 'forbids to pass policy' do
         expect(policy).not_to be_allowed

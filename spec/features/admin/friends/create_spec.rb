@@ -29,7 +29,7 @@ RSpec.describe 'Friends CREATE' do
       fill_in 'Name', with: name
       fill_in 'Description', with: description
       fill_in 'Link', with: link
-      attach_file('friend[logo]', "#{Rails.root}/spec/fixtures/images/pivorak.png")
+      attach_file('friend[logo]', Rails.root.join('spec/fixtures/images/pivorak.png'))
       select group.name, from: 'friend[group_id]'
 
       click_button 'Create Friend'

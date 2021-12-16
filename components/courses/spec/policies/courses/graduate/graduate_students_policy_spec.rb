@@ -17,7 +17,7 @@ describe Courses::Season::GraduateStudentsPolicy do
 
     context 'not passed season' do
       it 'forbids to pass policy' do
-        season.update_attribute(:status, :selection)
+        season.update(status: :selection)
         season.reload
 
         expect(policy).not_to be_allowed
@@ -32,7 +32,7 @@ describe Courses::Season::GraduateStudentsPolicy do
 
     context 'there are no attending students' do
       it 'forbids to pass policy' do
-        student.update_attribute(:status, :enrolled)
+        student.update(status: :enrolled)
         student.reload
 
         expect(policy).not_to be_allowed

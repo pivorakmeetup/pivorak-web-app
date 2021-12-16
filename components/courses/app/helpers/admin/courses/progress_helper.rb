@@ -23,14 +23,14 @@ module Admin
         return '-' unless homework_present?(lecture, student)
 
         homework = student.homeworks.find_by(lecture_id: lecture.id)
-        link_to t('courses.progress.git'), homework.git_url, target: '_blank'
+        link_to t('courses.progress.git'), homework.git_url, target: '_blank', rel: 'noopener'
       end
 
       def homework_showcase_link(lecture, student)
         return '-' unless homework_present?(lecture, student)
 
         homework = student.homeworks.find_by(lecture_id: lecture.id)
-        return t('courses.progress.no_showcase') unless homework.showcase_url.present?
+        return t('courses.progress.no_showcase') if homework.showcase_url.blank?
 
         link_to t('courses.progress.showcase'), homework.showcase_url
       end

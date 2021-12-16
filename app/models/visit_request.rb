@@ -9,7 +9,7 @@ class VisitRequest < ApplicationRecord
   CONFIRMED = :confirmed
   REFUSED   = :refused
 
-  enum status: [PENDING, APPROVED, CANCELED, CONFIRMED, REFUSED]
+  enum status: { PENDING => 0, APPROVED => 1, CANCELED => 2, CONFIRMED => 3, REFUSED => 4 }
 
   validates :event_id, :user_id, presence: true
 

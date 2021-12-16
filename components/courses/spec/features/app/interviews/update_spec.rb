@@ -24,7 +24,7 @@ RSpec.xdescribe 'Interviews UPDATE' do
 
   context 'take second interview time slot' do
     it 'does not assign student to interview' do
-      create(:interview, mentor_id: mentor.id, student_id: student.id, start_at: (Time.now + 30.minutes))
+      create(:interview, mentor_id: mentor.id, student_id: student.id, start_at: (Time.current + 30.minutes))
       click_link 'Take'
       interview.reload
 

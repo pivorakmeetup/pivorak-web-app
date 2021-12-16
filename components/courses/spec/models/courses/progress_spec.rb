@@ -17,7 +17,7 @@ RSpec.describe Courses::Progress, type: :model do
   describe 'validations' do
     it 'passes due to correct homework mark input' do
       ::Courses::Progress::ALLOWED_MARKS.each do |mark|
-        progress.update_attributes(homework_mark: mark)
+        progress.update(homework_mark: mark)
         expect(progress.valid?).to be true
       end
     end
@@ -28,7 +28,7 @@ RSpec.describe Courses::Progress, type: :model do
       extended_bound = max_mark * 2
       arr_marks = ([*-extended_bound..extended_bound] - custom_marks).sample(max_mark)
       arr_marks.each do |mark|
-        progress.update_attributes(homework_mark: mark)
+        progress.update(homework_mark: mark)
         expect(progress.valid?).to be false
       end
     end

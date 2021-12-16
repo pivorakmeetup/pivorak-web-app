@@ -41,7 +41,7 @@ class User
     end
 
     def update_relations!(collection)
-      collection.update_all(foreign_key => destination_id)
+      collection.update(foreign_key => destination_id)
     end
 
     def resolve_relation!

@@ -15,7 +15,7 @@ describe Courses::Lecture::TimePolicy do
 
     context 'start time is after finish time' do
       it 'forbids to pass policy' do
-        lecture.finished_at = Time.now - 100.days
+        lecture.finished_at = Time.current - 100.days
 
         expect(policy).not_to be_allowed
       end

@@ -78,7 +78,7 @@ RSpec.describe 'Events CREATE' do
 
     it 'creates event with image' do
       fill_in 'Title', with: 'Super New Event'
-      attach_file('event[cover]', "#{Rails.root}/spec/fixtures/images/pivorak.png")
+      attach_file('event[cover]', Rails.root.join('spec/fixtures/images/pivorak.png'))
 
       click_button 'Create Event'
 

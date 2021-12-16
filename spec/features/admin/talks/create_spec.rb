@@ -21,7 +21,7 @@ RSpec.describe 'Talks CREATE' do
   context 'valid input' do
     it 'create new talk' do
       fill_in 'Title', with: 'Super New Talk'
-      attach_file('talk[cover]', "#{Rails.root}/spec/fixtures/images/pivorak.png")
+      attach_file('talk[cover]', Rails.root.join('spec/fixtures/images/pivorak.png'))
       click_button 'Create Talk'
 
       expect_success_flash_message 'Talk', 'created'

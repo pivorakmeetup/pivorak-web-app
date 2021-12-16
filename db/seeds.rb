@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable Rails/Output
 require 'factory_bot_rails'
 
 #=== Users ====================================================================
@@ -11,7 +12,7 @@ puts User.where(email: 'admin@pivorak.com').first_or_create!(
   verified:   true
 ).confirm
 
-cover = File.open(Rails.root.join('db', 'pivorak_speaker.png'))
+cover = File.open(Rails.root.join('db/pivorak_speaker.png'))
 
 puts User.where(email: 'first@example.com').first_or_create!(
   first_name: 'First', last_name: 'User', password: 'password', cover: cover
@@ -60,8 +61,8 @@ puts event = Event.where(
   limit_verified: 3,
   venue:          Venue.first,
   published:      true,
-  started_at:     Time.now + 10.days,
-  finished_at:    Time.now + 10.days + 3.hours
+  started_at:     Time.current + 10.days,
+  finished_at:    Time.current + 10.days + 3.hours
 ).first_or_create!
 
 #=== Talks ====================================================================
@@ -84,3 +85,4 @@ puts event.visit_requests.where(user: User.third,  status: :canceled).first_or_c
 puts '==== Courses seeds ===='
 
 Courses::Engine.load_seed
+# rubocop:enable Rails/Output

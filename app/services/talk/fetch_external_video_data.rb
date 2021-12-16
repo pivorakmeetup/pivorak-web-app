@@ -5,9 +5,9 @@ class Talk
     VIDEO_ID_REGEX = %r{(?:.be/|/watch\?v=|/(?=p/))([\w/\-]+)}x.freeze
 
     def self.fetch_all!
-      logger = Logger.new(Rails.root.join('log', 'fetch_external_video_data.log'))
+      logger = Logger.new(Rails.root.join('log/fetch_external_video_data.log'))
 
-      logger.info "==================== #{Time.now} ===================="
+      logger.info "==================== #{Time.current} ===================="
       Talk.find_each do |talk|
         new(talk).call
         logger.info "Talk #{talk.id} was successfully fetched! #{talk.extra_video_data}"

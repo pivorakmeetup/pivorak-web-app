@@ -17,7 +17,7 @@ RSpec.describe PdfReports::BaseReport do
 
   describe '#settings_file' do
     context 'valid file path' do
-      it { expect(subject.settings_file).to eq "#{Rails.root}/lib/pdf_reports/base_report.yml" }
+      it { expect(subject.settings_file).to eq Rails.root.join('lib/pdf_reports/base_report.yml') }
     end
   end
 

@@ -8,7 +8,7 @@ module TalksHelper
   def talk_video_url(talk, talk_content, options = {})
     options[:target] = '_blank'
 
-    return unless talk.video_url.present?
+    return if talk.video_url.blank?
 
     link_to talk.video_url, options do
       talk_content

@@ -6,7 +6,7 @@ describe Event::List do
   subject { described_class }
 
   describe '#call' do
-    let!(:recent_event) { create(:event, started_at: Time.zone.now + 2.months) }
+    let!(:recent_event) { create(:event, started_at: Time.current + 2.months) }
     let!(:events) { create_list(:event, 5) }
 
     let(:list) { subject.call(events: Event.all) }

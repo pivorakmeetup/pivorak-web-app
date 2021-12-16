@@ -9,7 +9,7 @@ describe Courses::Interview::InterviewAssessmentForInterview do
   let!(:first_interview)       { create(:interview, mentor: mentor, season_id: season.id) }
   let!(:second_interview)      do
     create(
-      :interview, mentor: mentor, season_id: season.id, start_at: (Time.now + 1.hour)
+      :interview, mentor: mentor, season_id: season.id, start_at: (Time.current + 1.hour)
     )
   end
   let!(:first_int_assessment)  { create(:interview_assessment, interview: first_interview, mentor: mentor) }

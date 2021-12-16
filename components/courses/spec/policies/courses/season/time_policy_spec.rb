@@ -33,7 +33,7 @@ describe Courses::Season::TimePolicy do
 
     context 'start time is after finish time' do
       it 'forbids to pass policy' do
-        season = build(:season, finish_at: (Time.now - 100.days))
+        season = build(:season, finish_at: (Time.current - 100.days))
         policy = described_class.new(season)
 
         expect(policy).not_to be_allowed

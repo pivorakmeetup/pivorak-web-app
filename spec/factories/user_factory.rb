@@ -6,7 +6,7 @@ FactoryBot.define do
     sequence(:last_name) { |n| "#{Faker::Name.last_name}#{n}" }
     sequence(:email) { |n| "pivorak.member#{n}@example.com" }
     password         { Faker::Internet.password(min_length: 20) }
-    confirmed_at     { Time.zone.now }
+    confirmed_at     { Time.current }
 
     trait :admin do
       admin { true }

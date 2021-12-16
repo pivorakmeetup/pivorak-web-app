@@ -2,6 +2,6 @@
 
 FactoryBot.define do
   factory :interview, class: Courses::Interview do
-    start_at { Time.now }
+    start_at { Time.current }
   end
 end

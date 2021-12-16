@@ -100,6 +100,7 @@ group :development, :test do
   gem 'rubocop-rspec'
   gem 'rubocop-faker'
   gem 'rubocop-performance'
+  gem 'rubocop-rails'
 end
 
 group :test do

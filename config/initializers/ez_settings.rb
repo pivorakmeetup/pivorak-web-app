@@ -35,7 +35,7 @@ app = Ez::Settings::Interface.define(:app) do
 end
 
 app.configure do |config|
-  config.backend         = Ez::Settings::Backend::FileSystem.new(Rails.root.join('config', 'settings.yml'))
+  config.backend         = Ez::Settings::Backend::FileSystem.new(Rails.root.join('config/settings.yml'))
   config.default_path    = '/admin/settings'
   config.custom_css_map  = {
     nav_label:                           'ui large header',

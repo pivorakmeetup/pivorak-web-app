@@ -15,7 +15,7 @@ class User < ApplicationRecord
          :validatable, :omniauthable, omniauth_providers: Devise.omniauth_providers
 
   has_many :identities,                      dependent: :destroy
-  has_many :talks, foreign_key: :speaker_id, dependent: :nullify
+  has_many :talks, foreign_key: :speaker_id, dependent: :nullify, inverse_of: :speaker
   has_many :visit_requests,                  dependent: :destroy
 
   validates :first_name, :last_name, :slug, presence: true
