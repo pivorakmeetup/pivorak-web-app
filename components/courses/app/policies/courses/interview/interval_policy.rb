@@ -21,14 +21,12 @@ module Courses
 
       def no_interviews_30_minutes_prior?
         !mentor_interviews
-          .exists?(start_at:
-                             (interview_start_time - interval_minutes)...interview_start_time)
+          .exists?(start_at: (interview_start_time - interval_minutes)...interview_start_time)
       end
 
       def no_interviews_30_minutes_after?
         !mentor_interviews
-          .exists?(start_at:
-                             interview_start_time...(interview_start_time + interval_minutes))
+          .exists?(start_at: interview_start_time...(interview_start_time + interval_minutes))
       end
 
       def mentor_interviews
