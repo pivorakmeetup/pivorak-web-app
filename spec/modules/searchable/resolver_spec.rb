@@ -7,7 +7,7 @@ RSpec.describe Searchable::Resolver do
   let(:definition) { proc { pg_search_scope :by_name, against: [:first_name] } }
 
   before do
-    allow(subject).to receive(:configuration) { config }
+    subject.instance_variable_set(:@configuration, config)
     allow(config).to receive(:definitions) { [definition] }
     target.include(PgSearch)
   end

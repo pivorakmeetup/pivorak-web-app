@@ -31,7 +31,7 @@ describe BulkEmailSender do
       stub_const('BulkEmailSender::BULK_SIZE', 1)
 
       create(:visit_request, :approved)
-      mocked_mailer = double('Dummy', deliver_later: true)
+      mocked_mailer = instance_spy('Dummy', deliver_later: true)
 
       allow(VisitRequestMailer).to receive(:confirmation_reminder).and_return(mocked_mailer)
 

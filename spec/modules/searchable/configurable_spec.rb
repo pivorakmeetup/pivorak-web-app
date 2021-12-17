@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe ::Searchable::Configurable do
-  let(:subject) { Class.new }
+  let(:subject) { Class.new.extend(described_class::ClassMethods) }
   let(:definition) { proc {} }
 
   before do
@@ -10,7 +10,6 @@ RSpec.describe ::Searchable::Configurable do
 
   describe '.included' do
     it 'extends target class' do
-      expect(subject).to receive(:extend).with(described_class::ClassMethods)
       subject.include(described_class)
     end
   end

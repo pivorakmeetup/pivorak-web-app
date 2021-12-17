@@ -10,7 +10,7 @@ describe Email::Send do
 
   describe '#call' do
     it 'sends email to recipients' do
-      mailer = double('mailer')
+      mailer = instance_spy('mailer')
       expect(EmailMailer).to receive(:custom).with(email.id, recipient_id1) { mailer }
       expect(EmailMailer).to receive(:custom).with(email.id, recipient_id2) { mailer }
       expect(mailer).to receive(:deliver_later).twice

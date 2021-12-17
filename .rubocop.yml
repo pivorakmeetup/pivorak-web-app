@@ -1,8 +1,17 @@
+inherit_from: .rubocop_todo.yml
+
 require:
   - rubocop
   - rubocop-faker
   - rubocop-performance
   - rubocop-rails
+  - rubocop-rspec
+
+RSpec/FactoryBot/CreateList:
+  Enabled: false
+
+RSpec/Rails/HttpStatus:
+  Enabled: false
 
 AllCops:
   TargetRubyVersion: 2.6.9

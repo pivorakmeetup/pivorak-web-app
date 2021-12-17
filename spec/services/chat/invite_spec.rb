@@ -6,7 +6,7 @@ describe Chat::Invite do
   subject { described_class.new(email) }
 
   let(:email) { 'new-user@mail.com' }
-  let(:mocked_client) { double('Chat::Client') }
+  let(:mocked_client) { instance_spy(Chat::Client) }
 
   describe '#call' do
     context 'when success' do

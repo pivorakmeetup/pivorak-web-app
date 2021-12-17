@@ -16,10 +16,10 @@ RSpec.describe 'Test tasks LIST' do
   let!(:submited_test_task) { create(:test_task, student: student_a) }
   let!(:other_reviewing_test_task) { create(:test_task, student: student_b, mentor: mentor_b, status: :on_review) }
 
-  before { visit '/admin/courses/seasons/test-season/test_task' }
-
   let(:submited_test_task_id) { "#test_task_#{submited_test_task.id}" }
   let(:other_reviewing_test_task_id) { "#test_task_#{other_reviewing_test_task.id}" }
+
+  before { visit '/admin/courses/seasons/test-season/test_task' }
 
   context 'shows test tasks with correct statuses and actions' do
     it 'allows take on review submited tasks' do
