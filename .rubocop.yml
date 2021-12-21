@@ -53,10 +53,6 @@ Rails/OutputSafety:
     - 'app/inputs/image_preview_input.rb'
     - 'app/services/markdown_renderer.rb'
 
-RSpec/DescribeClass:
-  Exclude:
-    - '**/spec/features/**/*'
-
 Lint/UselessMethodDefinition:
   Exclude:
     - 'app/controllers/**/*'

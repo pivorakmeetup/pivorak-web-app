@@ -19,7 +19,6 @@ RSpec.describe 'Seasons SHOW' do
       dropped_student.reload
 
       expect(attending_student.status).to eq('graduated')
-      expect(dropped_student.status).to eq(dropped_student.status)
     end
 
     it 'shows right tabs', :aggregate_failures do

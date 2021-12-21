@@ -6,12 +6,6 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 2
-RSpec/IdenticalEqualityAssertion:
-  Exclude:
-    - 'components/courses/spec/features/admin/seasons/show_spec.rb'
-    - 'components/courses/spec/services/courses/graduate/graduate_students_spec.rb'
-
 # Offense count: 101
 RSpec/LetSetup:
   Enabled: false
