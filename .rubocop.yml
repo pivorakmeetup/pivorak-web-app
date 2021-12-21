@@ -82,5 +82,8 @@ RSpec/DescribeClass:
     - '**/spec/system/**/*'
     - '**/spec/views/**/*'
 
+RSpec/ExampleLength:
+  Enabled: false
+
 Rails/SkipsModelValidations:
   AllowedMethods: ['upsert']
