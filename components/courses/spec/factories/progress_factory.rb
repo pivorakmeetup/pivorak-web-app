@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 FactoryBot.define do
-  factory :progress, class: Courses::Progress do
+  factory :progress, class: 'Courses::Progress' do
     student_id       { rand(1..100) }
     lecture_id       { rand(1..100) }
     mentor_id        { rand(1..100) }

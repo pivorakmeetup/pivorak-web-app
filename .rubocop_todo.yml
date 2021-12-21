@@ -20,21 +20,6 @@ RSpec/ExpectInHook:
     - 'spec/services/talk/fetch_external_video_data_spec.rb'
     - 'spec/services/visit_request/create_spec.rb'
 
-# Offense count: 10
-# Cop supports --auto-correct.
-#RSpec/FactoryBot/FactoryClassName:
-#  Exclude:
-#    - 'components/courses/spec/factories/homework_factory.rb'
-#    - 'components/courses/spec/factories/interview_assessment_factory.rb'
-#    - 'components/courses/spec/factories/interview_factory.rb'
-#    - 'components/courses/spec/factories/lecture_factory.rb'
-#    - 'components/courses/spec/factories/mentor_factory.rb'
-#    - 'components/courses/spec/factories/progress_factory.rb'
-#    - 'components/courses/spec/factories/question_factory.rb'
-#    - 'components/courses/spec/factories/season_factory.rb'
-#    - 'components/courses/spec/factories/student_factory.rb'
-#    - 'components/courses/spec/factories/test_task_factory.rb'
-
 # Offense count: 2
 # Configuration parameters: CustomTransform, IgnoreMethods.
 RSpec/FilePath:
