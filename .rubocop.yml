@@ -73,5 +73,14 @@ Rails/OutputSafety:
     - 'app/inputs/date_time_input.rb'
     - 'app/inputs/image_preview_input.rb'
     - 'app/services/markdown_renderer.rb'
+
+RSpec/DescribeClass:
+  Exclude:
+    - '**/spec/features/**/*'
+    - '**/spec/requests/**/*'
+    - '**/spec/routing/**/*'
+    - '**/spec/system/**/*'
+    - '**/spec/views/**/*'
+
 Rails/SkipsModelValidations:
   AllowedMethods: ['upsert']

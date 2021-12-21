@@ -2,7 +2,7 @@
 
 require 'dry_helpers/model'
 
-RSpec.describe 'DRYHelpers/Model' do
+RSpec.describe 'DRYHelpers/Model', type: :system do
   describe 'resource_to_many' do
     it 'convert class name to plutal symbol' do
       Tree          = Class.new
