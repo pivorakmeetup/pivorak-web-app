@@ -27,12 +27,6 @@ RSpec/FilePath:
     - 'components/courses/spec/policies/courses/graduate/graduate_students_policy_spec.rb'
     - 'spec/finders/user/event_participants_by_status_spec.rb'
 
-# Offense count: 1
-# Cop supports --auto-correct.
-RSpec/LeadingSubject:
-  Exclude:
-    - 'spec/controllers/donate/webhook_controller_spec.rb'
-
 # Offense count: 2
 RSpec/LeakyConstantDeclaration:
   Exclude:
