@@ -54,17 +54,6 @@ Metrics/BlockLength:
     'example'
   ]
 
-Rails/LexicallyScopedActionFilter:
-  Exclude:
-    - 'app/controllers/admin/events_controller.rb'
-    - 'app/controllers/admin/friends_controller.rb'
-    - 'app/controllers/admin/groups_controller.rb'
-    - 'app/controllers/admin/members_controller.rb'
-    - 'app/controllers/admin/pages_controller.rb'
-    - 'app/controllers/admin/talks_controller.rb'
-    - 'app/controllers/admin/venues_controller.rb'
-    - 'app/controllers/users/passwords_controller.rb'
-
 Rails/OutputSafety:
   Exclude:
     - 'app/helpers/admin/application_helper.rb'
@@ -77,13 +66,13 @@ Rails/OutputSafety:
 RSpec/DescribeClass:
   Exclude:
     - '**/spec/features/**/*'
-    - '**/spec/requests/**/*'
-    - '**/spec/routing/**/*'
-    - '**/spec/system/**/*'
-    - '**/spec/views/**/*'
+
+Lint/UselessMethodDefinition:
+  Exclude:
+    - 'app/controllers/**/*'
 
 RSpec/ExampleLength:
-  Enabled: false
+  Max: 34
 
 Rails/SkipsModelValidations:
   AllowedMethods: ['upsert']

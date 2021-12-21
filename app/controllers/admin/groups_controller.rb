@@ -18,6 +18,10 @@ module Admin
       react_to group.save
     end
 
+    def edit
+      super
+    end
+
     def update
       react_to group.update(groups_params)
     end

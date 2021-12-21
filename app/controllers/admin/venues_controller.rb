@@ -18,6 +18,10 @@ module Admin
       react_to venue.save
     end
 
+    def edit
+      super
+    end
+
     def update
       react_to venue.update(venue_params)
     end

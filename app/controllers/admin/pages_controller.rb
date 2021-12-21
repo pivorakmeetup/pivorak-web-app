@@ -18,6 +18,10 @@ module Admin
       react_to page.save
     end
 
+    def edit
+      super
+    end
+
     def update
       react_to page.update(page_params)
     end

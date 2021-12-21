@@ -18,6 +18,10 @@ module Admin
       react_to friend.save
     end
 
+    def edit
+      super
+    end
+
     def update
       react_to friend.update(friend_params)
     end

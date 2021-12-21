@@ -7,7 +7,7 @@ module Admin
     before_action :add_edit_breadcump, only: %i[edit update]
 
     def edit
-      render_form
+      super
     end
 
     def update
