@@ -21,6 +21,7 @@ RSpec.describe 'Profle READ' do
 
     it { expect(page).to have_content 'Tester User' }
     it { expect(page).to have_link 'Edit Profile' }
+
     it 'redirect to edit path when click Edit' do
       click_link 'Edit Profile'
       expect(page).to have_current_path '/profile/edit'

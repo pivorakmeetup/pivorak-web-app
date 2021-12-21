@@ -28,10 +28,12 @@ RSpec.describe PdfReports::EventVisitorsReport do
 
     context 'when valid pages' do
       it { expect(page_inspector.pages.first[:strings]).to include("1. #{first_user.full_name}") }
+
       it {
         expect(page_inspector.pages.second[:strings])
           .to contain_exactly("3. #{third_user.first_name}", third_user.last_name)
       }
+
       it { expect(page_inspector.pages.size).to eq 2 }
     end
   end

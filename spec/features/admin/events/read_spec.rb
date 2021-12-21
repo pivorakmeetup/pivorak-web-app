@@ -14,6 +14,7 @@ RSpec.describe 'Events READ' do
   it { expect(page).to have_link 'New Event' }
   it { expect(page).to have_link('Edit', count: 2) }
   it { expect(page).to have_link('Visitors Report', count: 1) }
+
   it 'New Event click redirect to #new' do
     click_link 'New Event'
     expect(page).to have_current_path('/admin/events/new')

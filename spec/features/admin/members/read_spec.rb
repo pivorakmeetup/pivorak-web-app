@@ -13,6 +13,7 @@ RSpec.describe 'Members READ' do
   it { expect(page).to have_link 'Second User' }
   it { expect(page).to have_link 'New Member' }
   it { expect(page).to have_link('Edit', count: 3) }
+
   it 'New Member click redirect to #new' do
     click_link 'New Member'
     expect(page).to have_current_path('/admin/members/new')

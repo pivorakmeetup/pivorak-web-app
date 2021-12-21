@@ -6,20 +6,6 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 10
-# Cop supports --auto-correct.
-# Configuration parameters: AllowConsecutiveOneLiners.
-RSpec/EmptyLineAfterExample:
-  Exclude:
-    - 'spec/features/admin/events/read_spec.rb'
-    - 'spec/features/admin/friends/read_spec.rb'
-    - 'spec/features/admin/groups/read_spec.rb'
-    - 'spec/features/admin/members/read_spec.rb'
-    - 'spec/features/admin/talks/read_spec.rb'
-    - 'spec/features/admin/venues/read_spec.rb'
-    - 'spec/features/profile/read_spec.rb'
-    - 'spec/services/pdf_reports/event_visitors_report_spec.rb'
-
 # Offense count: 69
 # Configuration parameters: Max.
 RSpec/ExampleLength:
@@ -36,18 +22,18 @@ RSpec/ExpectInHook:
 
 # Offense count: 10
 # Cop supports --auto-correct.
-RSpec/FactoryBot/FactoryClassName:
-  Exclude:
-    - 'components/courses/spec/factories/homework_factory.rb'
-    - 'components/courses/spec/factories/interview_assessment_factory.rb'
-    - 'components/courses/spec/factories/interview_factory.rb'
-    - 'components/courses/spec/factories/lecture_factory.rb'
-    - 'components/courses/spec/factories/mentor_factory.rb'
-    - 'components/courses/spec/factories/progress_factory.rb'
-    - 'components/courses/spec/factories/question_factory.rb'
-    - 'components/courses/spec/factories/season_factory.rb'
-    - 'components/courses/spec/factories/student_factory.rb'
-    - 'components/courses/spec/factories/test_task_factory.rb'
+#RSpec/FactoryBot/FactoryClassName:
+#  Exclude:
+#    - 'components/courses/spec/factories/homework_factory.rb'
+#    - 'components/courses/spec/factories/interview_assessment_factory.rb'
+#    - 'components/courses/spec/factories/interview_factory.rb'
+#    - 'components/courses/spec/factories/lecture_factory.rb'
+#    - 'components/courses/spec/factories/mentor_factory.rb'
+#    - 'components/courses/spec/factories/progress_factory.rb'
+#    - 'components/courses/spec/factories/question_factory.rb'
+#    - 'components/courses/spec/factories/season_factory.rb'
+#    - 'components/courses/spec/factories/student_factory.rb'
+#    - 'components/courses/spec/factories/test_task_factory.rb'
 
 # Offense count: 2
 # Configuration parameters: CustomTransform, IgnoreMethods.

@@ -14,6 +14,7 @@ RSpec.describe 'Talks READ' do
     it { expect(page).to have_link 'Test Talk B' }
     it { expect(page).to have_link 'New Talk' }
     it { expect(page).to have_link('Edit', count: 2) }
+
     it 'New Talk click redirect to #new' do
       click_link 'New Talk'
       expect(page).to have_current_path('/admin/talks/new')
@@ -31,6 +32,7 @@ RSpec.describe 'Talks READ' do
 
     it { expect(page).to have_link talk_with_event.title }
     it { expect(page).to have_link event.title }
+
     it 'Event click redirect to event#show' do
       click_link event.title
       expect(page).to have_current_path("/events/#{event.slug}")
