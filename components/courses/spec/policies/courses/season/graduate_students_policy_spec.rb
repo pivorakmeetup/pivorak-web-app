@@ -24,12 +24,6 @@ describe Courses::Season::GraduateStudentsPolicy do
       end
     end
 
-    context 'when there are attending students' do
-      it 'allows to pass policy' do
-        expect(policy).to be_allowed
-      end
-    end
-
     context 'when there are no attending students' do
       it 'forbids to pass policy' do
         student.update(status: :enrolled)

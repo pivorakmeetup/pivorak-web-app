@@ -6,7 +6,6 @@ RSpec.describe Courses::Mentor::DestroyPolicy do
   let!(:season)         { create(:season, title: 'Test Season') }
   let!(:user)           { create(:user) }
   let!(:season_creator) { ::Courses::Mentor.create(user_id: 1, season_id: season.id) }
-  let!(:user)           { create(:user, first_name: 'Another', last_name: 'User') }
   let!(:mentor)         { ::Courses::Mentor.create(user_id: 2, season_id: season.id) }
 
   context 'when allow to destroy' do

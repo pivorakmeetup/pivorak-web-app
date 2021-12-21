@@ -17,11 +17,12 @@ RSpec.describe Talk::FetchExternalVideoData do
                         view_count: 458)
       end
 
-      before { expect(Yt::Video).to receive(:new).with(request_params).and_return(response_mock) }
+      before { allow(Yt::Video).to receive(:new).with(request_params).and_return(response_mock) }
 
       it 'updates talk with fetched video attributes', :aggregate_failures do
         described_class.call(talk)
 
+        expect(Yt::Video).to have_received(:new).with(request_params)
         expect(talk.extra['video_duration']).to    eq 2864
         expect(talk.extra['video_likes_count']).to eq 20
         expect(talk.extra['video_views_count']).to eq 458

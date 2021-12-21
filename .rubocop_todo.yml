@@ -6,22 +6,6 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 8
-RSpec/ExpectInHook:
-  Exclude:
-    - 'spec/features/chat/create_invite_spec.rb'
-    - 'spec/services/chat/client_spec.rb'
-    - 'spec/services/chat/invite_spec.rb'
-    - 'spec/services/talk/fetch_external_video_data_spec.rb'
-    - 'spec/services/visit_request/create_spec.rb'
-
-# Offense count: 2
-# Configuration parameters: CustomTransform, IgnoreMethods.
-RSpec/FilePath:
-  Exclude:
-    - 'components/courses/spec/policies/courses/graduate/graduate_students_policy_spec.rb'
-    - 'spec/finders/user/event_participants_by_status_spec.rb'
-
 # Offense count: 2
 RSpec/LeakyConstantDeclaration:
   Exclude:
@@ -39,24 +23,16 @@ RSpec/MessageChain:
     - 'spec/features/admin/events/send_confirmations_spec.rb'
     - 'spec/policies/event/slots_policy_spec.rb'
 
-# Offense count: 24
+# Offense count: 5
 # Configuration parameters: EnforcedStyle.
 # SupportedStyles: have_received, receive
 RSpec/MessageSpies:
   Exclude:
     - 'spec/features/admin/events/send_confirmations_spec.rb'
-    - 'spec/features/chat/create_invite_spec.rb'
-    - 'spec/jobs/mailchimp/subscription_job_spec.rb'
-    - 'spec/modules/searchable/configurable_spec.rb'
     - 'spec/modules/searchable_spec.rb'
-    - 'spec/services/chat/invite_spec.rb'
-    - 'spec/services/email/create_spec.rb'
-    - 'spec/services/email/send_spec.rb'
     - 'spec/services/talk/fetch_external_video_data_spec.rb'
-    - 'spec/services/visit_request/approve_spec.rb'
-    - 'spec/services/visit_request/confirm_spec.rb'
 
-# Offense count: 67
+# Offense count: 66
 # Configuration parameters: IgnoreSharedExamples.
 RSpec/NamedSubject:
   Enabled: false
@@ -64,15 +40,3 @@ RSpec/NamedSubject:
 # Offense count: 38
 RSpec/NestedGroups:
   Max: 5
-
-# Offense count: 1
-RSpec/OverwritingSetup:
-  Exclude:
-    - 'components/courses/spec/policies/courses/mentor/destroy_policy_spec.rb'
-
-# Offense count: 4
-RSpec/RepeatedExampleGroupBody:
-  Exclude:
-    - 'components/courses/spec/features/app/seasons/show_spec.rb'
-    - 'components/courses/spec/policies/courses/graduate/graduate_students_policy_spec.rb'
-

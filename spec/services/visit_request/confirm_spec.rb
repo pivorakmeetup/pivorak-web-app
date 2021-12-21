@@ -11,12 +11,13 @@ describe VisitRequest::Confirm do
 
   describe '#call' do
     it 'sets approved status', :aggregate_failures do
-      mailer = instance_double('mail')
-      expect(VisitRequestMailer).to receive(:attendance_confirmed).with(visit_request) { mailer }
-      expect(mailer).to receive(:deliver_later)
+      mailer = instance_spy('mail', deliver_later: nil)
+      allow(VisitRequestMailer).to receive(:attendance_confirmed).with(visit_request).and_return(mailer)
 
       subject.call
 
+      expect(mailer).to have_received(:deliver_later)
+      expect(VisitRequestMailer).to have_received(:attendance_confirmed).with(visit_request)
       expect(visit_request.reload).to be_confirmed
     end
   end

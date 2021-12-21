@@ -10,16 +10,15 @@ describe Chat::Invite do
 
   describe '#call' do
     context 'when success' do
-      before do
-        expect(Chat::Client)
-          .to receive(:new)
+      it 'invites using client', :aggregate_failures do
+        chat_client = class_spy(Chat::Client).as_stubbed_const
+        allow(chat_client).to receive(:new)
           .with(url: Chat::Invite::INVITE_URL, params: { resend: true, email: email })
           .and_return(mocked_client)
 
-        expect(mocked_client).to receive(:call).and_return(true)
+        expect(subject.call).to be_truthy
+        expect(mocked_client).to have_received(:call)
       end
-
-      it { expect(subject.call).to be_truthy }
     end
 
     context 'when empty email' do

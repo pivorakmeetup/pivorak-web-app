@@ -17,11 +17,13 @@ describe Email::Create do
 
       it 'executes Send service' do
         email = build_stubbed(:email)
+        email_send_service = class_spy(Email::Send).as_stubbed_const
 
         allow(Email).to receive(:create).and_return(email)
-        expect(Email::Send).to receive(:call).with(email: email, recipient_ids: recipient_ids)
 
         subject
+
+        expect(email_send_service).to have_received(:call).with(email: email, recipient_ids: recipient_ids)
       end
     end
 

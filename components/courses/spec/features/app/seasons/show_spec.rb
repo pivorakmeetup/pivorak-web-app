@@ -19,17 +19,6 @@ RSpec.describe 'Season SHOW' do
       end
     end
 
-    context 'when student status is test_task_done' do
-      it 'shows link' do
-        student.test_task_done!
-        student.reload
-
-        visit 'courses/seasons/test-season'
-
-        expect(page).to have_link 'Cancel attendance'
-      end
-    end
-
     context 'when student status is interviewing' do
       it 'shows link' do
         student.interviewing!
