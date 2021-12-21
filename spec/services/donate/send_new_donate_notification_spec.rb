@@ -6,13 +6,13 @@ describe Donate::SendNewDonateNotification do
       amount:            amount,
       currency:          'UAH',
       orderReference:    order_reference,
-      transactionStatus: transactionStatus
+      transactionStatus: transaction_status
     )
   end
 
   let(:amount) { 5 }
   let(:order_reference) { 'WFP-2102129-5decabc01799e' }
-  let(:transactionStatus) { 'Approved' }
+  let(:transaction_status) { 'Approved' }
 
   describe '#call' do
     it 'sends slack message with correct params' do
@@ -66,7 +66,7 @@ describe Donate::SendNewDonateNotification do
     end
 
     context 'when donation do not have `Approved status`' do
-      let(:transactionStatus) { 'Expired' }
+      let(:transaction_status) { 'Expired' }
 
       it 'skips notification', :aggregate_failures do
         ClimateControl.modify SLACK_NEW_DONATION_CHANNEL: 'dummy-notifications-test' do

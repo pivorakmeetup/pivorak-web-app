@@ -1,22 +1,22 @@
 # frozen_string_literal: true
 
 RSpec.describe ::Searchable do
-  let(:subject)       { Class.new }
+  let(:searchable_subject) { Class.new }
   let(:resolver)      { ::Searchable::Resolver }
   let(:search_module) { PgSearch }
 
   describe '.included' do
     it 'calls resolver with correct arguments' do
-      expect(resolver).to receive(:call).with(target: subject)
-      subject.include(described_class)
+      expect(resolver).to receive(:call).with(target: searchable_subject)
+      searchable_subject.include(described_class)
     end
 
     it 'responds to search module methods', :aggregate_failures do
       allow(resolver).to receive(:call).and_return(true)
-      subject.include(described_class)
+      searchable_subject.include(described_class)
 
-      expect(subject).to respond_to :pg_search_scope
-      expect(subject).to respond_to :multisearchable
+      expect(searchable_subject).to respond_to :pg_search_scope
+      expect(searchable_subject).to respond_to :multisearchable
     end
   end
 
