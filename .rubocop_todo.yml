@@ -6,11 +6,6 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 2
-RSpec/LeakyConstantDeclaration:
-  Exclude:
-    - 'spec/lib/dry_helpers/model_spec.rb'
-
 # Offense count: 103
 RSpec/LetSetup:
   Enabled: false
