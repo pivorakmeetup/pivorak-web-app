@@ -8,7 +8,7 @@ RSpec.describe 'Events CREATE' do
     visit '/admin/events/new'
   end
 
-  context 'dateTime inputs' do
+  context 'with dateTime inputs' do
     let(:default_started_at_hour)  { Ez::Settings[:app, :events, :default_started_at_hours].to_i }
     let(:default_finished_at_hour) { Ez::Settings[:app, :events, :default_finished_at_hours].to_i }
 
@@ -27,8 +27,8 @@ RSpec.describe 'Events CREATE' do
     end
   end
 
-  context 'invalid input' do
-    context 'invalid title' do
+  context 'when invalid input' do
+    context 'with invalid title' do
       it 'returns error' do
         fill_in 'Title', with: ''
 
@@ -39,7 +39,7 @@ RSpec.describe 'Events CREATE' do
       end
     end
 
-    context 'absent venue' do
+    context 'with absent venue' do
       context 'when planned' do
         it 'creates new event' do
           fill_in 'Title', with: 'Super New Event'
@@ -66,7 +66,7 @@ RSpec.describe 'Events CREATE' do
     end
   end
 
-  context 'valid input' do
+  context 'when valid input' do
     it 'creates new event' do
       fill_in 'Title', with: 'Super New Event'
 
@@ -104,7 +104,7 @@ RSpec.describe 'Events CREATE' do
     end
   end
 
-  context 'Limit inputs' do
+  describe 'Limit inputs' do
     let(:default_limit_total)      { Ez::Settings[:app, :events, :default_limit] }
     let(:default_limit_verified)   { Ez::Settings[:app, :events, :default_limit_verified] }
 

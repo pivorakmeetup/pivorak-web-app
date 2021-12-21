@@ -8,7 +8,7 @@ describe Courses::Interview::RatePolicy do
   let!(:mentor)      { ::Courses::Mentor.create(user_id: 1, season_id: 1) }
 
   describe '#allowed?' do
-    context 'has student, video url & is completed' do
+    context 'when has student, video url & is completed' do
       let(:interview) do
         create(:interview,
                mentor_id: mentor.id, status: :completed, student_id: student.id, video_url: 'some url')
@@ -22,7 +22,7 @@ describe Courses::Interview::RatePolicy do
   end
 
   describe 'not allowed?' do
-    context 'interview has no student' do
+    context 'when interview has no student' do
       let(:interview) { create(:interview, mentor_id: mentor.id, status: :completed, video_url: 'some url') }
       let(:policy) { described_class.new(interview) }
 
@@ -31,7 +31,7 @@ describe Courses::Interview::RatePolicy do
       end
     end
 
-    context 'interview has no video url' do
+    context 'when interview has no video url' do
       let(:interview) { create(:interview, mentor_id: mentor.id, status: :completed, student_id: student.id) }
       let(:policy) { described_class.new(interview) }
 
@@ -40,7 +40,7 @@ describe Courses::Interview::RatePolicy do
       end
     end
 
-    context 'interview is not completed' do
+    context 'when interview is not completed' do
       let(:interview) do
         create(:interview,
                mentor_id: mentor.id, status: :pending, student_id: student.id, video_url: 'some url')

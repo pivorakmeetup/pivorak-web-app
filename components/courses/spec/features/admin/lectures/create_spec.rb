@@ -10,7 +10,7 @@ RSpec.describe 'Lecture CREATE' do
 
   before { visit '/admin/courses/seasons/test-season/lectures/new' }
 
-  context 'invalid input' do
+  context 'when invalid input' do
     it 'validates errors' do
       select user.full_name, from: 'lecture[mentor_id]'
       select venue.name, from: 'lecture[venue_id]'
@@ -30,7 +30,7 @@ RSpec.describe 'Lecture CREATE' do
     end
   end
 
-  context 'valid input' do
+  context 'when valid input' do
     it 'creates lecture' do
       select user.full_name, from: 'lecture[mentor_id]'
       select venue.name, from: 'lecture[venue_id]'

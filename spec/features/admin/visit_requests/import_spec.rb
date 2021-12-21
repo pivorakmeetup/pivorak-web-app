@@ -10,13 +10,13 @@ RSpec.describe 'Visit Requests IMPORT' do
 
   before { assume_admin_logged_in(supervisor: true) }
 
-  context 'visit not passed event visit requests' do
+  context 'when visit not passed event visit requests' do
     before { visit admin_event_visit_requests_path(not_passed_event) }
 
     it { expect(page).not_to have_content 'Import' }
   end
 
-  context 'visit passed event visit requests' do
+  context 'when visit passed event visit requests' do
     before { visit admin_event_visit_requests_path(passed_event) }
 
     it { expect(page).to have_content 'Import' }

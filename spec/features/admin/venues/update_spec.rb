@@ -9,7 +9,7 @@ RSpec.describe 'Venues UPDATE' do
     visit test_edit_path
   end
 
-  context 'invalid input' do
+  context 'when invalid input' do
     it 'validates errors' do
       fill_in 'Name', with: ''
       click_button 'Update Venue'
@@ -19,7 +19,7 @@ RSpec.describe 'Venues UPDATE' do
     end
   end
 
-  context 'valid input' do
+  context 'when valid input' do
     it 'create new venue' do
       fill_in 'Name', with: 'Secret New Venue'
       click_button 'Update Venue'

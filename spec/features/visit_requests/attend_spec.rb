@@ -15,7 +15,7 @@ RSpec.describe 'Visit Requests ATTEND' do
     end
 
     describe 'click attend' do
-      context 'as newbie' do
+      describe 'as newbie' do
         before { click_link 'Attend' }
 
         it { expect(page).to have_current_path('/') }
@@ -32,7 +32,7 @@ RSpec.describe 'Visit Requests ATTEND' do
         end
       end
 
-      context 'as verified member' do
+      describe 'as verified member' do
         let(:verified_member) { create(:user, :verified) }
 
         before do

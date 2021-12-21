@@ -10,7 +10,7 @@ RSpec.describe 'Seasons UPDATE' do
 
   before { visit test_edit_path }
 
-  context 'invalid input' do
+  context 'when invalid input' do
     it 'validates errors' do
       fill_in 'Title', with: ''
       click_button 'Update Season'
@@ -19,7 +19,7 @@ RSpec.describe 'Seasons UPDATE' do
     end
   end
 
-  context 'valid input' do
+  context 'when valid input' do
     it 'update season' do
       fill_in 'Title', with: 'Super New Season'
       click_button 'Update Season'

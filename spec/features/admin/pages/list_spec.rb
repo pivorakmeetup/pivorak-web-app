@@ -4,7 +4,7 @@ RSpec.describe 'Page LIST' do
   let!(:about_page)    { create(:page, title: 'About') }
   let!(:contacts_page) { create(:page, title: 'Contacts') }
 
-  context 'open existing page' do
+  context 'when open existing page' do
     before do
       assume_admin_logged_in
       visit '/admin/pages'

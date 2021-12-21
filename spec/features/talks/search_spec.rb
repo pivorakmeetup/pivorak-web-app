@@ -17,12 +17,12 @@ RSpec.describe 'Talks search' do
     visit '/talks'
   end
 
-  context 'should have all talks on the page' do
+  describe 'should have all talks on the page' do
     it { expect(page).to have_content talk1.title }
     it { expect(page).to have_content talk2.title }
   end
 
-  context 'should search by talk attributes' do
+  describe 'should search by talk attributes' do
     it 'searches by title' do
       fill_in 'query', with: title_of_talk1
       click_button('Search')

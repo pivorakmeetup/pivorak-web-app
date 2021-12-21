@@ -8,14 +8,14 @@ RSpec.describe 'Mentor access' do
   let!(:another_season) { create(:season, title: 'Another Season') }
   let!(:season_creator) { ::Courses::Mentor.create(user: user, season: season) }
 
-  context 'mentor allowed' do
+  context 'when mentor allowed' do
     it 'allow access' do
       visit '/admin/courses/seasons/test-season'
       expect(page).to have_current_path '/admin/courses/seasons/test-season'
     end
   end
 
-  context 'mentor not allowed' do
+  context 'when mentor not allowed' do
     it 'reject response' do
       visit '/admin/courses/seasons/another-season'
       expect(page).to have_current_path '/admin/courses/seasons'

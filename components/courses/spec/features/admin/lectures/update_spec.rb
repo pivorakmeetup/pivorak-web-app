@@ -11,7 +11,7 @@ RSpec.describe 'Lecture UPDATE' do
 
   before { visit '/admin/courses/seasons/test-season/lectures/awesome-lecture/edit' }
 
-  context 'invalid input' do
+  context 'when invalid input' do
     it 'validates errors' do
       fill_in 'Title', with: ''
       click_button 'Update Lecture'
@@ -20,7 +20,7 @@ RSpec.describe 'Lecture UPDATE' do
     end
   end
 
-  context 'valid input' do
+  context 'when valid input' do
     it 'update season' do
       fill_in 'Title', with: 'Super Lecture'
       click_button 'Update Lecture'

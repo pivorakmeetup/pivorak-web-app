@@ -12,14 +12,14 @@ RSpec.describe Mailchimp::User::Subscribe do
   end
 
   describe '.call' do
-    context 'provided with valid input' do
+    context 'with valid input' do
       before { allow(members).to receive(:upsert) { Gibbon::Response.new } }
 
       it     { expect(response).to respond_to :body }
       it     { expect(response).to respond_to :headers }
     end
 
-    context 'provided with invalid input' do
+    context 'with invalid input' do
       before { allow(members).to receive(:upsert) { raise Gibbon::MailChimpError, 'Mailchimp Error' } }
 
       it     { expect { response }.not_to raise_error }

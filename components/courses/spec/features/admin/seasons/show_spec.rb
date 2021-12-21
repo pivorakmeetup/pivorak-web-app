@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe 'Seasons SHOW' do
   let!(:season_creator) { ::Courses::Mentor.create(user_id: 1, season_id: 1) }
 
-  context 'season is passed' do
+  context 'when season is passed' do
     let!(:season)            { create(:season, title: 'Test Season', status: :passed) }
     let!(:attending_student) { create(:student, user_id: 2, status: :attending, season: season) }
     let!(:dropped_student)   { create(:student, user_id: 3, status: :dropped, season: season) }
@@ -34,7 +34,7 @@ RSpec.describe 'Seasons SHOW' do
     end
   end
 
-  context 'season is live' do
+  context 'when season is live' do
     let!(:season) { create(:season, title: 'Test Season', status: :live) }
 
     before { visit '/admin/courses/seasons/test-season' }
@@ -55,7 +55,7 @@ RSpec.describe 'Seasons SHOW' do
     end
   end
 
-  context 'season is in selection phase' do
+  context 'when season is in selection phase' do
     let!(:season) { create(:season, title: 'Test Season', status: :selection) }
 
     before { visit '/admin/courses/seasons/test-season' }
@@ -72,7 +72,7 @@ RSpec.describe 'Seasons SHOW' do
     end
   end
 
-  context 'season is in registration phase' do
+  context 'when season is in registration phase' do
     let!(:season) { create(:season, title: 'Test Season', status: :registration) }
 
     before { visit '/admin/courses/seasons/test-season' }
@@ -89,7 +89,7 @@ RSpec.describe 'Seasons SHOW' do
     end
   end
 
-  context 'season is planned' do
+  context 'when season is planned' do
     let!(:season) { create(:season, title: 'Test Season', status: :planned) }
 
     before { visit '/admin/courses/seasons/test-season' }

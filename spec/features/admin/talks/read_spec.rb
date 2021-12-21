@@ -50,7 +50,7 @@ RSpec.describe 'Talks READ' do
     it { expect(page).to have_content 'Super User' }
   end
 
-  context 'talks list should be ordered by creation_date desc' do
+  context 'when talks list should be ordered by creation_date desc' do
     let!(:talk_firstly_created)    { create(:talk, title: 'Test Talk A') }
     let!(:talk_secondly_created)   { create(:talk, title: 'Test Talk B') }
     let!(:talk_lastly_created)     { create(:talk, title: 'Test Talk C') }

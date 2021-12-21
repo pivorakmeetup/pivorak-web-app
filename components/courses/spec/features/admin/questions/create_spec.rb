@@ -11,7 +11,7 @@ RSpec.describe 'Question CREATE' do
 
   before { visit test_new_questions_path }
 
-  context 'invalid input' do
+  context 'when invalid input' do
     it 'validates errors' do
       fill_in 'Body', with: ''
       click_button 'Create Question'
@@ -20,7 +20,7 @@ RSpec.describe 'Question CREATE' do
     end
   end
 
-  context 'valid input' do
+  context 'when valid input' do
     it 'create new question' do
       fill_in 'Body', with: 'Awesome Question'
       click_button 'Create Question'

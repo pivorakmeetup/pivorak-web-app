@@ -8,7 +8,7 @@ RSpec.describe 'Groups UPDATE' do
     visit "/admin/groups/#{group.id}/edit"
   end
 
-  context 'invalid input' do
+  context 'when invalid input' do
     it 'validates title presence' do
       fill_in 'Name', with: ''
       click_button 'Update Group'
@@ -17,7 +17,7 @@ RSpec.describe 'Groups UPDATE' do
     end
   end
 
-  context 'valid input' do
+  context 'when valid input' do
     it 'create new group' do
       fill_in 'Name', with: 'NewNameForGroup'
       click_button 'Update Group'

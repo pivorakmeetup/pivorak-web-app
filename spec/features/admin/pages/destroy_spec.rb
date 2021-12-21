@@ -3,7 +3,7 @@
 RSpec.describe 'Page DESTROY' do
   let!(:test_page) { create(:page, title: 'Test Page') }
 
-  context 'open existing page' do
+  context 'when open existing page' do
     before do
       assume_admin_logged_in
       visit '/admin/pages'

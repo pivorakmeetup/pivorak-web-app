@@ -8,7 +8,7 @@ RSpec.describe 'Friends CREATE' do
     visit '/admin/friends/new'
   end
 
-  context 'invalid input' do
+  context 'when invalid input' do
     context 'when name is too short' do
       it 'validates errors' do
         fill_in 'Name', with: ''
@@ -19,7 +19,7 @@ RSpec.describe 'Friends CREATE' do
     end
   end
 
-  context 'valid input' do
+  context 'when valid input' do
     it 'create new friend' do
       friend_attributes = build(:friend)
       name = 'Super New friend'

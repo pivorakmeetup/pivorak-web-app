@@ -9,13 +9,13 @@ describe Courses::Season::GraduateStudentsPolicy do
   let!(:student) { create(:student, season: season, status: :attending) }
 
   describe '#allowed?' do
-    context 'passed season' do
+    context 'when passed season' do
       it 'allows to pass policy' do
         expect(policy).to be_allowed
       end
     end
 
-    context 'not passed season' do
+    context 'when not passed season' do
       it 'forbids to pass policy' do
         season.update(status: :selection)
         season.reload
@@ -24,13 +24,13 @@ describe Courses::Season::GraduateStudentsPolicy do
       end
     end
 
-    context 'there are attending students' do
+    context 'when there are attending students' do
       it 'allows to pass policy' do
         expect(policy).to be_allowed
       end
     end
 
-    context 'there are no attending students' do
+    context 'when there are no attending students' do
       it 'forbids to pass policy' do
         student.update(status: :enrolled)
         student.reload

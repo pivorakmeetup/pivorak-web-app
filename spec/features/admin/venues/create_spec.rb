@@ -6,7 +6,7 @@ RSpec.describe 'Events CREATE' do
     visit '/admin/venues/new'
   end
 
-  context 'invalid input' do
+  context 'when invalid input' do
     it 'validates errors' do
       fill_in 'Name', with: ''
       click_button 'Create Venue'
@@ -16,7 +16,7 @@ RSpec.describe 'Events CREATE' do
     end
   end
 
-  context 'valid input' do
+  context 'when valid input' do
     it 'create new venue' do
       fill_in 'Name', with: 'Secret New Venue'
       fill_in 'Address',  with: 'Some Place'

@@ -32,7 +32,7 @@ describe ::User::SquashResolver do
     let!(:request_b)           { FactoryBot.create(:visit_request, user: user_b, event: event_b) }
     let!(:request_c)           { FactoryBot.create(:visit_request, user: user_a, event: event_c) }
 
-    context 'has_many associations' do
+    context 'when has_many associations' do
       context 'without squash' do
         context 'without duplicates' do
           let!(:talk)  { FactoryBot.create(:talk, speaker: user_a) }
@@ -44,7 +44,7 @@ describe ::User::SquashResolver do
           it { expect(user_a.talks).not_to include(talk) }
         end
 
-        context 'mixed' do
+        context 'when mixed' do
           before { subject.call(relations_params) }
 
           it { expect(user_b.visit_requests).to     include(request_a, duplicate_request_a, request_b, request_c) }
@@ -63,39 +63,39 @@ describe ::User::SquashResolver do
   end
 
   describe '#schema' do
-    context 'invalid' do
-      context 'resource' do
+    context 'when invalid' do
+      context 'with resource' do
         let(:params) { relations_params.merge(resource: 5) }
 
         it { expect(subject.call(params)).to be_nil }
       end
 
-      context 'association type' do
+      context 'with association type' do
         let(:params) { relations_params.merge(association_type: :belongs_to) }
 
         it { expect(subject.call(params)).to be_nil }
       end
 
-      context 'foreign key' do
+      context 'with foreign key' do
         let(:params) { relations_params.merge(foreign_key: nil) }
 
         it { expect(subject.call(params)).to be_nil }
       end
 
-      context 'source id' do
+      context 'with source id' do
         let(:params) { relations_params.merge(source_id: Faker::Name.name) }
 
         it { expect(subject.call(params)).to be_nil }
       end
 
-      context 'destination id' do
+      context 'with destination id' do
         let(:params) { relations_params.merge(destination_id: nil) }
 
         it { expect(subject.call(params)).to be_nil }
       end
     end
 
-    context 'valid' do
+    context 'when valid' do
       it { expect(subject.call(relations_params)).not_to be_nil }
     end
   end

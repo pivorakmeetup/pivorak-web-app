@@ -8,7 +8,7 @@ describe Courses::Season::SendTestTaskPolicy do
   let(:policy)  { described_class.new(season, student) }
 
   describe '#allowed?' do
-    context "season has status registration, student is enrolled & student didn't send a test task yet" do
+    context "when season has status registration, student is enrolled & student didn't send a test task yet" do
       it 'allows to pass policy' do
         allow(policy).to receive(:season_has_status_registration?).and_return(true)
         allow(policy).to receive(:student_enrolled?).and_return(true)
@@ -20,7 +20,7 @@ describe Courses::Season::SendTestTaskPolicy do
   end
 
   describe 'not allowed?' do
-    context "season doesn't have registration status" do
+    context "when season doesn't have registration status" do
       it "doesn't allow to pass policy" do
         allow(policy).to receive(:season_has_status_registration?).and_return(false)
         allow(policy).to receive(:student_enrolled?).and_return(true)
@@ -30,7 +30,7 @@ describe Courses::Season::SendTestTaskPolicy do
       end
     end
 
-    context 'student is not enrolled' do
+    context 'when student is not enrolled' do
       it "doesn't allow to pass policy" do
         allow(policy).to receive(:season_has_status_registration?).and_return(true)
         allow(policy).to receive(:student_enrolled?).and_return(false)
@@ -40,7 +40,7 @@ describe Courses::Season::SendTestTaskPolicy do
       end
     end
 
-    context 'student has already sent a test task' do
+    context 'when student has already sent a test task' do
       it "doesn't allow to pass policy" do
         allow(policy).to receive(:season_has_status_registration?).and_return(true)
         allow(policy).to receive(:student_enrolled?).and_return(true)

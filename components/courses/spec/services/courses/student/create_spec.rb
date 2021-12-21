@@ -28,7 +28,7 @@ describe Courses::Student::Create do
       expect(student.user_id).to eq(user_id)
     end
 
-    context 'open format season' do
+    describe 'open format season' do
       let(:season) { create(:season, open_format: true) }
 
       it 'creates attending student for open format season' do

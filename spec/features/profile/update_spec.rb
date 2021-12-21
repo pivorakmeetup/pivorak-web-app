@@ -19,7 +19,7 @@ RSpec.describe 'Profile UPDATE' do
       visit '/profile/edit'
     end
 
-    context 'invalid input' do
+    context 'with invalid input' do
       context 'when updating profile attrs' do
         it 'validates errors' do
           fill_in 'Email', with: ''
@@ -41,7 +41,7 @@ RSpec.describe 'Profile UPDATE' do
       end
     end
 
-    context 'valid input' do
+    context 'with valid input' do
       context 'when updates profile attrs' do
         it 'updates user' do
           email = Faker::Internet.email

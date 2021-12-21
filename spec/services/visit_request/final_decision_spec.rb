@@ -32,7 +32,7 @@ describe VisitRequest::FinalDecision do
       end
     end
 
-    context 'for other answers' do
+    context 'when other answers' do
       let(:answer) { 'maybe' }
 
       it 'fails with an error' do

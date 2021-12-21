@@ -15,18 +15,18 @@ RSpec.describe PdfReports::EventVisitorsReport do
   before { allow(service).to receive(:settings) { settings } }
 
   describe '.call' do
-    context 'valid font styles' do
+    context 'when valid font styles' do
       it { expect(text_inspector.font_settings.first[:name]).to eq settings[:font] }
       it { expect(text_inspector.font_settings.first[:size]).to eq settings.dig(:table, :cell_style, :size) }
     end
 
-    context 'valid text' do
+    context 'when valid text' do
       it { expect(text_inspector.strings.first).to eq "1. #{first_user.full_name}" }
       it { expect(text_inspector.strings.last).to eq third_user.last_name }
       it { expect(text_inspector.strings.size).to eq 4 }
     end
 
-    context 'valid pages' do
+    context 'when valid pages' do
       it { expect(page_inspector.pages.first[:strings]).to include("1. #{first_user.full_name}") }
       it {
         expect(page_inspector.pages.second[:strings])

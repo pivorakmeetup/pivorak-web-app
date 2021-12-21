@@ -8,7 +8,7 @@ RSpec.describe Talk::FetchExternalVideoData do
   end
 
   describe '.call' do
-    context 'valid video_url' do
+    context 'when valid video_url' do
       let(:request_params) { { id: '4QdOwMVMs7k' } }
       let(:response_mock) do
         instance_double(Yt::Video,
@@ -28,13 +28,13 @@ RSpec.describe Talk::FetchExternalVideoData do
       end
     end
 
-    context 'no video_url' do
+    context 'when no video_url' do
       let(:talk) { create :talk, video_url: nil }
 
       it { expect(described_class.call(talk)).to eq nil }
     end
 
-    context 'invalid video_url' do
+    context 'when invalid video_url' do
       let(:talk) { create :talk }
 
       it { expect(described_class.call(talk)).to eq nil }

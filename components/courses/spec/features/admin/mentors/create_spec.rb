@@ -10,7 +10,7 @@ RSpec.describe 'Mentor CREATE' do
 
   before { visit '/admin/courses/seasons/test-season/mentors/new' }
 
-  context 'valid input' do
+  context 'when valid input' do
     it 'creates mentor' do
       select 'User Another', from: 'mentor[user_id]'
       click_button 'Create Mentor'
@@ -20,7 +20,7 @@ RSpec.describe 'Mentor CREATE' do
     end
   end
 
-  context 'drop down' do
+  describe 'drop down' do
     it 'has no name of already existing mentor' do
       expect(page).to have_no_content 'User Test'
     end

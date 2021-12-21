@@ -17,11 +17,11 @@ RSpec.describe 'Setting progress' do
 
   before { visit "/admin/courses/seasons/test-season/lectures/#{lecture.slug}/progress" }
 
-  context 'shows students list' do
+  context 'when shows students list' do
     it { expect(page).to have_content(user.full_name) }
   end
 
-  context 'has buttons to set student progress' do
+  context 'when has buttons to set student progress' do
     it 'has button for presence set' do
       expect(page).to have_link 'Absent!'
     end
@@ -33,7 +33,7 @@ RSpec.describe 'Setting progress' do
     end
   end
 
-  context 'progress set' do
+  context 'when progress set' do
     it 'changes presence mark after button pressing' do
       click_link 'Absent!'
       progress = ::Courses::Progress.last

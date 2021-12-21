@@ -14,7 +14,7 @@ RSpec.describe 'Homework CREATE' do
   before { visit '/courses/seasons/test-season/homeworks/new' }
 
   describe 'invalid input' do
-    context 'blank git_url' do
+    context 'with blank git_url' do
       it 'validates errors' do
         fill_in 'Git url', with: ''
         click_button 'Submit'

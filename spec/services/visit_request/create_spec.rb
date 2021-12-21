@@ -27,10 +27,10 @@ describe VisitRequest::Create do
   end
 
   describe '#call' do
-    context 'user is verified' do
+    context 'when user is verified' do
       before { allow(user).to receive(:verified?).and_return(true) }
 
-      context 'event has free slots for verified users' do
+      context 'when event has free slots for verified users' do
         include_context 'when there are free slots'
 
         before do
@@ -44,7 +44,7 @@ describe VisitRequest::Create do
         it { expect(event.visit_requests.last).not_to be_waiting_list }
       end
 
-      context 'event has no free slots for verified users' do
+      context 'when event has no free slots for verified users' do
         include_context 'when there are no free slots'
 
         let(:visit_request_mailer) { instance_spy(VisitRequestMailer) }
@@ -60,10 +60,10 @@ describe VisitRequest::Create do
       end
     end
 
-    context 'user is not verified' do
+    context 'when user is not verified' do
       before { allow(user).to receive(:verified?).and_return(false) }
 
-      context 'event has free slots for newbies' do
+      context 'when event has free slots for newbies' do
         include_context 'when there are free slots'
 
         before do
@@ -78,7 +78,7 @@ describe VisitRequest::Create do
         it { expect(event.visit_requests.last).not_to be_waiting_list }
       end
 
-      context 'event has no free slots for newbies' do
+      context 'when event has no free slots for newbies' do
         include_context 'when there are no free slots'
 
         before do

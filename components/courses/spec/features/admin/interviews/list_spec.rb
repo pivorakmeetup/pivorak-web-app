@@ -11,11 +11,11 @@ RSpec.describe 'Interviews LIST' do
 
   before { visit '/admin/courses/seasons/test-season/interviews/' }
 
-  context 'open existing page' do
+  context 'when open existing page' do
     it { expect(page).to have_content(mentor.full_name) }
   end
 
-  context 'interview approve' do
+  context 'when interview approve' do
     it 'approves student' do
       click_link 'Approve'
 

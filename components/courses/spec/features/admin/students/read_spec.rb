@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Students READ' do
-  context 'list of students' do
+  describe 'list of students' do
     let!(:season) { create(:season, title: 'Test Season', status: :registration) }
     let(:test_students_path) { '/admin/courses/seasons/test-season/students' }
     let!(:user_a) { User.create(email: 'test_a@test.com', first_name: 'User', last_name: 'A') }

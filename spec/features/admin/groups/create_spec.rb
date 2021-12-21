@@ -6,7 +6,7 @@ RSpec.describe 'Groups CREATE' do
     visit '/admin/groups/new'
   end
 
-  context 'invalid input' do
+  context 'when invalid input' do
     it 'validates presence' do
       fill_in 'Name', with: ''
       click_button 'Create Group'
@@ -16,7 +16,7 @@ RSpec.describe 'Groups CREATE' do
     end
   end
 
-  context 'valid input' do
+  context 'when valid input' do
     it 'create new group' do
       fill_in 'Name', with: 'SuperGroup'
       select  'Talk', from: 'group_resource'

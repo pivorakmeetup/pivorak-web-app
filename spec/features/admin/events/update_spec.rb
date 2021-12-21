@@ -9,7 +9,7 @@ RSpec.describe 'Events UPDATE' do
     visit test_edit_path
   end
 
-  context 'invalid input' do
+  context 'when invalid input' do
     it 'validates errors' do
       fill_in 'Title', with: ''
       click_button 'Update Event'
@@ -19,7 +19,7 @@ RSpec.describe 'Events UPDATE' do
     end
   end
 
-  context 'valid input' do
+  context 'when valid input' do
     it 'updates event' do
       fill_in 'Title', with: 'Super New Event'
       click_button 'Update Event'
@@ -29,7 +29,7 @@ RSpec.describe 'Events UPDATE' do
     end
   end
 
-  context 'default values for event' do
+  context 'with default values for event' do
     it 'shows updated values instead of default' do
       fill_in 'Title', with: 'Super New Event'
       fill_in 'Limit total', with: 2

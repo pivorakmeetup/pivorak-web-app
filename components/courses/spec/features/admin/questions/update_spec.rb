@@ -12,7 +12,7 @@ RSpec.describe 'Question UPDATE' do
 
   before { visit test_edit_question_path }
 
-  context 'invalid input' do
+  context 'when invalid input' do
     it 'validates errors' do
       fill_in 'Body', with: ''
       click_button 'Update Question'
@@ -21,7 +21,7 @@ RSpec.describe 'Question UPDATE' do
     end
   end
 
-  context 'valid input' do
+  context 'when valid input' do
     it 'update question' do
       fill_in 'Body', with: 'Awesome Question'
       click_button 'Update Question'

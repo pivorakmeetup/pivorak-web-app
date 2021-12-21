@@ -11,21 +11,21 @@ describe Courses::Interview::ListPolicy do
   let!(:test_task)              { create(:test_task, student_id: student.id, mentor_id: mentor.id) }
 
   describe '#allowed?' do
-    context 'student belongs to this season and has approved test task' do
+    context 'when student belongs to this season and has approved test task' do
       it 'allows to pass policy' do
         policy = described_class.new(student, season)
         expect(policy).to be_allowed
       end
     end
 
-    context 'student does not belong to this season' do
+    context 'when student does not belong to this season' do
       it 'forbids to pass policy' do
         policy = described_class.new(another_season_student, season)
         expect(policy).not_to be_allowed
       end
     end
 
-    context 'student has wrong status(not test_task_done)' do
+    context 'when student has wrong status(not test_task_done)' do
       it 'forbids to pass policy' do
         policy = described_class.new(another_status_student, season)
         expect(policy).not_to be_allowed

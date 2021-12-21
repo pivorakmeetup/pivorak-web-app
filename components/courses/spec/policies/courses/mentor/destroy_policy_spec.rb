@@ -9,7 +9,7 @@ RSpec.describe Courses::Mentor::DestroyPolicy do
   let!(:user)           { create(:user, first_name: 'Another', last_name: 'User') }
   let!(:mentor)         { ::Courses::Mentor.create(user_id: 2, season_id: season.id) }
 
-  context 'allow to destroy' do
+  context 'when allow to destroy' do
     it 'allowed to destroy' do
       policy = described_class.new(mentor, season)
 

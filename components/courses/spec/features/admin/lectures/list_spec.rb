@@ -10,7 +10,7 @@ RSpec.describe 'Lectures LIST' do
   let!(:lecture)         { create(:lecture, mentor: season_creator, venue_id: 1, season: season) }
   let!(:another_lecture) { create(:lecture, mentor: season_creator, venue_id: 1, season: season) }
 
-  context 'open existing page' do
+  context 'when open existing page' do
     before { visit '/admin/courses/seasons/test-season/lectures/' }
 
     it { expect(page).to have_content(lecture.title) }

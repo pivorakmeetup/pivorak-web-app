@@ -9,7 +9,7 @@ RSpec.describe 'Mentors LIST' do
   let!(:another_user)   { User.create(email: 'test@test.com', first_name: 'Test', last_name: 'User') }
   let!(:another_mentor) { ::Courses::Mentor.create(user: another_user, season: season) }
 
-  context 'open existing page' do
+  context 'when open existing page' do
     before { visit '/admin/courses/seasons/test-season/mentors/' }
 
     it { expect(page).to have_content(user.full_name) }

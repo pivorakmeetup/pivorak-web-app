@@ -14,7 +14,7 @@ RSpec.describe 'Interview CREATE' do
   before { visit new_interview_path }
 
   describe 'invalid input' do
-    context 'blank start time' do
+    context 'with blank start time' do
       it 'validates errors' do
         interview.start_at = ''
 
@@ -23,7 +23,7 @@ RSpec.describe 'Interview CREATE' do
     end
   end
 
-  context 'valid input' do
+  describe 'valid input' do
     it 'creates interview' do
       fill_in 'Description', with: 'Very hard interview'
       pick_a_date(date_field_name, Time.current + 40.minutes)
