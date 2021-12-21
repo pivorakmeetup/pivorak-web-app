@@ -72,7 +72,7 @@ RSpec.describe 'Members LIST' do
 
         click_link('Reset filters', match: :first)
 
-        expect(page.current_path).to eq('/admin/members')
+        expect(page).to have_current_path('/admin/members')
       end
     end
   end
