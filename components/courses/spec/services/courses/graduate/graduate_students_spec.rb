@@ -15,6 +15,7 @@ describe Courses::Graduate::GraduateStudents do
       dropped_student.reload
 
       expect(attending_student.status).to eq('graduated')
+      expect(dropped_student.status).to eq('dropped')
     end
   end
 end
