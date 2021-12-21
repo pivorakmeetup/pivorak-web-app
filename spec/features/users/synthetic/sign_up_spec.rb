@@ -9,7 +9,7 @@ RSpec.describe 'Synthetic user try to sign up' do
     click_button 'Sign up'
   end
 
-  it 'sends reset password' do
+  it 'sends reset password', :aggregate_failures do
     active_job = active_jobs[0]
     expect(active_job[:job]).to eq ActionMailer::DeliveryJob
     expect(active_job[:args][1]).to eq 'reset_password_instructions'

@@ -19,7 +19,7 @@ RSpec.describe Talk::FetchExternalVideoData do
 
       before { expect(Yt::Video).to receive(:new).with(request_params).and_return(response_mock) }
 
-      it 'updates talk with fetched video attributes' do
+      it 'updates talk with fetched video attributes', :aggregate_failures do
         described_class.call(talk)
 
         expect(talk.extra['video_duration']).to    eq 2864
@@ -48,7 +48,7 @@ RSpec.describe Talk::FetchExternalVideoData do
              video_url: 'https://www.youtube.com/watch?v=Toluc5MCQWs'
     end
 
-    it 'calls service for all talks' do
+    it 'calls service for all talks', :aggregate_failures do
       expect(described_class).to receive(:new).with(talk)
       expect(described_class).to receive(:new).with(talk2)
 

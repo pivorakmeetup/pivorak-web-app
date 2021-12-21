@@ -5,7 +5,7 @@ RSpec.describe 'Venue SHOW' do
 
   before { visit "/venues/#{venue.slug}" }
 
-  it 'displays venue info' do
+  it 'displays venue info', :aggregate_failures do
     expect(page).to have_content(venue.name)
     expect(page).to have_content(venue.address)
   end

@@ -19,7 +19,7 @@ RSpec.describe 'Members CREATE' do
   end
 
   context 'when valid input' do
-    it 'create new member' do
+    it 'create new member', :aggregate_failures do
       fill_in 'Email',      with: 'tester@example.com'
       fill_in 'First name', with: 'UserFirstName'
       fill_in 'Last name',  with: 'UserLastName'

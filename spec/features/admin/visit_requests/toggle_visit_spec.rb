@@ -10,7 +10,7 @@ RSpec.describe 'Visit Requests TOGGLE LIST' do
     visit_page.call
   end
 
-  it 'checking in the visitor' do
+  it 'checking in the visitor', :aggregate_failures do
     visit_page.call
 
     expect(page).to have_link I18n.t('visit_request.check_in.plural')

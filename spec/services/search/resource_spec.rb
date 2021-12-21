@@ -8,7 +8,7 @@ RSpec.describe Search::Resource do
     context 'when there are matches' do
       let(:result) { described_class.call(query: string, model: user.class) }
 
-      it 'returns resource specific collection' do
+      it 'returns resource specific collection', :aggregate_failures do
         expect(result).to be_a ActiveRecord::Relation
         expect(result.first).to be_a User
       end

@@ -21,7 +21,7 @@ RSpec.describe 'Question CREATE' do
   end
 
   context 'when valid input' do
-    it 'create new question' do
+    it 'create new question', :aggregate_failures do
       fill_in 'Body', with: 'Awesome Question'
       click_button 'Create Question'
 

@@ -25,7 +25,7 @@ RSpec.describe 'Interviews UPDATE' do
 
   describe 'valid input' do
     context 'with change of time' do
-      it 'updates interview' do
+      it 'updates interview', :aggregate_failures do
         date = '2017.10.10'.to_time
         pick_a_date(date_field_name, date)
         click_button 'Update Interview'
@@ -37,7 +37,7 @@ RSpec.describe 'Interviews UPDATE' do
     end
 
     context 'with change of description' do
-      it 'updates interview' do
+      it 'updates interview', :aggregate_failures do
         fill_in 'Description', with: 'Nice description'
         click_button 'Update Interview'
         interview.reload
@@ -48,7 +48,7 @@ RSpec.describe 'Interviews UPDATE' do
     end
 
     context 'with change of video url' do
-      it 'updates interview' do
+      it 'updates interview', :aggregate_failures do
         fill_in 'Video url', with: 'url.example/'
         click_button 'Update Interview'
         interview.reload
@@ -59,7 +59,7 @@ RSpec.describe 'Interviews UPDATE' do
     end
 
     context 'with change of status' do
-      it 'updates interview' do
+      it 'updates interview', :aggregate_failures do
         select('missed', from: 'Status')
         click_button 'Update Interview'
         interview.reload

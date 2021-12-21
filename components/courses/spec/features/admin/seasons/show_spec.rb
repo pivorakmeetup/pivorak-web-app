@@ -12,7 +12,7 @@ RSpec.describe 'Seasons SHOW' do
 
     before { visit '/admin/courses/seasons/test-season' }
 
-    it 'graduates attending students' do
+    it 'graduates attending students', :aggregate_failures do
       click_link 'Graduate students!'
 
       attending_student.reload
@@ -22,7 +22,7 @@ RSpec.describe 'Seasons SHOW' do
       expect(dropped_student.status).to eq(dropped_student.status)
     end
 
-    it 'shows right tabs' do
+    it 'shows right tabs', :aggregate_failures do
       expect(page).to     have_link('/admin/courses/seasons/test-season')
       expect(page).to     have_link('/admin/courses/seasons/test-season/mentors')
       expect(page).not_to have_link('/admin/courses/seasons/test-season/questions')
@@ -43,7 +43,7 @@ RSpec.describe 'Seasons SHOW' do
       expect(page).not_to have_content 'Graduate students!'
     end
 
-    it 'shows right tabs' do
+    it 'shows right tabs', :aggregate_failures do
       expect(page).to     have_link('/admin/courses/seasons/test-season')
       expect(page).to     have_link('/admin/courses/seasons/test-season/mentors')
       expect(page).not_to have_link('/admin/courses/seasons/test-season/questions')
@@ -60,7 +60,7 @@ RSpec.describe 'Seasons SHOW' do
 
     before { visit '/admin/courses/seasons/test-season' }
 
-    it 'shows right tabs' do
+    it 'shows right tabs', :aggregate_failures do
       expect(page).to     have_link('/admin/courses/seasons/test-season')
       expect(page).to     have_link('/admin/courses/seasons/test-season/mentors')
       expect(page).not_to have_link('/admin/courses/seasons/test-season/questions')
@@ -77,7 +77,7 @@ RSpec.describe 'Seasons SHOW' do
 
     before { visit '/admin/courses/seasons/test-season' }
 
-    it 'shows right tabs' do
+    it 'shows right tabs', :aggregate_failures do
       expect(page).to     have_link('/admin/courses/seasons/test-season')
       expect(page).to     have_link('/admin/courses/seasons/test-season/mentors')
       expect(page).to     have_link('/admin/courses/seasons/test-season/questions')
@@ -94,7 +94,7 @@ RSpec.describe 'Seasons SHOW' do
 
     before { visit '/admin/courses/seasons/test-season' }
 
-    it 'shows right tabs' do
+    it 'shows right tabs', :aggregate_failures do
       expect(page).to     have_link('/admin/courses/seasons/test-season')
       expect(page).to     have_link('/admin/courses/seasons/test-season/mentors')
       expect(page).to     have_link('/admin/courses/seasons/test-season/questions')

@@ -20,7 +20,7 @@ RSpec.describe 'Seasons UPDATE' do
   end
 
   context 'when valid input' do
-    it 'update season' do
+    it 'update season', :aggregate_failures do
       fill_in 'Title', with: 'Super New Season'
       click_button 'Update Season'
 

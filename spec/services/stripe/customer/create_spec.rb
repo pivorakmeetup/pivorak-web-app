@@ -12,7 +12,7 @@ RSpec.describe ::Stripe::Customer::Create do
         let(:helper) { StripeMock.create_test_helper }
         let(:params) { build(:valid_customer).merge(card: helper.generate_card_token) }
 
-        it 'returns valid Stripe::Customer instance' do
+        it 'returns valid Stripe::Customer instance', :aggregate_failures do
           expect(subject).to be_an_instance_of Stripe::Customer
 
           expect(subject.id).not_to be_nil

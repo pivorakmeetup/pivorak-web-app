@@ -24,7 +24,7 @@ RSpec.describe 'Visit Requests ATTEND' do
         it { expect(page).to have_content I18n.t('flash.visit_requests.create.success_for_newbies') }
         it { expect(page).to have_link 'Cancel attendance' }
 
-        it 'enques needs confirmation' do
+        it 'enques needs confirmation', :aggregate_failures do
           active_job = active_jobs[0]
           expect(active_job[:job]).to eq ActionMailer::DeliveryJob
           expect(active_job[:args][0]).to eq 'VisitRequestMailer'

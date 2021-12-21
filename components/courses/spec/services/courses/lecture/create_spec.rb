@@ -13,7 +13,7 @@ describe Courses::Lecture::Create do
   let!(:another_student) { create :student, user: another_user, season: season, status: :attending }
 
   describe '#call' do
-    it 'creates lecture with attending students progress records' do
+    it 'creates lecture with attending students progress records', :aggregate_failures do
       described_class.call(lecture)
 
       expect(::Courses::Lecture.count).to eq(1)

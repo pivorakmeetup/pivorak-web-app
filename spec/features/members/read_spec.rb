@@ -49,7 +49,7 @@ RSpec.describe 'Member READ' do
   end
 
   describe 'member events' do
-    it 'shows member visited events' do
+    it 'shows member visited events', :aggregate_failures do
       user = create(:user)
       visited_event = create(:event)
       not_visited_event = create(:event, title: 'not visited')

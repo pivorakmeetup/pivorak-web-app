@@ -23,7 +23,7 @@ RSpec.describe 'Talks search' do
   end
 
   describe 'should search by talk attributes' do
-    it 'searches by title' do
+    it 'searches by title', :aggregate_failures do
       fill_in 'query', with: title_of_talk1
       click_button('Search')
 
@@ -31,7 +31,7 @@ RSpec.describe 'Talks search' do
       expect(page).not_to have_content talk2.title
     end
 
-    it 'searches by description' do
+    it 'searches by description', :aggregate_failures do
       fill_in 'query', with: description_of_talk2
       click_button('Search')
 
@@ -39,7 +39,7 @@ RSpec.describe 'Talks search' do
       expect(page).not_to have_content talk1.title
     end
 
-    it 'shows up flash message if no records have been found' do
+    it 'shows up flash message if no records have been found', :aggregate_failures do
       fill_in 'query', with: unmatched_title
       click_button('Search')
 

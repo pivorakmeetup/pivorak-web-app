@@ -20,7 +20,7 @@ RSpec.describe 'Students READ' do
       create(:progress, student: student_a, lecture: lecture, mentor: mentor, homework_mark: -1)
     end
 
-    it 'displays list of students' do
+    it 'displays list of students', :aggregate_failures do
       student_b = create(:student, personal_info: 'User B', season: season, user: user_b, status: :enrolled)
       visit test_students_path
 
@@ -31,7 +31,7 @@ RSpec.describe 'Students READ' do
     end
 
     # Q: What has been changed that we don't see students ?
-    xit 'students registered first will be shown first' do
+    xit 'students registered first will be shown first', :aggregate_failures do
       create(:student, user: create(:user, first_name: 'Recent', last_name: 'Student'), status: :enrolled)
       create(:student,
              user:       create(:user, first_name: 'Old', last_name: 'Student'),

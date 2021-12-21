@@ -10,7 +10,7 @@ describe Courses::Homework::AvailableLectures do
   let!(:homework)        { create(:homework, lecture_id: lecture.id, student_id: student.id) }
 
   describe '#call' do
-    it 'returns lectures without homeworks' do
+    it 'returns lectures without homeworks', :aggregate_failures do
       query = described_class.call(season, student)
 
       expect(query).to include(another_lecture)

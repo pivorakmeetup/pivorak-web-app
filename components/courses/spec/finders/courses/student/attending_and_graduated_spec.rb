@@ -12,7 +12,7 @@ describe Courses::Student::AttendingAndGraduated do
   let!(:fifth_student)  { create(:student, user_id: 3,  season: another_season, status: :graduated) }
 
   describe '#call' do
-    it 'returns attending and graduated students of the season' do
+    it 'returns attending and graduated students of the season', :aggregate_failures do
       query = described_class.call(season)
 
       expect(query).not_to include(first_student)

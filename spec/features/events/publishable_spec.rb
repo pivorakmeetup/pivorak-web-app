@@ -6,7 +6,7 @@ RSpec.describe 'Events publishable' do
 
   before { visit '/events' }
 
-  it 'shows only published events' do
+  it 'shows only published events', :aggregate_failures do
     expect(page).to     have_content 'Published Event'
     expect(page).not_to have_content 'Unpublished Event'
   end

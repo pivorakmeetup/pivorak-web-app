@@ -13,7 +13,7 @@ RSpec.describe 'Visit Requests TOGGLE LIST' do
   describe 'toggling from one list to another' do
     it { expect(page).to have_link 'Waiting', count: 1 }
 
-    it 'toggle to the main list' do
+    it 'toggle to the main list', :aggregate_failures do
       click_link 'Waiting'
       visit_page.call
 

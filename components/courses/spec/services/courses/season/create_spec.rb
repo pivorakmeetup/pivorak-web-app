@@ -7,7 +7,7 @@ describe Courses::Season::Create do
   let(:user)   { create(:user) }
 
   describe '#call' do
-    it 'creates season with set of default questions' do
+    it 'creates season with set of default questions', :aggregate_failures do
       described_class.call(season, user)
 
       expect(season.questions.count).to eq(5)

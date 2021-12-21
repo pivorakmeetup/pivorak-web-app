@@ -4,7 +4,7 @@ RSpec.describe 'Coming Soon page' do
   subject { page }
 
   context 'when there are no events' do
-    it 'renders coming soon page with unknown date' do
+    it 'renders coming soon page with unknown date', :aggregate_failures do
       visit root_path
 
       expect(page).to have_content(I18n.t('coming_soon.getting_ready'))
@@ -13,7 +13,7 @@ RSpec.describe 'Coming Soon page' do
   end
 
   context 'when there is planned event' do
-    it 'renders coming soon page with event date' do
+    it 'renders coming soon page with event date', :aggregate_failures do
       travel_to(Time.zone.parse('2018-01-11 12:00')) do
         create(:event, status: :passed, started_at: 2.months.ago)
         create(:event, published: false, started_at: 2.months.from_now)
@@ -31,7 +31,7 @@ RSpec.describe 'Coming Soon page' do
   context 'when there is published event' do
     before { create(:event, started_at: 1.month.from_now) }
 
-    it 'renders event page' do
+    it 'renders event page', :aggregate_failures do
       visit root_path
 
       expect(page).not_to have_content(I18n.t('coming_soon.cfp_is_open'))

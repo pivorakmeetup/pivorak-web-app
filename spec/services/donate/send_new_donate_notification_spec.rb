@@ -40,7 +40,7 @@ describe Donate::SendNewDonateNotification do
     end
 
     context 'when donation is duplicated' do
-      it 'skips notification' do
+      it 'skips notification', :aggregate_failures do
         ClimateControl.modify SLACK_NEW_DONATION_CHANNEL: 'dummy-notifications-test' do
           allow(SlackNotifier).to receive(:call)
           DonationData.create!(order_reference: order_reference)
@@ -68,7 +68,7 @@ describe Donate::SendNewDonateNotification do
     context 'when donation do not have `Approved status`' do
       let(:transactionStatus) { 'Expired' }
 
-      it 'skips notification' do
+      it 'skips notification', :aggregate_failures do
         ClimateControl.modify SLACK_NEW_DONATION_CHANNEL: 'dummy-notifications-test' do
           allow(SlackNotifier).to receive(:call)
 

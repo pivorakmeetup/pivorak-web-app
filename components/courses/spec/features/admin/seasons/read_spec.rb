@@ -12,12 +12,12 @@ RSpec.describe 'Seasons READ' do
 
     before { visit '/admin/courses/seasons' }
 
-    it 'displays list of seasons' do
+    it 'displays list of seasons', :aggregate_failures do
       expect(page).to have_link 'Test Season A'
       expect(page).to have_link 'Test Season B'
     end
 
-    it 'redirects to season#show' do
+    it 'redirects to season#show', :aggregate_failures do
       click_link 'Test Season A'
 
       expect(page).to have_current_path '/admin/courses/seasons/test-season-a'

@@ -9,7 +9,7 @@ describe Email::Send do
   let(:recipient_ids) { [recipient_id1, recipient_id2] }
 
   describe '#call' do
-    it 'sends email to recipients' do
+    it 'sends email to recipients', :aggregate_failures do
       mailer = instance_spy('mailer')
       expect(EmailMailer).to receive(:custom).with(email.id, recipient_id1) { mailer }
       expect(EmailMailer).to receive(:custom).with(email.id, recipient_id2) { mailer }

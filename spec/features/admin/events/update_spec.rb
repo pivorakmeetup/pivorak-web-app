@@ -30,7 +30,7 @@ RSpec.describe 'Events UPDATE' do
   end
 
   context 'with default values for event' do
-    it 'shows updated values instead of default' do
+    it 'shows updated values instead of default', :aggregate_failures do
       fill_in 'Title', with: 'Super New Event'
       fill_in 'Limit total', with: 2
       fill_in 'Limit verified', with: 1

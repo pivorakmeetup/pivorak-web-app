@@ -10,7 +10,7 @@ describe VisitRequest::Approve do
   let(:visit_request) { create(:visit_request) }
 
   describe '#call' do
-    it 'sets approved status' do
+    it 'sets approved status', :aggregate_failures do
       mailer = instance_double('mail')
       expect(VisitRequestMailer).to receive(:approved).with(visit_request) { mailer }
       expect(mailer).to receive(:deliver_later)

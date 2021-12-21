@@ -21,7 +21,7 @@ RSpec.describe 'Visit Requests IMPORT' do
 
     it { expect(page).to have_content 'Import' }
 
-    it 'import visit requests of users' do
+    it 'import visit requests of users', :aggregate_failures do
       fill_in 'Emails list', with: emails_list
       click_button 'Import'
 

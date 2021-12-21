@@ -25,7 +25,7 @@ RSpec.describe 'Visit Request INVITE' do
         expect(VisitRequest).to be_exists(user_id: user.id, event_id: event.id)
       end
 
-      it 'sends email to user' do
+      it 'sends email to user', :aggregate_failures do
         create(:user, email: entered_email_data)
 
         click_user_invite
@@ -62,7 +62,7 @@ RSpec.describe 'Visit Request INVITE' do
   context 'when list of email are entered' do
     let(:entered_email_data) { 'john.joe@gmail.com,  ivan@gmail.com,  , ' }
 
-    it 'creates visit requests for given email with approved status' do
+    it 'creates visit requests for given email with approved status', :aggregate_failures do
       click_user_invite
 
       users = User.where(email: ['john.joe@gmail.com', 'ivan@gmail.com'])
@@ -71,7 +71,7 @@ RSpec.describe 'Visit Request INVITE' do
       expect(VisitRequest.where(user_id: users.ids, event_id: event.id).count).to eq(2)
     end
 
-    it 'sends emails to each user' do
+    it 'sends emails to each user', :aggregate_failures do
       click_user_invite
 
       expect(active_jobs.size).to eq(2)
@@ -87,7 +87,7 @@ RSpec.describe 'Visit Request INVITE' do
   context 'when invalid email is entered' do
     let(:entered_email_data) { 'johnemail.com' }
 
-    it 'does nothing with users and emails' do
+    it 'does nothing with users and emails', :aggregate_failures do
       click_user_invite
 
       expect(User.where(email: entered_email_data)).to be_empty
@@ -98,7 +98,7 @@ RSpec.describe 'Visit Request INVITE' do
   context 'when bad list of email are entered' do
     let(:entered_email_data) { 'johne.com, pe@.a.a.a' }
 
-    it 'does nothing with users and emails' do
+    it 'does nothing with users and emails', :aggregate_failures do
       click_user_invite
 
       expect(User.where(email: entered_email_data)).to be_empty

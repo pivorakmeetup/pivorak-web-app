@@ -13,7 +13,7 @@ RSpec.describe 'Groups DESTROY' do
       expect(page).to have_content 'TestGroup'
     end
 
-    it 'destroys the group' do
+    it 'destroys the group', :aggregate_failures do
       click_link 'Destroy'
 
       expect(page).to have_current_path '/admin/groups'

@@ -37,7 +37,7 @@ RSpec.describe 'Journal SHOW' do
 
   before { visit test_j_path }
 
-  it 'displays journal correctly' do
+  it 'displays journal correctly', :aggregate_failures do
     # shows first student first lecture mark
     within('td#l1_s1_m.center.aligned') do
       expect(page).to have_content first_progress.homework_mark

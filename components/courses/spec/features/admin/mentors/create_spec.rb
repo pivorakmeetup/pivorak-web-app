@@ -11,7 +11,7 @@ RSpec.describe 'Mentor CREATE' do
   before { visit '/admin/courses/seasons/test-season/mentors/new' }
 
   context 'when valid input' do
-    it 'creates mentor' do
+    it 'creates mentor', :aggregate_failures do
       select 'User Another', from: 'mentor[user_id]'
       click_button 'Create Mentor'
 

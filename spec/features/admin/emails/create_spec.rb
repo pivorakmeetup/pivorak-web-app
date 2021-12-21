@@ -7,7 +7,7 @@ RSpec.describe 'Emails CREATE' do
   end
 
   context 'when params are valid' do
-    it 'creates Email' do
+    it 'creates Email', :aggregate_failures do
       email = build(:email)
       subject = email.subject
       body = email.body

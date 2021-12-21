@@ -8,7 +8,7 @@ describe Courses::Graduate::GraduateStudents do
   let!(:dropped_student)   { create(:student, status: :dropped, season: season) }
 
   describe '#call' do
-    it 'graduates attending students' do
+    it 'graduates attending students', :aggregate_failures do
       described_class.call(season)
 
       attending_student.reload

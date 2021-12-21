@@ -31,7 +31,7 @@ RSpec.describe 'Lecture CREATE' do
   end
 
   context 'when valid input' do
-    it 'creates lecture' do
+    it 'creates lecture', :aggregate_failures do
       select user.full_name, from: 'lecture[mentor_id]'
       select venue.name, from: 'lecture[venue_id]'
       fill_in 'Title', with: 'Awesome lecture'

@@ -11,7 +11,7 @@ RSpec.describe ::Stripe::Charge::Create do
       context 'when provided with valid params' do
         let(:params) { build(:valid_charge).merge(customer: double) }
 
-        it 'returns valid Stripe::Charge instance' do
+        it 'returns valid Stripe::Charge instance', :aggregate_failures do
           expect(subject).to be_an_instance_of Stripe::Charge
 
           expect(subject.currency).to eq 'UAH'

@@ -9,7 +9,7 @@ describe Courses::Interview::Update do
   let(:student)   { create(:student, season_id: 1, user_id: 1, status: :enrolled) }
 
   describe '#call' do
-    it 'updates interview' do
+    it 'updates interview', :aggregate_failures do
       described_class.call(interview, student)
 
       expect(interview.student_id).to eq(student.id)

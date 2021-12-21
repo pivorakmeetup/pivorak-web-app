@@ -18,7 +18,8 @@ describe Courses::InterviewAssessment::BuildAssessments do
   end
 
   describe '#call' do
-    it "builds assessments for each question for new interview assessment and doesn't build for created one" do
+    it "builds assessments for each question for new interview assessment and doesn't build for created one",
+       :aggregate_failures do
       questions = [first_question, second_question]
 
       described_class.call(new_interview_assessment, questions)

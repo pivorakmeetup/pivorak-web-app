@@ -15,7 +15,7 @@ RSpec.describe ::Users::OmniauthCallbacksController do
           expect(::User.count).to eq 1
         end
 
-        it 'signs in a user' do
+        it 'signs in a user', :aggregate_failures do
           expect(subject.current_user).to be_nil
           post provider
           expect(subject.current_user).not_to be_nil

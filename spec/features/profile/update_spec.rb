@@ -43,7 +43,7 @@ RSpec.describe 'Profile UPDATE' do
 
     context 'with valid input' do
       context 'when updates profile attrs' do
-        it 'updates user' do
+        it 'updates user', :aggregate_failures do
           email = Faker::Internet.email
           first_name = Faker::Name.name
           last_name = Faker::Name.name

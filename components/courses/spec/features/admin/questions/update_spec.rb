@@ -22,7 +22,7 @@ RSpec.describe 'Question UPDATE' do
   end
 
   context 'when valid input' do
-    it 'update question' do
+    it 'update question', :aggregate_failures do
       fill_in 'Body', with: 'Awesome Question'
       click_button 'Update Question'
 

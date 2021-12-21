@@ -24,7 +24,7 @@ RSpec.describe 'Page UPDATE' do
   end
 
   context 'when valid input' do
-    it 'updates the page' do
+    it 'updates the page', :aggregate_failures do
       fill_in 'Title',  with: 'About Us'
       fill_in 'Url',    with: 'about-us'
       fill_in 'Body',   with: 'Something about us'

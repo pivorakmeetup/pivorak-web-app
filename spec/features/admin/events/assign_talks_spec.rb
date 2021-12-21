@@ -4,7 +4,7 @@ RSpec.describe 'Events ASSIGN_TALK' do
   let!(:event) { create(:event, title: 'Test Event') }
   let(:test_edit_path) { '/admin/events/test-event/edit' }
 
-  it 'only free talks can be assigned' do
+  it 'only free talks can be assigned', :aggregate_failures do
     assigned = create(:talk, :assigned, title: 'talk-assigned')
     talk = create(:talk, title: 'talk')
 

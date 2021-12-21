@@ -24,7 +24,7 @@ RSpec.describe 'Season CREATE' do
   end
 
   context 'when valid input' do
-    it 'create new season' do
+    it 'create new season', :aggregate_failures do
       fill_in 'Title', with: 'Super New Course Season'
       pick_a_date('season_start_at', Time.current)
       pick_a_date('season_finish_at', Time.current + 60.days)
@@ -36,7 +36,7 @@ RSpec.describe 'Season CREATE' do
   end
 
   context 'when open format' do
-    it 'create new season' do
+    it 'create new season', :aggregate_failures do
       fill_in 'Title', with: 'Super New Course Season'
       pick_a_date('season_start_at', Time.current)
       pick_a_date('season_finish_at', Time.current + 60.days)

@@ -21,7 +21,7 @@ RSpec.describe 'Friends CREATE' do
   end
 
   context 'when valid input' do
-    it 'updates friend' do
+    it 'updates friend', :aggregate_failures do
       friend_attributes = build(:friend)
       name = 'Super New friend'
       description = friend_attributes.description

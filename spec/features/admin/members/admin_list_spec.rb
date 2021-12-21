@@ -9,7 +9,7 @@ RSpec.describe 'Members LIST' do
     visit '/admin/members'
   end
 
-  it 'disaplays message with admins full names' do
+  it 'disaplays message with admins full names', :aggregate_failures do
     expect(find('.warning.message')).to have_content supervisor.full_name
     expect(find('.warning.message')).not_to have_content not_admin.full_name
   end

@@ -24,7 +24,7 @@ RSpec.describe 'Interview CREATE' do
   end
 
   describe 'valid input' do
-    it 'creates interview' do
+    it 'creates interview', :aggregate_failures do
       fill_in 'Description', with: 'Very hard interview'
       pick_a_date(date_field_name, Time.current + 40.minutes)
       select('vacant', from: 'Status')

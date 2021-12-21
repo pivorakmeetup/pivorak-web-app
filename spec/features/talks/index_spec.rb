@@ -8,7 +8,7 @@ RSpec.describe 'Talk publishable' do
 
   before { visit '/talks' }
 
-  it 'shows only published talks' do
+  it 'shows only published talks', :aggregate_failures do
     expect(page).to     have_content 'Published Talk'
     expect(page).not_to have_content 'Unpublished Talk'
     expect(page).not_to have_content 'Without Event'

@@ -12,7 +12,7 @@ RSpec.describe 'Questions READ' do
 
     before { visit test_questions_path }
 
-    it 'displays list of questions' do
+    it 'displays list of questions', :aggregate_failures do
       expect(page).to have_content 'Question A'
       expect(page).to have_content 'Question B'
     end

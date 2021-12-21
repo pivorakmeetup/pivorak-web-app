@@ -12,7 +12,7 @@ RSpec.describe 'Visit Requests SEARCH' do
     visit "/admin/events/#{event.slug}/visit_requests"
   end
 
-  it 'finds visit request by first name' do
+  it 'finds visit request by first name', :aggregate_failures do
     fill_in 'query', with: user1.first_name
     click_on I18n.t('words.search')
 
@@ -20,7 +20,7 @@ RSpec.describe 'Visit Requests SEARCH' do
     expect(page).not_to have_content user2.full_name
   end
 
-  it 'finds visit request by last name' do
+  it 'finds visit request by last name', :aggregate_failures do
     fill_in 'query', with: user2.last_name
     click_on I18n.t('words.search')
 

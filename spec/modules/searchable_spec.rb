@@ -11,7 +11,7 @@ RSpec.describe ::Searchable do
       subject.include(described_class)
     end
 
-    it 'responds to search module methods' do
+    it 'responds to search module methods', :aggregate_failures do
       allow(resolver).to receive(:call).and_return(true)
       subject.include(described_class)
 

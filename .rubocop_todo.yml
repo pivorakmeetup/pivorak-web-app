@@ -55,12 +55,6 @@ RSpec/MessageSpies:
     - 'spec/services/talk/fetch_external_video_data_spec.rb'
     - 'spec/services/visit_request/approve_spec.rb'
     - 'spec/services/visit_request/confirm_spec.rb'
-#    - 'spec/services/visit_request/create_spec.rb'
-
-# Offense count: 152
-# Configuration parameters: AggregateFailuresByDefault.
-RSpec/MultipleExpectations:
-  Max: 11
 
 # Offense count: 67
 # Configuration parameters: IgnoreSharedExamples.

@@ -22,7 +22,7 @@ RSpec.describe 'Test tasks LIST' do
   before { visit '/admin/courses/seasons/test-season/test_task' }
 
   context 'when shows test tasks with correct statuses and actions' do
-    it 'allows take on review submited tasks' do
+    it 'allows take on review submited tasks', :aggregate_failures do
       within other_reviewing_test_task_id do
         expect(page).to have_content 'On Review'
         expect(page).to have_content "by #{mentor_b.full_name}"

@@ -9,7 +9,7 @@ describe Courses::Mentor::AvailableForMentoring do
   let!(:mentor)       { create(:mentor, user_id: user.id, season_id: season.id) }
 
   describe '#call' do
-    it 'returns available for mentoring users' do
+    it 'returns available for mentoring users', :aggregate_failures do
       query = described_class.call(season)
 
       expect(query).to include(another_user)

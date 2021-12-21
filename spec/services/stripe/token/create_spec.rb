@@ -11,7 +11,7 @@ RSpec.describe ::Stripe::Token::Create do
       context 'when provided with valid params' do
         let(:params) { build(:valid_credit_card) }
 
-        it 'returns valid Stripe::Token instance' do
+        it 'returns valid Stripe::Token instance', :aggregate_failures do
           expect(subject).to be_an_instance_of Stripe::Token
 
           expect(subject.id).not_to be_nil

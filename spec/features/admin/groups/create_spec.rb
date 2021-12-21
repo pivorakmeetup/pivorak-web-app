@@ -17,7 +17,7 @@ RSpec.describe 'Groups CREATE' do
   end
 
   context 'when valid input' do
-    it 'create new group' do
+    it 'create new group', :aggregate_failures do
       fill_in 'Name', with: 'SuperGroup'
       select  'Talk', from: 'group_resource'
       click_button 'Create Group'

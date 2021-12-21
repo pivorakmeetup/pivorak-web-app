@@ -9,7 +9,7 @@ RSpec.describe 'email_templates UPDATE' do
   end
 
   context 'when params are valid' do
-    it 'updates EmailTemplate' do
+    it 'updates EmailTemplate', :aggregate_failures do
       email_template_params = build(:email_template)
       subject = email_template_params.subject
       note = email_template_params.note

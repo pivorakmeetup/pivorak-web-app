@@ -11,7 +11,7 @@ describe 'Talk SHOW' do
       expect(page).to have_content talk.title
     end
 
-    it 'shows talk speaker full name' do
+    it 'shows talk speaker full name', :aggregate_failures do
       expect(talk.speaker.full_name).to eq(user.full_name)
       expect(page).to have_content talk.speaker.full_name
     end

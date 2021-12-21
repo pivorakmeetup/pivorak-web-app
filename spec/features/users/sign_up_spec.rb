@@ -6,7 +6,7 @@ RSpec.describe 'Users Sign Up' do
   end
 
   context 'when params are valid' do
-    it 'creates user' do
+    it 'creates user', :aggregate_failures do
       first_name = Faker::Name.first_name
       last_name = Faker::Name.last_name
       email = Faker::Internet.email
@@ -43,7 +43,7 @@ RSpec.describe 'Users Sign Up' do
     end
 
     context 'when creating user with the same first_name and last_name' do
-      it 'creates user with correct slug' do
+      it 'creates user with correct slug', :aggregate_failures do
         first_name = 'Denys'
         last_name = 'Medynskyi'
         email = Faker::Internet.email
@@ -65,7 +65,7 @@ RSpec.describe 'Users Sign Up' do
   end
 
   context 'when params are invalid' do
-    it 'validates errors' do
+    it 'validates errors', :aggregate_failures do
       fill_in 'Email', with: ''
 
       expect { click_button 'Sign up' }.to change(User, :count).by(0)

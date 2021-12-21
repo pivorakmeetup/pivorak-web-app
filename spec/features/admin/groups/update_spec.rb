@@ -18,7 +18,7 @@ RSpec.describe 'Groups UPDATE' do
   end
 
   context 'when valid input' do
-    it 'create new group' do
+    it 'create new group', :aggregate_failures do
       fill_in 'Name', with: 'NewNameForGroup'
       click_button 'Update Group'
 
