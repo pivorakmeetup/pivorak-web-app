@@ -7,12 +7,6 @@ require:
   - rubocop-rails
   - rubocop-rspec
 
-RSpec/FactoryBot/CreateList:
-  Enabled: false
-
-RSpec/Rails/HttpStatus:
-  Enabled: false
-
 AllCops:
   TargetRubyVersion: 2.6.9
   NewCops: enable
@@ -39,10 +33,6 @@ Metrics/MethodLength:
 Layout/HashAlignment:
   EnforcedColonStyle: table
   EnforcedHashRocketStyle: table
-
-Lint/ConstantDefinitionInBlock:
-  Exclude:
-    - 'spec/lib/dry_helpers/model_spec.rb'
 
 Lint/MissingSuper:
   Enabled: false
