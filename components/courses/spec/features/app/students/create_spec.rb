@@ -63,8 +63,6 @@ RSpec.describe 'Student CREATE' do
   describe 'valid input' do
     context 'first application try' do
       it 'creates new student' do
-        allow_any_instance_of(Courses::Student::CreatePolicy).to receive(:allowed?).and_return(true)
-
         fill_in 'Personal info',   with: 'Personal stuff'
         fill_in 'Motivation info', with: 'Food!'
         fill_in 'Experience info', with: 'All free ruby courses from the Internet'
@@ -78,8 +76,6 @@ RSpec.describe 'Student CREATE' do
       let!(:student) { create :student, user: user, season: season }
 
       it 'does not create new student' do
-        allow_any_instance_of(Courses::Student::CreatePolicy).to receive(:allowed?).and_return(false)
-
         fill_in 'Personal info',   with: 'Personal stuff'
         fill_in 'Motivation info', with: 'Food!'
         fill_in 'Experience info', with: 'All free ruby courses from the Internet'

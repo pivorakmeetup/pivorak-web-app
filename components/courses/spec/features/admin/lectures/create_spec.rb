@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Lector CREATE' do
+RSpec.describe 'Lecture CREATE' do
   let!(:season)         { create(:season, title: 'Test Season', status: :live) }
   let!(:user)           { create(:user) }
   let!(:venue)          { create(:venue) }
@@ -21,7 +21,6 @@ RSpec.describe 'Lector CREATE' do
     end
 
     it 'validates errors when time is wrong' do
-      allow_any_instance_of(Courses::Lecture::TimePolicy).to receive(:allowed?).and_return(false)
       select user.full_name, from: 'lecture[mentor_id]'
       select venue.name, from: 'lecture[venue_id]'
       fill_in 'Title', with: 'Awesome Lecture'
@@ -33,10 +32,10 @@ RSpec.describe 'Lector CREATE' do
 
   context 'valid input' do
     it 'creates lecture' do
-      allow_any_instance_of(Courses::Lecture::TimePolicy).to receive(:allowed?).and_return(true)
       select user.full_name, from: 'lecture[mentor_id]'
       select venue.name, from: 'lecture[venue_id]'
       fill_in 'Title', with: 'Awesome lecture'
+      pick_a_date 'lecture_finished_at', Time.current + 1.hour
       click_button 'Create Lecture'
 
       expect(page).to have_current_path '/admin/courses/seasons/test-season/lectures'

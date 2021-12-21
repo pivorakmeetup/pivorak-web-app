@@ -4,14 +4,20 @@ require 'rails_helper'
 
 RSpec.describe 'Students READ' do
   context 'list of students' do
-    let!(:season)            { create(:season, title: 'Test Season', status: :registration) }
+    let!(:season) { create(:season, title: 'Test Season', status: :registration) }
     let(:test_students_path) { '/admin/courses/seasons/test-season/students' }
-    let!(:user_a)            { User.create(email: 'test_a@test.com', first_name: 'User', last_name: 'A') }
-    let(:user_b)             { User.create(email: 'test_b@test.com', first_name: 'User', last_name: 'B') }
-    let!(:season_creator)    { ::Courses::Mentor.create(user: user_a, season: season) }
-    let!(:student_a)         do
-      create(:student,
-             personal_info: 'Student A', season: season, user: user_a, status: :attending)
+    let!(:user_a) { User.create(email: 'test_a@test.com', first_name: 'User', last_name: 'A') }
+    let(:user_b) { User.create(email: 'test_b@test.com', first_name: 'User', last_name: 'B') }
+    let!(:season_creator) { ::Courses::Mentor.create(user: user_a, season: season) }
+    let!(:student_a) { create(:student, personal_info: 'Student A', season: season, user: user_a, status: :attending) }
+    let(:mentor) { create(:mentor, user: user_b, season: season) }
+    let(:lecture) { create(:lecture, mentor: mentor, venue: venue, season: season) }
+    let(:venue) { create(:venue) }
+
+    before do
+      create(:progress, student: student_a, lecture: lecture, mentor: mentor, homework_mark: -1)
+      create(:progress, student: student_a, lecture: lecture, mentor: mentor, homework_mark: -1)
+      create(:progress, student: student_a, lecture: lecture, mentor: mentor, homework_mark: -1)
     end
 
     it 'displays list of students' do
@@ -42,7 +48,6 @@ RSpec.describe 'Students READ' do
       season.live!
       season.reload
 
-      allow_any_instance_of(Courses::Student::DropPolicy).to receive(:allowed?).and_return(true)
       visit test_students_path
 
       click_link 'Drop!'

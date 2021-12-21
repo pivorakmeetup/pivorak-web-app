@@ -4,10 +4,6 @@ RSpec.describe ::Mailchimp::SubscriptionJob, type: :job do
   let(:user)    { create(:user) }
   let(:service) { ::Mailchimp::User::Subscribe }
 
-  before do
-    allow_any_instance_of(service).to receive(:call).and_return(nil)
-  end
-
   describe '#perform' do
     context 'with no user id provided' do
       it 'stops execution and returns' do

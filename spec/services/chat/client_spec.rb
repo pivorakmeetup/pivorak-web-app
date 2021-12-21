@@ -8,7 +8,7 @@ describe Chat::Client do
   let(:client) { described_class.new(url: url) }
 
   before do
-    expect_any_instance_of(HttpClient).to receive(:get).with(url, { token: ENV['SLACK_TOKEN'] }, {}) { response }
+    stub_request(:get, url).with(query: { token: ENV['SLACK_TOKEN'] }).to_return(body: body)
   end
 
   describe '#call' do

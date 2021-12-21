@@ -7,7 +7,7 @@ RSpec.describe Mailchimp::User::Subscribe do
   let(:response) { described_class.call(user: user) }
 
   before do
-    allow_any_instance_of(described_class).to receive(:lists) { lists }
+    allow(Gibbon::Request).to receive(:lists).and_return(lists)
     allow(lists).to receive(:members) { members }
   end
 

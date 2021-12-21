@@ -6,20 +6,6 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 16
-RSpec/AnyInstance:
-  Exclude:
-    - 'components/courses/spec/features/admin/interviews/create_spec.rb'
-    - 'components/courses/spec/features/admin/interviews/update_spec.rb'
-    - 'components/courses/spec/features/admin/lectures/create_spec.rb'
-    - 'components/courses/spec/features/admin/students/read_spec.rb'
-    - 'components/courses/spec/features/app/students/create_spec.rb'
-    - 'spec/jobs/mailchimp/subscription_job_spec.rb'
-    - 'spec/services/chat/client_spec.rb'
-    - 'spec/services/email/create_spec.rb'
-    - 'spec/services/http_client_spec.rb'
-    - 'spec/services/mailchimp/user/subscribe_spec.rb'
-
 # Offense count: 1
 # Cop supports --auto-correct.
 RSpec/Capybara/CurrentPathExpectation:

@@ -16,8 +16,6 @@ RSpec.describe 'Interview CREATE' do
   describe 'invalid input' do
     context 'blank start time' do
       it 'validates errors' do
-        allow_any_instance_of(Courses::Interview::IntervalPolicy).to receive(:allowed?).and_return(true)
-
         interview.start_at = ''
 
         expect(interview).not_to be_valid

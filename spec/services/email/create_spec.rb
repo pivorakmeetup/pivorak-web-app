@@ -16,9 +16,9 @@ describe Email::Create do
       it { expect { subject }.to change(Email, :count).by(1) }
 
       it 'executes Send service' do
-        email = create(:email)
+        email = build_stubbed(:email)
 
-        allow_any_instance_of(described_class).to receive(:email) { email }
+        allow(Email).to receive(:create).and_return(email)
         expect(Email::Send).to receive(:call).with(email: email, recipient_ids: recipient_ids)
 
         subject
