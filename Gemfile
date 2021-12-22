@@ -97,10 +97,11 @@ group :development, :test do
   gem 'rspec'
   gem 'rspec-rails'
   gem 'rubocop', '~> 1.23', require: false
-  gem 'rubocop-rspec'
-  gem 'rubocop-faker'
-  gem 'rubocop-performance'
-  gem 'rubocop-rails'
+  gem 'rubocop-rspec', require: false
+  gem 'rubocop-faker', require: false
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rake', require: false
 end
 
 group :test do

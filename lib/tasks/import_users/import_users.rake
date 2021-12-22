@@ -2,6 +2,7 @@
 
 require 'csv'
 
+desc 'Import users from CSV file'
 task import_users: :environment do
   puts 'Import started'
 
