@@ -18,7 +18,7 @@ describe Courses::Season::ShowTabPolicy do
     describe 'status: planned' do
       let(:status) { 'planned' }
 
-      context 'allowed controller' do
+      context 'when allowed controller' do
         it 'allows to pass policy' do
           allowed_for_planned.each do |controller|
             expect(described_class.new(status, controller)).to be_allowed
@@ -26,7 +26,7 @@ describe Courses::Season::ShowTabPolicy do
         end
       end
 
-      context 'forbidden controller' do
+      context 'when forbidden controller' do
         it 'forbids to pass policy' do
           forbidden_for_planned.each do |controller|
             expect(described_class.new(status, controller)).not_to be_allowed
@@ -38,7 +38,7 @@ describe Courses::Season::ShowTabPolicy do
     describe 'status: registration' do
       let(:status) { 'registration' }
 
-      context 'allowed controller' do
+      context 'when allowed controller' do
         it 'allows to pass policy' do
           allowed_for_registration.each do |controller|
             expect(described_class.new(status, controller)).to be_allowed
@@ -46,7 +46,7 @@ describe Courses::Season::ShowTabPolicy do
         end
       end
 
-      context 'forbidden controller' do
+      context 'when forbidden controller' do
         it 'forbids to pass policy' do
           forbidden_for_registration.each do |controller|
             expect(described_class.new(status, controller)).not_to be_allowed
@@ -58,7 +58,7 @@ describe Courses::Season::ShowTabPolicy do
     describe 'status: selection' do
       let(:status) { 'selection' }
 
-      context 'allowed controller' do
+      context 'when allowed controller' do
         it 'allows to pass policy' do
           allowed_for_selection.each do |controller|
             expect(described_class.new(status, controller)).to be_allowed
@@ -66,7 +66,7 @@ describe Courses::Season::ShowTabPolicy do
         end
       end
 
-      context 'forbidden controller' do
+      context 'when forbidden controller' do
         it 'forbids to pass policy' do
           forbidden_for_selection.each do |controller|
             expect(described_class.new(status, controller)).not_to be_allowed
@@ -78,7 +78,7 @@ describe Courses::Season::ShowTabPolicy do
     describe 'status: live' do
       let(:status) { 'live' }
 
-      context 'allowed controller' do
+      context 'when allowed controller' do
         it 'allows to pass policy' do
           allowed_for_live.each do |controller|
             expect(described_class.new(status, controller)).to be_allowed
@@ -86,7 +86,7 @@ describe Courses::Season::ShowTabPolicy do
         end
       end
 
-      context 'forbidden controller' do
+      context 'when forbidden controller' do
         it 'forbids to pass policy' do
           forbidden_for_live.each do |controller|
             expect(described_class.new(status, controller)).not_to be_allowed
@@ -98,7 +98,7 @@ describe Courses::Season::ShowTabPolicy do
     describe 'status: passed' do
       let(:status) { 'passed' }
 
-      context 'allowed controller' do
+      context 'when allowed controller' do
         it 'allows to pass policy' do
           allowed_for_passed.each do |controller|
             expect(described_class.new(status, controller)).to be_allowed
@@ -106,7 +106,7 @@ describe Courses::Season::ShowTabPolicy do
         end
       end
 
-      context 'forbidden controller' do
+      context 'when forbidden controller' do
         it 'forbids to pass policy' do
           forbidden_for_passed.each do |controller|
             expect(described_class.new(status, controller)).not_to be_allowed

@@ -31,7 +31,7 @@ describe Courses::Student::TotalHash do
   end
 
   describe '#call' do
-    it 'returns total hash' do
+    it 'returns total hash', :aggregate_failures do
       students = [first_student, second_student]
 
       first_total       = first_progress.homework_mark + first_progress.lecture_presence +

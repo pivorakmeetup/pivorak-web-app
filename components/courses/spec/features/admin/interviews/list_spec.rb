@@ -3,19 +3,22 @@
 require 'rails_helper'
 
 RSpec.describe 'Interviews LIST' do
-  let!(:season)    { create(:season, title: 'Test Season', status: :selection) }
-  let!(:user)      { User.create(email: 'test@test.com', first_name: 'Test', last_name: 'User') }
-  let!(:student)   { create(:student, user: user, season: season, status: :interviewing) }
-  let!(:mentor)    { ::Courses::Mentor.create(user: user, season: season) }
-  let!(:interview) { create(:interview, mentor: mentor, season_id: season.id, student: student, status: :completed) }
+  let(:season)    { create(:season, title: 'Test Season', status: :selection) }
+  let(:user)      { create(:user, email: 'test@test.com', first_name: 'Test', last_name: 'User') }
+  let(:student)   { create(:student, user: user, season: season, status: :interviewing) }
+  let(:mentor)    { create(:mentor, user: user, season: season) }
 
-  before { visit '/admin/courses/seasons/test-season/interviews/' }
+  before do
+    create :interview, mentor: mentor, student: student, status: :completed
 
-  context 'open existing page' do
+    visit '/admin/courses/seasons/test-season/interviews/'
+  end
+
+  context 'when open existing page' do
     it { expect(page).to have_content(mentor.full_name) }
   end
 
-  context 'interview approve' do
+  context 'when interview approve' do
     it 'approves student' do
       click_link 'Approve'
 

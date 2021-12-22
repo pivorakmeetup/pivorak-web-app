@@ -15,13 +15,13 @@ describe VisitRequestMailer do
     let(:mail) { described_class.needs_confirmation(visit_request) }
     let(:email_template) { EmailTemplate.find_by!(title: 'VisitRequestMailer#needs_confirmation') }
 
-    it 'renders the headers' do
+    it 'renders the headers', :aggregate_failures do
       expect(mail.subject).to eq(email_template.subject)
       expect(mail.to).to eq([visit_request.user.email])
       expect(mail.from).to eq([ApplicationMailer::PIVORAK_EMAIL])
     end
 
-    it 'renders the body' do
+    it 'renders the body', :aggregate_failures do
       expect(mail.body.encoded).to include event.title
       expect(mail.body.encoded).to include user.full_name
     end
@@ -31,18 +31,18 @@ describe VisitRequestMailer do
     let(:mail) { described_class.confirmation(visit_request) }
     let(:event) { create(:event, venue: create(:venue)) }
 
-    it 'renders the headers' do
+    it 'renders the headers', :aggregate_failures do
       expect(mail.subject).to eq("#pivorak details | #{event.title}")
       expect(mail.to).to eq([visit_request.user.email])
       expect(mail.from).to eq([ApplicationMailer::PIVORAK_EMAIL])
     end
 
-    it 'renders the body' do
+    it 'renders the body', :aggregate_failures do
       expect(mail.body.encoded).to include event.title
       expect(mail.body.encoded).to include user.full_name
     end
 
-    it 'renders the event attachment' do
+    it 'renders the event attachment', :aggregate_failures do
       expect(mail.attachments['event.ics']).to be_present
       expect(mail.attachments['event.ics'].body.encoded).to include('BEGIN:VCALENDAR')
     end
@@ -52,13 +52,13 @@ describe VisitRequestMailer do
     let(:mail) { described_class.confirmation_reminder(visit_request) }
     let(:event) { create(:event, venue: create(:venue)) }
 
-    it 'renders the headers' do
+    it 'renders the headers', :aggregate_failures do
       expect(mail.subject).to eq("#pivorak reminder | #{event.title}")
       expect(mail.to).to eq([visit_request.user.email])
       expect(mail.from).to eq([ApplicationMailer::PIVORAK_EMAIL])
     end
 
-    it 'renders the body' do
+    it 'renders the body', :aggregate_failures do
       expect(mail.body.encoded).to include event.title
       expect(mail.body.encoded).to include user.full_name
     end
@@ -69,13 +69,13 @@ describe VisitRequestMailer do
     let(:event) { create(:event, venue: venue) }
     let(:venue) { create(:venue) }
 
-    it 'renders the headers' do
+    it 'renders the headers', :aggregate_failures do
       expect(mail.subject).to eq('#pivorak confirmation | QR code is attached')
       expect(mail.to).to eq([visit_request.user.email])
       expect(mail.from).to eq([ApplicationMailer::PIVORAK_EMAIL])
     end
 
-    it 'renders the body' do
+    it 'renders the body', :aggregate_failures do
       expect(mail.body.encoded).to include event.title
       expect(mail.body.encoded).to include user.full_name
     end
@@ -89,13 +89,13 @@ describe VisitRequestMailer do
     let(:mail) { described_class.approved(visit_request) }
     let(:email_template) { EmailTemplate.find_by!(title: 'VisitRequestMailer#approved') }
 
-    it 'renders the headers' do
+    it 'renders the headers', :aggregate_failures do
       expect(mail.subject).to eq(email_template.subject)
       expect(mail.to).to eq([visit_request.user.email])
       expect(mail.from).to eq([ApplicationMailer::PIVORAK_EMAIL])
     end
 
-    it 'renders the body' do
+    it 'renders the body', :aggregate_failures do
       expect(mail.body.encoded).to include event.title
       expect(mail.body.encoded).to include user.full_name
     end
@@ -112,13 +112,13 @@ describe VisitRequestMailer do
       )
     end
 
-    it 'renders the headers' do
+    it 'renders the headers', :aggregate_failures do
       expect(mail.subject).to eq(email_template.subject)
       expect(mail.to).to eq([ApplicationMailer::PIVORAK_EMAIL])
       expect(mail.from).to eq([ApplicationMailer::NO_REPLY_EMAIL])
     end
 
-    it 'renders the body' do
+    it 'renders the body', :aggregate_failures do
       expect(mail.body.encoded).to include event.title
       expect(mail.body.encoded).to include user.full_name
       expect(mail.body.encoded).to have_link('here', href: "http://localhost/admin/events/#{event.slug}/visit_requests")

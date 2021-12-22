@@ -19,7 +19,7 @@ describe Event::SendConfirmationReminders do
       create(:visit_request, :approved)
     end
 
-    it 'sends confirmation reminders to people who did not confirm their attendance' do
+    it 'sends confirmation reminders to people who did not confirm their attendance', :aggregate_failures do
       allow(VisitRequestMailer).to receive(:confirmation_reminder).with(approved_request).and_call_original
 
       call

@@ -4,7 +4,7 @@ module MembersHelper
   GRAVATAR_URL = 'http://gravatar.com'
 
   def gravatar_website_link
-    link_to t('members.change_gravatar'), GRAVATAR_URL, target: '_blank'
+    link_to t('members.change_gravatar'), GRAVATAR_URL, target: '_blank', rel: 'noopener'
   end
 
   def gravatar_url(user)

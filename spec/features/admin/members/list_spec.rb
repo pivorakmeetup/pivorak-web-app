@@ -18,7 +18,7 @@ RSpec.describe 'Members LIST' do
       let!(:synthetic_user) { create(:user, :synth) }
       let!(:non_synthetic_user) { create(:user, first_name: 'Denys') }
 
-      it 'filters on synthetic users' do
+      it 'filters on synthetic users', :aggregate_failures do
         visit '/admin/members?filter_member[synthetic]=1'
 
         expect(page).to have_content synthetic_user.full_name
@@ -30,7 +30,7 @@ RSpec.describe 'Members LIST' do
       let!(:verified_user) { create(:user, :verified) }
       let!(:non_verified_user) { create(:user, first_name: 'Denys', verified: false) }
 
-      it 'filters on verified users' do
+      it 'filters on verified users', :aggregate_failures do
         visit '/admin/members?filter_member[verified]=1'
 
         expect(page).to have_content verified_user.full_name
@@ -42,7 +42,7 @@ RSpec.describe 'Members LIST' do
       let!(:synthetic_user) { create(:user, :synth, :verified) }
       let!(:non_synthetic_user) { create(:user, verified: false) }
 
-      it 'filters on synthetic and verified users' do
+      it 'filters on synthetic and verified users', :aggregate_failures do
         visit '/admin/members?filter_member[synthetic]=1'
 
         expect(page).to have_content synthetic_user.full_name
@@ -58,7 +58,7 @@ RSpec.describe 'Members LIST' do
       end
       let!(:non_speaker) { create(:user) }
 
-      it 'filters on speakers users' do
+      it 'filters on speakers users', :aggregate_failures do
         visit '/admin/members?filter_member[speaker]=1'
 
         expect(page).to have_content speaker.full_name
@@ -72,7 +72,7 @@ RSpec.describe 'Members LIST' do
 
         click_link('Reset filters', match: :first)
 
-        expect(page.current_path).to eq('/admin/members')
+        expect(page).to have_current_path('/admin/members')
       end
     end
   end

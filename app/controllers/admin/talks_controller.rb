@@ -18,6 +18,10 @@ module Admin
       react_to Talk::Create.call(talk)
     end
 
+    def edit
+      super
+    end
+
     def update
       react_to Talk::Update.call(talk, talks_params)
     end

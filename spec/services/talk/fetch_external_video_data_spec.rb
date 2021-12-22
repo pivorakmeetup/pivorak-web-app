@@ -8,7 +8,7 @@ RSpec.describe Talk::FetchExternalVideoData do
   end
 
   describe '.call' do
-    context 'valid video_url' do
+    context 'when valid video_url' do
       let(:request_params) { { id: '4QdOwMVMs7k' } }
       let(:response_mock) do
         instance_double(Yt::Video,
@@ -17,24 +17,25 @@ RSpec.describe Talk::FetchExternalVideoData do
                         view_count: 458)
       end
 
-      before { expect(Yt::Video).to receive(:new).with(request_params).and_return(response_mock) }
+      before { allow(Yt::Video).to receive(:new).with(request_params).and_return(response_mock) }
 
-      it 'updates talk with fetched video attributes' do
+      it 'updates talk with fetched video attributes', :aggregate_failures do
         described_class.call(talk)
 
+        expect(Yt::Video).to have_received(:new).with(request_params)
         expect(talk.extra['video_duration']).to    eq 2864
         expect(talk.extra['video_likes_count']).to eq 20
         expect(talk.extra['video_views_count']).to eq 458
       end
     end
 
-    context 'no video_url' do
+    context 'when no video_url' do
       let(:talk) { create :talk, video_url: nil }
 
       it { expect(described_class.call(talk)).to eq nil }
     end
 
-    context 'invalid video_url' do
+    context 'when invalid video_url' do
       let(:talk) { create :talk }
 
       it { expect(described_class.call(talk)).to eq nil }
@@ -42,17 +43,20 @@ RSpec.describe Talk::FetchExternalVideoData do
   end
 
   describe '.fetch_all' do
-    let(:talk_2) do
+    let(:talk2) do
       create :talk,
              title:     'Phoenix Framework for the new web by José Valim',
              video_url: 'https://www.youtube.com/watch?v=Toluc5MCQWs'
     end
 
-    it 'calls service for all talks' do
-      expect(described_class).to receive(:new).with(talk)
-      expect(described_class).to receive(:new).with(talk_2)
+    it 'calls service for all talks', :aggregate_failures do
+      allow(described_class).to receive(:new).with(talk)
+      allow(described_class).to receive(:new).with(talk2)
 
       described_class.fetch_all!
+
+      expect(described_class).to have_received(:new).with(talk)
+      expect(described_class).to have_received(:new).with(talk2)
     end
   end
 end

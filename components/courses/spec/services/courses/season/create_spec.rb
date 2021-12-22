@@ -3,11 +3,11 @@
 require 'rails_helper'
 
 describe Courses::Season::Create do
-  let(:season) { build(:season, title: 'Title', start_at: Time.now, finish_at: Time.now + 100.days) }
+  let(:season) { build(:season, title: 'Title', start_at: Time.current, finish_at: Time.current + 100.days) }
   let(:user)   { create(:user) }
 
   describe '#call' do
-    it 'creates season with set of default questions' do
+    it 'creates season with set of default questions', :aggregate_failures do
       described_class.call(season, user)
 
       expect(season.questions.count).to eq(5)

@@ -23,7 +23,7 @@ RSpec.describe Search::Multisearch do
         context 'when there are matches' do
           let(:result) { described_class.call(query: string) }
 
-          it 'returns PgSearch collection' do
+          it 'returns PgSearch collection', :aggregate_failures do
             expect(result).to be_a ActiveRecord::Relation
             expect(result.first).to be_a PgSearch::Document
           end
@@ -54,7 +54,7 @@ RSpec.describe Search::Multisearch do
             expect(result.keys.length).to eq 3
           end
 
-          it 'returns valid results' do
+          it 'returns valid results', :aggregate_failures do
             expect(result[user.class]).to eq [user]
             expect(result[talk.class]).to eq [talk]
             expect(result[event.class]).to eq [event]

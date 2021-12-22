@@ -7,6 +7,7 @@ module Users
 
       included do
         attr_reader :recaptcha_error_message
+
         helper_method :recaptcha_error_message
       end
 

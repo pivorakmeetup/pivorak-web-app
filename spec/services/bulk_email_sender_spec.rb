@@ -14,7 +14,7 @@ describe BulkEmailSender do
     let!(:approved_request) { create(:visit_request, :approved) }
     let(:last_job) { active_jobs.last }
 
-    it 'sends confirmation reminders to people who did not confirm their attendance' do
+    it 'sends confirmation reminders to people who did not confirm their attendance', :aggregate_failures do
       allow(VisitRequestMailer).to receive(:confirmation_reminder).with(approved_request).and_call_original
 
       call
@@ -27,17 +27,17 @@ describe BulkEmailSender do
       expect(last_job[:args][1]).to eq 'confirmation_reminder'
     end
 
-    it 'spreads sending through the time' do
+    it 'spreads sending through the time', :aggregate_failures do
       stub_const('BulkEmailSender::BULK_SIZE', 1)
 
       create(:visit_request, :approved)
-      mocked_mailer = double('Dummy', deliver_later: true)
+      mocked_mailer = instance_spy('Dummy', deliver_later: true)
 
       allow(VisitRequestMailer).to receive(:confirmation_reminder).and_return(mocked_mailer)
 
       call
 
-      expect(mocked_mailer).to have_received(:deliver_later).with(wait: 0.hour).once
+      expect(mocked_mailer).to have_received(:deliver_later).with(wait: 0.hours).once
       expect(mocked_mailer).to have_received(:deliver_later).with(wait: 1.hour).once
     end
   end

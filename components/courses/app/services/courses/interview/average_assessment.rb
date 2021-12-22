@@ -37,7 +37,7 @@ module Courses
 
       def question_average_mark(question)
         if marks(question).any?
-          (marks(question).inject(:+).to_f / marks(question).size).round(2)
+          (marks(question).sum.to_f / marks(question).size).round(2)
         else
           ZERO_MARK
         end

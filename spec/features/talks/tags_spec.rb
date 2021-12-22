@@ -2,16 +2,19 @@
 
 describe 'Talks tags' do
   let(:event) { create :event }
-  let!(:talk_about_ruby)  { create :talk, title: 'Ruby Way', tag_list: 'ruby', event: event }
-  let!(:talk_about_js)    { create :talk, title: 'JS Way',   tag_list: 'javascript', event: event }
-  let!(:talk_about_rails) { create :talk, title: 'Rails Way', tag_list: 'ruby, rails', event: event }
 
-  before { visit "/talks?tag=#{tag}" }
+  before do
+    create :talk, title: 'Ruby Way', tag_list: 'ruby', event: event
+    create :talk, title: 'JS Way',   tag_list: 'javascript', event: event
+    create :talk, title: 'Rails Way', tag_list: 'ruby, rails', event: event
+
+    visit "/talks?tag=#{tag}"
+  end
 
   context 'when ruby tag' do
     let(:tag) { 'ruby' }
 
-    it 'filter by ruby tags' do
+    it 'filter by ruby tags', :aggregate_failures do
       expect(page).to     have_content 'Ruby Way'
       expect(page).to     have_content 'Rails Way'
       expect(page).not_to have_content 'JS Way'
@@ -21,7 +24,7 @@ describe 'Talks tags' do
   context 'when rails tag' do
     let(:tag) { 'rails' }
 
-    it 'filter by rails tags' do
+    it 'filter by rails tags', :aggregate_failures do
       expect(page).to     have_content 'Rails Way'
       expect(page).not_to have_content 'Ruby Way'
       expect(page).not_to have_content 'JS Way'
@@ -31,7 +34,7 @@ describe 'Talks tags' do
   context 'when javascript tag' do
     let(:tag) { 'javascript' }
 
-    it 'filter by javascript tags' do
+    it 'filter by javascript tags', :aggregate_failures do
       expect(page).to     have_content 'JS Way'
       expect(page).not_to have_content 'Ruby Way'
       expect(page).not_to have_content 'Rails Way'

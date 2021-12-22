@@ -1,9 +1,14 @@
 require:
   - rubocop
   - rubocop-faker
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-rake
 
 AllCops:
-  TargetRubyVersion: 2.6.5
+  TargetRubyVersion: 2.6.9
+  NewCops: enable
   Exclude:
     - Guardfile
     - db/migrate/*
@@ -28,9 +33,37 @@ Layout/HashAlignment:
   EnforcedColonStyle: table
   EnforcedHashRocketStyle: table
 
+Lint/MissingSuper:
+  Enabled: false
+
 Metrics/BlockLength:
-  ExcludedMethods: [
+  IgnoredMethods: [
     'describe', 'xdescribe', 'context', 'xcontext', 'it', 'xit', 'get', 'post', 'put', 'FactoryBot.define',
     'factory', 'let', 'before', 'after', 'configure',  'resource', 'aggregate_failures', 'draw', 'collection',
     'example'
   ]
+
+Rails/OutputSafety:
+  Exclude:
+    - 'app/helpers/admin/application_helper.rb'
+    - 'app/helpers/application_helper.rb'
+    - 'app/helpers/events_helper.rb'
+    - 'app/inputs/date_time_input.rb'
+    - 'app/inputs/image_preview_input.rb'
+    - 'app/services/markdown_renderer.rb'
+
+Lint/UselessMethodDefinition:
+  Exclude:
+    - 'app/controllers/**/*'
+
+RSpec/ExampleLength:
+  Max: 34
+
+RSpec/NestedGroups:
+  Max: 5
+
+RSpec/MultipleMemoizedHelpers:
+  Max: 14
+
+Rails/SkipsModelValidations:
+  AllowedMethods: ['upsert']

@@ -20,6 +20,10 @@ module Admin
       react_to User::Create.call(member, users_params, synthetic: true)
     end
 
+    def edit
+      super
+    end
+
     def update
       react_to member.update_without_password(users_params)
     end

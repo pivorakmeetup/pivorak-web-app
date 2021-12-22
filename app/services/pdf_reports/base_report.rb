@@ -11,10 +11,8 @@ module PdfReports
       raise NotImplementedError, 'For subclasses only!'
     end
 
-    def report
-      Prawn::Document.generate(report_file.path, report_options) do |pdf|
-        yield(pdf)
-      end
+    def report(&block)
+      Prawn::Document.generate(report_file.path, report_options, &block)
     end
 
     def report_file
@@ -30,7 +28,7 @@ module PdfReports
     end
 
     def settings_file
-      File.expand_path("#{Rails.root}/lib/pdf_reports/#{report_file_name}.yml")
+      Rails.root.join("lib/pdf_reports/#{report_file_name}.yml")
     end
 
     def report_options

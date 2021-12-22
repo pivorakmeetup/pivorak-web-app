@@ -78,7 +78,7 @@ Rails.application.configure do
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
   if ENV['RAILS_LOG_TO_STDOUT'].present?
-    logger           = ActiveSupport::Logger.new(STDOUT)
+    logger           = ActiveSupport::Logger.new($stdout)
     logger.formatter = config.log_formatter
     config.logger = ActiveSupport::TaggedLogging.new(logger)
   end
@@ -96,16 +96,17 @@ Rails.application.configure do
     password:       ENV['MAILGUN_PASSWORD']
   }
 
-  config.action_mailer.preview_path ||= defined?(Rails.root) ? "#{Rails.root}/spec/mailer_previews" : nil
+  config.action_mailer.preview_path ||= defined?(Rails.root) ? Rails.root.join('spec/mailer_previews') : nil
   config.autoload_paths += [config.action_mailer.preview_path]
-  module Rails
-    class MailersController
-      before_action :authenticate_user!
-      def local_request?
-        true
-      end
-    end
-  end
 
   config.action_mailer.default_url_options = { host: 'pivorak.com', protocol: 'https' }
+end
+
+module Rails
+  class MailersController
+    before_action :authenticate_user!
+    def local_request?
+      true
+    end
+  end
 end

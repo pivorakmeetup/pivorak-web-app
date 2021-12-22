@@ -8,7 +8,7 @@ describe Courses::Student::DropPolicy do
   let(:low_total)  { -3 }
 
   describe '#allowed?' do
-    context 'total is beyond drop point and status is not dropped' do
+    context 'when total is beyond drop point and status is not dropped' do
       it 'allows to pass policy' do
         policy = described_class.new(student, low_total)
 
@@ -16,7 +16,7 @@ describe Courses::Student::DropPolicy do
       end
     end
 
-    context 'total is above drop point' do
+    context 'when total is above drop point' do
       it 'forbids to pass policy' do
         policy = described_class.new(student, high_total)
 
@@ -24,7 +24,7 @@ describe Courses::Student::DropPolicy do
       end
     end
 
-    context 'status is dropped' do
+    context 'when status is dropped' do
       it 'forbids to pass policy' do
         student.dropped!
         student.reload
@@ -35,7 +35,7 @@ describe Courses::Student::DropPolicy do
       end
     end
 
-    context 'status is graduated' do
+    context 'when status is graduated' do
       it 'forbids to pass policy' do
         student.graduated!
         student.reload

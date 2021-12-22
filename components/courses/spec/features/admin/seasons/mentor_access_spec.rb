@@ -3,19 +3,22 @@
 require 'rails_helper'
 
 RSpec.describe 'Mentor access' do
-  let!(:season)         { create(:season, title: 'Test Season') }
-  let!(:user)           { User.create(email: 'test@test.com', first_name: 'Test', last_name: 'User') }
-  let!(:another_season) { create(:season, title: 'Another Season') }
-  let!(:season_creator) { ::Courses::Mentor.create(user: user, season: season) }
+  let(:season)         { create(:season, title: 'Test Season') }
+  let(:user)           { create(:user, email: 'test@test.com', first_name: 'Test', last_name: 'User') }
 
-  context 'mentor allowed' do
+  before do
+    create :mentor, user: user, season: season
+    create(:season, title: 'Another Season')
+  end
+
+  context 'when mentor allowed' do
     it 'allow access' do
       visit '/admin/courses/seasons/test-season'
       expect(page).to have_current_path '/admin/courses/seasons/test-season'
     end
   end
 
-  context 'mentor not allowed' do
+  context 'when mentor not allowed' do
     it 'reject response' do
       visit '/admin/courses/seasons/another-season'
       expect(page).to have_current_path '/admin/courses/seasons'

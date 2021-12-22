@@ -36,21 +36,33 @@ module Courses
         end
       end
 
-      def sorted_hash # rubocop:disable Metrics/AbcSize
+      def sorted_hash
         case sort_by
         when TOTAL
-          total_hash.sort_by { |_k, v| v[:total] }.reverse.to_h
+          sort_by_total
         when NAME
-          total_hash.sort_by { |k, _v| k.full_name }.to_h
+          sort_by_name
         when LECTURE
-          total_hash.sort_by do |_k, v|
-            v[:per_lecture]
-              .find_by(lecture_id: lecture_id)
-              .homework_mark
-          end.reverse.to_h
+          sort_by_lecture
         else
           total_hash.sort_by { |k, _v| k.full_name }.to_h
         end
+      end
+
+      def sort_by_total
+        total_hash.sort_by { |_k, v| v[:total] }.reverse.to_h
+      end
+
+      def sort_by_name
+        total_hash.sort_by { |k, _v| k.full_name }.to_h
+      end
+
+      def sort_by_lecture
+        total_hash.sort_by do |_k, v|
+          v[:per_lecture]
+            .find_by(lecture_id: lecture_id)
+            .homework_mark
+        end.reverse.to_h
       end
     end
   end

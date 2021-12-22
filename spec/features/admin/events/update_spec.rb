@@ -1,15 +1,16 @@
 # frozen_string_literal: true
 
 RSpec.describe 'Events UPDATE' do
-  let!(:event) { create(:event, title: 'Test Event') }
   let(:test_edit_path) { '/admin/events/test-event/edit' }
 
   before do
+    create(:event, title: 'Test Event')
+
     assume_admin_logged_in(supervisor: true)
     visit test_edit_path
   end
 
-  context 'invalid input' do
+  context 'when invalid input' do
     it 'validates errors' do
       fill_in 'Title', with: ''
       click_button 'Update Event'
@@ -19,7 +20,7 @@ RSpec.describe 'Events UPDATE' do
     end
   end
 
-  context 'valid input' do
+  context 'when valid input' do
     it 'updates event' do
       fill_in 'Title', with: 'Super New Event'
       click_button 'Update Event'
@@ -29,8 +30,8 @@ RSpec.describe 'Events UPDATE' do
     end
   end
 
-  context 'default values for event' do
-    it 'shows updated values instead of default' do
+  context 'with default values for event' do
+    it 'shows updated values instead of default', :aggregate_failures do
       fill_in 'Title', with: 'Super New Event'
       fill_in 'Limit total', with: 2
       fill_in 'Limit verified', with: 1

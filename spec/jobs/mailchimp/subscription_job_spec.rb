@@ -2,17 +2,16 @@
 
 RSpec.describe ::Mailchimp::SubscriptionJob, type: :job do
   let(:user)    { create(:user) }
-  let(:service) { ::Mailchimp::User::Subscribe }
-
-  before do
-    allow_any_instance_of(service).to receive(:call).and_return(nil)
-  end
+  let(:service) { class_spy(::Mailchimp::User::Subscribe).as_stubbed_const }
 
   describe '#perform' do
+    before { allow(service).to receive(:call).with(user: user) }
+
     context 'with no user id provided' do
       it 'stops execution and returns' do
-        expect(service).not_to receive(:call).with(user: user)
         described_class.perform_later(nil)
+
+        expect(service).not_to have_received(:call).with(user: user)
       end
     end
 
@@ -23,13 +22,16 @@ RSpec.describe ::Mailchimp::SubscriptionJob, type: :job do
 
       it 'returns if user is not subscribed' do
         allow(user).to receive(:subscribed).and_return(false)
-        expect(service).not_to receive(:call).with(user: user)
+
         described_class.perform_later(user.id)
+
+        expect(service).not_to have_received(:call).with(user: user)
       end
 
       it 'calls subscription service' do
-        expect(service).to receive(:call).with(user: user)
         described_class.perform_now(user.id)
+
+        expect(service).to have_received(:call).with(user: user)
       end
     end
   end

@@ -3,25 +3,25 @@
 require 'rails_helper'
 
 RSpec.describe 'Setting progress' do
-  let!(:season)   { create(:season, title: 'Test Season') }
-  let!(:user)     { create(:user) }
-  let!(:venue)    { create(:venue) }
-  let!(:mentor)   { ::Courses::Mentor.create(user: user, season: season) }
-  let!(:lecture)  { create(:lecture, mentor: mentor, venue: venue, season: season) }
-  let!(:student)  { create(:student, season: season, user: user, status: :attending) }
-  let!(:progress) { ::Courses::Progress.create(student: student, lecture: lecture, mentor: mentor) }
-  let!(:homework) do
-    ::Courses::Homework.create(student: student, lecture: lecture, git_url: 'lorem',
-                                                      showcase_url: 'ipsum', description: 'lorem')
+  let(:season)   { create(:season, title: 'Test Season') }
+  let(:user)     { create(:user) }
+  let(:venue)    { create(:venue) }
+  let(:mentor)   { create(:mentor, user: user, season: season) }
+  let(:lecture)  { create(:lecture, mentor: mentor, venue: venue, season: season) }
+  let(:student)  { create(:student, season: season, user: user, status: :attending) }
+
+  before do
+    create :progress, student: student, lecture: lecture, mentor: mentor
+    create :homework, student: student, lecture: lecture, git_url: 'lorem', showcase_url: 'ipsum', description: 'lorem'
+
+    visit "/admin/courses/seasons/test-season/lectures/#{lecture.slug}/progress"
   end
 
-  before { visit "/admin/courses/seasons/test-season/lectures/#{lecture.slug}/progress" }
-
-  context 'shows students list' do
+  context 'when shows students list' do
     it { expect(page).to have_content(user.full_name) }
   end
 
-  context 'has buttons to set student progress' do
+  context 'when has buttons to set student progress' do
     it 'has button for presence set' do
       expect(page).to have_link 'Absent!'
     end
@@ -33,7 +33,7 @@ RSpec.describe 'Setting progress' do
     end
   end
 
-  context 'progress set' do
+  context 'when progress set' do
     it 'changes presence mark after button pressing' do
       click_link 'Absent!'
       progress = ::Courses::Progress.last

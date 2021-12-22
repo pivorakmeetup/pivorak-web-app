@@ -9,7 +9,7 @@ RSpec.describe 'Page UPDATE' do
     visit test_edit_path
   end
 
-  context 'invalid input' do
+  context 'when invalid input' do
     it 'validates title presence' do
       fill_in 'Title', with: ''
       fill_in 'Url',   with: ''
@@ -23,8 +23,8 @@ RSpec.describe 'Page UPDATE' do
     end
   end
 
-  context 'valid input' do
-    it 'updates the page' do
+  context 'when valid input' do
+    it 'updates the page', :aggregate_failures do
       fill_in 'Title',  with: 'About Us'
       fill_in 'Url',    with: 'about-us'
       fill_in 'Body',   with: 'Something about us'

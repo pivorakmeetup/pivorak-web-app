@@ -2,15 +2,18 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Lector CREATE' do
-  let!(:season)         { create(:season, title: 'Test Season', status: :live) }
-  let!(:user)           { create(:user) }
-  let!(:venue)          { create(:venue) }
-  let!(:season_creator) { ::Courses::Mentor.create(user_id: 1, season_id: 1) }
+RSpec.describe 'Lecture CREATE' do
+  let(:season)         { create(:season, title: 'Test Season', status: :live) }
+  let(:user)           { create(:user) }
+  let!(:venue) { create(:venue) }
 
-  before { visit '/admin/courses/seasons/test-season/lectures/new' }
+  before do
+    create :mentor, user: user, season: season
 
-  context 'invalid input' do
+    visit '/admin/courses/seasons/test-season/lectures/new'
+  end
+
+  context 'when invalid input' do
     it 'validates errors' do
       select user.full_name, from: 'lecture[mentor_id]'
       select venue.name, from: 'lecture[venue_id]'
@@ -21,7 +24,6 @@ RSpec.describe 'Lector CREATE' do
     end
 
     it 'validates errors when time is wrong' do
-      allow_any_instance_of(Courses::Lecture::TimePolicy).to receive(:allowed?).and_return(false)
       select user.full_name, from: 'lecture[mentor_id]'
       select venue.name, from: 'lecture[venue_id]'
       fill_in 'Title', with: 'Awesome Lecture'
@@ -31,12 +33,12 @@ RSpec.describe 'Lector CREATE' do
     end
   end
 
-  context 'valid input' do
-    it 'creates lecture' do
-      allow_any_instance_of(Courses::Lecture::TimePolicy).to receive(:allowed?).and_return(true)
+  context 'when valid input' do
+    it 'creates lecture', :aggregate_failures do
       select user.full_name, from: 'lecture[mentor_id]'
       select venue.name, from: 'lecture[venue_id]'
       fill_in 'Title', with: 'Awesome lecture'
+      pick_a_date 'lecture_finished_at', Time.current + 1.hour
       click_button 'Create Lecture'
 
       expect(page).to have_current_path '/admin/courses/seasons/test-season/lectures'

@@ -14,10 +14,8 @@ RSpec.describe 'Interview CREATE' do
   before { visit new_interview_path }
 
   describe 'invalid input' do
-    context 'blank start time' do
+    context 'with blank start time' do
       it 'validates errors' do
-        allow_any_instance_of(Courses::Interview::IntervalPolicy).to receive(:allowed?).and_return(true)
-
         interview.start_at = ''
 
         expect(interview).not_to be_valid
@@ -25,10 +23,10 @@ RSpec.describe 'Interview CREATE' do
     end
   end
 
-  context 'valid input' do
-    it 'creates interview' do
+  describe 'valid input' do
+    it 'creates interview', :aggregate_failures do
       fill_in 'Description', with: 'Very hard interview'
-      pick_a_date(date_field_name, Time.now + 40.minutes)
+      pick_a_date(date_field_name, Time.current + 40.minutes)
       select('vacant', from: 'Status')
       click_button 'Create Interview'
 

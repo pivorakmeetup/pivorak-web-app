@@ -48,13 +48,13 @@ module Admin
     end
 
     def visit_request_check_in_link(visit_request)
-      if !visit_request.checked_in?
+      if visit_request.checked_in?
+        t('already_checked_in', scope: 'visit_requests')
+      else
         link_to t('check_in', scope: 'visit_requests'),
                 admin_event_visit_request_toggle_visit_path(visit_request.event, visit_request),
                 method: :put, class: ['ui button', 'green'],
                 remote: true
-      else
-        t('already_checked_in', scope: 'visit_requests')
       end
     end
   end

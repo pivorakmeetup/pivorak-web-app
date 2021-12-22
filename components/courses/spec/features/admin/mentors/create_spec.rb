@@ -3,15 +3,18 @@
 require 'rails_helper'
 
 RSpec.describe 'Mentor CREATE' do
-  let!(:season)         { create(:season, title: 'Test Season', status: :planned) }
-  let!(:user)           { create(:user) }
-  let!(:another_user)   { create(:user, first_name: 'Another') }
-  let!(:season_creator) { ::Courses::Mentor.create(user: user, season: season) }
+  let(:season)         { create(:season, title: 'Test Season', status: :planned) }
+  let(:user)           { create(:user) }
 
-  before { visit '/admin/courses/seasons/test-season/mentors/new' }
+  before do
+    create :mentor, user: user, season: season
+    create :user, first_name: 'Another'
 
-  context 'valid input' do
-    it 'creates mentor' do
+    visit '/admin/courses/seasons/test-season/mentors/new'
+  end
+
+  context 'when valid input' do
+    it 'creates mentor', :aggregate_failures do
       select 'User Another', from: 'mentor[user_id]'
       click_button 'Create Mentor'
 
@@ -20,7 +23,7 @@ RSpec.describe 'Mentor CREATE' do
     end
   end
 
-  context 'drop down' do
+  describe 'drop down' do
     it 'has no name of already existing mentor' do
       expect(page).to have_no_content 'User Test'
     end

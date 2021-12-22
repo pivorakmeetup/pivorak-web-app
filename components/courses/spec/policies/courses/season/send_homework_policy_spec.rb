@@ -8,7 +8,7 @@ describe Courses::Season::SendHomeworkPolicy do
   let(:policy)  { described_class.new(season, student) }
 
   describe '#allowed?' do
-    context 'season has status live, student is not dropped' do
+    context 'when season has status live, student is not dropped' do
       it 'allows to pass policy' do
         allow(policy).to receive(:season_has_status_live?).and_return(true)
         allow(policy).to receive(:student_is_dropped?).and_return(false)
@@ -19,7 +19,7 @@ describe Courses::Season::SendHomeworkPolicy do
   end
 
   describe 'not allowed?' do
-    context "season doesn't have live status" do
+    context "when season doesn't have live status" do
       it "doesn't allow to pass policy" do
         allow(policy).to receive(:season_has_status_live?).and_return(false)
         allow(policy).to receive(:student_is_dropped?).and_return(false)
@@ -28,7 +28,7 @@ describe Courses::Season::SendHomeworkPolicy do
       end
     end
 
-    context 'student is dropped' do
+    context 'when student is dropped' do
       it "doesn't allow to pass policy" do
         allow(policy).to receive(:season_has_status_live?).and_return(true)
         allow(policy).to receive(:student_is_dropped?).and_return(true)

@@ -8,7 +8,7 @@ describe Courses::Season::InterviewsPolicy do
   let(:policy)  { described_class.new(season, student) }
 
   describe '#allowed?' do
-    context "season has status registration, student has done a test task & student doesn't have an interview yet" do
+    context "when season has status registration, student has done a test task & student doesn't have interview yet" do
       it 'allows to pass policy' do
         allow(policy).to receive(:season_has_status_selection?).and_return(true)
         allow(policy).to receive(:student_test_task_done?).and_return(true)
@@ -20,7 +20,7 @@ describe Courses::Season::InterviewsPolicy do
   end
 
   describe 'not allowed?' do
-    context "season doesn't have registration status" do
+    context "when season doesn't have registration status" do
       it "doesn't allow to pass policy" do
         allow(policy).to receive(:season_has_status_selection?).and_return(false)
         allow(policy).to receive(:student_test_task_done?).and_return(true)
@@ -30,7 +30,7 @@ describe Courses::Season::InterviewsPolicy do
       end
     end
 
-    context "student hasn't done a test task" do
+    context "when student hasn't done a test task" do
       it "doesn't allow to pass policy" do
         allow(policy).to receive(:season_has_status_selection?).and_return(true)
         allow(policy).to receive(:student_test_task_done?).and_return(false)
@@ -40,7 +40,7 @@ describe Courses::Season::InterviewsPolicy do
       end
     end
 
-    context 'student already have an interview' do
+    context 'when student already have an interview' do
       it "doesn't allow to pass policy" do
         allow(policy).to receive(:season_has_status_selection?).and_return(true)
         allow(policy).to receive(:student_test_task_done?).and_return(true)

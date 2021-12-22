@@ -11,7 +11,7 @@ RSpec.describe 'Student CREATE' do
   before { visit test_new_students_path }
 
   describe 'invalid input' do
-    context 'blank personal_info' do
+    context 'with blank personal_info' do
       it 'validates errors' do
         fill_in 'Personal info',   with: ''
         fill_in 'Motivation info', with: 'Food!'
@@ -23,7 +23,7 @@ RSpec.describe 'Student CREATE' do
       end
     end
 
-    context 'blank motivation_info' do
+    context 'with blank motivation_info' do
       it 'validates errors' do
         fill_in 'Personal info',   with: 'Personal stuff'
         fill_in 'Motivation info', with: ''
@@ -35,7 +35,7 @@ RSpec.describe 'Student CREATE' do
       end
     end
 
-    context 'blank experience_info' do
+    context 'with blank experience_info' do
       it 'validates errors' do
         fill_in 'Personal info',   with: 'Personal stuff'
         fill_in 'Motivation info', with: 'Food!'
@@ -47,7 +47,7 @@ RSpec.describe 'Student CREATE' do
       end
     end
 
-    context 'blank devote_info' do
+    context 'with blank devote_info' do
       it 'validates errors' do
         fill_in 'Personal info',   with: 'Personal stuff'
         fill_in 'Motivation info', with: 'Food!'
@@ -61,10 +61,8 @@ RSpec.describe 'Student CREATE' do
   end
 
   describe 'valid input' do
-    context 'first application try' do
+    context 'when first application try' do
       it 'creates new student' do
-        allow_any_instance_of(Courses::Student::CreatePolicy).to receive(:allowed?).and_return(true)
-
         fill_in 'Personal info',   with: 'Personal stuff'
         fill_in 'Motivation info', with: 'Food!'
         fill_in 'Experience info', with: 'All free ruby courses from the Internet'
@@ -74,12 +72,12 @@ RSpec.describe 'Student CREATE' do
       end
     end
 
-    context 'second application try' do
-      let!(:student) { create :student, user: user, season: season }
+    context 'when second application try' do
+      before do
+        create :student, user: user, season: season
+      end
 
       it 'does not create new student' do
-        allow_any_instance_of(Courses::Student::CreatePolicy).to receive(:allowed?).and_return(false)
-
         fill_in 'Personal info',   with: 'Personal stuff'
         fill_in 'Motivation info', with: 'Food!'
         fill_in 'Experience info', with: 'All free ruby courses from the Internet'

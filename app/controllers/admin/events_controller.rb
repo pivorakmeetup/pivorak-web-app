@@ -20,6 +20,10 @@ module Admin
       react_to event.save
     end
 
+    def edit
+      super
+    end
+
     def update
       react_to event.update(event_params)
     end

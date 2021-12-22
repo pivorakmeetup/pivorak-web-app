@@ -6,7 +6,7 @@ RSpec.describe 'Pages CREATE' do
     visit '/admin/pages/new'
   end
 
-  context 'invalid input' do
+  context 'when invalid input' do
     it 'validates title presence' do
       fill_in 'Title',  with: ''
       fill_in 'Url', with: ''
@@ -20,7 +20,7 @@ RSpec.describe 'Pages CREATE' do
     end
   end
 
-  context 'valid input' do
+  context 'when valid input' do
     it 'create new page' do
       fill_in 'Title', with: 'About Us'
       fill_in 'Url',  with: 'about-us'

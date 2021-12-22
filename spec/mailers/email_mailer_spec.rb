@@ -11,7 +11,7 @@ describe EmailMailer do
   describe 'custom' do
     let(:mail) { described_class.custom(email_id, user_id) }
 
-    it 'renders the headers' do
+    it 'renders the headers', :aggregate_failures do
       expect(mail.subject).to eq(email.subject)
       expect(mail.to).to eq([user.email])
       expect(mail.from).to eq([ApplicationMailer::PIVORAK_EMAIL])

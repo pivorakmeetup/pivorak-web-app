@@ -7,7 +7,7 @@ FactoryBot.define do
     status      { Event::REGISTRATION }
     venue
     published   { true }
-    started_at  { Time.now }
-    finished_at { Time.now }
+    started_at  { Time.current }
+    finished_at { Time.current }
   end
 end

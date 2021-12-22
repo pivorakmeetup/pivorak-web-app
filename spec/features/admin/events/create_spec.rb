@@ -8,11 +8,11 @@ RSpec.describe 'Events CREATE' do
     visit '/admin/events/new'
   end
 
-  context 'dateTime inputs' do
+  context 'with dateTime inputs' do
     let(:default_started_at_hour)  { Ez::Settings[:app, :events, :default_started_at_hours].to_i }
     let(:default_finished_at_hour) { Ez::Settings[:app, :events, :default_finished_at_hours].to_i }
 
-    it 'has default values' do
+    it 'has default values', :aggregate_failures do
       expect(
         Time.zone.parse(
           find('#event_started_at').value
@@ -27,8 +27,8 @@ RSpec.describe 'Events CREATE' do
     end
   end
 
-  context 'invalid input' do
-    context 'invalid title' do
+  context 'when invalid input' do
+    context 'with invalid title' do
       it 'returns error' do
         fill_in 'Title', with: ''
 
@@ -39,7 +39,7 @@ RSpec.describe 'Events CREATE' do
       end
     end
 
-    context 'absent venue' do
+    context 'with absent venue' do
       context 'when planned' do
         it 'creates new event' do
           fill_in 'Title', with: 'Super New Event'
@@ -66,7 +66,7 @@ RSpec.describe 'Events CREATE' do
     end
   end
 
-  context 'valid input' do
+  context 'when valid input' do
     it 'creates new event' do
       fill_in 'Title', with: 'Super New Event'
 
@@ -78,7 +78,7 @@ RSpec.describe 'Events CREATE' do
 
     it 'creates event with image' do
       fill_in 'Title', with: 'Super New Event'
-      attach_file('event[cover]', Rails.root + 'spec/fixtures/images/pivorak.png')
+      attach_file('event[cover]', Rails.root.join('spec/fixtures/images/pivorak.png'))
 
       click_button 'Create Event'
 
@@ -104,16 +104,16 @@ RSpec.describe 'Events CREATE' do
     end
   end
 
-  context 'Limit inputs' do
+  describe 'Limit inputs' do
     let(:default_limit_total)      { Ez::Settings[:app, :events, :default_limit] }
     let(:default_limit_verified)   { Ez::Settings[:app, :events, :default_limit_verified] }
 
-    it 'has default values' do
+    it 'has default values', :aggregate_failures do
       expect(page).to have_field('Limit total', with: default_limit_total)
       expect(page).to have_field('Limit verified', with: default_limit_verified)
     end
 
-    it 'shows defined values after creation' do
+    it 'shows defined values after creation', :aggregate_failures do
       fill_in 'Title', with: 'Super New Event'
       fill_in 'Limit total', with: 2
       fill_in 'Limit verified', with: 1

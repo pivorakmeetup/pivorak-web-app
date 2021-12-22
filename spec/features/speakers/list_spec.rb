@@ -2,9 +2,10 @@
 
 RSpec.describe 'Events LIST' do
   let(:speaker) { create(:user) }
-  let!(:talk) { create(:talk, speaker: speaker) }
 
   before do
+    create(:talk, speaker: speaker)
+
     visit '/speakers'
   end
 

@@ -6,23 +6,23 @@ RSpec.describe ::Omniauth::AuthenticationPolicy do
 
   describe '#authenticated?' do
     context 'with valid params' do
-      subject { described_class.new(user: user, identity: identity) }
+      let(:authentication_policy) { described_class.new(user: user, identity: identity) }
 
       it 'returns true if identity has been linked to the user' do
         user.identities << identity
-        expect(subject.authenticated?).to be true
+        expect(authentication_policy.authenticated?).to be true
       end
 
       it "returns falsey value if identity hasn't been linked to the user" do
-        expect(subject).not_to be_authenticated
+        expect(authentication_policy).not_to be_authenticated
       end
     end
 
     context 'with invalid params' do
-      subject { described_class.new({}) }
+      let(:authentication_policy) { described_class.new({}) }
 
       it 'returns falsey value' do
-        expect(subject).not_to be_authenticated
+        expect(authentication_policy).not_to be_authenticated
       end
     end
   end

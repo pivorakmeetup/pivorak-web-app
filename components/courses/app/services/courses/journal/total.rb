@@ -16,11 +16,11 @@ module Courses
       attr_reader :student
 
       def marks_total
-        marks.inject { |sum, mark| sum + mark }
+        marks.sum
       end
 
       def presences_total
-        presences.inject { |sum, presence| sum + presence }
+        presences.sum
       end
 
       def total

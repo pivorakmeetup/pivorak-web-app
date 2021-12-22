@@ -16,7 +16,7 @@ describe Courses::Season::StudentsPerStatus do
       expect(query).to eq([])
     end
 
-    it 'returns enrolled students for registration season' do
+    it 'returns enrolled students for registration season', :aggregate_failures do
       season.update(status: :registration)
 
       query = described_class.call(season)
@@ -25,7 +25,7 @@ describe Courses::Season::StudentsPerStatus do
       expect(query).not_to include refused_student
     end
 
-    it 'returns students with test task done or interviewing status for selection season' do
+    it 'returns students with test task done or interviewing status for selection season', :aggregate_failures do
       season.update(status: :selection)
       student.update(status: :interviewing)
 
@@ -35,7 +35,7 @@ describe Courses::Season::StudentsPerStatus do
       expect(query).not_to include refused_student
     end
 
-    it 'returns attending students for live season' do
+    it 'returns attending students for live season', :aggregate_failures do
       season.update(status: :live)
       student.update(status: :attending)
 
@@ -45,7 +45,7 @@ describe Courses::Season::StudentsPerStatus do
       expect(query).not_to include refused_student
     end
 
-    it 'returns graduated students for passed season' do
+    it 'returns graduated students for passed season', :aggregate_failures do
       season.update(status: :passed)
       student.update(status: :graduated)
 

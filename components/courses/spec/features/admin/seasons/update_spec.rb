@@ -3,14 +3,17 @@
 require 'rails_helper'
 
 RSpec.describe 'Seasons UPDATE' do
-  let!(:season)         { create(:season, title: 'Test Season') }
-  let!(:user)           { User.create(email: 'test@test.com', first_name: 'Test', last_name: 'User') }
-  let!(:season_creator) { ::Courses::Mentor.create(user: user, season: season) }
-  let(:test_edit_path)  { '/admin/courses/seasons/test-season/edit' }
+  let(:season)         { create(:season, title: 'Test Season') }
+  let(:user)           { create(:user, email: 'test@test.com', first_name: 'Test', last_name: 'User') }
+  let(:test_edit_path) { '/admin/courses/seasons/test-season/edit' }
 
-  before { visit test_edit_path }
+  before do
+    create(:mentor, user: user, season: season)
 
-  context 'invalid input' do
+    visit test_edit_path
+  end
+
+  context 'when invalid input' do
     it 'validates errors' do
       fill_in 'Title', with: ''
       click_button 'Update Season'
@@ -19,8 +22,8 @@ RSpec.describe 'Seasons UPDATE' do
     end
   end
 
-  context 'valid input' do
-    it 'update season' do
+  context 'when valid input' do
+    it 'update season', :aggregate_failures do
       fill_in 'Title', with: 'Super New Season'
       click_button 'Update Season'
 

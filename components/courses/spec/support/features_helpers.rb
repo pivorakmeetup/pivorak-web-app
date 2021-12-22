@@ -6,14 +6,15 @@ module Courses
       #
       # Validation errors
       #
-      def expect_an_error(hash_pair = {}, nope = false) # rubocop:disable Metrics/AbcSize
+      def expect_an_error(hash_pair = {}, nope = false) # rubocop:disable Style/OptionalBooleanParameter
         field = hash_pair.keys.first
         value = hash_pair.values.first
         error_div = "div.#{field}.field_with_errors"
 
-        msg = if value == :blank
+        msg = case value
+              when :blank
                 "can't be blank"
-              elsif value == :has_been_taken
+              when :has_been_taken
                 'has already been taken'
               else
                 value

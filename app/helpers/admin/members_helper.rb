@@ -14,7 +14,7 @@ module Admin
     end
 
     def admin_member_link(member)
-      link_to member.full_name, member_path(member), target: '_blank'
+      link_to member.full_name, member_path(member), target: '_blank', rel: 'noopener'
     end
 
     def admin_squash_member_link(member)

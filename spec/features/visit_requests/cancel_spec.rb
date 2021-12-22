@@ -36,7 +36,7 @@ RSpec.describe 'Visit Requests CANCEL' do
         expect(page).to have_content I18n.t('flash.visit_requests.destroy.success')
       end
 
-      it 'sends email to admin' do
+      it 'sends email to admin', :aggregate_failures do
         active_job = active_jobs[0]
         expect(active_job[:job]).to eq ActionMailer::DeliveryJob
         expect(active_job[:args][0]).to eq 'VisitRequestMailer'

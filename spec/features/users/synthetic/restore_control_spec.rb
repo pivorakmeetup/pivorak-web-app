@@ -11,7 +11,7 @@ RSpec.describe 'Synthetic user try to sign up' do
     click_button 'Change my password'
   end
 
-  it 'resirects to root' do
+  it 'resirects to root', :aggregate_failures do
     expect(page).to have_current_path '/'
     expect(page).to have_content 'Your password has been changed successfully. You are now signed in.'
     expect(synth_user.reload).not_to be_synthetic

@@ -16,7 +16,7 @@ gem 'pg', '~> 0.18'
 gem 'pg_search', '~> 2.0'
 gem 'puma', '~> 5.0'
 gem 'rack-attack'
-gem 'rails', '5.2.5'
+gem 'rails', '5.2.6'
 gem 'redis', '~>3.2'
 gem 'sidekiq'
 gem 'sidekiq-scheduler', '~> 2.1.4'
@@ -96,9 +96,12 @@ group :development, :test do
   gem 'pry-rails'
   gem 'rspec'
   gem 'rspec-rails'
-  gem 'rubocop', require: false
-  gem 'rubocop-rspec'
-  gem 'rubocop-faker'
+  gem 'rubocop', '~> 1.23', require: false
+  gem 'rubocop-rspec', require: false
+  gem 'rubocop-faker', require: false
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rake', require: false
 end
 
 group :test do

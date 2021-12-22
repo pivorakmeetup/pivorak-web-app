@@ -2,6 +2,7 @@
 
 require 'csv'
 
+desc 'Import users from CSV file'
 task import_users: :environment do
   puts 'Import started'
 
@@ -11,8 +12,8 @@ task import_users: :environment do
       # 1 email
       puts $INPUT_LINE_NUMBER
       user = User.new(email:      row[1],
-                      first_name: row[0].split(' ')[0],
-                      last_name:  row[0].split(' ')[1])
+                      first_name: row[0].split[0],
+                      last_name:  row[0].split[1])
       user.synthetic = true
       user.verified = true
       user.skip_confirmation!

@@ -12,7 +12,7 @@ describe VisitRequest::ToggleList do
       expect { call }.to change(visit_request.reload, :waiting_list).from(true).to(false)
     end
 
-    it 'enques needs confirmation' do
+    it 'enques needs confirmation', :aggregate_failures do
       call
 
       active_job = active_jobs[0]

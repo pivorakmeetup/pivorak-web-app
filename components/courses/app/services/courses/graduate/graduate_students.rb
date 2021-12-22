@@ -8,7 +8,7 @@ module Courses
       end
 
       def call
-        season.students.attending.update_all(status: :graduated)
+        season.students.attending.update(status: :graduated)
       end
 
       private

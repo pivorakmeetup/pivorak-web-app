@@ -9,6 +9,10 @@ module Users
       User::GetReal.call(current_user)
     end
 
+    def create
+      super
+    end
+
     private
 
     def user_params

@@ -3,13 +3,12 @@
 require 'rails_helper'
 
 RSpec.describe Courses::Mentor::DestroyPolicy do
-  let!(:season)         { create(:season, title: 'Test Season') }
-  let!(:user)           { create(:user) }
-  let!(:season_creator) { ::Courses::Mentor.create(user_id: 1, season_id: season.id) }
-  let!(:user)           { create(:user, first_name: 'Another', last_name: 'User') }
-  let!(:mentor)         { ::Courses::Mentor.create(user_id: 2, season_id: season.id) }
+  let(:season) { create(:season, title: 'Test Season') }
+  let(:user) { create(:user) }
+  let(:mentor) { create :mentor, season: season }
+  let!(:season_creator) { create :mentor, user: user, season: season }
 
-  context 'allow to destroy' do
+  context 'when allow to destroy' do
     it 'allowed to destroy' do
       policy = described_class.new(mentor, season)
 

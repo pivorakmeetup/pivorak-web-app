@@ -3,17 +3,16 @@
 require 'rails_helper'
 
 describe VisitRequest::Import do
-  subject { described_class.new(emails: emails, separator: separator, event: event) }
-
+  let(:import_service) { described_class.new(emails: emails, separator: separator, event: event) }
   let(:event)       { create(:event, status: :passed) }
   let(:user_a)      { create(:user) }
   let(:user_b)      { create(:user) }
   let(:user_c)      { create(:user) }
   let(:separator)   { ', ' }
-  let(:emails) { [user_a, user_b].map(&:email).join(separator) + ', fake@user.com' }
+  let(:emails) { "#{[user_a, user_b].map(&:email).join(separator)}, fake@user.com" }
 
   describe '#call' do
-    before { subject.call }
+    before { import_service.call }
 
     it { expect(event.visitors.size).to eq 2 }
     it { expect(event.visitors).to include(user_a) }

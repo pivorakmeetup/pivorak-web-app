@@ -14,10 +14,8 @@ RSpec.describe 'Interviews UPDATE' do
   before { visit edit_interview_path }
 
   describe 'invalid input' do
-    context 'blank start time' do
+    context 'with blank start time' do
       it 'validates errors' do
-        allow_any_instance_of(Courses::Interview::IntervalPolicy).to receive(:allowed?).and_return(true)
-
         interview.start_at = ''
 
         expect(interview).not_to be_valid
@@ -26,9 +24,8 @@ RSpec.describe 'Interviews UPDATE' do
   end
 
   describe 'valid input' do
-    context 'change of time' do
-      it 'updates interview' do
-        allow_any_instance_of(Courses::Interview::IntervalPolicy).to receive(:allowed?).and_return(true)
+    context 'with change of time' do
+      it 'updates interview', :aggregate_failures do
         date = '2017.10.10'.to_time
         pick_a_date(date_field_name, date)
         click_button 'Update Interview'
@@ -39,9 +36,8 @@ RSpec.describe 'Interviews UPDATE' do
       end
     end
 
-    context 'change of description' do
-      it 'updates interview' do
-        allow_any_instance_of(Courses::Interview::IntervalPolicy).to receive(:allowed?).and_return(true)
+    context 'with change of description' do
+      it 'updates interview', :aggregate_failures do
         fill_in 'Description', with: 'Nice description'
         click_button 'Update Interview'
         interview.reload
@@ -51,9 +47,8 @@ RSpec.describe 'Interviews UPDATE' do
       end
     end
 
-    context 'change of video url' do
-      it 'updates interview' do
-        allow_any_instance_of(Courses::Interview::IntervalPolicy).to receive(:allowed?).and_return(true)
+    context 'with change of video url' do
+      it 'updates interview', :aggregate_failures do
         fill_in 'Video url', with: 'url.example/'
         click_button 'Update Interview'
         interview.reload
@@ -63,9 +58,8 @@ RSpec.describe 'Interviews UPDATE' do
       end
     end
 
-    context 'change of status' do
-      it 'updates interview' do
-        allow_any_instance_of(Courses::Interview::IntervalPolicy).to receive(:allowed?).and_return(true)
+    context 'with change of status' do
+      it 'updates interview', :aggregate_failures do
         select('missed', from: 'Status')
         click_button 'Update Interview'
         interview.reload

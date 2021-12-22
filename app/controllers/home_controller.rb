@@ -21,7 +21,7 @@ class HomeController < ApplicationController
   end
 
   def upcoming_date
-    return 'soon' unless planned_event.present?
+    return 'soon' if planned_event.blank?
 
     started_at = planned_event.started_at
     started_at.strftime("#{started_at.day.ordinalize} of %B")

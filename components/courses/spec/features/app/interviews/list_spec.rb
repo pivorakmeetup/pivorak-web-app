@@ -10,7 +10,7 @@ RSpec.xdescribe 'Interviews LIST' do
   let!(:student)   { create(:student, user_id: user.id, season_id: season.id, status: :test_task_done) }
   let!(:interview) { build(:interview, mentor_id: mentor.id) }
 
-  context 'interviews are available' do
+  context 'when interviews are available' do
     it 'shows interview slots' do
       interview.student_id = nil
       interview.save
@@ -20,7 +20,7 @@ RSpec.xdescribe 'Interviews LIST' do
     end
   end
 
-  context 'no interviews available' do
+  context 'when no interviews available' do
     it 'does not show any interview slots' do
       interview.student_id = student.id
       interview.save

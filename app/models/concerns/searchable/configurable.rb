@@ -8,7 +8,7 @@ module Searchable
 
     module ClassMethods
       def define_searchable(&block)
-        return unless block_given?
+        return unless block
 
         definitions << block
       end

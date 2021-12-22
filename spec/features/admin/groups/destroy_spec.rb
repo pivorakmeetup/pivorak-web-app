@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 RSpec.describe 'Groups DESTROY' do
-  let!(:group) { create(:group, name: 'TestGroup') }
-
   before do
+    create(:group, name: 'TestGroup')
+
     assume_admin_logged_in
     visit '/admin/groups'
   end
@@ -13,7 +13,7 @@ RSpec.describe 'Groups DESTROY' do
       expect(page).to have_content 'TestGroup'
     end
 
-    it 'destroys the group' do
+    it 'destroys the group', :aggregate_failures do
       click_link 'Destroy'
 
       expect(page).to have_current_path '/admin/groups'

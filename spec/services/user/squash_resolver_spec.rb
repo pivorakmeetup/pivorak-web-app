@@ -3,10 +3,8 @@
 require 'rails_helper'
 
 describe ::User::SquashResolver do
-  subject { described_class }
-
-  let(:user_a) { FactoryBot.create(:user) }
-  let(:user_b) { FactoryBot.create(:user) }
+  let(:user_a) { create(:user) }
+  let(:user_b) { create(:user) }
 
   let(:relations_params) do
     {
@@ -32,20 +30,20 @@ describe ::User::SquashResolver do
     let!(:request_b)           { FactoryBot.create(:visit_request, user: user_b, event: event_b) }
     let!(:request_c)           { FactoryBot.create(:visit_request, user: user_a, event: event_c) }
 
-    context 'has_many associations' do
+    context 'when has_many associations' do
       context 'without squash' do
         context 'without duplicates' do
           let!(:talk)  { FactoryBot.create(:talk, speaker: user_a) }
           let(:params) { relations_params.merge(resource: Talk, foreign_key: :speaker_id) }
 
-          before { subject.call(params) }
+          before { described_class.call(params) }
 
           it { expect(user_b.talks).to     include(talk) }
           it { expect(user_a.talks).not_to include(talk) }
         end
 
-        context 'mixed' do
-          before { subject.call(relations_params) }
+        context 'when mixed' do
+          before { described_class.call(relations_params) }
 
           it { expect(user_b.visit_requests).to     include(request_a, duplicate_request_a, request_b, request_c) }
           it { expect(user_a.visit_requests).not_to include(request_a) }
@@ -53,7 +51,7 @@ describe ::User::SquashResolver do
       end
 
       context 'with squash' do
-        before { subject.call(squash_params) }
+        before { described_class.call(squash_params) }
 
         it { expect(user_b.visit_requests).to     have(3).items }
         it { expect(user_b.visit_requests).to     include(duplicate_request_a, request_b, request_c) }
@@ -63,40 +61,40 @@ describe ::User::SquashResolver do
   end
 
   describe '#schema' do
-    context 'invalid' do
-      context 'resource' do
+    context 'when invalid' do
+      context 'with resource' do
         let(:params) { relations_params.merge(resource: 5) }
 
-        it { expect(subject.call(params)).to be_nil }
+        it { expect(described_class.call(params)).to be_nil }
       end
 
-      context 'association type' do
+      context 'with association type' do
         let(:params) { relations_params.merge(association_type: :belongs_to) }
 
-        it { expect(subject.call(params)).to be_nil }
+        it { expect(described_class.call(params)).to be_nil }
       end
 
-      context 'foreign key' do
+      context 'with foreign key' do
         let(:params) { relations_params.merge(foreign_key: nil) }
 
-        it { expect(subject.call(params)).to be_nil }
+        it { expect(described_class.call(params)).to be_nil }
       end
 
-      context 'source id' do
+      context 'with source id' do
         let(:params) { relations_params.merge(source_id: Faker::Name.name) }
 
-        it { expect(subject.call(params)).to be_nil }
+        it { expect(described_class.call(params)).to be_nil }
       end
 
-      context 'destination id' do
+      context 'with destination id' do
         let(:params) { relations_params.merge(destination_id: nil) }
 
-        it { expect(subject.call(params)).to be_nil }
+        it { expect(described_class.call(params)).to be_nil }
       end
     end
 
-    context 'valid' do
-      it { expect(subject.call(relations_params)).not_to be_nil }
+    context 'when valid' do
+      it { expect(described_class.call(relations_params)).not_to be_nil }
     end
   end
 end

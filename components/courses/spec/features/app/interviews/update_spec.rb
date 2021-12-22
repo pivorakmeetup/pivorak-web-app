@@ -12,8 +12,8 @@ RSpec.xdescribe 'Interviews UPDATE' do
 
   before { visit '/courses/seasons/test-season/interviews/' }
 
-  context 'take first interview time slot' do
-    it 'assigns student to interview' do
+  context 'when take first interview time slot' do
+    it 'assigns student to interview', :aggregate_failures do
       click_link 'Take'
       interview.reload
 
@@ -22,9 +22,9 @@ RSpec.xdescribe 'Interviews UPDATE' do
     end
   end
 
-  context 'take second interview time slot' do
-    it 'does not assign student to interview' do
-      create(:interview, mentor_id: mentor.id, student_id: student.id, start_at: (Time.now + 30.minutes))
+  context 'when take second interview time slot' do
+    it 'does not assign student to interview', :aggregate_failures do
+      create(:interview, mentor_id: mentor.id, student_id: student.id, start_at: (Time.current + 30.minutes))
       click_link 'Take'
       interview.reload
 

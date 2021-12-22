@@ -5,7 +5,9 @@ RSpec.describe ::Users::OmniauthCallbacksController do
 
   before { request.env['devise.mapping'] = Devise.mappings[:user] }
 
-  Devise.omniauth_providers.each do |provider| # rubocop:disable Metrics/BlockLength
+  # rubocop:disable Metrics/BlockLength
+  # rubocop:disable RSpec/NamedSubject
+  Devise.omniauth_providers.each do |provider|
     describe "##{provider}" do
       context 'with valid params' do
         before { request.env['omniauth.auth'] = build(:omniauth_params) }
@@ -15,7 +17,7 @@ RSpec.describe ::Users::OmniauthCallbacksController do
           expect(::User.count).to eq 1
         end
 
-        it 'signs in a user' do
+        it 'signs in a user', :aggregate_failures do
           expect(subject.current_user).to be_nil
           post provider
           expect(subject.current_user).not_to be_nil
@@ -42,4 +44,6 @@ RSpec.describe ::Users::OmniauthCallbacksController do
       end
     end
   end
+  # rubocop:enable RSpec/NamedSubject
+  # rubocop:enable Metrics/BlockLength
 end

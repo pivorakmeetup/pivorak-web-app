@@ -6,7 +6,7 @@ class Venue < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
 
-  has_many :events
+  has_many :events, dependent: :nullify
 
   validates :name,    presence: true
   validates :address, presence: true

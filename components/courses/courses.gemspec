@@ -17,9 +17,11 @@ Gem::Specification.new do |s|
 
   s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
 
+  s.required_ruby_version = '~> 2.6'
+
   s.add_dependency 'friendly_id'
   s.add_dependency 'kaminari'
-  s.add_dependency 'rails', '5.2.5'
+  s.add_dependency 'rails', '5.2.6'
   s.add_dependency 'simple_form'
   s.add_dependency 'slim-rails'
 
@@ -32,4 +34,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rspec-rails'
   s.add_development_dependency 'simplecov'
   s.add_development_dependency 'sqlite3', '~> 1.3.6'
+  s.metadata = {
+    'rubygems_mfa_required' => 'true'
+  }
 end

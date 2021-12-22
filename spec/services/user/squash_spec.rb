@@ -6,7 +6,7 @@ RSpec.describe User::Squash do
   let(:valid_params) { { squashed_user: user_a, into_user: user_b } }
 
   describe '.call' do
-    context 'user_a was destroyed' do
+    context 'when user_a was destroyed' do
       before { described_class.call(valid_params) }
 
       it { expect(user_a).not_to be_persisted }

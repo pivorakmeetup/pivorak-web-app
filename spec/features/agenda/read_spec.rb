@@ -9,7 +9,7 @@ RSpec.describe 'Agenda page' do
       event = create(:event,
                      status:      :confirmation,
                      agenda:      'agenda text',
-                     started_at:  Time.zone.now,
+                     started_at:  Time.current,
                      finished_at: 1.hour.from_now)
 
       visit '/agenda'

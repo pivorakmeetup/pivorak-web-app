@@ -4,17 +4,18 @@ require 'rails_helper'
 
 RSpec.describe 'Homework CREATE' do
   let(:season)          { create(:season, title: 'Test Season', status: :live) }
-  let(:user)            { User.create(email: 'test@test.com', first_name: 'Test', last_name: 'User') }
-  let(:venue)           { create(:venue) }
+  let(:user)            { create(:user, email: 'test@test.com', first_name: 'Test', last_name: 'User') }
+  let!(:lecture) { create(:lecture, season: season) }
 
-  let!(:student)        { create(:student, season: season, user: user) }
-  let!(:lecture)        { create(:lecture, mentor_id: 1, venue: venue, season: season) }
-  let!(:season_creator) { ::Courses::Mentor.create(user: user, season: season) }
+  before do
+    create(:student, season: season, user: user)
+    create(:mentor, user: user, season: season)
 
-  before { visit '/courses/seasons/test-season/homeworks/new' }
+    visit '/courses/seasons/test-season/homeworks/new'
+  end
 
   describe 'invalid input' do
-    context 'blank git_url' do
+    context 'with blank git_url' do
       it 'validates errors' do
         fill_in 'Git url', with: ''
         click_button 'Submit'

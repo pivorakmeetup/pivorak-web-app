@@ -9,7 +9,7 @@ module Courses
       end
 
       def call
-        if interview_assessments.where(mentor: mentor).exists?
+        if interview_assessments.exists?(mentor: mentor)
           interview_assessments
             .find_by(mentor: mentor)
         else

@@ -4,7 +4,7 @@ module Admin
   module Courses
     module TestTaskHelper
       def courses_test_task_showcase_url(test_task)
-        return t('words.none') unless test_task.showcase_url.present?
+        return t('words.none') if test_task.showcase_url.blank?
 
         link_to t('courses.test_tasks.show_url'), test_task.showcase_url
       end

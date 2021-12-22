@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe 'Season CREATE' do
   before { visit '/admin/courses/seasons/new' }
 
-  context 'invalid input' do
+  context 'when invalid input' do
     it 'validates errors' do
       fill_in 'Title', with: ''
       click_button 'Create Season'
@@ -15,19 +15,19 @@ RSpec.describe 'Season CREATE' do
 
     it 'validates errors when time is wrong' do
       fill_in 'Title', with: 'Super New Course Season'
-      pick_a_date('season_start_at', Time.now + 60.days)
-      pick_a_date('season_finish_at', Time.now)
+      pick_a_date('season_start_at', Time.current + 60.days)
+      pick_a_date('season_finish_at', Time.current)
       click_button 'Create Season'
 
       expect(page).to have_content('must be after start time!')
     end
   end
 
-  context 'valid input' do
-    it 'create new season' do
+  context 'when valid input' do
+    it 'create new season', :aggregate_failures do
       fill_in 'Title', with: 'Super New Course Season'
-      pick_a_date('season_start_at', Time.now)
-      pick_a_date('season_finish_at', Time.now + 60.days)
+      pick_a_date('season_start_at', Time.current)
+      pick_a_date('season_finish_at', Time.current + 60.days)
       click_button 'Create Season'
 
       expect(page).to have_current_path '/admin/courses/seasons'
@@ -35,11 +35,11 @@ RSpec.describe 'Season CREATE' do
     end
   end
 
-  context 'open format' do
-    it 'create new season' do
+  context 'when open format' do
+    it 'create new season', :aggregate_failures do
       fill_in 'Title', with: 'Super New Course Season'
-      pick_a_date('season_start_at', Time.now)
-      pick_a_date('season_finish_at', Time.now + 60.days)
+      pick_a_date('season_start_at', Time.current)
+      pick_a_date('season_finish_at', Time.current + 60.days)
       check 'Open format'
       click_button 'Create Season'
 

@@ -8,7 +8,7 @@ RSpec.describe 'Members UPDATE' do
     visit "/admin/members/#{member.id}/edit"
   end
 
-  context 'invalid input' do
+  context 'when invalid input' do
     it 'validates title presence' do
       fill_in 'Email', with: ''
       click_button 'Update User'
@@ -18,7 +18,7 @@ RSpec.describe 'Members UPDATE' do
     end
   end
 
-  context 'valid input' do
+  context 'when valid input' do
     it 'create new user' do
       fill_in 'Email', with: 'another@example.com'
       click_button 'Update User'

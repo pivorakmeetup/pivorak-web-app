@@ -15,15 +15,16 @@ class Event < ApplicationRecord
   mount_uploader :cover, EventCoverUploader
   friendly_id :title, use: :slugged
 
-  enum status: [PLANNED, REGISTRATION, CONFIRMATION, LIVE, PASSED]
+  enum status: { PLANNED => 0, REGISTRATION => 1, CONFIRMATION => 2, LIVE => 3, PASSED => 4 }
 
   belongs_to :venue
 
-  has_many :talks
-  has_many :visit_requests
+  has_many :talks, dependent: :nullify
+  has_many :visit_requests, dependent: :nullify
 
   %i[approved pending final confirmed used].each do |scope_name|
-    has_many :"#{scope_name}_visit_requests", -> { send(scope_name) }, class_name: 'VisitRequest'
+    has_many :"#{scope_name}_visit_requests", -> { send(scope_name) }, class_name: 'VisitRequest', dependent: :nullify,
+             inverse_of: :event
   end
 
   has_many :visitors,                                       through: :visit_requests, source: :user
@@ -44,8 +45,8 @@ class Event < ApplicationRecord
   def self.current
     find_by(
       'started_at >= :beginning_of_day AND finished_at < :end_of_day',
-      beginning_of_day: Time.zone.now.beginning_of_day,
-      end_of_day:       Time.now.end_of_day
+      beginning_of_day: Time.current.beginning_of_day,
+      end_of_day:       Time.current.end_of_day
     )
   end
 

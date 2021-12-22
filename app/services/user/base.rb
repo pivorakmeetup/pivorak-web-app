@@ -23,8 +23,7 @@ class User
 
     private
 
-    attr_reader(*PERMITTED_KEYS)
-    attr_reader :user, :options
+    attr_reader(*PERMITTED_KEYS, :user, :options)
 
     def user_params
       PERMITTED_KEYS.inject({}) { |mem, key| mem.merge!(key => send(key)) }

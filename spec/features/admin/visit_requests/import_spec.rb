@@ -6,22 +6,22 @@ RSpec.describe 'Visit Requests IMPORT' do
   let(:user_a)           { create(:user, first_name: 'A', last_name: 'User') }
   let(:user_b)           { create(:user, first_name: 'B', last_name: 'User') }
   let(:user_c)           { create(:user, first_name: 'C', last_name: 'User') }
-  let(:emails_list)      { [user_a, user_b].map(&:email).join(', ') + ', fake@user.com' }
+  let(:emails_list)      { "#{[user_a, user_b].map(&:email).join(', ')}, fake@user.com" }
 
   before { assume_admin_logged_in(supervisor: true) }
 
-  context 'visit not passed event visit requests' do
+  context 'when visit not passed event visit requests' do
     before { visit admin_event_visit_requests_path(not_passed_event) }
 
     it { expect(page).not_to have_content 'Import' }
   end
 
-  context 'visit passed event visit requests' do
+  context 'when visit passed event visit requests' do
     before { visit admin_event_visit_requests_path(passed_event) }
 
     it { expect(page).to have_content 'Import' }
 
-    it 'import visit requests of users' do
+    it 'import visit requests of users', :aggregate_failures do
       fill_in 'Emails list', with: emails_list
       click_button 'Import'
 

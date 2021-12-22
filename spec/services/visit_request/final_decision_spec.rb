@@ -3,8 +3,7 @@
 require 'rails_helper'
 
 describe VisitRequest::FinalDecision do
-  subject { described_class.new(visit_request, answer: answer) }
-
+  let(:final_decision_service) { described_class.new(visit_request, answer: answer) }
   let(:visit_request) { create(:visit_request, status: 'pending') }
 
   describe '#call' do
@@ -14,7 +13,7 @@ describe VisitRequest::FinalDecision do
       it 'calls confirm service' do
         allow(VisitRequest::Confirm).to receive(:call)
 
-        subject.call
+        final_decision_service.call
 
         expect(VisitRequest::Confirm).to have_received(:call)
       end
@@ -26,17 +25,17 @@ describe VisitRequest::FinalDecision do
       it 'calls cancel service' do
         allow(VisitRequest::Refuse).to receive(:call)
 
-        subject.call
+        final_decision_service.call
 
         expect(VisitRequest::Refuse).to have_received(:call)
       end
     end
 
-    context 'for other answers' do
+    context 'when other answers' do
       let(:answer) { 'maybe' }
 
       it 'fails with an error' do
-        expect { subject.call }.to raise_error(described_class::UnrecognizedAnswerError)
+        expect { final_decision_service.call }.to raise_error(described_class::UnrecognizedAnswerError)
       end
     end
   end
