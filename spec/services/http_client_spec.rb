@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 describe HttpClient do
-  subject { described_class.new }
+  let(:http_client_service) { described_class.new }
 
   let(:url) { {} }
   let(:params) { {} }
@@ -12,7 +12,7 @@ describe HttpClient do
     allow(HTTPClient).to receive(:new).and_return(http_client)
 
     %i[get put post delete].each do |method|
-      subject.public_send(method, url, params, headers)
+      http_client_service.public_send(method, url, params, headers)
       expect(http_client).to have_received(method).with(url, params, headers)
     end
   end

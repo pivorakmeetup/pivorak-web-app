@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe 'Visit Requests APPROVE' do
-  subject do
+  subject(:visit_request_approve) do
     visit "/admin/events/#{event.slug}/visit_requests"
   end
 
@@ -13,10 +13,10 @@ RSpec.describe 'Visit Requests APPROVE' do
     assume_admin_logged_in(supervisor: true)
   end
 
-  it { expect { subject }.not_to raise_error }
+  it { expect { visit_request_approve }.not_to raise_error }
 
   describe 'real time update elements' do
-    before { subject }
+    before { visit_request_approve }
 
     context 'with valid event id' do
       it { expect(page).to have_css('h2#event[data-event-id]') }

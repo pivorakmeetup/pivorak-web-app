@@ -3,8 +3,7 @@
 require 'rails_helper'
 
 describe VisitRequest::Create do
-  subject { described_class.new(user, event) }
-
+  let(:create_service) { described_class.new(user, event) }
   let(:user) { create(:user, :tester) }
   let(:event) { create(:event) }
 
@@ -35,7 +34,7 @@ describe VisitRequest::Create do
 
         before do
           allow(VisitRequest::Approve).to receive(:call).and_call_original
-          subject.call
+          create_service.call
         end
 
         it { expect(VisitRequest::Approve).to have_received(:call) }
@@ -50,7 +49,7 @@ describe VisitRequest::Create do
         let(:visit_request_mailer) { instance_spy(VisitRequestMailer) }
 
         before do
-          subject.call
+          create_service.call
         end
 
         it { expect(visit_request_mailer).not_to have_received(:needs_confirmation) }
@@ -69,7 +68,7 @@ describe VisitRequest::Create do
         before do
           allow(VisitRequestMailer).to receive(:needs_confirmation).and_call_original
 
-          subject.call
+          create_service.call
         end
 
         it { expect(VisitRequestMailer).to have_received(:needs_confirmation).with(event.visit_requests.last) }
@@ -82,7 +81,7 @@ describe VisitRequest::Create do
         include_context 'when there are no free slots'
 
         before do
-          subject.call
+          create_service.call
         end
 
         it { expect(event.visit_requests).to have(1).item }

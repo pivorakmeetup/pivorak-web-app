@@ -29,11 +29,6 @@ RSpec/MessageSpies:
 RSpec/MultipleMemoizedHelpers:
   Max: 14
 
-# Offense count: 52
-# Configuration parameters: IgnoreSharedExamples.
-RSpec/NamedSubject:
-  Enabled: false
-
 # Offense count: 38
 RSpec/NestedGroups:
   Max: 5
