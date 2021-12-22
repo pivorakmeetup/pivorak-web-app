@@ -50,10 +50,13 @@ RSpec.describe Talk::FetchExternalVideoData do
     end
 
     it 'calls service for all talks', :aggregate_failures do
-      expect(described_class).to receive(:new).with(talk)
-      expect(described_class).to receive(:new).with(talk2)
+      allow(described_class).to receive(:new).with(talk)
+      allow(described_class).to receive(:new).with(talk2)
 
       described_class.fetch_all!
+
+      expect(described_class).to have_received(:new).with(talk)
+      expect(described_class).to have_received(:new).with(talk2)
     end
   end
 end

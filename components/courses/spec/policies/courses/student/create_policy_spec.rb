@@ -15,8 +15,9 @@ describe Courses::Student::CreatePolicy do
     end
 
     context 'when user has application' do
+      before { create :student, season: season }
+
       it 'forbids to pass policy' do
-        allow(season).to receive_message_chain(:students, :exists?).and_return(true)
         policy = described_class.new(user_id, season)
         expect(policy.allowed?).to be(false)
       end

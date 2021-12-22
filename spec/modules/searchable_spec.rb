@@ -7,8 +7,11 @@ RSpec.describe ::Searchable do
 
   describe '.included' do
     it 'calls resolver with correct arguments' do
-      expect(resolver).to receive(:call).with(target: searchable_subject)
+      allow(resolver).to receive(:call).with(target: searchable_subject)
+
       searchable_subject.include(described_class)
+
+      expect(resolver).to have_received(:call).with(target: searchable_subject)
     end
 
     it 'responds to search module methods', :aggregate_failures do

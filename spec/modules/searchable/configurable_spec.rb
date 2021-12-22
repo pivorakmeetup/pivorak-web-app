@@ -10,8 +10,11 @@ RSpec.describe ::Searchable::Configurable do
 
   describe '.included' do
     it 'extends target class' do
-      expect(configurable_subject).to receive(:extend).with(described_class::ClassMethods)
+      allow(configurable_subject).to receive(:extend).with(described_class::ClassMethods)
+
       configurable_subject.include(described_class)
+
+      expect(configurable_subject).to have_received(:extend).with(described_class::ClassMethods)
     end
   end
 

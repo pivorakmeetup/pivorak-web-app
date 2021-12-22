@@ -1,5 +1,3 @@
-inherit_from: .rubocop_todo.yml
-
 require:
   - rubocop
   - rubocop-faker
@@ -60,6 +58,12 @@ Lint/UselessMethodDefinition:
 
 RSpec/ExampleLength:
   Max: 34
+
+RSpec/NestedGroups:
+  Max: 5
+
+RSpec/MultipleMemoizedHelpers:
+  Max: 14
 
 Rails/SkipsModelValidations:
   AllowedMethods: ['upsert']
