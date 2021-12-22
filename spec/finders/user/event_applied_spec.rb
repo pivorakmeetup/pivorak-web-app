@@ -4,13 +4,15 @@ require 'rails_helper'
 
 RSpec.describe User::EventApplied do
   let!(:visitor_approved) { create(:user) }
+  let(:event) { create(:event) }
   let!(:visitor_pending) { create(:user) }
   let!(:visitor_refused) { create(:user) }
   let!(:visitor_canceled) { create(:user) }
   let!(:visitor_confirmed) { create(:user) }
-  let!(:not_visitor) { create(:user) }
 
-  let(:event) { create(:event) }
+  before do
+    create(:user) # not a visitor
+  end
 
   it 'grabs all users from one event' do
     create(:visit_request, :approved, event: event, user: visitor_approved)

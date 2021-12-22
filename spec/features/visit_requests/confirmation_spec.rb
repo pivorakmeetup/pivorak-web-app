@@ -3,9 +3,10 @@
 RSpec.describe 'Visit Requests CONFIRMATION' do
   let(:event)          { create(:event, status: :confirmation) }
   let(:user)           { create(:user) }
-  let!(:visit_request) { create(:visit_request, user: user, event: event, status: :approved) }
 
   before do
+    create(:visit_request, user: user, event: event, status: :approved)
+
     assume_logged_in(user)
     visit "/events/#{event.slug}"
   end

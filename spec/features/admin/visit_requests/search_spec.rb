@@ -2,12 +2,13 @@
 
 RSpec.describe 'Visit Requests SEARCH' do
   let(:event) { create(:event) }
-  let!(:visit_request) { create(:visit_request, user: user1, event: event) }
-  let!(:visit_request2) { create(:visit_request, user: user2, event: event) }
   let(:user1) { create(:user, first_name: 'Den', last_name: 'Med') }
   let(:user2) { create(:user, first_name: 'Ivan', last_name: 'Chai') }
 
   before do
+    create(:visit_request, user: user1, event: event)
+    create(:visit_request, user: user2, event: event)
+
     assume_admin_logged_in(supervisor: true)
     visit "/admin/events/#{event.slug}/visit_requests"
   end

@@ -3,9 +3,9 @@
 require 'rails_helper'
 
 describe Courses::Interview::RatePolicy do
-  let!(:season)      { create(:season, title: 'Test Season') }
-  let!(:student)     { create(:student, status: :interviewing) }
-  let!(:mentor)      { ::Courses::Mentor.create(user_id: 1, season_id: 1) }
+  let(:season)      { create(:season, title: 'Test Season') }
+  let(:student)     { create(:student, status: :interviewing) }
+  let!(:mentor) { create(:mentor, season: season) }
 
   describe '#allowed?' do
     context 'when has student, video url & is completed' do

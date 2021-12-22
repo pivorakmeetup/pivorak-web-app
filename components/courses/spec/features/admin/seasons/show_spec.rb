@@ -3,12 +3,15 @@
 require 'rails_helper'
 
 RSpec.describe 'Seasons SHOW' do
-  let!(:season_creator) { ::Courses::Mentor.create(user_id: 1, season_id: 1) }
+  let(:season) { create(:season, title: 'Test Season', status: :passed) }
+
+  before do
+    create(:mentor, season: season)
+  end
 
   context 'when season is passed' do
-    let!(:season)            { create(:season, title: 'Test Season', status: :passed) }
-    let!(:attending_student) { create(:student, user_id: 2, status: :attending, season: season) }
-    let!(:dropped_student)   { create(:student, user_id: 3, status: :dropped, season: season) }
+    let!(:attending_student) { create(:student, status: :attending, season: season) }
+    let!(:dropped_student) { create(:student, status: :dropped, season: season) }
 
     before { visit '/admin/courses/seasons/test-season' }
 
@@ -23,19 +26,19 @@ RSpec.describe 'Seasons SHOW' do
     end
 
     it 'shows right tabs', :aggregate_failures do
-      expect(page).to     have_link('/admin/courses/seasons/test-season')
-      expect(page).to     have_link('/admin/courses/seasons/test-season/mentors')
+      expect(page).to have_link('/admin/courses/seasons/test-season')
+      expect(page).to have_link('/admin/courses/seasons/test-season/mentors')
       expect(page).not_to have_link('/admin/courses/seasons/test-season/questions')
-      expect(page).to     have_link('/admin/courses/seasons/test-season/students')
-      expect(page).to     have_link('/admin/courses/seasons/test-season/test_task')
-      expect(page).to     have_link('/admin/courses/seasons/test-season/interviews')
-      expect(page).to     have_link('/admin/courses/seasons/test-season/lectures')
-      expect(page).to     have_link('/admin/courses/seasons/test-season/journal')
+      expect(page).to have_link('/admin/courses/seasons/test-season/students')
+      expect(page).to have_link('/admin/courses/seasons/test-season/test_task')
+      expect(page).to have_link('/admin/courses/seasons/test-season/interviews')
+      expect(page).to have_link('/admin/courses/seasons/test-season/lectures')
+      expect(page).to have_link('/admin/courses/seasons/test-season/journal')
     end
   end
 
   context 'when season is live' do
-    let!(:season) { create(:season, title: 'Test Season', status: :live) }
+    let(:season) { create(:season, title: 'Test Season', status: :live) }
 
     before { visit '/admin/courses/seasons/test-season' }
 
@@ -44,19 +47,19 @@ RSpec.describe 'Seasons SHOW' do
     end
 
     it 'shows right tabs', :aggregate_failures do
-      expect(page).to     have_link('/admin/courses/seasons/test-season')
-      expect(page).to     have_link('/admin/courses/seasons/test-season/mentors')
+      expect(page).to have_link('/admin/courses/seasons/test-season')
+      expect(page).to have_link('/admin/courses/seasons/test-season/mentors')
       expect(page).not_to have_link('/admin/courses/seasons/test-season/questions')
-      expect(page).to     have_link('/admin/courses/seasons/test-season/students')
+      expect(page).to have_link('/admin/courses/seasons/test-season/students')
       expect(page).not_to have_link('/admin/courses/seasons/test-season/test_task')
       expect(page).not_to have_link('/admin/courses/seasons/test-season/interviews')
-      expect(page).to     have_link('/admin/courses/seasons/test-season/lectures')
-      expect(page).to     have_link('/admin/courses/seasons/test-season/journal')
+      expect(page).to have_link('/admin/courses/seasons/test-season/lectures')
+      expect(page).to have_link('/admin/courses/seasons/test-season/journal')
     end
   end
 
   context 'when season is in selection phase' do
-    let!(:season) { create(:season, title: 'Test Season', status: :selection) }
+    let(:season) { create(:season, title: 'Test Season', status: :selection) }
 
     before { visit '/admin/courses/seasons/test-season' }
 
@@ -73,7 +76,7 @@ RSpec.describe 'Seasons SHOW' do
   end
 
   context 'when season is in registration phase' do
-    let!(:season) { create(:season, title: 'Test Season', status: :registration) }
+    let(:season) { create(:season, title: 'Test Season', status: :registration) }
 
     before { visit '/admin/courses/seasons/test-season' }
 
@@ -90,7 +93,7 @@ RSpec.describe 'Seasons SHOW' do
   end
 
   context 'when season is planned' do
-    let!(:season) { create(:season, title: 'Test Season', status: :planned) }
+    let(:season) { create(:season, title: 'Test Season', status: :planned) }
 
     before { visit '/admin/courses/seasons/test-season' }
 

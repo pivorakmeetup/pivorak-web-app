@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 RSpec.describe 'Events UPDATE' do
-  let!(:event) { create(:event, title: 'Test Event') }
   let(:test_edit_path) { '/admin/events/test-event/edit' }
 
   before do
+    create(:event, title: 'Test Event')
+
     assume_admin_logged_in(supervisor: true)
     visit test_edit_path
   end

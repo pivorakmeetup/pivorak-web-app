@@ -73,7 +73,9 @@ RSpec.describe 'Student CREATE' do
     end
 
     context 'when second application try' do
-      let!(:student) { create :student, user: user, season: season }
+      before do
+        create :student, user: user, season: season
+      end
 
       it 'does not create new student' do
         fill_in 'Personal info',   with: 'Personal stuff'

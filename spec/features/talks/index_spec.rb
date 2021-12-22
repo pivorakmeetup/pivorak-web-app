@@ -2,11 +2,14 @@
 
 RSpec.describe 'Talk publishable' do
   let(:event) { create :event }
-  let!(:published_talk)     { create :talk, title: 'Published Talk', event: event }
-  let!(:unpublished_talk)   { create :talk, title: 'Unpublished Talk', published: false, event: event }
-  let!(:talk_without_event) { create :talk, title: 'Without Event' }
 
-  before { visit '/talks' }
+  before do
+    create :talk, title: 'Published Talk', event: event
+    create :talk, title: 'Unpublished Talk', published: false, event: event
+    create :talk, title: 'Without Event'
+
+    visit '/talks'
+  end
 
   it 'shows only published talks', :aggregate_failures do
     expect(page).to     have_content 'Published Talk'

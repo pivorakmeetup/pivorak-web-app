@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 RSpec.describe 'Groups READ' do
-  let!(:group_a) { create(:group, name: 'GeneralGroup',   resource: 'Talk') }
-  let!(:group_b) { create(:group, name: 'SecondaryGroup', resource: 'Talk') }
-
   before do
+    create(:group, name: 'GeneralGroup',   resource: 'Talk')
+    create(:group, name: 'SecondaryGroup', resource: 'Talk')
+
     assume_admin_logged_in
     visit '/admin/groups'
   end

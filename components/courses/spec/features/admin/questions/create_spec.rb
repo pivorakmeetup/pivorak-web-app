@@ -3,13 +3,16 @@
 require 'rails_helper'
 
 RSpec.describe 'Question CREATE' do
-  let!(:season)                 { create(:season, title: 'Test Season', status: :planned) }
-  let!(:user)                   { User.create(email: 'test@test.com', first_name: 'Test', last_name: 'User') }
-  let!(:season_creator)         { ::Courses::Mentor.create(user: user, season: season) }
+  let(:season)                 { create(:season, title: 'Test Season', status: :planned) }
+  let(:user)                   { create(:user, email: 'test@test.com', first_name: 'Test', last_name: 'User') }
   let(:test_questions_path)     { '/admin/courses/seasons/test-season/questions' }
   let(:test_new_questions_path) { '/admin/courses/seasons/test-season/questions/new' }
 
-  before { visit test_new_questions_path }
+  before do
+    create :mentor, user: user, season: season
+
+    visit test_new_questions_path
+  end
 
   context 'when invalid input' do
     it 'validates errors' do

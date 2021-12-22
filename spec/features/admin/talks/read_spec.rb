@@ -2,10 +2,10 @@
 
 RSpec.describe 'Talks READ' do
   context 'without any assignes' do
-    let!(:talk_a)    { create(:talk, title: 'Test Talk A') }
-    let!(:talk_b)    { create(:talk, title: 'Test Talk B') }
-
     before do
+      create(:talk, title: 'Test Talk A')
+      create(:talk, title: 'Test Talk B')
+
       assume_admin_logged_in
       visit '/admin/talks'
     end
@@ -41,9 +41,10 @@ RSpec.describe 'Talks READ' do
 
   context 'with user assign' do
     let(:user)       { create(:user, first_name: 'Super', last_name: 'User') }
-    let!(:talk_with_user) { create(:talk, title: 'Test Talk with User', speaker_id: user.id) }
 
     before do
+      create(:talk, title: 'Test Talk with User', speaker_id: user.id)
+
       assume_admin_logged_in
       visit '/admin/talks'
     end
@@ -53,11 +54,11 @@ RSpec.describe 'Talks READ' do
   end
 
   context 'when talks list should be ordered by creation_date desc' do
-    let!(:talk_firstly_created)    { create(:talk, title: 'Test Talk A') }
-    let!(:talk_secondly_created)   { create(:talk, title: 'Test Talk B') }
-    let!(:talk_lastly_created)     { create(:talk, title: 'Test Talk C') }
-
     before do
+      create(:talk, title: 'Test Talk A')
+      create(:talk, title: 'Test Talk B')
+      create(:talk, title: 'Test Talk C')
+
       Capybara.ignore_hidden_elements = false
       assume_admin_logged_in
       visit '/admin/talks'

@@ -3,12 +3,15 @@
 require 'rails_helper'
 
 RSpec.describe 'Mentor CREATE' do
-  let!(:season)         { create(:season, title: 'Test Season', status: :planned) }
-  let!(:user)           { create(:user) }
-  let!(:another_user)   { create(:user, first_name: 'Another') }
-  let!(:season_creator) { ::Courses::Mentor.create(user: user, season: season) }
+  let(:season)         { create(:season, title: 'Test Season', status: :planned) }
+  let(:user)           { create(:user) }
 
-  before { visit '/admin/courses/seasons/test-season/mentors/new' }
+  before do
+    create :mentor, user: user, season: season
+    create :user, first_name: 'Another'
+
+    visit '/admin/courses/seasons/test-season/mentors/new'
+  end
 
   context 'when valid input' do
     it 'creates mentor', :aggregate_failures do

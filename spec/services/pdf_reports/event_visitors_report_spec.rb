@@ -4,15 +4,18 @@ RSpec.describe PdfReports::EventVisitorsReport do
   let(:first_user) { create(:user, first_name: 'First', last_name: 'User') }
   let(:second_user) { create(:user, first_name: 'Second', last_name: 'User') }
   let(:third_user) { create(:user, first_name: 'Third', last_name: 'Long_user_last_name') }
-  let!(:first_visit_request) { create(:visit_request, user: first_user) }
-  let!(:second_visit_request) { create(:visit_request, user: second_user) }
-  let!(:third_visit_request)  { create(:visit_request, user: third_user) }
   let(:settings) { { columns: 2, font: :Courier, table: { cell_style: { size: 21 } } } }
   let(:service) { described_class.new(VisitRequest.all) }
   let(:text_inspector) { PDF::Inspector::Text.analyze(service.call.read) }
   let(:page_inspector) { PDF::Inspector::Page.analyze(service.call.read) }
 
-  before { allow(service).to receive(:settings) { settings } }
+  before do
+    create(:visit_request, user: first_user)
+    create(:visit_request, user: second_user)
+    create(:visit_request, user: third_user)
+
+    allow(service).to receive(:settings) { settings }
+  end
 
   describe '.call' do
     context 'when valid font styles' do

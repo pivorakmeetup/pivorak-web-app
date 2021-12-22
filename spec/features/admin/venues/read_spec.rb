@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 RSpec.describe 'Venues READ' do
-  let!(:venue_a) { create(:venue, name: 'Test Venue A') }
-  let!(:venue_b) { create(:venue, name: 'Test Venue B') }
-
   before do
+    create(:venue, name: 'Test Venue A')
+    create(:venue, name: 'Test Venue B')
+
     assume_admin_logged_in
     visit '/admin/venues'
   end

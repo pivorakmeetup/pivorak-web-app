@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 RSpec.describe 'Events SEND CONFIRMATIONS' do
-  let!(:event) { create(:event, status: :confirmation) }
-  let!(:visit_request) { create(:visit_request, event: event, status: VisitRequest::APPROVED, waiting_list: false) }
+  let(:event) { create(:event, status: :confirmation) }
 
   before do
+    create(:visit_request, event: event, status: VisitRequest::APPROVED, waiting_list: false)
+
     assume_admin_logged_in(supervisor: true)
     visit "/admin/events/#{event.slug}/edit"
   end

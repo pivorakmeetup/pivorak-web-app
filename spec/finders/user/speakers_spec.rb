@@ -5,9 +5,12 @@ RSpec.describe User::Speakers do
   let!(:speaker) { create(:user) }
   let!(:twice_speaker) { create(:user) }
   let!(:not_speaker) { create(:user) }
-  let!(:talk) { create(:talk, speaker: speaker) }
-  let!(:talk2) { create(:talk, speaker: twice_speaker) }
-  let!(:talk3) { create(:talk, speaker: twice_speaker) }
+
+  before do
+    create(:talk, speaker: speaker)
+    create(:talk, speaker: twice_speaker)
+    create(:talk, speaker: twice_speaker)
+  end
 
   it 'count only users with some talks', :aggregate_failures do
     expect(described_class.call).not_to include not_speaker

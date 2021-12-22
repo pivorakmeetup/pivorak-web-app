@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 RSpec.describe 'Events READ' do
-  let!(:event_a) { create(:event, title: 'Test Event A', status: :confirmation) }
-  let!(:event_b) { create(:event, title: 'Test Event B') }
-
   before do
+    create(:event, title: 'Test Event A', status: :confirmation)
+    create(:event, title: 'Test Event B')
+
     assume_admin_logged_in(supervisor: true)
     visit '/admin/events'
   end

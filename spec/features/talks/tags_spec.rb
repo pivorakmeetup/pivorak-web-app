@@ -2,11 +2,14 @@
 
 describe 'Talks tags' do
   let(:event) { create :event }
-  let!(:talk_about_ruby)  { create :talk, title: 'Ruby Way', tag_list: 'ruby', event: event }
-  let!(:talk_about_js)    { create :talk, title: 'JS Way',   tag_list: 'javascript', event: event }
-  let!(:talk_about_rails) { create :talk, title: 'Rails Way', tag_list: 'ruby, rails', event: event }
 
-  before { visit "/talks?tag=#{tag}" }
+  before do
+    create :talk, title: 'Ruby Way', tag_list: 'ruby', event: event
+    create :talk, title: 'JS Way',   tag_list: 'javascript', event: event
+    create :talk, title: 'Rails Way', tag_list: 'ruby, rails', event: event
+
+    visit "/talks?tag=#{tag}"
+  end
 
   context 'when ruby tag' do
     let(:tag) { 'ruby' }

@@ -3,12 +3,15 @@
 require 'rails_helper'
 
 describe Courses::Season::AllForCurrentMentor do
-  let!(:season)         { create(:season) }
+  let(:season) { create(:season) }
+  let(:user) { create(:user) }
   let!(:another_season) { create(:season) }
-  let!(:user)           { create(:user) }
-  let!(:mentor)         { create(:mentor, user_id: user.id, season_id: season.id) }
 
   describe '#call' do
+    before do
+      create(:mentor, user: user, season: season)
+    end
+
     it 'returns available for current mentor seasons', :aggregate_failures do
       query = described_class.call(user)
 

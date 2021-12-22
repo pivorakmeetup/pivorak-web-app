@@ -3,13 +3,15 @@
 require 'rails_helper'
 
 RSpec.describe 'Lecture UPDATE' do
-  let!(:season)  { create(:season, title: 'Test Season', status: :live) }
-  let!(:user)    { create(:user) }
-  let!(:venue)   { create(:venue) }
-  let!(:mentor)  { ::Courses::Mentor.create(user: user, season: season) }
-  let!(:lecture) { create(:lecture, title: 'Awesome lecture', mentor: mentor, venue_id: 1, season: season) }
+  let(:season)  { create(:season, title: 'Test Season', status: :live) }
+  let(:user)    { create(:user) }
+  let(:mentor)  { create(:mentor, user: user, season: season) }
 
-  before { visit '/admin/courses/seasons/test-season/lectures/awesome-lecture/edit' }
+  before do
+    create :lecture, title: 'Awesome lecture', mentor: mentor, season: season
+
+    visit '/admin/courses/seasons/test-season/lectures/awesome-lecture/edit'
+  end
 
   context 'when invalid input' do
     it 'validates errors' do

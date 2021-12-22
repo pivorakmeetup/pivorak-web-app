@@ -4,10 +4,11 @@ RSpec.describe 'Search GET' do
   let(:string) { 'example' }
 
   let!(:user)  { create(:user, first_name: string) }
-  let!(:event) { create(:event, title: string) }
-  let!(:talk)  { create(:talk, title: string) }
 
   before do
+    create(:event, title: string)
+    create(:talk, title: string)
+
     visit search_index_path(query: string)
   end
 

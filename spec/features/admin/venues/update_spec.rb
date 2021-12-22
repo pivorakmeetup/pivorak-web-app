@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 RSpec.describe 'Venues UPDATE' do
-  let!(:venue)         { create(:venue, name: 'Test Venue') }
   let(:test_edit_path) { '/admin/venues/test-venue/edit' }
 
   before do
+    create(:venue, name: 'Test Venue')
+
     assume_admin_logged_in
     visit test_edit_path
   end

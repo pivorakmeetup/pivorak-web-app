@@ -3,19 +3,19 @@
 require 'rails_helper'
 
 RSpec.describe 'Setting progress' do
-  let!(:season)   { create(:season, title: 'Test Season') }
-  let!(:user)     { create(:user) }
-  let!(:venue)    { create(:venue) }
-  let!(:mentor)   { ::Courses::Mentor.create(user: user, season: season) }
-  let!(:lecture)  { create(:lecture, mentor: mentor, venue: venue, season: season) }
-  let!(:student)  { create(:student, season: season, user: user, status: :attending) }
-  let!(:progress) { ::Courses::Progress.create(student: student, lecture: lecture, mentor: mentor) }
-  let!(:homework) do
-    ::Courses::Homework.create(student: student, lecture: lecture, git_url: 'lorem',
-                               showcase_url: 'ipsum', description: 'lorem')
-  end
+  let(:season)   { create(:season, title: 'Test Season') }
+  let(:user)     { create(:user) }
+  let(:venue)    { create(:venue) }
+  let(:mentor)   { create(:mentor, user: user, season: season) }
+  let(:lecture)  { create(:lecture, mentor: mentor, venue: venue, season: season) }
+  let(:student)  { create(:student, season: season, user: user, status: :attending) }
 
-  before { visit "/admin/courses/seasons/test-season/lectures/#{lecture.slug}/progress" }
+  before do
+    create :progress, student: student, lecture: lecture, mentor: mentor
+    create :homework, student: student, lecture: lecture, git_url: 'lorem', showcase_url: 'ipsum', description: 'lorem'
+
+    visit "/admin/courses/seasons/test-season/lectures/#{lecture.slug}/progress"
+  end
 
   context 'when shows students list' do
     it { expect(page).to have_content(user.full_name) }

@@ -3,9 +3,9 @@
 require 'rails_helper'
 
 describe Courses::Interview::IntervalPolicy do
-  let!(:season)      { create(:season, title: 'Test Season') }
-  let!(:mentor)      { ::Courses::Mentor.create(user_id: 1, season_id: 1) }
-  let!(:interval)    { 30 }
+  let(:season)      { create(:season, title: 'Test Season') }
+  let(:mentor)      { create(:mentor, season: season) }
+  let(:interval)    { 30 }
 
   let(:policy) { described_class.new(mentor, interview, interval) }
 
@@ -19,8 +19,11 @@ describe Courses::Interview::IntervalPolicy do
     end
 
     context 'when has interviews 30 minutes prior' do
-      let(:interview) { build(:interview, mentor_id: mentor.id) }
-      let!(:prev_interview) { create(:interview, mentor_id: mentor.id, start_at: (Time.current - 20.minutes)) }
+      let(:interview) { build_stubbed(:interview, mentor: mentor) }
+
+      before do
+        create(:interview, mentor: mentor, start_at: (Time.current - 20.minutes))
+      end
 
       it 'forbids to pass policy' do
         expect(policy).not_to be_allowed
@@ -28,8 +31,11 @@ describe Courses::Interview::IntervalPolicy do
     end
 
     context 'when has interviews 30 minutes after' do
-      let(:interview) { build(:interview, mentor_id: mentor.id) }
-      let!(:next_interview) { create(:interview, mentor_id: mentor.id, start_at: (Time.current + 20.minutes)) }
+      let(:interview) { build_stubbed(:interview, mentor: mentor) }
+
+      before do
+        create(:interview, mentor: mentor, start_at: (Time.current + 20.minutes))
+      end
 
       it 'forbids to pass policy' do
         expect(policy).not_to be_allowed
